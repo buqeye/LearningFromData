@@ -1,0 +1,156 @@
+format: jb-book
+root: about.md
+#options:  # The options key will be applied to all chapters, but not sub-sections
+#  numbered: True
+parts:  
+  - caption: Course overview 
+    chapters:
+    - title: Objectives
+      file: content/Course/overview.md
+  - caption: Topics
+    numbered: 2    # go down 2 levels with numbers
+    chapters:
+    - title: "Basics of Bayesian statistics"
+      file: content/Basics/basics.md
+      sections:
+      - file: content/Basics/lecture_01.md
+      - file: notebooks/Basics/simple_sum_product_rule.ipynb
+      - file: notebooks/Basics/Exploring_pdfs.ipynb
+      - file: content/Basics/lecture_02.md
+      - file: notebooks/Basics/Bayesian_updating_coinflip_interactive.ipynb
+      - file: content/Basics/lecture_03.md
+      - file: notebooks/Basics/parameter_estimation_Gaussian_noise.ipynb
+      - file: notebooks/Basics/radioactive_lighthouse_exercise.ipynb
+      - file: notebooks/Basics/medical_example_by_Bayes.ipynb
+      - file: content/Basics/lecture_04.md
+      - file: notebooks/Basics/visualization_of_CLT.ipynb 
+    - title: "Bayesian parameter estimation"
+      file: content/Parameter_estimation/param_est.md
+      sections:
+      - file: content/Parameter_estimation/lecture_05.md
+      - file: notebooks/Parameter_estimation/parameter_estimation_fitting_straight_line_I.ipynb
+      - file: notebooks/Paameter_estimation/parameter_estimation_Gaussian_noise-2.ipynb
+      - file: content/Parameter_estimation/lecture_06.md
+      - file: notebooks/Parameter_estimation/amplitude_in_presence_of_background.ipynb
+      - file: notebooks/Parameter_estimation/demo-ModelValidation.ipynb
+      - file: notebooks/assignments/Assignment_parameter_estimation_followups.ipynb
+      - file: notebooks/Parameter_estimation/exercise_LinearRegression.ipynb
+      - file: notebooks/Parameter_estimation/linear_algebra_games_I.ipynb     
+      - file: notebooks/assignments/fluctuation_trend_with_number_of_points_and_data_errors.ipynb
+    - title: "MCMC sampling I"
+      file: content/MCMC_sampling_I/MCMC_sampling_I.md
+      sections:
+      - file: content/MCMC_sampling_I/lecture_07.md
+      - file: notebooks/MCMC_sampling_I/Metropolis_Poisson_example.ipynb
+      - file: content/MCMC_sampling_I/lecture_08.md
+      - file: notebooks/MCMC_sampling_I/parameter_estimation_Gaussian_noise-2.ipynb
+      - file: notebooks/MCMC_sampling_I/MCMC-random-walk-and-sampling.ipynb
+      - file: notebooks/MCMC_sampling_I/MCMC-diagnostics.ipynb
+      - file: notebooks/assignments/Assignment_extending_radioactive_lighthouse.ipynb
+    - title: "Why Bayes is better"
+      file: content/Why_Bayes_is_better/bayes_is_better.md
+      sections:
+      - file: content/Why_Bayes_is_better/lecture_09.md
+      - file: notebooks/Why_Bayes_is_better/bayes_billiard.ipynb 
+      - file: content/Why_Bayes_is_better/lecture_10.md
+      - file: notebooks/Why_Bayes_is_better/parameter_estimation_fitting_straight_line_II.ipynb 
+      - file: content/Why_Bayes_is_better/lecture_11.md
+      - file: notebooks/Why_Bayes_is_better/error_propagation_to_functions_of_uncertain_parameters.ipynb
+      - file: notebooks/Basics/correlation_intuition.ipynb
+      - file: content/Why_Bayes_is_better/lecture_12.md
+      - file: content/Why_Bayes_is_better/lecture_13.md
+      - file: notebooks/Why_Bayes_is_better/dealing_with_outliers.ipynb 
+    - title: "Model selection"
+      file: content/Model_selection/model_selection.md
+      sections:
+      - file: content/Model_selection/lecture_14.md
+      - file: content/Model_selection/lecture_15.md
+      - file: notebooks/Model_selection/Evidence_for_model_EFT_coefficients.ipynb
+      - file: content/Model_selection/lecture_16.md
+      - file: notebooks/mini-projects/MCMC-parallel-tempering_ptemcee.ipynb
+      - file: notebooks/mini-projects/MCMC-parallel-tempering_ptemcee_vs_zeus.ipynb
+    - title: "MCMC sampling II"
+      file: content/MCMC_sampling_II/MCMC_sampling_II.md
+      sections:
+      - file: content/MCMC_sampling_II/lecture_17.md
+      - file: notebooks/MCMC_sampling_II/chi_squared_tests.ipynb
+      - file: notebooks/MCMC_sampling_II/Liouville_theorem_visualization.ipynb
+      - file: notebooks/MCMC_sampling_II/Orbital_eqs_with_different_algorithms.ipynb
+      - file: content/MCMC_sampling_II/lecture_18.md
+      - file: notebooks/MCMC_sampling_II/PyMC3_intro_updated.ipynb
+      - file: notebooks/MCMC_sampling_II/PyMC3_docs_getting_started_updated.ipynb
+      - file: notebooks/Parameter_estimation/parameter_estimation_Gaussian_noise_compare_samplers.ipynb
+      - file: notebooks/mini-projects/zeus_multimodal.ipynb
+    - title: "Gaussian processes"
+      file: content/Gaussian_processes/gaussian_processes.md 
+      sections:
+      - file: content/Gaussian_processes/lecture_19.md
+      - file: notebooks/Gaussian_processes/demo-GaussianProcesses.ipynb
+      - file: notebooks/Gaussian_processes/GaussianProcesses.ipynb
+      - file: notebooks/Gaussian_processes/Gaussian_processes_exercises.ipynb
+      - file: content/Gaussian_processes/lecture_20.md
+    - title: "Assigning probabilities"
+      file: content/Maximum_entropy/max_ent.md
+      sections:
+      - file: content/Maximum_entropy/lecture_21.md
+      - file: notebooks/Maximum_entropy/MaxEnt.ipynb
+      - file: notebooks/Maximum_entropy/Pdfs_from_MaxEnt.ipynb
+      - file: notebooks/Maximum_entropy/MaxEnt_Function_Reconstruction.ipynb
+      - file: notebooks/Maximum_entropy/demo-MaxEnt.ipynb
+    - title: "Machine learning: Bayesian methods"
+      file: content/Machine_learning/machine_learning.md
+      sections:
+      - file: content/Machine_learning/lecture_22.md
+      - file: notebooks/Machine_learning/Bayesian_optimization.ipynb
+      - file: content/Machine_learning/lecture_23.md
+      - file: notebooks/Machine_learning/Neural_networks_explained.ipynb
+      - file: notebooks/Machine_learning/Forssen_tif285_NeuralNet.ipynb
+      - file: notebooks/Machine_learning/Forssen_tif285_demo-NeuralNet.ipynb
+      - file: notebooks/Machine_learning/Bayesian_neural_networks_tif285.ipynb
+      - file: content/Machine_learning/lecture_24.md
+      - file: notebooks/Machine_learning/demo-Bayesian_neural_networks_tif285.ipynb
+      - file: notebooks/Machine_learning/Convolutional_neural_network_explained.ipynb
+    - title: "PCA, SVD, and all that" 
+      file: content/SVD/svd.md
+      sections:
+      - file: content/SVD/lecture_25.md
+      - file: notebooks/SVD/linear_algebra_games_including_SVD.ipynb
+  #  - title: "Model mixing"
+  #    file: content/Model_mixing/model_mixing.md
+  - caption: Mini-projects
+    chapters:
+    - title: "Mini-project I: Parameter estimation for a toy model of an EFT"
+      file: notebooks/mini-projects/mini-project_I_toy_model_of_EFT.ipynb
+    - title: "Mini-project IIa: Model selection basics"
+      file: notebooks/mini-projects/model-selection_mini-project-IIa.ipynb
+    - title: "Mini-project IIb: How many lines?"
+      file: notebooks/mini-projects/model-selection_mini-project-IIb_How_many_lines_ptemcee.ipynb
+    - title: "Mini-project IIIa: Bayesian optimization"
+      file: notebooks/mini-projects/mini-project_IIIa_bayesian_optimization.ipynb
+    - title: "Mini-project IIIb: Bayesian Neural Networks"
+      file: notebooks/mini-projects/mini-project_IIIb_Bayesian_neural_networks_from_demo.ipynb
+  - caption: Reference material
+    #numbered: True
+    chapters:
+    - file: content/zbibliography
+    - file: content/related_topics.md
+    - file: content/Reference/installing_anaconda.md
+    - file: content/Reference/using_github.md
+    - file: content/Reference/python_jupyter.md
+      sections:
+      - file: notebooks/Reference/Jupyter_Python_intro_01.ipynb
+      - file: notebooks/Reference/Jupyter_Python_intro_02.ipynb
+      - file: notebooks/Simple_widgets_v1.ipynb
+   # - title: "Related topics"
+   #   file: content/related_topics.md
+    - title: "Examples: Jupyter jb-book"
+      file: content/jb_tests.md
+  - caption: Notebook keys
+    chapters:
+    - file: notebooks/Basics/simple_sum_product_rule_KEY.ipynb
+    - file: notebooks/Basics/medical_example_by_Bayes_KEY.ipynb
+    - file: notebooks/Basics/radioactive_lighthouse_exercise_key.ipynb
+
+
+
+

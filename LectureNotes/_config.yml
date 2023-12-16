@@ -1,0 +1,116 @@
+# Book settings
+title: Learning from data
+author: Dick Furnstahl
+copyright : "2021"  # Copyright year to be placed in the footer
+logo: ./_images/buqeye_logo_web.png
+
+# Auto-exclude files not in the toc
+only_build_toc_files        : false
+
+
+latex:
+  latex_documents:
+    targetname: book.tex
+
+sphinx:
+  config:
+    bibtex_reference_style: label
+    bibtex_default_style: 'alpha'    
+    #mathjax_path: https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
+    #mathjax_path: https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS-MML_HTMLorMML
+    #myst_override_mathjax: true
+    # for mathjax3_config: , TeX --> tex and Macros --> macros
+    mathjax3_config:
+      tex:
+        macros:
+          "N": ["\\mathbb{N}"]
+          "Z": ["\\mathbb{Z}"]
+          "floor": ["\\lfloor#1\\rfloor", 1]
+          "bmat" : ["\\left[\\begin{array}"]
+          "emat" : ["\\end{array}\\right]"]
+          "alphavec": ["\\boldsymbol{\\alpha}"]
+          "muvec": ["\\boldsymbol{\\mu}"]
+          "phivec": ["\\boldsymbol{\\phi}"]
+          "sigmavec": ["\\boldsymbol{\\sigma}"]
+          "Sigmavec": ["\\boldsymbol{\\Sigma}"]
+          "thetavec": ["\\boldsymbol{\\theta}"]
+          "thetavechat": ["\\widehat\\thetavec"]
+          "avec": ["\\boldsymbol{a}"]
+          "Bvec": ["\\boldsymbol{B}"]
+          "fvec": ["\\boldsymbol{f}"]
+          "mvec": ["\\boldsymbol{m}"]
+          "qvec": ["\\boldsymbol{q}"]
+          "rvec": ["\\boldsymbol{r}"]
+          "uvec": ["\\boldsymbol{u}"]
+          "wvec": ["\\boldsymbol{w}"]
+          "xvec": ["\\boldsymbol{x}"]
+          "yvec": ["\\boldsymbol{y}"]
+          "Lra" : ["\\Longrightarrow"]
+          "abar" : ["\\overline a"]
+          "Xbar" : ["\\overline X"]
+          "alphahat" : ["\\widehat\\alpha"]
+          "Hhat" : ["\\hat H"]
+          "yth" : ["y_{\\text{th}}"]
+          "yexp" : ["y_{\\text{exp}}"]
+          "ym" : ["y_{\\text{m}}"]
+          "gs" : ["{0}"]
+    # latex_elements:
+    #     preamble: |
+    #       \newcommand\N{\mathbb{N}}
+    #       \newcommand\floor[1]{\lfloor#1\rfloor}
+    #       \newcommand{\bmat}{\left[\begin{array}}
+    #       \newcommand{\emat}{\end{array}\right]}
+
+
+execute:
+  execute_notebooks         : "off"  # Whether to execute notebooks at build time. Must be one of ("auto", "force", "cache", "off")
+  cache                     : ""    # A path to the jupyter cache that will be used to store execution artifacs. Defaults to `_build/.jupyter_cache/`
+  exclude_patterns          : ["_static/*","README.md","_slides/*","experiments/*"]    # A list of patterns to *skip* in execution (e.g. a notebook that takes a really long time)
+  timeout                   : 30    # The maximum time (in seconds) each notebook cell is allowed to run.
+  run_in_temp               : false # If `True`, then a temporary directory will be created and used as the command working directory (cwd),
+                                    # otherwise the notebook's parent directory will be the cwd.
+  allow_errors              : false # If `False`, when a code cell raises an error the execution is stopped, otherwise all cells are always run.
+  stderr_output             : show  # One of 'show', 'remove', 'remove-warn', 'warn', 'error', 'severe'
+
+
+# Parse and render settings
+parse:
+  myst_url_schemes          : [mailto, http, https]  # URI schemes that will be recognised as external URLs in Markdown links
+  myst_enable_extensions    : ["dollarmath", "amsmath", "deflist", "colon_fence", "html_admonition","html_image", "linkify", "replacements", "smartquotes", "substitution"] # , "tasklist" ]
+  #myst_update_mathjax       : false
+
+# HTML-specific settings
+html:
+  favicon                   : "./_images/favicon/favicon.ico"  # A path to a favicon image
+  use_edit_page_button      : false  # Whether to add an "edit this page" button to pages. If `true`, repository information in repository: must be filled in
+  use_repository_button     : true  # Whether to add a link to your repository button
+  use_issues_button         : true  # Whether to add an "open an issue" button
+  extra_navbar              : Powered by <a href="https://jupyterbook.org">Jupyter Book</a>  # Will be displayed underneath the left navbar.
+  extra_footer              : ""  # Will be displayed underneath the footer.
+  google_analytics_id       : ""  # A GA id that can be used to track book views.
+  home_page_in_navbar       : true  # Whether to include your home page in the left Navigation Bar
+  baseurl                   : ""  # The base URL where your book will be hosted. Used for creating image previews and social links. e.g.: https://mypage.com/mybook/
+  comments:
+    hypothesis              : false
+    utterances              : false
+
+#######################################################################################
+# LaTeX-specific settings
+latex:
+  latex_engine              : pdflatex  # one of 'pdflatex', 'xelatex' (recommended for unicode), 'luatex', 'platex', 'uplatex'
+
+bibtex_bibfiles             : ["./references.bib"]
+
+#######################################################################################
+# Launch button settings
+launch_buttons:
+  #colab_url                 : "https://colab.research.google.com"
+  notebook_interface        : classic  # The interface interactive links will activate ["classic", "jupyterlab"]
+  binderhub_url             : https://mybinder.org  # The URL of the BinderHub (e.g., https://mybinder.org)
+  thebe                     : true  # Add a thebe button to pages (requires the repository to run on Binder)
+
+repository:
+#  url                       : https://danielrphillips.github.io/LearningFromData/LectureNotes/_build/html/index.html  # The URL to your book's repository
+  url                       : https://github.com/DanielRPhillips/LearningFromData  # The URL to your book's repository
+  path_to_book              : "./LectureNotes"  # A path to your book's folder, relative to the repository root.
+  branch                    : main  # Which branch of the repository should be used when creating links
