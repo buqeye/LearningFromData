@@ -7,10 +7,16 @@ The course introduces a variety of methods and algorithms essential for performi
 
 The course is project-based, and students will be exposed to some fundamental research problems through the various projects, with the aim to reproduce state-of-the-art scientific results. Students will use Jupyter notebooks for scientific data analysis examples, with Python as a programming language and including relevant open-source libraries.
 
+<!-- 
 ## Instructors
+* _Lecturer_: Dick Furnstahl
+  * _Email_: furnstahl.1@osu.edu
+  * _Office_: OSU Department of Physics, PRB, room M2048
+
 * _Lecturer_: Daniel Phillips
   * _Email_: phillid1@ohio.edu
   * _Office_: Lindley Hall, S215
+-->
   
 <!-- !split -->
 
@@ -48,6 +54,20 @@ The following topics will be covered (this is not an exclusive list):
 - Model checking
 - Gaussian processes
 - Special topic: Bayesian methods and machine learning. [Note: we will not cover machine learning in great detail, but learn about connections to Bayesian methods, e.g., with Bayesian neural networks as a working example.]
+
+
+## Moral qualities of the scientist
+
+Adapted from G. Polya, Induction and Analogy in Mathematics, chapter 1, section 4, which is entitled "The Inductive Attitude".
+
+Intellectual courage
+: One should be ready to revise any one of our beliefs.
+
+Intellectual honesty
+: One should change a belief when there is a compelling reason to do so. To stick to a conjecture clearly contradicted by experience is dishonest. It is also dishonest to ignore information or not to state and criticize all assumptions.
+
+Wise restraint
+: One should not change a belief wantonly, without some good reason. Don't just follow fashion. Do not believe anything, but question only what is worth questioning.
 
 
 
