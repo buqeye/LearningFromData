@@ -3,7 +3,7 @@
 
 ### Overview
 
-Physics is an empirical science. This means that any serious attempt to do physics involves trying to wrest truth from data. This semester we will discuss how Bayesian statistics provides a mathematically consistent framework for deriving inferences from data and quantifying the strength of those inferences.
+Physics is an empirical science. This means that any serious attempt to do physics involves trying to wrest truth from data. In this course we will discuss how Bayesian statistics provides a mathematically consistent framework for deriving inferences from data and quantifying the strength of those inferences.
 
 While most physics Ph.D. students are taught some standard (frequentist) statistics as part of their course work, relatively few encounter Bayesian methods until they are engaged in research. But Bayesian methods provide a coherent and compelling framework to think about inference, and so can be applied to many important questions in physics. The overall learning goal of this course is to show students who have had little or no previous exposure to Bayes’ theorem how it can be applied to the extraction of model parameters from data as well as how to use it to compare the efficacy of different models. We will also discuss machine learning tools for data analysis: simple ones such as Gaussian Processes, and more modern ones such as Neural Networks. 
 
