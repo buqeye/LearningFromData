@@ -1,0 +1,797 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>9.3. Lecture 23 &#8212; Learning from data</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=365ca57ee442770a23c6" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=365ca57ee442770a23c6" />
+  <script src="../../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=365ca57ee442770a23c6"></script>
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"tex": {"macros": {"N": ["\\mathbb{N}"], "Z": ["\\mathbb{Z}"], "floor": ["\\lfloor#1\\rfloor", 1], "bmat": ["\\left[\\begin{array}"], "emat": ["\\end{array}\\right]"], "alphavec": ["\\boldsymbol{\\alpha}"], "muvec": ["\\boldsymbol{\\mu}"], "phivec": ["\\boldsymbol{\\phi}"], "sigmavec": ["\\boldsymbol{\\sigma}"], "Sigmavec": ["\\boldsymbol{\\Sigma}"], "thetavec": ["\\boldsymbol{\\theta}"], "thetavechat": ["\\widehat\\thetavec"], "avec": ["\\boldsymbol{a}"], "Bvec": ["\\boldsymbol{B}"], "fvec": ["\\boldsymbol{f}"], "mvec": ["\\boldsymbol{m}"], "qvec": ["\\boldsymbol{q}"], "rvec": ["\\boldsymbol{r}"], "uvec": ["\\boldsymbol{u}"], "wvec": ["\\boldsymbol{w}"], "xvec": ["\\boldsymbol{x}"], "yvec": ["\\boldsymbol{y}"], "Lra": ["\\Longrightarrow"], "abar": ["\\overline a"], "Xbar": ["\\overline X"], "alphahat": ["\\widehat\\alpha"], "Hhat": ["\\hat H"], "yth": ["y_{\\text{th}}"], "yexp": ["y_{\\text{exp}}"], "ym": ["y_{\\text{m}}"], "gs": ["{0}"]}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'content/Machine_learning/lecture_23';</script>
+    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
+    <link rel="author" title="About these documents" href="../../about.html" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="9.4. What Are Neural Networks?" href="../../notebooks/Machine_learning/Neural_networks_explained.html" />
+    <link rel="prev" title="9.2. Bayesian Optimization" href="../../notebooks/Machine_learning/Bayesian_optimization.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../../about.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/buqeye_logo_web.png" class="logo__image only-light" alt="Learning from data - Home"/>
+    <script>document.write(`<img src="../../_static/buqeye_logo_web.png" class="logo__image only-dark" alt="Learning from data - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../about.html">
+                    About this Jupyter Book
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Course overview</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Course/overview.html">Objectives</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Topics</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Basics/basics.html">1. Basics of Bayesian statistics</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Basics/lecture_01.html">1.1. Lecture 1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../notebooks/Basics/simple_sum_product_rule.html">1.2. Checking the sum and product rules, and their consequences</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../notebooks/Basics/Exploring_pdfs.html">1.3. Exploring PDFs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Basics/lecture_02.html">1.4. Lecture 2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../notebooks/Basics/Bayesian_updating_coinflip_interactive.html">1.5. Interactive Bayesian updating: coin flipping example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Basics/lecture_03.html">1.6. Lecture 3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../notebooks/Basics/parameter_estimation_Gaussian_noise.html">1.7. Parameter estimation example: Gaussian noise and averages I</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../notebooks/Basics/radioactive_lighthouse_exercise.html">1.8. Radioactive lighthouse problem</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../notebooks/Basics/medical_example_by_Bayes.html">1.9. Standard medical example by applying Bayesian rules of probability</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Basics/lecture_04.html">1.10. Lecture 4: A couple of frequentist connections</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../notebooks/Basics/visualization_of_CLT.html">1.11. Visualization of the Central Limit Theorem</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Parameter_estimation/param_est.html">2. Bayesian parameter estimation</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Parameter_estimation/lecture_05.html">2.1. Lecture 5: Parameter estimation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../notebooks/Parameter_estimation/parameter_estimation_fitting_straight_line_I.html">2.2. Parameter estimation example: fitting a straight line</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Parameter_estimation/lecture_06.html">2.3. Lecture 6</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../notebooks/Parameter_estimation/amplitude_in_presence_of_background.html">2.4. Amplitude of a signal in the presence of background</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../notebooks/Parameter_estimation/demo-ModelValidation.html">2.5. Linear Regression and Model Validation demonstration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../notebooks/assignments/Assignment_parameter_estimation_followups.html">2.6. Assignment: Follow-ups to Parameter Estimation notebooks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../notebooks/Parameter_estimation/exercise_LinearRegression.html">2.7. Linear Regression exercise</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../notebooks/Parameter_estimation/linear_algebra_games_I.html">2.8. Linear algebra games including SVD for PCA</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../notebooks/assignments/fluctuation_trend_with_number_of_points_and_data_errors.html">2.9. Follow-up: fluctuation trends with # of points and data errors</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../MCMC_sampling_I/MCMC_sampling_I.html">3. MCMC sampling I</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../MCMC_sampling_I/lecture_07.html">3.1. Lecture 7</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../notebooks/MCMC_sampling_I/Metropolis_Poisson_example.html">3.2. Metropolis-Hasting MCMC sampling of a Poisson distribution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../MCMC_sampling_I/lecture_08.html">3.3. Lecture 8</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../notebooks/MCMC_sampling_I/parameter_estimation_Gaussian_noise-2.html">3.4. Parameter estimation example: Gaussian noise and averages II</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../notebooks/MCMC_sampling_I/MCMC-random-walk-and-sampling.html">3.5. Exercise: Random walk</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../notebooks/MCMC_sampling_I/MCMC-diagnostics.html">3.6. Overview: MCMC Diagnostics</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../../notebooks/assignments/Assignment_extending_radioactive_lighthouse.html">3.8. Assignment: 2D radioactive lighthouse location using MCMC</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Why_Bayes_is_better/bayes_is_better.html">4. Why Bayes is better</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Why_Bayes_is_better/lecture_09.html">4.1. Lecture 9</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../notebooks/Why_Bayes_is_better/bayes_billiard.html">4.2. A Bayesian Billiard game</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Why_Bayes_is_better/lecture_10.html">4.3. Lecture 10</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../notebooks/Why_Bayes_is_better/parameter_estimation_fitting_straight_line_II.html">4.4. Parameter estimation example: fitting a straight line II</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Why_Bayes_is_better/lecture_11.html">4.5. Lecture 11</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../notebooks/Why_Bayes_is_better/error_propagation_to_functions_of_uncertain_parameters.html">4.6. Error propagation: Example 3.6.2 in Sivia</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../notebooks/Basics/correlation_intuition.html">4.7. Building intuition about correlations (and a bit of Python linear algebra)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Why_Bayes_is_better/lecture_12.html">4.8. Lecture 12</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Why_Bayes_is_better/lecture_13.html">4.9. Lecture 13</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../notebooks/Why_Bayes_is_better/dealing_with_outliers.html">4.10. Dealing with outliers</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Model_selection/model_selection.html">5. Model selection</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Model_selection/lecture_14.html">5.1. Lecture 14</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Model_selection/lecture_15.html">5.2. Lecture 15</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../notebooks/Model_selection/Evidence_for_model_EFT_coefficients.html">5.3. Evidence calculation for EFT expansions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Model_selection/lecture_16.html">5.4. Lecture 16</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../notebooks/mini-projects/MCMC-parallel-tempering_ptemcee.html">5.5. Example: Parallel tempering for multimodal distributions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../notebooks/mini-projects/MCMC-parallel-tempering_ptemcee_vs_zeus.html">5.6. Example: Parallel tempering for multimodal distributions vs. zeus</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../MCMC_sampling_II/MCMC_sampling_II.html">6. MCMC sampling II</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../MCMC_sampling_II/lecture_17.html">6.1. Lecture 17</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../notebooks/MCMC_sampling_II/chi_squared_tests.html">6.2. Quick check of the distribution of normal variables squared</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../notebooks/MCMC_sampling_II/Liouville_theorem_visualization.html">6.3. Liouville Theorem Visualization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../notebooks/MCMC_sampling_II/Orbital_eqs_with_different_algorithms.html">6.4. Solving orbital equations with different algorithms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../MCMC_sampling_II/lecture_18.html">6.5. Lecture 18</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../notebooks/MCMC_sampling_II/PyMC3_intro_updated.html">6.6. PyMC3 Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../notebooks/MCMC_sampling_II/PyMC3_docs_getting_started_updated.html">6.7. Getting started with PyMC3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../notebooks/Parameter_estimation/parameter_estimation_Gaussian_noise_compare_samplers.html">6.8. Comparing samplers for a simple problem</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../notebooks/mini-projects/zeus_multimodal.html">6.9. zeus: Sampling from multimodal distributions</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Gaussian_processes/gaussian_processes.html">7. Gaussian processes</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Gaussian_processes/lecture_19.html">7.1. Lecture 19</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../notebooks/Gaussian_processes/demo-GaussianProcesses.html">7.2. Gaussian processes demonstration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../notebooks/Gaussian_processes/GaussianProcesses.html">7.3. Learning from data: Gaussian processes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../notebooks/Gaussian_processes/Gaussian_processes_exercises.html">7.4. Exercise: Gaussian Process models with GPy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Gaussian_processes/lecture_20.html">7.5. Lecture 20</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Maximum_entropy/max_ent.html">8. Assigning probabilities</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Maximum_entropy/lecture_21.html">8.1. Lecture 21</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../notebooks/Maximum_entropy/MaxEnt.html">8.2. Ignorance pdfs: Indifference and translation groups</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../notebooks/Maximum_entropy/Pdfs_from_MaxEnt.html">8.3. MaxEnt for deriving some probability distributions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../notebooks/Maximum_entropy/MaxEnt_Function_Reconstruction.html">8.4. Maximum Entropy for reconstructing a function from its moments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../notebooks/Maximum_entropy/demo-MaxEnt.html">8.5. Making figures for Ignorance PDF notebook</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="machine_learning.html">9. Machine learning: Bayesian methods</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-9"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="lecture_22.html">9.1. Lecture 22</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../notebooks/Machine_learning/Bayesian_optimization.html">9.2. Bayesian Optimization</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">9.3. Lecture 23</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../notebooks/Machine_learning/Neural_networks_explained.html">9.4. What Are Neural Networks?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../notebooks/Machine_learning/Forssen_tif285_NeuralNet.html">9.5. Neural networks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../notebooks/Machine_learning/Forssen_tif285_demo-NeuralNet.html">9.6. Neural network classifier demonstration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../notebooks/Machine_learning/Bayesian_neural_networks_tif285.html">9.7. Bayesian neural networks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lecture_24.html">9.8. Lecture 24</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../notebooks/Machine_learning/demo-Bayesian_neural_networks_tif285.html">9.9. Variational Inference: Bayesian Neural Networks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../notebooks/Machine_learning/Convolutional_neural_network_explained.html">9.10. What is a convolutional neural network?</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../SVD/svd.html">10. PCA, SVD, and all that</a><input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-10"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../SVD/lecture_25.html">10.1. Lecture 25</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../notebooks/SVD/linear_algebra_games_including_SVD.html">10.2. Linear algebra games including SVD for PCA</a></li>
+</ul>
+</li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Mini-projects</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../notebooks/mini-projects/mini-project_I_toy_model_of_EFT.html">Mini-project I: Parameter estimation for a toy model of an EFT</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../notebooks/mini-projects/model-selection_mini-project-IIa.html">Mini-project IIa: Model selection basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../notebooks/mini-projects/model-selection_mini-project-IIb_How_many_lines_ptemcee.html">Mini-project IIb: How many lines are there?</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../../notebooks/mini-projects/mini-project_IIIa_bayesian_optimization.html">Mini-project IIIa: Bayesian optimization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../notebooks/mini-projects/mini-project_IIIb_Bayesian_neural_networks_from_demo.html">Mini-project IIIb: Bayesian Neural Networks</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Reference material</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../zbibliography.html">Bibliography</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../related_topics.html">Related topics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Reference/installing_anaconda.html">Using Anaconda</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Reference/using_github.html">Using GitHub</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Reference/python_jupyter.html">Python and Jupyter notebooks</a><input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-11"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../notebooks/Reference/Jupyter_Python_intro_01.html">Python and Jupyter notebooks: part 01</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../notebooks/Reference/Jupyter_Python_intro_02.html">Python and Jupyter notebooks: part 02</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../jb_tests.html">Examples: Jupyter jb-book</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Notebook keys</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../notebooks/Basics/simple_sum_product_rule_KEY.html">Checking the sum and product rules, and their consequences <span style="color: red">Key</span></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../notebooks/Basics/medical_example_by_Bayes_KEY.html">Standard medical example by applying Bayesian rules of probability <span style="color: red">Key</span></a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/buqeye/LearningFromData" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/buqeye/LearningFromData/issues/new?title=Issue%20on%20page%20%2Fcontent/Machine_learning/lecture_23.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/content/Machine_learning/lecture_23.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Lecture 23</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-through-mini-project-iiia-to-see-what-is-needed">Step through Mini-project IIIa to see what is needed</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bayesian-neutral-networks-bnns-what-is-the-idea">Bayesian neutral networks (BNNs): What is the idea?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#notebooks-from-christian-forssens-course-at-chalmers">Notebooks from Christian Forssen’s course at Chalmers</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="lecture-23">
+<h1><span class="section-number">9.3. </span>Lecture 23<a class="headerlink" href="#lecture-23" title="Permalink to this heading">#</a></h1>
+<section id="step-through-mini-project-iiia-to-see-what-is-needed">
+<h2>Step through Mini-project IIIa to see what is needed<a class="headerlink" href="#step-through-mini-project-iiia-to-see-what-is-needed" title="Permalink to this heading">#</a></h2>
+<p>Here is a summary of what you need to do for Mini-project IIIa:</p>
+<ul class="simple">
+<li><p>Code for function and a standard <code class="docutils literal notranslate"><span class="pre">scipy</span></code> optimization.</p></li>
+<li><p>Specification of statistical model and acquisition function, plotting 10 (or so) iteration and summary plots.</p></li>
+<li><p>Change acquisition function to ‘LCB’. What’s that?</p></li>
+<li><p>Assessing exploration vs. exploitation.</p></li>
+<li><p>Adding noise.</p></li>
+<li><p>Changing the GP kernel and analyzing the results.</p></li>
+<li><p>Optional task: implementing BayesOpt algorithm (open the black box!)</p></li>
+<li><p>Bivariate example <strong>for a plus</strong> <span class="math notranslate nohighlight">\(\Lra\)</span> follow details.</p></li>
+</ul>
+<p>Now go back to <a class="reference internal" href="../../notebooks/Machine_learning/Bayesian_optimization.html"><span class="doc std std-doc">Bayesian Optimization</span></a> and see where these elements come from.</p>
+<ol class="arabic simple">
+<li><p>Ingredients:</p>
+<ul class="simple">
+<li><p>Objective function to optimize
+<span class="math notranslate nohighlight">\(f(\thetavec) = \chi^2(\thetavec) = \sum_{i=1}^N [y_i^{\text{expt}} - y_i^{\text{th}(\thetavec)}]^2/\sigma_i^2\)</span>, which is assumed to be costly to evaluate.
+**Find <span class="math notranslate nohighlight">\(\thetavec_\ast\)</span> that minimizes <span class="math notranslate nohighlight">\(\chi^2\)</span>.</p></li>
+<li><p>Statistical model for <span class="math notranslate nohighlight">\(f(\thetavec)\)</span>: <span class="math notranslate nohighlight">\(p(f | \mathcal{D})\)</span> where <span class="math notranslate nohighlight">\(\mathcal{D}\)</span> is the current set of evaluations of <span class="math notranslate nohighlight">\(f\)</span>:
+<span class="math notranslate nohighlight">\(\mathcal{D} = \{\thetavec_i, f(\thetavec_i)\}\)</span>. Start with <span class="math notranslate nohighlight">\(p(f)\)</span> as a Gaussian process GP and <em>update</em> via Bayes theorem (recall the GP procedure) with each additional <span class="math notranslate nohighlight">\((\thetavec_i,f(\thetavec_i))\)</span>.</p></li>
+<li><p>Acquisition function <span class="math notranslate nohighlight">\(\mathcal{A}(\thetavec|\mathcal{D})\)</span>. Take maximum with respect to <span class="math notranslate nohighlight">\(\thetavec\)</span> to determine <span class="math notranslate nohighlight">\(\theta_{i+1}\)</span>, given the current data <span class="math notranslate nohighlight">\(\mathcal{D}\)</span> (the full history). This balances between “exploration” and “exploitation”.</p></li>
+</ul>
+</li>
+<li><p>Step through the code</p>
+<ul class="simple">
+<li><p>Univariate example: plot function and find minimum from <code class="docutils literal notranslate"><span class="pre">scipy.optimize.minimum</span></code> (note: requires a starting point).</p>
+<ul>
+<li><p>no noise at first</p></li>
+</ul>
+</li>
+<li><p>Create GPyOpt object with <code class="docutils literal notranslate"><span class="pre">GPyOpt.methods.BayesianOptimization</span></code>.</p>
+<ul>
+<li><p>specify objective function <span class="math notranslate nohighlight">\(f(\thetavec)\)</span>, domain, initial data, acquisition function, whether or not exact function.</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">run_optimization(max_iter,</span> <span class="pre">max_time,</span> <span class="pre">eps)</span></code>, where <code class="docutils literal notranslate"><span class="pre">max_iter</span></code> is the number of evaluations, <code class="docutils literal notranslate"><span class="pre">max_time</span></code> is the time budget, and <code class="docutils literal notranslate"><span class="pre">eps</span></code> is the minimum distance between <span class="math notranslate nohighlight">\(\thetavec_i\)</span> and <span class="math notranslate nohighlight">\(\thetavec_{i+1}\)</span>.</p>
+<ul>
+<li><p>Plot with <code class="docutils literal notranslate"><span class="pre">plot_acquisition</span></code>.</p></li>
+</ul>
+</li>
+<li><p>Bivariate example</p>
+<ul>
+<li><p>This uses a built-in example.</p></li>
+<li><p>Notice the setup for the BayesianOptimization oject</p>
+<ul>
+<li><p>look at choices for <code class="docutils literal notranslate"><span class="pre">model_type</span></code></p></li>
+<li><p>look at choices for <code class="docutils literal notranslate"><span class="pre">acquisition_type</span></code></p></li>
+</ul>
+</li>
+<li><p>separate plots for mean, standard deviation (sd), acquisition function, with red dots for evaluation points.</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>Look at options for starting samples</p>
+<ul class="simple">
+<li><p>LHS and Mersenne twister (standard rng) have “holes” but the LHS projections are good.</p></li>
+<li><p>Sobol sequence does not have hole.</p></li>
+</ul>
+</li>
+<li><p>Concluding remarks: step through these.</p></li>
+<li><p>Step back to acquisition function</p>
+<ul class="simple">
+<li><p>Expective improvement <span class="math notranslate nohighlight">\(\Lra\)</span> EI. At each <span class="math notranslate nohighlight">\(\thetavec\)</span> point, calculation the expectation value of <span class="math notranslate nohighlight">\(f_{\rm min} - f(\thetavec)\)</span>, where <span class="math notranslate nohighlight">\(f_{\rm min}\)</span> is the lowest result so far.
+This is the improvement; use 0 if not improvement (<span class="math notranslate nohighlight">\(f_{\rm min} - f(\thetavec) &gt; 0\)</span>).</p></li>
+<li><p>Analytic evaluation of expectation value, because at a given <span class="math notranslate nohighlight">\(\theta_\ast\)</span> the distribution pdf for <span class="math notranslate nohighlight">\(f\)</span> is a Gaussian (because it is a GP) specfied by <span class="math notranslate nohighlight">\(\mu(\thetavec_\ast)\)</span> and <span class="math notranslate nohighlight">\(\sigma^2(\thetavec_\ast) = C(\thetavec_\ast,\thetavec_\ast)\)</span>.</p></li>
+<li><p>Consider the two pieces to the integral with <span class="math notranslate nohighlight">\(z = (f_{\rm min} - \mu)/\sigma\)</span>:</p>
+<ul>
+<li><p><em>explorative</em> if <span class="math notranslate nohighlight">\(\phi(z)\)</span> dominates <span class="math notranslate nohighlight">\(\Lra\)</span> prior has large uncertainty (large <span class="math notranslate nohighlight">\(\sigma\)</span>);</p></li>
+<li><p><em>exploitive</em> if <span class="math notranslate nohighlight">\(z\Phi(z)\)</span> dominates <span class="math notranslate nohighlight">\(\Lra\)</span> prior has low <span class="math notranslate nohighlight">\(\mu\)</span>.</p></li>
+<li><p>With LCB you can change the relative importance of these two terms.</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+</section>
+<section id="bayesian-neutral-networks-bnns-what-is-the-idea">
+<h2>Bayesian neutral networks (BNNs): What is the idea?<a class="headerlink" href="#bayesian-neutral-networks-bnns-what-is-the-idea" title="Permalink to this heading">#</a></h2>
+<p>Think of how we might combine Bayesian ideas with neural networks (NNs) or modify NNs.</p>
+<ul class="simple">
+<li><p>We use BNNs when we care about uncertainty.</p></li>
+<li><p>Standard NN training via optimization is equivalent to doing maximum likelihood estimation (MLE) for the weights.</p>
+<ul>
+<li><p>So point estimates only.</p></li>
+<li><p>Recall issues with MLEs from “Why Bayes is Better” section.</p></li>
+<li><p>General problem for NNs: susceptible to overfitting.</p></li>
+</ul>
+</li>
+<li><p>Can address overfitting (in part) by <em>regularization</em> <span class="math notranslate nohighlight">\(\Lra\)</span> don’t let weights get too big.</p>
+<ul>
+<li><p>Bayesian equivalent: put priors on weights as we used naturalness priors in Mini-project I (an L2 regularization <span class="math notranslate nohighlight">\(\Lra\)</span> Gaussian prior pdf).</p></li>
+<li><p>So now finding a MAP estimate (maximizing posterior).</p></li>
+</ul>
+</li>
+<li><p>New research on overfitting: in some cases a learning algorithm makes good predictions despite fitting to the noise in training data. This is called “benign overfitting”. See, for example, <a class="reference external" href="https://arxiv.org/abs/1906.11300">Bartlett et al., <em>Benign Overfitting in Linear Regression</em></a>. A recent explanation of this is <a class="reference external" href="https://arxiv.org/abs/2110.02914">Chatterji and Long, <em>Foolish Crowds Support Benign Overfitting</em></a>. From their abstract: “Our analysis exposes the benefit of an effect analogous to the ‘wisdom of the crowd’, except here the harm arising from fitting the <em>noise</em> is ameliorated by spreading it among many directions - the variance reduction arises from a <em>foolish</em> crowd.”</p></li>
+<li><p>Bayesian way: posterior inference <span class="math notranslate nohighlight">\(\Lra\)</span> BNNs (start with model, update with data).</p>
+<ul>
+<li><p>This is a challenge both to model and to compute.</p></li>
+<li><p>Approximations such as Laplace’s method are inadequate and MCMC is computationally infeasible (because of too many parameters).</p></li>
+<li><p>The alternative is <em>variational inference</em>, where one approximates the posterior.</p></li>
+<li><p>Important for decision-making systems and smaller data situations.</p></li>
+</ul>
+</li>
+<li><p>Ordinary workflow of a neural network (supervised learning)</p>
+<ul>
+<li><p>Randomly initialize the weights.</p></li>
+<li><p>Given inputs, compute outputs of neurons by layers, propagate to prediction.</p></li>
+<li><p>A “loss function” computes deviation of predicted output <span class="math notranslate nohighlight">\(\hat y\)</span> and expected <span class="math notranslate nohighlight">\(y\)</span>.</p></li>
+<li><p>The loss value is “back propagated” through layers, adjusting the weights.</p></li>
+</ul>
+</li>
+<li><p>Output of ordinary ML does not come with variability or a credibility</p>
+<ul>
+<li><p>Just a point prediction - no model of the world is explicitly constructed.</p></li>
+<li><p>There are weights and network topology, but no direct correlation to a statistical model.</p></li>
+</ul>
+</li>
+<li><p>BNN: Prior describes key parameters, utilized as input to the neural net. Output is used to compute likelihood with pdf. Get the posterior distribution by variational inference.</p></li>
+</ul>
+</section>
+<section id="notebooks-from-christian-forssens-course-at-chalmers">
+<h2>Notebooks from Christian Forssen’s course at Chalmers<a class="headerlink" href="#notebooks-from-christian-forssens-course-at-chalmers" title="Permalink to this heading">#</a></h2>
+<p>A. <a class="reference internal" href="../../notebooks/Machine_learning/Bayesian_neural_networks_tif285.html"><span class="doc std std-doc">Bayesian neural networks</span></a></p>
+<p>B. <a class="reference internal" href="../../notebooks/Machine_learning/demo-Bayesian_neural_networks_tif285.html"><span class="doc std std-doc">Variational Inference: Bayesian Neural Networks</span></a></p>
+<p>Some notes from A:</p>
+<ul>
+<li><p>Basic neural network. Bottom line goal is</p>
+<div class="math notranslate nohighlight">
+\[
+     p(y|\xvec, D) = \int p(y|\xvec,\wvec) p(\wvec|D) d\wvec
+    \]</div>
+<p>where <span class="math notranslate nohighlight">\(y\)</span> is the new output, <span class="math notranslate nohighlight">\(\xvec\)</span> is the new input, and <span class="math notranslate nohighlight">\(D = \{\xvec^{(i)},y^{(i)}\}\)</span> is a given training dataset.</p>
+<ul class="simple">
+<li><p>The first pdf in the integral is what the neural network gives <span class="math notranslate nohighlight">\(\Lra\)</span> deterministic given <span class="math notranslate nohighlight">\(\xvec\)</span> and <span class="math notranslate nohighlight">\(\wvec\)</span>.</p></li>
+<li><p>We marginalize over the weights.</p></li>
+</ul>
+</li>
+<li><p>We need <span class="math notranslate nohighlight">\(p(\wvec|D) \propto p(D|\wvec)p(\wvec)\)</span> by Bayes.
+Then <span class="math notranslate nohighlight">\(p(D|\wvec) = \prod_i p(y^{(i)}| \xvec^{(i)},\wvec)\)</span> is the likelihood.</p></li>
+<li><p>So how do we calculate the marginalization integral with thousands of parameters? <span class="math notranslate nohighlight">\(\Lra\)</span> <em>variational inference</em> or VI.</p></li>
+<li><p>Quick idea about VI and KL divergence.</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(p(\wvec|D)\)</span> is intractable so approximate the true posterior with a proxy variational distribution <span class="math notranslate nohighlight">\(q(\wvec|\thetavec)\)</span>, where we need to find the optimal <span class="math notranslate nohighlight">\(\thetavec\)</span>, denoted <span class="math notranslate nohighlight">\(\thetavec^\ast\)</span>.</p>
+<ul>
+<li><p>Find <span class="math notranslate nohighlight">\(\thetavec^\ast\)</span> by using the Kullback-Leibler divergence.</p></li>
+<li><p>Find <span class="math notranslate nohighlight">\(\thetavec^\ast\)</span> that maximizes <span class="math notranslate nohighlight">\(J_{\rm ELBD}(\thetavec)\)</span>, where ELBD stands for “Evidence Lower Bound”.</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "buqeye/LearningFromData",
+            ref: "main",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./content/Machine_learning"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  <!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../../notebooks/Machine_learning/Bayesian_optimization.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><span class="section-number">9.2. </span>Bayesian Optimization</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../../notebooks/Machine_learning/Neural_networks_explained.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">9.4. </span>What Are Neural Networks?</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-through-mini-project-iiia-to-see-what-is-needed">Step through Mini-project IIIa to see what is needed</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bayesian-neutral-networks-bnns-what-is-the-idea">Bayesian neutral networks (BNNs): What is the idea?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#notebooks-from-christian-forssens-course-at-chalmers">Notebooks from Christian Forssen’s course at Chalmers</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Dick Furnstahl and Daniel Phillips
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2024.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=365ca57ee442770a23c6"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=365ca57ee442770a23c6"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

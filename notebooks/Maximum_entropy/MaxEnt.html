@@ -1,0 +1,1112 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>8.2. Ignorance pdfs: Indifference and translation groups &#8212; Learning from data</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=365ca57ee442770a23c6" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=365ca57ee442770a23c6" />
+  <script src="../../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=365ca57ee442770a23c6"></script>
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"tex": {"macros": {"N": ["\\mathbb{N}"], "Z": ["\\mathbb{Z}"], "floor": ["\\lfloor#1\\rfloor", 1], "bmat": ["\\left[\\begin{array}"], "emat": ["\\end{array}\\right]"], "alphavec": ["\\boldsymbol{\\alpha}"], "muvec": ["\\boldsymbol{\\mu}"], "phivec": ["\\boldsymbol{\\phi}"], "sigmavec": ["\\boldsymbol{\\sigma}"], "Sigmavec": ["\\boldsymbol{\\Sigma}"], "thetavec": ["\\boldsymbol{\\theta}"], "thetavechat": ["\\widehat\\thetavec"], "avec": ["\\boldsymbol{a}"], "Bvec": ["\\boldsymbol{B}"], "fvec": ["\\boldsymbol{f}"], "mvec": ["\\boldsymbol{m}"], "qvec": ["\\boldsymbol{q}"], "rvec": ["\\boldsymbol{r}"], "uvec": ["\\boldsymbol{u}"], "wvec": ["\\boldsymbol{w}"], "xvec": ["\\boldsymbol{x}"], "yvec": ["\\boldsymbol{y}"], "Lra": ["\\Longrightarrow"], "abar": ["\\overline a"], "Xbar": ["\\overline X"], "alphahat": ["\\widehat\\alpha"], "Hhat": ["\\hat H"], "yth": ["y_{\\text{th}}"], "yexp": ["y_{\\text{exp}}"], "ym": ["y_{\\text{m}}"], "gs": ["{0}"]}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'notebooks/Maximum_entropy/MaxEnt';</script>
+    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
+    <link rel="author" title="About these documents" href="../../about.html" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="8.3. MaxEnt for deriving some probability distributions" href="Pdfs_from_MaxEnt.html" />
+    <link rel="prev" title="8.1. Lecture 21" href="../../content/Maximum_entropy/lecture_21.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../../about.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/buqeye_logo_web.png" class="logo__image only-light" alt="Learning from data - Home"/>
+    <script>document.write(`<img src="../../_static/buqeye_logo_web.png" class="logo__image only-dark" alt="Learning from data - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../about.html">
+                    About this Jupyter Book
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Course overview</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../content/Course/overview.html">Objectives</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Topics</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../content/Basics/basics.html">1. Basics of Bayesian statistics</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../content/Basics/lecture_01.html">1.1. Lecture 1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Basics/simple_sum_product_rule.html">1.2. Checking the sum and product rules, and their consequences</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Basics/Exploring_pdfs.html">1.3. Exploring PDFs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../content/Basics/lecture_02.html">1.4. Lecture 2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Basics/Bayesian_updating_coinflip_interactive.html">1.5. Interactive Bayesian updating: coin flipping example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../content/Basics/lecture_03.html">1.6. Lecture 3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Basics/parameter_estimation_Gaussian_noise.html">1.7. Parameter estimation example: Gaussian noise and averages I</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Basics/radioactive_lighthouse_exercise.html">1.8. Radioactive lighthouse problem</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Basics/medical_example_by_Bayes.html">1.9. Standard medical example by applying Bayesian rules of probability</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../content/Basics/lecture_04.html">1.10. Lecture 4: A couple of frequentist connections</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Basics/visualization_of_CLT.html">1.11. Visualization of the Central Limit Theorem</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../content/Parameter_estimation/param_est.html">2. Bayesian parameter estimation</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../content/Parameter_estimation/lecture_05.html">2.1. Lecture 5: Parameter estimation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Parameter_estimation/parameter_estimation_fitting_straight_line_I.html">2.2. Parameter estimation example: fitting a straight line</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../content/Parameter_estimation/lecture_06.html">2.3. Lecture 6</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Parameter_estimation/amplitude_in_presence_of_background.html">2.4. Amplitude of a signal in the presence of background</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Parameter_estimation/demo-ModelValidation.html">2.5. Linear Regression and Model Validation demonstration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../assignments/Assignment_parameter_estimation_followups.html">2.6. Assignment: Follow-ups to Parameter Estimation notebooks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Parameter_estimation/exercise_LinearRegression.html">2.7. Linear Regression exercise</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Parameter_estimation/linear_algebra_games_I.html">2.8. Linear algebra games including SVD for PCA</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../assignments/fluctuation_trend_with_number_of_points_and_data_errors.html">2.9. Follow-up: fluctuation trends with # of points and data errors</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../content/MCMC_sampling_I/MCMC_sampling_I.html">3. MCMC sampling I</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../content/MCMC_sampling_I/lecture_07.html">3.1. Lecture 7</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../MCMC_sampling_I/Metropolis_Poisson_example.html">3.2. Metropolis-Hasting MCMC sampling of a Poisson distribution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../content/MCMC_sampling_I/lecture_08.html">3.3. Lecture 8</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../MCMC_sampling_I/parameter_estimation_Gaussian_noise-2.html">3.4. Parameter estimation example: Gaussian noise and averages II</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../MCMC_sampling_I/MCMC-random-walk-and-sampling.html">3.5. Exercise: Random walk</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../MCMC_sampling_I/MCMC-diagnostics.html">3.6. Overview: MCMC Diagnostics</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../assignments/Assignment_extending_radioactive_lighthouse.html">3.8. Assignment: 2D radioactive lighthouse location using MCMC</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../content/Why_Bayes_is_better/bayes_is_better.html">4. Why Bayes is better</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../content/Why_Bayes_is_better/lecture_09.html">4.1. Lecture 9</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Why_Bayes_is_better/bayes_billiard.html">4.2. A Bayesian Billiard game</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../content/Why_Bayes_is_better/lecture_10.html">4.3. Lecture 10</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Why_Bayes_is_better/parameter_estimation_fitting_straight_line_II.html">4.4. Parameter estimation example: fitting a straight line II</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../content/Why_Bayes_is_better/lecture_11.html">4.5. Lecture 11</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Why_Bayes_is_better/error_propagation_to_functions_of_uncertain_parameters.html">4.6. Error propagation: Example 3.6.2 in Sivia</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Basics/correlation_intuition.html">4.7. Building intuition about correlations (and a bit of Python linear algebra)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../content/Why_Bayes_is_better/lecture_12.html">4.8. Lecture 12</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../content/Why_Bayes_is_better/lecture_13.html">4.9. Lecture 13</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Why_Bayes_is_better/dealing_with_outliers.html">4.10. Dealing with outliers</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../content/Model_selection/model_selection.html">5. Model selection</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../content/Model_selection/lecture_14.html">5.1. Lecture 14</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../content/Model_selection/lecture_15.html">5.2. Lecture 15</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Model_selection/Evidence_for_model_EFT_coefficients.html">5.3. Evidence calculation for EFT expansions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../content/Model_selection/lecture_16.html">5.4. Lecture 16</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../mini-projects/MCMC-parallel-tempering_ptemcee.html">5.5. Example: Parallel tempering for multimodal distributions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../mini-projects/MCMC-parallel-tempering_ptemcee_vs_zeus.html">5.6. Example: Parallel tempering for multimodal distributions vs. zeus</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../content/MCMC_sampling_II/MCMC_sampling_II.html">6. MCMC sampling II</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../content/MCMC_sampling_II/lecture_17.html">6.1. Lecture 17</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../MCMC_sampling_II/chi_squared_tests.html">6.2. Quick check of the distribution of normal variables squared</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../MCMC_sampling_II/Liouville_theorem_visualization.html">6.3. Liouville Theorem Visualization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../MCMC_sampling_II/Orbital_eqs_with_different_algorithms.html">6.4. Solving orbital equations with different algorithms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../content/MCMC_sampling_II/lecture_18.html">6.5. Lecture 18</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../MCMC_sampling_II/PyMC3_intro_updated.html">6.6. PyMC3 Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../MCMC_sampling_II/PyMC3_docs_getting_started_updated.html">6.7. Getting started with PyMC3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Parameter_estimation/parameter_estimation_Gaussian_noise_compare_samplers.html">6.8. Comparing samplers for a simple problem</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../mini-projects/zeus_multimodal.html">6.9. zeus: Sampling from multimodal distributions</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../content/Gaussian_processes/gaussian_processes.html">7. Gaussian processes</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../content/Gaussian_processes/lecture_19.html">7.1. Lecture 19</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Gaussian_processes/demo-GaussianProcesses.html">7.2. Gaussian processes demonstration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Gaussian_processes/GaussianProcesses.html">7.3. Learning from data: Gaussian processes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Gaussian_processes/Gaussian_processes_exercises.html">7.4. Exercise: Gaussian Process models with GPy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../content/Gaussian_processes/lecture_20.html">7.5. Lecture 20</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../../content/Maximum_entropy/max_ent.html">8. Assigning probabilities</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../content/Maximum_entropy/lecture_21.html">8.1. Lecture 21</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">8.2. Ignorance pdfs: Indifference and translation groups</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Pdfs_from_MaxEnt.html">8.3. MaxEnt for deriving some probability distributions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="MaxEnt_Function_Reconstruction.html">8.4. Maximum Entropy for reconstructing a function from its moments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="demo-MaxEnt.html">8.5. Making figures for Ignorance PDF notebook</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../content/Machine_learning/machine_learning.html">9. Machine learning: Bayesian methods</a><input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-9"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../content/Machine_learning/lecture_22.html">9.1. Lecture 22</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Machine_learning/Bayesian_optimization.html">9.2. Bayesian Optimization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../content/Machine_learning/lecture_23.html">9.3. Lecture 23</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Machine_learning/Neural_networks_explained.html">9.4. What Are Neural Networks?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Machine_learning/Forssen_tif285_NeuralNet.html">9.5. Neural networks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Machine_learning/Forssen_tif285_demo-NeuralNet.html">9.6. Neural network classifier demonstration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Machine_learning/Bayesian_neural_networks_tif285.html">9.7. Bayesian neural networks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../content/Machine_learning/lecture_24.html">9.8. Lecture 24</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Machine_learning/demo-Bayesian_neural_networks_tif285.html">9.9. Variational Inference: Bayesian Neural Networks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Machine_learning/Convolutional_neural_network_explained.html">9.10. What is a convolutional neural network?</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../content/SVD/svd.html">10. PCA, SVD, and all that</a><input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-10"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../content/SVD/lecture_25.html">10.1. Lecture 25</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../SVD/linear_algebra_games_including_SVD.html">10.2. Linear algebra games including SVD for PCA</a></li>
+</ul>
+</li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Mini-projects</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../mini-projects/mini-project_I_toy_model_of_EFT.html">Mini-project I: Parameter estimation for a toy model of an EFT</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mini-projects/model-selection_mini-project-IIa.html">Mini-project IIa: Model selection basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mini-projects/model-selection_mini-project-IIb_How_many_lines_ptemcee.html">Mini-project IIb: How many lines are there?</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../mini-projects/mini-project_IIIa_bayesian_optimization.html">Mini-project IIIa: Bayesian optimization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mini-projects/mini-project_IIIb_Bayesian_neural_networks_from_demo.html">Mini-project IIIb: Bayesian Neural Networks</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Reference material</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../content/zbibliography.html">Bibliography</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../content/related_topics.html">Related topics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../content/Reference/installing_anaconda.html">Using Anaconda</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../content/Reference/using_github.html">Using GitHub</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../content/Reference/python_jupyter.html">Python and Jupyter notebooks</a><input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-11"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Reference/Jupyter_Python_intro_01.html">Python and Jupyter notebooks: part 01</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Reference/Jupyter_Python_intro_02.html">Python and Jupyter notebooks: part 02</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../content/jb_tests.html">Examples: Jupyter jb-book</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Notebook keys</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Basics/simple_sum_product_rule_KEY.html">Checking the sum and product rules, and their consequences <span style="color: red">Key</span></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Basics/medical_example_by_Bayes_KEY.html">Standard medical example by applying Bayesian rules of probability <span style="color: red">Key</span></a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://mybinder.org/v2/gh/buqeye/LearningFromData/main?urlpath=tree/./LectureNotes/notebooks/Maximum_entropy/MaxEnt.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onBinder"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img src="../../_static/images/logo_binder.svg">
+  </span>
+<span class="btn__text-container">Binder</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="initThebeSBT()"
+  class="btn btn-sm btn-launch-thebe dropdown-item"
+  title="Launch Thebe"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-play"></i>
+  </span>
+<span class="btn__text-container">Live Code</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/buqeye/LearningFromData" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/buqeye/LearningFromData/issues/new?title=Issue%20on%20page%20%2Fnotebooks/Maximum_entropy/MaxEnt.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/notebooks/Maximum_entropy/MaxEnt.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Ignorance pdfs: Indifference and translation groups</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#discrete-permutation-invariance">Discrete permutation invariance</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#location-invariance">Location invariance</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#scale-invariance">Scale invariance</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-straight-line-model">Example: Straight-line model</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#symmetry-invariance">Symmetry invariance</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-principle-of-maximum-entropy">The principle of maximum entropy</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-entropy-of-scandinavians">The entropy of Scandinavians</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-monkey-argument">The monkey argument</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#why-maximize-the-entropy">Why maximize the entropy?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#continuous-case">Continuous case</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#derivation-of-common-pdfs-using-maxent">Derivation of common pdfs using MaxEnt</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mean-and-the-exponential-pdf">Mean and the Exponential pdf</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#variance-and-the-gaussian-pdf">Variance and the Gaussian pdf</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#counting-statistics-and-the-poisson-distribution">Counting statistics and the Poisson distribution</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="ignorance-pdfs-indifference-and-translation-groups">
+<h1><span class="section-number">8.2. </span>Ignorance pdfs: Indifference and translation groups<a class="headerlink" href="#ignorance-pdfs-indifference-and-translation-groups" title="Permalink to this heading">#</a></h1>
+<p>Original version by <strong>Christian Forssén</strong> (Department of Physics, Chalmers University of Technology, Sweden) and <strong>Daniel Phillips</strong> (Department of Physics and Astronomy, Ohio University), <strong>Oct 23, 2019</strong>.</p>
+<p>Minor updates by Dick Furnstahl, November, 2021.</p>
+<section id="discrete-permutation-invariance">
+<h2>Discrete permutation invariance<a class="headerlink" href="#discrete-permutation-invariance" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Consider a six-sided die</p></li>
+<li><p>How do we assign <span class="math notranslate nohighlight">\(p_i \equiv p(X_i|I)\)</span>, <span class="math notranslate nohighlight">\(i \in \{1, 2, 3, 4, 5, 6\}\)</span>?</p></li>
+<li><p>We do know <span class="math notranslate nohighlight">\(\sum_i p(X_i|I) = 1\)</span></p></li>
+<li><p>Invariance under labeling <span class="math notranslate nohighlight">\(\Rightarrow p(X_i|I)=1/6\)</span></p>
+<ul>
+<li><p>provided that the prior information <span class="math notranslate nohighlight">\(I\)</span> says nothing that breaks the permutation symmetry.</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="location-invariance">
+<h2>Location invariance<a class="headerlink" href="#location-invariance" title="Permalink to this heading">#</a></h2>
+<p>Indifference to a constant shift <span class="math notranslate nohighlight">\(x_0\)</span> for a location parameter <span class="math notranslate nohighlight">\(x\)</span> implies that</p>
+<div class="math notranslate nohighlight">
+\[
+p(x|I) dx \approx p(x+ x_0|I) d(x+x_0) =  p(x+ x_0|I) dx,
+\]</div>
+<p>in the allowed range.</p>
+<p>Location invariance implies that</p>
+<div class="math notranslate nohighlight">
+\[
+p(x|I) =  p(x+ x_0|I) \quad \Rightarrow \quad p(x|I) = \mathrm{constant}.
+\]</div>
+<ul class="simple">
+<li><p>Provided that the prior information <span class="math notranslate nohighlight">\(I\)</span> says nothing that breaks the symmetry.</p></li>
+<li><p>The pdf will be zero outside the allowed range (specified by <span class="math notranslate nohighlight">\(I\)</span>).</p></li>
+</ul>
+</section>
+<section id="scale-invariance">
+<h2>Scale invariance<a class="headerlink" href="#scale-invariance" title="Permalink to this heading">#</a></h2>
+<p>Indifference to a re-scaling <span class="math notranslate nohighlight">\(\lambda\)</span> of a scale parameter <span class="math notranslate nohighlight">\(x\)</span> implies that</p>
+<div class="math notranslate nohighlight">
+\[
+p(x|I) dx \approx p(\lambda x|I) d(\lambda x) =  \lambda p(\lambda x|I) dx,
+\]</div>
+<p>in the allowed range.</p>
+<p>Invariance under re-scaling implies that</p>
+<div class="math notranslate nohighlight">
+\[
+p(x|I) = \lambda p(\lambda x|I) \quad \Rightarrow \quad p(x|I) \propto 1/x.
+\]</div>
+<ul class="simple">
+<li><p>Provided that the prior information <span class="math notranslate nohighlight">\(I\)</span> says nothing that breaks the symmetry.</p></li>
+<li><p>The pdf will be zero outside the allowed range (specified by <span class="math notranslate nohighlight">\(I\)</span>).</p></li>
+<li><p>This prior is often called a <em>Jeffrey’s prior</em>; it represents a complete ignorance of a scale parameter within an allowed range.</p></li>
+<li><p>It is equivalent to a uniform pdf for the logarithm: <span class="math notranslate nohighlight">\(p(\log(x)|I) = \mathrm{constant}\)</span></p>
+<ul>
+<li><p>as can be verified with a change of variable <span class="math notranslate nohighlight">\(y=\log(x)\)</span>, see lecture notes on error propagation.</p></li>
+</ul>
+</li>
+</ul>
+<section id="example-straight-line-model">
+<h3>Example: Straight-line model<a class="headerlink" href="#example-straight-line-model" title="Permalink to this heading">#</a></h3>
+<p>Consider the theoretical model</p>
+<div class="math notranslate nohighlight">
+\[
+y_\mathrm{th}(x) = \theta_1  x  + \theta_0.
+\]</div>
+<ul class="simple">
+<li><p>Would you consider the intercept <span class="math notranslate nohighlight">\(\theta_0\)</span> a location or a scale parameter, or something else?</p></li>
+<li><p>Would you consider the slope <span class="math notranslate nohighlight">\(\theta_1\)</span> a location or a scale parameter, or something else?</p></li>
+</ul>
+<p>Consider also the statistical model for the observed data <span class="math notranslate nohighlight">\(y_i = y_\mathrm{th}(x_i) + \epsilon_i\)</span>, where we assume independent, Gaussian noise <span class="math notranslate nohighlight">\(\epsilon_i \sim \mathcal{N}(0, \sigma^2)\)</span>.</p>
+<ul class="simple">
+<li><p>Would you consider the standard deviation <span class="math notranslate nohighlight">\(\sigma\)</span> a location or a scale parameter, or something else?</p></li>
+</ul>
+</section>
+</section>
+<section id="symmetry-invariance">
+<h2>Symmetry invariance<a class="headerlink" href="#symmetry-invariance" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>In fact, by symmetry indifference we could as well have written the linear model as <span class="math notranslate nohighlight">\(x_\mathrm{th}(y) = \theta_1'  y  + \theta_0'\)</span></p></li>
+<li><p>We would then equate the probability elements for the two models</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+p(\theta_0, \theta_1 | I) d\theta_0 d\theta_1 = q(\theta_0', \theta_1' | I) d\theta_0' d\theta_1'.
+\]</div>
+<ul class="simple">
+<li><p>The transformation gives <span class="math notranslate nohighlight">\((\theta_0', \theta_1') = (-\theta_1^{-1}\theta_0, \theta_1^{-1})\)</span>.</p></li>
+</ul>
+<p>This change of variables implies that</p>
+<div class="math notranslate nohighlight">
+\[
+q(\theta_0', \theta_1' | I) = p(\theta_0, \theta_1 | I) \left| \frac{d\theta_0 d\theta_1}{d\theta_0' d\theta_1'} \right|,
+\]</div>
+<p>where the (absolute value of the) determinant of the Jacobian is</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\left| \frac{d\theta_0 d\theta_1}{d\theta_0' d\theta_1'} \right| 
+= \mathrm{abs} \left( 
+\begin{vmatrix}
+\frac{\partial \theta_0}{\partial \theta_0'} &amp; \frac{\partial \theta_0}{\partial \theta_1'} \\
+\frac{\partial \theta_1}{\partial \theta_0'} &amp; \frac{\partial \theta_1}{\partial \theta_1'} 
+\end{vmatrix}
+\right)
+= \frac{1}{\left( \theta_1' \right)^3}.
+\end{split}\]</div>
+<ul class="simple">
+<li><p>In summary we find that <span class="math notranslate nohighlight">\(\theta_1^3 p(\theta_0, \theta_1 | I) = p(-\theta_1^{-1}\theta_0, \theta_1^{-1}|I).\)</span></p></li>
+<li><p>This functional equation is satisfied by</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+p(\theta_0, \theta_1 | I) \propto \frac{1}{\left( 1 + \theta_1^2 \right)^{3/2}}.
+\]</div>
+<!-- dom:FIGURE:[fig/slope_priors.png, width=800 frac=0.8] 100 samples of straight lines with fixed intercept equal to 0 and slopes sampled from three different pdfs. Note in particular the  prior preference for large slopes that results from using a uniform pdf. -->
+<!-- begin figure -->
+<p>100 samples of straight lines with fixed intercept equal to 0 and slopes sampled from three different pdfs. Note in particular the  prior preference for large slopes that results from using a uniform pdf.</p>
+<img src="../../_images/slope_priors.png" width=800>
+<!-- end figure -->
+</section>
+<section id="the-principle-of-maximum-entropy">
+<h2>The principle of maximum entropy<a class="headerlink" href="#the-principle-of-maximum-entropy" title="Permalink to this heading">#</a></h2>
+<p>Having dealt with ignorance, let us move on to more enlightened situations.</p>
+<p>Consider a die with the usual six faces that was rolled a very large number of times. Suppose that we were only told that the average number of dots was 2.5. What (discrete) pdf would we assign? I.e. what are the probabilities <span class="math notranslate nohighlight">\(\{ p_i \}\)</span> that the face on top had <span class="math notranslate nohighlight">\(i\)</span> dots after a single throw?</p>
+<p>The available information can be summarized as follows</p>
+<div class="math notranslate nohighlight">
+\[
+\sum_{i=1}^6 p_i = 1, \qquad \sum_{i=1}^6 i p_i = 2.5
+\]</div>
+<p>This is obviously not a normal die, with uniform probability <span class="math notranslate nohighlight">\(p_i=1/6\)</span>, since the average result would then be 3.5. But there are many candidate pdfs that would reproduce the given information. Which one should we prefer?</p>
+<p>It turns out that there are several different arguments that all point in a direction that is very familiar to people with a physics background. Namely that we should prefer the probability distribution that maximizes an entropy measure, while fulfilling the given constraints.</p>
+<p>It will be shown below that the preferred pdf <span class="math notranslate nohighlight">\(\{ p_i \}\)</span> is the one that maximizes</p>
+<div class="math notranslate nohighlight">
+\[
+Q\left( \{ p_i \} ; \lambda_0, \lambda_1 \right)
+= -\sum_{i=1}^6 p_i \log(p_i) 
++ \lambda_0 \left( 1 - \sum_{i=1}^6 p_i \right)
++ \lambda_1 \left( 2.5 - \sum_{i=1}^6 i p_i \right),
+\]</div>
+<p>where the constraints are included via the method of <a class="reference external" href="https://en.wikipedia.org/wiki/Lagrange_multiplier">Lagrange multipliers</a>.</p>
+</section>
+<section id="the-entropy-of-scandinavians">
+<h2>The entropy of Scandinavians<a class="headerlink" href="#the-entropy-of-scandinavians" title="Permalink to this heading">#</a></h2>
+<p>Let’s consider another pdf assignment problem. This is originally the <em>kangaroo problem</em> (Gull and Skilling, 1984), but translated here into a Scandinavian context. The problem is stated as follows:</p>
+<p>Information:
+:<br />
+70% of all Scandinavians have blonde hair, and 10% of all Scandinavians are left handed.</p>
+<p>Question:
+:<br />
+On the basis of this information alone, what proportion of Scandinavians are both blonde and left handed?</p>
+<p>We note that for any one given Scandinavian there are four distinct possibilities:</p>
+<ol class="arabic simple">
+<li><p>Blonde and left handed (probability <span class="math notranslate nohighlight">\(p_1\)</span>).</p></li>
+<li><p>Blonde and right handed (probability <span class="math notranslate nohighlight">\(p_2\)</span>).</p></li>
+<li><p>Not blonde and left handed (probability <span class="math notranslate nohighlight">\(p_3\)</span>).</p></li>
+<li><p>Not blonde and right handed (probability <span class="math notranslate nohighlight">\(p_4\)</span>).</p></li>
+</ol>
+<p>The following 2x2 contingency table</p>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-center"><p> </p></th>
+<th class="head text-center"><p><strong>left handed</strong></p></th>
+<th class="head text-center"><p><strong>right handed</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-center"><p>blonde</p></td>
+<td class="text-center"><p><span class="math notranslate nohighlight">\(p_1\)</span></p></td>
+<td class="text-center"><p><span class="math notranslate nohighlight">\(p_2\)</span></p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>not blonde</p></td>
+<td class="text-center"><p><span class="math notranslate nohighlight">\(p_3\)</span></p></td>
+<td class="text-center"><p><span class="math notranslate nohighlight">\(p_4\)</span></p></td>
+</tr>
+</tbody>
+</table>
+<p>can be written in terms of a single variable <span class="math notranslate nohighlight">\(x\)</span> due to the normalization condition <span class="math notranslate nohighlight">\(\sum_{i=1}^4 p_i = 1\)</span>, and the available information <span class="math notranslate nohighlight">\(p_1 + p_2 = 0.7\)</span> and <span class="math notranslate nohighlight">\(p_1 + p_3 = 0.1\)</span></p>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-center"><p> </p></th>
+<th class="head text-center"><p>  <strong>left handed</strong>  </p></th>
+<th class="head text-center"><p><strong>right handed</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-center"><p>blonde</p></td>
+<td class="text-center"><p><span class="math notranslate nohighlight">\(0\le x\le 0.1\)</span></p></td>
+<td class="text-center"><p><span class="math notranslate nohighlight">\(0.7-x\)</span></p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>not blonde</p></td>
+<td class="text-center"><p><span class="math notranslate nohighlight">\(0.1-x\)</span></p></td>
+<td class="text-center"><p><span class="math notranslate nohighlight">\(0.2+x\)</span></p></td>
+</tr>
+</tbody>
+</table>
+<p>But which choice of <span class="math notranslate nohighlight">\(x\)</span> is preferred?</p>
+</section>
+<section id="the-monkey-argument">
+<h2>The monkey argument<a class="headerlink" href="#the-monkey-argument" title="Permalink to this heading">#</a></h2>
+<p>The monkey argument is a model for assigning probabilities to <span class="math notranslate nohighlight">\(M\)</span> different alternatives that satisfy some constraint as described by <span class="math notranslate nohighlight">\(I\)</span>:</p>
+<ul class="simple">
+<li><p>Monkeys throwing <span class="math notranslate nohighlight">\(N\)</span> balls into <span class="math notranslate nohighlight">\(M\)</span> equally sized boxes.</p></li>
+<li><p>The normalization condition <span class="math notranslate nohighlight">\(N = \sum_{i=1}^M n_i\)</span>.</p></li>
+<li><p>The fraction of balls in each box gives a possible assignment for the corresponding probability <span class="math notranslate nohighlight">\(p_i = n_i / N\)</span>.</p></li>
+<li><p>The distribution of balls <span class="math notranslate nohighlight">\(\{ n_i \}\)</span> divided by <span class="math notranslate nohighlight">\(N\)</span> is therefore a candidate pdf <span class="math notranslate nohighlight">\(\{ p_i \}\)</span>.</p></li>
+</ul>
+<p>After one round the monkeys have distributed their (large number of) balls over the <span class="math notranslate nohighlight">\(M\)</span> boxes.</p>
+<ul class="simple">
+<li><p>The resulting pdf might not be consistent with the constraints of <span class="math notranslate nohighlight">\(I\)</span>, however, in which case it should be rejected as a possible candidate.</p></li>
+<li><p>After many such rounds, some distributions will be found to come up more often than others. The one that appears most frequently (and satisfies <span class="math notranslate nohighlight">\(I\)</span>) would be a sensible choice for <span class="math notranslate nohighlight">\(p(\{p_i\}|I)\)</span>.</p></li>
+<li><p>Since our ideal monkeys have no agenda of their own to influence the distribution, this most favored distribution can be regarded as the one that best represents our given state of knowledge.</p></li>
+</ul>
+<p>Now, let us see how this preferred solution corresponds to the pdf with the largest <code class="docutils literal notranslate"><span class="pre">entropy</span></code>. Remember in the following that <span class="math notranslate nohighlight">\(N\)</span> (and <span class="math notranslate nohighlight">\(n_i\)</span>) are considered to be very large numbers (<span class="math notranslate nohighlight">\(N/M \gg 1\)</span>)</p>
+<ul class="simple">
+<li><p>The logarithm of the number of micro-states, <span class="math notranslate nohighlight">\(W\)</span>, as a function of <span class="math notranslate nohighlight">\(\{n_i\}\)</span> follows from the <a class="reference external" href="https://en.wikipedia.org/wiki/Multinomial_distribution">multinomial distribution</a>
+(where we use the Stirling approximation <span class="math notranslate nohighlight">\(\log(n!) \approx n\log(n) - n\)</span> for large numbers, and there is a cancellation of two terms)</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+\log(W(\{n_i\})) = \log(N!) − \sum_{i=1}^M \log(n_i!) 
+\approx N\log(N) - \sum_{i=1}^M n_i\log(n_i),
+\]</div>
+<ul class="simple">
+<li><p>There are <span class="math notranslate nohighlight">\(M^N\)</span> different ways to distribute the balls.</p></li>
+<li><p>The micro-states <span class="math notranslate nohighlight">\(\{ n_i\}\)</span> are connected to the pdf <span class="math notranslate nohighlight">\(\{ p_i \}\)</span> and the frequency of a given pdf is given by</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+F(\{p_i\}) = \frac{\text{number of ways of obtaining } \{n_i\}}{M^N}
+\]</div>
+<ul class="simple">
+<li><p>Therefore, the logarithm of this frequency is</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+\log(F(\{p_i\})) \approx -N \log(M) + N\log(N) - \sum_{i=1}^M n_i\log(n_i)
+\]</div>
+<p>Substituting <span class="math notranslate nohighlight">\(p_i = n_i/N\)</span>, and using the normalization condition finally gives</p>
+<div class="math notranslate nohighlight">
+\[
+\log(F(\{p_i\})) \approx -N \log(M) - N \sum_{i=1}^M p_i\log(p_i)
+\]</div>
+<p>We note that <span class="math notranslate nohighlight">\(N\)</span> and <span class="math notranslate nohighlight">\(M\)</span> are constants so that the preferred pdf is given by the <span class="math notranslate nohighlight">\(\{ p_i \}\)</span> that maximizes</p>
+<div class="math notranslate nohighlight">
+\[
+S = - \sum_{i=1}^M p_i\log(p_i).
+\]</div>
+<p>You might recognise this quantity as the <em>entropy</em> from statistical mechanics. The interpretation of entropy in statistical mechanics is the measure of uncertainty that remains about a system after its observable macroscopic properties, such as temperature, pressure and volume, have been taken into account. For a given set of macroscopic variables, the entropy measures the degree to which the probability of the system is spread out over different possible microstates. Specifically, entropy is a logarithmic measure of the number of micro-states with significant probability of being occupied <span class="math notranslate nohighlight">\(S = -k_B \sum_i p_i \log(p_i)\)</span>, where <span class="math notranslate nohighlight">\(k_B\)</span> is the Boltzmann constant.</p>
+<section id="why-maximize-the-entropy">
+<h3>Why maximize the entropy?<a class="headerlink" href="#why-maximize-the-entropy" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Information theory: maximum entropy=minimum information (Shannon, 1948).</p></li>
+<li><p>Logical consistency (Shore &amp; Johnson, 1960).</p></li>
+<li><p>Uncorrelated assignments related monotonically to <span class="math notranslate nohighlight">\(S\)</span> (Skilling, 1988).</p></li>
+</ul>
+<p>Consider the third argument. Let us check it empirically for the problem of hair color and handedness of Scandinavians. We are interested in determining <span class="math notranslate nohighlight">\(p_1 \equiv p(L,B|I) \equiv x\)</span>, the probability that a Scandinavian is both left-handed and blonde. However, in this simple example we can immediately realize that the assignment <span class="math notranslate nohighlight">\(p_1=0.07\)</span> is the only one that implies no correlation between left-handedness and hair color. Any joint probability smaller than 0.07 implies that left-handed people are less likely to be blonde, and any larger value indicates that left-handed people are more likely to be blonde.</p>
+<p>So unless you have specific information about the existence of such a correlation, you should not build it into the assignment of the probability <span class="math notranslate nohighlight">\(p_1\)</span>.</p>
+<p><strong>Question</strong>: Can you show why <span class="math notranslate nohighlight">\(p_1 &lt; 0.07\)</span> and <span class="math notranslate nohighlight">\(p_1 &gt; 0.07\)</span> corresponds to left-handedness and blondeness being dependent variables?</p>
+<p><strong>Hint</strong>: The joint probability of left-handed and blonde is <span class="math notranslate nohighlight">\(x\)</span>. Using the other expressions in the table, what is this joint probability if the probabilities of being left-handed and of being blonde are <em>independent</em>?</p>
+<p>Let us now empirically consider a few variational functions of <span class="math notranslate nohighlight">\(\{ p_i \}\)</span> and see if any of them gives a maximum that corresponds to the uncorrelated assignment <span class="math notranslate nohighlight">\(x=0.07\)</span>, which implies <span class="math notranslate nohighlight">\(p_1 = 0.07, \, p_2 = 0.63, \, p_3 = 0.03, \, p_4 = 0.27\)</span>. A few variational functions and their prediction for <span class="math notranslate nohighlight">\(x\)</span> are shown in the following table.</p>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-center"><p>Variational function</p></th>
+<th class="head text-center"><p>Optimal <span class="math notranslate nohighlight">\(x\)</span></p></th>
+<th class="head text-center"><p>Implied correlation</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-center"><p><span class="math notranslate nohighlight">\(-\sum_i p_i \log(p_i)\)</span></p></td>
+<td class="text-center"><p>0.070</p></td>
+<td class="text-center"><p>None</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p><span class="math notranslate nohighlight">\(\sum_i \log(p_i)\)</span></p></td>
+<td class="text-center"><p>0.053</p></td>
+<td class="text-center"><p>Negative</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p><span class="math notranslate nohighlight">\(-\sum_i p_i^2 \log(p_i)\)</span></p></td>
+<td class="text-center"><p>0.100</p></td>
+<td class="text-center"><p>Positive</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p><span class="math notranslate nohighlight">\(-\sum_i \sqrt{p_i(1-p_i)}\)</span></p></td>
+<td class="text-center"><p>0.066</p></td>
+<td class="text-center"><p>Negative</p></td>
+</tr>
+</tbody>
+</table>
+<p>The assignment based on the entropy measure is the only one that respects this lack of correlations.</p>
+<!-- dom:FIGURE:[fig/scandinavian_entropy.png, width=800 frac=0.8] Four different variational functions $f\left( \{ p_i \} \right)$. The optimal $x$ for each one is shown by a circle. The uncorrelated assignment $x=0.07$ is shown by a vertical line. -->
+<!-- begin figure -->
+<p>Four different variational functions <span class="math notranslate nohighlight">\(f\bigl(\{ p_i \}\bigr)\)</span>. The optimal <span class="math notranslate nohighlight">\(x\)</span> for each one is shown by a circle. The uncorrelated assignment <span class="math notranslate nohighlight">\(x=0.07\)</span> is shown by a vertical line.
+<a class="reference internal" href="../../_images/scandinavian_entropy.png"><img alt="../../_images/scandinavian_entropy.png" src="../../_images/scandinavian_entropy.png" style="width: 800px;" /></a></p>
+<!-- end figure -->
+</section>
+<section id="continuous-case">
+<h3>Continuous case<a class="headerlink" href="#continuous-case" title="Permalink to this heading">#</a></h3>
+<p>Return to monkeys, but now with different probabilities for each bin. Then</p>
+<div class="math notranslate nohighlight">
+\[
+S= −\sum_{i=1}^M p_i \log \left( \frac{p_i}{m_i} \right),
+\]</div>
+<p>which is often known as the <em>Shannon-Jaynes entropy</em>, or the <em>Kullback number</em>, or the <em>cross entropy</em> (with opposite sign).</p>
+<p>Jaynes (1963) has pointed out that this generalization of the entropy, including a <em>Leqesgue measure</em> <span class="math notranslate nohighlight">\(m_i\)</span>, is necessary when we consider the limit of continuous parameters.</p>
+<div class="math notranslate nohighlight">
+\[
+S[p]= −\int p(x) \log \left( \frac{p(x)}{m(x)} \right).
+\]</div>
+<ul class="simple">
+<li><p>In particular, <span class="math notranslate nohighlight">\(m(x)\)</span> ensures that the entropy expression is invariant under a change of variables <span class="math notranslate nohighlight">\(x \to y=f(x)\)</span>.</p></li>
+<li><p>Typically, the transformation-group (invariance) arguments are appropriate for assigning <span class="math notranslate nohighlight">\(m(x) = \mathrm{constant}\)</span>.</p></li>
+<li><p>However, there are situations where other assignments for <span class="math notranslate nohighlight">\(m\)</span> represent the most ignorance. For example, in counting experiments one might assign <span class="math notranslate nohighlight">\(m(N) = M^N / N!\)</span> for the number of observed events <span class="math notranslate nohighlight">\(N\)</span> and a very large number of intervals <span class="math notranslate nohighlight">\(M\)</span>.</p></li>
+</ul>
+</section>
+</section>
+<section id="derivation-of-common-pdfs-using-maxent">
+<h2>Derivation of common pdfs using MaxEnt<a class="headerlink" href="#derivation-of-common-pdfs-using-maxent" title="Permalink to this heading">#</a></h2>
+<p>The principle of maximum entropy (MaxEnt) allows incorporation of further information, e.g. constraints on the mean, variance, etc, into the assignment of probability distributions.</p>
+<p>In summary, the MaxEnt approach aims to maximize the Shannon-Jaynes entropy and generates smooth functions.</p>
+<section id="mean-and-the-exponential-pdf">
+<h3>Mean and the Exponential pdf<a class="headerlink" href="#mean-and-the-exponential-pdf" title="Permalink to this heading">#</a></h3>
+<p>Suppose that we have a pdf <span class="math notranslate nohighlight">\(p(x|I)\)</span> that is normalized over some interval <span class="math notranslate nohighlight">\([ x_\mathrm{min}, x_\mathrm{max}]\)</span>. Assume that we have information about its mean value, i.e.,</p>
+<div class="math notranslate nohighlight">
+\[
+\langle x \rangle = \int dx\, x p(x|I) = \mu.
+\]</div>
+<p>Based only on this information, what functional form should we assign for the pdf that we will now denote <span class="math notranslate nohighlight">\(p(x|\mu)\)</span>?</p>
+<p>Let us use the principle of MaxEnt and maximize the entropy under the normalization and mean constraints. We will use Lagrange multipliers, and we will perform the optimization as a limiting case of a discrete problem; explicitly, we will maximize</p>
+<div class="math notranslate nohighlight">
+\[
+Q = -\sum_i p_i \log \left( \frac{p_i}{m_i} \right) + \lambda_0 \left( 1 - \sum_i p_i \right) + \lambda_1 \left( \mu - \sum_i x_i p_i \right).
+\]</div>
+<p>Setting <span class="math notranslate nohighlight">\(\partial Q / \partial p_j = 0\)</span> we obtain</p>
+<div class="math notranslate nohighlight">
+\[
+p_j = m_j \exp \left[ -(1+\lambda_0) \right] \exp \left[ -\lambda_1 x_j \right].
+\]</div>
+<p>With a uniform measure <span class="math notranslate nohighlight">\(m_j = \mathrm{constant}\)</span> we find (in the continuous limit) that</p>
+<div class="math notranslate nohighlight">
+\[
+p(x|\mu) = \mathcal{N} \exp \left[ -\lambda_1 x \right].
+\]</div>
+<p>The normalization constant (related to <span class="math notranslate nohighlight">\(\lambda_0\)</span>) and the remaining Lagrange multiplier, <span class="math notranslate nohighlight">\(\lambda_1\)</span>, can easily determined by fulfilling the two constraints.</p>
+<p>Assuming, e.g., that the normalization interval is <span class="math notranslate nohighlight">\(x \in [0, \infty[\)</span> we obtain</p>
+<div class="math notranslate nohighlight">
+\[
+\int_0^\infty p(x|\mu) dx = 1 = \left[ -\frac{\mathcal{N}}{\lambda_1} e^{-\lambda_1 x} \right]_0^\infty = \frac{\mathcal{N}}{\lambda_1} \quad \Rightarrow \quad \mathcal{N} = \lambda_1.
+\]</div>
+<p>The constraint for the mean then gives</p>
+<div class="math notranslate nohighlight">
+\[
+\mu = \lambda_1 \int_0^\infty x  e^{-\lambda_1 x} dx = \lambda_1 \frac{1!}{\lambda_1^2}
+= \frac{1}{\lambda_1}
+\quad \Rightarrow \quad \lambda_1 = \frac{1}{\mu}.
+\]</div>
+<p>So that the properly normalized pdf from MaxEnt principles becomes the exponential distribution</p>
+<div class="math notranslate nohighlight">
+\[
+p(x|\mu) = \frac{1}{\mu} \exp \left[ -\frac{x}{\mu} \right].
+\]</div>
+</section>
+<section id="variance-and-the-gaussian-pdf">
+<h3>Variance and the Gaussian pdf<a class="headerlink" href="#variance-and-the-gaussian-pdf" title="Permalink to this heading">#</a></h3>
+<p>Suppose that we have information not only on the mean <span class="math notranslate nohighlight">\(\mu\)</span> but also on the variance</p>
+<div class="math notranslate nohighlight">
+\[
+\left\langle (x-\mu)^2 \right\rangle = \int (x-\mu)^2 p(x|I) dx = \sigma^2.
+\]</div>
+<p>The principle of MaxEnt will then result in the continuum assignment</p>
+<div class="math notranslate nohighlight">
+\[
+p(x|\mu,\sigma) \propto \exp \left[ - \lambda_1 ( x - \mu )^2 \right].
+\]</div>
+<p>Assuming that the limits of integration are <span class="math notranslate nohighlight">\(\pm \infty\)</span> this results in the standard Gaussian pdf</p>
+<div class="math notranslate nohighlight">
+\[
+p(x|\mu,\sigma) = \frac{1}{\sigma \sqrt{2\pi}} \exp \left[ - \frac{( x - \mu )^2}{2\sigma^2} \right].
+\]</div>
+<p>This indicates that the normal distribution is the most honest representation of our state of knowledge when we only have information about the mean and the variance.</p>
+<p><strong>Notice.</strong></p>
+<p>These arguments extend easily to the case of several parameters. For example, considering <span class="math notranslate nohighlight">\(\{x_k\}\)</span> as the data <span class="math notranslate nohighlight">\(\{ D_k\}\)</span> with error bars <span class="math notranslate nohighlight">\(\{sigma_k\}\)</span> and <span class="math notranslate nohighlight">\(\{\mu_k\}\)</span> as the model predictions, this allows us to identify the least-squares likelihood as the pdf which best represents our state of knowledge given only the value of the expected squared-deviation between our predictions and the data</p>
+<div class="math notranslate nohighlight">
+\[
+p\left( \{x_k\} | \{\mu_k, \sigma_k\} \right) = \prod_{k=1}^N \frac{1}{\sigma_k \sqrt{2\pi}} \exp \left[ - \frac{( x_k - \mu_k )^2}{2\sigma_k^2} \right].
+\]</div>
+<p>If we had convincing information about the covariance <span class="math notranslate nohighlight">\(\left\langle \left( x_i - \mu_i \right) \left( x_j - \mu_j \right) \right\rangle\)</span>, where <span class="math notranslate nohighlight">\(i \neq j\)</span>, then MaxEnt would assign a correlated, multivariate Gaussian pdf for <span class="math notranslate nohighlight">\(p\left( \{ x_k \} | I \right)\)</span>.</p>
+</section>
+<section id="counting-statistics-and-the-poisson-distribution">
+<h3>Counting statistics and the Poisson distribution<a class="headerlink" href="#counting-statistics-and-the-poisson-distribution" title="Permalink to this heading">#</a></h3>
+<p>The derivation, and underlying arguments, for the binomial distribution and the Poisson statistic based on MaxEnt is found in Sivia, Secs 5.3.3 and 5.3.4.</p>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "buqeye/LearningFromData",
+            ref: "main",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./notebooks/Maximum_entropy"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  <!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../../content/Maximum_entropy/lecture_21.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><span class="section-number">8.1. </span>Lecture 21</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="Pdfs_from_MaxEnt.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">8.3. </span>MaxEnt for deriving some probability distributions</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#discrete-permutation-invariance">Discrete permutation invariance</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#location-invariance">Location invariance</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#scale-invariance">Scale invariance</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-straight-line-model">Example: Straight-line model</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#symmetry-invariance">Symmetry invariance</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-principle-of-maximum-entropy">The principle of maximum entropy</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-entropy-of-scandinavians">The entropy of Scandinavians</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-monkey-argument">The monkey argument</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#why-maximize-the-entropy">Why maximize the entropy?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#continuous-case">Continuous case</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#derivation-of-common-pdfs-using-maxent">Derivation of common pdfs using MaxEnt</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mean-and-the-exponential-pdf">Mean and the Exponential pdf</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#variance-and-the-gaussian-pdf">Variance and the Gaussian pdf</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#counting-statistics-and-the-poisson-distribution">Counting statistics and the Poisson distribution</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Dick Furnstahl and Daniel Phillips
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2024.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=365ca57ee442770a23c6"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=365ca57ee442770a23c6"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

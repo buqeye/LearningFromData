@@ -1,0 +1,867 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>7.5. Lecture 20 &#8212; Learning from data</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=365ca57ee442770a23c6" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=365ca57ee442770a23c6" />
+  <script src="../../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=365ca57ee442770a23c6"></script>
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"tex": {"macros": {"N": ["\\mathbb{N}"], "Z": ["\\mathbb{Z}"], "floor": ["\\lfloor#1\\rfloor", 1], "bmat": ["\\left[\\begin{array}"], "emat": ["\\end{array}\\right]"], "alphavec": ["\\boldsymbol{\\alpha}"], "muvec": ["\\boldsymbol{\\mu}"], "phivec": ["\\boldsymbol{\\phi}"], "sigmavec": ["\\boldsymbol{\\sigma}"], "Sigmavec": ["\\boldsymbol{\\Sigma}"], "thetavec": ["\\boldsymbol{\\theta}"], "thetavechat": ["\\widehat\\thetavec"], "avec": ["\\boldsymbol{a}"], "Bvec": ["\\boldsymbol{B}"], "fvec": ["\\boldsymbol{f}"], "mvec": ["\\boldsymbol{m}"], "qvec": ["\\boldsymbol{q}"], "rvec": ["\\boldsymbol{r}"], "uvec": ["\\boldsymbol{u}"], "wvec": ["\\boldsymbol{w}"], "xvec": ["\\boldsymbol{x}"], "yvec": ["\\boldsymbol{y}"], "Lra": ["\\Longrightarrow"], "abar": ["\\overline a"], "Xbar": ["\\overline X"], "alphahat": ["\\widehat\\alpha"], "Hhat": ["\\hat H"], "yth": ["y_{\\text{th}}"], "yexp": ["y_{\\text{exp}}"], "ym": ["y_{\\text{m}}"], "gs": ["{0}"]}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'content/Gaussian_processes/lecture_20';</script>
+    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
+    <link rel="author" title="About these documents" href="../../about.html" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="8. Maximum entropy" href="../Maximum_entropy/max_ent.html" />
+    <link rel="prev" title="7.4. Exercise: Gaussian Process models with GPy" href="../../notebooks/Gaussian_processes/Gaussian_processes_exercises.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../../about.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/buqeye_logo_web.png" class="logo__image only-light" alt="Learning from data - Home"/>
+    <script>document.write(`<img src="../../_static/buqeye_logo_web.png" class="logo__image only-dark" alt="Learning from data - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../about.html">
+                    About this Jupyter Book
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Course overview</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Course/overview.html">Objectives</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Topics</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Basics/basics.html">1. Basics of Bayesian statistics</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Basics/lecture_01.html">1.1. Lecture 1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../notebooks/Basics/simple_sum_product_rule.html">1.2. Checking the sum and product rules, and their consequences</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../notebooks/Basics/Exploring_pdfs.html">1.3. Exploring PDFs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Basics/lecture_02.html">1.4. Lecture 2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../notebooks/Basics/Bayesian_updating_coinflip_interactive.html">1.5. Interactive Bayesian updating: coin flipping example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Basics/lecture_03.html">1.6. Lecture 3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../notebooks/Basics/parameter_estimation_Gaussian_noise.html">1.7. Parameter estimation example: Gaussian noise and averages I</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../notebooks/Basics/radioactive_lighthouse_exercise.html">1.8. Radioactive lighthouse problem</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../notebooks/Basics/medical_example_by_Bayes.html">1.9. Standard medical example by applying Bayesian rules of probability</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Basics/lecture_04.html">1.10. Lecture 4: A couple of frequentist connections</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../notebooks/Basics/visualization_of_CLT.html">1.11. Visualization of the Central Limit Theorem</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Parameter_estimation/param_est.html">2. Bayesian parameter estimation</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Parameter_estimation/lecture_05.html">2.1. Lecture 5: Parameter estimation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../notebooks/Parameter_estimation/parameter_estimation_fitting_straight_line_I.html">2.2. Parameter estimation example: fitting a straight line</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Parameter_estimation/lecture_06.html">2.3. Lecture 6</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../notebooks/Parameter_estimation/amplitude_in_presence_of_background.html">2.4. Amplitude of a signal in the presence of background</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../notebooks/Parameter_estimation/demo-ModelValidation.html">2.5. Linear Regression and Model Validation demonstration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../notebooks/assignments/Assignment_parameter_estimation_followups.html">2.6. Assignment: Follow-ups to Parameter Estimation notebooks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../notebooks/Parameter_estimation/exercise_LinearRegression.html">2.7. Linear Regression exercise</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../notebooks/Parameter_estimation/linear_algebra_games_I.html">2.8. Linear algebra games including SVD for PCA</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../notebooks/assignments/fluctuation_trend_with_number_of_points_and_data_errors.html">2.9. Follow-up: fluctuation trends with # of points and data errors</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../MCMC_sampling_I/MCMC_sampling_I.html">3. MCMC sampling I</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../MCMC_sampling_I/lecture_07.html">3.1. Lecture 7</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../notebooks/MCMC_sampling_I/Metropolis_Poisson_example.html">3.2. Metropolis-Hasting MCMC sampling of a Poisson distribution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../MCMC_sampling_I/lecture_08.html">3.3. Lecture 8</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../notebooks/MCMC_sampling_I/parameter_estimation_Gaussian_noise-2.html">3.4. Parameter estimation example: Gaussian noise and averages II</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../notebooks/MCMC_sampling_I/MCMC-random-walk-and-sampling.html">3.5. Exercise: Random walk</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../notebooks/MCMC_sampling_I/MCMC-diagnostics.html">3.6. Overview: MCMC Diagnostics</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../../notebooks/assignments/Assignment_extending_radioactive_lighthouse.html">3.8. Assignment: 2D radioactive lighthouse location using MCMC</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Why_Bayes_is_better/bayes_is_better.html">4. Why Bayes is better</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Why_Bayes_is_better/lecture_09.html">4.1. Lecture 9</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../notebooks/Why_Bayes_is_better/bayes_billiard.html">4.2. A Bayesian Billiard game</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Why_Bayes_is_better/lecture_10.html">4.3. Lecture 10</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../notebooks/Why_Bayes_is_better/parameter_estimation_fitting_straight_line_II.html">4.4. Parameter estimation example: fitting a straight line II</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Why_Bayes_is_better/lecture_11.html">4.5. Lecture 11</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../notebooks/Why_Bayes_is_better/error_propagation_to_functions_of_uncertain_parameters.html">4.6. Error propagation: Example 3.6.2 in Sivia</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../notebooks/Basics/correlation_intuition.html">4.7. Building intuition about correlations (and a bit of Python linear algebra)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Why_Bayes_is_better/lecture_12.html">4.8. Lecture 12</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Why_Bayes_is_better/lecture_13.html">4.9. Lecture 13</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../notebooks/Why_Bayes_is_better/dealing_with_outliers.html">4.10. Dealing with outliers</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Model_selection/model_selection.html">5. Model selection</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Model_selection/lecture_14.html">5.1. Lecture 14</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Model_selection/lecture_15.html">5.2. Lecture 15</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../notebooks/Model_selection/Evidence_for_model_EFT_coefficients.html">5.3. Evidence calculation for EFT expansions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Model_selection/lecture_16.html">5.4. Lecture 16</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../notebooks/mini-projects/MCMC-parallel-tempering_ptemcee.html">5.5. Example: Parallel tempering for multimodal distributions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../notebooks/mini-projects/MCMC-parallel-tempering_ptemcee_vs_zeus.html">5.6. Example: Parallel tempering for multimodal distributions vs. zeus</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../MCMC_sampling_II/MCMC_sampling_II.html">6. MCMC sampling II</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../MCMC_sampling_II/lecture_17.html">6.1. Lecture 17</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../notebooks/MCMC_sampling_II/chi_squared_tests.html">6.2. Quick check of the distribution of normal variables squared</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../notebooks/MCMC_sampling_II/Liouville_theorem_visualization.html">6.3. Liouville Theorem Visualization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../notebooks/MCMC_sampling_II/Orbital_eqs_with_different_algorithms.html">6.4. Solving orbital equations with different algorithms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../MCMC_sampling_II/lecture_18.html">6.5. Lecture 18</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../notebooks/MCMC_sampling_II/PyMC3_intro_updated.html">6.6. PyMC3 Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../notebooks/MCMC_sampling_II/PyMC3_docs_getting_started_updated.html">6.7. Getting started with PyMC3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../notebooks/Parameter_estimation/parameter_estimation_Gaussian_noise_compare_samplers.html">6.8. Comparing samplers for a simple problem</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../notebooks/mini-projects/zeus_multimodal.html">6.9. zeus: Sampling from multimodal distributions</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="gaussian_processes.html">7. Gaussian processes</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="lecture_19.html">7.1. Lecture 19</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../notebooks/Gaussian_processes/demo-GaussianProcesses.html">7.2. Gaussian processes demonstration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../notebooks/Gaussian_processes/GaussianProcesses.html">7.3. Learning from data: Gaussian processes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../notebooks/Gaussian_processes/Gaussian_processes_exercises.html">7.4. Exercise: Gaussian Process models with GPy</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">7.5. Lecture 20</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Maximum_entropy/max_ent.html">8. Assigning probabilities</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Maximum_entropy/lecture_21.html">8.1. Lecture 21</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../notebooks/Maximum_entropy/MaxEnt.html">8.2. Ignorance pdfs: Indifference and translation groups</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../notebooks/Maximum_entropy/Pdfs_from_MaxEnt.html">8.3. MaxEnt for deriving some probability distributions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../notebooks/Maximum_entropy/MaxEnt_Function_Reconstruction.html">8.4. Maximum Entropy for reconstructing a function from its moments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../notebooks/Maximum_entropy/demo-MaxEnt.html">8.5. Making figures for Ignorance PDF notebook</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Machine_learning/machine_learning.html">9. Machine learning: Bayesian methods</a><input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-9"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Machine_learning/lecture_22.html">9.1. Lecture 22</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../notebooks/Machine_learning/Bayesian_optimization.html">9.2. Bayesian Optimization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Machine_learning/lecture_23.html">9.3. Lecture 23</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../notebooks/Machine_learning/Neural_networks_explained.html">9.4. What Are Neural Networks?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../notebooks/Machine_learning/Forssen_tif285_NeuralNet.html">9.5. Neural networks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../notebooks/Machine_learning/Forssen_tif285_demo-NeuralNet.html">9.6. Neural network classifier demonstration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../notebooks/Machine_learning/Bayesian_neural_networks_tif285.html">9.7. Bayesian neural networks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Machine_learning/lecture_24.html">9.8. Lecture 24</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../notebooks/Machine_learning/demo-Bayesian_neural_networks_tif285.html">9.9. Variational Inference: Bayesian Neural Networks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../notebooks/Machine_learning/Convolutional_neural_network_explained.html">9.10. What is a convolutional neural network?</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../SVD/svd.html">10. PCA, SVD, and all that</a><input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-10"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../SVD/lecture_25.html">10.1. Lecture 25</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../notebooks/SVD/linear_algebra_games_including_SVD.html">10.2. Linear algebra games including SVD for PCA</a></li>
+</ul>
+</li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Mini-projects</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../notebooks/mini-projects/mini-project_I_toy_model_of_EFT.html">Mini-project I: Parameter estimation for a toy model of an EFT</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../notebooks/mini-projects/model-selection_mini-project-IIa.html">Mini-project IIa: Model selection basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../notebooks/mini-projects/model-selection_mini-project-IIb_How_many_lines_ptemcee.html">Mini-project IIb: How many lines are there?</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../../notebooks/mini-projects/mini-project_IIIa_bayesian_optimization.html">Mini-project IIIa: Bayesian optimization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../notebooks/mini-projects/mini-project_IIIb_Bayesian_neural_networks_from_demo.html">Mini-project IIIb: Bayesian Neural Networks</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Reference material</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../zbibliography.html">Bibliography</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../related_topics.html">Related topics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Reference/installing_anaconda.html">Using Anaconda</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Reference/using_github.html">Using GitHub</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Reference/python_jupyter.html">Python and Jupyter notebooks</a><input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-11"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../notebooks/Reference/Jupyter_Python_intro_01.html">Python and Jupyter notebooks: part 01</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../notebooks/Reference/Jupyter_Python_intro_02.html">Python and Jupyter notebooks: part 02</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../jb_tests.html">Examples: Jupyter jb-book</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Notebook keys</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../notebooks/Basics/simple_sum_product_rule_KEY.html">Checking the sum and product rules, and their consequences <span style="color: red">Key</span></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../notebooks/Basics/medical_example_by_Bayes_KEY.html">Standard medical example by applying Bayesian rules of probability <span style="color: red">Key</span></a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/buqeye/LearningFromData" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/buqeye/LearningFromData/issues/new?title=Issue%20on%20page%20%2Fcontent/Gaussian_processes/lecture_20.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/content/Gaussian_processes/lecture_20.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Lecture 20</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#recap-of-gps">Recap of GPs</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#selected-exercises-from-notebook">Selected exercises from notebook</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#application-1-gp-emulator-from-higdon-et-al-paper">Application 1: GP emulator from Higdon et al. paper</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#eigenvector-continuation-emulators">Eigenvector continuation emulators</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#application-2-eft-truncation-errors">Application 2: EFT truncation errors</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="lecture-20">
+<h1><span class="section-number">7.5. </span>Lecture 20<a class="headerlink" href="#lecture-20" title="Permalink to this heading">#</a></h1>
+<section id="recap-of-gps">
+<h2>Recap of GPs<a class="headerlink" href="#recap-of-gps" title="Permalink to this heading">#</a></h2>
+<p>Here is a schematic of the key points about Gaussian processes (GP).</p>
+<a class="bg-primary reference internal image-reference" href="../../_images/GP_recap_handdrawn.png"><img alt="Handdrawn recap of GPs" class="bg-primary align-center" src="../../_images/GP_recap_handdrawn.png" style="width: 600px;" /></a>
+<ul>
+<li><p>The “histogram” of GP draws will have the highest density at <span class="math notranslate nohighlight">\(\mu\)</span> (which is <span class="math notranslate nohighlight">\(\mu(\xvec)\)</span> in general) and <span class="math notranslate nohighlight">\(\approx 2/3\)</span> within <span class="math notranslate nohighlight">\(\sigma\)</span> of <span class="math notranslate nohighlight">\(\mu\)</span>.
+The GP is characterized by a kernel <span class="math notranslate nohighlight">\(\kappa\)</span>, which is a correlation function that gives the covariance for a multivariate Gaussian.</p>
+<ul class="simple">
+<li><p>Different kernels vary in smoothness, spread, correlation length (a measure of how far apart inputs are to be uncorrelated).</p></li>
+<li><p>The RBF kernel is a prototype:</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+      \kappa_{\rm RBF} = \sigma^2 e^{-(x-x')^2/2\ell^2}
+    \]</div>
+<p>It is very smooth (cf. some of the Matern kernels), the spread is given by <span class="math notranslate nohighlight">\(\sigma\)</span>, and the correlation length by <span class="math notranslate nohighlight">\(\ell\)</span>.</p>
+</li>
+<li><p>Using GPs for interpolation (training points are known precisely) or regression (uncertainties at training points).</p>
+<ul class="simple">
+<li><p>Given (multidimensional) training data with errors or precise, predict <em>test data</em> at intermediate <span class="math notranslate nohighlight">\(x\)</span> points or extrapolate</p></li>
+<li><p>Impose structure through the kernel.</p></li>
+</ul>
+</li>
+<li><p>Claim: the data “speak more clearly” for GPs than for parametric regression for which there are basis functions (e.g., fitting a polynomial or a sum of Gaussians).</p></li>
+<li><p>Basic formulas given <span class="math notranslate nohighlight">\(\thetavec\)</span> and <span class="math notranslate nohighlight">\(\xvec = (\xvec_1\ \xvec_2)^{\intercal}\)</span>, where <span class="math notranslate nohighlight">\(\xvec_1\)</span> are the <span class="math notranslate nohighlight">\(N_1\)</span> training points while <span class="math notranslate nohighlight">\(\xvec_2\)</span> are the <span class="math notranslate nohighlight">\(N_2\)</span> test points.</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+     \pmatrix{\fvec_1 \\ \fvec_2} | \xvec,\thetavec
+     \sim \mathcal{N}\biggl[\pmatrix{m_1 \\ m_2}, 
+                 \pmatrix{ K_{11} &amp; K_{12} \\
+                           K_{21} &amp; K_{22}}
+                \biggr] 
+    \end{split}\]</div>
+<p>where</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}
+       K_{11} &amp; = \kappa(\xvec_1, \xvec_1) \\
+       K_{22} &amp; = \kappa(\xvec_2, \xvec_2) \\
+       K_{12} &amp; = \kappa(\xvec_1, \xvec_2) = K_{21}^\intercal \\
+    \end{align}\end{split}\]</div>
+<ul>
+<li><p>Then manipulation of matrices tells us that</p>
+<div class="math notranslate nohighlight">
+\[
+          \fvec_2 | \xvec_1, \fvec_1, \thetavec \sim
+            \mathcal{N}(\tilde m_2, \widetilde K_{22})
+        \]</div>
+<p>where</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}
+           \widetilde m_2 &amp; = m_2 + K_{21}K_{11}^{-1}(\fvec_1 - \mvec_1) \\
+           \widetilde K_{22} &amp; \equiv K_{22} - K_{21}K_{11}^{-1}K_{12} .
+        \end{align}\end{split}\]</div>
+<p>So <span class="math notranslate nohighlight">\(\tilde m_2\)</span> is our best prediction (solid line) and    <span class="math notranslate nohighlight">\(\widetilde K_{22}\)</span> is the variance (determines the error band).</p>
+</li>
+<li><p>We need to add some noise (called adding a “nugget”) even if the data is perfect for numerical reasons: <span class="math notranslate nohighlight">\(K_{11}^{-1}\)</span> will very probably be unstable without it.</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="selected-exercises-from-notebook">
+<h2>Selected exercises from notebook<a class="headerlink" href="#selected-exercises-from-notebook" title="Permalink to this heading">#</a></h2>
+<p>Here we’ll try some of the exercises from <a class="reference internal" href="../../notebooks/Gaussian_processes/Gaussian_processes_exercises.html"><span class="doc std std-doc">Exercise: Gaussian Process models with GPy</span></a>.</p>
+<ol class="arabic">
+<li><p>Getting started: The Covariance Function</p>
+<ul class="simple">
+<li><p>Start with RBF and do shift-shift-tab to see the arguments.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">kern</span></code> is for kernel, another name for the covariance function. <span class="math notranslate nohighlight">\(\kappa(r) = \sigma^2 e^{-r^2/2\ell^2}\)</span> with <span class="math notranslate nohighlight">\(r = |x_1 - x_2|\)</span>.</p></li>
+<li><p>This is a <em>stationary</em> kernel: only depends on <span class="math notranslate nohighlight">\(r\)</span> and not individually on <span class="math notranslate nohighlight">\(x_1\)</span> or <span class="math notranslate nohighlight">\(x_2\)</span>.</p></li>
+<li><p>Specifiy dimension, variance <span class="math notranslate nohighlight">\(\sigma^2\)</span> and length scale <span class="math notranslate nohighlight">\(\ell\)</span>.</p></li>
+<li><p>No useful docstring for plot <span class="math notranslate nohighlight">\(\Lra\)</span> Google “Gpy plot kern”</p>
+<ul>
+<li><p><span class="math notranslate nohighlight">\(x\)</span> is the value to use for the 2nd argument <span class="math notranslate nohighlight">\(\Lra\)</span> taken as 0 and then plot as function of <span class="math notranslate nohighlight">\(r\)</span></p></li>
+</ul>
+</li>
+<li><p>Collectively answer Exercise 1a).</p></li>
+<li><p>Do Exercise 1b).</p></li>
+<li><p>Skip Covariance Functions in GPy</p></li>
+<li><p>Computing the Covariance Function give the Input Data <span class="math notranslate nohighlight">\(X\)</span></p>
+<ul>
+<li><p><span class="math notranslate nohighlight">\(n\)</span> data points in <span class="math notranslate nohighlight">\(d\)</span> dimensions <span class="math notranslate nohighlight">\(\Lra\)</span> <span class="math notranslate nohighlight">\(n\times d\)</span> array</p></li>
+<li><p>Matern52 <span class="math notranslate nohighlight">\(\Lra\)</span> this is <span class="math notranslate nohighlight">\(\kappa(r) = \sigma^2 \Bigl(1 + \frac{\sqrt{5}r}{\ell} + \frac{5r^2}{3\ell^2}\Bigr)e^{-\sqrt{5}r/\ell}\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(X\)</span> is full of random normal draws (<span class="math notranslate nohighlight">\(\mu=0\)</span>, <span class="math notranslate nohighlight">\(\sigma^2=1\)</span>)</p></li>
+<li><p>get the covariance matrix from <span class="math notranslate nohighlight">\(C=k.K(X,X)\)</span>, which has all combinations of the inputs</p></li>
+<li><p>With <span class="math notranslate nohighlight">\(X_1 = (x_1\ y_1)^\intercal\)</span> and <span class="math notranslate nohighlight">\(X_2 = (x_2\ y_2)^\intercal\)</span> <span class="math notranslate nohighlight">\(\Lra\)</span> <span class="math notranslate nohighlight">\(r = \sqrt{(x_1 - x_2)^2 + (y_1 - y_2)^2}\)</span></p></li>
+<li><p>Why do we know eigenvalues are <span class="math notranslate nohighlight">\(&gt;0\)</span>? (No error from <span class="math notranslate nohighlight">\(\log 10\)</span>!)</p></li>
+<li><p>Notice range of eigenvalues in orders of magnitue.</p></li>
+<li><p>Try Matern 32 and RBF.</p></li>
+</ul>
+</li>
+<li><p>Try combining GPs</p>
+<ul>
+<li><p>Adding GPs is like an OR operation; multiplying GPs is like an AND operation.</p></li>
+<li><p>Where will 2 RBF’s have their maximum? What will it be?</p></li>
+<li><p>Use sum if we have multiple trends in the data (e.g., a slowly changing envelope of rapidly changing behavior).</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>Sampling from a Gaussian Process</p>
+<ul class="simple">
+<li><p>Here we sample from <span class="math notranslate nohighlight">\(\mathcal{N}(\mu,C)\)</span> where <span class="math notranslate nohighlight">\(C\)</span> is the <span class="math notranslate nohighlight">\(\Sigmavec\)</span> for <span class="math notranslate nohighlight">\(X,X\)</span>.</p></li>
+<li><p>Change to <code class="docutils literal notranslate"><span class="pre">mu</span> <span class="pre">=</span> <span class="pre">np.linspace(-1.,1.,len(X))</span></code> <span class="math notranslate nohighlight">\(\Lra\)</span> underlying mean function.</p></li>
+<li><p>Try some different covariance functions.</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">nsamples</span><span class="p">):</span>
+     <span class="n">a</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">X</span><span class="p">[:],</span> <span class="n">Z</span><span class="p">[</span><span class="n">i</span><span class="p">,:]);</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>What do you expect for <code class="docutils literal notranslate"><span class="pre">nsamples</span> <span class="pre">=</span> <span class="pre">50</span></code>?</p></li>
+</ul>
+</li>
+<li><p>A Gaussian Process Regression Model</p>
+<ul class="simple">
+<li><p>Generate data and noise to fit.</p></li>
+<li><p>Instantiate an RBF model.</p></li>
+<li><p>Combine with data: <code class="docutils literal notranslate"><span class="pre">GPy.models.GPRegression(X,Y,k)</span></code></p>
+<ul>
+<li><p>3 parameters to optimize</p></li>
+<li><p>noise is added by default <span class="math notranslate nohighlight">\(\Lra\)</span> specify <code class="docutils literal notranslate"><span class="pre">noise_var</span></code> in <code class="docutils literal notranslate"><span class="pre">GPRegression</span></code></p></li>
+</ul>
+</li>
+<li><p>Make a better fit with <code class="docutils literal notranslate"><span class="pre">lengthscale</span> <span class="pre">=</span> <span class="pre">0.1</span></code></p></li>
+<li><p>Step through Covariance Function Parameter Estimation.</p></li>
+</ul>
+</li>
+<li><p>A Running example.</p>
+<ul class="simple">
+<li><p>Exercise for the reader!</p></li>
+</ul>
+</li>
+</ol>
+</section>
+<section id="application-1-gp-emulator-from-higdon-et-al-paper">
+<h2>Application 1: GP emulator from Higdon et al. paper<a class="headerlink" href="#application-1-gp-emulator-from-higdon-et-al-paper" title="Permalink to this heading">#</a></h2>
+<p><a class="reference external" href="https://arxiv.org/pdf/1407.3017.pdf">“A Bayesian Approach for Parameter Estimation and Prediction using a Computationally Intensive Model”</a> by Higdon et al.</p>
+<ul>
+<li><p>Bayesian model calibration for nuclear DFT using a GP <em>emulator</em>.</p>
+<ul class="simple">
+<li><p>A landmark in low-energy nuclear physics but the general idea of an emulator was not new.</p></li>
+</ul>
+</li>
+<li><p>Nuclear density functional theory (DFT): given <span class="math notranslate nohighlight">\(N\)</span> (neutron number) and <span class="math notranslate nohighlight">\(Z\)</span> (proton number), a universal functional (same for all <span class="math notranslate nohighlight">\(N\)</span> and <span class="math notranslate nohighlight">\(Z\)</span>) predicts the mass of the nucleus (and other properties, such as size and deformation).</p>
+<ul class="simple">
+<li><p>Solve many Schrodinger equations iteratively to self-consistency (note: pairing is important so it is generally many more equations than <span class="math notranslate nohighlight">\(N + Z\)</span>).</p></li>
+<li><p>For each nucleus this takes about 5 to 10 minutes and one wants to train on about 100 nuclei <span class="math notranslate nohighlight">\(\Lra\)</span> too expensive to have a model that runs the DFT for every case as you change parameters.</p></li>
+</ul>
+</li>
+<li><p>Solution: train a GP and use this in place of the DFT model <span class="math notranslate nohighlight">\(\Lra\)</span> “emulator”.</p></li>
+<li><p>Table I shows <span class="math notranslate nohighlight">\(p=12\)</span> parameters to be determined.</p>
+<ul class="simple">
+<li><p>PCA and SVD used to enable a reduced basis for the model.</p></li>
+<li><p>With 9 combinations instead of the original 12, about 99.9% of variations can be explained. (We’ll come back to PCA and SVD at the end of the course.)</p></li>
+<li><p>Uniform priors assigned but with well-informed intervals.</p></li>
+</ul>
+</li>
+<li><p>Need to specify initial training set <span class="math notranslate nohighlight">\(\Lra\)</span> see Fig. 3.</p>
+<ul class="simple">
+<li><p>Uses space-filling Latin hypercube <span class="math notranslate nohighlight">\(\Lra\)</span> multidimensional generalization of 2D “unchallenged rook” chess problem.</p></li>
+</ul>
+</li>
+<li><p>Figure 8 shows posterior for <span class="math notranslate nohighlight">\(\thetavec\)</span> <span class="math notranslate nohighlight">\(\Lra\)</span> the main goal.</p>
+<div class="dropdown admonition">
+<p class="admonition-title">What is well determined?</p>
+<p><span class="math notranslate nohighlight">\(E^{\rm NM}/A\)</span></p>
+</div>
+<div class="dropdown admonition">
+<p class="admonition-title">What returns the prior?</p>
+<p><span class="math notranslate nohighlight">\(V_0^p\)</span></p>
+</div>
+<div class="dropdown admonition">
+<p class="admonition-title">What pairs are highly correlated?</p>
+<p><span class="math notranslate nohighlight">\(1/M^*\)</span>s and <span class="math notranslate nohighlight">\(C_0^{\rho\nabla^2\rho}\)</span> or <span class="math notranslate nohighlight">\(C_0^{\rho\nabla J}\)</span></p>
+</div>
+</li>
+<li><p>Figure 10 shows how well it works. Predicted 90% intervals for <span class="math notranslate nohighlight">\(\eta(\thetavec) + \epsilon\)</span> (light blue). Is it too conservative?</p></li>
+</ul>
+</section>
+<section id="eigenvector-continuation-emulators">
+<h2>Eigenvector continuation emulators<a class="headerlink" href="#eigenvector-continuation-emulators" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>The idea of an emulator is to have a fast computer model of a computationally intensive calculation. Possible frameworks include Gaussian processes (as we have discussed) and neural networks.
+These are trained on calculations using a representative set of parameters and then can rapidly interpolate for other sets of parameters. (The performance on extrapolation is usually not very good.)</p></li>
+<li><p>In the last few years, a new type of emulator has been developed, under the name of eigenvector continuation (EC).</p>
+<ul>
+<li><p>It is applicable to calculations that can be cast as variational; in particular, if there is a functional for the observable in question that is stationary at the exact input.</p></li>
+<li><p>If there is a good trial input, an excellent approximation to the exact result is obtained.</p></li>
+<li><p>Examples of such functionals are for bound states in quantum mechanics, which is a familiar example, and also for scattering observables (e.g., phase shifts).</p></li>
+<li><p>The secret of EC is that a linear combination of exact solutions (eigenvectors) for several sets of Hamiltonian parameters makes a spectacularly effective trial wave function. The application of the emulator for other parameter sets, such as needed in Bayesian parameter estimation or experimental design, is very fast because it only involves linear algebra with small matrices. And the accuracy is also spectacular.</p></li>
+</ul>
+</li>
+<li><p>The use of fast and accurate emulators opens the door to full Bayesian sampling for many problems because the bottleneck is usually because of a computationally expensive likelihood calculation.</p></li>
+</ul>
+</section>
+<section id="application-2-eft-truncation-errors">
+<h2>Application 2: EFT truncation errors<a class="headerlink" href="#application-2-eft-truncation-errors" title="Permalink to this heading">#</a></h2>
+<p>Go through <a class="reference external" href="https://buqeye.github.io/assets/talks/MSU_statistics_conference_2018_Furnstahl_pdf.pdf">“Bayesian Statistics for Effective Field Theories”</a> slides.</p>
+<ul class="simple">
+<li><p>p. 9: An analog to effective field theories (EFTs). Features:</p>
+<ul>
+<li><p>complete low-energy characterization;</p></li>
+<li><p>works only up to a boundary (breakdown);</p></li>
+<li><p>gets worse as boundary is approached:</p></li>
+<li><p>prior knowledge: naturalness of appropriately scaled coefficients. What prior to take?</p></li>
+</ul>
+</li>
+<li><p>p. 13: What kind of statistics problem do we have?</p>
+<ul>
+<li><p>GPs are useful for EFT truncation errors.</p></li>
+</ul>
+</li>
+<li><p>pp. 18-29: GPs for coefficient functions (e.g., in energy or scattering angle). Plan: use low-order predictions to <em>learn</em> underlying GP hyperparameters; then use these to predict omitted terms.</p></li>
+<li><p>p. 30: Real calculations look like this!</p></li>
+<li><p>pp. 35-39: Hierarchical statistical model.</p></li>
+<li><p>pp. 40-42: To specify the GP we need to learn <span class="math notranslate nohighlight">\(\mu\)</span>, <span class="math notranslate nohighlight">\(\sigma\)</span>, and <span class="math notranslate nohighlight">\(\ell\)</span>. The use of conjugate priors mean we get results for <span class="math notranslate nohighlight">\(\mu\)</span> and <span class="math notranslate nohighlight">\(\sigma\)</span> immediately. <span class="math notranslate nohighlight">\(\ell\)</span> still needs to be sampled or optimized. Note the distinction between a curve-wise and point-wise model; the latter misses correlations.</p></li>
+<li><p>pp. 43-44: Real-world error bands for nucleon-nucleon observables.</p></li>
+<li><p>pp. 45-57: Lead in to later discussion: model checking.</p></li>
+<li><p>p. 48: Physics discovery: What is the EFT breakdown scale for different observables? A new frontier!</p></li>
+</ul>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "buqeye/LearningFromData",
+            ref: "main",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./content/Gaussian_processes"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  <!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../../notebooks/Gaussian_processes/Gaussian_processes_exercises.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><span class="section-number">7.4. </span>Exercise: Gaussian Process models with GPy</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../Maximum_entropy/max_ent.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">8. </span>Maximum entropy</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#recap-of-gps">Recap of GPs</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#selected-exercises-from-notebook">Selected exercises from notebook</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#application-1-gp-emulator-from-higdon-et-al-paper">Application 1: GP emulator from Higdon et al. paper</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#eigenvector-continuation-emulators">Eigenvector continuation emulators</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#application-2-eft-truncation-errors">Application 2: EFT truncation errors</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Dick Furnstahl and Daniel Phillips
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2024.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=365ca57ee442770a23c6"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=365ca57ee442770a23c6"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
