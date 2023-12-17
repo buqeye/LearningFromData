@@ -39,8 +39,8 @@ Other valuable references can be found in the [Bibliography](/content/zbibliogra
 ## Brief guide to online Jupyter Book features
 
 * A clickable high-level table of contents (TOC) is available in the panel at the left of each page. You can toggle this panel open and closed with the contents icon (three horizontal lines) at the upper left. 
-* The "Search this book..." icon is the magnifying glass icon to the far right in the top-middle.   Try it! 
 * For each section that has subsections, a clickable table of contents appears in the rightmost panel.
+* The "Search this book..." icon is the magnifying glass icon to the far right in the top-middle.   Try it! 
 * On pages that are not generated from Jupyter notebooks, the other four icons at the top-middle-right will take you to the github repository for the book or let you open an issue (see the top of this page); show you the markdown source (.md) of the page or generate a pdf version of the page; put you into full-screen mode; or toggle light/dark mode.
 * On pages generated from Jupyter notebooks, there is an additional icon at the top-middle-right (leftmost), which enables you to run the notebook on a cloud server using [Binder](https://mybinder.org). When running on Binder, be patient; it may take a while to generate the page if the environment needs to be created from scratch (in general it is cached, so it will be much faster if others have been recently using notebooks from the repository).    
 
