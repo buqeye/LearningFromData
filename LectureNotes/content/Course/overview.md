@@ -54,6 +54,7 @@ The following topics will be covered (this is not an exclusive list):
 - Model checking
 - Gaussian processes
 - Special topic: Bayesian methods and machine learning. [Note: we will not cover machine learning in great detail, but learn about connections to Bayesian methods, e.g., with Bayesian neural networks as a working example.]
+- Special topic: Emulators
 
 
 ## Moral qualities of the scientist
