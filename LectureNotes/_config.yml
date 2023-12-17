@@ -1,7 +1,7 @@
 # Book settings
 title: Learning from data
-author: Dick Furnstahl
-copyright : "2021"  # Copyright year to be placed in the footer
+author: Dick Furnstahl and Daniel Phillips
+copyright : "2024"  # Copyright year to be placed in the footer
 logo: ./_images/buqeye_logo_web.png
 
 # Auto-exclude files not in the toc
@@ -110,7 +110,6 @@ launch_buttons:
   thebe                     : true  # Add a thebe button to pages (requires the repository to run on Binder)
 
 repository:
-#  url                       : https://danielrphillips.github.io/LearningFromData/LectureNotes/_build/html/index.html  # The URL to your book's repository
-  url                       : https://github.com/DanielRPhillips/LearningFromData  # The URL to your book's repository
+  url                       : https://github.com/buqeye/LearningFromData  # The URL to your book's repository
   path_to_book              : "./LectureNotes"  # A path to your book's folder, relative to the repository root.
   branch                    : main  # Which branch of the repository should be used when creating links
