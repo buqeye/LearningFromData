@@ -1,5 +1,7 @@
-# Courses: Ohio State University Physics 8820 and Ohio University PHYS 6601
-## "Learning from data: Bayesian methods and (some) machine learning"
+# "Learning from data: Bayesian methods and (some) machine learning"
+## Courses: OSU Physics 8820 and OU PHYS 6601
+
+Physics 8820 at Ohio State University is taught by Dick Furnstahl and PHYS 6601 at Ohio University is taught by Daniel Phillips.
 
 ### Overview
 
