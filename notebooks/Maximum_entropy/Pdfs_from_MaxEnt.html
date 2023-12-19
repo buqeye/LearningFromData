@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 
 
-<html lang="en" >
+<html lang="en" data-content_root="" >
 
   <head>
     <meta charset="utf-8" />
@@ -19,12 +19,12 @@
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../_static/styles/theme.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
-<link href="../../_static/styles/bootstrap.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
-<link href="../../_static/styles/pydata-sphinx-theme.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
+  <link href="../../_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
 
   
-  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
+  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
   <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
@@ -38,9 +38,9 @@
     <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=365ca57ee442770a23c6" />
-<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=365ca57ee442770a23c6" />
-  <script src="../../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=365ca57ee442770a23c6"></script>
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
+  <script src="../../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
 
     <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
     <script src="../../_static/jquery.js"></script>
@@ -143,6 +143,7 @@ const thebe_selector_output = ".output, .cell_output"
   
     <div class="sidebar-primary-items__start sidebar-primary__section">
         <div class="sidebar-primary-item">
+
   
 
 <a class="navbar-brand logo" href="../../about.html">
@@ -511,6 +512,7 @@ const thebe_selector_output = ".output, .cell_output"
 </button>
 
 
+
 <script>
 document.write(`
   <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
@@ -520,6 +522,7 @@ document.write(`
   </button>
 `);
 </script>
+
 
 <script>
 document.write(`
@@ -572,25 +575,25 @@ document.write(`
 <section id="example-1-the-gaussian">
 <h2>Example 1: the Gaussian<a class="headerlink" href="#example-1-the-gaussian" title="Permalink to this heading">#</a></h2>
 <p>First we take the constraint</p>
-<div class="amsmath math notranslate nohighlight" id="equation-d06a7231-dbd0-4ea5-9150-fd02bf37b649">
-<span class="eqno">(8.1)<a class="headerlink" href="#equation-d06a7231-dbd0-4ea5-9150-fd02bf37b649" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-1fbadf3f-92ae-4a88-b6da-4324fc8ea9ad">
+<span class="eqno">(8.1)<a class="headerlink" href="#equation-1fbadf3f-92ae-4a88-b6da-4324fc8ea9ad" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \int_{-\infty}^\infty (x-\mu)^2 p(x) dx=\sigma^2.
 \end{equation}\]</div>
 <p>We also have the normalization constraint:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-26709332-67b1-4716-b6bf-e3beb69c09e9">
-<span class="eqno">(8.2)<a class="headerlink" href="#equation-26709332-67b1-4716-b6bf-e3beb69c09e9" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-6ec9d0b9-a924-4702-aeb4-235ba764f3ee">
+<span class="eqno">(8.2)<a class="headerlink" href="#equation-6ec9d0b9-a924-4702-aeb4-235ba764f3ee" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \int_{-\infty}^\infty p(x) dx=1.
 \end{equation}\]</div>
 <p>So we maximize:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-f4477c93-a759-4d08-9dce-9b5eeb9e835f">
-<span class="eqno">(8.3)<a class="headerlink" href="#equation-f4477c93-a759-4d08-9dce-9b5eeb9e835f" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-924b2342-6d61-40e8-8b27-185897edcfa2">
+<span class="eqno">(8.3)<a class="headerlink" href="#equation-924b2342-6d61-40e8-8b27-185897edcfa2" title="Permalink to this equation">#</a></span>\[\begin{equation}
 Q(p;\lambda_0,\lambda_1)=-\int p(x)\ln\left(\frac{p(x)}{m(x)}\right) \, dx + \lambda_0 \left(1-\int p(x) dx\right)+ \lambda_1\left(\sigma^2 - \int p(x) (x-\mu)^2 dx\right)
 \end{equation}\]</div>
 <p>We will assume a uniform m(x).</p>
 <p>Step 1: differentiate with respect to p(x). What do you get?</p>
 <p>Step 2: set the functional derivative equal to 0. Show that the solution is:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-88d6a133-459a-4fab-b85a-a0c972e97efa">
-<span class="eqno">(8.4)<a class="headerlink" href="#equation-88d6a133-459a-4fab-b85a-a0c972e97efa" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-c46b3f0f-493c-477c-adfc-608ffbd45ae8">
+<span class="eqno">(8.4)<a class="headerlink" href="#equation-c46b3f0f-493c-477c-adfc-608ffbd45ae8" title="Permalink to this equation">#</a></span>\[\begin{equation}
 p(x)={\cal N} \exp(-\lambda_1 (x-\mu)^2),
 \end{equation}\]</div>
 <p>where <span class="math notranslate nohighlight">\({\cal N}=e^{-1-\lambda_0}\)</span>.</p>
@@ -600,40 +603,40 @@ p(x)={\cal N} \exp(-\lambda_1 (x-\mu)^2),
 <section id="example-2-the-poisson-distribution">
 <h2>Example 2: the Poisson distribution<a class="headerlink" href="#example-2-the-poisson-distribution" title="Permalink to this heading">#</a></h2>
 <p>Now we will take a constraint on the mean (first moment):</p>
-<div class="amsmath math notranslate nohighlight" id="equation-4e961cb8-8942-4ab1-b20a-92fb39297eae">
-<span class="eqno">(8.5)<a class="headerlink" href="#equation-4e961cb8-8942-4ab1-b20a-92fb39297eae" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-62fa4a57-7159-4a80-b35a-bba178e32749">
+<span class="eqno">(8.5)<a class="headerlink" href="#equation-62fa4a57-7159-4a80-b35a-bba178e32749" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \int_{0}^\infty x p(x) dx=\mu.
 \end{equation}\]</div>
 <p>As usual, we also have the normalization constraint:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-68b3b60e-e9ec-473b-93b2-5574963ee4f6">
-<span class="eqno">(8.6)<a class="headerlink" href="#equation-68b3b60e-e9ec-473b-93b2-5574963ee4f6" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-3ce0852b-12f5-4974-b90b-89407a6f837d">
+<span class="eqno">(8.6)<a class="headerlink" href="#equation-3ce0852b-12f5-4974-b90b-89407a6f837d" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \int_{0}^\infty p(x) dx=1.
 \end{equation}\]</div>
 <p>So we maximize:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-25383c05-8008-4bf3-9263-e500dec6f6fe">
-<span class="eqno">(8.7)<a class="headerlink" href="#equation-25383c05-8008-4bf3-9263-e500dec6f6fe" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-70409cae-eae3-42e0-93dd-aeb221231d4e">
+<span class="eqno">(8.7)<a class="headerlink" href="#equation-70409cae-eae3-42e0-93dd-aeb221231d4e" title="Permalink to this equation">#</a></span>\[\begin{equation}
 Q(p;\lambda_0,\lambda_1)=-\int p(x)\ln\left(\frac{p(x)}{m(x)}\right) \, dx + \lambda_0 \left(1-\int p(x) dx\right)+ \lambda_1\left(\mu - \int p(x) x dx\right)
 \end{equation}\]</div>
 <p>We will again assume a uniform m(x).</p>
 <p>Go through the steps as you did in the first example.</p>
 <p>You should obtain the Poisson distribution:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-0b0fb8c7-ef5b-4cd5-b018-d4a067369f2e">
-<span class="eqno">(8.8)<a class="headerlink" href="#equation-0b0fb8c7-ef5b-4cd5-b018-d4a067369f2e" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-e4a4be0f-6704-41b9-8ec8-d2ec7b3bffb0">
+<span class="eqno">(8.8)<a class="headerlink" href="#equation-e4a4be0f-6704-41b9-8ec8-d2ec7b3bffb0" title="Permalink to this equation">#</a></span>\[\begin{equation}
 p(x)=\frac{1}{\mu} \exp\left(-\frac{x}{\mu}\right)
 \end{equation}\]</div>
 </section>
 <section id="third-example-log-normal-distribution">
 <h2>Third example: log normal distribution<a class="headerlink" href="#third-example-log-normal-distribution" title="Permalink to this heading">#</a></h2>
 <p>Suppose the constraint is on the variance of <span class="math notranslate nohighlight">\(\ln x\)</span>, i.e.,</p>
-<div class="amsmath math notranslate nohighlight" id="equation-937e3f63-b4b8-487e-aca6-270de5cc3796">
-<span class="eqno">(8.9)<a class="headerlink" href="#equation-937e3f63-b4b8-487e-aca6-270de5cc3796" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-bf08dab2-1abb-49d5-a0b8-7474aa8ad4c6">
+<span class="eqno">(8.9)<a class="headerlink" href="#equation-bf08dab2-1abb-49d5-a0b8-7474aa8ad4c6" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \int p(x)\left[\log\left(\frac{x}{x_0}\right)\right]^2 dx=\sigma^2
 \end{equation}\]</div>
 <p>Change variables to <span class="math notranslate nohighlight">\(y=\log(x/x_0)\)</span>. What is the constraint in terms of <span class="math notranslate nohighlight">\(y\)</span>?</p>
 <p>Now maximize the entropy, subject to this constraint, and, of course, the normalization constraint.</p>
 <p>You should obtain the log-normal distribution:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-8643c69b-07af-43fa-9454-a7ae385e3a89">
-<span class="eqno">(8.10)<a class="headerlink" href="#equation-8643c69b-07af-43fa-9454-a7ae385e3a89" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-f50a440d-9f84-47cc-a602-bc2526c0bc06">
+<span class="eqno">(8.10)<a class="headerlink" href="#equation-f50a440d-9f84-47cc-a602-bc2526c0bc06" title="Permalink to this equation">#</a></span>\[\begin{equation}
 p(x)=\frac{1}{\sqrt{2 \pi} x \sigma} \exp\left[-\frac{\ln^2(x/x_0)}{2 \sigma^2}\right].
 \end{equation}\]</div>
 <p>When do you think it would make sense to say that we know the variance of <span class="math notranslate nohighlight">\(\log(x)\)</span>, rather than the variance of <span class="math notranslate nohighlight">\(x\)</span> itself?</p>
@@ -642,13 +645,13 @@ p(x)=\frac{1}{\sqrt{2 \pi} x \sigma} \exp\left[-\frac{\ln^2(x/x_0)}{2 \sigma^2}\
 <h2>Fourth example: l1-norm<a class="headerlink" href="#fourth-example-l1-norm" title="Permalink to this heading">#</a></h2>
 <p>Finally, we take the constraint on the mean absolute value of <span class="math notranslate nohighlight">\(x-\mu\)</span>: <span class="math notranslate nohighlight">\(\langle |x-\mu| \rangle=\epsilon\)</span>.</p>
 <p>This constraint is written as:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-0acd50bc-d02a-44c4-b183-1585cc3473c1">
-<span class="eqno">(8.11)<a class="headerlink" href="#equation-0acd50bc-d02a-44c4-b183-1585cc3473c1" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-edcb4884-cf54-43b9-bb64-3007fa4f9bf8">
+<span class="eqno">(8.11)<a class="headerlink" href="#equation-edcb4884-cf54-43b9-bb64-3007fa4f9bf8" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \int p(x) \, |x - \mu| \, dx=\epsilon.
 \end{equation}\]</div>
 <p>Use the uniform measure, and go through the steps once again, to show that:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-5b25ec83-8056-40a5-805f-999c332cb4aa">
-<span class="eqno">(8.12)<a class="headerlink" href="#equation-5b25ec83-8056-40a5-805f-999c332cb4aa" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-912609d0-6de2-4c82-b61f-2b9d58fd58ea">
+<span class="eqno">(8.12)<a class="headerlink" href="#equation-912609d0-6de2-4c82-b61f-2b9d58fd58ea" title="Permalink to this equation">#</a></span>\[\begin{equation}
 p(x)=\frac{1}{2 \epsilon} \exp\left(-\frac{|x-\mu|}{\epsilon}\right).
 \end{equation}\]</div>
 </section>
@@ -682,7 +685,7 @@ p(x)=\frac{1}{2 \epsilon} \exp\left(-\frac{|x-\mu|}{\epsilon}\right).
               
               
                 <footer class="prev-next-footer">
-                  <!-- Previous / next buttons -->
+                  
 <div class="prev-next-area">
     <a class="left-prev"
        href="MaxEnt.html"
@@ -742,6 +745,7 @@ By Dick Furnstahl and Daniel Phillips
   
   <div class="footer-item">
     
+
   <p class="copyright">
     
       © Copyright 2024.
@@ -768,8 +772,8 @@ By Dick Furnstahl and Daniel Phillips
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../../_static/scripts/bootstrap.js?digest=365ca57ee442770a23c6"></script>
-<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=365ca57ee442770a23c6"></script>
+  <script src="../../_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
 
   <footer class="bd-footer">
   </footer>
