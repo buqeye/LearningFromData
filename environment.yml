@@ -1,0 +1,31 @@
+name: 8820-env
+channels:
+- conda-forge
+dependencies:
+- python <3.11
+- nb_conda_kernels
+- numpy
+- scipy
+- matplotlib
+- pandas
+- seaborn
+- jupyter
+- ipywidgets
+- nbdime
+- emcee
+- ptemcee
+- ptmcmcsampler
+- numdifftools
+- zeus-mcmc
+- corner
+- mkl-service
+- scikit-learn
+- scikit-image
+- pydoe
+- pymc
+- arviz
+- pip
+- pip:
+  - gpy
+  - gpyopt  
+  - pymultinest

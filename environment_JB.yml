@@ -1,0 +1,32 @@
+name: 8820-book-env
+channels:
+- conda-forge
+dependencies:
+- python <3.11
+- nb_conda_kernels
+- numpy
+- scipy
+- matplotlib
+- pandas
+- seaborn
+- jupyter
+- ipywidgets
+- nbdime
+- emcee
+- ptemcee
+- zeus-mcmc
+- corner
+- mkl-service
+- scikit-learn
+- scikit-image
+- pydoe
+- jupyter-book
+- sphinx
+- ghp-import
+- pymc
+- arviz
+- pip
+- pip:
+  - gpy
+  - gpyopt  
+  - pymultinest
