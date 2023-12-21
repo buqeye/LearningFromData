@@ -17,7 +17,7 @@ Step-by-step instructions for downloading and installing Anaconda are available 
 3. Accept the license agreement.
 4. Install for All Users (this assumes you have admin privileges; it avoids potential later problems if you can do this). Allow the installation if your virus protection software asks you.
 5. It is suggested you accept the suggestion for the installation location (e.g., C:\ProgramData\Anaconda3 on Windows). [Note: steps 4 and 5 may be reversed for a Mac install.]
-6. For Windows, accept the checked Advanced Options as &quot;Register Anaconda as my default Python 3.8&quot; and click **Install**.
+6. For Windows, accept the checked Advanced Options as &quot;Register Anaconda as my default Python x.x&quot; and click **Install**.
 7. It is recommended (for our purposes) that you &quot;Skip&quot; installing Microsoft VSCode, if you are given the option, but this is your call.
 8. While it is installing, you might want to click **Show Details** to see progress. It will take a while, depending on your hardware. Be patient!
 9. If it works, you&#39;ll get to a &quot;Thanks for installing Anaconda Individual Edition!&quot; page. There will be two already-checked boxes. You _ **do not** _ need to sign up for Anaconda Cloud, so uncheck that one. But you might want to read the &quot;Getting started with Anaconda&quot; information. Click **Finish** you are done.
@@ -99,7 +99,7 @@ Other notebooks can be found in the subdirectories of the notebooks directory.
 
 ### Updating your conda environment for Learning from Data
 
-Go to the `LearningFromDAta` directory you created by cloning the class repository from GitHub.  This is where the relevant `environment.yml` file is stored.  This file defines the environment and will be occasionally updated to add additional modules.  
+Go to the `LearningFromData` directory you created by cloning the class repository from GitHub.  This is where the relevant `environment.yml` file is stored.  This file defines the environment and will be occasionally updated to add additional modules.  
 You can update to the new environment with:
 
     conda deactivate
@@ -115,6 +115,6 @@ you will have access to the new packages.
 
 If you are running the `8820-env` kernel, you should see
 
-    Python [conda env:8820-book-env-2] *
+    Python [conda env:8820-env] *
 
 in the upper right-hand corner of the Jupyter notebook you are running.  If it just says something like `Python 3` then you are not running the `8820-env` kernel.  In that case, look under the `Kernel` menu to `Change kernel` and select `Python [conda env:8820-env]`.  The kernel should restart and indicate the new kernel in the upper corner.
