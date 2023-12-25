@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>Physics 8820 &#8212; Learning from data</title>
+    <title>Physics 8820 at Ohio State University &#8212; Learning from data</title>
   
   
   
@@ -542,7 +542,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Physics 8820</h1>
+    <h1>Physics 8820 at Ohio State University</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -552,9 +552,9 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Physics 8820</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Physics 8820 at Ohio State University</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-from-data-bayesian-methods-and-some-machine-learning">Learning from Data: Bayesian methods and (some) machine learning</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#autumn-2021">Autumn, 2021</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#spring-2024">Spring, 2024</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#import-of-modules">Import of modules</a></li>
 </ul>
 </li>
@@ -599,15 +599,15 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="physics-8820">
-<h1>Physics 8820<a class="headerlink" href="#physics-8820" title="Permalink to this heading">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="physics-8820-at-ohio-state-university">
+<h1>Physics 8820 at Ohio State University<a class="headerlink" href="#physics-8820-at-ohio-state-university" title="Permalink to this heading">#</a></h1>
 <section id="learning-from-data-bayesian-methods-and-some-machine-learning">
 <h2>Learning from Data: Bayesian methods and (some) machine learning<a class="headerlink" href="#learning-from-data-bayesian-methods-and-some-machine-learning" title="Permalink to this heading">#</a></h2>
-<section id="autumn-2021">
-<h3>Autumn, 2021<a class="headerlink" href="#autumn-2021" title="Permalink to this heading">#</a></h3>
+<section id="spring-2024">
+<h3>Spring, 2024<a class="headerlink" href="#spring-2024" title="Permalink to this heading">#</a></h3>
 <ul class="simple">
 <li><p>This notebook presents some tests of your Anaconda installation using examples of the use of Bayesian statistics along with some background information.</p></li>
-<li><p>**Several aspects of Bayesian statistics appear in this example. These aspects will be covered in much more detail during the course and you are not expected to be familiar with the contents of this notebook when we start. **</p></li>
+<li><p><b>Several aspects of Bayesian statistics appear in this example. These aspects will be covered in much more detail during the course and you are not expected to be familiar with the contents of this notebook when we start.</b></p></li>
 </ul>
 </section>
 <section id="import-of-modules">
@@ -760,6 +760,10 @@ is often used as a theoretical model to describe the noise associated with exper
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<img alt="../_images/21afb5e1609947a0faf6f8a5bd27b0f3eeacce3bcc00d18919e207e3f493bd7d.png" src="../_images/21afb5e1609947a0faf6f8a5bd27b0f3eeacce3bcc00d18919e207e3f493bd7d.png" />
+<img alt="../_images/33866bfc61747e9c3fa5e93ecce44347cbe4c31e4a0725905168081f3b432d1b.png" src="../_images/33866bfc61747e9c3fa5e93ecce44347cbe4c31e4a0725905168081f3b432d1b.png" />
+</div>
 </div>
 <section id="frequentist-approach-to-gaussian-parameter-estimation">
 <h3>Frequentist approach to Gaussian parameter estimation<a class="headerlink" href="#frequentist-approach-to-gaussian-parameter-estimation" title="Permalink to this heading">#</a></h3>
@@ -793,6 +797,15 @@ is often used as a theoretical model to describe the noise associated with exper
 <span class="s2">       Sample estimators:</span>
 <span class="s2">       (mu,sigma)_0  = </span><span class="si">{</span><span class="n">mu_est</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="n">sigma_est</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> (based on </span><span class="si">{</span><span class="n">M</span><span class="si">}</span><span class="s2"> measurements)</span>
 <span class="s2">      &quot;&quot;&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>       (mu,sigma)_true = 10.00, 1.00
+      
+       Sample estimators:
+       (mu,sigma)_0  = 10.06, 0.89 (based on 100 measurements)
+      
 </pre></div>
 </div>
 </div>
@@ -893,6 +906,12 @@ is often used as a theoretical model to describe the noise associated with exper
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>MCMC sampling using emcee (an affine-invariant ensamble sampler) with 50 walkers
+Mean acceptance fraction: 0.711 (in total 50000 steps)
+</pre></div>
+</div>
+</div>
 </div>
 <p>If this all worked correctly, the array <em>samples</em> should contain a series of draws from the posterior. Let’s plot them using a so called corner plot (to be discussed in much more detail during the course).</p>
 <div class="cell docutils container">
@@ -923,6 +942,9 @@ is often used as a theoretical model to describe the noise associated with exper
         <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">maxlike_results</span><span class="p">[</span><span class="n">xi</span><span class="p">],</span> <span class="n">maxlike_results</span><span class="p">[</span><span class="n">yi</span><span class="p">],</span> <span class="s2">&quot;sr&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/3e25bf585b5195a594d5e6fc9ee615439eafd4d0fe101a8d9fc8d8827d2432ee.png" src="../_images/3e25bf585b5195a594d5e6fc9ee615439eafd4d0fe101a8d9fc8d8827d2432ee.png" />
 </div>
 </div>
 <p>The lower left panel in the corner plot shows the joint probability distribution for the two model parameters. The two plots on the diagonal show marginalized distributions (with one parameter integrated out) for the two model parameters. The blue lines indicate the <em>true</em> values of the model parameters, while the title and the dashed lines indicate the most probable value as well as a 68% confidence interval. We will be discussing these representative measures of a posterior distribution during the course.</p>
@@ -981,9 +1003,9 @@ is often used as a theoretical model to describe the noise associated with exper
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Physics 8820</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Physics 8820 at Ohio State University</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-from-data-bayesian-methods-and-some-machine-learning">Learning from Data: Bayesian methods and (some) machine learning</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#autumn-2021">Autumn, 2021</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#spring-2024">Spring, 2024</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#import-of-modules">Import of modules</a></li>
 </ul>
 </li>
