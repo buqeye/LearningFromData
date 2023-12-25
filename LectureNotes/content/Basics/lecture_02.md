@@ -16,7 +16,7 @@
         How do you know if a distribution with a known functional form     has been correctly sampled? 
         :::{admonition} Answer
         :class: dropdown 
-        When the samples are histogrammed, they approach the     distribution function more closely as the number of samples     increases.
+        When the samples are histogrammed (and normalized), they approach the distribution function more closely as the number of samples increases.
         :::
         ::::
 
@@ -32,13 +32,18 @@ $$
   \frac{\overbrace{p(\text{data}|\thetavec,I)}^{\text{likelihood}}\times \overbrace{p(\thetavec,I)}^{\text{prior}}}{\underbrace{p(\text{data}|I)}_{\text{evidence}}}
 $$  
 
-* $\thetavec$ is a general *vector* of parameters
+* $\thetavec$ is a general *vector* of parameters (this is common notation in statistics)
 * The donominator is the data probability or "fully marginalized likelihood" or evidence or maybe some other name (these are all used in the literature). We'll come back to it later. As will be clear later, it is a normalization factor.
 * The *prior* pdf is what information $I$ we have (or believe) about $\thetavec$ before we observe the data.
 * The *posterior* pdf is our new pdf for $\thetavec$, given that we have observed the data.
-* The *likelihood* is the probability of getting the specified data *given* the parameters $\thetavec$ under consideration on the left side.
+* The *likelihood* is the probability of getting the specified data *given* the parameters $\thetavec$ under consideration on the left side. Note that the likelihood is to be considered as a function of $\thetavec$ for fixed data.
 
 $\Longrightarrow$ Bayes' theorem tells us how to *update* our expectations.
+
+:::{note}
+Sometimes particular notation is used for the prior and likelihood. The prior is written with $\pi$: $p(\thetavec,I) \rightarrow \pi(\thetavec,I)$ and the likelihood with $\mathcal{L}$: $p(\text{data}|\thetavec,I) \rightarrow \mathcal{L}(\text{data}|\thetavec,I)$.
+:::
+
 
 ### Coin tossing example to illustrate updating
 
