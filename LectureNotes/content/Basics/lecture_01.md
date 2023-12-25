@@ -44,7 +44,7 @@ $$
 Alternative notation for pdfs in literature: $p(\vec x) = p(\mathbf{x}) = P(\vec x) = \text{pr}(\vec x) = \text{prob}(\vec x) = \ldots$
 
 ### Vocabulary and definitions:
-* $p(x_1, x_2)$ is the *joint* probability density of $x_1$ and $x_2$
+* $p(x_1, x_2)$ is the *joint* probability density of $x_1$ and $x_2$. In quantum mechanics the probability density $|\Psi(x_1, x_2)|^2$ to find particle 1 at $x_1$ and particle 2 at $x_2$ is a joint probability density.
 
     ::::{admonition} Question
     What is the probability to find particle 1 at $x_1$ while particle 2 is *anywhere*?
@@ -75,7 +75,7 @@ In Bayesian statistics there are pdfs (or pmfs if discrete) for
 
 ## Visualizing pdfs
 
-Go through the Jupyter notebook [](/notebooks/Basics/Exploring_pdfs.ipynb).
+Go through the Jupyter notebook [](/notebooks/Basics/Exploring_pdfs.ipynb) (*after* you read the following information).
 
 :::{tip}
 When you follow the [](/notebooks/Basics/Exploring_pdfs.ipynb) link, you can run the notebook on a Binder cloud server using the leftmost icon at the top-middle-right, or you can download the notebook to run locally using the rightmost icon at the top-middle-right. Ultimately you should clone the github repository by following the github icon <img src="/_images/GitHub-Mark-32px.png" alt="github download icon" width="20px"> to be able to run locally and update with a simple `git pull` command.
@@ -85,7 +85,7 @@ When running on Binder, be patient; it may take a while to generate the page if 
 
 Points of interest:
 * Importing packages: `scipy.stats`, `numpy`, `matplotlib`. Convenient abbreviations (like `np`) are introduced.
-* corner is not included in Anaconda $\Longrightarrow$ use the package manager `conda` to install locally (unless you are on Binder or have used the conda environment; more later). 
+* `corner` is not included in Anaconda $\Longrightarrow$ use the package manager `conda` to install locally (unless you are on Binder or have used the conda environment; more later). 
     :::{tip}
     Google "conda corner" to find the command needed $\Longrightarrow$ look for `Corner::Anaconda Cloud` $\Longrightarrow$ `conda install -c astropy corner`
     :::
@@ -179,7 +179,7 @@ A proof that the Sum and Product rules follow in any consistent implementation o
 
 ### Your task: complete [simple_sum_product_rule.ipynb](/notebooks/Basics/simple_sum_product_rule.ipynb)
 
-* Fill in the table based on knowledge/intuition of probabilities as frequencies (these are *estimates* of population probabilities).
+* Fill in the table based on knowledge/intuition of probabilities as frequencies (these are *estimates* of population probabilities). Do this in markdown.
 * Apply the sum and product rules as directed.
 * Work together and check answers with each other.
 
