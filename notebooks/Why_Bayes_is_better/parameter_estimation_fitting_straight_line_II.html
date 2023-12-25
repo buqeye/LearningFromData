@@ -382,6 +382,24 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
+      <li><a href="https://colab.research.google.com/github/buqeye/LearningFromData/blob/main/./LectureNotes/notebooks/Why_Bayes_is_better/parameter_estimation_fitting_straight_line_II.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onColab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img src="../../_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+      
+      
+      
       <li>
 <button onclick="initThebeSBT()"
   class="btn btn-sm btn-launch-thebe dropdown-item"
@@ -1144,8 +1162,8 @@ done
 <p>Through application of Bayes’ rule we can readily evaluate the posterior pdf <span class="math notranslate nohighlight">\(p(x|D,I)\)</span> for the distance <span class="math notranslate nohighlight">\(x\)</span> to the galaxy.</p>
 <section id="case-1-fixed-h-0">
 <h4>Case 1: Fixed <span class="math notranslate nohighlight">\(H_0\)</span><a class="headerlink" href="#case-1-fixed-h-0" title="Permalink to this heading">#</a></h4>
-<div class="amsmath math notranslate nohighlight" id="equation-b2568497-8eb6-439c-b2b6-7fd9f920779c">
-<span class="eqno">(4.1)<a class="headerlink" href="#equation-b2568497-8eb6-439c-b2b6-7fd9f920779c" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-c43114e3-fa00-413b-a3cd-6453b2b1186b">
+<span class="eqno">(4.1)<a class="headerlink" href="#equation-c43114e3-fa00-413b-a3cd-6453b2b1186b" title="Permalink to this equation">#</a></span>\[\begin{align}
 p(x | D,I) &amp; \propto p(D | x, I) p(x|I) \\
 &amp; = \frac{1}{\sqrt{2\pi}\sigma_v} \exp \left( - \frac{(v_\mathrm{measured} - v_\mathrm{theory})^2}{2\sigma_v^2} \right) p(x|I)\\
 &amp;= \left\{ \begin{array}{ll} \frac{1}{\sqrt{2\pi}\sigma_v} \exp \left( - \frac{(v_\mathrm{measured} - H_0 x)^2}{2\sigma_v^2} \right) &amp; \text{with }x \in [x_\mathrm{min},x_\mathrm{max}] \\
