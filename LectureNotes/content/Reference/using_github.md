@@ -1,10 +1,10 @@
 # Using GitHub
 
-## Installation of Physics-8820 Jupyter notebooks from GitHub by command line
+## Installation of LearningFromData Jupyter notebooks from GitHub by command line
 
 Go to the location where you want the notebook files. 
 
-Download the 8820 repository from GitHub and enter the directory `LearningFromData` which should have been created on your computer:
+Download the Jupyter Book repository from GitHub and then enter the directory `LearningFromData` which will be created on your computer by entering these two statements:
 
     git clone https://github.com/buqeye/LearningFromData.git
     cd LearningFromData
