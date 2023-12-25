@@ -577,7 +577,7 @@ Probability <em>density</em> at <span class="math notranslate nohighlight">\(x\)
 <section id="vocabulary-and-definitions">
 <h3>Vocabulary and definitions:<a class="headerlink" href="#vocabulary-and-definitions" title="Permalink to this heading">#</a></h3>
 <ul>
-<li><p><span class="math notranslate nohighlight">\(p(x_1, x_2)\)</span> is the <em>joint</em> probability density of <span class="math notranslate nohighlight">\(x_1\)</span> and <span class="math notranslate nohighlight">\(x_2\)</span></p>
+<li><p><span class="math notranslate nohighlight">\(p(x_1, x_2)\)</span> is the <em>joint</em> probability density of <span class="math notranslate nohighlight">\(x_1\)</span> and <span class="math notranslate nohighlight">\(x_2\)</span>. In quantum mechanics the probability density <span class="math notranslate nohighlight">\(|\Psi(x_1, x_2)|^2\)</span> to find particle 1 at <span class="math notranslate nohighlight">\(x_1\)</span> and particle 2 at <span class="math notranslate nohighlight">\(x_2\)</span> is a joint probability density.</p>
 <div class="admonition-question admonition">
 <p class="admonition-title">Question</p>
 <p>What is the probability to find particle 1 at <span class="math notranslate nohighlight">\(x_1\)</span> while particle 2 is <em>anywhere</em>?</p>
@@ -611,7 +611,7 @@ Probability <em>density</em> at <span class="math notranslate nohighlight">\(x\)
 </section>
 <section id="visualizing-pdfs">
 <h2>Visualizing pdfs<a class="headerlink" href="#visualizing-pdfs" title="Permalink to this heading">#</a></h2>
-<p>Go through the Jupyter notebook <a class="reference internal" href="../../notebooks/Basics/Exploring_pdfs.html"><span class="doc std std-doc">Exploring PDFs</span></a>.</p>
+<p>Go through the Jupyter notebook <a class="reference internal" href="../../notebooks/Basics/Exploring_pdfs.html"><span class="doc std std-doc">Exploring PDFs</span></a> (<em>after</em> you read the following information).</p>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
 <p>When you follow the <a class="reference internal" href="../../notebooks/Basics/Exploring_pdfs.html"><span class="doc std std-doc">Exploring PDFs</span></a> link, you can run the notebook on a Binder cloud server using the leftmost icon at the top-middle-right, or you can download the notebook to run locally using the rightmost icon at the top-middle-right. Ultimately you should clone the github repository by following the github icon <a class="reference internal" href="../../_images/GitHub-Mark-32px.png"><img alt="github download icon" src="../../_images/GitHub-Mark-32px.png" style="width: 20px;" /></a> to be able to run locally and update with a simple <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">pull</span></code> command.</p>
@@ -620,7 +620,7 @@ Probability <em>density</em> at <span class="math notranslate nohighlight">\(x\)
 <p>Points of interest:</p>
 <ul>
 <li><p>Importing packages: <code class="docutils literal notranslate"><span class="pre">scipy.stats</span></code>, <code class="docutils literal notranslate"><span class="pre">numpy</span></code>, <code class="docutils literal notranslate"><span class="pre">matplotlib</span></code>. Convenient abbreviations (like <code class="docutils literal notranslate"><span class="pre">np</span></code>) are introduced.</p></li>
-<li><p>corner is not included in Anaconda <span class="math notranslate nohighlight">\(\Longrightarrow\)</span> use the package manager <code class="docutils literal notranslate"><span class="pre">conda</span></code> to install locally (unless you are on Binder or have used the conda environment; more later).</p>
+<li><p><code class="docutils literal notranslate"><span class="pre">corner</span></code> is not included in Anaconda <span class="math notranslate nohighlight">\(\Longrightarrow\)</span> use the package manager <code class="docutils literal notranslate"><span class="pre">conda</span></code> to install locally (unless you are on Binder or have used the conda environment; more later).</p>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
 <p>Google “conda corner” to find the command needed <span class="math notranslate nohighlight">\(\Longrightarrow\)</span> look for <code class="docutils literal notranslate"><span class="pre">Corner::Anaconda</span> <span class="pre">Cloud</span></code> <span class="math notranslate nohighlight">\(\Longrightarrow\)</span> <code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">install</span> <span class="pre">-c</span> <span class="pre">astropy</span> <span class="pre">corner</span></code></p>
@@ -676,8 +676,8 @@ Probability <em>density</em> at <span class="math notranslate nohighlight">\(x\)
 <section id="sum-rule">
 <h3><strong>Sum rule:</strong><a class="headerlink" href="#sum-rule" title="Permalink to this heading">#</a></h3>
 <p>If the set <span class="math notranslate nohighlight">\(\{x_i\}\)</span> is <em>exhaustive</em> and <em>exclusive</em></p>
-<div class="amsmath math notranslate nohighlight" id="equation-bf9defcf-fb7d-4120-9274-b73a1254513f">
-<span class="eqno">(1.1)<a class="headerlink" href="#equation-bf9defcf-fb7d-4120-9274-b73a1254513f" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-26818690-f5bb-4a40-8f9a-9935acf3793c">
+<span class="eqno">(1.1)<a class="headerlink" href="#equation-26818690-f5bb-4a40-8f9a-9935acf3793c" title="Permalink to this equation">#</a></span>\[\begin{align}
   &amp; \sum_i p(x_i | I ) = 1 \qquad \Longrightarrow \qquad &amp; \int dx\, p(x|I) = 1 \\
   &amp; \text{(discrete like spins)}       &amp; \text{(continuous)}
 \end{align}\]</div>
@@ -685,8 +685,8 @@ Probability <em>density</em> at <span class="math notranslate nohighlight">\(x\)
 <li><p>i.e., the sum of probabilities is equal to one.</p></li>
 <li><p>exhaustive, exclusive <span class="math notranslate nohighlight">\(\Longrightarrow\)</span> cf. complete, orthonormal (includes all values and there is no overlap between members of the set).</p></li>
 <li><p>the sum rule <em>implies</em> marginalization</p>
-<div class="amsmath math notranslate nohighlight" id="equation-d4a883be-9cf9-483e-a50c-3c75dbf146a0">
-<span class="eqno">(1.2)<a class="headerlink" href="#equation-d4a883be-9cf9-483e-a50c-3c75dbf146a0" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-d4d40e98-faba-4d8d-8123-ef82be9a8ae7">
+<span class="eqno">(1.2)<a class="headerlink" href="#equation-d4d40e98-faba-4d8d-8123-ef82be9a8ae7" title="Permalink to this equation">#</a></span>\[\begin{align}
       p(x|I) = \sum_j p(x, y_j | I) \qquad\Longrightarrow\qquad p(x|I) = \int dy\, p(x,y | I)
     \end{align}\]</div>
 <ul class="simple">
@@ -713,14 +713,14 @@ Probability <em>density</em> at <span class="math notranslate nohighlight">\(x\)
 <ul>
 <li><p>Note the symmetry between the first and second equalities.</p></li>
 <li><p>If <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span> are <em>mutually independent</em>, then <span class="math notranslate nohighlight">\(p(x | y,I) = p(x | I)\)</span> and</p>
-<div class="amsmath math notranslate nohighlight" id="equation-2ab92578-9933-4e7f-a09b-b648c434f254">
-<span class="eqno">(1.4)<a class="headerlink" href="#equation-2ab92578-9933-4e7f-a09b-b648c434f254" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-daeb833f-8888-462e-a93d-08c3f30450e8">
+<span class="eqno">(1.4)<a class="headerlink" href="#equation-daeb833f-8888-462e-a93d-08c3f30450e8" title="Permalink to this equation">#</a></span>\[\begin{equation}
          p(x,y | I) = p(x|I) \times p(y | I)
     \end{equation}\]</div>
 </li>
 <li><p>Rearranging the 2nd equality in <a class="reference internal" href="#equation-eq-joint-prob">(1.3)</a> yields <strong>Bayes’ Rule</strong> (or Theorem):</p>
-<div class="amsmath math notranslate nohighlight" id="equation-2092c758-891f-4411-af77-cf663e40db38">
-<span class="eqno">(1.5)<a class="headerlink" href="#equation-2092c758-891f-4411-af77-cf663e40db38" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-db661318-0907-498f-b4b5-fcba6a91b449">
+<span class="eqno">(1.5)<a class="headerlink" href="#equation-db661318-0907-498f-b4b5-fcba6a91b449" title="Permalink to this equation">#</a></span>\[\begin{equation}
          p(x | y,I) = \frac{p(y|x,I) p(x|I)}{p(y | I)}
     \end{equation}\]</div>
 <ul class="simple">
@@ -734,7 +734,7 @@ Probability <em>density</em> at <span class="math notranslate nohighlight">\(x\)
 <section id="your-task-complete-simple-sum-product-rule-ipynb">
 <h3>Your task: complete <a class="reference internal" href="../../notebooks/Basics/simple_sum_product_rule.html"><span class="doc std std-doc">simple_sum_product_rule.ipynb</span></a><a class="headerlink" href="#your-task-complete-simple-sum-product-rule-ipynb" title="Permalink to this heading">#</a></h3>
 <ul class="simple">
-<li><p>Fill in the table based on knowledge/intuition of probabilities as frequencies (these are <em>estimates</em> of population probabilities).</p></li>
+<li><p>Fill in the table based on knowledge/intuition of probabilities as frequencies (these are <em>estimates</em> of population probabilities). Do this in markdown.</p></li>
 <li><p>Apply the sum and product rules as directed.</p></li>
 <li><p>Work together and check answers with each other.</p></li>
 </ul>
