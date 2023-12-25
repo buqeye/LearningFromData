@@ -3,7 +3,7 @@
 
 ## About these lecture notes
 
-These lecture were originally authored by [Dick Furnstahl](https://physics.osu.edu/people/furnstahl.1) and then modified by [Daniel Phillips](https://www.ohio.edu/cas/phillid1). They are now maintained and updated jointly by Furnstahl and Phillips.
+These lecture notes were originally created by [Dick Furnstahl](https://physics.osu.edu/people/furnstahl.1) and then modified by [Daniel Phillips](https://www.ohio.edu/cas/phillid1). The lectures and jupyter notebooks are now maintained and updated jointly by Furnstahl and Phillips.
 They are released under a [Creative Commons BY-NC license](https://creativecommons.org/licenses/by-nc/4.0/). The book format is powered by [Jupyter Book](https://jupyterbook.org/). 
 
 :::{admonition} Open an issue
@@ -13,15 +13,15 @@ If you find a problem or have a suggestion when using this Jupyter Book (on phys
 
 ## Acknowledgements
 
-These notes originated from an intensive three-week summer school course taught at the [University of York](https://www.york.ac.uk/) in 2019 by Christian Forssén, Dick Furnstahl, and Daniel Phillips as part of the [TALENT](https://fribtheoryalliance.org/TALENT/) initiative. The first version of the notes were used to teach a graduate course at The Ohio State University in Autumn 2019 and repeated with updates in Autumn 2021. Daniel Phillips revised the notes when he taught the course in Autumn 2023. Phillips and Furnstahl acknowledge in particular the following colleagues, who played a key role in shaping this course and their understanding of Bayesian statistics.
+This material originated from an intensive three-week summer school course taught at the [University of York](https://www.york.ac.uk/) in 2019 by Christian Forssén, Dick Furnstahl, and Daniel Phillips as part of the [TALENT](https://fribtheoryalliance.org/TALENT/) initiative. The first version of the notes were used to teach a graduate course at The Ohio State University in Autumn 2019 and repeated with updates in Autumn 2021. Daniel Phillips revised the notes when he taught the course in Autumn 2023. Phillips and Furnstahl acknowledge in particular the following colleagues, who played a key role in shaping this course and their understanding of Bayesian statistics.
 
-* Prof. Christian Forssén, Chalmers
+* Prof. Christian Forssén, Chalmers University of Technology
 * Prof. Morten Hjorth-Jensen, Oslo University and Michigan State University
 * Dr. Jordan Melendez, Ohio State University and Root Insurance
 * Prof. Matt Plumlee, Northwestern University and Amazon
 * Prof. Matt Pratola, Ohio State University
 * Prof. Frederi Viens, Michigan State University
-* Dr. Sarah Wesolowski, University of Pennsylvania
+* Dr. Sarah Wesolowski, York, UK
 
 We also thank the students and colleagues who have contributed suggestions and comments.
 
