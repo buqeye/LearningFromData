@@ -569,11 +569,11 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="python-and-jupyter-notebooks-part-02">
 <h1>Python and Jupyter notebooks: part 02<a class="headerlink" href="#python-and-jupyter-notebooks-part-02" title="Permalink to this heading">#</a></h1>
-<p>Last revised: 13-Aug-2019 by Dick Furnstahl [furnstahl.1&#64;osu.edu]</p>
-<p>In this notebook we continue the tour of Python and Jupyter notebooks started in <code class="docutils literal notranslate"><span class="pre">TALENT_Jupyter_Python_intro_01.ipynb</span></code>.</p>
+<p>Last revised: 24-Dec-2023 by Dick Furnstahl [furnstahl.1&#64;osu.edu]</p>
+<p>In this notebook we continue the tour of Python and Jupyter notebooks started in <code class="docutils literal notranslate"><span class="pre">Jupyter_Python_intro_01.ipynb</span></code>.</p>
 <section id="aside-list-comprehensions">
 <h2>Aside: List comprehensions<a class="headerlink" href="#aside-list-comprehensions" title="Permalink to this heading">#</a></h2>
-<p>In the plotting examples in the next section we use for loops to iterate through parameters or plots because it is familiar to anyone who has done programming.  In Python, however, it is often preferred to use a different construction called a list comprehension.  Here is a quick comparison of using for loop and using a list comprehension, followed by some representative further examples of list comprehensions. You can find much more information and other examples in the online Python documentation and other sources. (The examples here are from [<a class="reference external" href="https://hackernoon.com/list-comprehension-in-python-8895a785550b">https://hackernoon.com/list-comprehension-in-python-8895a785550b</a>].)</p>
+<p>In the plotting examples in the next section we use for loops to iterate through parameters or plots because it is familiar to anyone who has done programming.  In Python, however, it is often preferred to use a different construction called a list comprehension.  Here is a quick comparison of using a for loop and using a list comprehension, followed by some representative further examples of list comprehensions. You can find much more information and other examples in the online Python documentation and other sources. (The examples here are from a tutorial from <a class="reference external" href="https://hackernoon.com/.">https://hackernoon.com/.</a>)</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">numbers</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span>
@@ -737,7 +737,7 @@ document.write(`
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">plot_sine_map</span><span class="p">(</span><span class="n">r</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">plot_sine_map</span><span class="p">(</span><span class="n">r_list</span><span class="p">):</span>
     <span class="n">x_pts</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span> <span class="n">num</span><span class="o">=</span><span class="mi">101</span><span class="p">,</span> <span class="n">endpoint</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
     
     <span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>

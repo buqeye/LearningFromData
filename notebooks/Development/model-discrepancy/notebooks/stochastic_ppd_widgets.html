@@ -1,0 +1,1051 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Posterior Predictive Distributions for Stochastic Predictions &#8212; Learning from data</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../../_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../../../../_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../../../../_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+
+  
+  <link href="../../../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../../_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
+<link rel="preload" as="script" href="../../../../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
+  <script src="../../../../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
+
+    <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
+    <script src="../../../../_static/jquery.js"></script>
+    <script src="../../../../_static/underscore.js"></script>
+    <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../../_static/doctools.js"></script>
+    <script src="../../../../_static/clipboard.min.js"></script>
+    <script src="../../../../_static/copybutton.js"></script>
+    <script src="../../../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../../../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../../../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"tex": {"macros": {"N": ["\\mathbb{N}"], "Z": ["\\mathbb{Z}"], "floor": ["\\lfloor#1\\rfloor", 1], "bmat": ["\\left[\\begin{array}"], "emat": ["\\end{array}\\right]"], "alphavec": ["\\boldsymbol{\\alpha}"], "muvec": ["\\boldsymbol{\\mu}"], "phivec": ["\\boldsymbol{\\phi}"], "sigmavec": ["\\boldsymbol{\\sigma}"], "Sigmavec": ["\\boldsymbol{\\Sigma}"], "thetavec": ["\\boldsymbol{\\theta}"], "thetavechat": ["\\widehat\\thetavec"], "avec": ["\\boldsymbol{a}"], "Bvec": ["\\boldsymbol{B}"], "fvec": ["\\boldsymbol{f}"], "mvec": ["\\boldsymbol{m}"], "qvec": ["\\boldsymbol{q}"], "rvec": ["\\boldsymbol{r}"], "uvec": ["\\boldsymbol{u}"], "wvec": ["\\boldsymbol{w}"], "xvec": ["\\boldsymbol{x}"], "yvec": ["\\boldsymbol{y}"], "Lra": ["\\Longrightarrow"], "abar": ["\\overline a"], "Xbar": ["\\overline X"], "alphahat": ["\\widehat\\alpha"], "Hhat": ["\\hat H"], "yth": ["y_{\\text{th}}"], "yexp": ["y_{\\text{exp}}"], "ym": ["y_{\\text{m}}"], "gs": ["{0}"]}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'notebooks/Development/model-discrepancy/notebooks/stochastic_ppd_widgets';</script>
+    <link rel="shortcut icon" href="../../../../_static/favicon.ico"/>
+    <link rel="author" title="About these documents" href="../../../../about.html" />
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="../../../../about.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../../../_static/buqeye_logo_web.png" class="logo__image only-light" alt="Learning from data - Home"/>
+    <script>document.write(`<img src="../../../../_static/buqeye_logo_web.png" class="logo__image only-dark" alt="Learning from data - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../../../about.html">
+                    About this Jupyter Book
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Course overview</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../../../content/Course/overview.html">Objectives</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Topics</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../../content/Basics/basics.html">1. Basics of Bayesian statistics</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../content/Basics/lecture_01.html">1.1. Lecture 1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../Basics/simple_sum_product_rule.html">1.2. Checking the sum and product rules, and their consequences</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../Basics/Exploring_pdfs.html">1.3. Exploring PDFs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../content/Basics/lecture_02.html">1.4. Lecture 2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../Basics/Bayesian_updating_coinflip_interactive.html">1.5. Interactive Bayesian updating: coin flipping example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../content/Basics/lecture_03.html">1.6. Lecture 3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../Basics/parameter_estimation_Gaussian_noise.html">1.7. Parameter estimation example: Gaussian noise and averages I</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../Basics/radioactive_lighthouse_exercise.html">1.8. Radioactive lighthouse problem</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../Basics/medical_example_by_Bayes.html">1.9. Standard medical example by applying Bayesian rules of probability</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../content/Basics/lecture_04.html">1.10. Lecture 4: A couple of frequentist connections</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../Basics/visualization_of_CLT.html">1.11. Visualization of the Central Limit Theorem</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../../content/Parameter_estimation/param_est.html">2. Bayesian parameter estimation</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../content/Parameter_estimation/lecture_05.html">2.1. Lecture 5: Parameter estimation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../Parameter_estimation/parameter_estimation_fitting_straight_line_I.html">2.2. Parameter estimation example: fitting a straight line</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../content/Parameter_estimation/lecture_06.html">2.3. Lecture 6</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../Parameter_estimation/amplitude_in_presence_of_background.html">2.4. Amplitude of a signal in the presence of background</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../Parameter_estimation/demo-ModelValidation.html">2.5. Linear Regression and Model Validation demonstration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../assignments/Assignment_parameter_estimation_followups.html">2.6. Assignment: Follow-ups to Parameter Estimation notebooks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../Parameter_estimation/exercise_LinearRegression.html">2.7. Linear Regression exercise</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../Parameter_estimation/linear_algebra_games_I.html">2.8. Linear algebra games including SVD for PCA</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../assignments/fluctuation_trend_with_number_of_points_and_data_errors.html">2.9. Follow-up: fluctuation trends with # of points and data errors</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../../content/MCMC_sampling_I/MCMC_sampling_I.html">3. MCMC sampling I</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../content/MCMC_sampling_I/lecture_07.html">3.1. Lecture 7</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../MCMC_sampling_I/Metropolis_Poisson_example.html">3.2. Metropolis-Hasting MCMC sampling of a Poisson distribution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../content/MCMC_sampling_I/lecture_08.html">3.3. Lecture 8</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../MCMC_sampling_I/parameter_estimation_Gaussian_noise-2.html">3.4. Parameter estimation example: Gaussian noise and averages II</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../MCMC_sampling_I/MCMC-random-walk-and-sampling.html">3.5. Exercise: Random walk</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../MCMC_sampling_I/MCMC-diagnostics.html">3.6. Overview: MCMC Diagnostics</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../../../assignments/Assignment_extending_radioactive_lighthouse.html">3.8. Assignment: 2D radioactive lighthouse location using MCMC</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../../content/Why_Bayes_is_better/bayes_is_better.html">4. Why Bayes is better</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../content/Why_Bayes_is_better/lecture_09.html">4.1. Lecture 9</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../Why_Bayes_is_better/bayes_billiard.html">4.2. A Bayesian Billiard game</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../content/Why_Bayes_is_better/lecture_10.html">4.3. Lecture 10</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../Why_Bayes_is_better/parameter_estimation_fitting_straight_line_II.html">4.4. Parameter estimation example: fitting a straight line II</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../content/Why_Bayes_is_better/lecture_11.html">4.5. Lecture 11</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../Why_Bayes_is_better/error_propagation_to_functions_of_uncertain_parameters.html">4.6. Error propagation: Example 3.6.2 in Sivia</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../Basics/correlation_intuition.html">4.7. Building intuition about correlations (and a bit of Python linear algebra)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../content/Why_Bayes_is_better/lecture_12.html">4.8. Lecture 12</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../content/Why_Bayes_is_better/lecture_13.html">4.9. Lecture 13</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../Why_Bayes_is_better/dealing_with_outliers.html">4.10. Dealing with outliers</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../../content/Model_selection/model_selection.html">5. Model selection</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../content/Model_selection/lecture_14.html">5.1. Lecture 14</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../content/Model_selection/lecture_15.html">5.2. Lecture 15</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../Model_selection/Evidence_for_model_EFT_coefficients.html">5.3. Evidence calculation for EFT expansions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../content/Model_selection/lecture_16.html">5.4. Lecture 16</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../mini-projects/MCMC-parallel-tempering_ptemcee.html">5.5. Example: Parallel tempering for multimodal distributions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../mini-projects/MCMC-parallel-tempering_ptemcee_vs_zeus.html">5.6. Example: Parallel tempering for multimodal distributions vs. zeus</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../../content/MCMC_sampling_II/MCMC_sampling_II.html">6. MCMC sampling II</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../content/MCMC_sampling_II/lecture_17.html">6.1. Lecture 17</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../MCMC_sampling_II/chi_squared_tests.html">6.2. Quick check of the distribution of normal variables squared</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../MCMC_sampling_II/Liouville_theorem_visualization.html">6.3. Liouville Theorem Visualization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../MCMC_sampling_II/Orbital_eqs_with_different_algorithms.html">6.4. Solving orbital equations with different algorithms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../content/MCMC_sampling_II/lecture_18.html">6.5. Lecture 18</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../MCMC_sampling_II/PyMC3_intro_updated.html">6.6. PyMC3 Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../MCMC_sampling_II/PyMC3_docs_getting_started_updated.html">6.7. Getting started with PyMC3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../Parameter_estimation/parameter_estimation_Gaussian_noise_compare_samplers.html">6.8. Comparing samplers for a simple problem</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../mini-projects/zeus_multimodal.html">6.9. zeus: Sampling from multimodal distributions</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../../content/Gaussian_processes/gaussian_processes.html">7. Gaussian processes</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../content/Gaussian_processes/lecture_19.html">7.1. Lecture 19</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../Gaussian_processes/demo-GaussianProcesses.html">7.2. Gaussian processes demonstration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../Gaussian_processes/GaussianProcesses.html">7.3. Learning from data: Gaussian processes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../Gaussian_processes/Gaussian_processes_exercises.html">7.4. Exercise: Gaussian Process models with GPy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../content/Gaussian_processes/lecture_20.html">7.5. Lecture 20</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../../content/Maximum_entropy/max_ent.html">8. Assigning probabilities</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../content/Maximum_entropy/lecture_21.html">8.1. Lecture 21</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../Maximum_entropy/MaxEnt.html">8.2. Ignorance pdfs: Indifference and translation groups</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../Maximum_entropy/Pdfs_from_MaxEnt.html">8.3. MaxEnt for deriving some probability distributions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../Maximum_entropy/MaxEnt_Function_Reconstruction.html">8.4. Maximum Entropy for reconstructing a function from its moments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../Maximum_entropy/demo-MaxEnt.html">8.5. Making figures for Ignorance PDF notebook</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../../content/Machine_learning/machine_learning.html">9. Machine learning: Bayesian methods</a><input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-9"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../content/Machine_learning/lecture_22.html">9.1. Lecture 22</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../Machine_learning/Bayesian_optimization.html">9.2. Bayesian Optimization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../content/Machine_learning/lecture_23.html">9.3. Lecture 23</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../Machine_learning/Neural_networks_explained.html">9.4. What Are Neural Networks?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../Machine_learning/Forssen_tif285_NeuralNet.html">9.5. Neural networks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../Machine_learning/Forssen_tif285_demo-NeuralNet.html">9.6. Neural network classifier demonstration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../Machine_learning/Bayesian_neural_networks_tif285.html">9.7. Bayesian neural networks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../content/Machine_learning/lecture_24.html">9.8. Lecture 24</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../Machine_learning/demo-Bayesian_neural_networks_tif285.html">9.9. Variational Inference: Bayesian Neural Networks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../Machine_learning/Convolutional_neural_network_explained.html">9.10. What is a convolutional neural network?</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../../content/SVD/svd.html">10. PCA, SVD, and all that</a><input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-10"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../content/SVD/lecture_25.html">10.1. Lecture 25</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../SVD/linear_algebra_games_including_SVD.html">10.2. Linear algebra games including SVD for PCA</a></li>
+</ul>
+</li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Mini-projects</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../../mini-projects/mini-project_I_toy_model_of_EFT.html">Mini-project I: Parameter estimation for a toy model of an EFT</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../mini-projects/model-selection_mini-project-IIa.html">Mini-project IIa: Model selection basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../mini-projects/model-selection_mini-project-IIb_How_many_lines_ptemcee.html">Mini-project IIb: How many lines are there?</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../../../mini-projects/mini-project_IIIa_bayesian_optimization.html">Mini-project IIIa: Bayesian optimization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../mini-projects/mini-project_IIIb_Bayesian_neural_networks_from_demo.html">Mini-project IIIb: Bayesian Neural Networks</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Reference material</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../../../content/zbibliography.html">Bibliography</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../content/related_topics.html">Related topics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../content/Reference/installing_anaconda.html">Using Anaconda</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../content/Reference/using_github.html">Using GitHub</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../../content/Reference/python_jupyter.html">Python and Jupyter notebooks</a><input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-11"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../Reference/Jupyter_Python_intro_01.html">Python and Jupyter notebooks: part 01</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../Reference/Jupyter_Python_intro_02.html">Python and Jupyter notebooks: part 02</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../content/jb_tests.html">Examples: Jupyter jb-book</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Notebook keys</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../../Basics/simple_sum_product_rule_KEY.html">Checking the sum and product rules, and their consequences <span style="color: red">Key</span></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../Basics/medical_example_by_Bayes_KEY.html">Standard medical example by applying Bayesian rules of probability <span style="color: red">Key</span></a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://mybinder.org/v2/gh/buqeye/LearningFromData/main?urlpath=tree/./LectureNotes/notebooks/Development/model-discrepancy/notebooks/stochastic_ppd_widgets.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onBinder"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img src="../../../../_static/images/logo_binder.svg">
+  </span>
+<span class="btn__text-container">Binder</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="initThebeSBT()"
+  class="btn btn-sm btn-launch-thebe dropdown-item"
+  title="Launch Thebe"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-play"></i>
+  </span>
+<span class="btn__text-container">Live Code</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/buqeye/LearningFromData" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/buqeye/LearningFromData/issues/new?title=Issue%20on%20page%20%2Fnotebooks/Development/model-discrepancy/notebooks/stochastic_ppd_widgets.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../../../_sources/notebooks/Development/model-discrepancy/notebooks/stochastic_ppd_widgets.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Posterior Predictive Distributions for Stochastic Predictions</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fit-coefficients">Fit Coefficients</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ppd-calculation">PPD Calculation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#non-ppd-calculation">Non-PPD Calculation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#interface-using-ipywidgets-with-interactive-output">Interface using ipywidgets with interactive_output</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> inline
+<span class="o">%</span><span class="k">config</span> InlineBackend.print_figure_kwargs={&#39;facecolor&#39; : &quot;w&quot;}
+
+<span class="kn">import</span> <span class="nn">matplotlib</span> <span class="k">as</span> <span class="nn">mpl</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">multivariate_normal</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section class="tex2jax_ignore mathjax_ignore" id="posterior-predictive-distributions-for-stochastic-predictions">
+<h1>Posterior Predictive Distributions for Stochastic Predictions<a class="headerlink" href="#posterior-predictive-distributions-for-stochastic-predictions" title="Permalink to this heading">#</a></h1>
+<p>Suppose one is interested in parameter estimation for a theoretical model <span class="math notranslate nohighlight">\(y_\text{th}\)</span> that depends on a set of parameters <span class="math notranslate nohighlight">\(\vec{a}\)</span>.
+Upon finding the posterior <span class="math notranslate nohighlight">\(\text{pr}(\vec{a} \,|\, y_\text{exp})\)</span>, it can be useful to look at the distribution of <span class="math notranslate nohighlight">\(y_\text{th}(\vec{a})\)</span> across the posterior distribution of <span class="math notranslate nohighlight">\(\vec{a}\)</span>.
+This is given by the posterior predictive distribution (PPD)
+$<span class="math notranslate nohighlight">\(
+    \text{pr}(y_\text{th} \,|\, y_\text{exp}) = \int d\vec{a} \,\text{pr}(y_\text{th} \,|\, \vec{a}, y_\text{exp}) \,\text{pr}(\vec{a} \,|\, y_\text{exp})
+\)</span>$</p>
+<p>If the theory is determined exactly from the parameters <span class="math notranslate nohighlight">\(\vec{a}\)</span>, then one is able to write <span class="math notranslate nohighlight">\(\text{pr}(y_\text{th} \,|\, \vec{a}, y_\text{exp}) = \text{pr}(y_\text{th} \,|\, \vec{a})\)</span>, <strong>but this is not always the case</strong>.
+One example of a PPD that cannot be simplified in this way is the PPD for the theoretical discrepancy:
+$<span class="math notranslate nohighlight">\(
+    \text{pr}(y_\text{th} + \delta y_\text{th} \,|\, y_\text{exp})
+\)</span><span class="math notranslate nohighlight">\(
+where
+\)</span><span class="math notranslate nohighlight">\(
+    y_\text{exp} = y_\text{th} + \delta y_\text{th} + \delta y_\text{exp}.
+\)</span><span class="math notranslate nohighlight">\(
+The discrepancy \)</span>\delta y_\text{th}<span class="math notranslate nohighlight">\( is generally unknown, and so it is given a distribution.
+A common prior is to state that the discrepancy follows a Gaussian process (GP) with some kernel \)</span>\kappa<span class="math notranslate nohighlight">\(
+\)</span><span class="math notranslate nohighlight">\(
+    \delta y_\text{th}(x) \sim GP[0, \kappa(x, x')],
+\)</span><span class="math notranslate nohighlight">\(
+where it is assumed that \)</span>\delta y_\text{th}<span class="math notranslate nohighlight">\( is independent of the parameters \)</span>\vec{a}<span class="math notranslate nohighlight">\(.
+Because \)</span>\delta y_\text{th}<span class="math notranslate nohighlight">\( is **not** uniquely determined by \)</span>\vec{a}<span class="math notranslate nohighlight">\(, then the experimental data **does** have an impact on \)</span>\text{pr}(y_\text{th} + \delta y_\text{th} ,|, \vec{a}, y_\text{exp})$, which is in fact the <em>conditional</em> probability density for the Gaussian process.</p>
+<p>We can illustrate this using an example, inspired by the model proposed in <span class="xref myst">this</span> reference.
+For the theory (and the discrepancy), we will consider a simple geometric series whose coefficients are to be determined.
+These coefficients will play the role of <span class="math notranslate nohighlight">\(\vec{a}\)</span>.
+The series, which constitute <span class="math notranslate nohighlight">\(y_\text{th}\)</span>, will be terminated at some order <span class="math notranslate nohighlight">\(k\)</span>, and the subsequent terms will be placed in <span class="math notranslate nohighlight">\(\delta y_\text{th}\)</span>, aka, the truncation error.
+Note that, although the coefficients in the geometric series are treated as constants, this case generalizes nicely to when the coefficients are themselves Gaussian processes.</p>
+<p><strong>NOTE:</strong> For simplicity, no interpolation is done in this notebook. If we wanted to interpolate between the experimental data points, this feature could be easily added.</p>
+<section id="fit-coefficients">
+<h2>Fit Coefficients<a class="headerlink" href="#fit-coefficients" title="Permalink to this heading">#</a></h2>
+<p>This is a linear model and so we can use the standard linear regression equations to find the posterior distribution
+$<span class="math notranslate nohighlight">\(
+    \vec{a} \,|\, y_{\text{exp}} \sim N[\mu_a, \Sigma_a] \\
+    \mu_a = \Sigma_a X^T (\Sigma_\text{th} + \Sigma_\text{exp})^{-1} y_\text{exp} \\
+    \Sigma_a = [X^T (\Sigma_\text{th} + \Sigma_\text{exp})^{-1} X]^{-1}
+\)</span>$
+This equation follows from the well known (Bayesian) linear model.
+More general relations are given <span class="xref myst">here</span>, in Eqs. (A27)-(A28).</p>
+</section>
+<section id="ppd-calculation">
+<h2>PPD Calculation<a class="headerlink" href="#ppd-calculation" title="Permalink to this heading">#</a></h2>
+<p>The PPD for the theory prediction can be calculated analytically. If <span class="math notranslate nohighlight">\(y_\text{th} = X \vec{a}\)</span>, then
+$<span class="math notranslate nohighlight">\(
+  y_\text{th} \,|\, y_\text{exp} \sim N[X\mu_a, X \Sigma_a X^T]
+\)</span>$
+This follows from Eq. (A35) in <span class="xref myst">this</span> reference.</p>
+<p>The PPD when including truncation error is slightly trickier, but still analytic.
+Now the PPD is given by
+$<span class="math notranslate nohighlight">\(
+    \text{pr}(y_\text{th} + \delta y_\text{th} \,|\, y_\text{exp}) = \int d\vec{a} \,\text{pr}(y_\text{th} + \delta y_\text{th} \,|\, \vec{a}, y_\text{exp}) \,\text{pr}(\vec{a} \,|\, y_\text{exp})
+\)</span><span class="math notranslate nohighlight">\(
+The prior of \)</span>y_\text{th} + \delta y_\text{th}<span class="math notranslate nohighlight">\( is itself a GP
+\)</span><span class="math notranslate nohighlight">\(
+    y_\text{th} + \delta y_\text{th} \,|\, \vec{a} \sim GP[y_\text{th}(\vec{a}), \kappa(x, x')].
+\)</span><span class="math notranslate nohighlight">\(
+With this understanding, it is clear that
+\)</span><span class="math notranslate nohighlight">\(
+    \text{pr}(y_\text{th} + \delta y_\text{th} \,|\, \vec{a}, y_\text{exp})
+\)</span><span class="math notranslate nohighlight">\(
+is the conditional PDF for the GP.
+Thus, we compute conditional GP equations *first*, and then sum over all \)</span>\vec{a}<span class="math notranslate nohighlight">\(.
+The conditional GP equations are well known.
+They can be found, e.g., [here](#MelendezGP) in Eqs. (10)-(15). Once the conditional GP is given as a function of \)</span>\vec{a}<span class="math notranslate nohighlight">\(,
+\)</span><span class="math notranslate nohighlight">\(
+    y_\text{th} + \delta y_\text{th} \,|\, \vec{a}, y_\text{exp} \sim N[Z\vec{a} + \Sigma_\text{th} (\Sigma_\text{th} + \Sigma_\text{exp})^{-1} y_\text{exp},\,\, \Sigma_\text{th} + \Sigma_\text{th} (\Sigma_\text{th} + \Sigma_\text{exp})^{-1}\Sigma_\text{th}] \\
+    Z = X - \Sigma_\text{th} (\Sigma_\text{th} + \Sigma_\text{exp})^{-1} X
+\)</span><span class="math notranslate nohighlight">\(
+then they can be integrated out as done above (again, see Eq. (A35) [here](#MelendezGP)). In this case, this yields
+\)</span><span class="math notranslate nohighlight">\(
+y_\text{th} + \delta y_\text{th} \,|\, y_\text{exp} \sim N[Z\mu_a + \Sigma_\text{th} (\Sigma_\text{th} + \Sigma_\text{exp})^{-1} y_\text{exp},\,\, \Sigma_\text{th} + \Sigma_\text{th} (\Sigma_\text{th} + \Sigma_\text{exp})^{-1}\Sigma_\text{th} + Z\Sigma_a Z^T]
+\)</span>$</p>
+</section>
+<section id="non-ppd-calculation">
+<h2>Non-PPD Calculation<a class="headerlink" href="#non-ppd-calculation" title="Permalink to this heading">#</a></h2>
+<p>Although not the PPD, it is sometimes useful to look at the distribution of <span class="math notranslate nohighlight">\(y_\text{th} + \delta y_\text{th}\)</span> sampled over our posterior values for <span class="math notranslate nohighlight">\(\vec{a}\)</span>. So rather than conditioning <span class="math notranslate nohighlight">\(y_\text{th} + \delta y_\text{th}\)</span> on the experimental values, we instead use its unconditional distribution. This quantity can be described as
+$<span class="math notranslate nohighlight">\(
+    y_\text{th} + \delta y_\text{th} \, | \, I_{\vec{a} \,|\, y_\text{exp}}
+\)</span><span class="math notranslate nohighlight">\(
+where \)</span>I_{\vec{a} ,|, y_\text{exp}}<span class="math notranslate nohighlight">\( is the information about the posterior distribution of \)</span>\vec{a}<span class="math notranslate nohighlight">\(.
+By integrating in \)</span>\vec{a}<span class="math notranslate nohighlight">\(, we have
+\)</span><span class="math notranslate nohighlight">\(
+    \text{pr}(y_\text{th} + \delta y_\text{th} \, | \, I_{\vec{a} \,|\, y_\text{exp}})
+    = \int d\vec{a}\, \text{pr}(y_\text{th} + \delta y_\text{th} \, | \, \vec{a}) \text{pr}(\vec{a} \,|\, I_{\vec{a} \,|\, y_\text{exp}}),
+\)</span><span class="math notranslate nohighlight">\(
+where the factor on the left is the unconditional GP, and the factor on the right is the posterior density for \)</span>\vec{a}$.</p>
+</section>
+<section id="references">
+<h2>References<a class="headerlink" href="#references" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p><a id="MelendezGP" /> Melendez, J. A., Furnstahl, R. J., Phillips, D. R., Pratola, M. T. &amp; Wesolowski, S. Quantifying correlated truncation errors in effective field theory. Phys Rev C 100, 044001 (2019).</p></li>
+</ul>
+</section>
+<section id="interface-using-ipywidgets-with-interactive-output">
+<h2>Interface using ipywidgets with interactive_output<a class="headerlink" href="#interface-using-ipywidgets-with-interactive-output" title="Permalink to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Import the widgets we will use (add more as needed!) </span>
+<span class="kn">import</span> <span class="nn">ipywidgets</span> <span class="k">as</span> <span class="nn">widgets</span>
+<span class="kn">from</span> <span class="nn">ipywidgets</span> <span class="kn">import</span> <span class="n">HBox</span><span class="p">,</span> <span class="n">VBox</span><span class="p">,</span> <span class="n">Layout</span><span class="p">,</span> <span class="n">Tab</span><span class="p">,</span> <span class="n">Label</span><span class="p">,</span> <span class="n">Checkbox</span>
+<span class="kn">from</span> <span class="nn">ipywidgets</span> <span class="kn">import</span> <span class="n">FloatSlider</span><span class="p">,</span> <span class="n">IntSlider</span><span class="p">,</span> <span class="n">Play</span><span class="p">,</span> <span class="n">Dropdown</span><span class="p">,</span> <span class="n">HTMLMath</span> 
+
+<span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">display</span>
+<span class="kn">from</span> <span class="nn">time</span> <span class="kn">import</span> <span class="n">sleep</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">master_plot</span><span class="p">(</span><span class="n">y_th_flag</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">y_true_flag</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">y_exp_flag</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> 
+                <span class="n">y_th_ppd_flag</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">y_tot_ppd_flag</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">y_non_ppd_flag</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                <span class="n">rng_coeff_seed</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">rng_data_seed</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">N</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">k_max</span><span class="o">=</span><span class="mi">7</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">cbar</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">sd_exp</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span>
+                <span class="n">data_min</span><span class="o">=</span><span class="mf">0.01</span><span class="p">,</span> <span class="n">data_max</span><span class="o">=</span><span class="mf">0.9</span><span class="p">,</span> <span class="n">plot_min</span><span class="o">=-</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">plot_max</span><span class="o">=</span><span class="mf">1.0</span>
+               <span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Does the calculations then generates the plot of results.</span>
+<span class="sd">    </span>
+<span class="sd">        Parameters:</span>
+<span class="sd">        k_max (int): Total max order, including truncation error; (default: 7)</span>
+<span class="sd">        k (int): Max order in y_th; (default: 3)</span>
+<span class="sd">        rng_seed (int): Seed for random number generator; (default: 3)</span>
+<span class="sd">        N (int): Number of data to use in training; (default: 50)</span>
+<span class="sd">        cbar (float): Standard deviation of the parameters; (default: 1)</span>
+<span class="sd">        sd_exp (float): Experimental standard deviation; (default: 0.2)</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">        fig (matplotlib Figure): plot of results</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># Recalculate everything</span>
+    
+    <span class="c1"># Parameters and data generation        </span>
+    <span class="n">y_ref</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">N</span><span class="p">)</span>  <span class="c1"># A constant scalar that multiplies the series</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">data_min</span><span class="p">,</span> <span class="n">data_max</span><span class="p">,</span> <span class="n">N</span><span class="p">)</span>  <span class="c1"># The ratio x^n in the geometric series</span>
+    <span class="n">higher_orders</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="n">k_max</span><span class="p">)</span>  <span class="c1"># These are in the truncation error</span>
+    <span class="n">orders</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">k</span><span class="p">)</span>  <span class="c1"># These are in y_th</span>
+    
+    <span class="c1"># Make everything repeatable but separate coefficient and data random numbers</span>
+    <span class="n">rng_coeff</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">default_rng</span><span class="p">(</span><span class="n">rng_coeff_seed</span><span class="p">)</span>
+    <span class="n">rng_data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">default_rng</span><span class="p">(</span><span class="n">rng_data_seed</span><span class="p">)</span>
+    
+    <span class="c1"># The coefficients of the geometric series</span>
+    <span class="n">c_true_all</span> <span class="o">=</span> <span class="n">rng_coeff</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">cbar</span><span class="p">,</span> <span class="n">k_max</span><span class="p">)</span>
+    <span class="n">c_true_higher</span> <span class="o">=</span> <span class="n">c_true_all</span><span class="p">[</span><span class="n">k</span><span class="p">:]</span>
+    <span class="n">c_true</span> <span class="o">=</span> <span class="n">c_true_all</span><span class="p">[:</span><span class="n">k</span><span class="p">]</span>
+    
+    <span class="c1"># Set up toy predictions and experiment</span>
+    <span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">y_ref</span> <span class="o">*</span> <span class="n">x</span> <span class="o">**</span> <span class="n">n</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">orders</span><span class="p">])</span><span class="o">.</span><span class="n">T</span>
+    <span class="n">y_th</span> <span class="o">=</span> <span class="n">y_ref</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">c_true</span> <span class="o">*</span> <span class="n">x</span><span class="p">[:,</span> <span class="kc">None</span><span class="p">]</span> <span class="o">**</span> <span class="n">orders</span><span class="p">,</span> <span class="n">axis</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">dy_th</span> <span class="o">=</span> <span class="n">y_ref</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">c_true_higher</span> <span class="o">*</span> <span class="n">x</span><span class="p">[:,</span> <span class="kc">None</span><span class="p">]</span> <span class="o">**</span> <span class="n">higher_orders</span><span class="p">,</span> <span class="n">axis</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">dy_exp</span> <span class="o">=</span> <span class="n">rng_data</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">sd_exp</span><span class="p">,</span> <span class="n">N</span><span class="p">)</span>
+    <span class="n">y_exp</span> <span class="o">=</span> <span class="n">y_th</span> <span class="o">+</span> <span class="n">dy_th</span> <span class="o">+</span> <span class="n">dy_exp</span>   
+    
+    <span class="c1"># Fit coefficients</span>
+    <span class="n">Sigma_th</span> <span class="o">=</span> <span class="n">y_ref</span><span class="p">[:,</span> <span class="kc">None</span><span class="p">]</span> <span class="o">*</span> <span class="n">y_ref</span> <span class="o">*</span> <span class="n">cbar</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">([</span><span class="n">x</span><span class="p">[:,</span> <span class="kc">None</span><span class="p">]</span><span class="o">**</span><span class="n">n</span> <span class="o">*</span> <span class="n">x</span><span class="o">**</span><span class="n">n</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">higher_orders</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">Sigma_exp</span> <span class="o">=</span> <span class="n">sd_exp</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="n">N</span><span class="p">)</span>
+    <span class="n">c_var_inv</span> <span class="o">=</span> <span class="n">X</span><span class="o">.</span><span class="n">T</span> <span class="o">@</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">Sigma_th</span> <span class="o">+</span> <span class="n">Sigma_exp</span><span class="p">,</span> <span class="n">X</span><span class="p">)</span>
+    <span class="n">c_var</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">inv</span><span class="p">(</span><span class="n">c_var_inv</span><span class="p">)</span>
+    <span class="n">c_est</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">c_var_inv</span><span class="p">,</span> <span class="n">X</span><span class="o">.</span><span class="n">T</span> <span class="o">@</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">Sigma_th</span> <span class="o">+</span> <span class="n">Sigma_exp</span><span class="p">,</span> <span class="n">y_exp</span><span class="p">))</span>
+    
+    <span class="c1"># PPD calculation</span>
+    <span class="n">y_th_ppd_mean</span> <span class="o">=</span> <span class="n">y_ref</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">c_est</span> <span class="o">*</span> <span class="n">x</span><span class="p">[:,</span> <span class="kc">None</span><span class="p">]</span> <span class="o">**</span> <span class="n">orders</span><span class="p">,</span> <span class="n">axis</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">y_th_ppd_stdv</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">diag</span><span class="p">(</span><span class="n">X</span> <span class="o">@</span> <span class="n">c_var</span> <span class="o">@</span> <span class="n">X</span><span class="o">.</span><span class="n">T</span><span class="p">))</span>
+    
+    <span class="n">y_tot_ppd_mean</span> <span class="o">=</span> <span class="n">y_th_ppd_mean</span> <span class="o">+</span> <span class="n">Sigma_th</span> <span class="o">@</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">Sigma_th</span> <span class="o">+</span> <span class="n">Sigma_exp</span><span class="p">,</span> <span class="n">y_exp</span> <span class="o">-</span> <span class="n">y_th_ppd_mean</span><span class="p">)</span>
+
+    <span class="n">Z</span> <span class="o">=</span> <span class="n">X</span> <span class="o">-</span> <span class="n">Sigma_th</span> <span class="o">@</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">Sigma_th</span> <span class="o">+</span> <span class="n">Sigma_exp</span><span class="p">,</span> <span class="n">X</span><span class="p">)</span>
+
+    <span class="n">y_tot_ppd_cov</span> <span class="o">=</span> <span class="n">Sigma_th</span> <span class="o">-</span> <span class="n">Sigma_th</span> <span class="o">@</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">Sigma_th</span> <span class="o">+</span> <span class="n">Sigma_exp</span><span class="p">,</span> <span class="n">Sigma_th</span><span class="p">)</span> <span class="o">+</span> <span class="n">Z</span> <span class="o">@</span> <span class="n">c_var</span> <span class="o">@</span> <span class="n">Z</span><span class="o">.</span><span class="n">T</span>
+    <span class="n">y_tot_ppd_stdv</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">diag</span><span class="p">(</span><span class="n">y_tot_ppd_cov</span><span class="p">))</span>
+    
+    <span class="c1"># non-PPD calculation</span>
+    <span class="n">y_th_non_ppd_stdv</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">diag</span><span class="p">(</span><span class="n">Sigma_th</span><span class="p">))</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">diag</span><span class="p">(</span><span class="n">X</span> <span class="o">@</span> <span class="n">c_var</span> <span class="o">@</span> <span class="n">X</span><span class="o">.</span><span class="n">T</span><span class="p">))</span>
+    
+   
+    <span class="c1"># make the plot</span>
+    <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mf">4.4</span><span class="p">))</span>
+    
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="n">plot_min</span><span class="p">,</span> <span class="n">plot_max</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">y_th_flag</span><span class="p">:</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y_th</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;y_th (True)&quot;</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s2">&quot;k&quot;</span><span class="p">)</span>
+        
+    <span class="k">if</span> <span class="n">y_true_flag</span><span class="p">:</span>    
+        <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y_th</span> <span class="o">+</span> <span class="n">dy_th</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;y_th + dy_th (True)&quot;</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s2">&quot;k&quot;</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">y_exp_flag</span><span class="p">:</span>    
+        <span class="n">ax</span><span class="o">.</span><span class="n">errorbar</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y_exp</span><span class="p">,</span> <span class="n">sd_exp</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">elinewidth</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">barsabove</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">capsize</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;y_exp&quot;</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s2">&quot;C1&quot;</span><span class="p">)</span>
+    
+    <span class="k">if</span> <span class="n">y_th_ppd_flag</span><span class="p">:</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y_th_ppd_mean</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s2">&quot;r&quot;</span><span class="p">)</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">fill_between</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y_th_ppd_mean</span><span class="o">+</span><span class="n">y_th_ppd_stdv</span><span class="p">,</span> <span class="n">y_th_ppd_mean</span> <span class="o">-</span> <span class="n">y_th_ppd_stdv</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;y_th PPD&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;r&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">)</span>
+    
+    <span class="k">if</span> <span class="n">y_tot_ppd_flag</span><span class="p">:</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y_tot_ppd_mean</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s2">&quot;g&quot;</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">fill_between</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y_tot_ppd_mean</span><span class="o">+</span><span class="n">y_tot_ppd_stdv</span><span class="p">,</span> <span class="n">y_tot_ppd_mean</span> <span class="o">-</span> <span class="n">y_tot_ppd_stdv</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;y_th + dy_th PPD&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;g&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+    
+    <span class="k">if</span> <span class="n">y_non_ppd_flag</span><span class="p">:</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y_th_ppd_mean</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s2">&quot;b&quot;</span><span class="p">)</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">fill_between</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y_th_ppd_mean</span> <span class="o">+</span> <span class="n">y_th_non_ppd_stdv</span><span class="p">,</span> <span class="n">y_th_ppd_mean</span> <span class="o">-</span> <span class="n">y_th_non_ppd_stdv</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;y_th + dy_th Non-PPD&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;b&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">)</span>
+    
+    <span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;x&quot;</span><span class="p">);</span>
+    
+    <span class="k">return</span> <span class="n">fig</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Widgets for the various inputs.</span>
+<span class="c1">#   For any widget, we can set continuous_update=False if we don&#39;t want the </span>
+<span class="c1">#    plots to shift until the selection is finished (particularly relevant for </span>
+<span class="c1">#    sliders).</span>
+
+<span class="c1"># Widgets for the plot choice (plus a label out front)</span>
+<span class="n">plot_choice_w</span> <span class="o">=</span> <span class="n">Label</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="s1">&#39;Which plots: &#39;</span><span class="p">,</span> <span class="n">layout</span><span class="o">=</span><span class="n">Layout</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="s1">&#39;90px&#39;</span><span class="p">))</span>
+<span class="k">def</span> <span class="nf">plot_choice_widget</span><span class="p">(</span><span class="n">on</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">plot_description</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Makes a Checkbox to select whether to show a plot.&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">Checkbox</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="n">on</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="n">plot_description</span><span class="p">,</span>
+                  <span class="n">disabled</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">layout</span><span class="o">=</span><span class="n">Layout</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="s1">&#39;150px&#39;</span><span class="p">))</span>
+
+<span class="n">y_th_flag_w</span> <span class="o">=</span> <span class="n">plot_choice_widget</span><span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="sa">r</span><span class="s1">&#39;$y_{\rm th}$ (true)&#39;</span><span class="p">)</span>
+<span class="n">y_true_flag_w</span> <span class="o">=</span> <span class="n">plot_choice_widget</span><span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="sa">r</span><span class="s1">&#39;$y_{\rm th} + \delta y_{\rm th}$ (true)&#39;</span><span class="p">)</span>
+<span class="n">y_exp_flag_w</span> <span class="o">=</span> <span class="n">plot_choice_widget</span><span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="sa">r</span><span class="s1">&#39;$y_{\rm exp}$&#39;</span><span class="p">)</span>
+<span class="n">y_th_ppd_flag_w</span> <span class="o">=</span> <span class="n">plot_choice_widget</span><span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="sa">r</span><span class="s1">&#39;$y_{\rm th}$ ppd&#39;</span><span class="p">)</span>
+<span class="n">y_tot_ppd_flag_w</span> <span class="o">=</span> <span class="n">plot_choice_widget</span><span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="sa">r</span><span class="s1">&#39;$y_{\rm th} + \delta y_{\rm th}$ ppd&#39;</span><span class="p">)</span>
+<span class="n">y_non_ppd_flag_w</span> <span class="o">=</span> <span class="n">plot_choice_widget</span><span class="p">(</span><span class="kc">False</span><span class="p">,</span> <span class="sa">r</span><span class="s1">&#39;$y_{\rm th} + \delta y_{\rm th}$ non-ppd&#39;</span><span class="p">)</span>
+
+<span class="c1"># Widgets for the model parameters (all use FloatSlider or IntSlider, so made functions)</span>
+<span class="k">def</span> <span class="nf">float_widget</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="nb">min</span><span class="p">,</span> <span class="nb">max</span><span class="p">,</span> <span class="n">step</span><span class="p">,</span> <span class="n">description</span><span class="p">,</span> <span class="nb">format</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Makes a FloatSlider with the passed parameters and continuous_update</span>
+<span class="sd">       set to False.&quot;&quot;&quot;</span>
+    <span class="n">slider_border</span> <span class="o">=</span> <span class="n">Layout</span><span class="p">(</span><span class="n">border</span><span class="o">=</span><span class="s1">&#39;solid 1.0px&#39;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">FloatSlider</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="n">value</span><span class="p">,</span><span class="nb">min</span><span class="o">=</span><span class="nb">min</span><span class="p">,</span><span class="nb">max</span><span class="o">=</span><span class="nb">max</span><span class="p">,</span><span class="n">step</span><span class="o">=</span><span class="n">step</span><span class="p">,</span><span class="n">disabled</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+                       <span class="n">description</span><span class="o">=</span><span class="n">description</span><span class="p">,</span><span class="n">continuous_update</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+                       <span class="n">orientation</span><span class="o">=</span><span class="s1">&#39;horizontal&#39;</span><span class="p">,</span><span class="n">layout</span><span class="o">=</span><span class="n">slider_border</span><span class="p">,</span>
+                       <span class="n">readout</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">readout_format</span><span class="o">=</span><span class="nb">format</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">int_widget</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="nb">min</span><span class="p">,</span> <span class="nb">max</span><span class="p">,</span> <span class="n">step</span><span class="p">,</span> <span class="n">description</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Makes a FloatSlider with the passed parameters and continuous_update</span>
+<span class="sd">       set to False.&quot;&quot;&quot;</span>
+    <span class="n">slider_border</span> <span class="o">=</span> <span class="n">Layout</span><span class="p">(</span><span class="n">border</span><span class="o">=</span><span class="s1">&#39;solid 1.0px&#39;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">IntSlider</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="n">value</span><span class="p">,</span><span class="nb">min</span><span class="o">=</span><span class="nb">min</span><span class="p">,</span><span class="nb">max</span><span class="o">=</span><span class="nb">max</span><span class="p">,</span><span class="n">step</span><span class="o">=</span><span class="n">step</span><span class="p">,</span><span class="n">disabled</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+                       <span class="n">description</span><span class="o">=</span><span class="n">description</span><span class="p">,</span><span class="n">continuous_update</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+                       <span class="n">orientation</span><span class="o">=</span><span class="s1">&#39;horizontal&#39;</span><span class="p">,</span><span class="n">layout</span><span class="o">=</span><span class="n">slider_border</span><span class="p">,</span>
+                       <span class="n">readout</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">readout_format</span><span class="o">=</span><span class="s1">&#39;d&#39;</span><span class="p">)</span>
+
+<span class="n">rng_coeff_seed_w</span> <span class="o">=</span> <span class="n">int_widget</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="nb">min</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+                      <span class="n">description</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;$\delta y_{\rm th}$ seed:&#39;</span><span class="p">)</span>
+<span class="n">rng_data_seed_w</span> <span class="o">=</span> <span class="n">int_widget</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="nb">min</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+                      <span class="n">description</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;$\delta y_{\rm exp}$ seed:&#39;</span><span class="p">)</span>
+
+<span class="n">N_data_w</span> <span class="o">=</span> <span class="n">int_widget</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="nb">min</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+                      <span class="n">description</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;$N_{\rm data}$:&#39;</span><span class="p">)</span>
+
+<span class="n">k_max_w</span> <span class="o">=</span> <span class="n">int_widget</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="mi">7</span><span class="p">,</span> <span class="nb">min</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+                      <span class="n">description</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;$k_{\rm max}$:&#39;</span><span class="p">)</span>
+<span class="n">k_w</span> <span class="o">=</span> <span class="n">int_widget</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="nb">min</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+                      <span class="n">description</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;theory order:&#39;</span><span class="p">)</span>
+
+<span class="n">cbar_w</span> <span class="o">=</span> <span class="n">float_widget</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="nb">min</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mf">5.</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span>
+                         <span class="n">description</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;$\overline c$:&#39;</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s1">&#39;.1f&#39;</span><span class="p">)</span>
+<span class="n">sd_exp_w</span> <span class="o">=</span> <span class="n">float_widget</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="nb">min</span><span class="o">=</span><span class="mf">0.001</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mf">2.</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span>
+                      <span class="n">description</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;$\sigma_{\rm exp}$:&#39;</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s1">&#39;.2f&#39;</span><span class="p">)</span>
+<span class="n">data_min_w</span> <span class="o">=</span> <span class="n">float_widget</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="mf">0.01</span><span class="p">,</span> <span class="nb">min</span><span class="o">=</span><span class="mf">0.01</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span>
+                         <span class="n">description</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;data $x_{\rm min}$:&#39;</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s1">&#39;.2f&#39;</span><span class="p">)</span> 
+<span class="n">data_max_w</span> <span class="o">=</span> <span class="n">float_widget</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="mf">0.9</span><span class="p">,</span> <span class="nb">min</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mf">2.</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span>
+                       <span class="n">description</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;data $x_{\rm max}$:&#39;</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s1">&#39;.1f&#39;</span><span class="p">)</span>
+
+
+<span class="c1"># Widgets for the plotting parameters</span>
+<span class="n">plot_min_w</span> <span class="o">=</span> <span class="n">float_widget</span><span class="p">(</span><span class="n">value</span><span class="o">=-</span><span class="mf">0.05</span><span class="p">,</span> <span class="nb">min</span><span class="o">=-</span><span class="mf">0.05</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span>
+                         <span class="n">description</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;plot $x_{\rm min}$:&#39;</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s1">&#39;.1f&#39;</span><span class="p">)</span> 
+<span class="n">plot_max_w</span> <span class="o">=</span> <span class="n">float_widget</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="mf">1.</span><span class="p">,</span> <span class="nb">min</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mf">2.</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span>
+                       <span class="n">description</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;plot $x_{\rm max}$:&#39;</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s1">&#39;.1f&#39;</span><span class="p">)</span>
+
+<span class="c1"># Widgets for the styling parameters</span>
+<span class="n">font_size_w</span> <span class="o">=</span> <span class="n">Dropdown</span><span class="p">(</span><span class="n">options</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;12&#39;</span><span class="p">,</span> <span class="s1">&#39;16&#39;</span><span class="p">,</span> <span class="s1">&#39;18&#39;</span><span class="p">,</span> <span class="s1">&#39;20&#39;</span><span class="p">,</span> <span class="s1">&#39;24&#39;</span><span class="p">],</span> <span class="n">value</span><span class="o">=</span><span class="s1">&#39;18&#39;</span><span class="p">,</span>
+                       <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Font size:&#39;</span><span class="p">,</span><span class="n">disabled</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+                       <span class="n">continuous_update</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span><span class="n">layout</span><span class="o">=</span><span class="n">Layout</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="s1">&#39;140px&#39;</span><span class="p">))</span>
+
+<span class="n">empty_w</span> <span class="o">=</span> <span class="n">Label</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="s1">&#39; &#39;</span><span class="p">,</span><span class="n">layout</span><span class="o">=</span><span class="n">Layout</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="s1">&#39;300px&#39;</span><span class="p">,</span><span class="n">border</span><span class="o">=</span><span class="s1">&#39;solid 1.0px&#39;</span><span class="p">))</span>
+
+
+<span class="c1">############## Begin: Explicit callback functions #######################</span>
+
+<span class="c1"># Make sure that x_max for plotting is at least x_min + 1</span>
+<span class="k">def</span> <span class="nf">update_plot_max</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">plot_max_w</span><span class="o">.</span><span class="n">value</span> <span class="o">&lt;</span> <span class="n">plot_min_w</span><span class="o">.</span><span class="n">value</span><span class="p">:</span>
+        <span class="n">plot_max_w</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="n">plot_min_w</span><span class="o">.</span><span class="n">value</span> <span class="o">+</span> <span class="mi">1</span>     
+<span class="n">plot_max_w</span><span class="o">.</span><span class="n">observe</span><span class="p">(</span><span class="n">update_plot_max</span><span class="p">,</span> <span class="s1">&#39;value&#39;</span><span class="p">)</span>
+<span class="n">plot_min_w</span><span class="o">.</span><span class="n">observe</span><span class="p">(</span><span class="n">update_plot_max</span><span class="p">,</span> <span class="s1">&#39;value&#39;</span><span class="p">)</span>
+
+
+<span class="c1"># Make sure that data_max is at least data_min + .1</span>
+<span class="k">def</span> <span class="nf">update_data_max</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">data_max_w</span><span class="o">.</span><span class="n">value</span> <span class="o">&lt;</span> <span class="n">data_min_w</span><span class="o">.</span><span class="n">value</span><span class="p">:</span>
+        <span class="n">data_max_w</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="n">data_min_w</span><span class="o">.</span><span class="n">value</span> <span class="o">+</span> <span class="mf">.1</span>     
+<span class="n">data_max_w</span><span class="o">.</span><span class="n">observe</span><span class="p">(</span><span class="n">update_data_max</span><span class="p">,</span> <span class="s1">&#39;value&#39;</span><span class="p">)</span>
+<span class="n">data_min_w</span><span class="o">.</span><span class="n">observe</span><span class="p">(</span><span class="n">update_data_max</span><span class="p">,</span> <span class="s1">&#39;value&#39;</span><span class="p">)</span>
+
+
+<span class="c1">############## End: Explicit callback functions #######################</span>
+
+<span class="c1"># Set up the interactive_output widget </span>
+<span class="n">plot_out</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">interactive_output</span><span class="p">(</span><span class="n">master_plot</span><span class="p">,</span>
+                          <span class="nb">dict</span><span class="p">(</span>
+                          <span class="n">y_th_flag</span><span class="o">=</span><span class="n">y_th_flag_w</span><span class="p">,</span> 
+                          <span class="n">y_true_flag</span><span class="o">=</span><span class="n">y_true_flag_w</span><span class="p">,</span> 
+                          <span class="n">y_exp_flag</span><span class="o">=</span><span class="n">y_exp_flag_w</span><span class="p">,</span> 
+                          <span class="n">y_th_ppd_flag</span><span class="o">=</span><span class="n">y_th_ppd_flag_w</span><span class="p">,</span> 
+                          <span class="n">y_tot_ppd_flag</span><span class="o">=</span><span class="n">y_tot_ppd_flag_w</span><span class="p">,</span> 
+                          <span class="n">y_non_ppd_flag</span><span class="o">=</span><span class="n">y_non_ppd_flag_w</span><span class="p">,</span>
+                          <span class="n">rng_coeff_seed</span><span class="o">=</span><span class="n">rng_coeff_seed_w</span><span class="p">,</span>
+                          <span class="n">rng_data_seed</span><span class="o">=</span><span class="n">rng_data_seed_w</span><span class="p">,</span>
+                          <span class="n">N</span><span class="o">=</span><span class="n">N_data_w</span><span class="p">,</span>
+                          <span class="n">k_max</span><span class="o">=</span><span class="n">k_max_w</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="n">k_w</span><span class="p">,</span>
+                          <span class="n">cbar</span><span class="o">=</span><span class="n">cbar_w</span><span class="p">,</span> <span class="n">sd_exp</span><span class="o">=</span><span class="n">sd_exp_w</span><span class="p">,</span>
+                          <span class="n">data_min</span><span class="o">=</span><span class="n">data_min_w</span><span class="p">,</span> <span class="n">data_max</span><span class="o">=</span><span class="n">data_max_w</span><span class="p">,</span>
+                          <span class="n">plot_min</span><span class="o">=</span><span class="n">plot_min_w</span><span class="p">,</span> <span class="n">plot_max</span><span class="o">=</span><span class="n">plot_max_w</span><span class="p">)</span>
+                       <span class="p">)</span>
+
+<span class="c1"># Now do some manual layout, where we can put the plot anywhere using plot_out</span>
+<span class="n">hbox1</span> <span class="o">=</span> <span class="n">HBox</span><span class="p">([</span><span class="n">plot_choice_w</span><span class="p">,</span> <span class="n">y_true_flag_w</span><span class="p">,</span> <span class="n">y_exp_flag_w</span><span class="p">,</span> <span class="n">y_th_flag_w</span><span class="p">,</span> 
+               <span class="n">y_th_ppd_flag_w</span><span class="p">,</span> <span class="n">y_tot_ppd_flag_w</span><span class="p">,</span> <span class="n">y_non_ppd_flag_w</span><span class="p">])</span> <span class="c1">#  choice of what curves to show </span>
+<span class="n">hbox2</span> <span class="o">=</span> <span class="n">HBox</span><span class="p">([</span><span class="n">N_data_w</span><span class="p">,</span> <span class="n">rng_coeff_seed_w</span><span class="p">,</span> <span class="n">rng_data_seed_w</span><span class="p">,</span> <span class="n">empty_w</span><span class="p">])</span>  <span class="c1"># </span>
+<span class="n">hbox3</span> <span class="o">=</span> <span class="n">HBox</span><span class="p">([</span><span class="n">k_max_w</span><span class="p">,</span> <span class="n">k_w</span><span class="p">,</span> <span class="n">cbar_w</span><span class="p">,</span> <span class="n">sd_exp_w</span><span class="p">])</span> <span class="c1"># data and model parameters</span>
+<span class="n">hbox4</span> <span class="o">=</span> <span class="n">HBox</span><span class="p">([</span><span class="n">data_min_w</span><span class="p">,</span> <span class="n">data_max_w</span><span class="p">,</span> <span class="n">plot_min_w</span><span class="p">,</span> <span class="n">plot_max_w</span><span class="p">])</span> <span class="c1"># data and plot ranges</span>
+<span class="n">hbox5</span> <span class="o">=</span> <span class="n">HBox</span><span class="p">([</span><span class="n">font_size_w</span><span class="p">])</span> <span class="c1"># font size</span>
+
+<span class="c1"># We&#39;ll set up Tabs to organize the controls.  The Tab contents are declared</span>
+<span class="c1">#  as tab0, tab1, ... (probably should make this a list?) and the overall Tab</span>
+<span class="c1">#  is called tab (so its children are tab0, tab1, ...).</span>
+<span class="n">tab_height</span> <span class="o">=</span> <span class="s1">&#39;70px&#39;</span>  <span class="c1"># Fixed minimum height for all tabs. Specify another way?</span>
+<span class="n">tab0</span> <span class="o">=</span> <span class="n">VBox</span><span class="p">([</span><span class="n">hbox2</span><span class="p">,</span> <span class="n">hbox3</span><span class="p">],</span> <span class="n">layout</span><span class="o">=</span><span class="n">Layout</span><span class="p">(</span><span class="n">min_height</span><span class="o">=</span><span class="n">tab_height</span><span class="p">))</span>
+<span class="n">tab1</span> <span class="o">=</span> <span class="n">VBox</span><span class="p">([</span><span class="n">hbox1</span><span class="p">,</span> <span class="n">hbox4</span><span class="p">],</span> <span class="n">layout</span><span class="o">=</span><span class="n">Layout</span><span class="p">(</span><span class="n">min_height</span><span class="o">=</span><span class="n">tab_height</span><span class="p">))</span>
+<span class="n">tab2</span> <span class="o">=</span> <span class="n">VBox</span><span class="p">([</span><span class="n">hbox5</span><span class="p">],</span> <span class="n">layout</span><span class="o">=</span><span class="n">Layout</span><span class="p">(</span><span class="n">min_height</span><span class="o">=</span><span class="n">tab_height</span><span class="p">))</span>
+
+<span class="n">tab</span> <span class="o">=</span> <span class="n">Tab</span><span class="p">(</span><span class="n">children</span><span class="o">=</span><span class="p">[</span><span class="n">tab0</span><span class="p">,</span> <span class="n">tab1</span><span class="p">,</span> <span class="n">tab2</span><span class="p">])</span>
+<span class="n">tab</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;Parameters &amp; Data&#39;</span><span class="p">)</span>
+<span class="n">tab</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;Plotting&#39;</span><span class="p">)</span>
+<span class="n">tab</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;Styling&#39;</span><span class="p">)</span>
+
+<span class="n">param_height</span> <span class="o">=</span> <span class="s1">&#39;120px&#39;</span>
+<span class="n">param_box</span> <span class="o">=</span> <span class="n">VBox</span><span class="p">([</span><span class="n">hbox2</span><span class="p">,</span> <span class="n">hbox3</span><span class="p">,</span> <span class="n">hbox4</span><span class="p">],</span> <span class="n">layout</span><span class="o">=</span><span class="n">Layout</span><span class="p">(</span><span class="n">min_height</span><span class="o">=</span><span class="n">param_height</span><span class="p">))</span>
+
+<span class="c1"># Release the Kraken!</span>
+<span class="n">vbox2</span> <span class="o">=</span> <span class="n">VBox</span><span class="p">([</span><span class="n">hbox1</span><span class="p">,</span> <span class="n">param_box</span><span class="p">,</span> <span class="n">plot_out</span><span class="p">])</span>
+<span class="n">display</span><span class="p">(</span><span class="n">vbox2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "fe352420e641443ebe717ab456e535cd", "version_major": 2, "version_minor": 0}</script></div>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "buqeye/LearningFromData",
+            ref: "main",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./notebooks/Development/model-discrepancy/notebooks"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fit-coefficients">Fit Coefficients</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ppd-calculation">PPD Calculation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#non-ppd-calculation">Non-PPD Calculation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#interface-using-ipywidgets-with-interactive-output">Interface using ipywidgets with interactive_output</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Dick Furnstahl and Daniel Phillips
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2024.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../../_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
+<script src="../../../../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

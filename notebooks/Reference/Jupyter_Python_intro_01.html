@@ -586,8 +586,8 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="python-and-jupyter-notebooks-part-01">
 <h1>Python and Jupyter notebooks: part 01<a class="headerlink" href="#python-and-jupyter-notebooks-part-01" title="Permalink to this heading">#</a></h1>
-<p>Last revised: 15-Aug-2021 by Dick Furnstahl [furnstahl.1&#64;osu.edu]</p>
-<p><strong>You can find valuable documentation under the Jupyter notebook Help menu. The “User Interface Tour” and “Keyboard Shortcuts” are useful places to start, but there are also many other links to documentation there.</strong></p>
+<p>Last revised: 23-Dec-2023 by Dick Furnstahl [furnstahl.1&#64;osu.edu] for use with Jupyter 7 release.</p>
+<p><strong>You can find valuable documentation under the Jupyter notebook Help menu. “Documentation” will take you to a comprehensive help page for Jupyter notebooks (and point you to JupyterLab). Use “Markdown Reference” to look up markdown syntax (or to take a tutorial).</strong></p>
 <p>This is a whirlwind tour of just the minimum we need to know about Python and Jupyter notebooks to get started doing statistics problems.  We’ll add more features and details as we proceed.</p>
 <p>A Jupyter notebook is displayed on a web browser on a computer, tablet (e.g., IPad), or even your smartphone.  The notebook is divided into <em>cells</em>, of which two types are relevant for us:</p>
 <ul class="simple">
@@ -599,9 +599,9 @@ document.write(`
 <li><p>When a new cell is inserted, by default it is a Code cell and will have <code class="docutils literal notranslate"><span class="pre">In</span> <span class="pre">[]:</span></code> in front.  You can type Python expressions or entire programs in a cell.  How you break up code between cells is your choice and you can always put Markdown cells in between.  When you evaluate a cell it gets the next number, e.g., <code class="docutils literal notranslate"><span class="pre">In</span> <span class="pre">[5]:</span></code>.</p></li>
 <li><p>On the menu bar is a pulldown menu that lets you change back and forth between Code and Markdown cells.  Once you evaluate a Markdown cell, it gets formatted (and has a blue border).  To edit the Markdown cell, double click in it.</p></li>
 </ul>
-<p><strong>Try double-clicking on this cell and then shift-return.</strong>  You will see that a bullet list is created just with an asterisk and a space at the beginning of lines (without the space you get <em>italics</em> and with two asterisks you get <strong>bold</strong>).  <strong>Double click on the title header above and you’ll see it starts with a single #.</strong>  Headings of subsections are made using ## or ###.  See this <a class="reference external" href="https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet">Markdown cheatsheet</a> for a quick tour of the Markdown language (including how to add links!).</p>
+<p><strong>Try double-clicking on this cell and then shift-return.</strong>  You will see that a bullet list is created just with an asterisk and a space at the beginning of lines (without the space you get <em>italics</em> and with two asterisks you get <strong>bold</strong>).  <strong>Double click on the title header above and you’ll see it starts with a single #.</strong>  Headings of subsections are made using ## or ###.  See this <a class="reference external" href="https://commonmark.org/help/">Markdown tutorial</a> for a quick tour of the Markdown language (including how to add links!).</p>
 <p><strong>Now try turning the next (empty) cell to a Markdown cell and type:</strong> <code class="docutils literal notranslate"><span class="pre">Einstein</span> <span class="pre">says</span> <span class="pre">$E=mc^2$</span></code> <strong>and then evaluate it.</strong>  This is <span class="math notranslate nohighlight">\(\LaTeX\)</span>! (If you forget to convert to Markdown and get <code class="docutils literal notranslate"><span class="pre">SyntaxError:</span> <span class="pre">invalid</span> <span class="pre">syntax</span></code>, just select the cell and convert to Markdown with the menu.)</p>
-<p>The menus enable you to rename your notebook file (always ending in <code class="docutils literal notranslate"><span class="pre">.ipynb</span></code>) or <code class="docutils literal notranslate"><span class="pre">Save</span> <span class="pre">and</span> <span class="pre">Checkpoint</span></code> to save the changes to your notebook.  You can insert and delete cells (use the up and down arrows in the toolbar to easily move cells).  You will often use the <code class="docutils literal notranslate"><span class="pre">Kernel</span></code> menu to <code class="docutils literal notranslate"><span class="pre">Restart</span></code> the notebook (and possibly clear output).</p>
+<p>The menus enable you to rename your notebook file (always ending in <code class="docutils literal notranslate"><span class="pre">.ipynb</span></code>) or <code class="docutils literal notranslate"><span class="pre">Save</span> <span class="pre">Notebook</span></code> to save the changes to your notebook. The icons on the right side of a cell enables you to move the cell up or down (arrows), add new cells above or below, or delete the cell (trash).   You will often use the <code class="docutils literal notranslate"><span class="pre">Kernel</span></code> menu to <code class="docutils literal notranslate"><span class="pre">Restart</span></code> the notebook (and possibly clear output).</p>
 <p>As you get more proficient working with notebooks, you will probably start using the shortcut keys from the command mode of cells. A cell that is marked in blue implies that you are in command mode. You can start editing the cell by hitting <code class="docutils literal notranslate"><span class="pre">Enter</span></code> (or by clicking inside it). You can exit from edit mode into command mode by hitting <code class="docutils literal notranslate"><span class="pre">Esc</span></code>. A list of shortcut keys can be seen when opening the command palette by clicking on the keyboard button.</p>
 <section id="ok-time-to-try-out-python-expressions-and-numpy">
 <h2>Ok, time to try out Python expressions and numpy<a class="headerlink" href="#ok-time-to-try-out-python-expressions-and-numpy" title="Permalink to this heading">#</a></h2>
@@ -641,7 +641,7 @@ document.write(`
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">y</span> <span class="o">=</span> <span class="mf">3.</span><span class="o">*</span><span class="n">x</span><span class="o">**</span><span class="mi">2</span> <span class="o">-</span> <span class="mf">2.</span><span class="o">*</span><span class="n">x</span> <span class="o">+</span> <span class="mf">7.</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">y</span> <span class="o">=</span> <span class="mf">3.</span> <span class="o">*</span> <span class="n">x</span><span class="o">**</span><span class="mi">2</span> <span class="o">-</span> <span class="mf">2.</span> <span class="o">*</span><span class="n">x</span> <span class="o">+</span> <span class="mf">7.</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;y = &#39;</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>           <span class="c1"># Strings delimited by &#39; &#39;s</span>
 </pre></div>
 </div>
@@ -722,7 +722,7 @@ document.write(`
 </div>
 </div>
 <p>When you get a <code class="docutils literal notranslate"><span class="pre">ModuleNotFoundError</span></code>, the first thing to check is whether you have misspelled the name. Try using Google, e.g., search for “python numpie”. In this case (and in most others), Google will suggest the correct name (here it is numpy).  If the name does exist, check whether it sounds like the package you wanted.</p>
-<p>If you have the correct spelling, check whether you have installed the relevant package.  If you installed Python with Anaconda (which we will assume you did – if not, do it!), then use <code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">list</span></code>, e.g., <code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">list</span> <span class="pre">numpy</span></code> in a Terminal window (on a Mac or Linux box) or in an Anaconda Prompt window (on a Windows PC).</p>
+<p>If you have the correct spelling, check whether you have installed the relevant package.  If you installed Python with Anaconda (which we will assume you did – if not, do it!), then use <code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">list</span></code>, e.g., <code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">list</span> <span class="pre">numpy</span></code> in a Terminal window (on a Mac or Linux box) or in an Anaconda Prompt window (on a Windows PC). Note: this will also tell you the version number of <code class="docutils literal notranslate"><span class="pre">numpy</span></code>.</p>
 </section>
 <section id="numpy-arrays">
 <h3>numpy arrays<a class="headerlink" href="#numpy-arrays" title="Permalink to this heading">#</a></h3>
@@ -760,7 +760,7 @@ document.write(`
 </section>
 <section id="getting-help">
 <h2>Getting help<a class="headerlink" href="#getting-help" title="Permalink to this heading">#</a></h2>
-<p>You will often need help identifying the appropriate Python (or numpy or scipy or …) command or you will need an example of how to do something or you may get an error message you can’t figure out.  In all of these cases, Google (or equivalent) is your friend. Always include “python” in the search string (or “numpy” or “matplotlib” or …) to avoid getting results for a different language. You will usually get an online manual as one of the first responses if you ask about a function; these usually have examples if you scroll down. Otherwise, answers from <em>Stack Overflow</em> queries are your best bet to find a useful answer.</p>
+<p>You will often need help identifying the appropriate Python (or numpy or scipy or …) command or you will need an example of how to do something or you may get an error message you can’t figure out.  In all of these cases, Google (or equivalent) is your friend. Always include “python” in the search string (or “numpy” or “matplotlib” or …) to avoid getting results for a different language. You will usually get an online manual as one of the first responses if you ask about a function; these usually have examples if you scroll down to the bottom. Otherwise, answers from <em>Stack Overflow</em> queries are your best bet to find a useful answer.</p>
 </section>
 <section id="functions">
 <h2>Functions<a class="headerlink" href="#functions" title="Permalink to this heading">#</a></h2>
@@ -781,7 +781,7 @@ document.write(`
 <span class="nb">print</span><span class="p">(</span><span class="n">my_function</span><span class="p">(</span><span class="mf">5.</span><span class="p">))</span>
 
 <span class="c1"># We can pass an array to the function and it is evaluated term-by-term.</span>
-<span class="n">x_pts</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mf">1.</span><span class="p">,</span><span class="mf">10.</span><span class="p">,</span><span class="mf">1.</span><span class="p">)</span>
+<span class="n">x_pts</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mf">1.</span><span class="p">,</span> <span class="mf">10.</span><span class="p">,</span> <span class="mf">1.</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">my_function</span><span class="p">(</span><span class="n">x_pts</span><span class="p">))</span>
 </pre></div>
 </div>
@@ -814,7 +814,7 @@ document.write(`
 </div>
 <section id="id1">
 <h3>Debugging aside …<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h3>
-<p>There are two bugs in the following function.  <strong>Note the line where an error is first reported and fix the bugs sequentially (so you see the different error messages). You can turn on line numbers with “Toggle Line Numbers” under the View menu.</strong></p>
+<p>There are two bugs in the following function.  <strong>Note the line where an error is first reported and fix the bugs sequentially (so you see the different error messages). You can turn on line numbers with “Show Line Numbers” under the View menu.</strong></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">hello_function</span><span class="p">()</span>
@@ -1036,7 +1036,7 @@ document.write(`
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n</span> <span class="o">=</span> <span class="mi">5</span>
-<span class="c1"># define a matrix of dimension 10 x 10 and set all elements to zero</span>
+<span class="c1"># define a matrix of dimension 5 x 5 and set all elements to zero</span>
 <span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span> <span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span> <span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
 </pre></div>
@@ -1046,7 +1046,7 @@ document.write(`
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n</span> <span class="o">=</span> <span class="mi">5</span>
-<span class="c1"># define a matrix of dimension 10 x 10 and set all elements to one</span>
+<span class="c1"># define a matrix of dimension 5 x 5 and set all elements to one</span>
 <span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span> <span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span> <span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
 </pre></div>
@@ -1057,7 +1057,7 @@ document.write(`
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n</span> <span class="o">=</span> <span class="mi">4</span>
-<span class="c1"># define a matrix of dimension 10 x 10 and set all elements to random numbers with x \in [0, 1]</span>
+<span class="c1"># define a matrix of dimension 4 x 4 and set all elements to random numbers with x \in [0, 1]</span>
 <span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
 </pre></div>
@@ -1088,11 +1088,11 @@ document.write(`
 </div>
 </div>
 </div>
-<p>The inverse of this matrix <span class="math notranslate nohighlight">\(A^{-1}\)</span> can be computed using the <code class="docutils literal notranslate"><span class="pre">numpy.linalg</span></code> module</p>
+<p>The inverse of this matrix <span class="math notranslate nohighlight">\(A^{-1}\)</span> can be computed using the <code class="docutils literal notranslate"><span class="pre">numpy.linalg</span></code> module. (NOTE: usually you will avoid directly calculating matrix inverses if possible. More on this later.)</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n</span> <span class="o">=</span> <span class="mi">4</span>
-<span class="c1"># define a matrix of dimension 10 x 10 and set all elements to random numbers with x \in [0, 1]</span>
+<span class="c1"># define a matrix of dimension n x n and set all elements to random numbers with x \in [0, 1]</span>
 <span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span>
 
 <span class="n">Ainv</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">inv</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
@@ -1123,7 +1123,7 @@ document.write(`
 <section id="further-examples-with-numpy">
 <h3>Further examples with numpy<a class="headerlink" href="#further-examples-with-numpy" title="Permalink to this heading">#</a></h3>
 <ul class="simple">
-<li><p>The <a class="reference external" href="https://www.numpy.org/devdocs/user/quickstart.html">NumPy tutorial</a> is a good resource.</p></li>
+<li><p>The <a class="reference external" href="https://www.numpy.org/devdocs/user/quickstart.html">NumPy quickstart</a> is a good resource.</p></li>
 <li><p>The <a class="reference external" href="https://www.datacamp.com/community/tutorials/python-numpy-tutorial">Datacamp NumPy tutorial</a> covers much of the material in this notebook with more detail and also other topics.</p></li>
 <li><p>Another tutorial is from <a class="reference external" href="https://www.geeksforgeeks.org/numpy-tutorial/">GeeksforGeeks</a></p></li>
 </ul>
@@ -1140,16 +1140,16 @@ document.write(`
         },
         codeMirrorConfig: {
             theme: "abcdef",
-            mode: "conda-env-8820-book-env-2-py"
+            mode: "conda-env-8820-env-py"
         },
         kernelOptions: {
-            name: "conda-env-8820-book-env-2-py",
+            name: "conda-env-8820-env-py",
             path: "./notebooks/Reference"
         },
         predefinedOutput: true
     }
     </script>
-    <script>kernelName = 'conda-env-8820-book-env-2-py'</script>
+    <script>kernelName = 'conda-env-8820-env-py'</script>
 
                 </article>
               
