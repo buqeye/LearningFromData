@@ -547,7 +547,7 @@ document.write(`
 <p>How do you know if a distribution with a known functional form     has been correctly sampled?</p>
 <div class="dropdown admonition">
 <p class="admonition-title">Answer</p>
-<p>When the samples are histogrammed, they approach the     distribution function more closely as the number of samples     increases.</p>
+<p>When the samples are histogrammed (and normalized), they approach the distribution function more closely as the number of samples increases.</p>
 </div>
 </div>
 </li>
@@ -565,13 +565,17 @@ document.write(`
   \frac{\overbrace{p(\text{data}|\thetavec,I)}^{\text{likelihood}}\times \overbrace{p(\thetavec,I)}^{\text{prior}}}{\underbrace{p(\text{data}|I)}_{\text{evidence}}}
 \]</div>
 <ul class="simple">
-<li><p><span class="math notranslate nohighlight">\(\thetavec\)</span> is a general <em>vector</em> of parameters</p></li>
+<li><p><span class="math notranslate nohighlight">\(\thetavec\)</span> is a general <em>vector</em> of parameters (this is common notation in statistics)</p></li>
 <li><p>The donominator is the data probability or “fully marginalized likelihood” or evidence or maybe some other name (these are all used in the literature). We’ll come back to it later. As will be clear later, it is a normalization factor.</p></li>
 <li><p>The <em>prior</em> pdf is what information <span class="math notranslate nohighlight">\(I\)</span> we have (or believe) about <span class="math notranslate nohighlight">\(\thetavec\)</span> before we observe the data.</p></li>
 <li><p>The <em>posterior</em> pdf is our new pdf for <span class="math notranslate nohighlight">\(\thetavec\)</span>, given that we have observed the data.</p></li>
 <li><p>The <em>likelihood</em> is the probability of getting the specified data <em>given</em> the parameters <span class="math notranslate nohighlight">\(\thetavec\)</span> under consideration on the left side.</p></li>
 </ul>
 <p><span class="math notranslate nohighlight">\(\Longrightarrow\)</span> Bayes’ theorem tells us how to <em>update</em> our expectations.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Sometimes particular notation is used for the prior and likelihood. The prior is written with <span class="math notranslate nohighlight">\(\pi\)</span>: <span class="math notranslate nohighlight">\(p(\thetavec,I) \rightarrow \pi(\thetavec,I)\)</span> and the likelihood with <span class="math notranslate nohighlight">\(\mathcal{L}\)</span>: <span class="math notranslate nohighlight">\(p(\text{data}|\thetavec,I) \rightarrow \mathcal{L}(\text{data}|\thetavec,I)\)</span>.</p>
+</div>
 <section id="coin-tossing-example-to-illustrate-updating">
 <h3>Coin tossing example to illustrate updating<a class="headerlink" href="#coin-tossing-example-to-illustrate-updating" title="Permalink to this heading">#</a></h3>
 <p>The notebook is <a class="reference internal" href="../../notebooks/Basics/Bayesian_updating_coinflip_interactive.html"><span class="doc std std-doc">Bayesian_updating_coinflip_interactive.ipynb</span></a>.</p>
