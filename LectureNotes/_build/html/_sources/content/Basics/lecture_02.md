@@ -36,7 +36,7 @@ $$
 * The donominator is the data probability or "fully marginalized likelihood" or evidence or maybe some other name (these are all used in the literature). We'll come back to it later. As will be clear later, it is a normalization factor.
 * The *prior* pdf is what information $I$ we have (or believe) about $\thetavec$ before we observe the data.
 * The *posterior* pdf is our new pdf for $\thetavec$, given that we have observed the data.
-* The *likelihood* is the probability of getting the specified data *given* the parameters $\thetavec$ under consideration on the left side.
+* The *likelihood* is the probability of getting the specified data *given* the parameters $\thetavec$ under consideration on the left side. Note that the likelihood is to be considered as a function of $\thetavec$ for fixed data.
 
 $\Longrightarrow$ Bayes' theorem tells us how to *update* our expectations.
 
