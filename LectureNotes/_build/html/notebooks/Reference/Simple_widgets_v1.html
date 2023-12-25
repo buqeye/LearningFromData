@@ -593,14 +593,13 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="making-a-simple-widget-based-ui-with-ipywidgets-interactive-output">
 <h1>Making a simple widget-based UI with ipywidgets.interactive_output<a class="headerlink" href="#making-a-simple-widget-based-ui-with-ipywidgets-interactive-output" title="Permalink to this heading">#</a></h1>
+<p><strong>Note on 23-Dec-2023: the rendering of LaTeX in labels is not working in ipywidgets 8.1.1 (but it looks like a bug fix is in the works).</strong></p>
 <p>This is a guide-by-example to making simple user interfaces (UIs) for Jupyter notebook using the widgets provided by ipywidgets. In particular we use <code class="docutils literal notranslate"><span class="pre">ipywidgets.interactive_output</span></code>.  There are both simpler and more elaborate ways to use ipywidgets; this is a happy medium.</p>
 <p>Google “ipywidgets interact” for links to more information about widget types and other options for widgets.</p>
 <p>v1 by Dick Furnstahl (<a class="reference external" href="mailto:furnstahl&#46;1&#37;&#52;&#48;osu&#46;edu">furnstahl<span>&#46;</span>1<span>&#64;</span>osu<span>&#46;</span>edu</a>)</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> inline
-
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 </pre></div>
 </div>
@@ -719,7 +718,7 @@ document.write(`
 <span class="kn">from</span> <span class="nn">ipywidgets</span> <span class="kn">import</span> <span class="n">HBox</span><span class="p">,</span> <span class="n">VBox</span><span class="p">,</span> <span class="n">Layout</span><span class="p">,</span> <span class="n">Tab</span><span class="p">,</span> <span class="n">Label</span><span class="p">,</span> <span class="n">Checkbox</span>
 <span class="kn">from</span> <span class="nn">ipywidgets</span> <span class="kn">import</span> <span class="n">FloatSlider</span><span class="p">,</span> <span class="n">IntSlider</span><span class="p">,</span> <span class="n">Play</span><span class="p">,</span> <span class="n">Dropdown</span><span class="p">,</span> <span class="n">HTMLMath</span> 
 
-<span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">display</span>
+<span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">display</span><span class="p">,</span> <span class="n">Math</span>
 </pre></div>
 </div>
 </div>

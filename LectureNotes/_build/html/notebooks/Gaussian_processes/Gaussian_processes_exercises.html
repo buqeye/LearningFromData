@@ -615,6 +615,25 @@ adapted from the Gaussian Process Summer School (written by Nicolas Durrande, Ne
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ImportError</span><span class="g g-Whitespace">                               </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">line</span> <span class="mi">6</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span><span class="p">;</span> <span class="n">sns</span><span class="o">.</span><span class="n">set</span><span class="p">();</span> <span class="n">sns</span><span class="o">.</span><span class="n">set_context</span><span class="p">(</span><span class="s2">&quot;talk&quot;</span><span class="p">)</span>
+<span class="ne">----&gt; </span><span class="mi">6</span> <span class="kn">import</span> <span class="nn">GPy</span>
+
+<span class="n">File</span> <span class="o">~/</span><span class="n">Dropbox</span><span class="o">/</span><span class="n">Anaconda</span><span class="o">/</span><span class="n">anaconda3</span><span class="o">/</span><span class="n">envs</span><span class="o">/</span><span class="mi">8820</span><span class="o">-</span><span class="n">env</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="mf">.10</span><span class="o">/</span><span class="n">site</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">GPy</span><span class="o">/</span><span class="fm">__init__</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">32</span>
+<span class="g g-Whitespace">     </span><span class="mi">28</span> <span class="kn">from</span> <span class="nn">.core.parameterization</span> <span class="kn">import</span> <span class="n">Param</span><span class="p">,</span> <span class="n">Parameterized</span><span class="p">,</span> <span class="n">ObsAr</span><span class="p">,</span> <span class="n">transformations</span> <span class="k">as</span> <span class="n">constraints</span>
+<span class="g g-Whitespace">     </span><span class="mi">30</span> <span class="kn">from</span> <span class="nn">.__version__</span> <span class="kn">import</span> <span class="n">__version__</span>
+<span class="ne">---&gt; </span><span class="mi">32</span> <span class="kn">from</span> <span class="nn">numpy.testing</span> <span class="kn">import</span> <span class="n">Tester</span>
+<span class="g g-Whitespace">     </span><span class="mi">34</span> <span class="k">with</span> <span class="n">warnings</span><span class="o">.</span><span class="n">catch_warnings</span><span class="p">():</span>
+<span class="g g-Whitespace">     </span><span class="mi">35</span>     <span class="n">warnings</span><span class="o">.</span><span class="n">simplefilter</span><span class="p">(</span><span class="s1">&#39;ignore&#39;</span><span class="p">)</span>
+
+<span class="ne">ImportError</span>: cannot import name &#39;Tester&#39; from &#39;numpy.testing&#39; (/Users/furnstah/Dropbox/Anaconda/anaconda3/envs/8820-env/lib/python3.10/site-packages/numpy/testing/__init__.py)
+</pre></div>
+</div>
+</div>
 </div>
 </section>
 <section id="getting-started-the-covariance-function">
@@ -1094,16 +1113,16 @@ matrix <code class="docutils literal notranslate"><span class="pre">mu</span></c
         },
         codeMirrorConfig: {
             theme: "abcdef",
-            mode: "conda-env-8805-env-py"
+            mode: "conda-env-8820-env-py"
         },
         kernelOptions: {
-            name: "conda-env-8805-env-py",
+            name: "conda-env-8820-env-py",
             path: "./notebooks/Gaussian_processes"
         },
         predefinedOutput: true
     }
     </script>
-    <script>kernelName = 'conda-env-8805-env-py'</script>
+    <script>kernelName = 'conda-env-8820-env-py'</script>
 
                 </article>
               
