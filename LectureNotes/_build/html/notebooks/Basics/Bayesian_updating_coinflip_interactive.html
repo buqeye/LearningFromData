@@ -577,6 +577,7 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="interactive-bayesian-updating-coin-flipping-example">
 <h1><span class="section-number">1.5. </span>Interactive Bayesian updating: coin flipping example<a class="headerlink" href="#interactive-bayesian-updating-coin-flipping-example" title="Permalink to this heading">#</a></h1>
+<p><strong>Note on 23-Dec-2023: the rendering of LaTeX in widget labels is not working in ipywidgets 8.1.1 (but it looks like a bug fix is in the works).</strong></p>
 <section id="a-name-python-python-jupyter-set-up-a">
 <h2><a name="Python">Python/Jupyter set up</a><a class="headerlink" href="#a-name-python-python-jupyter-set-up-a" title="Permalink to this heading">#</a></h2>
 <div class="cell docutils container">
@@ -611,10 +612,17 @@ document.write(`
 </section>
 <section id="determining-the-bias-of-a-coin">
 <h2>Determining the bias of a coin<a class="headerlink" href="#determining-the-bias-of-a-coin" title="Permalink to this heading">#</a></h2>
-<p>Suppose we observe a succession of coin flips and record the number of heads and tails. Is the coin fair? The frequentist approach to this problem is to set up a null hypothesis, i.e., the hypothesis that the coin is fair, and then determine the probability that the observed data is generated given that that hypothesis holds. If the probability is a low number <span class="math notranslate nohighlight">\(p\)</span> then the null hypothesis can be rejected at a confidence of <span class="math notranslate nohighlight">\(1 - p\)</span>.</p>
-<p>Here we instead adopt a Bayesian approach. We will treat this as a <em>parameter estimation</em> problem, with the parameter we want to estimate being the probability that any one coin flip generates a head. We label this <span class="math notranslate nohighlight">\(p_h\)</span>. (Note that Sivia labels it <span class="math notranslate nohighlight">\(H\)</span>.) Whereas the frequentist wants to compute <span class="math notranslate nohighlight">\({\rm p}(\mbox{# tosses, # heads}|p_h=0.5)\)</span> the Bayesian gets to ask the more general question as to what is <span class="math notranslate nohighlight">\({\rm p}(p_h|\mbox{# tosses, # heads},I)\)</span>. Best estimates for <span class="math notranslate nohighlight">\(p_h\)</span>, intervals that encompass the true value with a certain probability can then all be computed from this probability density function.</p>
-<p>But this only makes sense if each value of <span class="math notranslate nohighlight">\(p_h\)</span> is associated with a degree of belief in its trueness. Presumably we would all start with some prior belief regarding how likely different values of <span class="math notranslate nohighlight">\(p_h\)</span> are. In the Bayesian framework this is encoded via the prior pdf for <span class="math notranslate nohighlight">\(p_h\)</span>, i.e., <span class="math notranslate nohighlight">\({\rm p}(p_h|I)\)</span>. <span class="math notranslate nohighlight">\(I\)</span> could be information regarding the character of the coin flipper, it could be based on a previous experiment (we managed to get hold of the coin and flip it a few times before hand!), or it could be an “ignorance prior”, the formulation of which we will come back to later in the course.</p>
-<p>One of the key points of this exercise though, is that with each flip of the coin we acquire more information on its fairness or otherwise—on the value of <span class="math notranslate nohighlight">\(p_h\)</span>. The logical thing to do is to update the state of our belief, our pdf for <span class="math notranslate nohighlight">\({\rm p}(p_h|\mbox{# tosses, # heads},I)\)</span> each time the number of coin tosses is incremented by 1.</p>
+<p><span class="math notranslate nohighlight">\(\newcommand{\pr}{\textrm{p}}\)</span>
+Suppose we observe a succession of coin flips and record the number of heads and tails. Is the coin fair? The frequentist approach to this problem is to set up a null hypothesis, i.e., the hypothesis that the coin is fair, and then determine the probability that the observed data is generated given that that hypothesis holds. If the probability is a low number <span class="math notranslate nohighlight">\(p\)</span> then the null hypothesis can be rejected at a confidence of <span class="math notranslate nohighlight">\(1 - p\)</span>.</p>
+<p>Here we instead adopt a Bayesian approach. We will treat this as a <em>parameter estimation</em> problem, with the parameter we want to estimate being the probability that any one coin flip generates a head. We label this <span class="math notranslate nohighlight">\(p_h\)</span>. (Note that Sivia labels it <span class="math notranslate nohighlight">\(H\)</span>.) Whereas the frequentist wants to compute</p>
+<div class="math notranslate nohighlight">
+\[{\rm p}(\mbox{\# tosses, \# heads}|p_h=0.5),\]</div>
+<p>the Bayesian gets to ask the more general question as to what is</p>
+<div class="math notranslate nohighlight">
+\[{\rm p}(p_h|\mbox{\# tosses, \# heads},I)?\]</div>
+<p>Best estimates for <span class="math notranslate nohighlight">\(p_h\)</span>, intervals that encompass the true value with a certain probability can then all be computed from this probability density function.</p>
+<p>But this only makes sense if each value of <span class="math notranslate nohighlight">\(p_h\)</span> is associated with a degree of belief in its trueness. Presumably we would all start with some prior belief regarding how likely different values of <span class="math notranslate nohighlight">\(p_h\)</span> are. In the Bayesian framework this is encoded via the prior pdf for <span class="math notranslate nohighlight">\(p_h\)</span>, i.e., <span class="math notranslate nohighlight">\({\rm p}(p_h|I)\)</span>. <span class="math notranslate nohighlight">\(I\)</span> could be information regarding the character of the coin flipper, it could be based on a previous experiment (we managed to get hold of the coin and flip it a few times beforehand!), or it could be an “ignorance prior”, the formulation of which we will come back to later in the course.</p>
+<p>One of the key points of this exercise though, is that with each flip of the coin we acquire more information on its fairness or otherwise—on the value of <span class="math notranslate nohighlight">\(p_h\)</span>. The logical thing to do is to update the state of our belief, our pdf for <span class="math notranslate nohighlight">\({\rm p}(p_h|\mbox{\# tosses, \# heads},I)\)</span> each time the number of coin tosses is incremented by 1.</p>
 <section id="a-name-updating-bayesian-updating-for-the-coin-a">
 <h3><a name="Updating">Bayesian updating for the coin</a><a class="headerlink" href="#a-name-updating-bayesian-updating-for-the-coin-a" title="Permalink to this heading">#</a></h3>
 <p><span class="math notranslate nohighlight">\(  \newcommand{\thetavec}{\boldsymbol{\theta}} \newcommand{\pr}{\textrm{p}}\)</span>
@@ -941,10 +949,6 @@ To do this we recall Bayes’ theorem with <span class="math notranslate nohighl
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<img alt="../../_images/25c7dbbf407bfe448278ad74acb7088a8e62b04aaf5355ed9da26a9802a398d9.png" src="../../_images/25c7dbbf407bfe448278ad74acb7088a8e62b04aaf5355ed9da26a9802a398d9.png" />
-<img alt="../../_images/25c7dbbf407bfe448278ad74acb7088a8e62b04aaf5355ed9da26a9802a398d9.png" src="../../_images/25c7dbbf407bfe448278ad74acb7088a8e62b04aaf5355ed9da26a9802a398d9.png" />
-</div>
 </div>
 </section>
 <section id="user-interface-for-coin-flipping">
@@ -955,25 +959,6 @@ To do this we recall Bayes’ theorem with <span class="math notranslate nohighl
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">display</span><span class="p">(</span><span class="n">UI_box</span><span class="p">)</span>   
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
-<script type="application/vnd.jupyter.widget-view+json">{"model_id": "23651967efb041ad8fa063d103f6af28", "version_major": 2, "version_minor": 0}</script><img alt="../../_images/25c7dbbf407bfe448278ad74acb7088a8e62b04aaf5355ed9da26a9802a398d9.png" src="../../_images/25c7dbbf407bfe448278ad74acb7088a8e62b04aaf5355ed9da26a9802a398d9.png" />
-<img alt="../../_images/25c7dbbf407bfe448278ad74acb7088a8e62b04aaf5355ed9da26a9802a398d9.png" src="../../_images/25c7dbbf407bfe448278ad74acb7088a8e62b04aaf5355ed9da26a9802a398d9.png" />
-<img alt="../../_images/25c7dbbf407bfe448278ad74acb7088a8e62b04aaf5355ed9da26a9802a398d9.png" src="../../_images/25c7dbbf407bfe448278ad74acb7088a8e62b04aaf5355ed9da26a9802a398d9.png" />
-<img alt="../../_images/4f67446abe935f2f71a8638546f967c61e3b8790a630551be88aef88972d4433.png" src="../../_images/4f67446abe935f2f71a8638546f967c61e3b8790a630551be88aef88972d4433.png" />
-<img alt="../../_images/8aef6419fb9ed39a1e4e3a83b83c341cac3dd2a521ee60583e623a33364c4469.png" src="../../_images/8aef6419fb9ed39a1e4e3a83b83c341cac3dd2a521ee60583e623a33364c4469.png" />
-<img alt="../../_images/bb3461bd4481d114eb053ad3ada5cd92447759e9ea4a9424feff7e3062b3387e.png" src="../../_images/bb3461bd4481d114eb053ad3ada5cd92447759e9ea4a9424feff7e3062b3387e.png" />
-<img alt="../../_images/0046ca9043f5dedb3a568bc2577d2c73cf7ef7bd4cce2b1a932b2c22d9777b07.png" src="../../_images/0046ca9043f5dedb3a568bc2577d2c73cf7ef7bd4cce2b1a932b2c22d9777b07.png" />
-<img alt="../../_images/c77844a15d07df2d0a6ea0ecc5c5014ffafc66399f99deab6ee7a814f49673d6.png" src="../../_images/c77844a15d07df2d0a6ea0ecc5c5014ffafc66399f99deab6ee7a814f49673d6.png" />
-<img alt="../../_images/9c220d0cb0eb73d2497d8544e6c38c5d33da2a18418633f3ecf943ee5a5eaf61.png" src="../../_images/9c220d0cb0eb73d2497d8544e6c38c5d33da2a18418633f3ecf943ee5a5eaf61.png" />
-<img alt="../../_images/51d7072ae71e6519bc22b4df19abb6e9cecfbfe68d99f6e56d559f7c907461dd.png" src="../../_images/51d7072ae71e6519bc22b4df19abb6e9cecfbfe68d99f6e56d559f7c907461dd.png" />
-<img alt="../../_images/51d7072ae71e6519bc22b4df19abb6e9cecfbfe68d99f6e56d559f7c907461dd.png" src="../../_images/51d7072ae71e6519bc22b4df19abb6e9cecfbfe68d99f6e56d559f7c907461dd.png" />
-<img alt="../../_images/a3ad3e3392b5edd0ad81c592df245d8054e5cadee49d36809a1bdb3b50048b9c.png" src="../../_images/a3ad3e3392b5edd0ad81c592df245d8054e5cadee49d36809a1bdb3b50048b9c.png" />
-<img alt="../../_images/5bb4d6272ee0c156acaa6e81ba33abdd35bbac6a31280428d9a6e50e3e98b82f.png" src="../../_images/5bb4d6272ee0c156acaa6e81ba33abdd35bbac6a31280428d9a6e50e3e98b82f.png" />
-<img alt="../../_images/5bb4d6272ee0c156acaa6e81ba33abdd35bbac6a31280428d9a6e50e3e98b82f.png" src="../../_images/5bb4d6272ee0c156acaa6e81ba33abdd35bbac6a31280428d9a6e50e3e98b82f.png" />
-<img alt="../../_images/a7f1aedec8b662fb29d9cdf86a6a6f023796a37e1440a7b9461427b5e22ba03c.png" src="../../_images/a7f1aedec8b662fb29d9cdf86a6a6f023796a37e1440a7b9461427b5e22ba03c.png" />
-<img alt="../../_images/a7f1aedec8b662fb29d9cdf86a6a6f023796a37e1440a7b9461427b5e22ba03c.png" src="../../_images/a7f1aedec8b662fb29d9cdf86a6a6f023796a37e1440a7b9461427b5e22ba03c.png" />
-<img alt="../../_images/25c7dbbf407bfe448278ad74acb7088a8e62b04aaf5355ed9da26a9802a398d9.png" src="../../_images/25c7dbbf407bfe448278ad74acb7088a8e62b04aaf5355ed9da26a9802a398d9.png" />
 </div>
 </div>
 <p>Questions and tasks relating to priors and dealing with uncertainty:</p>
@@ -1048,23 +1033,10 @@ You should go through this section once using the numbers provided, and then com
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>For a uniform prior, and 3 heads out of 14 tosses:
-Mean = 0.250; Mode = 0.213
-68% DoB interval = (0.144, 0.356)
-95% DoB interval = (0.078, 0.481)
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;The actual value of p_H is&#39;</span><span class="p">,</span> <span class="n">prob_heads</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The actual value of p_H is 0.4
 </pre></div>
 </div>
 </div>
@@ -1090,11 +1062,6 @@ Mean = 0.250; Mode = 0.213
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">print_frequentist_estimators</span><span class="p">(</span><span class="mi">14</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>For 3 heads out of 14 tosses, the frequentist 1-sigma interval = (0.105 , 0.324)
 </pre></div>
 </div>
 </div>
@@ -1129,14 +1096,6 @@ Mean = 0.250; Mode = 0.213
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>For the trusting-person&#39;s prior and 3 heads out of 14 tosses:
-Mean = 0.446; Mode = 0.213
-68% DoB interval = (0.388, 0.503)
-95% DoB interval = (0.335, 0.559)
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1162,14 +1121,6 @@ Mean = 0.446; Mode = 0.213
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>For the nasty-suspicious-mind prior and 3 heads out of 14 tosses:
-Mean = 0.222; Mode = 0.213
-68% DoB interval = (0.116, 0.329)
-95% DoB interval = (0.056, 0.461)
-</pre></div>
-</div>
-</div>
 </div>
 <ul class="simple">
 <li><p><em>So what is the best approach in this case? Objectivity? Trust? Suspicion?</em></p></li>
@@ -1187,16 +1138,16 @@ Mean = 0.222; Mode = 0.213
         },
         codeMirrorConfig: {
             theme: "abcdef",
-            mode: "python"
+            mode: "conda-env-8820-env-py"
         },
         kernelOptions: {
-            name: "python3",
+            name: "conda-env-8820-env-py",
             path: "./notebooks/Basics"
         },
         predefinedOutput: true
     }
     </script>
-    <script>kernelName = 'python3'</script>
+    <script>kernelName = 'conda-env-8820-env-py'</script>
 
                 </article>
               
