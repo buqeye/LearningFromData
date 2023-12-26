@@ -584,7 +584,7 @@ document.write(`
 \newcommand{\Nmax}{N_{\textrm{max}}}\)</span></p>
 <p><strong>Answer the questions in</strong> <em>italics</em>. <strong>Check with your neighbors and ask for help if you get stuck or are unsure.</strong></p>
 <ol class="arabic">
-<li><p>Claim: in the <span class="math notranslate nohighlight">\(\pr(\cdot|\cdot)\)</span> notation, our goal is to find the posterior pdf <span class="math notranslate nohighlight">\(\pr(x_0 | \{x_k\}, y_0)\)</span>.  <em>How would you translate this posterior to words?</em>
+<li><p>Claim: in the <span class="math notranslate nohighlight">\(p(\cdot|\cdot)\)</span> notation, our goal is to find the posterior pdf <span class="math notranslate nohighlight">\(p(x_0 | \{x_k\}, y_0)\)</span>.  <em>How would you translate this posterior to words?</em>
 <br>
 <br>
 <br></p></li>
@@ -596,40 +596,39 @@ document.write(`
 <br>
 <br>
 <br></p></li>
-<li><p>Let’s take for the prior pdf <span class="math notranslate nohighlight">\(\pr(x_0 | y_0)\)</span> that</p>
+<li><p>Let’s take for the prior pdf <span class="math notranslate nohighlight">\(p(x_0 | y_0)\)</span> that</p>
 <div class="math notranslate nohighlight">
-\[\pr(x_0 | y_0) = \pr(x_0) = \frac{1}{|\xmax - \xmin|} 
+\[p(x_0 | y_0) = p(x_0) = \frac{1}{|\xmax - \xmin|} 
       \quad\mbox{for}\ \xmin &lt; x_0 &lt; \xmax \]</div>
 <p>and zero elsewhere.  <em>What are we assuming?  Why is this more plausible than letting <span class="math notranslate nohighlight">\(x_0\)</span> be anything? Why do we assume a constant pdf?  Is this pdf normalized?</em>
 <br>
 <br>
 <br></p>
 </li>
-<li><p><em>If we assume that the <span class="math notranslate nohighlight">\(x_k\)</span>s are independent, then how is <span class="math notranslate nohighlight">\(\pr(\{x_k\}|x_0, y_0)\)</span> simplified?  Is this a justifiable assumption?</em>
+<li><p><em>If we assume that the <span class="math notranslate nohighlight">\(x_k\)</span>s are independent, then how is <span class="math notranslate nohighlight">\(p(\{x_k\}|x_0, y_0)\)</span> simplified?  Is this a justifiable assumption?</em>
 <br>
 <br>
 <br></p></li>
-<li><p><em>Show that for a particular <span class="math notranslate nohighlight">\(k\)</span>,</em></p>
+<li><p><em>Show that for a particular <span class="math notranslate nohighlight">\(k\)</span>,</em></p></li>
+</ol>
 <div class="math notranslate nohighlight">
-\[ \pr(x_k|x_0, y_0) = \frac{y_0}{\pi} \frac{1}{y_0^2 + (x_k - x_0)^2} \;, \]</div>
+\[ p(x_k|x_0, y_0) = \frac{y_0}{\pi} \frac{1}{y_0^2 + (x_k - x_0)^2} \;, \]</div>
 <p><em>given that the angular distribution from <span class="math notranslate nohighlight">\(\theta_k\)</span> is uniform from <span class="math notranslate nohighlight">\(-\pi/2\)</span> to <span class="math notranslate nohighlight">\(\pi/2\)</span>, so <span class="math notranslate nohighlight">\(\pr(\theta_k|x_0,y_0) = 1/\pi\)</span>, and also that</em></p>
 <div class="math notranslate nohighlight">
-\[ \pr(\theta_k|x_0, y_0)\, d\theta_k = \pr(x_k | x_0, y_0)\, dx_k \;.\]</div>
+\[ p(\theta_k|x_0, y_0)\, d\theta_k = p(x_k | x_0, y_0)\, dx_k \;.\]</div>
 <p><em>Why is the latter true?</em>
 <br>
 <br>
 <br>
 <br>
 <br>
-<br></p>
-</li>
-<li><p>Ok, now we’re ready to see what the estimates for <span class="math notranslate nohighlight">\(x_0\)</span> look like. Use the following code to generate a set of random <span class="math notranslate nohighlight">\(x\)</span> points for a Cauchy distribution.  <em>Look up the Stats documentation for a Cauchy distribution (google “scipy stats cauchy”) to verify it is the same function derived above (note the use of <code class="docutils literal notranslate"><span class="pre">loc</span></code> and <code class="docutils literal notranslate"><span class="pre">scale</span></code>).  Run it a few times to see the fluctuations in the distribution.</em> <br>
+<br>
+7. Ok, now we’re ready to see what the estimates for <span class="math notranslate nohighlight">\(x_0\)</span> look like. Use the following code to generate a set of random <span class="math notranslate nohighlight">\(x\)</span> points for a Cauchy distribution.  <em>Look up the Stats documentation for a Cauchy distribution (google “scipy stats cauchy”) to verify it is the same function derived above (note the use of <code class="docutils literal notranslate"><span class="pre">loc</span></code> and <code class="docutils literal notranslate"><span class="pre">scale</span></code>).  Run it a few times to see the fluctuations in the distribution.</em> <br>
 <em>What can you say about the tails of this distribution compared to your experience with Gaussian distributions?</em>
 <br>
 <br>
 <br>
-<br></p></li>
-</ol>
+<br></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> inline   
