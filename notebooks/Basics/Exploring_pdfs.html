@@ -557,7 +557,7 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quick-overview-to-a-bayesian-everything-is-a-pdf-probability-density-function">Quick overview: To a Bayesian, everything is a pdf (probability density function)</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualization-of-pdfs">Visualization of pdfs</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#quick-introduction-to-scipy-stats">Quick introduction to  <code class="docutils literal notranslate"><span class="pre">scipy.stats</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#matplotlib-plotting-definitions">Matplotlib plotting definitions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#matplotlib-plotting-helper-functions">Matplotlib plotting helper functions</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#some-standard-pdfs-normal-and-beta-distributions">Some standard pdfs: normal and beta distributions</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#another-standard-class-of-pdf-student-t">Another standard class of pdf:  Student t</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#projected-posterior-plots">Projected posterior plots</a></li>
@@ -583,15 +583,17 @@ Work through the notebook but don’t just follow the instructions.  Explore!</p
 <h2>Quick overview: To a Bayesian, everything is a pdf (probability density function)<a class="headerlink" href="#quick-overview-to-a-bayesian-everything-is-a-pdf-probability-density-function" title="Permalink to this heading">#</a></h2>
 <p>Physicists are used to dealing with pdfs as normalized wave functions squared.  For a one-dimensional particle, the probability density at <span class="math notranslate nohighlight">\(x\)</span> is</p>
 <span style="color: red">
- $$
+<div class="math notranslate nohighlight">
+\[
  |\Psi(x)|^2 \Longrightarrow p(x) 
- $$
+ \]</div>
 </span> 
 <p>The <em>probability</em> of finding <span class="math notranslate nohighlight">\(x\)</span> in some interval <span class="math notranslate nohighlight">\(a \leq x \leq b\)</span> is found by integration:</p>
 <span style="color: red">
- $$
+<div class="math notranslate nohighlight">
+\[
  p(a \leq x \leq b) = \int_a^b |\Psi(x)|^2 \; dx 
- $$
+ \]</div>
 </span> 
 <p>Just as with “Lagrangian” vs. “Lagrangian density”, physicists are not always careful when saying probability vs. probability density.</p>
 <p>Physicists are also used to multidimensional normalized pdfs as wave functions squared, e.g. probability density for particle 1 at <span class="math notranslate nohighlight">\(x_1\)</span> and particle 2 at <span class="math notranslate nohighlight">\(x_2\)</span>:</p>
@@ -652,8 +654,8 @@ Work through the notebook but don’t just follow the instructions.  Explore!</p
 </ul>
 <p><em>Try out some of the examples</em> (cut-and-paste from the manual page after turning off the &gt;&gt;&gt;s by clicking in the upper right of a box).  We’ll use all of these methods in explicit examples below.</p>
 </section>
-<section id="matplotlib-plotting-definitions">
-<h3>Matplotlib plotting definitions<a class="headerlink" href="#matplotlib-plotting-definitions" title="Permalink to this heading">#</a></h3>
+<section id="matplotlib-plotting-helper-functions">
+<h3>Matplotlib plotting helper functions<a class="headerlink" href="#matplotlib-plotting-helper-functions" title="Permalink to this heading">#</a></h3>
 <p>We first define a few functions that we’ll use to extract and plot quantities of interest.</p>
 <p><em>After you’ve looked at the examples that follow, come back and make sure you know what the functions are doing.</em></p>
 <div class="cell docutils container">
@@ -663,17 +665,17 @@ Work through the notebook but don’t just follow the instructions.  Explore!</p
 <span class="sd">    Finds the median, mean, and 68%/95% credible intervals for the given </span>
 <span class="sd">    1-d distribution (which is an object from scipy.stats).  </span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="c1"># For x = median, mean: return x and the value of the pdf at x as a list</span>
+    <span class="c1"># For x = median, then mean: return x and the value of the pdf at x as a list</span>
     <span class="n">median</span> <span class="o">=</span> <span class="p">[</span><span class="n">dist</span><span class="o">.</span><span class="n">median</span><span class="p">(),</span> <span class="n">dist</span><span class="o">.</span><span class="n">pdf</span><span class="p">(</span><span class="n">dist</span><span class="o">.</span><span class="n">median</span><span class="p">())]</span>  
     <span class="n">mean</span> <span class="o">=</span> <span class="p">[</span><span class="n">dist</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span> <span class="n">dist</span><span class="o">.</span><span class="n">pdf</span><span class="p">(</span><span class="n">dist</span><span class="o">.</span><span class="n">mean</span><span class="p">())]</span>
     <span class="c1"># The left and right limits of the credibility interval are returned</span>
-    <span class="n">cred68</span> <span class="o">=</span> <span class="n">dist</span><span class="o">.</span><span class="n">interval</span><span class="p">(</span><span class="mf">0.68</span><span class="p">)</span>
-    <span class="n">cred95</span> <span class="o">=</span> <span class="n">dist</span><span class="o">.</span><span class="n">interval</span><span class="p">(</span><span class="mf">0.95</span><span class="p">)</span>
+    <span class="n">cred68</span> <span class="o">=</span> <span class="n">dist</span><span class="o">.</span><span class="n">interval</span><span class="p">(</span><span class="mf">0.68</span><span class="p">)</span>  <span class="c1"># 68% interval</span>
+    <span class="n">cred95</span> <span class="o">=</span> <span class="n">dist</span><span class="o">.</span><span class="n">interval</span><span class="p">(</span><span class="mf">0.95</span><span class="p">)</span>  <span class="c1"># 95% interval</span>
     <span class="k">return</span> <span class="n">median</span><span class="p">,</span> <span class="n">mean</span><span class="p">,</span> <span class="n">cred68</span><span class="p">,</span> <span class="n">cred95</span>
 
 <span class="k">def</span> <span class="nf">dist_mode</span><span class="p">(</span><span class="n">dist</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Return the mode (maximum) of the 1-d distribution for array x.</span>
+<span class="sd">    Return the mode (maximum) of the 1-d distribution for array x. </span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">x_max_index</span> <span class="o">=</span> <span class="n">dist</span><span class="o">.</span><span class="n">pdf</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">.</span><span class="n">argmax</span><span class="p">()</span>
     <span class="c1"># Return x of the maximum and the value of the pdf at that x </span>
@@ -683,9 +685,9 @@ Work through the notebook but don’t just follow the instructions.  Explore!</p
 <span class="k">def</span> <span class="nf">dist_plot</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">dist_label</span><span class="p">,</span> <span class="n">x_dist</span><span class="p">,</span> <span class="n">dist</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Plot the distribution, indicating median, mean, mode</span>
-<span class="sd">    and 68%/95% probability intervals on the axis that is passed.</span>
+<span class="sd">    and 68%/95% probability intervals on the axis that is passed (ax).</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">median</span><span class="p">,</span> <span class="n">mean</span><span class="p">,</span> <span class="n">cred68</span><span class="p">,</span> <span class="n">cred95</span> <span class="o">=</span> <span class="n">dist_stuff</span><span class="p">(</span><span class="n">dist</span><span class="p">)</span>
+    <span class="n">median</span><span class="p">,</span> <span class="n">mean</span><span class="p">,</span> <span class="n">cred68</span><span class="p">,</span> <span class="n">cred95</span> <span class="o">=</span> <span class="n">dist_stuff</span><span class="p">(</span><span class="n">dist</span><span class="p">)</span> 
     <span class="n">mode</span> <span class="o">=</span> <span class="n">dist_mode</span><span class="p">(</span><span class="n">dist</span><span class="p">,</span> <span class="n">x_dist</span><span class="p">)</span>
     
     <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x_dist</span><span class="p">,</span> <span class="n">dist</span><span class="o">.</span><span class="n">pdf</span><span class="p">(</span><span class="n">x_dist</span><span class="p">),</span> <span class="n">label</span><span class="o">=</span><span class="n">dist_label</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="p">)</span>    
@@ -731,7 +733,7 @@ Work through the notebook but don’t just follow the instructions.  Explore!</p
 <span class="n">norm_dist</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">mu</span><span class="p">,</span> <span class="n">sigma</span><span class="p">)</span> <span class="c1"># the normal distribution from scipy.stats</span>
 <span class="n">norm_label</span><span class="o">=</span><span class="s1">&#39;normal pdf&#39;</span> <span class="o">+</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span> <span class="o">+</span> <span class="sa">rf</span><span class="s1">&#39;$\mu=$</span><span class="si">{</span><span class="n">mu</span><span class="si">:</span><span class="s1">1.1f</span><span class="si">}</span><span class="s1">&#39;</span> \
              <span class="o">+</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span> <span class="o">+</span> <span class="sa">rf</span><span class="s1">&#39;$\sigma=$</span><span class="si">{</span><span class="n">sigma</span><span class="si">:</span><span class="s1">1.1f</span><span class="si">}</span><span class="s1">&#39;</span> 
-<span class="n">ax1</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">ax1</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>  <span class="c1"># first of three subplots</span>
 <span class="n">dist_plot</span><span class="p">(</span><span class="n">ax1</span><span class="p">,</span> <span class="n">norm_label</span><span class="p">,</span> <span class="n">x_norm</span><span class="p">,</span> <span class="n">norm_dist</span><span class="p">)</span>
 
 <span class="c1"># beta distribution, characterized by a and b parameters</span>
@@ -741,7 +743,7 @@ Work through the notebook but don’t just follow the instructions.  Explore!</p
 <span class="n">beta_dist</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">beta</span><span class="p">(</span><span class="n">a1</span><span class="p">,</span> <span class="n">b1</span><span class="p">)</span>  <span class="c1"># the beta distribution from scipy.stats</span>
 <span class="n">beta1_label</span><span class="o">=</span><span class="s1">&#39;beta pdf&#39;</span> <span class="o">+</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span> <span class="o">+</span> <span class="sa">rf</span><span class="s1">&#39;$a=$</span><span class="si">{</span><span class="n">a1</span><span class="si">:</span><span class="s1">1.1f</span><span class="si">}</span><span class="s1">&#39;</span> \
               <span class="o">+</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span> <span class="o">+</span> <span class="sa">rf</span><span class="s1">&#39;$b=$</span><span class="si">{</span><span class="n">b1</span><span class="si">:</span><span class="s1">1.1f</span><span class="si">}</span><span class="s1">&#39;</span>
-<span class="n">ax2</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">ax2</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>  <span class="c1"># second of three subplots</span>
 <span class="n">dist_plot</span><span class="p">(</span><span class="n">ax2</span><span class="p">,</span> <span class="n">beta1_label</span><span class="p">,</span> <span class="n">x_beta</span><span class="p">,</span> <span class="n">beta_dist</span><span class="p">)</span>
 
 <span class="c1"># another beta distribution</span>
@@ -751,20 +753,16 @@ Work through the notebook but don’t just follow the instructions.  Explore!</p
 <span class="n">beta2_dist</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">beta</span><span class="p">(</span><span class="n">a2</span><span class="p">,</span> <span class="n">b2</span><span class="p">)</span>
 <span class="n">beta2_label</span><span class="o">=</span><span class="s1">&#39;beta pdf&#39;</span> <span class="o">+</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span> <span class="o">+</span> <span class="sa">rf</span><span class="s1">&#39;$a=$</span><span class="si">{</span><span class="n">a2</span><span class="si">:</span><span class="s1">1.1f</span><span class="si">}</span><span class="s1">&#39;</span> \
               <span class="o">+</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span> <span class="o">+</span> <span class="sa">rf</span><span class="s1">&#39;$b=$</span><span class="si">{</span><span class="n">b2</span><span class="si">:</span><span class="s1">1.1f</span><span class="si">}</span><span class="s1">&#39;</span> 
-<span class="n">ax3</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">ax3</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>  <span class="c1"># third of three subplots</span>
 <span class="n">dist_plot</span><span class="p">(</span><span class="n">ax3</span><span class="p">,</span> <span class="n">beta2_label</span><span class="p">,</span> <span class="n">x_beta</span><span class="p">,</span> <span class="n">beta2_dist</span><span class="p">)</span>
 
 <span class="n">mu2</span> <span class="o">=</span> <span class="n">beta2_dist</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
 <span class="n">sigma2</span> <span class="o">=</span> <span class="n">beta2_dist</span><span class="o">.</span><span class="n">std</span><span class="p">()</span>
 <span class="n">norm2_dist</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">mu2</span><span class="p">,</span> <span class="n">sigma2</span><span class="p">)</span>
-<span class="n">ax3</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x_beta</span><span class="p">,</span> <span class="n">norm2_dist</span><span class="o">.</span><span class="n">pdf</span><span class="p">(</span><span class="n">x_beta</span><span class="p">),</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">)</span>
 
 <span class="n">fig</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
-<img alt="../../_images/b9d4133471d3d39272ef3be160dba21ae6388852cddba34f3fe1869ee44be80f.png" src="../../_images/b9d4133471d3d39272ef3be160dba21ae6388852cddba34f3fe1869ee44be80f.png" />
 </div>
 </div>
 <p>The 68%/95% probability regions are shown in dark/light shading.  When applied to Bayesian posteriors, these are known as <em>credible intervals</em> or DoBs (degree of belief intervals) or Bayesian confidence intervals. The horizontal extent on the <span class="math notranslate nohighlight">\(x\)</span>-axis translates into the vertical extent of the error bar or error band for <span class="math notranslate nohighlight">\(x\)</span>.</p>
@@ -795,7 +793,7 @@ Work through the notebook but don’t just follow the instructions.  Explore!</p
 <span class="n">t1_label</span><span class="o">=</span><span class="s1">&#39;t pdf&#39;</span> <span class="o">+</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span> <span class="o">+</span> <span class="sa">rf</span><span class="s1">&#39;$\nu=$</span><span class="si">{</span><span class="n">nu1</span><span class="si">:</span><span class="s1">1.1f</span><span class="si">}</span><span class="s1">&#39;</span>
 <span class="n">ax1</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
 <span class="n">dist_plot</span><span class="p">(</span><span class="n">ax1</span><span class="p">,</span> <span class="n">t1_label</span><span class="p">,</span> <span class="n">x_t</span><span class="p">,</span> <span class="n">t1_dist</span><span class="p">)</span>
-<span class="n">ax1</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x_t</span><span class="p">,</span> <span class="n">norm1_dist</span><span class="o">.</span><span class="n">pdf</span><span class="p">(</span><span class="n">x_t</span><span class="p">),</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">)</span>
+<span class="c1">#ax1.plot(x_t, norm1_dist.pdf(x_t), color=&#39;red&#39;)</span>
 
 <span class="n">nu2</span> <span class="o">=</span> <span class="mi">3</span>
 <span class="n">t2_dist</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">t</span><span class="p">(</span><span class="n">nu2</span><span class="p">)</span> <span class="c1"># the Student t distribution</span>
@@ -816,12 +814,6 @@ Work through the notebook but don’t just follow the instructions.  Explore!</p
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;variance for nu2: </span><span class="si">{</span><span class="n">var2</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>variance for nu2: 3.0
-</pre></div>
-</div>
-<img alt="../../_images/8abb98963db1e341d353444999ea5727cbf9419c4dc483d8c87e52de9a6c7e52.png" src="../../_images/8abb98963db1e341d353444999ea5727cbf9419c4dc483d8c87e52de9a6c7e52.png" />
 </div>
 </div>
 <p>Note the “heavy tails” in the t distribution as <span class="math notranslate nohighlight">\(\nu\)</span> gets small.  As <span class="math notranslate nohighlight">\(\nu\)</span> gets large, the distribution approaches a standard normal (Gaussian) distribution.</p>
@@ -869,10 +861,6 @@ Work through the notebook but don’t just follow the instructions.  Explore!</p
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<img alt="../../_images/632b7096bdca4138cc880f45584c947e7b0f96a3c15d6f96f1ca85d2f14d940b.png" src="../../_images/632b7096bdca4138cc880f45584c947e7b0f96a3c15d6f96f1ca85d2f14d940b.png" />
-<img alt="../../_images/9ca50b5b336419702c7cfcabdcd6901863aebbc5bb813bf57052fc45899dce97.png" src="../../_images/9ca50b5b336419702c7cfcabdcd6901863aebbc5bb813bf57052fc45899dce97.png" />
-</div>
 </div>
 <p><em>What do you learn from these plots?</em></p>
 <p><em>Try replotting several times with only 1000 samples each and note how much the plots change.</em></p>
@@ -897,9 +885,6 @@ Work through the notebook but don’t just follow the instructions.  Explore!</p
 <span class="n">figure</span><span class="o">.</span><span class="n">set_size_inches</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span><span class="mi">7</span><span class="p">)</span>
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
-<img alt="../../_images/a0e44ac386c6218986fd1d36ee9cf90f09c3ebb12e787e6cfb6cfcf8534ce37e.png" src="../../_images/a0e44ac386c6218986fd1d36ee9cf90f09c3ebb12e787e6cfb6cfcf8534ce37e.png" />
 </div>
 </div>
 <p><em>What do you learn from these plots?</em></p>
@@ -973,7 +958,7 @@ Work through the notebook but don’t just follow the instructions.  Explore!</p
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quick-overview-to-a-bayesian-everything-is-a-pdf-probability-density-function">Quick overview: To a Bayesian, everything is a pdf (probability density function)</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualization-of-pdfs">Visualization of pdfs</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#quick-introduction-to-scipy-stats">Quick introduction to  <code class="docutils literal notranslate"><span class="pre">scipy.stats</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#matplotlib-plotting-definitions">Matplotlib plotting definitions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#matplotlib-plotting-helper-functions">Matplotlib plotting helper functions</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#some-standard-pdfs-normal-and-beta-distributions">Some standard pdfs: normal and beta distributions</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#another-standard-class-of-pdf-student-t">Another standard class of pdf:  Student t</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#projected-posterior-plots">Projected posterior plots</a></li>
