@@ -576,7 +576,7 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="exploring-pdfs">
 <h1><span class="section-number">1.3. </span>Exploring PDFs<a class="headerlink" href="#exploring-pdfs" title="Permalink to this heading">#</a></h1>
-<p>Goals: To play with plots of probability density functions (pdfs) using the <code class="docutils literal notranslate"><span class="pre">scipy.stats</span></code> and <code class="docutils literal notranslate"><span class="pre">numpy</span></code> libraries.
+<p><strong>Goals:</strong> To play with plots of probability density functions (pdfs) using the <code class="docutils literal notranslate"><span class="pre">scipy.stats</span></code> and <code class="docutils literal notranslate"><span class="pre">numpy</span></code> libraries.
 Work through the notebook but don’t just follow the instructions.  Explore!</p>
 <p><strong>Answer the questions in</strong> <em>italics</em>. <strong>Check with your neighbors and ask for help if you get stuck or are unsure.</strong></p>
 <section id="quick-overview-to-a-bayesian-everything-is-a-pdf-probability-density-function">
@@ -588,15 +588,15 @@ Work through the notebook but don’t just follow the instructions.  Explore!</p
  |\Psi(x)|^2 \Longrightarrow p(x) 
  \]</div>
 </span> 
-<p><span style="color: black">The <em>probability</em> of finding <span class="math notranslate nohighlight">\(x\)</span> in some interval <span class="math notranslate nohighlight">\(a \leq x \leq b\)</span> is found by integration:</span></p>
+<p>The <em>probability</em> of finding <span class="math notranslate nohighlight">\(x\)</span> in some interval <span class="math notranslate nohighlight">\(a \leq x \leq b\)</span> is found by integration:</p>
 <span style="color: red">
 <div class="math notranslate nohighlight">
 \[
  p(a \leq x \leq b) = \int_a^b |\Psi(x)|^2 \; dx 
  \]</div>
 </span> 
-<p><span style="color:black">Just as with “Lagrangian” vs. “Lagrangian density”, physicists are not always careful when saying probability vs. probability density.</span></p>
-<p><span style="color:black">Physicists are also used to multidimensional normalized pdfs as wave functions squared, e.g. probability density for particle 1 at <span class="math notranslate nohighlight">\(x_1\)</span> and particle 2 at <span class="math notranslate nohighlight">\(x_2\)</span>:</span></p>
+<p>Just as with “Lagrangian” vs. “Lagrangian density”, physicists are not always careful when saying probability vs. probability density.</p>
+<p>Physicists are also used to multidimensional normalized pdfs as wave functions squared, e.g. probability density for particle 1 at <span class="math notranslate nohighlight">\(x_1\)</span> and particle 2 at <span class="math notranslate nohighlight">\(x_2\)</span>:</p>
 <span style="color: red">
 <div class="math notranslate nohighlight">
 \[
@@ -606,18 +606,20 @@ Work through the notebook but don’t just follow the instructions.  Explore!</p
  \]</div>
 </span> 
 <p><span style="color:black">(Note that you will find alternative notation in the physics and statistics literature for generic pdfs: <span class="math notranslate nohighlight">\(p(\textbf{x}) = P(\textbf{x}) = \textrm{pr}(\textbf{x}) = \textrm{prob}(\textbf{x}) = \ldots\)</span> )</span></p>
-<p><span style="color:black">Some other vocabulary and definitions:</span>
-<span style="color:black">* <span class="math notranslate nohighlight">\(p(x_1,x_2)\)</span> is the <em>joint probability density</em> of <span class="math notranslate nohighlight">\(x_1\)</span> and <span class="math notranslate nohighlight">\(x_2\)</span>.</span> <br>
-<span style="color:black">* What is the probability to find particle 1 at <span class="math notranslate nohighlight">\(x_1\)</span> and particle 2 anywhere?  <span class="math notranslate nohighlight">\(\color{blue}{\int\! |\Psi(x_1,x_2)|^2 dx_2}\)</span> (integrated over the full domain of <span class="math notranslate nohighlight">\(x_2\)</span>, e.g., 0 to <span class="math notranslate nohighlight">\(\infty\)</span>).</span><br>
-<span style="color:black">* The <em>marginal probability density</em> of <span class="math notranslate nohighlight">\(x_1\)</span> is:
-<span class="math notranslate nohighlight">\(\color{blue}{p(x_1) = \int\! p(x_1,x_2)\,dx_2}\)</span>.</span> <br>
-<span style="color:black">* “Marginalizing” = “integrating out” (eliminates from the posterior the “nuisance parameters” whose value you don’t care about).  </span></p>
-<p><span style="color:black">In Bayesian statistics there are pdfs (or pmfs if discrete) for experimental <i>and</i> theoretical uncertainties, fit parameters, hyperparameters (what are those?), events (“Will it rain tomorrow?”), etc.  Even if <span class="math notranslate nohighlight">\(x\)</span> has the definite value <span class="math notranslate nohighlight">\(x_0\)</span>, we can use the pdf <span class="math notranslate nohighlight">\(p(x) = \delta(x-x_0)\)</span>.  </span></p>
-<p><span style="color:black"><em>Questions?</em></span></p>
+<p>Some other vocabulary and definitions:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(p(x_1,x_2)\)</span> is the <em>joint probability density</em> of <span class="math notranslate nohighlight">\(x_1\)</span> and <span class="math notranslate nohighlight">\(x_2\)</span>.</p></li>
+<li><p>What is the probability to find particle 1 at <span class="math notranslate nohighlight">\(x_1\)</span> and particle 2 anywhere?  <span class="math notranslate nohighlight">\(\color{blue}{\int\! |\Psi(x_1,x_2)|^2 dx_2}\)</span> (integrated over the full domain of <span class="math notranslate nohighlight">\(x_2\)</span>, e.g., 0 to <span class="math notranslate nohighlight">\(\infty\)</span>).</p></li>
+<li><p>The <em>marginal probability density</em> of <span class="math notranslate nohighlight">\(x_1\)</span> is:
+<span class="math notranslate nohighlight">\(\color{blue}{p(x_1) = \int\! p(x_1,x_2)\,dx_2}\)</span>.</p></li>
+<li><p>“Marginalizing” = “integrating out” (eliminates from the posterior the “nuisance parameters” whose value you don’t care about).</p></li>
+</ul>
+<p>In Bayesian statistics there are pdfs (or pmfs if discrete) for experimental <i>and</i> theoretical uncertainties, fit parameters, hyperparameters (what are those?), events (“Will it rain tomorrow?”), etc.  Even if <span class="math notranslate nohighlight">\(x\)</span> has the definite value <span class="math notranslate nohighlight">\(x_0\)</span>, we can use the pdf <span class="math notranslate nohighlight">\(p(x) = \delta(x-x_0)\)</span>.</p>
+<p><em>Questions?</em></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># set up for plots in this notebook using matplotlib </span>
-<span class="c1"># [Note: this is not generally necessary anymore.]</span>
+<span class="c1"># [Note: this is not generally necessary anymore with Jupyter notebooks as it is the default.]</span>
 <span class="o">%</span><span class="k">matplotlib</span> inline   
 </pre></div>
 </div>
