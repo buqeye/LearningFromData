@@ -99,10 +99,6 @@ Let results be $D = \{D_k\}$ (in practice take 0's and 1's as the two choices $\
     :::
 
 
-:::{note}
-Something to come back to: Frequentist point estimates
-:::
-
 Maximum-likelihood means: what value of $p_h$ maximizes the likelihood (notation: $\mathcal{L}$ is often used for the likelihood)
 
 $$
@@ -110,6 +106,12 @@ $$
 $$  
 
 Exercise: Carry out the maximization
+
+
+:::{note}
+Something to come back to: Frequentist point estimates
+:::
+
 
 ## Gaussian noise and averages
 
