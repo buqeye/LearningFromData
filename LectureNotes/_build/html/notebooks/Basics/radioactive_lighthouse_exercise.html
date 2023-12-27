@@ -588,18 +588,18 @@ document.write(`
 <br>
 <br>
 <br></p></li>
-<li><p><em>By Bayes’ theorem, how is this posterior related to <span class="math notranslate nohighlight">\(\pr(\{x_k\} | x_0, y_0)\)</span>, <span class="math notranslate nohighlight">\(\pr(x_0 | y_0)\)</span>, and <span class="math notranslate nohighlight">\(\pr(\{x_k\}|y_0)\)</span>?</em>
+<li><p><em>By Bayes’ theorem, how is this posterior related to <span class="math notranslate nohighlight">\(p(\{x_k\} | x_0, y_0)\)</span>, <span class="math notranslate nohighlight">\(p(x_0 | y_0)\)</span>, and <span class="math notranslate nohighlight">\(p(\{x_k\}|y_0)\)</span>?</em>
 <br>
 <br>
 <br></p></li>
-<li><p>Claim: because the denominator pdf in 2. is independent of <span class="math notranslate nohighlight">\(x_0\)</span>, it is just a normalization factor for <span class="math notranslate nohighlight">\(\pr(x_0 | \{x_k\}, y_0)\)</span>, so we don’t need to calculate it explicitly.  <em>Do you understand this?  What good is an unnormalized posterior <span class="math notranslate nohighlight">\(\pr(x_0 | \{x_k\}, y_0)\)</span>?</em>
+<li><p>Claim: because the denominator pdf in 2. is independent of <span class="math notranslate nohighlight">\(x_0\)</span>, it is just a normalization factor for <span class="math notranslate nohighlight">\(p(x_0 | \{x_k\}, y_0)\)</span>, so we don’t need to calculate it explicitly.  <em>Do you understand this?  What good is an unnormalized posterior <span class="math notranslate nohighlight">\(p(x_0 | \{x_k\}, y_0)\)</span>?</em>
 <br>
 <br>
 <br></p></li>
 <li><p>Let’s take for the prior pdf <span class="math notranslate nohighlight">\(p(x_0 | y_0)\)</span> that</p>
 <div class="math notranslate nohighlight">
-\[p(x_0 | y_0) = p(x_0) = \frac{1}{|\xmax - \xmin|} 
-      \quad\mbox{for}\ \xmin &lt; x_0 &lt; \xmax \]</div>
+\[p(x_0 | y_0) = p(x_0) = \frac{1}{|x_{0,\textrm{max}} - x_{0,\textrm{min}}|} 
+      \quad\mbox{for}\ x_{0,\textrm{min}} &lt; x_0 &lt; x_{0,\textrm{max}} \]</div>
 <p>and zero elsewhere.  <em>What are we assuming?  Why is this more plausible than letting <span class="math notranslate nohighlight">\(x_0\)</span> be anything? Why do we assume a constant pdf?  Is this pdf normalized?</em>
 <br>
 <br>
@@ -613,7 +613,7 @@ document.write(`
 </ol>
 <div class="math notranslate nohighlight">
 \[ p(x_k|x_0, y_0) = \frac{y_0}{\pi} \frac{1}{y_0^2 + (x_k - x_0)^2} \;, \]</div>
-<p><em>given that the angular distribution from <span class="math notranslate nohighlight">\(\theta_k\)</span> is uniform from <span class="math notranslate nohighlight">\(-\pi/2\)</span> to <span class="math notranslate nohighlight">\(\pi/2\)</span>, so <span class="math notranslate nohighlight">\(\pr(\theta_k|x_0,y_0) = 1/\pi\)</span>, and also that</em></p>
+<p><em>given that the angular distribution from <span class="math notranslate nohighlight">\(\theta_k\)</span> is uniform from <span class="math notranslate nohighlight">\(-\pi/2\)</span> to <span class="math notranslate nohighlight">\(\pi/2\)</span>, so <span class="math notranslate nohighlight">\(p(\theta_k|x_0,y_0) = 1/\pi\)</span>, and also that</em></p>
 <div class="math notranslate nohighlight">
 \[ p(\theta_k|x_0, y_0)\, d\theta_k = p(x_k | x_0, y_0)\, dx_k \;.\]</div>
 <p><em>Why is the latter true?</em>
@@ -1001,16 +1001,16 @@ document.write(`
         },
         codeMirrorConfig: {
             theme: "abcdef",
-            mode: "python"
+            mode: "conda-env-8820-book-env-py"
         },
         kernelOptions: {
-            name: "python3",
+            name: "conda-env-8820-book-env-py",
             path: "./notebooks/Basics"
         },
         predefinedOutput: true
     }
     </script>
-    <script>kernelName = 'python3'</script>
+    <script>kernelName = 'conda-env-8820-book-env-py'</script>
 
                 </article>
               
