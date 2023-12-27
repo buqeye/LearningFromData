@@ -612,15 +612,25 @@ Let results be <span class="math notranslate nohighlight">\(D = \{D_k\}\)</span>
 </div>
 </li>
 </ol>
-<p>Maximum-likelihood means: what value of <span class="math notranslate nohighlight">\(p_h\)</span> maximizes the likelihood (notation: <span class="math notranslate nohighlight">\(\mathcal{L}\)</span> is often used for the likelihood)</p>
-<div class="math notranslate nohighlight">
-\[
+<div class="highlight-{admonition}Something notranslate"><div class="highlight"><pre><span></span>Maximum-likelihood means: what value of $p_h$ maximizes the likelihood (notation: $\mathcal{L}$ is often used for the likelihood)
+
+$$
   p(R,N|p_h) \equiv \mathcal{L}(R,N|p_h) = \mathcal{N}p_h^R (1-p_h)^{N-R} \,?
-\]</div>
-<p>Exercise: Carry out the maximization</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>Something to come back to: Frequentist point estimates</p>
+$$  
+:::{admonition}Answer
+:class: dropdown
+
+$$
+    \frac{d}{dp_h}\mathcal{L} = \mathcal{N}\bigl(
+       R p_h^{R-1}(1-p_h)^{N-R} - (N-R)p_h^R (1-p_h)^{N-R-1}
+       \bigr)
+       = 0 \ \Longrightarrow p_h = \frac{R}{N}
+$$
+
+Similarly, the standard deviation is $\sigma = \sqrt{p_h(1-p_h)/N}$.
+
+:::
+</pre></div>
 </div>
 </section>
 <section id="gaussian-noise-and-averages">
@@ -751,11 +761,8 @@ What would a Bayesian statistician say?
 </section>
 <section id="to-the-lighthouse">
 <h2>To the lighthouse!<a class="headerlink" href="#to-the-lighthouse" title="Permalink to this heading">#</a></h2>
-<div class="highlight-{admonition}Discussion notranslate"><div class="highlight"><pre><span></span>A frequentist claims that the use of a prior is nonsense because it is subjective and tied to an individual.
-What would a Bayesian statistician say?
-</pre></div>
-</div>
-<p>Homework: work through <a class="reference internal" href="../../notebooks/Basics/radioactive_lighthouse_exercise.html"><span class="doc std std-doc">Radioactive lighthouse problem</span></a>.</p>
+<p>Homework: work through <a class="reference internal" href="../../notebooks/Basics/radioactive_lighthouse_exercise.html"><span class="doc std std-doc">Radioactive lighthouse problem</span></a>.
+e measurement in question.</p>
 </section>
 </section>
 

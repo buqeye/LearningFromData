@@ -99,18 +99,28 @@ Let results be $D = \{D_k\}$ (in practice take 0's and 1's as the two choices $\
     :::
 
 
+
+::::{admonition}Something to come back to: Frequentist point estimates
 Maximum-likelihood means: what value of $p_h$ maximizes the likelihood (notation: $\mathcal{L}$ is often used for the likelihood)
 
 $$
   p(R,N|p_h) \equiv \mathcal{L}(R,N|p_h) = \mathcal{N}p_h^R (1-p_h)^{N-R} \,?
 $$  
+:::{admonition}Answer
+:class: dropdown
 
-Exercise: Carry out the maximization
+$$
+    \frac{d}{dp_h}\mathcal{L} = \mathcal{N}\bigl(
+       R p_h^{R-1}(1-p_h)^{N-R} - (N-R)p_h^R (1-p_h)^{N-R-1}
+       \bigr)
+       = 0 \ \Longrightarrow p_h = \frac{R}{N}
+$$
 
+Similarly, the standard deviation is $\sigma = \sqrt{p_h(1-p_h)/N}$.
 
-:::{note}
-Something to come back to: Frequentist point estimates
 :::
+::::
+
 
 
 ## Gaussian noise and averages
@@ -234,10 +244,7 @@ What would a Bayesian statistician say?
 ## To the lighthouse!
 
 
-:::{admonition}Discussion point
-A frequentist claims that the use of a prior is nonsense because it is subjective and tied to an individual.
-What would a Bayesian statistician say?
-:::
-
 
 Homework: work through [](/notebooks/Basics/radioactive_lighthouse_exercise.ipynb).
+e measurement in question.
+
