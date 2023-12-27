@@ -223,12 +223,18 @@ and a Frequentist and Bayesian will get the same answer for the most likely valu
 
 * The prior includes additional knowledge (information). It is what you know *before* the measurement in question.
 
-Put in a breaker line here.
 
 :::{admonition}Discussion point
 A frequentist claims that the use of a prior is nonsense because it is subjective and tied to an individual.
 What would a Bayesian statistician say?
 :::
+
+
+:::{admonition}Discussion point
+A frequentist claims that the use of a prior is nonsense because it is subjective and tied to an individual.
+What would a Bayesian statistician say?
+:::
+
 
 ## To the lighthouse!
 
