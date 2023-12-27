@@ -230,7 +230,7 @@ What would a Bayesian statistician say?
 :::
 
 
-:::{admonition}Discussion point
+:::{note}Discussion point
 A frequentist claims that the use of a prior is nonsense because it is subjective and tied to an individual.
 What would a Bayesian statistician say?
 :::
