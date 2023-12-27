@@ -230,12 +230,14 @@ What would a Bayesian statistician say?
 :::
 
 
-:::{note}Discussion point
+
+## To the lighthouse!
+
+
+:::{admonition}Discussion point
 A frequentist claims that the use of a prior is nonsense because it is subjective and tied to an individual.
 What would a Bayesian statistician say?
 :::
 
-
-## To the lighthouse!
 
 Homework: work through [](/notebooks/Basics/radioactive_lighthouse_exercise.ipynb).
