@@ -634,7 +634,7 @@ variance <span class="math notranslate nohighlight">\(n \sigma^2\)</span>.</p>
 from.</p></li>
 <li><p>The binomial, Poisson, chi-squared, and Student’s t- distributions all approach
 Gaussian distributions in the limit of a large number
-of degrees of freedom (e.q., for large <span class="math notranslate nohighlight">\(N\)</span> for binomial). More later: this consequence is probably not immediately obvious to you from the statement of the CLT!</p></li>
+of degrees of freedom (e.q., for large <span class="math notranslate nohighlight">\(N\)</span> for binomial). This consequence is probably not immediately obvious to you from the statement of the CLT! (See the <a class="reference internal" href="../../notebooks/Basics/visualization_of_CLT.html"><span class="doc std std-doc">Visualization of the Central Limit Theorem</span></a> notebook for an explanation.)</p></li>
 </ul>
 </section>
 <section id="proof-in-a-special-case">
@@ -766,12 +766,15 @@ hypothesis is rejected at the <span class="math notranslate nohighlight">\(p_{\r
 <li><p>Note that if <span class="math notranslate nohighlight">\(p(D|{\rm null~hypothesis}) &gt; p_{\rm crit}\)</span> you cannot
 conclude that the null hypothesis is true. It just means “no effect
 was observed”.</p></li>
-<li><p>Look at
-<a class="reference internal" href="../../notebooks/Basics/Bayesian_updating_coinflip_interactive.html"><span class="doc std std-doc">Interactive Bayesian updating: coin flipping example</span></a>. Pick
-a <span class="math notranslate nohighlight">\(p\)</span>-value. If  <span class="math notranslate nohighlight">\(H=0.4\)</span> work out how many coin tosses it would take
-to reject the null hypothesis that it’s a fair coin (<span class="math notranslate nohighlight">\(H=0.5\)</span>) at
-that <span class="math notranslate nohighlight">\(p\)</span>-value.</p></li>
 </ul>
+<div class="admonition-exercise admonition">
+<p class="admonition-title">Exercise</p>
+<p>Look at
+<a class="reference internal" href="../../notebooks/Basics/Bayesian_updating_coinflip_interactive.html"><span class="doc std std-doc">Interactive Bayesian updating: coin flipping example</span></a>. Pick
+a <span class="math notranslate nohighlight">\(p\)</span>-value. If  <span class="math notranslate nohighlight">\(H=0.4\)</span>, work out how many coin tosses it would take
+to reject the null hypothesis that it’s a fair coin (<span class="math notranslate nohighlight">\(H=0.5\)</span>) at
+that <span class="math notranslate nohighlight">\(p\)</span>-value.</p>
+</div>
 </section>
 <section id="bayesian-degree-of-belief-intervals-and-frequentist-confidence-intervals">
 <h2>Bayesian degree of belief intervals and frequentist confidence intervals<a class="headerlink" href="#bayesian-degree-of-belief-intervals-and-frequentist-confidence-intervals" title="Permalink to this heading">#</a></h2>
