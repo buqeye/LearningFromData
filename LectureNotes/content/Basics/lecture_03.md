@@ -1,5 +1,31 @@
 #  Lecture 3
 
+
+## Step through the medical example key
+
+Some of the answers are straightforward but make sure you agree with your neighbors. We'll split out a few follow-up points.
+
+::::{admonition} Follow-up question on 2.
+Why is it $p(H|D)$ and not $p(H,D)$?
+:::{admonition} Answer
+:class: dropdown 
+Recall that $p(H,D) = p(H|D) \cdot p(D)$. You are generally interested in $p(H|D)$.
+If you know $p(D) = 1$, then they are the same.
+:::
+::::
+
+::::{admonition} Follow-up question on 5.
+The emphasis here is on the sum rule. Why didn't any column except Total in the sum/product rule notebook add to 1?
+:::{admonition} Answer
+:class: dropdown 
+Because were were looking at $p(\text{tall,blue}) + p(\text{short,blue}) \neq 1$, whereas $p(\text{tall}| \text{blue}) + p(\text{short}| \text{blue}) = 1$.
+:::
+::::
+
+* In general and for 6. in particular we emphasise the usefulness of Bayes' theorem to express $p(H|D)$ in terms of $p(D|H)$. 
+* Make sure that 8. and 9. are clear to you. In 8., this is standard but not so obvious at first; after it becomes familiar you will find that you jump right to the end.
+
+
 ## Recap of coin flipping notebook
 
 Recall the names of the pdfs in Bayes' theoem: posterior, likelihood, prior, evidence; and recall Bayesian updating: prior + data $\rightarrow$ posterior $\rightarrow$ updated prior $\rightarrow$ updated posterior $\rightarrow$ $\ldots$.
@@ -99,14 +125,29 @@ Let results be $D = \{D_k\}$ (in practice take 0's and 1's as the two choices $\
     :::
 
 
-    ::::{admonition}Something to come back to: Frequentist point estimates
+::::{admonition} Something to come back to: Frequentist point estimates
 Maximum-likelihood means: what value of $p_h$ maximizes the likelihood (notation: $\mathcal{L}$ is often used for the likelihood)
 
 $$
   p(R,N|p_h) \equiv \mathcal{L}(R,N|p_h) = \mathcal{N}p_h^R (1-p_h)^{N-R} \,?
 $$  
 
-Exercise: Carry out the maximization
+:::{admonition} Answer
+:class: dropdown
+
+$$
+    \frac{d}{dp_h}\mathcal{L} = \mathcal{N}\bigl(
+       R p_h^{R-1}(1-p_h)^{N-R} - (N-R)p_h^R (1-p_h)^{N-R-1}
+       \bigr)
+       = 0 \ \Longrightarrow p_h = \frac{R}{N}
+$$
+
+Similarly, the standard deviation is $\sigma = \sqrt{p_h(1-p_h)/N}$.
+
+:::
+::::
+
+
 
 ## Gaussian noise and averages
 
@@ -218,11 +259,18 @@ and a Frequentist and Bayesian will get the same answer for the most likely valu
 
 * The prior includes additional knowledge (information). It is what you know *before* the measurement in question.
 
-:::{admonition}Discussion point
+
+:::{admonition} Discussion point
 A frequentist claims that the use of a prior is nonsense because it is subjective and tied to an individual.
 What would a Bayesian statistician say?
 :::
 
+
+
 ## To the lighthouse!
 
+
+
 Homework: work through [](/notebooks/Basics/radioactive_lighthouse_exercise.ipynb).
+e measurement in question.
+
