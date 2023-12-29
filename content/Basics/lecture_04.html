@@ -509,7 +509,7 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-gaussian-is-to-statistics-what-the-harmonic-oscillator-is-to-mechanics">The Gaussian is to statistics what the harmonic oscillator is to mechanics</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-central-limit-theorem">The Central Limit Theorem</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#consequences">Consequences:</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#proof-in-a-special-case">Proof in a special case:</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#proof-of-the-clt-in-a-special-case">Proof of the CLT in a special case:</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#notebook">Notebook:</a></li>
 </ul>
 </li>
@@ -634,11 +634,23 @@ variance <span class="math notranslate nohighlight">\(n \sigma^2\)</span>.</p>
 from.</p></li>
 <li><p>The binomial, Poisson, chi-squared, and Student’s t- distributions all approach
 Gaussian distributions in the limit of a large number
-of degrees of freedom (e.q., for large <span class="math notranslate nohighlight">\(N\)</span> for binomial). This consequence is probably not immediately obvious to you from the statement of the CLT! (See the <a class="reference internal" href="../../notebooks/Basics/visualization_of_CLT.html"><span class="doc std std-doc">Visualization of the Central Limit Theorem</span></a> notebook for an explanation.)</p></li>
+of degrees of freedom (e.q., for large <span class="math notranslate nohighlight">\(n\)</span> for binomial). This consequence is probably not immediately obvious to you from the statement of the CLT! (See the <a class="reference internal" href="../../notebooks/Basics/visualization_of_CLT.html"><span class="doc std std-doc">Visualization of the Central Limit Theorem</span></a> notebook for an explanation of the Poisson distribution.)</p></li>
 </ul>
+<div class="admonition-question admonition">
+<p class="admonition-title">Question</p>
+<p>Why would we expect the CLT to work for a binomial distribution?</p>
+<div class="dropdown admonition">
+<p class="admonition-title">Hint</p>
+<p>If we denote Bin(<span class="math notranslate nohighlight">\(n,p\)</span>) as the binomial distribution for <span class="math notranslate nohighlight">\(n\)</span> trials with probability <span class="math notranslate nohighlight">\(p\)</span> of success, how is Bin(<span class="math notranslate nohighlight">\(1,p\)</span>) related to Bin(<span class="math notranslate nohighlight">\(n,p\)</span>)?</p>
+</div>
+<div class="dropdown admonition">
+<p class="admonition-title">Answer</p>
+<p>If we add up <span class="math notranslate nohighlight">\(n\)</span> random variables from Bin(<span class="math notranslate nohighlight">\(1,p\)</span>), each with value 0 or 1, this is equivalent to a Bin(<span class="math notranslate nohighlight">\(n,p\)</span>) random variable with the same number of successes. So we already have a sum of random variables built in and the CLT will apply. (In more detail: getting <span class="math notranslate nohighlight">\(k\)</span> ones (and <span class="math notranslate nohighlight">\(n-k\)</span> zeros) from the <span class="math notranslate nohighlight">\(n\)</span> Bin(<span class="math notranslate nohighlight">\(1,p\)</span>) draws will have probability <span class="math notranslate nohighlight">\(p^k\)</span> times <span class="math notranslate nohighlight">\((1-p)^{n-k}\)</span> times the number of combinations <span class="math notranslate nohighlight">\(n\choose k\)</span>. This is the same as the binomial probability for <span class="math notranslate nohighlight">\(k\)</span> successes.)</p>
+</div>
+</div>
 </section>
-<section id="proof-in-a-special-case">
-<h4>Proof in a special case:<a class="headerlink" href="#proof-in-a-special-case" title="Permalink to this heading">#</a></h4>
+<section id="proof-of-the-clt-in-a-special-case">
+<h4>Proof of the CLT in a special case:<a class="headerlink" href="#proof-of-the-clt-in-a-special-case" title="Permalink to this heading">#</a></h4>
 <p>Start with <em>independent</em> random variables <span class="math notranslate nohighlight">\(x_1,\cdots,x_n\)</span> drawn from a distribution with mean <span class="math notranslate nohighlight">\(\langle x \rangle = 0\)</span> and variance <span class="math notranslate nohighlight">\(\langle x^2\rangle = \sigma^2\)</span>, where</p>
 <div class="math notranslate nohighlight">
 \[
@@ -735,8 +747,9 @@ d\omega e^{i \omega X} e^{- \omega^2 \sigma^2/2}=\frac{1}{\sqrt{2
 <p>Look at <a class="reference internal" href="../../notebooks/Basics/visualization_of_CLT.html"><span class="doc std std-doc">Visualization of the Central Limit Theorem</span></a>.</p>
 <p>Things to think about:</p>
 <ul class="simple">
-<li><p>What does ``large’’ number of degrees of freedom acutally mean? Does
+<li><p>What does ``large’’ number of degrees of freedom actually mean? Does
 it matter where we look?</p></li>
+<li><p>If we have a large number of draws from a uniform distribution, does the CLT imply that the histogrammed distribution should look like a Gaussian?</p></li>
 <li><p>Can you identify a case where the CLT will fail?</p></li>
 </ul>
 </section>
@@ -897,7 +910,7 @@ interval. [E.g., lower a horizontal line over the distribution until the desired
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-gaussian-is-to-statistics-what-the-harmonic-oscillator-is-to-mechanics">The Gaussian is to statistics what the harmonic oscillator is to mechanics</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-central-limit-theorem">The Central Limit Theorem</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#consequences">Consequences:</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#proof-in-a-special-case">Proof in a special case:</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#proof-of-the-clt-in-a-special-case">Proof of the CLT in a special case:</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#notebook">Notebook:</a></li>
 </ul>
 </li>
