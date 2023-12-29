@@ -584,11 +584,11 @@ Let results be <span class="math notranslate nohighlight">\(D = \{D_k\}\)</span>
 <li><p>The general relation is <span class="math notranslate nohighlight">\(p(p_h | \{D_k\},I) \propto p(\{D_k\}|p_h,I) p(p_h|I)\)</span> by Bayes’ theorem.</p></li>
 <li><p>First <span class="math notranslate nohighlight">\(k=1\)</span> (so <span class="math notranslate nohighlight">\(D_1 = 0\)</span> or <span class="math notranslate nohighlight">\(D_1 = 1\)</span>):</p>
 <div class="math notranslate nohighlight" id="equation-eq-k-eq-1">
-<span class="eqno">(1.13)<a class="headerlink" href="#equation-eq-k-eq-1" title="Permalink to this equation">#</a></span>\[ p(p_h | D_1,I) \propto p(D_1|p_h,I) p(p_h|I)\]</div>
+<span class="eqno">(1.14)<a class="headerlink" href="#equation-eq-k-eq-1" title="Permalink to this equation">#</a></span>\[ p(p_h | D_1,I) \propto p(D_1|p_h,I) p(p_h|I)\]</div>
 </li>
 <li><p>Now <span class="math notranslate nohighlight">\(k=2\)</span>, starting with the expression for updating all at once and then using the sum and product rules (including their corollaries marginalization and Bayes’ Rule) to move the <span class="math notranslate nohighlight">\(D_1\)</span> result to the right of the <span class="math notranslate nohighlight">\(|\)</span> so it can be related to sequential updating:</p>
 <div class="math notranslate nohighlight" id="equation-eq-k-eq-2">
-<span class="eqno">(1.14)<a class="headerlink" href="#equation-eq-k-eq-2" title="Permalink to this equation">#</a></span>\[\begin{split}\begin{align}
+<span class="eqno">(1.15)<a class="headerlink" href="#equation-eq-k-eq-2" title="Permalink to this equation">#</a></span>\[\begin{split}\begin{align}
         p(p_h|D_2, D_1) &amp;\propto p(D_2, D_1|p_h, I)\times p(p_h|I) \\
              &amp;\propto p(D_2|p_h,D_1,I)\times p(D_1|p_h, I)\times p(p_h|I) \\
              &amp;\propto p(D_2|p_h,D_1,I)\times p(p_h|D_1,I) \\
@@ -605,7 +605,7 @@ Let results be <span class="math notranslate nohighlight">\(D = \{D_k\}\)</span>
 <li><p>5th line: Bayes’ Rule on the last term in the 3rd line</p></li>
 </ul>
 </div>
-<p>The fourth line of <a class="reference internal" href="#equation-eq-k-eq-2">(1.14)</a> is the sequential result! (The prior for the 2nd flip is the posterior <a class="reference internal" href="#equation-eq-k-eq-1">(1.13)</a> from the first flip.)</p>
+<p>The fourth line of <a class="reference internal" href="#equation-eq-k-eq-2">(1.15)</a> is the sequential result! (The prior for the 2nd flip is the posterior <a class="reference internal" href="#equation-eq-k-eq-1">(1.14)</a> from the first flip.)</p>
 </li>
 <li><p>So all at once is the same as sequential as a function of <span class="math notranslate nohighlight">\(p_h\)</span>, when normalized!</p></li>
 <li><p>To go to <span class="math notranslate nohighlight">\(k=3\)</span>:</p>
@@ -756,11 +756,11 @@ Let results be <span class="math notranslate nohighlight">\(D = \{D_k\}\)</span>
 </ul>
 <p>One more time with Bayes’ theorem:</p>
 <div class="math notranslate nohighlight" id="equation-eq-bayes-again">
-<span class="eqno">(1.15)<a class="headerlink" href="#equation-eq-bayes-again" title="Permalink to this equation">#</a></span>\[
+<span class="eqno">(1.16)<a class="headerlink" href="#equation-eq-bayes-again" title="Permalink to this equation">#</a></span>\[
   p(\mu,\sigma | D,I) = \frac{p(D | \mu,\sigma,I)\,p(\mu,\sigma|I)}{p(D|I)}
 \]</div>
 <div class="dropdown admonition">
-<p class="admonition-title">Label each term in Eq. <a class="reference internal" href="#equation-eq-bayes-again">(1.15)</a>.</p>
+<p class="admonition-title">Label each term in Eq. <a class="reference internal" href="#equation-eq-bayes-again">(1.16)</a>.</p>
 <div class="math notranslate nohighlight">
 \[
   \underbrace{p(\mu,\sigma | D,I)}_{\text{posterior}} = \frac{\overbrace{p(D | \mu,\sigma,I)}^{\text{likelihood}}\ \ \overbrace{p(\mu,\sigma|I)}^{\text{prior}}}{\underbrace{p(D|I)}_{\text{evidence or data probability}}}

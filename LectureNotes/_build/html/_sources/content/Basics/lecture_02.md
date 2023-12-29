@@ -138,7 +138,7 @@ But we want to know about $p_h$, so we actually want the pdf the other way aroun
 
 $$
   p(p_h | R,N) \propto p(R|N,p_h) \cdot p(p_h)
-$$
+$$ (eq:binomial_bayes)
 
 * Note that the denominator doesn't depend on $p_h$ (it is just a normalization).
 
@@ -157,6 +157,8 @@ So how are we doing the calculation of the updated posterior?
 * In this case we can do analytic calculations.
 
 ### Case I: uniform (flat) prior
+
+Start with {eq}`eq:binomial_bayes` but with the normalization $\mathcal{N}$ included (so now an equality):
 
 $$
  \Longrightarrow\quad p(p_h| R, N, I) = \mathcal{N} p(R|N,p_h) p(p_h)
