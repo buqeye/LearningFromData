@@ -1,8 +1,6 @@
 # Lecture 4: A couple of frequentist connections
 
 
-
-
 ## The near ubiquity of Gaussians
 
 In the last lecture we considered a Gaussian distribution and
@@ -54,8 +52,8 @@ $$
    + \frac{1}{2} \left.\frac{d^2L}{dx^2}\right|_{x_0 = 0}(x-x_0)^2 + \cdots
 $$
 
-Note that $\left.\frac{d^2L}{dx^2}\right|_{x_0 = 0} < 0$.
-If we can neglect higher-order terms, then
+Note that $\left.\frac{dL}{dx}\right|_{x_0 = 0}=0$ ($L(x_0)$ is also a maximum) and  $\left.\frac{d^2L}{dx^2}\right|_{x_0 = 0} < 0$.
+If we can neglect higher-order terms, then when we re-exponentiate,
 
 $$
   p(x| D,I) \approx A\, e^{\frac{1}{2}\left.\frac{d^2L}{dx^2}\right|_{x_0 = 0}(x-x_0)^2} ,
@@ -66,8 +64,10 @@ with $A$ a normalization factor. So in this general circumstance we get a Gaussi
 $$
   p(x|D,I) = \frac{1}{\sqrt{2\pi\sigma^2}}e^{-(x-\mu)^2/\sigma^2}
   \quad\Longrightarrow\quad
-  \mu = x_0, \ \sigma = \left(-\left.\frac{d^2L}{dx^2}\right|_{x_0}\right)^{-1/2}
+  \mu = x_0, \ \sigma = \left(-\left.\frac{d^2L}{dx^2}\right|_{x_0}\right)^{-1/2},
 $$
+
+where we see the importance of the second derivative being negative.
 
 * We usually quote $x = x_0 \pm \sigma$, because *if* it is a Gaussian this is *sufficient* to tell us the entire distribution and $n$ standard deviations is $n\times \sigma$.
 
@@ -86,7 +86,7 @@ What would go wrong if we directly expanded the pdf? Well, if we do
 that we get:
 
 $$
-  p(x) \approx p(x_0) + \frac{1}{2}-\left.\frac{d^2p}{dx^2}\right|_{x_0}(x-x_0)^2
+  p(x) \approx p(x_0) + \frac{1}{2}\left.\frac{d^2p}{dx^2}\right|_{x_0}(x-x_0)^2
  \ \overset{x\pm\rightarrow\infty}{\longrightarrow} -\infty,
 $$
 
@@ -105,9 +105,10 @@ minus infinity.
 ### The Central Limit Theorem
 
 Another reason a Gaussian pdf emerges in many calculations is because
-the Central Limit Theorem states that all (or almost all) probability
-distributions will eventually produce Gaussians if you take enough
-data (or, equivalently, draw enough samples) from them.
+the Central Limit Theorem states that the sum of random variables drawn
+from all (or almost all) probability
+distributions will eventually produce Gaussians if the number of samples in
+each sum is large enough. 
 
 _Central Limit Theorem_: The sum of $n$ random values drawn from any
 pdf of finite variance $\sigma^2$ tends as $n \rightarrow \infty$ to
@@ -117,12 +118,12 @@ variance $n \sigma^2$.
 #### Consequences:
 
 * The mean of a large number of values becomes normally distributed
-  _regardless_ of the probability distiburtion the values are drawn
+  _regardless_ of the probability distribution the values are drawn
   from.
 
-* The binomial, Poisson, Student's t-, and ... distributions all kind
-  of look like Gaussian distributions in the limit of a large number
-  of degrees of freedom.
+* The binomial, Poisson, Student's t-, and ... distributions all approach 
+  Gaussian distributions in the limit of a large number
+  of degrees of freedom. (This consequence is probably not immediately obvious!)
 
 #### Proof in a special case:
 
