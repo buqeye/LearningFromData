@@ -265,9 +265,9 @@ bound on a parameter value, is to quote a p-value.
   $p(D|{\rm null~ hypothesis}) < p_{\rm crit}$ then you conclude that the "the null
   hypothesis is rejected at the $p_{\rm crit}$ significance level''.
 
-* Note that if $p(D|{null~hypothesis}) > p_{\rm crit}$ you cannot
-  conculde that the null hypothesis is true. It just means "no effect
-  was observeed".
+* Note that if $p(D|{\rm null~hypothesis}) > p_{\rm crit}$ you cannot
+  conclude that the null hypothesis is true. It just means "no effect
+  was observed".
 
 * Look at
   [](/notebooks/Basics/Bayesian_updating_coinflip_interactive.ipynb). Pick
