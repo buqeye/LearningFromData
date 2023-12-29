@@ -18,10 +18,10 @@ parts:
       - file: notebooks/Basics/Exploring_pdfs.ipynb
       - file: content/Basics/lecture_02.md
       - file: notebooks/Basics/Bayesian_updating_coinflip_interactive.ipynb
+      - file: notebooks/Basics/medical_example_by_Bayes.ipynb
       - file: content/Basics/lecture_03.md
       - file: notebooks/Basics/parameter_estimation_Gaussian_noise.ipynb
       - file: notebooks/Basics/radioactive_lighthouse_exercise.ipynb
-      - file: notebooks/Basics/medical_example_by_Bayes.ipynb
       - file: content/Basics/lecture_04.md
       - file: notebooks/Basics/visualization_of_CLT.ipynb 
     - title: "Bayesian parameter estimation"
@@ -29,7 +29,7 @@ parts:
       sections:
       - file: content/Parameter_estimation/lecture_05.md
       - file: notebooks/Parameter_estimation/parameter_estimation_fitting_straight_line_I.ipynb
-      - file: notebooks/Paameter_estimation/parameter_estimation_Gaussian_noise-2.ipynb
+      - file: notebooks/Parameter_estimation/parameter_estimation_Gaussian_noise-2.ipynb
       - file: content/Parameter_estimation/lecture_06.md
       - file: notebooks/Parameter_estimation/amplitude_in_presence_of_background.ipynb
       - file: notebooks/Parameter_estimation/demo-ModelValidation.ipynb
