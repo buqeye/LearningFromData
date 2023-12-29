@@ -105,7 +105,7 @@ minus infinity.
 ### The Central Limit Theorem
 
 Another reason a Gaussian pdf emerges in many calculations is because
-the Central Limit Theorem states that the sum of random variables drawn
+the Central Limit Theorem (CLT) states that the sum of random variables drawn
 from all (or almost all) probability
 distributions will eventually produce Gaussians if the number of samples in
 each sum is large enough. 
@@ -121,9 +121,9 @@ variance $n \sigma^2$.
   _regardless_ of the probability distribution the values are drawn
   from.
 
-* The binomial, Poisson, Student's t-, and ... distributions all approach 
+* The binomial, Poisson, chi-squared, and Student's t- distributions all approach 
   Gaussian distributions in the limit of a large number
-  of degrees of freedom. (This consequence is probably not immediately obvious!)
+  of degrees of freedom (e.q., for large $N$ for binomial). More later: this consequence is probably not immediately obvious to you from the statement of the CLT! 
 
 #### Proof in a special case:
 
@@ -265,9 +265,9 @@ bound on a parameter value, is to quote a p-value.
   $p(D|{\rm null~ hypothesis}) < p_{\rm crit}$ then you conclude that the "the null
   hypothesis is rejected at the $p_{\rm crit}$ significance level''.
 
-* Note that if $p(D|{null~hypothesis}) > p_{\rm crit}$ you cannot
-  conculde that the null hypothesis is true. It just means "no effect
-  was observeed".
+* Note that if $p(D|{\rm null~hypothesis}) > p_{\rm crit}$ you cannot
+  conclude that the null hypothesis is true. It just means "no effect
+  was observed".
 
 * Look at
   [](/notebooks/Basics/Bayesian_updating_coinflip_interactive.ipynb). Pick
