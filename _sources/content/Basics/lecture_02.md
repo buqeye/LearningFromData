@@ -21,7 +21,7 @@
         ::::
 
     
-    * projected posteriors (relate to marginalization over one of the variables)
+    * what are projected posteriors (relate these to marginalization over one of the variables)?
 
 ## Bayesian updating via Bayes' theorem
 
@@ -33,7 +33,7 @@ $$
 $$  
 
 * $\thetavec$ is a general *vector* of parameters (this is common notation in statistics)
-* The donominator is the data probability or "fully marginalized likelihood" or evidence or maybe some other name (these are all used in the literature). We'll come back to it later. As will be clear later, it is a normalization factor.
+* The denominator is the data probability or "fully marginalized likelihood" or evidence or maybe some other name (these are all used in the literature). We'll come back to it later. As will be clear later, it is a normalization factor.
 * The *prior* pdf is what information $I$ we have (or believe) about $\thetavec$ before we observe the data.
 * The *posterior* pdf is our new pdf for $\thetavec$, given that we have observed the data.
 * The *likelihood* is the probability of getting the specified data *given* the parameters $\thetavec$ under consideration on the left side. Note that the likelihood is to be considered as a function of $\thetavec$ for fixed data.
@@ -53,7 +53,7 @@ The notebook is [Bayesian_updating_coinflip_interactive.ipynb](/notebooks/Basics
 We are observing successive flips of a coin (or any binary process). There is a definite true probability of getting heads $(p_h)_{\text{true}}$, but we don't know what the values is, other than it is between 0 and 1.
 * We characterize our information about $p_h$ as a pdf.
 * Before any flips, we start with a preconceived notion of the probability; this is the prior pdf $p(p_h|I)$, where $I$ is any info we have.
-* With each flip of the coin, we gain additional informatin, so we *update* our expectation of $p_h$ by finding the *posterior*
+* With each flip of the coin, we gain additional information, so we *update* our expectation of $p_h$ by finding the *posterior*
 
 $$
   p(p_h | \overbrace{\mbox{# tosses}}^{N}, \overbrace{\mbox{# heads}}^{R}, I)
@@ -112,14 +112,14 @@ Follow-ups:
 Suppose we had a fair coin $\Longrightarrow$ $p_h = 0.5$
 
 $$
-  p(\mbox{$R$ heads of out $N$ tosses | fair coin}) = p(R,N|p_h = 0.5)
+  p(\mbox{$R$ heads out of $N$ tosses | fair coin}) = p(R|N, p_h = 0.5)
    = {N \choose R} (0.5)^R (0.5)^{N-R}
 $$
 
 Is the sum rule obeyed?
 
 $$
- \sum_{R=0}^{N} p(R,N| p_h = 1/2) = \sum_{R=0}^N {N \choose R} \left(\frac{1}{2}\right)^N
+ \sum_{R=0}^{N} p(R|N, p_h = 1/2) = \sum_{R=0}^N {N \choose R} \left(\frac{1}{2}\right)^N
    = \left(\frac{1}{2}\right)^N \times 2^N = 1 
 $$
 
@@ -131,13 +131,13 @@ $(x+y)^N = \sum_{R=0}^N {N \choose R} x^R y^{N-R} \overset{x=y=1}{\longrightarro
 The likelihood for a more general $p_h$ is the binomial distribution:
 
 $$
-   p(R,N|p_h) = {N \choose R} (p_h)^R (1 - p_h)^{N-R}
+   p(R|N,p_h) = {N \choose R} (p_h)^R (1 - p_h)^{N-R}
 $$ (eq:binomial_likelihood)
 
 But we want to know about $p_h$, so we actually want the pdf the other way around: $p(p_h|R,N)$. Bayes says
 
 $$
-  p(p_h | R,N) \propto p(R,N|p_h) \cdot p(p_h)
+  p(p_h | R,N) \propto p(R|N,p_h) \cdot p(p_h)
 $$
 
 * Note that the denominator doesn't depend on $p_h$ (it is just a normalization).
@@ -159,7 +159,7 @@ So how are we doing the calculation of the updated posterior?
 ### Case I: uniform (flat) prior
 
 $$
- \Longrightarrow\quad p(p_h| R, N, I) = \mathcal{N} p(R,N|p_h) p(p_h)
+ \Longrightarrow\quad p(p_h| R, N, I) = \mathcal{N} p(R|N,p_h) p(p_h)
 $$ (eq:coinflip_posterior)
 
 where we will suppress the "$I$" going forward. 
@@ -204,7 +204,7 @@ If the prior is $p(p_h|I) = f(p_h,\alpha,\beta)$ with $\alpha$ and $\beta$ to re
 
 $$
 \begin{align}
-  p(p_h | R,N) &\propto p(R,N | p_h) p(p_h) \\
+  p(p_h | R,N) &\propto p(R |N p_h) p(p_h) \\
   & \propto f(p_h,1+R,1+N-R) \times f(p_h,\alpha,\beta) \\
   & \longrightarrow f(p_h, \alpha+R, \beta+N-R)
 \end{align}  

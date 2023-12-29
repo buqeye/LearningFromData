@@ -70,7 +70,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="1.11. Visualization of the Central Limit Theorem" href="../../notebooks/Basics/visualization_of_CLT.html" />
-    <link rel="prev" title="1.9. Standard medical example by applying Bayesian rules of probability" href="../../notebooks/Basics/medical_example_by_Bayes.html" />
+    <link rel="prev" title="1.9. Radioactive lighthouse problem" href="../../notebooks/Basics/radioactive_lighthouse_exercise.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -184,10 +184,10 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="../../notebooks/Basics/Exploring_pdfs.html">1.3. Exploring PDFs</a></li>
 <li class="toctree-l2"><a class="reference internal" href="lecture_02.html">1.4. Lecture 2</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../notebooks/Basics/Bayesian_updating_coinflip_interactive.html">1.5. Interactive Bayesian updating: coin flipping example</a></li>
-<li class="toctree-l2"><a class="reference internal" href="lecture_03.html">1.6. Lecture 3</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../notebooks/Basics/parameter_estimation_Gaussian_noise.html">1.7. Parameter estimation example: Gaussian noise and averages I</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../notebooks/Basics/radioactive_lighthouse_exercise.html">1.8. Radioactive lighthouse problem</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../notebooks/Basics/medical_example_by_Bayes.html">1.9. Standard medical example by applying Bayesian rules of probability</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../notebooks/Basics/medical_example_by_Bayes.html">1.6. Standard medical example by applying Bayesian rules of probability</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lecture_03.html">1.7. Lecture 3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../notebooks/Basics/parameter_estimation_Gaussian_noise.html">1.8. Parameter estimation example: Gaussian noise and averages I</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../notebooks/Basics/radioactive_lighthouse_exercise.html">1.9. Radioactive lighthouse problem</a></li>
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">1.10. Lecture 4: A couple of frequentist connections</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../notebooks/Basics/visualization_of_CLT.html">1.11. Visualization of the Central Limit Theorem</a></li>
 </ul>
@@ -571,8 +571,8 @@ maximum.)</p>
    L(x_0) + \left.\frac{dL}{dx}\right|_{x_0 = 0}
    + \frac{1}{2} \left.\frac{d^2L}{dx^2}\right|_{x_0 = 0}(x-x_0)^2 + \cdots
 \]</div>
-<p>Note that <span class="math notranslate nohighlight">\(\left.\frac{d^2L}{dx^2}\right|_{x_0 = 0} &lt; 0\)</span>.
-If we can neglect higher-order terms, then</p>
+<p>Note that <span class="math notranslate nohighlight">\(\left.\frac{dL}{dx}\right|_{x_0 = 0}=0\)</span> (<span class="math notranslate nohighlight">\(L(x_0)\)</span> is also a maximum) and  <span class="math notranslate nohighlight">\(\left.\frac{d^2L}{dx^2}\right|_{x_0 = 0} &lt; 0\)</span>.
+If we can neglect higher-order terms, then when we re-exponentiate,</p>
 <div class="math notranslate nohighlight">
 \[
   p(x| D,I) \approx A\, e^{\frac{1}{2}\left.\frac{d^2L}{dx^2}\right|_{x_0 = 0}(x-x_0)^2} ,
@@ -582,8 +582,9 @@ If we can neglect higher-order terms, then</p>
 \[
   p(x|D,I) = \frac{1}{\sqrt{2\pi\sigma^2}}e^{-(x-\mu)^2/\sigma^2}
   \quad\Longrightarrow\quad
-  \mu = x_0, \ \sigma = \left(-\left.\frac{d^2L}{dx^2}\right|_{x_0}\right)^{-1/2}
+  \mu = x_0, \ \sigma = \left(-\left.\frac{d^2L}{dx^2}\right|_{x_0}\right)^{-1/2},
 \]</div>
+<p>where we see the importance of the second derivative being negative.</p>
 <ul class="simple">
 <li><p>We usually quote <span class="math notranslate nohighlight">\(x = x_0 \pm \sigma\)</span>, because <em>if</em> it is a Gaussian this is <em>sufficient</em> to tell us the entire distribution and <span class="math notranslate nohighlight">\(n\)</span> standard deviations is <span class="math notranslate nohighlight">\(n\times \sigma\)</span>.</p></li>
 <li><p>But for a Bayesian, the full posterior <span class="math notranslate nohighlight">\(p(x|D,I)\)</span> for all <span class="math notranslate nohighlight">\(x\)</span> is
@@ -603,7 +604,7 @@ that we get:</p></li>
 </ul>
 <div class="math notranslate nohighlight">
 \[
-  p(x) \approx p(x_0) + \frac{1}{2}-\left.\frac{d^2p}{dx^2}\right|_{x_0}(x-x_0)^2
+  p(x) \approx p(x_0) + \frac{1}{2}\left.\frac{d^2p}{dx^2}\right|_{x_0}(x-x_0)^2
  \ \overset{x\pm\rightarrow\infty}{\longrightarrow} -\infty,
 \]</div>
 <p>i.e., we get something that diverges as <span class="math notranslate nohighlight">\(x\)</span> tends to either plus or
@@ -617,9 +618,10 @@ minus infinity.</p>
 <section id="the-central-limit-theorem">
 <h3>The Central Limit Theorem<a class="headerlink" href="#the-central-limit-theorem" title="Permalink to this heading">#</a></h3>
 <p>Another reason a Gaussian pdf emerges in many calculations is because
-the Central Limit Theorem states that all (or almost all) probability
-distributions will eventually produce Gaussians if you take enough
-data (or, equivalently, draw enough samples) from them.</p>
+the Central Limit Theorem states that the sum of random variables drawn
+from all (or almost all) probability
+distributions will eventually produce Gaussians if the number of samples in
+each sum is large enough.</p>
 <p><em>Central Limit Theorem</em>: The sum of <span class="math notranslate nohighlight">\(n\)</span> random values drawn from any
 pdf of finite variance <span class="math notranslate nohighlight">\(\sigma^2\)</span> tends as <span class="math notranslate nohighlight">\(n \rightarrow \infty\)</span> to
 be Gaussian distributed about the expectation value of the sum, with
@@ -628,11 +630,11 @@ variance <span class="math notranslate nohighlight">\(n \sigma^2\)</span>.</p>
 <h4>Consequences:<a class="headerlink" href="#consequences" title="Permalink to this heading">#</a></h4>
 <ul class="simple">
 <li><p>The mean of a large number of values becomes normally distributed
-<em>regardless</em> of the probability distiburtion the values are drawn
+<em>regardless</em> of the probability distribution the values are drawn
 from.</p></li>
-<li><p>The binomial, Poisson, Student’s t-, and … distributions all kind
-of look like Gaussian distributions in the limit of a large number
-of degrees of freedom.</p></li>
+<li><p>The binomial, Poisson, Student’s t-, and … distributions all approach
+Gaussian distributions in the limit of a large number
+of degrees of freedom. (This consequence is probably not immediately obvious!)</p></li>
 </ul>
 </section>
 <section id="proof-in-a-special-case">
@@ -856,12 +858,12 @@ interval. [E.g., lower a horizontal line over the distribution until the desired
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="../../notebooks/Basics/medical_example_by_Bayes.html"
+       href="../../notebooks/Basics/radioactive_lighthouse_exercise.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><span class="section-number">1.9. </span>Standard medical example by applying Bayesian rules of probability</p>
+        <p class="prev-next-title"><span class="section-number">1.9. </span>Radioactive lighthouse problem</p>
       </div>
     </a>
     <a class="right-next"
