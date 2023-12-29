@@ -123,7 +123,7 @@ variance $n \sigma^2$.
 
 * The binomial, Poisson, chi-squared, and Student's t- distributions all approach 
   Gaussian distributions in the limit of a large number
-  of degrees of freedom (e.q., for large $N$ for binomial). More later: this consequence is probably not immediately obvious to you from the statement of the CLT! 
+  of degrees of freedom (e.q., for large $N$ for binomial). This consequence is probably not immediately obvious to you from the statement of the CLT! (See the [](/notebooks/Basics/visualization_of_CLT.ipynb) notebook for an explanation.)
 
 #### Proof in a special case:
 
@@ -269,12 +269,13 @@ bound on a parameter value, is to quote a p-value.
   conclude that the null hypothesis is true. It just means "no effect
   was observed".
 
-* Look at
+:::{admonition} Exercise
+  Look at
   [](/notebooks/Basics/Bayesian_updating_coinflip_interactive.ipynb). Pick
-  a $p$-value. If  $H=0.4$ work out how many coin tosses it would take
+  a $p$-value. If  $H=0.4$, work out how many coin tosses it would take
   to reject the null hypothesis that it's a fair coin ($H=0.5$) at
   that $p$-value.
-
+:::
 
 ## Bayesian degree of belief intervals and frequentist confidence intervals
 

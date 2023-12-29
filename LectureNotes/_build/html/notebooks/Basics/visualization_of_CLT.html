@@ -597,13 +597,14 @@ document.write(`
 <section id="limit-of-poisson-distribution-is-gaussian">
 <h2>Limit of Poisson distribution is Gaussian<a class="headerlink" href="#limit-of-poisson-distribution-is-gaussian" title="Permalink to this heading">#</a></h2>
 <p>One consequence of the CLT is that distributions such as the Binomial and Poisson distributions all tend to look like Gaussian distributions in the limit of a large number of drawings.
-Here we visualize that the Poisson distribution in the limit <span class="math notranslate nohighlight">\(D \rightarrow \infty\)</span> approaches a Gaussian distribution:</p>
+Here we visualize how the Poisson distribution in the limit <span class="math notranslate nohighlight">\(D \rightarrow \infty\)</span> approaches a Gaussian distribution:</p>
 <div class="math notranslate nohighlight">
 \[
  p(N \mid D) = \frac{D^N e^{-D}}{N!} 
  \stackrel{D\rightarrow\infty}{\longrightarrow} \frac{1}{\sqrt{2\pi D}}e^{-(N-D)^2/(2D)}
 \]</div>
-<p>with <span class="math notranslate nohighlight">\(N\)</span> an integer.</p>
+<p>with <span class="math notranslate nohighlight">\(N\)</span> an integer. <em>You will be asked to prove this limit in a later notebook.</em></p>
+<p><strong>Note: this limiting functional form is not obviously connected to the general statement of the CLT up above. What is the connection of the Gaussian limit to a sum of random variables as prescribed by the CLT?</strong> The answer is that a sum of Poisson distributed random variables is itself Poisson distributed. For example, if <span class="math notranslate nohighlight">\(X_1,\ldots,X_D\)</span>  are independent Poisson random variables with mean 1 ((<span class="math notranslate nohighlight">\(D\)</span> is an integer here)), then <span class="math notranslate nohighlight">\(Y = \sum_{i=1}^D X_i\)</span> is a Poisson random variable with mean <span class="math notranslate nohighlight">\(D\)</span>. So the sum is built in by directly considering <span class="math notranslate nohighlight">\(Y\)</span>, as we do below. Note the analogy to the situation with the binomial distribution and the CLT discussed in Lecture 4.</p>
 <p>This visualization is adapted from the <code class="docutils literal notranslate"><span class="pre">amplitude_in_presence_of_background_RECAP.ipynb</span></code> notebook.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -618,7 +619,6 @@ Here we visualize that the Poisson distribution in the limit <span class="math n
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Returns a Poisson distribution value with mean D for integer N.</span>
 <span class="sd">    We require N to be an integer greater than equal to zero.</span>
-<span class="sd">    UPDATE: using poisson.pmf from scipy.stats instead.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">assert</span> <span class="p">(</span><span class="nb">isinstance</span><span class="p">(</span><span class="n">N</span><span class="p">,</span> <span class="nb">int</span><span class="p">)</span> <span class="ow">and</span> <span class="n">N</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">),</span> \
             <span class="s2">&quot;N must be a non-negative integer!&quot;</span>
@@ -629,12 +629,12 @@ Here we visualize that the Poisson distribution in the limit <span class="math n
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Make a bar plot on the axis ax of the Poisson distribution for mu = D</span>
 <span class="sd">     and out to a maximum integer max_N.</span>
-<span class="sd">    Replaced our own poisson function with poisson.pmf from scipy.stats so</span>
-<span class="sd">     that we can go to larger N. </span>
+<span class="sd">    UPDATE: we eplaced our own poisson function with poisson.pmf from </span>
+<span class="sd">     scipy.stats so that we can go to larger N. </span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">N_pts</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">max_N</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">int</span><span class="p">)</span>
-    <span class="c1">#poisson_pts = [poisson(int(N), D) for N in N_pts]</span>
-    <span class="n">poisson_pts</span> <span class="o">=</span> <span class="p">[</span><span class="n">stats</span><span class="o">.</span><span class="n">poisson</span><span class="o">.</span><span class="n">pmf</span><span class="p">(</span><span class="n">N</span><span class="p">,</span> <span class="n">D</span><span class="p">)</span> <span class="k">for</span> <span class="n">N</span> <span class="ow">in</span> <span class="n">N_pts</span><span class="p">]</span>
+    <span class="n">poisson_pts</span> <span class="o">=</span> <span class="p">[</span><span class="n">stats</span><span class="o">.</span><span class="n">poisson</span><span class="o">.</span><span class="n">pmf</span><span class="p">(</span><span class="n">N</span><span class="p">,</span> <span class="n">D</span><span class="p">)</span> <span class="k">for</span> <span class="n">N</span> <span class="ow">in</span> <span class="n">N_pts</span><span class="p">]</span> <span class="c1"># poisson_pts = [poisson(int(N), D) for N in N_pts]</span>
+    
     <span class="n">ax</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">N_pts</span><span class="p">,</span> <span class="n">poisson_pts</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span> <span class="n">bottom</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">align</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">)</span>
     <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;Number of counts $N$&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">18</span><span class="p">)</span>
     <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="sa">fr</span><span class="s1">&#39;$\mathrm</span><span class="se">{{</span><span class="s1">p</span><span class="se">}}</span><span class="s1">(N \mid D=</span><span class="si">{</span><span class="n">D</span><span class="si">:</span><span class="s1">.1f</span><span class="si">}</span><span class="s1">)$&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">18</span><span class="p">)</span>
@@ -665,9 +665,6 @@ Here we visualize that the Poisson distribution in the limit <span class="math n
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<img alt="../../_images/f334590baf31cee8306f327796c7d102b54b3f25133191a3665e9972a5c9aa27.png" src="../../_images/f334590baf31cee8306f327796c7d102b54b3f25133191a3665e9972a5c9aa27.png" />
-</div>
 </div>
 </section>
 <section id="behavior-of-the-mean-of-a-fixed-size-sample">
@@ -678,15 +675,12 @@ Here we visualize that the Poisson distribution in the limit <span class="math n
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
  
-<span class="c1"># Sample the distribution we will use    </span>
-<span class="c1">#mu, sigma = 0.5, 1.</span>
-<span class="c1">#pop_normal = np.random.normal(mu, sigma, total_draws)</span>
-
+<span class="c1"># Sample the distribution we will use (by default a uniform distribution)   </span>
 <span class="n">total_draws</span> <span class="o">=</span> <span class="mi">100000</span>
 <span class="n">uni_min</span><span class="p">,</span> <span class="n">uni_max</span> <span class="o">=</span> <span class="mf">0.</span><span class="p">,</span> <span class="mf">1.</span>
 <span class="n">ran_uniform_array</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="n">uni_min</span><span class="p">,</span> <span class="n">uni_max</span><span class="p">,</span> <span class="n">total_draws</span><span class="p">)</span>
 
-<span class="n">bins</span> <span class="o">=</span> <span class="mi">15</span>
+<span class="n">bins</span> <span class="o">=</span> <span class="mi">15</span>  <span class="c1"># bins for the historam</span>
 
 <span class="c1"># Find the mean and standard deviation of our distribution, to use for </span>
 <span class="c1">#  plotting a comparison Gaussian distribution.</span>
@@ -695,12 +689,6 @@ Here we visualize that the Poisson distribution in the limit <span class="math n
 
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39; mean of uniform array = </span><span class="si">{</span><span class="n">mu</span><span class="si">:</span><span class="s1">.3f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39; standard deviation of uniform array = </span><span class="si">{</span><span class="n">sigma</span><span class="si">:</span><span class="s1">.3f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> mean of uniform array = 0.500
- standard deviation of uniform array = 0.289
 </pre></div>
 </div>
 </div>
@@ -716,7 +704,7 @@ Here we visualize that the Poisson distribution in the limit <span class="math n
     <span class="n">x_min</span> <span class="o">=</span> <span class="n">mu</span> <span class="o">-</span> <span class="mf">4.</span><span class="o">*</span><span class="n">sigma_tilde</span>
     <span class="n">x_max</span> <span class="o">=</span> <span class="n">mu</span> <span class="o">+</span> <span class="mf">4.</span><span class="o">*</span><span class="n">sigma_tilde</span>
     
-    <span class="p">(</span><span class="n">dum</span><span class="p">,</span> <span class="n">bin_array</span><span class="p">,</span> <span class="n">dum</span><span class="p">)</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">means_array</span><span class="p">[:</span><span class="n">N_means</span><span class="p">],</span> <span class="n">bins</span> <span class="o">=</span> <span class="n">bins</span><span class="p">,</span> 
+    <span class="p">(</span><span class="n">_</span><span class="p">,</span> <span class="n">bin_array</span><span class="p">,</span> <span class="n">_</span><span class="p">)</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">means_array</span><span class="p">[:</span><span class="n">N_means</span><span class="p">],</span> <span class="n">bins</span> <span class="o">=</span> <span class="n">bins</span><span class="p">,</span> 
                                     <span class="n">align</span><span class="o">=</span><span class="s1">&#39;mid&#39;</span><span class="p">)</span>
     <span class="n">bin_width</span> <span class="o">=</span> <span class="n">bin_array</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">bin_array</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
     <span class="n">title_string</span> <span class="o">=</span> <span class="sa">fr</span><span class="s1">&#39;Sampling size n=</span><span class="si">{</span><span class="n">sample_size</span><span class="si">}</span><span class="s1"> of uniform pdf &#39;</span> <span class="o">+</span> \
@@ -772,38 +760,29 @@ Here we visualize that the Poisson distribution in the limit <span class="math n
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<img alt="../../_images/a9b02defa4df20ac82cfca8fbb8840ecd9c659ef258ea946d57af02a8a48e19a.png" src="../../_images/a9b02defa4df20ac82cfca8fbb8840ecd9c659ef258ea946d57af02a8a48e19a.png" />
 </div>
-</div>
-<p>As expected, we just get a better and better reproduction of the original distribution, which is uniform in this case. We don’t expect any connection to a Gaussian from the CLT in this case.</p>
+<p>As expected, we just get a better and better reproduction of the original distribution, which is uniform in this case. We don’t expect any connection to a Gaussian from the CLT in this case. That is, just taking a lot of samples from a distribution doesn’t mean in general that we will get a normal distribution.</p>
 </section>
 <section id="second-example-each-sample-is-two-points">
 <h3>Second example: each sample is two points<a class="headerlink" href="#second-example-each-sample-is-two-points" title="Permalink to this heading">#</a></h3>
-<p>So mean is the average of the two points. We divide the means into 20 bins.</p>
+<p>So the mean is the average of the two points. We divide the means into 20 bins.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_sample_result</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<img alt="../../_images/031c4d46c7239f274b618d8bc99bf9bb9e9ae81a5a6db8f1aed0be3f732a7895.png" src="../../_images/031c4d46c7239f274b618d8bc99bf9bb9e9ae81a5a6db8f1aed0be3f732a7895.png" />
-</div>
 </div>
 <p>As the number of means gets larger, we see that a peak develops at 1/2 and the shape becomes triangular. If we think of the average of two uniformly drawn points from [0,1], it is most likely that their average will be close to 1/2 and unlikely to be at the ends (e.g., to get near 0, one would need both numbers to be close to 0).</p>
 </section>
 <section id="third-example-each-sample-is-10-points">
 <h3>Third example: each sample is 10 points<a class="headerlink" href="#third-example-each-sample-is-10-points" title="Permalink to this heading">#</a></h3>
-<p>Now we see the trends from <span class="math notranslate nohighlight">\(n=2\)</span> being accentuated. By the time we have 10000 means to histogram, it looks like a pretty good Gaussian. Note that the width of the Gaussian is set by the sample size <span class="math notranslate nohighlight">\(n=10\)</span>, not by how many draws are made. The width decreases as <span class="math notranslate nohighlight">\(1/\sqrt{n}\)</span>, so from <span class="math notranslate nohighlight">\(n=2\)</span> to <span class="math notranslate nohighlight">\(n=10\)</span> it is roughly a factor of 2.2 smaller (0.25 vs. 0.1).</p>
+<p>Now we see the trends from <span class="math notranslate nohighlight">\(n=2\)</span> being accentuated. By the time we have 10000 means to histogram, it looks like a pretty good Gaussian. <strong>Note that the width of the Gaussian is set by the sample size <span class="math notranslate nohighlight">\(n=10\)</span>, not by how many draws are made.</strong> The width decreases as <span class="math notranslate nohighlight">\(1/\sqrt{n}\)</span>, so from <span class="math notranslate nohighlight">\(n=2\)</span> above to <span class="math notranslate nohighlight">\(n=10\)</span> here it is roughly a factor of 2.2 smaller (0.25 vs. 0.1).</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_sample_result</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
-<img alt="../../_images/385c4d60276220faf1e47908f56f2d40efbf62bbdeb772ebfdff2b4755b9acba.png" src="../../_images/385c4d60276220faf1e47908f56f2d40efbf62bbdeb772ebfdff2b4755b9acba.png" />
 </div>
 </div>
 </section>
@@ -815,9 +794,6 @@ Here we visualize that the Poisson distribution in the limit <span class="math n
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_sample_result</span><span class="p">(</span><span class="mi">50</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
-<img alt="../../_images/299b6d6d9570e99b5aa549909730ae8f218d69eee8f908c0ca38376ddb64a2ee.png" src="../../_images/299b6d6d9570e99b5aa549909730ae8f218d69eee8f908c0ca38376ddb64a2ee.png" />
 </div>
 </div>
 </section>
@@ -939,9 +915,6 @@ The plots on the left are the inverse Fourier transforms of the plots on the rig
 <span class="n">fig</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
-<img alt="../../_images/919788d6be3fb5ab6a86168e790917a4a35345ce60d57d72cb12e96da1e642b8.png" src="../../_images/919788d6be3fb5ab6a86168e790917a4a35345ce60d57d72cb12e96da1e642b8.png" />
 </div>
 </div>
 <p>So we see that multiplying the original Fourier transform will rapidly kill off the tails and highlight the central part. The <span class="math notranslate nohighlight">\(n\)</span> scalings enforces that the Gaussians in both the original and Fourier space have constant variances.</p>
