@@ -14,8 +14,8 @@ parts:
       file: content/Basics/basics.md
       sections:
       - file: content/Basics/lecture_01.md
-      - file: notebooks/Basics/simple_sum_product_rule.ipynb
       - file: notebooks/Basics/Exploring_pdfs.ipynb
+      - file: notebooks/Basics/simple_sum_product_rule.ipynb
       - file: content/Basics/lecture_02.md
       - file: notebooks/Basics/Bayesian_updating_coinflip_interactive.ipynb
       - file: notebooks/Basics/medical_example_by_Bayes.ipynb
@@ -146,7 +146,8 @@ parts:
     - title: "Related topics"
       file: content/Related/related_topics.md
       sections:
-      - file: content/Related/qbism.md
+      - title: "QBism"
+        file: content/Related/qbism.md
   - caption: Notebook keys
     chapters:
     - file: notebooks/Basics/simple_sum_product_rule_KEY.ipynb
