@@ -123,9 +123,21 @@ variance $n \sigma^2$.
 
 * The binomial, Poisson, chi-squared, and Student's t- distributions all approach 
   Gaussian distributions in the limit of a large number
-  of degrees of freedom (e.q., for large $N$ for binomial). This consequence is probably not immediately obvious to you from the statement of the CLT! (See the [](/notebooks/Basics/visualization_of_CLT.ipynb) notebook for an explanation.)
+  of degrees of freedom (e.q., for large $n$ for binomial). This consequence is probably not immediately obvious to you from the statement of the CLT! (See the [](/notebooks/Basics/visualization_of_CLT.ipynb) notebook for an explanation of the Poisson distribution.)
 
-#### Proof in a special case:
+::::{admonition} Question
+Why would we expect the CLT to work for a binomial distribution?
+:::{admonition} Hint
+:class: dropdown 
+If we denote Bin($n,p$) as the binomial distribution for $n$ trials with probability $p$ of success, how is Bin($1,p$) related to Bin($n,p$)?
+:::
+:::{admonition} Answer
+:class: dropdown
+If we add up $n$ random variables from Bin($1,p$), each with value 0 or 1, this is equivalent to a Bin($n,p$) random variable with the same number of successes. So we already have a sum of random variables built in and the CLT will apply. (In more detail: getting $k$ ones (and $n-k$ zeros) from the $n$ Bin($1,p$) draws will have probability $p^k$ times $(1-p)^{n-k}$ times the number of combinations $n\choose k$. This is the same as the binomial probability for $k$ successes.)
+::::
+
+
+#### Proof of the CLT in a special case:
 
 Start with *independent* random variables $x_1,\cdots,x_n$ drawn from a distribution with mean $\langle x \rangle = 0$ and variance $\langle x^2\rangle = \sigma^2$, where
 
@@ -233,8 +245,10 @@ Look at [](/notebooks/Basics/visualization_of_CLT.ipynb).
 
 Things to think about:
 
-* What does ``large'' number of degrees of freedom acutally mean? Does
+* What does ``large'' number of degrees of freedom actually mean? Does
 it matter where we look?
+
+* If we have a large number of draws from a uniform distribution, does the CLT imply that the histogrammed distribution should look like a Gaussian?
 
 * Can you identify a case where the CLT will fail?
 

@@ -1,10 +1,8 @@
-# Related topics
-
-Here we gather references to various topics somehow connected to the themes of these notes.
-
-## QBism references
+# Quantum Bayesianism (QBism)
 
 From the [Wikipedia article on QBism](https://en.wikipedia.org/wiki/Quantum_Bayesianism): "In physics and the philosophy of physics, quantum Bayesianism is a collection of related approaches to the interpretation of quantum mechanics, of which the most prominent is QBism (pronounced "cubism"). QBism is an interpretation that takes an agent's actions and experiences as the central concerns of the theory."
+
+## QBism references
 
 Here are some references:
 
