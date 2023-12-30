@@ -556,7 +556,7 @@ document.write(`
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#limit-of-poisson-distribution-is-gaussian">Limit of Poisson distribution is Gaussian</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#new-show-that-poisson-is-a-sum-of-smaller-poissons">NEW: Show that Poisson is a sum of smaller Poissons</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#compare-a-sum-of-d-poisson-draws-with-mean-1-to-a-single-poisson-distribution-with-mean-d">Compare a sum of D Poisson draws with mean 1 to a single Poisson distribution with mean D</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#behavior-of-the-mean-of-a-fixed-size-sample">Behavior of the mean of a fixed-size sample</a><ul class="nav section-nav flex-column">
@@ -630,7 +630,7 @@ Here we visualize that the Poisson distribution in the limit <span class="math n
 
     <span class="k">return</span> <span class="n">D</span><span class="o">**</span><span class="n">N</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">D</span><span class="p">)</span> <span class="o">/</span> <span class="n">factorial</span><span class="p">(</span><span class="n">N</span><span class="p">)</span> 
 
-<span class="k">def</span> <span class="nf">poisson_plot</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">D</span><span class="p">,</span> <span class="n">max_N</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">poisson_plot</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">D</span><span class="p">,</span> <span class="n">max_N</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Make a bar plot on the axis ax of the Poisson distribution for mu = D</span>
 <span class="sd">     and out to a maximum integer max_N.</span>
@@ -640,7 +640,7 @@ Here we visualize that the Poisson distribution in the limit <span class="math n
     <span class="n">N_pts</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">max_N</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">int</span><span class="p">)</span>
     <span class="c1">#poisson_pts = [poisson(int(N), D) for N in N_pts]</span>
     <span class="n">poisson_pts</span> <span class="o">=</span> <span class="p">[</span><span class="n">stats</span><span class="o">.</span><span class="n">poisson</span><span class="o">.</span><span class="n">pmf</span><span class="p">(</span><span class="n">N</span><span class="p">,</span> <span class="n">D</span><span class="p">)</span> <span class="k">for</span> <span class="n">N</span> <span class="ow">in</span> <span class="n">N_pts</span><span class="p">]</span>
-    <span class="n">ax</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">N_pts</span><span class="p">,</span> <span class="n">poisson_pts</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span> <span class="n">bottom</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">align</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">N_pts</span><span class="p">,</span> <span class="n">poisson_pts</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span> <span class="n">bottom</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">align</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="n">alpha</span><span class="p">)</span>
     <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;Number of counts $N$&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">18</span><span class="p">)</span>
     <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="sa">fr</span><span class="s1">&#39;$\mathrm</span><span class="se">{{</span><span class="s1">p</span><span class="se">}}</span><span class="s1">(N \mid D=</span><span class="si">{</span><span class="n">D</span><span class="si">:</span><span class="s1">.1f</span><span class="si">}</span><span class="s1">)$&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">18</span><span class="p">)</span>
     <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">rf</span><span class="s1">&#39;$D = </span><span class="si">{</span><span class="n">D</span><span class="si">:</span><span class="s1">.1f</span><span class="si">}</span><span class="s1">$&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
@@ -686,53 +686,63 @@ Here we visualize that the Poisson distribution in the limit <span class="math n
 <img alt="../../_images/fb0552e8e5be921a6dcf5f53086acc16baa1cebb809595d18b5ba5d9635a0c52.png" src="../../_images/fb0552e8e5be921a6dcf5f53086acc16baa1cebb809595d18b5ba5d9635a0c52.png" />
 </div>
 </div>
-<section id="new-show-that-poisson-is-a-sum-of-smaller-poissons">
-<h3>NEW: Show that Poisson is a sum of smaller Poissons<a class="headerlink" href="#new-show-that-poisson-is-a-sum-of-smaller-poissons" title="Permalink to this heading">#</a></h3>
+<section id="compare-a-sum-of-d-poisson-draws-with-mean-1-to-a-single-poisson-distribution-with-mean-d">
+<h3>Compare a sum of D Poisson draws with mean 1 to a single Poisson distribution with mean D<a class="headerlink" href="#compare-a-sum-of-d-poisson-draws-with-mean-1-to-a-single-poisson-distribution-with-mean-d" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">D</span> <span class="o">=</span> <span class="mi">50</span>
-<span class="n">num_rows</span> <span class="o">=</span> <span class="mi">1</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">D</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="n">num_draws</span> <span class="o">=</span> <span class="mi">1000</span>
 
-<span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">num_rows</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">5</span> <span class="o">*</span> <span class="n">num_rows</span><span class="p">))</span>
-
+<span class="c1"># set upper range of N</span>
 <span class="n">max_N</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">D</span> <span class="o">+</span> <span class="mf">6.</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">D</span><span class="p">))</span>  <span class="c1"># mean + multiple of standard deviation</span>
-<span class="n">N_pts</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">max_N</span><span class="p">,</span> <span class="mf">0.01</span><span class="p">)</span>
-<span class="n">y_pts</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">norm</span><span class="o">.</span><span class="n">pdf</span><span class="p">(</span><span class="n">N_pts</span><span class="p">,</span> <span class="n">D</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">D</span><span class="p">))</span>
-<span class="n">poisson_plot</span><span class="p">(</span><span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">D</span><span class="p">,</span> <span class="n">max_N</span><span class="p">)</span>
-<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">N_pts</span><span class="p">,</span> <span class="n">y_pts</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">)</span>
 
-<span class="n">N_pts_2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">max_N</span><span class="p">,</span> <span class="mf">0.01</span><span class="p">)</span>
-<span class="n">poisson_pts</span> <span class="o">=</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">([</span><span class="n">stats</span><span class="o">.</span><span class="n">poisson</span><span class="o">.</span><span class="n">rvs</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="k">for</span> <span class="n">index</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">D</span><span class="p">)])</span> <span class="k">for</span> <span class="n">N</span> <span class="ow">in</span> <span class="n">N_pts_2</span><span class="p">]</span>
-<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">N_pts</span><span class="p">,</span> <span class="n">poisson_pts</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span> <span class="n">bottom</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">align</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">)</span>
-<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;Number of counts $N$&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">18</span><span class="p">)</span>
-<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="sa">fr</span><span class="s1">&#39;$\mathrm</span><span class="se">{{</span><span class="s1">p</span><span class="se">}}</span><span class="s1">(N \mid D=</span><span class="si">{</span><span class="n">D</span><span class="si">:</span><span class="s1">.1f</span><span class="si">}</span><span class="s1">)$&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">18</span><span class="p">)</span>
-<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">rf</span><span class="s1">&#39;$D = </span><span class="si">{</span><span class="n">D</span><span class="si">:</span><span class="s1">.1f</span><span class="si">}</span><span class="s1">$&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
-<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">labelsize</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
+<span class="c1"># make an array of the Poisson pmf with mean D</span>
+<span class="n">N_pts</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">max_N</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">int</span><span class="p">)</span>
+<span class="n">poisson_pts</span> <span class="o">=</span> <span class="p">[</span><span class="n">stats</span><span class="o">.</span><span class="n">poisson</span><span class="o">.</span><span class="n">pmf</span><span class="p">(</span><span class="n">N</span><span class="p">,</span> <span class="n">D</span><span class="p">)</span> <span class="k">for</span> <span class="n">N</span> <span class="ow">in</span> <span class="n">N_pts</span><span class="p">]</span>
 
+<span class="c1"># (num_draws) samples of the sum of D mean-1 poisson draws</span>
+<span class="n">test_poisson_pts</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">([</span><span class="n">stats</span><span class="o">.</span><span class="n">poisson</span><span class="o">.</span><span class="n">rvs</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="k">for</span> <span class="n">index</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">D</span><span class="p">)])</span> \
+                             <span class="k">for</span> <span class="n">draws</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_draws</span><span class="p">)])</span>
+<span class="n">my_bins</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">test_poisson_pts</span><span class="o">.</span><span class="n">max</span><span class="p">()</span> <span class="o">+</span> <span class="mf">1.5</span><span class="p">)</span> <span class="o">-</span> <span class="mf">0.5</span>
+
+<span class="c1"># Gaussian limit (mean D and standard deviation D)</span>
+<span class="n">norm_x_pts</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">max_N</span><span class="p">,</span> <span class="mf">0.01</span><span class="p">)</span>
+<span class="n">norm_y_pts</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">norm</span><span class="o">.</span><span class="n">pdf</span><span class="p">(</span><span class="n">norm_x_pts</span><span class="p">,</span> <span class="n">D</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">D</span><span class="p">))</span>
+
+<span class="c1"># Make the plot</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+
+<span class="c1"># normalized histogram of draws from summed Poissons with mean 1</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">test_poisson_pts</span><span class="p">,</span> <span class="n">my_bins</span><span class="p">,</span> <span class="n">density</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;green&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> 
+        <span class="n">label</span><span class="o">=</span><span class="s1">&#39;sum of Poisson&#39;</span><span class="p">)</span>
+
+<span class="c1"># plot the Poisson pmf with mean D</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">N_pts</span><span class="p">,</span> <span class="n">poisson_pts</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span> <span class="n">bottom</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">align</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span> 
+       <span class="n">color</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">.5</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">fr</span><span class="s1">&#39;$\mathrm</span><span class="se">{{</span><span class="s1">p</span><span class="se">}}</span><span class="s1">(N \mid D=</span><span class="si">{</span><span class="n">D</span><span class="si">}</span><span class="s1">)$&#39;</span><span class="p">)</span>
+
+<span class="c1"># plot normal distribution</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">norm_x_pts</span><span class="p">,</span> <span class="n">norm_y_pts</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;normal&#39;</span><span class="p">)</span>
+    
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;Number of counts $N$&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">18</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="sa">fr</span><span class="s1">&#39;$\mathrm</span><span class="se">{{</span><span class="s1">p</span><span class="se">}}</span><span class="s1">(N)$&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">18</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">rf</span><span class="s1">&#39;Comparing sum of </span><span class="si">{</span><span class="n">D</span><span class="si">}</span><span class="s1"> mean 1 Poissons vs. mean $D = </span><span class="si">{</span><span class="n">D</span><span class="si">}</span><span class="s1">$ Poisson&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">labelsize</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">18</span><span class="p">)</span>
 
 <span class="n">fig</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/34bea817349b5dce1b1cb0da7577d69d8580aa0632ddb3b02833b589c13697e8.png" src="../../_images/34bea817349b5dce1b1cb0da7577d69d8580aa0632ddb3b02833b589c13697e8.png" />
+<img alt="../../_images/56afa7f9718e47e90d86acfb5f13a7cf75dec029f79058250f4810ab7e2a5180.png" src="../../_images/56afa7f9718e47e90d86acfb5f13a7cf75dec029f79058250f4810ab7e2a5180.png" />
 </div>
 </div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">N</span> <span class="o">=</span> <span class="mi">50</span>
-<span class="n">D_test</span> <span class="o">=</span> <span class="mi">50</span>
-<span class="n">poisson_pts_test</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">([</span><span class="n">stats</span><span class="o">.</span><span class="n">poisson</span><span class="o">.</span><span class="n">rvs</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="k">for</span> <span class="n">index</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">D_test</span><span class="p">)])</span>
-<span class="n">poisson_pts_test</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>49
-</pre></div>
-</div>
-</div>
-</div>
+<p><strong>Things to try:</strong></p>
+<ul class="simple">
+<li><p>Change the number of draws</p></li>
+<li><p>Change the value of D</p></li>
+</ul>
 </section>
 </section>
 <section id="behavior-of-the-mean-of-a-fixed-size-sample">
@@ -764,8 +774,8 @@ Here we visualize that the Poisson distribution in the limit <span class="math n
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> mean of uniform array = 0.500
- standard deviation of uniform array = 0.288
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> mean of uniform array = 0.498
+ standard deviation of uniform array = 0.289
 </pre></div>
 </div>
 </div>
@@ -838,7 +848,7 @@ Here we visualize that the Poisson distribution in the limit <span class="math n
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/0519d525fad5750a8d27cb4afa4b3f1cf7d7d22aa325647ad704aeb9459b8746.png" src="../../_images/0519d525fad5750a8d27cb4afa4b3f1cf7d7d22aa325647ad704aeb9459b8746.png" />
+<img alt="../../_images/fb7d4895279b64fd3492e7fdb2a25cf33c6e00152965f4e2027356bbe6b03849.png" src="../../_images/fb7d4895279b64fd3492e7fdb2a25cf33c6e00152965f4e2027356bbe6b03849.png" />
 </div>
 </div>
 <p>As expected, we just get a better and better reproduction of the original distribution, which is uniform in this case. We don’t expect any connection to a Gaussian from the CLT in this case.</p>
@@ -853,7 +863,7 @@ Here we visualize that the Poisson distribution in the limit <span class="math n
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/a5a73f7aa91502d5bb0518d14ff53cf75cea46744124dbd9f255fbd3ade338cc.png" src="../../_images/a5a73f7aa91502d5bb0518d14ff53cf75cea46744124dbd9f255fbd3ade338cc.png" />
+<img alt="../../_images/2d408d2aa85fd29c2c8eb2f2d89a4886737c51013fda9e818f7e38c0db7e4b01.png" src="../../_images/2d408d2aa85fd29c2c8eb2f2d89a4886737c51013fda9e818f7e38c0db7e4b01.png" />
 </div>
 </div>
 <p>As the number of means gets larger, we see that a peak develops at 1/2 and the shape becomes triangular. If we think of the average of two uniformly drawn points from [0,1], it is most likely that their average will be close to 1/2 and unlikely to be at the ends (e.g., to get near 0, one would need both numbers to be close to 0).</p>
@@ -868,7 +878,7 @@ Here we visualize that the Poisson distribution in the limit <span class="math n
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/5eebdb5b4d1bd272d42faf14b25dd4224602d54964f1466f7aea887b2b1e809f.png" src="../../_images/5eebdb5b4d1bd272d42faf14b25dd4224602d54964f1466f7aea887b2b1e809f.png" />
+<img alt="../../_images/c1f15a1960756391bb0315c0edcd980ea9f5a33d940d74845ed74fce6ab491f1.png" src="../../_images/c1f15a1960756391bb0315c0edcd980ea9f5a33d940d74845ed74fce6ab491f1.png" />
 </div>
 </div>
 </section>
@@ -882,7 +892,7 @@ Here we visualize that the Poisson distribution in the limit <span class="math n
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/46b0bf9e06074ea161952af510584dd603b8dd716a5719daa49dc803591db43b.png" src="../../_images/46b0bf9e06074ea161952af510584dd603b8dd716a5719daa49dc803591db43b.png" />
+<img alt="../../_images/01ffe650b3b9d507ab86ffd1dc4e840a5ad763c1781a261729edf83bcc5478a3.png" src="../../_images/01ffe650b3b9d507ab86ffd1dc4e840a5ad763c1781a261729edf83bcc5478a3.png" />
 </div>
 </div>
 </section>
@@ -1060,7 +1070,7 @@ The plots on the left are the inverse Fourier transforms of the plots on the rig
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#limit-of-poisson-distribution-is-gaussian">Limit of Poisson distribution is Gaussian</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#new-show-that-poisson-is-a-sum-of-smaller-poissons">NEW: Show that Poisson is a sum of smaller Poissons</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#compare-a-sum-of-d-poisson-draws-with-mean-1-to-a-single-poisson-distribution-with-mean-d">Compare a sum of D Poisson draws with mean 1 to a single Poisson distribution with mean D</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#behavior-of-the-mean-of-a-fixed-size-sample">Behavior of the mean of a fixed-size sample</a><ul class="nav section-nav flex-column">
