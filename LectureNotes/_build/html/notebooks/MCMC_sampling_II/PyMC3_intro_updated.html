@@ -296,7 +296,6 @@ const thebe_selector_output = ".output, .cell_output"
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Reference material</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../../content/zbibliography.html">Bibliography</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../content/related_topics.html">Related topics</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../content/Reference/installing_anaconda.html">Using Anaconda</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../content/Reference/using_github.html">Using GitHub</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../content/Reference/python_jupyter.html">Python and Jupyter notebooks</a><input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-11"><i class="fa-solid fa-chevron-down"></i></label><ul>
@@ -305,6 +304,10 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../content/jb_tests.html">Examples: Jupyter jb-book</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../content/Related/related_topics.html">Related topics</a><input class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-12"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../content/Related/qbism.html">Quantum Bayesianism (QBism)</a></li>
+</ul>
+</li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Notebook keys</span></p>
 <ul class="nav bd-sidenav">
@@ -1003,8 +1006,8 @@ The number of effective samples is smaller than 25% for some parameters.
 <section id="pymc3-implementation">
 <h3>PyMC3 implementation<a class="headerlink" href="#pymc3-implementation" title="Permalink to this heading">#</a></h3>
 <p>We instantiate a Model with a descriptions of priors and the likelihood. Here, <code class="docutils literal notranslate"><span class="pre">mu</span></code> is defined to be a random variable (we want to sample this variable by generating a Markov chain) and we provide a prior distribution with associated hyper-parameters for it. The likelihood function is chosen to be Normal, with one parameter to be estimated (mu), and we use known <span class="math notranslate nohighlight">\(\sigma\)</span> (denoted as <code class="docutils literal notranslate"><span class="pre">sigma</span></code>). Our “dependent variable” is given by <code class="docutils literal notranslate"><span class="pre">observed=data</span></code>, where <code class="docutils literal notranslate"><span class="pre">data</span></code> is generated above and shown in the histogram. So we our implementing Bayes theorem in the form:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-1576b0c3-b6f5-4ea0-b761-c64573baf733">
-<span class="eqno">(6.2)<a class="headerlink" href="#equation-1576b0c3-b6f5-4ea0-b761-c64573baf733" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-743008cc-7f40-452c-8051-84cb9d65c9fb">
+<span class="eqno">(6.2)<a class="headerlink" href="#equation-743008cc-7f40-452c-8051-84cb9d65c9fb" title="Permalink to this equation">#</a></span>\[\begin{align}
    \newcommand{\Pr}{\textrm{pr}} 
    \newcommand{\data}{\textbf{data}}
    \Pr(\mu | \sigma, \data) \propto \Pr(\data | \mu, \sigma) \times \Pr(\mu |\mu^0_\mu, \sigma^0_\mu)
