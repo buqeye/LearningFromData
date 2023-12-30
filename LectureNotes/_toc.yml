@@ -133,7 +133,7 @@ parts:
     #numbered: True
     chapters:
     - file: content/zbibliography
-    - file: content/related_topics.md
+    #- file: content/related_topics.md
     - file: content/Reference/installing_anaconda.md
     - file: content/Reference/using_github.md
     - file: content/Reference/python_jupyter.md
@@ -141,10 +141,12 @@ parts:
       - file: notebooks/Reference/Jupyter_Python_intro_01.ipynb
       - file: notebooks/Reference/Jupyter_Python_intro_02.ipynb
       - file: notebooks/Simple_widgets_v1.ipynb
-   # - title: "Related topics"
-   #   file: content/related_topics.md
     - title: "Examples: Jupyter jb-book"
       file: content/jb_tests.md
+    - title: "Related topics"
+      file: content/Related/related_topics.md
+      sections:
+      - file: content/Related/qbism.md
   - caption: Notebook keys
     chapters:
     - file: notebooks/Basics/simple_sum_product_rule_KEY.ipynb
