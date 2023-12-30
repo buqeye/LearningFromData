@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>6.5. Lecture 18 &#8212; Learning from data</title>
+    <title>Quantum Bayesianism (QBism) &#8212; Learning from data</title>
   
   
   
@@ -62,15 +62,13 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../../_static/sphinx-thebe.js"></script>
-    <script>window.MathJax = {"tex": {"macros": {"N": ["\\mathbb{N}"], "Z": ["\\mathbb{Z}"], "floor": ["\\lfloor#1\\rfloor", 1], "bmat": ["\\left[\\begin{array}"], "emat": ["\\end{array}\\right]"], "alphavec": ["\\boldsymbol{\\alpha}"], "muvec": ["\\boldsymbol{\\mu}"], "phivec": ["\\boldsymbol{\\phi}"], "sigmavec": ["\\boldsymbol{\\sigma}"], "Sigmavec": ["\\boldsymbol{\\Sigma}"], "thetavec": ["\\boldsymbol{\\theta}"], "thetavechat": ["\\widehat\\thetavec"], "avec": ["\\boldsymbol{a}"], "Bvec": ["\\boldsymbol{B}"], "fvec": ["\\boldsymbol{f}"], "mvec": ["\\boldsymbol{m}"], "qvec": ["\\boldsymbol{q}"], "rvec": ["\\boldsymbol{r}"], "uvec": ["\\boldsymbol{u}"], "wvec": ["\\boldsymbol{w}"], "xvec": ["\\boldsymbol{x}"], "yvec": ["\\boldsymbol{y}"], "Lra": ["\\Longrightarrow"], "abar": ["\\overline a"], "Xbar": ["\\overline X"], "alphahat": ["\\widehat\\alpha"], "Hhat": ["\\hat H"], "yth": ["y_{\\text{th}}"], "yexp": ["y_{\\text{exp}}"], "ym": ["y_{\\text{m}}"], "gs": ["{0}"]}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
-    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'content/MCMC_sampling_II/lecture_18';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'content/Related/qbism';</script>
     <link rel="shortcut icon" href="../../_static/favicon.ico"/>
     <link rel="author" title="About these documents" href="../../about.html" />
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="6.6. PyMC3 Introduction" href="../../notebooks/MCMC_sampling_II/PyMC3_intro_updated.html" />
-    <link rel="prev" title="6.4. Solving orbital equations with different algorithms" href="../../notebooks/MCMC_sampling_II/Orbital_eqs_with_different_algorithms.html" />
+    <link rel="next" title="Checking the sum and product rules, and their consequences Key" href="../../notebooks/Basics/simple_sum_product_rule_KEY.html" />
+    <link rel="prev" title="Related topics" href="related_topics.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -177,7 +175,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../Course/overview.html">Objectives</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Topics</span></p>
-<ul class="current nav bd-sidenav">
+<ul class="nav bd-sidenav">
 <li class="toctree-l1 has-children"><a class="reference internal" href="../Basics/basics.html">1. Basics of Bayesian statistics</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../Basics/lecture_01.html">1.1. Lecture 1</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../notebooks/Basics/simple_sum_product_rule.html">1.2. Checking the sum and product rules, and their consequences</a></li>
@@ -237,12 +235,12 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="../../notebooks/mini-projects/MCMC-parallel-tempering_ptemcee_vs_zeus.html">5.6. Example: Parallel tempering for multimodal distributions vs. zeus</a></li>
 </ul>
 </li>
-<li class="toctree-l1 current active has-children"><a class="reference internal" href="MCMC_sampling_II.html">6. MCMC sampling II</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="lecture_17.html">6.1. Lecture 17</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../MCMC_sampling_II/MCMC_sampling_II.html">6. MCMC sampling II</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../MCMC_sampling_II/lecture_17.html">6.1. Lecture 17</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../notebooks/MCMC_sampling_II/chi_squared_tests.html">6.2. Quick check of the distribution of normal variables squared</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../notebooks/MCMC_sampling_II/Liouville_theorem_visualization.html">6.3. Liouville Theorem Visualization</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../notebooks/MCMC_sampling_II/Orbital_eqs_with_different_algorithms.html">6.4. Solving orbital equations with different algorithms</a></li>
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">6.5. Lecture 18</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../MCMC_sampling_II/lecture_18.html">6.5. Lecture 18</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../notebooks/MCMC_sampling_II/PyMC3_intro_updated.html">6.6. PyMC3 Introduction</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../notebooks/MCMC_sampling_II/PyMC3_docs_getting_started_updated.html">6.7. Getting started with PyMC3</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../notebooks/Parameter_estimation/parameter_estimation_Gaussian_noise_compare_samplers.html">6.8. Comparing samplers for a simple problem</a></li>
@@ -294,7 +292,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../../notebooks/mini-projects/mini-project_IIIb_Bayesian_neural_networks_from_demo.html">Mini-project IIIb: Bayesian Neural Networks</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Reference material</span></p>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../zbibliography.html">Bibliography</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../Reference/installing_anaconda.html">Using Anaconda</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../Reference/using_github.html">Using GitHub</a></li>
@@ -304,8 +302,8 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../jb_tests.html">Examples: Jupyter jb-book</a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../Related/related_topics.html">Related topics</a><input class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-12"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../Related/qbism.html">Quantum Bayesianism (QBism)</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="related_topics.html">Related topics</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-12"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Quantum Bayesianism (QBism)</a></li>
 </ul>
 </li>
 </ul>
@@ -384,7 +382,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="https://github.com/buqeye/LearningFromData/issues/new?title=Issue%20on%20page%20%2Fcontent/MCMC_sampling_II/lecture_18.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/buqeye/LearningFromData/issues/new?title=Issue%20on%20page%20%2Fcontent/Related/qbism.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -414,7 +412,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="../../_sources/content/MCMC_sampling_II/lecture_18.md" target="_blank"
+      <li><a href="../../_sources/content/Related/qbism.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -498,7 +496,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Lecture 18</h1>
+    <h1>Quantum Bayesianism (QBism)</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -508,10 +506,7 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-expected-for-your-project">What is expected for your project?</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overview-of-intro-to-pymc3-notebook">Overview of Intro to PyMC3 notebook</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#looking-at-pymc3-getting-started-notebook">Looking at PyMC3 getting started notebook</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-zeus-ensemble-slice-sampler">The Zeus Ensemble Slice Sampler</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#qbism-references">QBism references</a></li>
 </ul>
             </nav>
         </div>
@@ -523,97 +518,31 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="lecture-18">
-<h1><span class="section-number">6.5. </span>Lecture 18<a class="headerlink" href="#lecture-18" title="Permalink to this heading">#</a></h1>
-<section id="what-is-expected-for-your-project">
-<h2>What is expected for your project?<a class="headerlink" href="#what-is-expected-for-your-project" title="Permalink to this heading">#</a></h2>
-<p>In most cases, you will turn in a Jupyter notebook relevant to your research interests (which doesn’t has to be your thesis research area!) using Bayesian tools. As already stressed in class, the project does not have to be completed if it will continue as part of your thesis work.</p>
-</section>
-<section id="overview-of-intro-to-pymc3-notebook">
-<h2>Overview of Intro to PyMC3 notebook<a class="headerlink" href="#overview-of-intro-to-pymc3-notebook" title="Permalink to this heading">#</a></h2>
-<p><a class="reference internal" href="../../notebooks/MCMC_sampling_II/PyMC3_intro_updated.html"><span class="doc std std-doc">PyMC3 Introduction</span></a> starts with sampling to find the posterior for <span class="math notranslate nohighlight">\(\mu\)</span>, the mean of a distribution, given data that is generated according to a normal distribution with mean zero.</p>
+  <section class="tex2jax_ignore mathjax_ignore" id="quantum-bayesianism-qbism">
+<h1>Quantum Bayesianism (QBism)<a class="headerlink" href="#quantum-bayesianism-qbism" title="Permalink to this heading">#</a></h1>
+<p>From the <a class="reference external" href="https://en.wikipedia.org/wiki/Quantum_Bayesianism">Wikipedia article on QBism</a>: “In physics and the philosophy of physics, quantum Bayesianism is a collection of related approaches to the interpretation of quantum mechanics, of which the most prominent is QBism (pronounced “cubism”). QBism is an interpretation that takes an agent’s actions and experiences as the central concerns of the theory.”</p>
+<section id="qbism-references">
+<h2>QBism references<a class="headerlink" href="#qbism-references" title="Permalink to this heading">#</a></h2>
+<p>Here are some references:</p>
 <ul class="simple">
-<li><p>Try changing the true <span class="math notranslate nohighlight">\(\mu\)</span>, sampling sigma as well.</p></li>
-<li><p>The standard deviation is initially fixed at 1.</p></li>
-</ul>
-<p>In the code, one specifies priors and then the likelihood. This is sufficient to specify the posterior for <span class="math notranslate nohighlight">\(\mu\)</span> by Bayes’ theorem (up to a normalization):</p>
-<div class="math notranslate nohighlight">
-\[
-  p(\mu|D,\sigma) \propto p(D|\mu,\sigma) p(\mu | \mu_\mu^0, \sigma_\mu^0) ,
-\]</div>
-<ul class="simple">
-<li><p><span class="math notranslate nohighlight">\(p(\mu|D,\sigma)\)</span> is the pdf to sample,</p></li>
-<li><p><span class="math notranslate nohighlight">\(D\)</span> is the <em>observed</em> data,</p></li>
-<li><p><span class="math notranslate nohighlight">\(p(D|\mu,\sigma)\)</span> is the likelihood, which is specified last. Here it is <span class="math notranslate nohighlight">\(\sim \mathcal{N}(\mu,\sigma^2)\)</span>.</p></li>
-<li><p><span class="math notranslate nohighlight">\(\mu_\mu^0\)</span> and <span class="math notranslate nohighlight">\(\sigma_\mu^0\)</span> are hyperparameters specifying the priors for <span class="math notranslate nohighlight">\(\mu\)</span> and <span class="math notranslate nohighlight">\(\sigma\)</span>. The statements for these priors appear first.</p></li>
-</ul>
-</section>
-<section id="looking-at-pymc3-getting-started-notebook">
-<h2>Looking at PyMC3 getting started notebook<a class="headerlink" href="#looking-at-pymc3-getting-started-notebook" title="Permalink to this heading">#</a></h2>
-<p><a class="reference internal" href="../../notebooks/MCMC_sampling_II/PyMC3_docs_getting_started_updated.html"><span class="doc std std-doc">Getting started with PyMC3</span></a> starts with a brief overview and a list of features of PyMC3. Note the comment about Theano being used to calculate gradients needed for HMC. The technique of <a class="reference external" href="https://en.wikipedia.org/wiki/Automatic_differentiation">“automatic differentiation”</a> ensures machine precision results for these derivatives.</p>
-<p>Consider the “Motivating Example” on linear regression model that predicts the outcome <span class="math notranslate nohighlight">\(Y \sim \mathcal{N}(\mu,\sigma^2)\)</span> from a “linear model”, meaning the expected result is a linear combination of the two input variables <span class="math notranslate nohighlight">\(X_1\)</span> and <span class="math notranslate nohighlight">\(X_2\)</span>, <span class="math notranslate nohighlight">\(\mu = \alpha + \beta_1 X_1 + \beta_2 X_2\)</span>.</p>
+<li><p>David Mermin columns from Physics Today (2012) and response by Robert Griffiths:</p>
 <ul>
-<li><p>This is what we have written elsewhere as</p>
-<div class="math notranslate nohighlight">
-\[
-      y_{\text{expt}} = y_{\text{th}} + \delta y_{\text{exp}}
-    \]</div>
-<p>(no model discrepancy <span class="math notranslate nohighlight">\(\delta y_{\text{th}}\)</span>), with <span class="math notranslate nohighlight">\(y_{\text{expt}} \rightarrow Y\)</span>, <span class="math notranslate nohighlight">\(y_{\text{th}} \rightarrow \mu\)</span>, and <span class="math notranslate nohighlight">\(\delta y_{\text{exp}}\)</span> Gaussian noise with mean zero and variance <span class="math notranslate nohighlight">\(\sigma^2\)</span>.</p>
+<li><p><a class="reference external" href="https://physicstoday.scitation.org/doi/10.1063/PT.3.1618">“Quantum mechanics: Fixing the shifty split”</a></p></li>
+<li><p><a class="reference external" href="https://physicstoday.scitation.org/doi/10.1063/PT.3.1798">Robert Griffiths response</a> and <a class="reference external" href="https://physicstoday.scitation.org/toc/pto/65/12?size=all">other responses</a></p></li>
+<li><p><a class="reference external" href="https://physicstoday.scitation.org/doi/full/10.1063/PT.3.1803">Mermim replies</a></p></li>
+</ul>
 </li>
-<li><p>The basic workflow is: make data then encode the model in approximate statistical notation.</p></li>
-<li><p>Step through the line-by-line explanation of the model (more detail than here!).</p>
+<li><p>Scientific American short article from 2013: <a class="reference external" href="https://www.scientificamerican.com/article/can-quantum-beyesnism-fix-paradoxes-quantum-mechanics/">“Can Quantum Bayesianism Fix the Paradoxes of Quantum Mechanics?”</a></p></li>
+<li><p>Several works by Christopher Fuchs or interviews with him:</p>
 <ul>
-<li><p>Use the Python <code class="docutils literal notranslate"><span class="pre">with</span></code> for a context manager. Note that the first two statements could have been combined to be <code class="docutils literal notranslate"><span class="pre">with</span> <span class="pre">pm.Model()</span> <span class="pre">as</span> <span class="pre">basic_model:</span></code>.</p></li>
-<li><p>Compare the code to first the priors for <em>unknown</em> parameters:</p>
-<div class="math notranslate nohighlight">
-\[\begin{align}
-          \alpha \sim \mathcal{N}(0,100), \quad 
-          \beta_i \sim \mathcal{N}(0,100), \quad
-          \sigma \sim |\mathcal{N}(0,1)|,
-        \end{align}\]</div>
-<p>Investigate the options for <code class="docutils literal notranslate"><span class="pre">Normal</span></code>, such as <code class="docutils literal notranslate"><span class="pre">shape</span></code> in the documentation for <a class="reference external" href="https://docs.pymc.io/en/stable/Probability_Distributions.html">Probability Distributions in PyMC3</a>.</p>
-</li>
-<li><p>Then the encoding of <span class="math notranslate nohighlight">\(\mu = \alpha + \beta_1 X_1 + \beta_2 X_2\)</span>.</p></li>
-<li><p>Finally the statement of the likelihood (always comes last) <span class="math notranslate nohighlight">\(Y \sim \mathcal{N}(\mu,\sigma^2)\)</span>. Note the use of <code class="docutils literal notranslate"><span class="pre">observed=Y</span></code>.</p></li>
-<li><p>Read through all the background!. This and the other examples can serve as prototypes for your use of PyMC3.</p></li>
+<li><p>From Quanta magazine <a class="reference external" href="https://www.quantamagazine.org/quantum-bayesianism-explained-by-its-founder-20150604/">A Private View of Quantum Reality</a></p></li>
+<li><p>From Discover magazine: <a class="reference external" href="https://www.discovermagazine.com/the-sciences/quantum-physics-is-no-more-mysterious-than-crossing-the-street">“Quantum Physics is No More Mysterious Than Crossing the Street: A Conversation with Chris Fuchs”</a></p></li>
+<li><p><a class="reference external" href="https://arxiv.org/abs/1207.2141">“Interview with a Quantum Bayesian”</a></p></li>
+<li><p><a class="reference external" href="https://arxiv.org/abs/1003.5209">“QBism, the Perimeter of Quantum Bayesianism”</a></p></li>
+<li><p>Fuchs and Schack on <a class="reference external" href="https://arxiv.org/abs/1301.3274">Quantum-Bayesian coherence</a></p></li>
 </ul>
 </li>
-</ul>
-<p>Your task: run through the notebook!</p>
-</section>
-<section id="the-zeus-ensemble-slice-sampler">
-<h2>The Zeus Ensemble Slice Sampler<a class="headerlink" href="#the-zeus-ensemble-slice-sampler" title="Permalink to this heading">#</a></h2>
-<p>From the documentation at <a class="reference external" href="https://zeus-mcmc.readthedocs.io/en/latest/index.html">https://zeus-mcmc.readthedocs.io/en/latest/index.html</a>.</p>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">zeus</span></code> is a Python implementation of the Ensemble Slice Sampling method.</p>
-<ul>
-<li><p>Fast &amp; Robust Bayesian Inference,</p></li>
-<li><p>Efficient Markov Chain Monte Carlo (MCMC),</p></li>
-<li><p>Black-box inference, no hand-tuning,</p></li>
-<li><p>Excellent performance in terms of autocorrelation time and    convergence rate,</p></li>
-<li><p>Scale to multiple CPUs without any extra effort.</p></li>
-</ul>
-</li>
-</ul>
-<p>There are two relevant arXiv references for zeus:</p>
-<ol class="arabic simple">
-<li><p><a class="reference external" href="https://arxiv.org/abs/2002.06212"><em>Ensemble Slice Sampling: Parallel, black-box and gradient-free inference for correlated &amp; multimodal distributions</em></a> by Minas Karamanis and Florian Beutler.</p></li>
-<li><p><a class="reference external" href="https://arxiv.org/abs/2105.03468"><em>zeus: A Python implementation of Ensemble Slice Sampling for efficient Bayesian parameter inference</em></a> by Minas Karamanis, Florian Beutler, and John A. Peacock.</p></li>
-</ol>
-<p>Slice sampling in action for a one-dimensional distribution is shown in <code class="xref std std-numref docutils literal notranslate"><span class="pre">zeus_fig_1</span></code>.</p>
-<ul class="simple">
-<li><p>The idea is that sampling from a distribution <span class="math notranslate nohighlight">\(p(x)\)</span> is the same as uniform sampling from the <em>area</em> under the plot of <span class="math notranslate nohighlight">\(f(x) \propto p(x)\)</span>. E.g., the highest probability <span class="math notranslate nohighlight">\(p(x)\)</span> is where the area is largest, and this is a simple proportionality. The height <span class="math notranslate nohighlight">\(y\)</span> is introduced with <span class="math notranslate nohighlight">\(0 &lt; y &lt; f(x)\)</span> as an auxiliary variable and one samples the uniform joint probability <span class="math notranslate nohighlight">\(p(x,y)\)</span>. Then <span class="math notranslate nohighlight">\(p(x)\)</span> is obtained by marginalizing over <span class="math notranslate nohighlight">\(y\)</span> (meaning just dropping <span class="math notranslate nohighlight">\(y\)</span> from the sample).</p></li>
-<li><p>The blue star comes from uniformly sampling in <span class="math notranslate nohighlight">\(y\)</span> at the initial point <span class="math notranslate nohighlight">\(x_0\)</span> to identify <span class="math notranslate nohighlight">\(y_0\)</span>.</p></li>
-<li><p>The “slice” is the set of <span class="math notranslate nohighlight">\(x\)</span> such that <span class="math notranslate nohighlight">\(y_0 &lt; f(x)\)</span>. In the figure the interval initially from <span class="math notranslate nohighlight">\(L\)</span> to <span class="math notranslate nohighlight">\(R\)</span> is expanded to <span class="math notranslate nohighlight">\(L'\)</span> to <span class="math notranslate nohighlight">\(R'\)</span>, which includes the full slice. When the final interval is found, a new <span class="math notranslate nohighlight">\(x_1\)</span> is drawn uniformly from the intersection of the interval and the slice.</p></li>
-<li><p>The green star is an accepted new point <span class="math notranslate nohighlight">\(x_1\)</span> (inside the slice) while the red star is a rejected point (outside the slice).</p></li>
-<li><p>There is one parameter to tune: the width <span class="math notranslate nohighlight">\(\mu\)</span> of the interval from <span class="math notranslate nohighlight">\(L\)</span> to <span class="math notranslate nohighlight">\(R\)</span> that sets the original interval around <span class="math notranslate nohighlight">\(x_0\)</span> and then the step size for expanding the interval to be from <span class="math notranslate nohighlight">\(L'\)</span> to <span class="math notranslate nohighlight">\(R'\)</span>. In <code class="docutils literal notranslate"><span class="pre">zeus</span></code> the value of <span class="math notranslate nohighlight">\(\mu\)</span> is tuned by stochastic optimization.</p></li>
-</ul>
-<p>The “ensemble” aspect of <code class="docutils literal notranslate"><span class="pre">zeus</span></code> is that there are multiple walkers, as in the ensemble sampler <code class="docutils literal notranslate"><span class="pre">emcee</span></code>.</p>
-<ul class="simple">
-<li><p>Figure <code class="xref std std-numref docutils literal notranslate"><span class="pre">zeus_fig_2</span></code> illustrates how the ensemble of walkers is used to do what is called a “differential move”. There are several choices for moves, including a global one that is effective for multi-modal distributions.</p></li>
-<li><p>The basic call for <code class="docutils literal notranslate"><span class="pre">zeus</span></code> compared to <code class="docutils literal notranslate"><span class="pre">emcee</span></code> and <code class="docutils literal notranslate"><span class="pre">PyMC3</span></code> is illustrated in <a class="reference internal" href="../../notebooks/Parameter_estimation/parameter_estimation_Gaussian_noise_compare_samplers.html"><span class="doc std std-doc">Comparing samplers for a simple problem</span></a>.</p></li>
-<li><p>An example from the <code class="docutils literal notranslate"><span class="pre">zeus</span></code> documentation of sampling from a multimodal distribution is given in <a class="reference internal" href="../../notebooks/mini-projects/zeus_multimodal.html"><span class="doc std std-doc">zeus: Sampling from multimodal distributions</span></a>.</p></li>
-<li><p>The text case for parallel tempering in a very simple multi-modal example is compared to <code class="docutils literal notranslate"><span class="pre">zeus</span></code> in <a class="reference internal" href="../../notebooks/mini-projects/MCMC-parallel-tempering_ptemcee_vs_zeus.html"><span class="doc std std-doc">Example: Parallel tempering for multimodal distributions vs. zeus</span></a></p></li>
+<li><p><a class="reference external" href="http://philsci-archive.pitt.edu/9803/1/comments_on_QBism_-_final.pdf">Critical view of QBism by Guido Bacciagaluppi</a> from 2013.</p></li>
 </ul>
 </section>
 </section>
@@ -631,7 +560,7 @@ document.write(`
         },
         kernelOptions: {
             name: "python3",
-            path: "./content/MCMC_sampling_II"
+            path: "./content/Related"
         },
         predefinedOutput: true
     }
@@ -649,20 +578,20 @@ document.write(`
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="../../notebooks/MCMC_sampling_II/Orbital_eqs_with_different_algorithms.html"
+       href="related_topics.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><span class="section-number">6.4. </span>Solving orbital equations with different algorithms</p>
+        <p class="prev-next-title">Related topics</p>
       </div>
     </a>
     <a class="right-next"
-       href="../../notebooks/MCMC_sampling_II/PyMC3_intro_updated.html"
+       href="../../notebooks/Basics/simple_sum_product_rule_KEY.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">6.6. </span>PyMC3 Introduction</p>
+        <p class="prev-next-title">Checking the sum and product rules, and their consequences <span style="color: red">Key</span></p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -681,10 +610,7 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-expected-for-your-project">What is expected for your project?</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overview-of-intro-to-pymc3-notebook">Overview of Intro to PyMC3 notebook</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#looking-at-pymc3-getting-started-notebook">Looking at PyMC3 getting started notebook</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-zeus-ensemble-slice-sampler">The Zeus Ensemble Slice Sampler</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#qbism-references">QBism references</a></li>
 </ul>
   </nav></div>
 
