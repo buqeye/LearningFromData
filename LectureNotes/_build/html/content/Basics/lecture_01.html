@@ -69,7 +69,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="author" title="About these documents" href="../../about.html" />
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="1.2. Checking the sum and product rules, and their consequences" href="../../notebooks/Basics/simple_sum_product_rule.html" />
+    <link rel="next" title="1.2. Exploring PDFs" href="../../notebooks/Basics/Exploring_pdfs.html" />
     <link rel="prev" title="1. Basics of Bayesian statistics" href="basics.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -180,8 +180,8 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="basics.html">1. Basics of Bayesian statistics</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">1.1. Lecture 1</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../notebooks/Basics/simple_sum_product_rule.html">1.2. Checking the sum and product rules, and their consequences</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../notebooks/Basics/Exploring_pdfs.html">1.3. Exploring PDFs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../notebooks/Basics/Exploring_pdfs.html">1.2. Exploring PDFs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../notebooks/Basics/simple_sum_product_rule.html">1.3. Checking the sum and product rules, and their consequences</a></li>
 <li class="toctree-l2"><a class="reference internal" href="lecture_02.html">1.4. Lecture 2</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../notebooks/Basics/Bayesian_updating_coinflip_interactive.html">1.5. Interactive Bayesian updating: coin flipping example</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../notebooks/Basics/medical_example_by_Bayes.html">1.6. Standard medical example by applying Bayesian rules of probability</a></li>
@@ -305,7 +305,7 @@ const thebe_selector_output = ".output, .cell_output"
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../jb_tests.html">Examples: Jupyter jb-book</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../Related/related_topics.html">Related topics</a><input class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-12"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../Related/qbism.html">Quantum Bayesianism (QBism)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Related/qbism.html">QBism</a></li>
 </ul>
 </li>
 </ul>
@@ -679,8 +679,8 @@ Probability <em>density</em> at <span class="math notranslate nohighlight">\(x\)
 <section id="sum-rule">
 <h3><strong>Sum rule:</strong><a class="headerlink" href="#sum-rule" title="Permalink to this heading">#</a></h3>
 <p>If the set <span class="math notranslate nohighlight">\(\{x_i\}\)</span> is <em>exhaustive</em> and <em>exclusive</em></p>
-<div class="amsmath math notranslate nohighlight" id="equation-da9b10ac-76d9-44e9-8751-65ce1d74aad2">
-<span class="eqno">(1.1)<a class="headerlink" href="#equation-da9b10ac-76d9-44e9-8751-65ce1d74aad2" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-3df1e377-0e93-46ba-8ab8-3bccc2bcf7a7">
+<span class="eqno">(1.1)<a class="headerlink" href="#equation-3df1e377-0e93-46ba-8ab8-3bccc2bcf7a7" title="Permalink to this equation">#</a></span>\[\begin{align}
   &amp; \sum_i p(x_i | I ) = 1 \qquad \Longrightarrow \qquad &amp; \int dx\, p(x|I) = 1 \\
   &amp; \text{(discrete like spins)}       &amp; \text{(continuous)}
 \end{align}\]</div>
@@ -688,8 +688,8 @@ Probability <em>density</em> at <span class="math notranslate nohighlight">\(x\)
 <li><p>i.e., the sum of probabilities is equal to one.</p></li>
 <li><p>exhaustive, exclusive <span class="math notranslate nohighlight">\(\Longrightarrow\)</span> cf. complete, orthonormal (includes all values and there is no overlap between members of the set).</p></li>
 <li><p>the sum rule <em>implies</em> marginalization</p>
-<div class="amsmath math notranslate nohighlight" id="equation-e3d9ec26-bff1-4ab0-9c15-9e598045903c">
-<span class="eqno">(1.2)<a class="headerlink" href="#equation-e3d9ec26-bff1-4ab0-9c15-9e598045903c" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-a48363c5-1009-4fcf-8b31-0544b9b8700b">
+<span class="eqno">(1.2)<a class="headerlink" href="#equation-a48363c5-1009-4fcf-8b31-0544b9b8700b" title="Permalink to this equation">#</a></span>\[\begin{align}
       p(x|I) = \sum_j p(x, y_j | I) \qquad\Longrightarrow\qquad p(x|I) = \int dy\, p(x,y | I)
     \end{align}\]</div>
 <ul class="simple">
@@ -716,14 +716,14 @@ Probability <em>density</em> at <span class="math notranslate nohighlight">\(x\)
 <ul>
 <li><p>Note the symmetry between the first and second equalities.</p></li>
 <li><p>If <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span> are <em>mutually independent</em>, then <span class="math notranslate nohighlight">\(p(x | y,I) = p(x | I)\)</span> and</p>
-<div class="amsmath math notranslate nohighlight" id="equation-f8e5fb69-d183-4488-a616-7dd9219205d9">
-<span class="eqno">(1.4)<a class="headerlink" href="#equation-f8e5fb69-d183-4488-a616-7dd9219205d9" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-62f57bc7-215c-4285-aaf7-bbf7c3b4111a">
+<span class="eqno">(1.4)<a class="headerlink" href="#equation-62f57bc7-215c-4285-aaf7-bbf7c3b4111a" title="Permalink to this equation">#</a></span>\[\begin{equation}
          p(x,y | I) = p(x|I) \times p(y | I)
     \end{equation}\]</div>
 </li>
 <li><p>Rearranging the 2nd equality in <a class="reference internal" href="#equation-eq-joint-prob">(1.3)</a> yields <strong>Bayes’ Rule</strong> (or Theorem):</p>
-<div class="amsmath math notranslate nohighlight" id="equation-f9b7e610-4e58-4f84-80c0-4d5e2ed16753">
-<span class="eqno">(1.5)<a class="headerlink" href="#equation-f9b7e610-4e58-4f84-80c0-4d5e2ed16753" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-0700dc97-3742-4654-8347-b11420bb2f1c">
+<span class="eqno">(1.5)<a class="headerlink" href="#equation-0700dc97-3742-4654-8347-b11420bb2f1c" title="Permalink to this equation">#</a></span>\[\begin{equation}
          p(x | y,I) = \frac{p(y|x,I) p(x|I)}{p(y | I)}
     \end{equation}\]</div>
 <ul class="simple">
@@ -786,11 +786,11 @@ Probability <em>density</em> at <span class="math notranslate nohighlight">\(x\)
       </div>
     </a>
     <a class="right-next"
-       href="../../notebooks/Basics/simple_sum_product_rule.html"
+       href="../../notebooks/Basics/Exploring_pdfs.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">1.2. </span>Checking the sum and product rules, and their consequences</p>
+        <p class="prev-next-title"><span class="section-number">1.2. </span>Exploring PDFs</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
