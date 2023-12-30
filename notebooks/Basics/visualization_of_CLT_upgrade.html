@@ -178,8 +178,8 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="nav bd-sidenav">
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../content/Basics/basics.html">1. Basics of Bayesian statistics</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../content/Basics/lecture_01.html">1.1. Lecture 1</a></li>
-<li class="toctree-l2"><a class="reference internal" href="simple_sum_product_rule.html">1.2. Checking the sum and product rules, and their consequences</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Exploring_pdfs.html">1.3. Exploring PDFs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Exploring_pdfs.html">1.2. Exploring PDFs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="simple_sum_product_rule.html">1.3. Checking the sum and product rules, and their consequences</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../content/Basics/lecture_02.html">1.4. Lecture 2</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Bayesian_updating_coinflip_interactive.html">1.5. Interactive Bayesian updating: coin flipping example</a></li>
 <li class="toctree-l2"><a class="reference internal" href="medical_example_by_Bayes.html">1.6. Standard medical example by applying Bayesian rules of probability</a></li>
@@ -303,7 +303,7 @@ const thebe_selector_output = ".output, .cell_output"
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../content/jb_tests.html">Examples: Jupyter jb-book</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../content/Related/related_topics.html">Related topics</a><input class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-12"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../../content/Related/qbism.html">Quantum Bayesianism (QBism)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../content/Related/qbism.html">QBism</a></li>
 </ul>
 </li>
 </ul>
@@ -555,7 +555,10 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#limit-of-poisson-distribution-is-gaussian">Limit of Poisson distribution is Gaussian</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#limit-of-poisson-distribution-is-gaussian">Limit of Poisson distribution is Gaussian</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#new-show-that-poisson-is-a-sum-of-smaller-poissons">NEW: Show that Poisson is a sum of smaller Poissons</a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#behavior-of-the-mean-of-a-fixed-size-sample">Behavior of the mean of a fixed-size sample</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#first-example-each-sample-is-only-one-point">First example: each sample is only one point</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#second-example-each-sample-is-two-points">Second example: each sample is two points</a></li>
@@ -683,6 +686,8 @@ Here we visualize that the Poisson distribution in the limit <span class="math n
 <img alt="../../_images/fb0552e8e5be921a6dcf5f53086acc16baa1cebb809595d18b5ba5d9635a0c52.png" src="../../_images/fb0552e8e5be921a6dcf5f53086acc16baa1cebb809595d18b5ba5d9635a0c52.png" />
 </div>
 </div>
+<section id="new-show-that-poisson-is-a-sum-of-smaller-poissons">
+<h3>NEW: Show that Poisson is a sum of smaller Poissons<a class="headerlink" href="#new-show-that-poisson-is-a-sum-of-smaller-poissons" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">D</span> <span class="o">=</span> <span class="mi">50</span>
@@ -696,10 +701,13 @@ Here we visualize that the Poisson distribution in the limit <span class="math n
 <span class="n">poisson_plot</span><span class="p">(</span><span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">D</span><span class="p">,</span> <span class="n">max_N</span><span class="p">)</span>
 <span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">N_pts</span><span class="p">,</span> <span class="n">y_pts</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">)</span>
 
-<span class="n">N_pts_2</span> <span class="o">=</span> 
-<span class="n">poisson_pts</span> <span class="o">=</span> <span class="p">[</span><span class="n">stats</span><span class="o">.</span><span class="n">poisson</span><span class="o">.</span><span class="n">pmf</span><span class="p">(</span><span class="n">N</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="k">for</span> <span class="n">N</span> <span class="ow">in</span> <span class="n">N_pts</span><span class="p">]</span>
+<span class="n">N_pts_2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">max_N</span><span class="p">,</span> <span class="mf">0.01</span><span class="p">)</span>
+<span class="n">poisson_pts</span> <span class="o">=</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">([</span><span class="n">stats</span><span class="o">.</span><span class="n">poisson</span><span class="o">.</span><span class="n">rvs</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="k">for</span> <span class="n">index</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">D</span><span class="p">)])</span> <span class="k">for</span> <span class="n">N</span> <span class="ow">in</span> <span class="n">N_pts_2</span><span class="p">]</span>
 <span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">N_pts</span><span class="p">,</span> <span class="n">poisson_pts</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span> <span class="n">bottom</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">align</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">)</span>
-
+<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;Number of counts $N$&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">18</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="sa">fr</span><span class="s1">&#39;$\mathrm</span><span class="se">{{</span><span class="s1">p</span><span class="se">}}</span><span class="s1">(N \mid D=</span><span class="si">{</span><span class="n">D</span><span class="si">:</span><span class="s1">.1f</span><span class="si">}</span><span class="s1">)$&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">18</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">rf</span><span class="s1">&#39;$D = </span><span class="si">{</span><span class="n">D</span><span class="si">:</span><span class="s1">.1f</span><span class="si">}</span><span class="s1">$&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">labelsize</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
 
 
 <span class="n">fig</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
@@ -707,9 +715,25 @@ Here we visualize that the Poisson distribution in the limit <span class="math n
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/9376e9881a9d1703fdfe20c9178a8395f5905b5b1921eb5b7c2dd4d21508119d.png" src="../../_images/9376e9881a9d1703fdfe20c9178a8395f5905b5b1921eb5b7c2dd4d21508119d.png" />
+<img alt="../../_images/34bea817349b5dce1b1cb0da7577d69d8580aa0632ddb3b02833b589c13697e8.png" src="../../_images/34bea817349b5dce1b1cb0da7577d69d8580aa0632ddb3b02833b589c13697e8.png" />
 </div>
 </div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">N</span> <span class="o">=</span> <span class="mi">50</span>
+<span class="n">D_test</span> <span class="o">=</span> <span class="mi">50</span>
+<span class="n">poisson_pts_test</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">([</span><span class="n">stats</span><span class="o">.</span><span class="n">poisson</span><span class="o">.</span><span class="n">rvs</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="k">for</span> <span class="n">index</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">D_test</span><span class="p">)])</span>
+<span class="n">poisson_pts_test</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>49
+</pre></div>
+</div>
+</div>
+</div>
+</section>
 </section>
 <section id="behavior-of-the-mean-of-a-fixed-size-sample">
 <h2>Behavior of the mean of a fixed-size sample<a class="headerlink" href="#behavior-of-the-mean-of-a-fixed-size-sample" title="Permalink to this heading">#</a></h2>
@@ -1035,7 +1059,10 @@ The plots on the left are the inverse Fourier transforms of the plots on the rig
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#limit-of-poisson-distribution-is-gaussian">Limit of Poisson distribution is Gaussian</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#limit-of-poisson-distribution-is-gaussian">Limit of Poisson distribution is Gaussian</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#new-show-that-poisson-is-a-sum-of-smaller-poissons">NEW: Show that Poisson is a sum of smaller Poissons</a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#behavior-of-the-mean-of-a-fixed-size-sample">Behavior of the mean of a fixed-size sample</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#first-example-each-sample-is-only-one-point">First example: each sample is only one point</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#second-example-each-sample-is-two-points">Second example: each sample is two points</a></li>
