@@ -100,6 +100,11 @@ This is the *content* of an admonition.
 An "extra credit" exercise is presented here.
 :::
 
+:::{admonition} An extra exercise
+:class: extra-credit
+An "extra credit" exercise is presented here.
+:::
+
 ## Dropdown answer
 
 The old hidden fish trick!
