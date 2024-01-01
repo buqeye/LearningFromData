@@ -146,6 +146,8 @@ parts:
     - title: "Related topics"
       file: content/Related/related_topics.md
       sections:
+      - title: ""
+        file: notebooks/Development/Student_t_distribution_from_Gaussians.ipynb
       - title: "QBism"
         file: content/Related/qbism.md
   - caption: Notebook keys
