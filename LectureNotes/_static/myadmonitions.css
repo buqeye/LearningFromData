@@ -1,0 +1,10 @@
+div.extra-credit {
+    border-left-color: rgba(var(--pst-color-success), 1);
+}
+div.extra-credit .admonition-title {
+    background-color: rgba(var(--pst-color-success), .1)
+}
+div.extra-credit .admonition-title:before {
+    color: rgba(var(--pst-color-success), 1);
+    content: '\f19d';
+}

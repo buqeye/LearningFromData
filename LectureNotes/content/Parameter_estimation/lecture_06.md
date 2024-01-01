@@ -248,7 +248,7 @@ Comments on figures:
 
 ## Compare Gaussian noise sampling to lighthouse calculation
 
-* Jump to the Bayesian approach in [](/notebooks/Parameter_estimation/parameter_estimation_Gaussian_noise-2.ipynb) and then come back to contrast with the frequentist approach.
+* Jump to the Bayesian approach in [](/notebooks/MCMC_sampling_I/parameter_estimation_Gaussian_noise-2.ipynb) and then come back to contrast with the frequentist approach.
 * The goal is to sample a posterior $p(\thetavec|D,I)$
 
     $$
