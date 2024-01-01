@@ -302,11 +302,12 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../content/Reference/python_jupyter.html">Python and Jupyter notebooks</a><input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-11"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../Reference/Jupyter_Python_intro_01.html">Python and Jupyter notebooks: part 01</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../Reference/Jupyter_Python_intro_02.html">Python and Jupyter notebooks: part 02</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Reference/Simple_widgets_v1.html">Simple widgets</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../content/jb_tests.html">Examples: Jupyter jb-book</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../content/Related/related_topics.html">Related topics</a><input class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-12"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../Development/Student_t_distribution_from_Gaussians.html">Student t distribution as a mixture of Gaussians</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Development/Student_t_distribution_from_Gaussians.html">Student t from Gaussians</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../content/Related/qbism.html">QBism</a></li>
 </ul>
 </li>
@@ -1149,8 +1150,8 @@ done
 <p>Through application of Bayes’ rule we can readily evaluate the posterior pdf <span class="math notranslate nohighlight">\(p(x|D,I)\)</span> for the distance <span class="math notranslate nohighlight">\(x\)</span> to the galaxy.</p>
 <section id="case-1-fixed-h-0">
 <h4>Case 1: Fixed <span class="math notranslate nohighlight">\(H_0\)</span><a class="headerlink" href="#case-1-fixed-h-0" title="Permalink to this heading">#</a></h4>
-<div class="amsmath math notranslate nohighlight" id="equation-1986f45d-60c7-472b-89c2-a1305730ae14">
-<span class="eqno">(4.1)<a class="headerlink" href="#equation-1986f45d-60c7-472b-89c2-a1305730ae14" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-8fae2588-1eef-4142-8f42-3ee9d13f241b">
+<span class="eqno">(4.1)<a class="headerlink" href="#equation-8fae2588-1eef-4142-8f42-3ee9d13f241b" title="Permalink to this equation">#</a></span>\[\begin{align}
 p(x | D,I) &amp; \propto p(D | x, I) p(x|I) \\
 &amp; = \frac{1}{\sqrt{2\pi}\sigma_v} \exp \left( - \frac{(v_\mathrm{measured} - v_\mathrm{theory})^2}{2\sigma_v^2} \right) p(x|I)\\
 &amp;= \left\{ \begin{array}{ll} \frac{1}{\sqrt{2\pi}\sigma_v} \exp \left( - \frac{(v_\mathrm{measured} - H_0 x)^2}{2\sigma_v^2} \right) &amp; \text{with }x \in [x_\mathrm{min},x_\mathrm{max}] \\
