@@ -516,17 +516,21 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#substitutions">substitutions</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#definition-lists">definition lists</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#images">images</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#videos">videos</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#html-admonitions">HTML admonitions</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#customized-admonitions">Customized admonitions</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dropdown-answer">Dropdown answer</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#panels">Panels</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#grids">Grids</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#more-dropdowns">More dropdowns</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#footnotes">Footnotes</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quotations-and-epigraphs">Quotations and epigraphs</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#glossaries">Glossaries</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tabbed-content">Tabbed content</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tabbed-content">Tabbed content</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#learn-more-about-tabs">Learn more about tabs</a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#margin-and-sidebar-content">Margin and sidebar content</a></li>
 </ul>
             </nav>
@@ -605,6 +609,14 @@ document.write(`
 </figure>
 <p><a class="reference internal" href="#fig-target"><span class="std std-ref">Go to the fish!</span></a></p>
 </section>
+<section id="videos">
+<h2>videos<a class="headerlink" href="#videos" title="Permalink to this heading">#</a></h2>
+<p style="text-align: center">
+<video  width="480" controls>
+  <source src="../_static/videos/Student_t_animation_01Jan2024.mp4" type="video/mp4">
+</video>
+</p>
+</section>
 <section id="html-admonitions">
 <h2>HTML admonitions<a class="headerlink" href="#html-admonitions" title="Permalink to this heading">#</a></h2>
 <div class="admonition note" id="html-admonition">
@@ -628,7 +640,11 @@ document.write(`
 </div>
 <div class="extra-credit admonition">
 <p class="admonition-title">An extra exercise</p>
-<p>An “extra credit” exercise is presented here.</p>
+<p>An “extra credit” exercise is presented here. The css doesn’t work yet.</p>
+</div>
+<div class="warning admonition">
+<p class="admonition-title">This is a title</p>
+<p>An example of an admonition with a title and a warning style.</p>
 </div>
 </section>
 </section>
@@ -651,8 +667,8 @@ document.write(`
 <p>Let’s try again here.</p>
 <div class="dropdown admonition">
 <p class="admonition-title">Answer</p>
-<div class="amsmath math notranslate nohighlight" id="equation-42987568-6fc0-4be0-9a9c-80a23f10bf71">
-<span class="eqno">(1)<a class="headerlink" href="#equation-42987568-6fc0-4be0-9a9c-80a23f10bf71" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-f0b81ed8-3d70-4bc1-9951-c852b4d06251">
+<span class="eqno">(1)<a class="headerlink" href="#equation-f0b81ed8-3d70-4bc1-9951-c852b4d06251" title="Permalink to this equation">#</a></span>\[\begin{equation}
   \mbox{Second answer is:}\quad  a_{ij} b_{j} = c_{i}
 \end{equation}\]</div>
 </div>
@@ -663,10 +679,167 @@ document.write(`
 <p><img alt="" src="../_images/8820_icon.png" /></p>
 </div>
 <p>Different admonitions: note, warning, tip, caution, attention, danger, error, hint, important</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Notes require <strong>no</strong> arguments,
+so content can start here.</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>This is an example
+of a warning directive.</p>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>This is an example
+of a tip directive.</p>
+</div>
+<div class="admonition attention">
+<p class="admonition-title">Attention</p>
+<p>This is an example
+of an attention directive.</p>
+</div>
+<div class="admonition danger">
+<p class="admonition-title">Danger</p>
+<p>This is an example
+of a danger directive.</p>
+</div>
+<div class="admonition error">
+<p class="admonition-title">Error</p>
+<p>This is an example
+of an error directive.</p>
+</div>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<p>This is an example
+of a hint directive.</p>
+</div>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>This is an example
+of an important directive.</p>
+</div>
+<!--
+## Panels
+
+Approximately, .. panels:: is equivalent to .. grid:: 1 2 2 2 with option :gutter: 2.
+
+````{panels}
+Content of the left panel.
+
+{badge}`example-badge,badge-primary`
+
+---
+
+```{link-button} /content/zbibliography
+:text: Clickable right panel
+:type: ref
+:classes: stretched-link
+```
+
+````
+
+
+Controlling the look and feel (here the  border):
+
+````{panels}
+:column: col-4
+:card: border-2
+Header A
+^^^
+Body A
+---
+Header B
+^^^
+Body B
+---
+Header C
+^^^
+Body C
+````
+-->
 </section>
-<section id="panels">
-<h2>Panels<a class="headerlink" href="#panels" title="Permalink to this heading">#</a></h2>
-<p>Controlling the look and feel (here the  border):</p>
+<section id="grids">
+<h2>Grids<a class="headerlink" href="#grids" title="Permalink to this heading">#</a></h2>
+<p>“Grids allow you to structure arbitrary chunks of content in a grid-like system. You can also control things like the width of columns, the “gutters” between columns, etc.”</p>
+<div class="sd-container-fluid sd-sphinx-override sd-mb-4 docutils">
+<div class="sd-row sd-g-2 sd-g-xs-2 sd-g-sm-2 sd-g-md-2 sd-g-lg-2 docutils">
+<div class="sd-col sd-d-flex-column sd-border-1 docutils">
+<p>A</p>
+</div>
+<div class="sd-col sd-d-flex-column sd-border-1 docutils">
+<p>B</p>
+</div>
+<div class="sd-col sd-d-flex-column sd-border-1 docutils">
+<p>C</p>
+</div>
+<div class="sd-col sd-d-flex-column sd-border-1 docutils">
+<p>D</p>
+</div>
+</div>
+</div>
+<div class="sd-container-fluid sd-sphinx-override sd-mb-4 docutils">
+<div class="sd-row sd-g-4 sd-g-xs-4 sd-g-sm-4 sd-g-md-4 sd-g-lg-4 docutils">
+<div class="sd-col sd-d-flex-column docutils">
+<p><img alt="" src="../_images/fun-fish.png" /></p>
+</div>
+<div class="sd-col sd-d-flex-column docutils">
+<p><img alt="" src="../_images/fun-fish.png" /></p>
+</div>
+<div class="sd-col sd-d-flex-column docutils">
+<p><img alt="" src="../_images/fun-fish.png" /></p>
+</div>
+</div>
+</div>
+<p>“You can control how many columns are in each grid item with the <code class="docutils literal notranslate"><span class="pre">:columns:</span></code> option. Grids are split into 12 units of length, and this can be used to split up items as you wish. For example:”</p>
+<div class="sd-container-fluid sd-sphinx-override sd-mb-4 docutils">
+<div class="sd-row docutils">
+<div class="sd-col sd-d-flex-column sd-col-3 sd-col-xs-3 sd-col-sm-3 sd-col-md-3 sd-col-lg-3 sd-border-1 docutils">
+<p>A</p>
+</div>
+<div class="sd-col sd-d-flex-column sd-col-9 sd-col-xs-9 sd-col-sm-9 sd-col-md-9 sd-col-lg-9 sd-border-1 docutils">
+<p>B</p>
+</div>
+<div class="sd-col sd-d-flex-column sd-col-6 sd-col-xs-6 sd-col-sm-6 sd-col-md-6 sd-col-lg-6 sd-border-1 docutils">
+<p>C</p>
+</div>
+<div class="sd-col sd-d-flex-column sd-col-6 sd-col-xs-6 sd-col-sm-6 sd-col-md-6 sd-col-lg-6 sd-border-1 docutils">
+<p>D</p>
+</div>
+</div>
+</div>
+<p>“There is a short-hand for adding grids made up of cards, by using the <code class="docutils literal notranslate"><span class="pre">{grid-item-card}</span></code> directive. For example:””</p>
+<div class="sd-container-fluid sd-sphinx-override sd-mb-4 docutils">
+<div class="sd-row sd-g-3 sd-g-xs-3 sd-g-sm-3 sd-g-md-3 sd-g-lg-3 docutils">
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm docutils">
+<div class="sd-card-body docutils">
+<div class="sd-card-title sd-font-weight-bold docutils">
+One!</div>
+<p class="sd-card-text">Here’s the first card.</p>
+</div>
+</div>
+</div>
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm docutils">
+<div class="sd-card-body docutils">
+<div class="sd-card-title sd-font-weight-bold docutils">
+Two!</div>
+<p class="sd-card-text">Here’s the second card.</p>
+</div>
+</div>
+</div>
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm docutils">
+<div class="sd-card-body docutils">
+<div class="sd-card-title sd-font-weight-bold docutils">
+Three!</div>
+<p class="sd-card-text">Here’s the third card.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
 </section>
 <section id="more-dropdowns">
 <h2>More dropdowns<a class="headerlink" href="#more-dropdowns" title="Permalink to this heading">#</a></h2>
@@ -725,6 +898,69 @@ $p(x) = \delta(x-x_0)\quad$  [Note that $p(x)$ is normalized.]
 </section>
 <section id="tabbed-content">
 <h2>Tabbed content<a class="headerlink" href="#tabbed-content" title="Permalink to this heading">#</a></h2>
+<div class="sd-tab-set docutils">
+<input checked="checked" id="sd-tab-item-0" name="sd-tab-set-0" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-0">
+Tab 1 title</label><div class="sd-tab-content docutils">
+<p>My first tab</p>
+</div>
+<input id="sd-tab-item-1" name="sd-tab-set-0" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-1">
+Tab 2 title</label><div class="sd-tab-content docutils">
+<p>My second tab with <code class="docutils literal notranslate"><span class="pre">some</span> <span class="pre">code</span></code>!</p>
+</div>
+</div>
+<p>This can be used to show off many different view of the same content, such as providing multiple language examples.
+For example:</p>
+<div class="sd-tab-set docutils">
+<input checked="checked" id="sd-tab-item-2" name="sd-tab-set-1" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-2">
+c++</label><div class="sd-tab-content docutils">
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">argc</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">**</span><span class="n">argv</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<input id="sd-tab-item-3" name="sd-tab-set-1" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-3">
+python</label><div class="sd-tab-content docutils">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+    <span class="k">return</span>
+</pre></div>
+</div>
+</div>
+<input id="sd-tab-item-4" name="sd-tab-set-1" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-4">
+java</label><div class="sd-tab-content docutils">
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kd">class</span> <span class="nc">Main</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">args</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<input id="sd-tab-item-5" name="sd-tab-set-1" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-5">
+julia</label><div class="sd-tab-content docutils">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="k">function</span><span class="w"> </span><span class="n">main</span><span class="p">()</span>
+<span class="k">end</span>
+</pre></div>
+</div>
+</div>
+<input id="sd-tab-item-6" name="sd-tab-set-1" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-6">
+fortran</label><div class="sd-tab-content docutils">
+<div class="highlight-fortran notranslate"><div class="highlight"><pre><span></span><span class="k">PROGRAM </span><span class="n">main</span>
+<span class="k">END PROGRAM </span><span class="n">main</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="learn-more-about-tabs">
+<h3>Learn more about tabs<a class="headerlink" href="#learn-more-about-tabs" title="Permalink to this heading">#</a></h3>
+<p>See the <a class="reference external" href="https://sphinx-design.readthedocs.io/en/latest/tabs.html#sd-tabs"><code class="docutils literal notranslate"><span class="pre">sphinx-design</span></code> tabs documentation</a> for more information on how to use this.</p>
+</section>
 </section>
 <section id="margin-and-sidebar-content">
 <h2>Margin and sidebar content<a class="headerlink" href="#margin-and-sidebar-content" title="Permalink to this heading">#</a></h2>
@@ -819,17 +1055,21 @@ Note how the content wraps around the sidebar to the right. However, the sidebar
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#substitutions">substitutions</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#definition-lists">definition lists</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#images">images</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#videos">videos</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#html-admonitions">HTML admonitions</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#customized-admonitions">Customized admonitions</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dropdown-answer">Dropdown answer</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#panels">Panels</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#grids">Grids</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#more-dropdowns">More dropdowns</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#footnotes">Footnotes</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quotations-and-epigraphs">Quotations and epigraphs</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#glossaries">Glossaries</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tabbed-content">Tabbed content</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tabbed-content">Tabbed content</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#learn-more-about-tabs">Learn more about tabs</a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#margin-and-sidebar-content">Margin and sidebar content</a></li>
 </ul>
   </nav></div>
