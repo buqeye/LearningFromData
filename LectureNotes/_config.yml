@@ -77,7 +77,9 @@ execute:
 parse:
   myst_url_schemes          : [mailto, http, https]  # URI schemes that will be recognised as external URLs in Markdown links
   myst_enable_extensions    : ["dollarmath", "amsmath", "deflist", "colon_fence", "html_admonition","html_image", "linkify", "replacements", "smartquotes", "substitution"] # , "tasklist" ]
+  myst_dmath_double_inline  : True
   #myst_update_mathjax       : false
+
 
 # HTML-specific settings
 html:

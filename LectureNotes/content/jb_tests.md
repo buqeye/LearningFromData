@@ -1,16 +1,17 @@
 ---
-substitutions:
-  key1: "I'm a **substitution**"
-  key2: |
-    ```{note}
-    {{ key1 }}
-    ```
-  key3: |
-    ```{image} /_images/fun-fish.png
-    :alt: fishy
-    :width: 200px
-    ```
-  key4: example
+myst:
+  substitutions:
+    key1: "I'm a **substitution**"
+    key2: |
+      ```{note}
+      {{ key1 }}
+      ```
+    key3: |
+      ```{image} /_images/fun-fish.png
+      :alt: fishy
+      :width: 200px
+      ```
+    key4: example
 ---
 
 # Tests of Jupyter Book features
@@ -78,6 +79,14 @@ This is a caption in **Markdown**
 [Go to the fish!](fig-target)
 
 
+## videos
+
+<p style="text-align: center">
+<video  width="480" controls>
+  <source src="../_static/videos/Student_t_animation_01Jan2024.mp4" type="video/mp4">
+</video>
+</p>
+
 ## HTML admonitions
 
 <div class="admonition note" name="html-admonition" style="background: lightgreen; padding: 10px">
@@ -102,8 +111,13 @@ An "extra credit" exercise is presented here.
 
 :::{admonition} An extra exercise
 :class: extra-credit
-An "extra credit" exercise is presented here.
+An "extra credit" exercise is presented here. The css doesn't work yet.
 :::
+
+```{admonition} This is a title
+:class: warning
+An example of an admonition with a title and a warning style.
+```
 
 ## Dropdown answer
 
@@ -147,8 +161,42 @@ Some hidden toggle content!
 
 Different admonitions: note, warning, tip, caution, attention, danger, error, hint, important
 
+:::{note} Notes require **no** arguments,
+so content can start here.
+:::
 
+```{warning} This is an example
+of a warning directive.
+```
+
+```{tip} This is an example
+of a tip directive.
+```
+
+```{attention} This is an example
+of an attention directive.
+```
+
+```{danger} This is an example
+of a danger directive.
+```
+
+```{error} This is an example
+of an error directive.
+```
+
+```{hint} This is an example
+of a hint directive.
+```
+
+```{important} This is an example
+of an important directive.
+```
+
+<!--
 ## Panels
+
+Approximately, .. panels:: is equivalent to .. grid:: 1 2 2 2 with option :gutter: 2.
 
 ````{panels}
 Content of the left panel.
@@ -183,7 +231,100 @@ Header C
 ^^^
 Body C
 ````
+-->
 
+
+## Grids
+
+"Grids allow you to structure arbitrary chunks of content in a grid-like system. You can also control things like the width of columns, the “gutters” between columns, etc."
+
+::::{grid}
+:gutter: 2
+
+:::{grid-item}
+:outline:
+A
+:::
+:::{grid-item}
+:outline:
+B
+:::
+:::{grid-item}
+:outline:
+C
+:::
+:::{grid-item}
+:outline:
+D
+:::
+
+::::
+
+
+
+::::{grid}
+:gutter: 4
+
+:::{grid-item}
+![](/_images/fun-fish.png)
+:::
+:::{grid-item}
+![](/_images/fun-fish.png)
+:::
+:::{grid-item}
+![](/_images/fun-fish.png)
+:::
+
+::::
+
+
+
+
+"You can control how many columns are in each grid item with the `:columns:` option. Grids are split into 12 units of length, and this can be used to split up items as you wish. For example:"
+
+::::{grid}
+
+:::{grid-item}
+:outline:
+:columns: 3
+A
+:::
+:::{grid-item}
+:outline:
+:columns: 9
+B
+:::
+:::{grid-item}
+:outline:
+:columns: 6
+C
+:::
+:::{grid-item}
+:outline:
+:columns: 6
+D
+:::
+
+::::
+
+"There is a short-hand for adding grids made up of cards, by using the `{grid-item-card}` directive. For example:""
+
+
+::::{grid}
+:gutter: 3
+
+:::{grid-item-card} One!
+Here's the first card.
+:::
+
+:::{grid-item-card} Two!
+Here's the second card.
+:::
+
+:::{grid-item-card} Three!
+Here's the third card.
+:::
+::::
 
 ## More dropdowns
 
@@ -220,6 +361,7 @@ To create a footnote, first insert a reference in-line with this syntax (look at
 You can define [^mylabel] anywhere in the page, though its definition will always be placed at the bottom of your built page.
 
 
+
 ## Quotations and epigraphs
 
 Standard markdown first:
@@ -252,13 +394,76 @@ To reference terms in your glossary, use the {term} role. For example, {term}`Te
 
 ## Tabbed content
 
-```{tabbed} Tab 1 title
+
+
+````{tab-set}
+```{tab-item} Tab 1 title
 My first tab
 ```
 
-```{tabbed} Tab 2 title
+```{tab-item} Tab 2 title
 My second tab with `some code`!
 ```
+````
+
+
+This can be used to show off many different view of the same content, such as providing multiple language examples.
+For example:
+
+`````{tab-set}
+````{tab-item} c++
+
+```{code-block} c++
+
+int main(const int argc, const char **argv) {
+  return 0;
+}
+```
+````
+
+````{tab-item} python
+
+```{code-block} python
+
+def main():
+    return
+```
+````
+
+````{tab-item} java
+
+```{code-block} java
+
+class Main {
+    public static void main(String[] args) {
+    }
+}
+```
+````
+
+````{tab-item} julia
+
+```{code-block} julia
+
+function main()
+end
+```
+````
+
+````{tab-item} fortran
+
+```{code-block} fortran
+
+PROGRAM main
+END PROGRAM main
+```
+````
+`````
+
+### Learn more about tabs
+
+See the [`sphinx-design` tabs documentation](https://sphinx-design.readthedocs.io/en/latest/tabs.html#sd-tabs) for more information on how to use this.
+
 
 ## Margin and sidebar content
 
