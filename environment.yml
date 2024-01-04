@@ -10,7 +10,7 @@ dependencies:
 - pandas
 - seaborn
 - jupyter
-- jupyterlab >=4.0
+- notebook >=7.0
 - ipywidgets
 - nbdime
 - emcee
