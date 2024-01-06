@@ -272,5 +272,5 @@ What would a Bayesian statistician say?
 
 
 Homework: work through [](/notebooks/Basics/radioactive_lighthouse_exercise.ipynb).
-e measurement in question.
-
+<!-- e measurement in question.
+ -->
