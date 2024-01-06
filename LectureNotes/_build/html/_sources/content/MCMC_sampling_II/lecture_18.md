@@ -70,30 +70,29 @@ There are two relevant arXiv references for zeus:
 1. [*Ensemble Slice Sampling: Parallel, black-box and gradient-free inference for correlated & multimodal distributions*](https://arxiv.org/abs/2002.06212) by Minas Karamanis and Florian Beutler.
 2. [*zeus: A Python implementation of Ensemble Slice Sampling for efficient Bayesian parameter inference*](https://arxiv.org/abs/2105.03468) by Minas Karamanis, Florian Beutler, and John A. Peacock.
 
-<!-- ````{panels}
-:container: container-fluid 
-:column: col-lg-6 col-md-6 col-sm-6 col-xs-12 
-:card: shadow-none border-0
- -->
+::::{grid}
+:gutter: 2
+
+:::{grid-item}
 ```{figure} /_images/figure_1_from_arXiv2002.06212_ensemble_slice_sampling.png
-:width: 60%
+:width: 100%
 :name: zeus_fig_1
 
 Figure 1 from [Ref. 1](https://arxiv.org/abs/2002.06212) above.
 ```
-<!-- 
----
- -->
+:::
 
+:::{grid-item}
 ```{figure} /_images/figure_2_from_arXiv2105.03468_zeus_ensemble_slice_sampling.png
-:width: 60%
+:width: 100%
 :name: zeus_fig_2
 
 Figure 2 from [Ref. 2](https://arxiv.org/abs/2105.03468) above.
 ```
-<!-- 
-````
- -->
+:::
+
+::::
+
 Slice sampling in action for a one-dimensional distribution is shown in {numref}`zeus_fig_1`. 
 * The idea is that sampling from a distribution $p(x)$ is the same as uniform sampling from the *area* under the plot of $f(x) \propto p(x)$. E.g., the highest probability $p(x)$ is where the area is largest, and this is a simple proportionality. The height $y$ is introduced with $0 < y < f(x)$ as an auxiliary variable and one samples the uniform joint probability $p(x,y)$. Then $p(x)$ is obtained by marginalizing over $y$ (meaning just dropping $y$ from the sample).
 * The blue star comes from uniformly sampling in $y$ at the initial point $x_0$ to identify $y_0$. 
