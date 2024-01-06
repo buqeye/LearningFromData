@@ -316,6 +316,7 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../Basics/simple_sum_product_rule_KEY.html">Checking the sum and product rules, and their consequences <span style="color: red">Key</span></a></li>
 <li class="toctree-l1"><a class="reference internal" href="../Basics/medical_example_by_Bayes_KEY.html">Standard medical example by applying Bayesian rules of probability <span style="color: red">Key</span></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Basics/radioactive_lighthouse_exercise_key.html">Radioactive lighthouse problem  <span style="color: red">Key</span></a></li>
 </ul>
 
     </div>
@@ -1288,8 +1289,8 @@ U shape: (3088, 24), S shape: (24,), V shape: (2320, 24)
 <p>“Principal Components Analysis” (PCA) basically means to find and rank all the eigenvalues and eigenvectors of a covariance matrix. This is useful because high-dimensional data (with <span class="math notranslate nohighlight">\(p\)</span> features) may have nearly all their variation in a small number of dimensions <span class="math notranslate nohighlight">\(k&lt;p\)</span>, i.e. in the subspace spanned by the eigenvectors of the covariance matrix that have the <span class="math notranslate nohighlight">\(k\)</span> largest eigenvalues. If we project the original data into this subspace, we can have a dimension reduction (from <span class="math notranslate nohighlight">\(p\)</span> to <span class="math notranslate nohighlight">\(k\)</span>) with hopefully little loss of information.</p>
 <p>Numerically, PCA is typically done using SVD on the data matrix rather than eigendecomposition on the covariance matrix. Numerically, the condition number for working with the covariance matrix directly is the square of the condition number using SVD, so SVD minimizes errors.”</p>
 <p>For zero-centered vectors,</p>
-<div class="amsmath math notranslate nohighlight" id="equation-25512518-e5e8-4451-84c3-1017ec8a675a">
-<span class="eqno">(2.2)<a class="headerlink" href="#equation-25512518-e5e8-4451-84c3-1017ec8a675a" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-c1822fea-a8f1-40ae-87cf-c4be5a9c775d">
+<span class="eqno">(2.2)<a class="headerlink" href="#equation-c1822fea-a8f1-40ae-87cf-c4be5a9c775d" title="Permalink to this equation">#</a></span>\[\begin{align}
 \text{Cov}(X, Y) &amp;= \frac{\sum_{i=1}^n(X_i - \bar{X})(Y_i - \bar{Y})}{n-1} \\
   &amp;= \frac{\sum_{i=1}^nX_iY_i}{n-1} \\
   &amp;= \frac{XY^T}{n-1}
@@ -1422,8 +1423,8 @@ U shape: (3088, 24), S shape: (24,), V shape: (2320, 24)
 <h3>Using SVD for PCA<a class="headerlink" href="#using-svd-for-pca" title="Permalink to this heading">#</a></h3>
 <p>SVD is a decomposition of the data matrix <span class="math notranslate nohighlight">\(X = U S V^T\)</span> where <span class="math notranslate nohighlight">\(U\)</span> and <span class="math notranslate nohighlight">\(V\)</span> are orthogonal matrices and <span class="math notranslate nohighlight">\(S\)</span> is a diagonal matrix.</p>
 <p>Recall that the transpose of an orthogonal matrix is also its inverse, so if we multiply on the right by <span class="math notranslate nohighlight">\(X^T\)</span>, we get the following simplification</p>
-<div class="amsmath math notranslate nohighlight" id="equation-6ebdbb71-3024-4ee9-abda-f37b2b7a69f8">
-<span class="eqno">(2.3)<a class="headerlink" href="#equation-6ebdbb71-3024-4ee9-abda-f37b2b7a69f8" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-ac126ff2-a37c-4fd5-9d56-a203dd346001">
+<span class="eqno">(2.3)<a class="headerlink" href="#equation-ac126ff2-a37c-4fd5-9d56-a203dd346001" title="Permalink to this equation">#</a></span>\[\begin{align}
 X &amp;= U S V^T \\
 X X^T &amp;= U S V^T (U S V^T)^T \\
  &amp;= U S V^T V S U^T \\

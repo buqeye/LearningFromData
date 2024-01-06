@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>1.9. Radioactive lighthouse problem &#8212; Learning from data</title>
+    <title>Radioactive lighthouse problem Key &#8212; Learning from data</title>
   
   
   
@@ -65,13 +65,12 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../../_static/sphinx-thebe.js"></script>
     <script>window.MathJax = {"tex": {"macros": {"N": ["\\mathbb{N}"], "Z": ["\\mathbb{Z}"], "floor": ["\\lfloor#1\\rfloor", 1], "bmat": ["\\left[\\begin{array}"], "emat": ["\\end{array}\\right]"], "alphavec": ["\\boldsymbol{\\alpha}"], "muvec": ["\\boldsymbol{\\mu}"], "phivec": ["\\boldsymbol{\\phi}"], "sigmavec": ["\\boldsymbol{\\sigma}"], "Sigmavec": ["\\boldsymbol{\\Sigma}"], "thetavec": ["\\boldsymbol{\\theta}"], "thetavechat": ["\\widehat\\thetavec"], "avec": ["\\boldsymbol{a}"], "Bvec": ["\\boldsymbol{B}"], "fvec": ["\\boldsymbol{f}"], "mvec": ["\\boldsymbol{m}"], "qvec": ["\\boldsymbol{q}"], "rvec": ["\\boldsymbol{r}"], "uvec": ["\\boldsymbol{u}"], "wvec": ["\\boldsymbol{w}"], "xvec": ["\\boldsymbol{x}"], "yvec": ["\\boldsymbol{y}"], "Lra": ["\\Longrightarrow"], "abar": ["\\overline a"], "Xbar": ["\\overline X"], "alphahat": ["\\widehat\\alpha"], "Hhat": ["\\hat H"], "yth": ["y_{\\text{th}}"], "yexp": ["y_{\\text{exp}}"], "ym": ["y_{\\text{m}}"], "gs": ["{0}"]}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'notebooks/Basics/radioactive_lighthouse_exercise';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'notebooks/Basics/radioactive_lighthouse_exercise_key';</script>
     <link rel="shortcut icon" href="../../_static/favicon.ico"/>
     <link rel="author" title="About these documents" href="../../about.html" />
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="1.10. Lecture 4: A couple of frequentist connections" href="../../content/Basics/lecture_04.html" />
-    <link rel="prev" title="1.8. Parameter estimation example: Gaussian noise and averages I" href="parameter_estimation_Gaussian_noise.html" />
+    <link rel="prev" title="Standard medical example by applying Bayesian rules of probability Key" href="medical_example_by_Bayes_KEY.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -178,8 +177,8 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../../content/Course/overview.html">Objectives</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Topics</span></p>
-<ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active has-children"><a class="reference internal" href="../../content/Basics/basics.html">1. Basics of Bayesian statistics</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../content/Basics/basics.html">1. Basics of Bayesian statistics</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../content/Basics/lecture_01.html">1.1. Lecture 1</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Exploring_pdfs.html">1.2. Exploring PDFs</a></li>
 <li class="toctree-l2"><a class="reference internal" href="simple_sum_product_rule.html">1.3. Checking the sum and product rules, and their consequences</a></li>
@@ -188,7 +187,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="medical_example_by_Bayes.html">1.6. Standard medical example by applying Bayesian rules of probability</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../content/Basics/lecture_03.html">1.7. Lecture 3</a></li>
 <li class="toctree-l2"><a class="reference internal" href="parameter_estimation_Gaussian_noise.html">1.8. Parameter estimation example: Gaussian noise and averages I</a></li>
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">1.9. Radioactive lighthouse problem</a></li>
+<li class="toctree-l2"><a class="reference internal" href="radioactive_lighthouse_exercise.html">1.9. Radioactive lighthouse problem</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../content/Basics/lecture_04.html">1.10. Lecture 4: A couple of frequentist connections</a></li>
 <li class="toctree-l2"><a class="reference internal" href="visualization_of_CLT.html">1.11. Visualization of the Central Limit Theorem</a></li>
 </ul>
@@ -313,10 +312,10 @@ const thebe_selector_output = ".output, .cell_output"
 </li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Notebook keys</span></p>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="simple_sum_product_rule_KEY.html">Checking the sum and product rules, and their consequences <span style="color: red">Key</span></a></li>
 <li class="toctree-l1"><a class="reference internal" href="medical_example_by_Bayes_KEY.html">Standard medical example by applying Bayesian rules of probability <span style="color: red">Key</span></a></li>
-<li class="toctree-l1"><a class="reference internal" href="radioactive_lighthouse_exercise_key.html">Radioactive lighthouse problem  <span style="color: red">Key</span></a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Radioactive lighthouse problem  <span style="color: red">Key</span></a></li>
 </ul>
 
     </div>
@@ -371,7 +370,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="https://mybinder.org/v2/gh/buqeye/LearningFromData/main?urlpath=tree/./LectureNotes/notebooks/Basics/radioactive_lighthouse_exercise.ipynb" target="_blank"
+      <li><a href="https://mybinder.org/v2/gh/buqeye/LearningFromData/main?urlpath=tree/./LectureNotes/notebooks/Basics/radioactive_lighthouse_exercise_key.ipynb" target="_blank"
    class="btn btn-sm dropdown-item"
    title="Launch onBinder"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -437,7 +436,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="https://github.com/buqeye/LearningFromData/issues/new?title=Issue%20on%20page%20%2Fnotebooks/Basics/radioactive_lighthouse_exercise.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/buqeye/LearningFromData/issues/new?title=Issue%20on%20page%20%2Fnotebooks/Basics/radioactive_lighthouse_exercise_key.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -467,7 +466,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="../../_sources/notebooks/Basics/radioactive_lighthouse_exercise.ipynb" target="_blank"
+      <li><a href="../../_sources/notebooks/Basics/radioactive_lighthouse_exercise_key.ipynb" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -551,7 +550,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Radioactive lighthouse problem</h1>
+    <h1>Radioactive lighthouse problem  <span style="color: red">Key</span></h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -573,13 +572,10 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="radioactive-lighthouse-problem">
-<h1><span class="section-number">1.9. </span>Radioactive lighthouse problem<a class="headerlink" href="#radioactive-lighthouse-problem" title="Permalink to this heading">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="radioactive-lighthouse-problem-span-style-color-red-key-span">
+<h1>Radioactive lighthouse problem  <span style="color: red">Key</span><a class="headerlink" href="#radioactive-lighthouse-problem-span-style-color-red-key-span" title="Permalink to this heading">#</a></h1>
 <p>Goal: Explore a classic problem from Gull (by way of Sivia’s book with some tweaks).</p>
-<!-- 
 <div style="float:left;"><img src="../../_images/radioactive_lighthouse_problem_figure.png" width=300px></div>
- -->
-<div style="float:left;"><img src="https://raw.githubusercontent.com/buqeye/LearningFromData/main/LectureNotes/_images/radioactive_lighthouse_problem_figure.png" width=300px></div>
 <p>In the figure, a radioactive source that emits gamma rays randomly in time but uniformly in angle is placed at <span class="math notranslate nohighlight">\((x_0, y_0)\)</span>.  The gamma rays are detected on the <span class="math notranslate nohighlight">\(x\)</span>-axis and these positions are saved, <span class="math notranslate nohighlight">\(x_k\)</span>, <span class="math notranslate nohighlight">\(k=1,2,\cdots, N\)</span>.  Given these observed positions, the problem is to estimate the location of the source.</p>
 <p>Initially we’ll assume that we know that <span class="math notranslate nohighlight">\(y_0 = 1\)</span> (in whatever length units we are implicitly using), so our goal is to estimate <span class="math notranslate nohighlight">\(x_0\)</span>.  We introduce the angle <span class="math notranslate nohighlight">\(\theta\)</span> between the <span class="math notranslate nohighlight">\(\gamma\)</span> ray and the <span class="math notranslate nohighlight">\(y\)</span>-axis (with <span class="math notranslate nohighlight">\(\theta = 0\)</span> meaning the gamma ray is detected at <span class="math notranslate nohighlight">\(x_0\)</span>).</p>
 <p>Refs:</p>
@@ -588,57 +584,63 @@ document.write(`
 <li><p>S.F. Gull, <em>Bayesian Inductive Inference and Maximum Entropy</em></p></li>
 </ul>
 <p><span class="math notranslate nohighlight">\(% Some LaTeX definitions we'll use.
-\newcommand{\pr}{p}
+\newcommand{\pr}{\textrm{p}}
 \newcommand{\xmax}{x_{0,\textrm{max}}}
 \newcommand{\xmin}{x_{0,\textrm{min}}}
 \newcommand{\Nmax}{N_{\textrm{max}}}\)</span></p>
 <p><strong>Answer the questions in</strong> <em>italics</em>. <strong>Check with your neighbors and ask for help if you get stuck or are unsure.</strong></p>
-<ol class="arabic">
-<li><p>Claim: in the <span class="math notranslate nohighlight">\(p(\cdot|\cdot)\)</span> notation, our goal is to find the posterior pdf <span class="math notranslate nohighlight">\(p(x_0 | \{x_k\}, y_0)\)</span>.  <em>How would you translate this posterior to words?</em>
-<br>
-<br>
-<br></p></li>
-<li><p><em>By Bayes’ theorem, how is this posterior related to <span class="math notranslate nohighlight">\(p(\{x_k\} | x_0, y_0)\)</span>, <span class="math notranslate nohighlight">\(p(x_0 | y_0)\)</span>, and <span class="math notranslate nohighlight">\(p(\{x_k\}|y_0)\)</span>?</em>
-<br>
-<br>
-<br></p></li>
-<li><p>Claim: because the denominator pdf in 2. is independent of <span class="math notranslate nohighlight">\(x_0\)</span>, it is just a normalization factor for <span class="math notranslate nohighlight">\(p(x_0 | \{x_k\}, y_0)\)</span>, so we don’t need to calculate it explicitly.  <em>Do you understand this?  What good is an unnormalized posterior <span class="math notranslate nohighlight">\(p(x_0 | \{x_k\}, y_0)\)</span>?</em>
-<br>
-<br>
-<br></p></li>
-<li><p>Let’s take for the prior pdf <span class="math notranslate nohighlight">\(p(x_0 | y_0)\)</span> that</p>
+<p>    1. Claim: in the <span class="math notranslate nohighlight">\(\pr(\cdot|\cdot)\)</span> notation, our goal is to find the posterior pdf <span class="math notranslate nohighlight">\(\pr(x_0 | \{x_k\}, y_0)\)</span>.  <em>How would you translate this posterior to words?</em></p>
+<p><strong>The probability of <span class="math notranslate nohighlight">\(x_0\)</span> given data <span class="math notranslate nohighlight">\(\{x_k\}\)</span> and the value of <span class="math notranslate nohighlight">\(y_0\)</span>.</strong></p>
+<p>    2. <em>By Bayes’ theorem, how is this posterior related to <span class="math notranslate nohighlight">\(\pr(\{x_k\} | x_0, y_0)\)</span>, <span class="math notranslate nohighlight">\(\pr(x_0 | y_0)\)</span>, and <span class="math notranslate nohighlight">\(\pr(\{x_k\}|y_0)\)</span>?</em></p>
+<p><strong>Bayes’ theorem says:</strong></p>
+<span style="color: black">
+$$
+ \pr(x_0 | \{x_k\}, y_0) = \frac{\pr(\{x_k\}| x_0, y_0)\, \pr(x_0| y_0)}{\pr(\{x_k\}| y_0)}
+$$</span>
+<p>    3. Claim: because the denominator pdf in 2. is independent of <span class="math notranslate nohighlight">\(x_0\)</span>, it is just a normalization factor for <span class="math notranslate nohighlight">\(\pr(x_0 | \{x_k\}, y_0)\)</span>, so we don’t need to calculate it explicitly.  <em>Do you understand this?  What good is an unnormalized posterior <span class="math notranslate nohighlight">\(\pr(x_0 | \{x_k\}, y_0)\)</span>?</em></p>
+<p><strong>A normalization factor here is just an overall constant.  So if we imagine a plot of <span class="math notranslate nohighlight">\(\pr(x_0 | \{x_k\}, y_0)\)</span>, it merely changes the vertical scale and not the shape. You can always integrate over an unnormalized posterior to figure out Bayesian confidence intervals or the expectation value of a function of <span class="math notranslate nohighlight">\(x_0\)</span>, e.g.,</strong></p>
 <div class="math notranslate nohighlight">
-\[p(x_0 | y_0) = p(x_0) = \frac{1}{|x_{0,\textrm{max}} - x_{0,\textrm{min}}|} 
-      \quad\mbox{for}\ x_{0,\textrm{min}} &lt; x_0 &lt; x_{0,\textrm{max}} \]</div>
-<p>and zero elsewhere.  <em>What are we assuming?  Why is this more plausible than letting <span class="math notranslate nohighlight">\(x_0\)</span> be anything? Why do we assume a constant pdf?  Is this pdf normalized?</em>
-<br>
-<br>
-<br></p>
-</li>
-<li><p><em>If we assume that the <span class="math notranslate nohighlight">\(x_k\)</span>s are independent, then how is <span class="math notranslate nohighlight">\(p(\{x_k\}|x_0, y_0)\)</span> simplified?  Is this a justifiable assumption?</em>
-<br>
-<br>
-<br></p></li>
-<li><p><em>Show that for a particular <span class="math notranslate nohighlight">\(k\)</span>,</em></p></li>
-</ol>
+\[
+   \langle f(x_0) \rangle = \frac{\int f(x_0) \, \pr(x_0 | \{x_k\}, y_0)\, dx_0}{\int \pr(x_0 | \{x_k\}, y_0)\, dx_0}
+\]</div>
+<p>    4. Let’s take for the prior pdf <span class="math notranslate nohighlight">\(\pr(x_0 | y_0)\)</span> that</p>
 <div class="math notranslate nohighlight">
-\[ p(x_k|x_0, y_0) = \frac{y_0}{\pi} \frac{1}{y_0^2 + (x_k - x_0)^2} \;, \]</div>
-<p><em>given that the angular distribution from <span class="math notranslate nohighlight">\(\theta_k\)</span> is uniform from <span class="math notranslate nohighlight">\(-\pi/2\)</span> to <span class="math notranslate nohighlight">\(\pi/2\)</span>, so <span class="math notranslate nohighlight">\(p(\theta_k|x_0,y_0) = 1/\pi\)</span>, and also that</em></p>
+\[\pr(x_0 | y_0) = \pr(x_0) = \frac{1}{|\xmax - \xmin|} 
+   \quad\mbox{for}\ \xmin &lt; x_0 &lt; \xmax \]</div>
+<p>    and zero elsewhere.  <em>What are we assuming?  Why is this more plausible than letting <span class="math notranslate nohighlight">\(x_0\)</span> be anything? Why do we assume a constant pdf?  Is this pdf normalized?</em></p>
+<p><strong>The first equality says that <span class="math notranslate nohighlight">\(x_0\)</span> is independent of <span class="math notranslate nohighlight">\(y_0\)</span> and the second inequality says that <span class="math notranslate nohighlight">\(x_0\)</span> is limited to a finite region but is equally probable in that region.  We know that <span class="math notranslate nohighlight">\(x_0\)</span> is not anywhere in the universe; even more, we (most likely) know that it is not located very far from our detector in the <span class="math notranslate nohighlight">\(x\)</span> direction.  We assume a constant pdf because we have no reason to prefer one position over another so this is considered a minimal assumption: “least informative” (note that if we <em>did</em> have more information about the location, we should incorporate it in the prior).  We will have further discussion about whether it really is least informative and how we might formally motivate that conclusion. This prior pdf is normalized.</strong></p>
+<p>    5. <em>If we assume that the <span class="math notranslate nohighlight">\(x_k\)</span>s are independent, then how is <span class="math notranslate nohighlight">\(\pr(\{x_k\}|x_0, y_0)\)</span> simplified?  Is this a justifiable assumption?</em></p>
+<p><strong>To be precise, this should say assuming that the <span class="math notranslate nohighlight">\(x_k\)</span>s are <em>conditionally</em> independent given <span class="math notranslate nohighlight">\(x_0\)</span> and <span class="math notranslate nohighlight">\(y_0\)</span> (if we know <span class="math notranslate nohighlight">\(x_0\)</span> and <span class="math notranslate nohighlight">\(y_0\)</span>, knowing <span class="math notranslate nohighlight">\(x_k\)</span> tells us nothing in addition about what <span class="math notranslate nohighlight">\(x_{k'}\)</span> might be), then</strong></p>
 <div class="math notranslate nohighlight">
-\[ p(\theta_k|x_0, y_0)\, d\theta_k = p(x_k | x_0, y_0)\, dx_k \;.\]</div>
-<p><em>Why is the latter true?</em>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-7. Ok, now we’re ready to see what the estimates for <span class="math notranslate nohighlight">\(x_0\)</span> look like. Use the following code to generate a set of random <span class="math notranslate nohighlight">\(x\)</span> points for a Cauchy distribution.  <em>Look up the Stats documentation for a Cauchy distribution (google “scipy stats cauchy”) to verify it is the same function derived above (note the use of <code class="docutils literal notranslate"><span class="pre">loc</span></code> and <code class="docutils literal notranslate"><span class="pre">scale</span></code>).  Run it a few times to see the fluctuations in the distribution.</em> <br>
-<em>What can you say about the tails of this distribution compared to your experience with Gaussian distributions?</em>
-<br>
-<br>
-<br>
-<br></p>
+\[\pr(\{x_k\}|x_0, y_0) = \prod_{k=1}^{N} \pr(x_k|x_0,y_0)\]</div>
+<p><strong>Yes this is justifiable because the physics of radioactive decay from a source with many emitters implies that there is no reason for the directions to be correlated.</strong></p>
+<p><strong>Coming back to the different types of independence, a very nice explanation is from Nate Eldredge in
+<a class="reference external" href="https://math.stackexchange.com/questions/22407/independence-and-conditional-independence-between-random-variables">https://math.stackexchange.com/questions/22407/independence-and-conditional-independence-between-random-variables</a>. Part of the answer is “Events 𝐴,𝐵 are conditionally independent given a third event 𝐶 means the following: Suppose you already know that 𝐶 has happened. Then knowing whether 𝐴 happened would not convey any further information about whether 𝐵 happened - any relevant information that might be conveyed by 𝐴 is already known to you, because you know that 𝐶 happened.”  He goes on to give counterexamples that show that independence does not necessarily imply conditional independence, and conditional independence does not necessarily imply independence.</strong></p>
+<p>    6. <em>Show that for a particular <span class="math notranslate nohighlight">\(k\)</span>,</em></p>
+<div class="math notranslate nohighlight">
+\[ \pr(x_k|x_0, y_0) = \frac{y_0}{\pi} \frac{1}{y_0^2 + (x_k - x_0)^2} \;, \]</div>
+<p>    <em>given that the angular distribution from <span class="math notranslate nohighlight">\(\theta_k\)</span> is uniform from <span class="math notranslate nohighlight">\(-\pi/2\)</span> to <span class="math notranslate nohighlight">\(\pi/2\)</span>, so <span class="math notranslate nohighlight">\(\pr(\theta_k|x_0,y_0) = 1/\pi\)</span>, and also that</em></p>
+<div class="math notranslate nohighlight">
+\[ \pr(\theta_k|x_0, y_0)\, d\theta_k = \pr(x_k | x_0, y_0)\, dx_k \;.\]</div>
+<p>    <em>Why is the latter true?</em></p>
+<p><strong>Let’s start with the last question.  This is true because the probability for a definite event has to be independent of how we parametrize it.  The probability of detection in a length <span class="math notranslate nohighlight">\(dx_k\)</span> about <span class="math notranslate nohighlight">\(x_k\)</span> is the same if we write it instead in terms of the angular interval <span class="math notranslate nohighlight">\(d\theta_k\)</span> about <span class="math notranslate nohighlight">\(\theta_k\)</span>.</strong></p>
+<p><strong>Given this result,</strong></p>
+<div class="math notranslate nohighlight">
+\[ \pr(x_k|x_0, y_0) = \frac{1}{\pi} \frac{d\theta_k}{dx_k} \]</div>
+<p><strong>We relate <span class="math notranslate nohighlight">\(x_k\)</span> and <span class="math notranslate nohighlight">\(\theta_k\)</span> by</strong></p>
+<div class="math notranslate nohighlight">
+\[  x_k = x_0 + y_0 \tan\theta_k\]</div>
+<p><strong>so</strong></p>
+<div class="math notranslate nohighlight">
+\[ \frac{dx_k}{d\theta_k} = \frac{y_0}{\cos^2\theta_k} \ \Longrightarrow \ \frac{d\theta_k}{dx_k} = \frac{1}{y_0}\cos^2\theta_k
+    = \frac{y_0}{(x_k - x_0)^2 + y_0^2} \;,\]</div>
+<p><strong>where we expressed the cosine in terms of <span class="math notranslate nohighlight">\(x_0\)</span>, <span class="math notranslate nohighlight">\(y_0\)</span>, and <span class="math notranslate nohighlight">\(x_k\)</span> using the diagram.</strong></p>
+<p><strong>Putting these together we obtain the desired relation.</strong></p>
+<p>    7. Ok, now we’re ready to see what the estimates for <span class="math notranslate nohighlight">\(x_0\)</span> look like. Use the following code to generate a set of random <span class="math notranslate nohighlight">\(x\)</span> points for a Cauchy distribution.  <em>Look up the Stats documentation for a Cauchy distribution (google “scipy stats cauchy”) to verify it is the same function derived above (note the use of <code class="docutils literal notranslate"><span class="pre">loc</span></code> and <code class="docutils literal notranslate"><span class="pre">scale</span></code>).  Run it a few times to see the fluctuations in the distribution.</em></p>
+<p>    <em>What can you say about the tails of this distribution compared to your experience with Gaussian distributions?</em></p>
+<p><strong>According to the scipy.stats.cauchy page,</strong> <code class="docutils literal notranslate"><span class="pre">cauchy.pdf(x,</span> <span class="pre">loc,</span> <span class="pre">scale)</span></code> <strong>is <span class="math notranslate nohighlight">\(1/\pi(1+z^2)\)</span> with <span class="math notranslate nohighlight">\(z = (x - \mbox{loc})/\mbox{scale}\)</span>, so we get the same function with <span class="math notranslate nohighlight">\(x_0 = \mbox{loc}\)</span> and <span class="math notranslate nohighlight">\(y_0 = \mbox{scale}\)</span>. (Do you see where the extra factor of <span class="math notranslate nohighlight">\(y_0\)</span> comes in?)</strong></p>
+<p><strong>The tails of this distribution are much heavier (are non-negligible much further out) than those of a Gaussian distribution with a similar half width.</strong></p>
+<p><strong>(Note: when we implement this we really should exclude points from our distribution that would miss the detector because they have <span class="math notranslate nohighlight">\(x_k\)</span> beyond the range of the detector.)</strong></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> inline   
@@ -693,9 +695,16 @@ document.write(`
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>maximum =  176.49132951085124
+minimum =  -84.75298018146772
+</pre></div>
 </div>
-<p>  8. Now you’ll repeat the same graphs, but this time generate the distribution of points starting with a uniform distribution in angle between <span class="math notranslate nohighlight">\(-\pi/2\)</span> and <span class="math notranslate nohighlight">\(\pi/2\)</span>. <em>In particular, at the <code class="docutils literal notranslate"><span class="pre">###</span></code>, write the formula for <code class="docutils literal notranslate"><span class="pre">dist_pts</span></code> in terms of <code class="docutils literal notranslate"><span class="pre">theta_dist</span></code> and <code class="docutils literal notranslate"><span class="pre">x0_true</span></code>, <code class="docutils literal notranslate"><span class="pre">y0_true</span></code>.</em>
-<br></p>
+<img alt="../../_images/aecd88972a541c3d8cf9651166a86b12c7d872b5006b332204646087261233e9.png" src="../../_images/aecd88972a541c3d8cf9651166a86b12c7d872b5006b332204646087261233e9.png" />
+</div>
+</div>
+<p>    8. Now you’ll repeat the same graphs, but this time generate the distribution of points starting with a uniform distribution in angle between <span class="math notranslate nohighlight">\(-\pi/2\)</span> and <span class="math notranslate nohighlight">\(\pi/2\)</span>. <em>In particular, at the <code class="docutils literal notranslate"><span class="pre">###</span></code>, write the formula for <code class="docutils literal notranslate"><span class="pre">dist_pts</span></code> in terms of <code class="docutils literal notranslate"><span class="pre">theta_dist</span></code> and <code class="docutils literal notranslate"><span class="pre">x0_true</span></code>, <code class="docutils literal notranslate"><span class="pre">y0_true</span></code>.</em></p>
+<p><strong>At the</strong> <code class="docutils literal notranslate"><span class="pre">###</span></code> <strong>we inserted the formula</strong> <code class="docutils literal notranslate"><span class="pre">dist_pts_alt</span> <span class="pre">=</span> <span class="pre">x0_true</span> <span class="pre">+</span> <span class="pre">y0_true</span> <span class="pre">*</span> <span class="pre">np.tan(theta_dist.rvs(num_pts))</span></code> <strong>which is just <span class="math notranslate nohighlight">\(x_k = x_0 + y_0 \tan\theta_k\)</span>.</strong></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># True location of the radioactive source</span>
@@ -710,8 +719,10 @@ document.write(`
 <span class="n">theta_dist</span> <span class="o">=</span> <span class="n">uniform</span><span class="p">(</span><span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">/</span><span class="mf">2.</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">)</span>
 
 <span class="c1">#dist_pts_alt = ### Fill in formula here for x_k points</span>
+<span class="n">dist_pts_alt</span> <span class="o">=</span> <span class="n">x0_true</span> <span class="o">+</span> <span class="n">y0_true</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">tan</span><span class="p">(</span><span class="n">theta_dist</span><span class="o">.</span><span class="n">rvs</span><span class="p">(</span><span class="n">num_pts</span><span class="p">))</span>
 
-        
+    
+    
 <span class="c1"># Make some plots!</span>
 <span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
 
@@ -735,6 +746,13 @@ document.write(`
 <span class="n">fig</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>maximum =  3048.6669871684317
+minimum =  -78.18240073729606
+</pre></div>
+</div>
+<img alt="../../_images/03c62e70908b91cfe93db8c7f59613cd0bef8a48e4f737952fc0489fb365a0ae.png" src="../../_images/03c62e70908b91cfe93db8c7f59613cd0bef8a48e4f737952fc0489fb365a0ae.png" />
 </div>
 </div>
 <p>Before moving on, let’s do some more plotting of histograms with different numbers of samples to build some intuition.  We define a plotting function first so it is easy to plot several histograms all at once. Run it several times to see the nature of the fluctuations.</p>
@@ -796,10 +814,14 @@ document.write(`
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<img alt="../../_images/bf79671c880a021173396f81bbf3fc9d09bb175d042997efda698cf2c2c02447.png" src="../../_images/bf79671c880a021173396f81bbf3fc9d09bb175d042997efda698cf2c2c02447.png" />
 </div>
+</div>
+<p><strong>As expected intuitively, the fluctuations are much less with more points. How many samples would you consider to be a minimum number?</strong></p>
 <section id="define-and-plot-the-posterior-for-x-0">
 <h2>Define and plot the posterior for <span class="math notranslate nohighlight">\(x_0\)</span><a class="headerlink" href="#define-and-plot-the-posterior-for-x-0" title="Permalink to this heading">#</a></h2>
-<p> 9. In this section the posterior for <span class="math notranslate nohighlight">\(x_0\)</span> is calculated and plotted for different numbers of data.  The prior is taken to be a uniform PDF from <span class="math notranslate nohighlight">\(-4\)</span> to <span class="math notranslate nohighlight">\(4\)</span> (we really don’t believe it is bigger than that but otherwise we don’t know what it is). For each <span class="math notranslate nohighlight">\(\Nmax\)</span>, besides plotting the posterior for <span class="math notranslate nohighlight">\(x_0\)</span>, we calculate the mean of the posterior (denoted <span class="math notranslate nohighlight">\(\langle x_0\rangle\)</span>) and the mean of the set of <span class="math notranslate nohighlight">\(\Nmax\)</span> points (denoted <span class="math notranslate nohighlight">\(\overline x_0\)</span>).</p>
+<p>    9. In this section the posterior for <span class="math notranslate nohighlight">\(x_0\)</span> is calculated and plotted for different numbers of data.  The prior is taken to be a uniform PDF from <span class="math notranslate nohighlight">\(-4\)</span> to <span class="math notranslate nohighlight">\(4\)</span> (we really don’t believe it is bigger than that but otherwise we don’t know what it is). For each <span class="math notranslate nohighlight">\(\Nmax\)</span>, besides plotting the posterior for <span class="math notranslate nohighlight">\(x_0\)</span>, we calculate the mean of the posterior (denoted <span class="math notranslate nohighlight">\(\langle x_0\rangle\)</span>) and the mean of the set of <span class="math notranslate nohighlight">\(\Nmax\)</span> points (denoted <span class="math notranslate nohighlight">\(\overline x_0\)</span>).</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">log_prior</span><span class="p">(</span><span class="n">x0</span><span class="p">,</span> <span class="n">y0_true</span><span class="p">,</span> <span class="n">x_min</span><span class="o">=-</span><span class="mf">4.</span><span class="p">,</span> <span class="n">x_max</span><span class="o">=+</span><span class="mf">4.</span><span class="p">):</span>
@@ -851,11 +873,14 @@ document.write(`
 <p>Some questions about the implementation through these functions:</p>
 <ul class="simple">
 <li><p><em>If you wanted <code class="docutils literal notranslate"><span class="pre">log_prior</span></code> to return the normalized log prior, how would you modify the function?</em>
-<br><br><br></p></li>
+<br><strong>We would return</strong> <code class="docutils literal notranslate"><span class="pre">-np.log(x_max</span> <span class="pre">-</span> <span class="pre">x_min)</span></code> <strong>instead of 0.  Note that</strong> <code class="docutils literal notranslate"><span class="pre">np.inf</span></code> <strong>is a valid Python “number”.</strong>
+<br><br></p></li>
 <li><p><em>Why is the log likelihood adjusted in <code class="docutils literal notranslate"><span class="pre">posterior_calc</span></code>?</em>
-<br><br><br></p></li>
+<br><strong>We subtract a constant equal to its maximum value. This is the same as normalizing it so that the maximum of the likelihood is equal to 1.  By rescaling this way, we avoid too-small (or too-large) values.</strong>
+<br><br></p></li>
 <li><p><em>Why is it not necessary to normalize the posterior?  Would it not be easier just to normalize it?</em>
-<br><br><br></p></li>
+<br><strong>To calculate a mean we don’t need to explicitly normalize. For plotting it is easier to know where the maximum is.</strong>
+<br><br></p></li>
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -906,6 +931,9 @@ document.write(`
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<img alt="../../_images/24988eff5f6f13857a866699e284914afc3eea37c237a8abeba8d376d740b985.png" src="../../_images/24988eff5f6f13857a866699e284914afc3eea37c237a8abeba8d376d740b985.png" />
+</div>
 </div>
 <p><em>Run the cell above several times for each <span class="math notranslate nohighlight">\(\Nmax\)</span> and record the results in the table:</em></p>
 <div class="cell docutils container">
@@ -913,7 +941,7 @@ document.write(`
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%html</span>
 
 <span class="p">&lt;</span><span class="nt">style</span><span class="p">&gt;</span><span class="w"> </span>
-<span class="w"> </span><span class="nt">table</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">width</span><span class="p">:</span><span class="mi">80</span><span class="kt">%</span><span class="w"> </span><span class="cp">!important</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<span class="w"> </span><span class="nt">table</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">width</span><span class="p">:</span><span class="mi">90</span><span class="kt">%</span><span class="w"> </span><span class="cp">!important</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
 <span class="w"> </span><span class="nt">table</span><span class="w"> </span><span class="nt">td</span><span class="o">,</span><span class="w"> </span><span class="nt">table</span><span class="w"> </span><span class="nt">th</span><span class="o">,</span><span class="w"> </span><span class="nt">table</span><span class="w"> </span><span class="nt">tr</span><span class="w"> </span><span class="p">{</span><span class="k">border</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="kt">px</span><span class="w"> </span><span class="kc">solid</span><span class="w"> </span><span class="kc">black</span><span class="w"> </span><span class="cp">!important</span><span class="p">;</span><span class="w"> </span>
 <span class="w">                               </span><span class="k">text-align</span><span class="p">:</span><span class="kc">center</span><span class="w"> </span><span class="cp">!important</span><span class="p">;</span>
 <span class="w">                               </span><span class="k">font-size</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="kt">px</span><span class="p">;}</span>
@@ -921,6 +949,15 @@ document.write(`
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html">
+<style> 
+ table { width:90% !important; }
+ table td, table th, table tr {border: 2px solid black !important; 
+                               text-align:center !important;
+                               font-size: 20px;}
+</style>
+</div></div>
 </div>
 <table class="table">
 <thead>
@@ -935,62 +972,61 @@ document.write(`
 </thead>
 <tbody>
 <tr class="row-even"><td class="text-center"><p>1</p></td>
-<td class="text-center"><p> </p></td>
-<td class="text-center"><p> </p></td>
-<td class="text-center"><p> </p></td>
-<td class="text-center"><p> </p></td>
-<td class="text-center"><p> </p></td>
-<td class="text-center"><p> </p></td>
+<td class="text-center"><p><span class="math notranslate nohighlight">\(-0.20\)</span></p></td>
+<td class="text-center"><p><span class="math notranslate nohighlight">\(-0.24\)</span></p></td>
+<td class="text-center"><p><span class="math notranslate nohighlight">\(0.75\)</span></p></td>
+<td class="text-center"><p><span class="math notranslate nohighlight">\(0.91\)</span></p></td>
+<td class="text-center"><p><span class="math notranslate nohighlight">\(0.58\)</span></p></td>
+<td class="text-center"><p><span class="math notranslate nohighlight">\(0.74\)</span></p></td>
 </tr>
 <tr class="row-odd"><td class="text-center"><p>2</p></td>
-<td class="text-center"><p> </p></td>
-<td class="text-center"><p> </p></td>
-<td class="text-center"><p> </p></td>
-<td class="text-center"><p> </p></td>
-<td class="text-center"><p> </p></td>
-<td class="text-center"><p> </p></td>
+<td class="text-center"><p><span class="math notranslate nohighlight">\(0.37\)</span></p></td>
+<td class="text-center"><p><span class="math notranslate nohighlight">\(0.38\)</span></p></td>
+<td class="text-center"><p><span class="math notranslate nohighlight">\(1.96\)</span></p></td>
+<td class="text-center"><p><span class="math notranslate nohighlight">\(2.31\)</span></p></td>
+<td class="text-center"><p><span class="math notranslate nohighlight">\(0.91\)</span></p></td>
+<td class="text-center"><p><span class="math notranslate nohighlight">\(0.93\)</span></p></td>
 </tr>
 <tr class="row-even"><td class="text-center"><p>4</p></td>
-<td class="text-center"><p> </p></td>
-<td class="text-center"><p> </p></td>
-<td class="text-center"><p> </p></td>
-<td class="text-center"><p> </p></td>
-<td class="text-center"><p> </p></td>
-<td class="text-center"><p> </p></td>
+<td class="text-center"><p><span class="math notranslate nohighlight">\(0.75\)</span></p></td>
+<td class="text-center"><p><span class="math notranslate nohighlight">\(0.69\)</span></p></td>
+<td class="text-center"><p><span class="math notranslate nohighlight">\(2.99\)</span></p></td>
+<td class="text-center"><p><span class="math notranslate nohighlight">\(2.74\)</span></p></td>
+<td class="text-center"><p><span class="math notranslate nohighlight">\(0.94\)</span></p></td>
+<td class="text-center"><p><span class="math notranslate nohighlight">\(0.94\)</span></p></td>
 </tr>
 <tr class="row-odd"><td class="text-center"><p>16</p></td>
-<td class="text-center"><p> </p></td>
-<td class="text-center"><p> </p></td>
-<td class="text-center"><p> </p></td>
-<td class="text-center"><p> </p></td>
-<td class="text-center"><p> </p></td>
-<td class="text-center"><p> </p></td>
+<td class="text-center"><p><span class="math notranslate nohighlight">\(1.06\)</span></p></td>
+<td class="text-center"><p><span class="math notranslate nohighlight">\(-6.44\)</span></p></td>
+<td class="text-center"><p><span class="math notranslate nohighlight">\(0.60\)</span></p></td>
+<td class="text-center"><p><span class="math notranslate nohighlight">\(0.76\)</span></p></td>
+<td class="text-center"><p><span class="math notranslate nohighlight">\(0.87\)</span></p></td>
+<td class="text-center"><p><span class="math notranslate nohighlight">\(1.85\)</span></p></td>
 </tr>
 <tr class="row-even"><td class="text-center"><p>64</p></td>
-<td class="text-center"><p> </p></td>
-<td class="text-center"><p> </p></td>
-<td class="text-center"><p> </p></td>
-<td class="text-center"><p> </p></td>
-<td class="text-center"><p> </p></td>
-<td class="text-center"><p> </p></td>
+<td class="text-center"><p><span class="math notranslate nohighlight">\(1.16\)</span></p></td>
+<td class="text-center"><p><span class="math notranslate nohighlight">\(-0.52\)</span></p></td>
+<td class="text-center"><p><span class="math notranslate nohighlight">\(0.67\)</span></p></td>
+<td class="text-center"><p><span class="math notranslate nohighlight">\(-1.23\)</span></p></td>
+<td class="text-center"><p><span class="math notranslate nohighlight">\(1.04\)</span></p></td>
+<td class="text-center"><p><span class="math notranslate nohighlight">\(1.67\)</span></p></td>
 </tr>
 <tr class="row-odd"><td class="text-center"><p>256</p></td>
-<td class="text-center"><p> </p></td>
-<td class="text-center"><p> </p></td>
-<td class="text-center"><p> </p></td>
-<td class="text-center"><p> </p></td>
-<td class="text-center"><p> </p></td>
-<td class="text-center"><p> </p></td>
+<td class="text-center"><p><span class="math notranslate nohighlight">\(1.04\)</span></p></td>
+<td class="text-center"><p><span class="math notranslate nohighlight">\(0.73\)</span></p></td>
+<td class="text-center"><p><span class="math notranslate nohighlight">\(0.92\)</span></p></td>
+<td class="text-center"><p><span class="math notranslate nohighlight">\(-0.39\)</span></p></td>
+<td class="text-center"><p><span class="math notranslate nohighlight">\(0.98\)</span></p></td>
+<td class="text-center"><p><span class="math notranslate nohighlight">\(0.52\)</span></p></td>
 </tr>
 </tbody>
 </table>
-<p> 10. <em>What are your observations about the posterior for <span class="math notranslate nohighlight">\(x_0\)</span> as a function of <span class="math notranslate nohighlight">\(\Nmax\)</span>? Which mean (from the set of <span class="math notranslate nohighlight">\(\Nmax\)</span> points or from the posterior) is the better estimate?</em>
-<br>
+<p>    10. <em>What are your observations about the posterior for <span class="math notranslate nohighlight">\(x_0\)</span> as a function of <span class="math notranslate nohighlight">\(\Nmax\)</span>? Which mean (from the set of <span class="math notranslate nohighlight">\(\Nmax\)</span> points or from the posterior) is the better estimate?</em></p>
+<p>    <strong>The posterior becomes Gaussian-like, narrower like <span class="math notranslate nohighlight">\(1/\sqrt{N_{\rm max}}\)</span>.  The only reasonable estimate is from the mean of the posterior <span class="math notranslate nohighlight">\(\langle x_0 \rangle\)</span>.</strong>
 <br>
 <br></p>
-<p> 11. <em>Why does the Central Limit Theorem appear to fail?</em>  (The mean from the set of <span class="math notranslate nohighlight">\(\Nmax\)</span> samples does not tend to the true <span class="math notranslate nohighlight">\(x_0\)</span>.)
-<br>
-<br>
+<p>    11. <em>Why does the Central Limit Theorem appear to fail?</em>  (The mean from the set of <span class="math notranslate nohighlight">\(\Nmax\)</span> samples does not tend to the true <span class="math notranslate nohighlight">\(x_0\)</span>.)</p>
+<p>    <strong>The central limit does not hold here because the conditions for it to hold are violated; in particular the variance of the distribution is infinite.</strong>
 <br>
 <br></p>
 <p>Additional tasks:</p>
@@ -999,6 +1035,7 @@ document.write(`
 <li><p>Generalize to find the joint posterior of <span class="math notranslate nohighlight">\(x_0\)</span> and <span class="math notranslate nohighlight">\(y_0\)</span>.</p></li>
 <li><p>(suggest something!)</p></li>
 </ul>
+<p><strong>We’ll come back to these!</strong></p>
 </section>
 </section>
 
@@ -1011,16 +1048,16 @@ document.write(`
         },
         codeMirrorConfig: {
             theme: "abcdef",
-            mode: "conda-env-8820-book-env-py"
+            mode: "python"
         },
         kernelOptions: {
-            name: "conda-env-8820-book-env-py",
+            name: "python3",
             path: "./notebooks/Basics"
         },
         predefinedOutput: true
     }
     </script>
-    <script>kernelName = 'conda-env-8820-book-env-py'</script>
+    <script>kernelName = 'python3'</script>
 
                 </article>
               
@@ -1033,22 +1070,13 @@ document.write(`
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="parameter_estimation_Gaussian_noise.html"
+       href="medical_example_by_Bayes_KEY.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><span class="section-number">1.8. </span>Parameter estimation example: Gaussian noise and averages I</p>
+        <p class="prev-next-title">Standard medical example by applying Bayesian rules of probability <span style="color: red">Key</span></p>
       </div>
-    </a>
-    <a class="right-next"
-       href="../../content/Basics/lecture_04.html"
-       title="next page">
-      <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">1.10. </span>Lecture 4: A couple of frequentist connections</p>
-      </div>
-      <i class="fa-solid fa-angle-right"></i>
     </a>
 </div>
                 </footer>
