@@ -603,29 +603,26 @@ document.write(`
 <li><p><a class="reference external" href="https://arxiv.org/abs/2002.06212"><em>Ensemble Slice Sampling: Parallel, black-box and gradient-free inference for correlated &amp; multimodal distributions</em></a> by Minas Karamanis and Florian Beutler.</p></li>
 <li><p><a class="reference external" href="https://arxiv.org/abs/2105.03468"><em>zeus: A Python implementation of Ensemble Slice Sampling for efficient Bayesian parameter inference</em></a> by Minas Karamanis, Florian Beutler, and John A. Peacock.</p></li>
 </ol>
-<!-- ````{panels}
-:container: container-fluid 
-:column: col-lg-6 col-md-6 col-sm-6 col-xs-12 
-:card: shadow-none border-0
- -->
+<div class="sd-container-fluid sd-sphinx-override sd-mb-4 docutils">
+<div class="sd-row sd-g-2 sd-g-xs-2 sd-g-sm-2 sd-g-md-2 sd-g-lg-2 docutils">
+<div class="sd-col sd-d-flex-column docutils">
 <figure class="align-default" id="zeus-fig-1">
-<a class="reference internal image-reference" href="../../_images/figure_1_from_arXiv2002.06212_ensemble_slice_sampling.png"><img alt="../../_images/figure_1_from_arXiv2002.06212_ensemble_slice_sampling.png" src="../../_images/figure_1_from_arXiv2002.06212_ensemble_slice_sampling.png" style="width: 60%;" /></a>
+<a class="reference internal image-reference" href="../../_images/figure_1_from_arXiv2002.06212_ensemble_slice_sampling.png"><img alt="../../_images/figure_1_from_arXiv2002.06212_ensemble_slice_sampling.png" src="../../_images/figure_1_from_arXiv2002.06212_ensemble_slice_sampling.png" style="width: 100%;" /></a>
 <figcaption>
 <p><span class="caption-number">Fig. 6.1 </span><span class="caption-text">Figure 1 from <a class="reference external" href="https://arxiv.org/abs/2002.06212">Ref. 1</a> above.</span><a class="headerlink" href="#zeus-fig-1" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
-<!-- 
----
- -->
+</div>
+<div class="sd-col sd-d-flex-column docutils">
 <figure class="align-default" id="zeus-fig-2">
-<a class="reference internal image-reference" href="../../_images/figure_2_from_arXiv2105.03468_zeus_ensemble_slice_sampling.png"><img alt="../../_images/figure_2_from_arXiv2105.03468_zeus_ensemble_slice_sampling.png" src="../../_images/figure_2_from_arXiv2105.03468_zeus_ensemble_slice_sampling.png" style="width: 60%;" /></a>
+<a class="reference internal image-reference" href="../../_images/figure_2_from_arXiv2105.03468_zeus_ensemble_slice_sampling.png"><img alt="../../_images/figure_2_from_arXiv2105.03468_zeus_ensemble_slice_sampling.png" src="../../_images/figure_2_from_arXiv2105.03468_zeus_ensemble_slice_sampling.png" style="width: 100%;" /></a>
 <figcaption>
 <p><span class="caption-number">Fig. 6.2 </span><span class="caption-text">Figure 2 from <a class="reference external" href="https://arxiv.org/abs/2105.03468">Ref. 2</a> above.</span><a class="headerlink" href="#zeus-fig-2" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
-<!-- 
-````
- -->
+</div>
+</div>
+</div>
 <p>Slice sampling in action for a one-dimensional distribution is shown in <a class="reference internal" href="#zeus-fig-1"><span class="std std-numref">Fig. 6.1</span></a>.</p>
 <ul class="simple">
 <li><p>The idea is that sampling from a distribution <span class="math notranslate nohighlight">\(p(x)\)</span> is the same as uniform sampling from the <em>area</em> under the plot of <span class="math notranslate nohighlight">\(f(x) \propto p(x)\)</span>. E.g., the highest probability <span class="math notranslate nohighlight">\(p(x)\)</span> is where the area is largest, and this is a simple proportionality. The height <span class="math notranslate nohighlight">\(y\)</span> is introduced with <span class="math notranslate nohighlight">\(0 &lt; y &lt; f(x)\)</span> as an auxiliary variable and one samples the uniform joint probability <span class="math notranslate nohighlight">\(p(x,y)\)</span>. Then <span class="math notranslate nohighlight">\(p(x)\)</span> is obtained by marginalizing over <span class="math notranslate nohighlight">\(y\)</span> (meaning just dropping <span class="math notranslate nohighlight">\(y\)</span> from the sample).</p></li>
