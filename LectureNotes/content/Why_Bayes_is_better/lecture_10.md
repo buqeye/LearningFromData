@@ -22,7 +22,7 @@ Work through the notebook. What follows are some summary notes.
 We will be developing a Bayesian workflow as we proceed through the course. A key step will be to make a statistical model.
 But rather than defer this step fully to part 3. Full Bayesian analysis, we will give some of the details up front to use them in the other approaches but return to the particularly Bayesian framing below.
 
-For the model we follow the procedure outlined in [parameter_estimation_fitting_straight_line_I.ipynb](../Parameter_estimation/parameter_estimation_fitting_straight_line_I.ipynb).
+For the model we follow the procedure outlined in [parameter_estimation_fitting_straight_line_I.ipynb](/notebooks/Parameter_estimation/parameter_estimation_fitting_straight_line_I.ipynb).
 Our theoretical model $y_M(x)$ is a straight line,
 
 $$
@@ -136,7 +136,7 @@ How do we propagate the error from $H_0$ to $x$  (i.e., combine with the error f
 More precisely for the Bayesian formulation (choosing a definite case), given $v_{\text measured} = (100\pm 5) \times 10^3\,$km/sec and the posterior for $H_0$, what is the posterior pdf for the distance to the galaxy?
 
 The implementation is in Step 4 of the notebook:
-[Finding the slope of a straight line (part II)](/notebooks/Why_Bayes_is_better/parameter_estimation_fitting_straight_line_II.ipynb#step-4-error-propagation)
+[Finding the slope of a straight line (part II)](/notebooks/Why_Bayes_is_better/parameter_estimation_fitting_straight_line_II.ipynb)
 
 The error is calculated two ways:
 1. Using the fixed value of $H_0$ from the mean of the previous analysis.

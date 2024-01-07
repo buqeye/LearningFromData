@@ -99,7 +99,7 @@ In method 2, we have similar weighting of $f(x)$ near to and far from the peak o
 :width: 500px
 :align: center
 ```
-* Step through the [MCMC-diagnostics.ipynb](notebooks/MCMC_sampling_I/MCMC-diagnostics.ipynb) notebook, which goes through a laundry list of diagnostics. We'll return to these later in the context of `pymc3`.
+* Step through the [MCMC-diagnostics.ipynb](/notebooks/MCMC_sampling_I/MCMC-diagnostics.ipynb) notebook, which goes through a laundry list of diagnostics. We'll return to these later in the context of `pymc3`.
 
 * Some notes:
     * In BDA-3 Figure 11.1, a) is not converged; b) has 1000 iterations and is possibly converged; c) shows (correlated) draws from the target distribution.

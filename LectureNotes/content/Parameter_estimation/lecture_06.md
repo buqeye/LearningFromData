@@ -264,7 +264,7 @@ Comments on figures:
     \end{align}$$
 
 * You are generalizing the functions for log pdfs and the plotting of posteriors that are in notebook [](/notebooks/Basics/radioactive_lighthouse_exercise_key.ipynb).
-* Note in [](/notebooks/Parameter_estimation/parameter_estimation_Gaussian_noise.ipynb) the functions for log-prior and log-likelihood.
+* Note in [](/notebooks/Basics/parameter_estimation_Gaussian_noise.ipynb) the functions for log-prior and log-likelihood.
     * Here $\thetavec = [\mu,\sigma]$ is a vector of parameters; cf.  $\thetavec = [x_0,y_0]$.
 * Step through the set up for `emcee`.
     * It is best to create an environment that will include `emcee` and `corner`. 
