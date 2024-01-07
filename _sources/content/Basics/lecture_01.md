@@ -16,7 +16,7 @@ In particular, physicists need ways to:
 1. quantify the strength of inductive inferences;
 1. update that quantification as new data is acquired.
 
-Bayesian statistics: Do this with pmfs or pdfs $\Longrightarrow$, which are probability mass or density functions, respectively.
+Bayesian statistics: Do this with pmfs or pdfs, which are probability **mass** or **density** functions, respectively.
 * Discrete probability is pmf and continuous probability is pdf.
 * We will mostly do continuous but often refer to either type as a pdf (often being sloppy and calling it a probability *distribution* function).
 * To a Bayesian, (almost) everything is a pdf!
@@ -97,7 +97,9 @@ Points of interest:
     Trivia: "Student" was the pen name of the Head Brewer at Guiness --- a pioneer of small-sample experimental design (hence not necessarily Gaussian). His real name was William Sealy Gossett. 
     :::
 * Look at projected posterior plots, which use the corner package.
-    * What do you learn from the plots? (e.g., are the quantities *correlated*? How can you tell? More later!)
+    :::{admonition} Question
+    What do you learn from the plots? (e.g., are the quantities *correlated*? How can you tell? More later!)
+    :::
     * Note that these are *samples* from the pdf. We will have much to say about sampling.
 * One-dimensional pdfs: note the fluctuations, larger for smaller numbers of samples.
 
@@ -118,8 +120,8 @@ $$
 * We also can say "probability of $A$ *contingent* on $B$"
 * For a Bayesian, $A$ and $B$ could stand for almost anything.
 * Examples: 
-    * $p(\text{"below zero temperature''} | \text{"it is January in Ohio''} )$
-    * $p(x | \mu, \sigma) = \frac{1}{2\pi\sigma^2} e^{-(x-\mu)^2/\sigma^2}\quad$ [Gaussian or normal distribution]
+    * $p(\text{``below zero temperature''} | \text{``it is January in Ohio''} )$
+    * $p(x | \mu, \sigma) = \frac{1}{2\pi\sigma^2} e^{-(x-\mu)^2/\sigma^2}\quad$ \[Gaussian or normal distribution\]
 :::{note}
    $p(A | B) \neq p(A,B)\quad$ [conditional probability $\neq$ joint probability]
 :::
@@ -135,7 +137,7 @@ If the set $\{x_i\}$ is *exhaustive* and *exclusive*
 \end{align}
 
 * i.e., the sum of probabilities is equal to one.
-* exhaustive, exclusive $\Longrightarrow$ cf. complete, orthonormal (includes all values and there is no overlap between members of the set).
+* exhaustive, exclusive $\Longrightarrow$ cf. complete, orthonormal (includes all possible values and there is no overlap between members of the set).
 * the sum rule *implies* marginalization 
 
     \begin{align}
