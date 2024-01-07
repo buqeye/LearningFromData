@@ -574,7 +574,7 @@ approach is particular well suited.</p></li>
     \]</div>
 </li>
 <li><p>The Gaussian noise is taken to have mean <span class="math notranslate nohighlight">\(\mu=0\)</span> and standard deviation <span class="math notranslate nohighlight">\(\sigma = dy\)</span> independent of <span class="math notranslate nohighlight">\(x\)</span>. This is implemented as
-<code class="docutils literal notranslate"><span class="pre">y</span> <span class="pre">+=</span> <span class="pre">dy</span> <span class="pre">*</span> <span class="pre">rand.randn(N)</span></code> (note <code class="docutils literal notranslate"><span class="pre">randn</span></code>).</p></li>
+<code class="docutils literal notranslate"><span class="pre">y</span> <span class="pre">+=</span> <span class="pre">dy</span> <span class="pre">*</span> <span class="pre">rand.randn(N)</span></code> (note <code class="docutils literal notranslate"><span class="pre">randn</span></code>, where the “n” at the end means “normal” distribution).</p></li>
 <li><p>The <span class="math notranslate nohighlight">\(x_i\)</span> points themselves are also chosen randomly according to a uniform distribution <span class="math notranslate nohighlight">\(\Longrightarrow\)</span> <code class="docutils literal notranslate"><span class="pre">rand.rand(N)</span></code>.</p></li>
 <li><p>Here we are using the <code class="docutils literal notranslate"><span class="pre">numpy</span></code> random number generators while we will mostly use those from <code class="docutils literal notranslate"><span class="pre">scipy.stats</span></code> elsewhere.</p></li>
 </ul>
