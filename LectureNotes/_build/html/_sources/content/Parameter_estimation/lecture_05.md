@@ -120,6 +120,18 @@ $$
 
 $$
    p(1/m, -b/m) = m^3 p(m, b) .
-$$
+$$ (eq:functional_prior)
 
 * Which our prior obeys.
+
+    ::::{admonition} Check that the prior satisfies {eq}`eq:functional_prior`
+    :::{admonition} Answer
+    :class: dropdown 
+    $$ p(1/m, -b/m) = \frac{c}{(1 + (1/m)^2)^{3/2}}
+      = \frac{c}{\frac{1}{m^3}(m^2 + 1)^{3/2}}
+      = m^3 p(m,b) \quad 
+    $$  
+    It works! Note that this prior is independent of $b$.    
+    :::
+    ::::
+
