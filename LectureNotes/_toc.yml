@@ -29,7 +29,6 @@ parts:
       sections:
       - file: content/Parameter_estimation/lecture_05.md
       - file: notebooks/Parameter_estimation/parameter_estimation_fitting_straight_line_I.ipynb
-      - file: notebooks/Parameter_estimation/parameter_estimation_Gaussian_noise-2.ipynb
       - file: content/Parameter_estimation/lecture_06.md
       - file: notebooks/Parameter_estimation/amplitude_in_presence_of_background.ipynb
       - file: notebooks/Parameter_estimation/demo-ModelValidation.ipynb
