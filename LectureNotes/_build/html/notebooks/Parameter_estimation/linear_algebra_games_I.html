@@ -289,8 +289,7 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../mini-projects/mini-project_I_toy_model_of_EFT.html">Mini-project I: Parameter estimation for a toy model of an EFT</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../mini-projects/model-selection_mini-project-IIa.html">Mini-project IIa: Model selection basics</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../mini-projects/model-selection_mini-project-IIb_How_many_lines_ptemcee.html">Mini-project IIb: How many lines are there?</a></li>
-
+<li class="toctree-l1"><a class="reference internal" href="../mini-projects/model-selection_mini-project-IIb_How_many_lines_ptemcee.html">Mini-project IIb: How many lines?</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../mini-projects/mini-project_IIIa_bayesian_optimization.html">Mini-project IIIa: Bayesian optimization</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../mini-projects/mini-project_IIIb_Bayesian_neural_networks_from_demo.html">Mini-project IIIb: Bayesian Neural Networks</a></li>
 </ul>
@@ -598,14 +597,16 @@ document.write(`
   <section class="tex2jax_ignore mathjax_ignore" id="linear-algebra-games-including-svd-for-pca">
 <h1><span class="section-number">2.8. </span>Linear algebra games including SVD for PCA<a class="headerlink" href="#linear-algebra-games-including-svd-for-pca" title="Permalink to this heading">#</a></h1>
 <p>Some parts adapted from <a class="reference external" href="https://github.com/cliburn/Computational-statistics-with-Python">Computational-statistics-with-Python.ipynb</a>, which is itself from a course taught at Duke University; other parts from Peter Mills’ <a class="reference external" href="https://blog.statsbot.co/singular-value-decomposition-tutorial-52c695315254">blog</a>.</p>
-<p>The goal here is to practice some linear algebra manipulations by hand and with Python, and to gain some experience and intuition with the Singular Value Decomposition (SVD).
-<span class="math notranslate nohighlight">\(\newcommand{\Amat}{\mathbf{A}} \newcommand{\AmatT}{\mathbf{A^\top}}
+<p>The goal here is to practice some linear algebra manipulations by hand and with Python, and to gain some experience and intuition with the Singular Value Decomposition (SVD).</p>
+<section id="preliminary-exercise-manipulations-using-the-index-form-of-matrices">
+<h2>Preliminary exercise: manipulations using the index form of matrices<a class="headerlink" href="#preliminary-exercise-manipulations-using-the-index-form-of-matrices" title="Permalink to this heading">#</a></h2>
+<div class="math notranslate nohighlight">
+\[
+\newcommand{\Amat}{\mathbf{A}} \newcommand{\AmatT}{\mathbf{A^\top}}
 \newcommand{\thetavec}{\boldsymbol{\theta}}
 \newcommand{\Sigmamat}{\mathbf{\Sigma}}
 \newcommand{\Yvec}{\mathbf{Y}}
-\)</span></p>
-<section id="preliminary-exercise-manipulations-using-the-index-form-of-matrices">
-<h2>Preliminary exercise: manipulations using the index form of matrices<a class="headerlink" href="#preliminary-exercise-manipulations-using-the-index-form-of-matrices" title="Permalink to this heading">#</a></h2>
+\]</div>
 <p>If you haven’t already done this earlier, prove that the Maximum Likelihood Estimate (MLE) for <span class="math notranslate nohighlight">\(\chi^2\)</span> given by</p>
 <div class="math notranslate nohighlight">
 \[
@@ -1289,8 +1290,8 @@ U shape: (3088, 24), S shape: (24,), V shape: (2320, 24)
 <p>“Principal Components Analysis” (PCA) basically means to find and rank all the eigenvalues and eigenvectors of a covariance matrix. This is useful because high-dimensional data (with <span class="math notranslate nohighlight">\(p\)</span> features) may have nearly all their variation in a small number of dimensions <span class="math notranslate nohighlight">\(k&lt;p\)</span>, i.e. in the subspace spanned by the eigenvectors of the covariance matrix that have the <span class="math notranslate nohighlight">\(k\)</span> largest eigenvalues. If we project the original data into this subspace, we can have a dimension reduction (from <span class="math notranslate nohighlight">\(p\)</span> to <span class="math notranslate nohighlight">\(k\)</span>) with hopefully little loss of information.</p>
 <p>Numerically, PCA is typically done using SVD on the data matrix rather than eigendecomposition on the covariance matrix. Numerically, the condition number for working with the covariance matrix directly is the square of the condition number using SVD, so SVD minimizes errors.”</p>
 <p>For zero-centered vectors,</p>
-<div class="amsmath math notranslate nohighlight" id="equation-c156f72b-87da-4604-af06-94857d4e9c2d">
-<span class="eqno">(2.2)<a class="headerlink" href="#equation-c156f72b-87da-4604-af06-94857d4e9c2d" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-9462a4af-975c-49c5-8f86-57675eae55ec">
+<span class="eqno">(2.2)<a class="headerlink" href="#equation-9462a4af-975c-49c5-8f86-57675eae55ec" title="Permalink to this equation">#</a></span>\[\begin{align}
 \text{Cov}(X, Y) &amp;= \frac{\sum_{i=1}^n(X_i - \bar{X})(Y_i - \bar{Y})}{n-1} \\
   &amp;= \frac{\sum_{i=1}^nX_iY_i}{n-1} \\
   &amp;= \frac{XY^T}{n-1}
@@ -1423,8 +1424,8 @@ U shape: (3088, 24), S shape: (24,), V shape: (2320, 24)
 <h3>Using SVD for PCA<a class="headerlink" href="#using-svd-for-pca" title="Permalink to this heading">#</a></h3>
 <p>SVD is a decomposition of the data matrix <span class="math notranslate nohighlight">\(X = U S V^T\)</span> where <span class="math notranslate nohighlight">\(U\)</span> and <span class="math notranslate nohighlight">\(V\)</span> are orthogonal matrices and <span class="math notranslate nohighlight">\(S\)</span> is a diagonal matrix.</p>
 <p>Recall that the transpose of an orthogonal matrix is also its inverse, so if we multiply on the right by <span class="math notranslate nohighlight">\(X^T\)</span>, we get the following simplification</p>
-<div class="amsmath math notranslate nohighlight" id="equation-50e95ad4-3b7c-4403-822c-ad2757a57929">
-<span class="eqno">(2.3)<a class="headerlink" href="#equation-50e95ad4-3b7c-4403-822c-ad2757a57929" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-f04cd693-b530-4ae6-b7c4-a1aa8b476940">
+<span class="eqno">(2.3)<a class="headerlink" href="#equation-f04cd693-b530-4ae6-b7c4-a1aa8b476940" title="Permalink to this equation">#</a></span>\[\begin{align}
 X &amp;= U S V^T \\
 X X^T &amp;= U S V^T (U S V^T)^T \\
  &amp;= U S V^T V S U^T \\

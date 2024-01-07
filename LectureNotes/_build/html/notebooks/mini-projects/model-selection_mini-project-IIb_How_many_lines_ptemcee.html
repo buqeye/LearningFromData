@@ -289,8 +289,7 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="mini-project_I_toy_model_of_EFT.html">Mini-project I: Parameter estimation for a toy model of an EFT</a></li>
 <li class="toctree-l1"><a class="reference internal" href="model-selection_mini-project-IIa.html">Mini-project IIa: Model selection basics</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Mini-project IIb: How many lines are there?</a></li>
-
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Mini-project IIb: How many lines?</a></li>
 <li class="toctree-l1"><a class="reference internal" href="mini-project_IIIa_bayesian_optimization.html">Mini-project IIIa: Bayesian optimization</a></li>
 <li class="toctree-l1"><a class="reference internal" href="mini-project_IIIb_Bayesian_neural_networks_from_demo.html">Mini-project IIIb: Bayesian Neural Networks</a></li>
 </ul>
@@ -561,13 +560,12 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Mini-project IIb: How many lines are there?</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-goals">Learning goals:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-spectral-line-problem">A spectral line problem</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#solution-strategy">Solution strategy:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#subtasks-put-your-answers-here">Subtasks (put your answers here):</a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#a-spectral-line-problem">A spectral line problem</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#solution-strategy">Solution strategy:</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#subtasks-put-your-answers-here">Subtasks (put your answers here):</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#import-statements">Import statements</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#generate-data">Generate data</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#parameters-known-before-the-analysis-explore-different-values-for-these-as-requested">Parameters known before the analysis (explore different values for these as requested)</a></li>
@@ -583,9 +581,6 @@ document.write(`
 </ul>
 </li>
 </ul>
-</li>
-</ul>
-
             </nav>
         </div>
     </div>
@@ -607,9 +602,8 @@ document.write(`
 <li><p>Employ Bayesian evidence for model selection in the context of a prototype for an experimental spectral measurement.</p></li>
 </ul>
 </section>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="a-spectral-line-problem">
-<h1>A spectral line problem<a class="headerlink" href="#a-spectral-line-problem" title="Permalink to this heading">#</a></h1>
+<section id="a-spectral-line-problem">
+<h2>A spectral line problem<a class="headerlink" href="#a-spectral-line-problem" title="Permalink to this heading">#</a></h2>
 <p>See e.g. section 4.2 in Sivia (see Carmen) for a similar problem formulation. In short, we have data from a spectroscopy experiment that supposedly shows a number of spectral lines. The ideal spectrum, as a function of a scaled coordinate <span class="math notranslate nohighlight">\(x\)</span>, can be expressed as</p>
 <div class="math notranslate nohighlight">
 \[ G(x) = \sum_{j=1}^M A_j f(x,x_j),\]</div>
@@ -626,14 +620,14 @@ document.write(`
 <p>The task is to infer how many spectral lines (<span class="math notranslate nohighlight">\(M\)</span>) are in the experimental data, and their positions (<span class="math notranslate nohighlight">\(x_j\)</span>) and amplitudes (<span class="math notranslate nohighlight">\(A_j\)</span>). The magnitude of the background is not known before the analysis except that it must be <span class="math notranslate nohighlight">\( \leq 1\)</span>.</p>
 <p>Using scaled parameters the range of peak positions is <span class="math notranslate nohighlight">\([0,1]\)</span>, and the range of amplitudes as well as background is also <span class="math notranslate nohighlight">\([0,1]\)</span>.</p>
 <section id="solution-strategy">
-<h2>Solution strategy:<a class="headerlink" href="#solution-strategy" title="Permalink to this heading">#</a></h2>
+<h3>Solution strategy:<a class="headerlink" href="#solution-strategy" title="Permalink to this heading">#</a></h3>
 <p>Our model with <span class="math notranslate nohighlight">\(M\)</span> lines has <span class="math notranslate nohighlight">\(2M+1\)</span> model parameters that we denote by the vector <span class="math notranslate nohighlight">\(\vec{\alpha}\)</span>. These are the amplitudes, the positions, and the constant background. We order them as follows:</p>
 <div class="math notranslate nohighlight">
 \[ \vec{\alpha} = (A_0, x_0, A_1, x_1, \ldots, B).\]</div>
 <p>The background strength is a <em>nuisance parameter</em> in the sense that we’re not really interested in its value, we just need to marginalize over it.</p>
 </section>
 <section id="subtasks-put-your-answers-here">
-<h2>Subtasks (put your answers here):<a class="headerlink" href="#subtasks-put-your-answers-here" title="Permalink to this heading">#</a></h2>
+<h3>Subtasks (put your answers here):<a class="headerlink" href="#subtasks-put-your-answers-here" title="Permalink to this heading">#</a></h3>
 <p><strong>For the first two, see Sivia 4.2 if you get stuck.</strong></p>
 <ol class="arabic">
 <li><p>Formulate the problem of how many lines and what are the model parameters in Bayesian language.
@@ -704,6 +698,7 @@ document.write(`
 </tr>
 </tbody>
 </table>
+</section>
 </section>
 <section id="import-statements">
 <h2>Import statements<a class="headerlink" href="#import-statements" title="Permalink to this heading">#</a></h2>
@@ -1249,13 +1244,12 @@ peak amplitudes within [Amin=0, Amax=1],</p></li>
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Mini-project IIb: How many lines are there?</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-goals">Learning goals:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-spectral-line-problem">A spectral line problem</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#solution-strategy">Solution strategy:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#subtasks-put-your-answers-here">Subtasks (put your answers here):</a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#a-spectral-line-problem">A spectral line problem</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#solution-strategy">Solution strategy:</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#subtasks-put-your-answers-here">Subtasks (put your answers here):</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#import-statements">Import statements</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#generate-data">Generate data</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#parameters-known-before-the-analysis-explore-different-values-for-these-as-requested">Parameters known before the analysis (explore different values for these as requested)</a></li>
@@ -1271,9 +1265,6 @@ peak amplitudes within [Amin=0, Amax=1],</p></li>
 </ul>
 </li>
 </ul>
-</li>
-</ul>
-
   </nav></div>
 
 </div></div>
