@@ -125,7 +125,10 @@ $$
 
 :::{admonition} Proof of penultimate equality
 :class: dropdown
-$(x+y)^N = \sum_{R=0}^N {N \choose R} x^R y^{N-R} \overset{x=y=1}{\longrightarrow} \sum_{R=0}^N {N \choose R} = 2^N$.  More generally, $x = p_h$ and $y = 1 - p_h$ shows that the sum rule works in general. 
+
+$$(x+y)^N = \sum_{R=0}^N {N \choose R} x^R y^{N-R} \overset{x=y=1}{\longrightarrow} \sum_{R=0}^N {N \choose R} = 2^N .$$  
+
+More generally, $x = p_h$ and $y = 1 - p_h$ shows that the sum rule works in general. 
 :::
 
 The likelihood for a more general $p_h$ is the binomial distribution:
