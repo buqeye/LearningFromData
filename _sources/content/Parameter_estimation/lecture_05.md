@@ -49,7 +49,7 @@ Annotations of the notebook:
     $$
 
 * The Gaussian noise is taken to have mean $\mu=0$ and standard deviation $\sigma = dy$ independent of $x$. This is implemented as
-`y += dy * rand.randn(N)` (note `randn`).
+`y += dy * rand.randn(N)` (note `randn`, where the "n" at the end means "normal" distribution).
 * The $x_i$ points themselves are also chosen randomly according to a uniform distribution $\Longrightarrow$ `rand.rand(N)`.
 * Here we are using the `numpy` random number generators while we will mostly use those from `scipy.stats` elsewhere.
 
