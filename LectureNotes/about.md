@@ -3,7 +3,7 @@
 
 ## About these lecture notes
 
-These lecture notes were originally created by [Dick Furnstahl](https://physics.osu.edu/people/furnstahl.1) and then modified by [Daniel Phillips](https://www.ohio.edu/cas/phillid1). The lectures and jupyter notebooks are now maintained and updated jointly by Furnstahl and Phillips.
+These lecture notes were originally created by [Dick Furnstahl](https://physics.osu.edu/people/furnstahl.1) and then modified by [Daniel Phillips](https://www.ohio.edu/cas/phillid1). The jupyter notebooks were originally developed by Furnstahl, Phillips, and particularly [Christian Forssén](https://www.chalmers.se/en/persons/f2bcf/). The lectures and notebooks are now maintained and updated jointly by Furnstahl and Phillips.
 They are released under a [Creative Commons BY-NC license](https://creativecommons.org/licenses/by-nc/4.0/). The book format is powered by [Jupyter Book](https://jupyterbook.org/). 
 
 :::{admonition} Open an issue
