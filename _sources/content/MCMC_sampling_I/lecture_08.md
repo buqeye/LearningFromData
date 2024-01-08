@@ -65,7 +65,7 @@ $$\begin{align}
   \frac{\int d\thetavec\, g(\thetavec)f(\thetavec)}{\int d\thetavec\, f(\thetavec)}
 \end{align}$$
 
-where $f(\thetavec) = Z p(\thetavec)$ is unnormalized.
+$\qquad$ where $f(\thetavec) = Z\, p(\thetavec)$ is unnormalized.
 
 * Nuisance parameters are very easy to marginalize over: just drop that column in every $\theta_k$.
 
