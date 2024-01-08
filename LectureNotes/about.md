@@ -25,7 +25,7 @@ This material originated from an intensive three-week summer school course taugh
 
 We also thank the students and colleagues who have contributed suggestions and comments.
 
-The development of this course also would not have been possible without the knowledge gained through the study of several excellent textbooks, most of which are listed as recommended course literature. Here is a short list of those references that we have found particularly useful as a physicist learning Bayesian statistics and machine learning:
+The development of this course also would not have been possible without the knowledge gained through the study of several excellent textbooks, most of which are listed as recommended course literature. Here is a short list of those references that we have found particularly useful as physicists learning Bayesian statistics and machine learning:
 
 {cite}`gelman2013bayesian` Andrew Gelman et al., *"Bayesian Data Analysis, Third Edition"*, Chapman & Hall/CRC Texts in Statistical Science (2013). <br/>
 {cite}`Gregory:2005` Phil Gregory, *"Bayesian Logical Data Analysis for the Physical Sciences"*, Cambridge University Press (2005). <br/>
