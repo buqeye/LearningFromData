@@ -657,9 +657,6 @@ document.write(`
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<img alt="../../_images/5a1430273b08f77869f739642149e14e8cb7c89135aec7d4b3f0a80ad492b19c.png" src="../../_images/5a1430273b08f77869f739642149e14e8cb7c89135aec7d4b3f0a80ad492b19c.png" />
-</div>
 </div>
 <section id="poisson-distribution">
 <h2>Poisson distribution<a class="headerlink" href="#poisson-distribution" title="Permalink to this heading">#</a></h2>
@@ -683,8 +680,8 @@ p(k \mid \mu) = \frac{\mu^k e^{-\mu}}{k!} \quad \mbox{for }k\geq 0 \;.
 p(N \mid D) = \frac{D^N e^{-D}}{N!} \quad \mbox{for }N\geq 0 \;.
 \]</div>
 <p>where <span class="math notranslate nohighlight">\(N\)</span> is an integer.  The results for the normalization, mean, and variance are:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-38310bad-6503-44d2-a9ff-9ce2157ac89a">
-<span class="eqno">(2.2)<a class="headerlink" href="#equation-38310bad-6503-44d2-a9ff-9ce2157ac89a" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-be8e2fe6-7179-4156-95ee-10e8f6fe5a31">
+<span class="eqno">(2.2)<a class="headerlink" href="#equation-be8e2fe6-7179-4156-95ee-10e8f6fe5a31" title="Permalink to this equation">#</a></span>\[\begin{align}
  \langle 1 \rangle &amp;= \sum_0^\infty p(N \mid D) = 1 \\
   \langle N \rangle &amp;= \sum_0^\infty N p(N \mid D) = D \\
   \langle N^2 \rangle - \langle N \rangle^2 &amp;= \sum_0^\infty N^2 p(N \mid D) - D^2 = D 
@@ -737,9 +734,6 @@ p(N \mid D) = \frac{D^N e^{-D}}{N!} \quad \mbox{for }N\geq 0 \;.
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<img alt="../../_images/7a4fb6ad2bf842209b67489c83adfd58e9692b767b4869f21d6ac798c617303b.png" src="../../_images/7a4fb6ad2bf842209b67489c83adfd58e9692b767b4869f21d6ac798c617303b.png" />
-</div>
 </div>
 <section id="follow-ups">
 <h3>Follow-ups<a class="headerlink" href="#follow-ups" title="Permalink to this heading">#</a></h3>
@@ -767,12 +761,6 @@ p(N \mid D) = \frac{D^N e^{-D}}{N!} \quad \mbox{for }N\geq 0 \;.
 
 <span class="n">S2</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">poisson</span><span class="o">.</span><span class="n">rvs</span><span class="p">(</span><span class="n">mu</span><span class="o">=</span><span class="n">D2</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>  <span class="c1"># sample an array of specified size</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">S2</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>13
-[11 11 12 14 10]
 </pre></div>
 </div>
 </div>
@@ -1031,10 +1019,6 @@ p(N \mid D) = \frac{D^N e^{-D}}{N!} \quad \mbox{for }N\geq 0 \;.
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<img alt="../../_images/4ef37d1c978d423d5ef24c0206a37f584dcfaeb36324f4f26bedc983eaa20a4d.png" src="../../_images/4ef37d1c978d423d5ef24c0206a37f584dcfaeb36324f4f26bedc983eaa20a4d.png" />
-<img alt="../../_images/344f8151f784ded55cddc5e3667b9f1490da75df29f62009c5c606dfd198a8b5.png" src="../../_images/344f8151f784ded55cddc5e3667b9f1490da75df29f62009c5c606dfd198a8b5.png" />
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1047,10 +1031,6 @@ p(N \mid D) = \frac{D^N e^{-D}}{N!} \quad \mbox{for }N\geq 0 \;.
 <span class="n">fig</span> <span class="o">=</span> <span class="n">make_figs</span><span class="p">(</span><span class="n">databins</span><span class="p">,</span> <span class="n">delta_x</span><span class="p">,</span> <span class="n">D_max</span><span class="p">,</span> <span class="n">flag</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
-<img alt="../../_images/2b968ccba2d8e2bed453746d8d3cb2bc4089b7fd6c7edeb6ed6059409f0a6af3.png" src="../../_images/2b968ccba2d8e2bed453746d8d3cb2bc4089b7fd6c7edeb6ed6059409f0a6af3.png" />
-<img alt="../../_images/defb3b743e9e842c0750d05d4ecb02f5e9c155a74f9c5bedaec14cf2d15f01db.png" src="../../_images/defb3b743e9e842c0750d05d4ecb02f5e9c155a74f9c5bedaec14cf2d15f01db.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1066,10 +1046,6 @@ p(N \mid D) = \frac{D^N e^{-D}}{N!} \quad \mbox{for }N\geq 0 \;.
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<img alt="../../_images/561712eb852049c537aed1a51dc85f07d9c90ecffd9922988609edd2592dfb8d.png" src="../../_images/561712eb852049c537aed1a51dc85f07d9c90ecffd9922988609edd2592dfb8d.png" />
-<img alt="../../_images/98a39de51949d88d3a8b671202f717a7534429b859342fa5e5add11c3dde6e1c.png" src="../../_images/98a39de51949d88d3a8b671202f717a7534429b859342fa5e5add11c3dde6e1c.png" />
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1082,10 +1058,6 @@ p(N \mid D) = \frac{D^N e^{-D}}{N!} \quad \mbox{for }N\geq 0 \;.
 <span class="n">fig</span> <span class="o">=</span> <span class="n">make_figs</span><span class="p">(</span><span class="n">databins</span><span class="p">,</span> <span class="n">delta_x</span><span class="p">,</span> <span class="n">D_max</span><span class="p">,</span> <span class="n">flag</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
-<img alt="../../_images/da099f29163f7317351c9bf8be542f4a8a4e520d9d6b1d0435a09ea23d701d87.png" src="../../_images/da099f29163f7317351c9bf8be542f4a8a4e520d9d6b1d0435a09ea23d701d87.png" />
-<img alt="../../_images/94edf32ab110085d11eac2f7f1ce086d54abd893b67450e744cd9eba28784702.png" src="../../_images/94edf32ab110085d11eac2f7f1ce086d54abd893b67450e744cd9eba28784702.png" />
 </div>
 </div>
 </section>
