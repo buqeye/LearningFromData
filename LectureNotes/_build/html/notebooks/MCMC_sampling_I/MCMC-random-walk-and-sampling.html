@@ -663,9 +663,6 @@ document.write(`
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<img alt="../../_images/0dbe45ef339fca7d8a5bf51bfb7d1617a375b78d83d2a8739f17aa239ba5e91f.png" src="../../_images/0dbe45ef339fca7d8a5bf51bfb7d1617a375b78d83d2a8739f17aa239ba5e91f.png" />
-</div>
 </div>
 <section id="questions">
 <h3>Questions<a class="headerlink" href="#questions" title="Permalink to this heading">#</a></h3>
@@ -736,9 +733,6 @@ document.write(`
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<img alt="../../_images/7992b6599d70a34373d3ff414fdb3e111c50cb04227da02992d0cad0fa273132.png" src="../../_images/7992b6599d70a34373d3ff414fdb3e111c50cb04227da02992d0cad0fa273132.png" />
-</div>
 </div>
 </section>
 </section>
@@ -758,9 +752,6 @@ document.write(`
          <span class="nb">range</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span><span class="mi">10</span><span class="p">),</span><span class="n">bins</span><span class="o">=</span><span class="mi">21</span><span class="p">);</span>
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
-<img alt="../../_images/5c69aa709335e57dbbed920a940519f653d52e5bf9ca96c4b41d11acfdca3845.png" src="../../_images/5c69aa709335e57dbbed920a940519f653d52e5bf9ca96c4b41d11acfdca3845.png" />
 </div>
 </div>
 <section id="id1">
@@ -910,16 +901,6 @@ p(x | \alpha=0, \beta=1) = \frac{1}{\pi(1+x^2)},
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<img alt="../../_images/57b9074c6d2dd99a9e8debff443641a4dd6b21cda898ee3b07dad20b10bb461e.png" src="../../_images/57b9074c6d2dd99a9e8debff443641a4dd6b21cda898ee3b07dad20b10bb461e.png" />
-<img alt="../../_images/5dcbfeb47b4fb907fa049d89075fca15b3708b643eb093a059d7f0863d336c8b.png" src="../../_images/5dcbfeb47b4fb907fa049d89075fca15b3708b643eb093a059d7f0863d336c8b.png" />
-<img alt="../../_images/cc7b71cff53adf9c3c43204cbbcd3bcc0311314b40c8a1b2c4667938ef4bfbc3.png" src="../../_images/cc7b71cff53adf9c3c43204cbbcd3bcc0311314b40c8a1b2c4667938ef4bfbc3.png" />
-<img alt="../../_images/6d89886a1f394b9e2c7ef446d63b66614e612ff2baacbf3edc556e4bce9288b2.png" src="../../_images/6d89886a1f394b9e2c7ef446d63b66614e612ff2baacbf3edc556e4bce9288b2.png" />
-<img alt="../../_images/1c0258512ca34862cd52e160a4a034778a47bc878d3557e36f6b1298abff0ba0.png" src="../../_images/1c0258512ca34862cd52e160a4a034778a47bc878d3557e36f6b1298abff0ba0.png" />
-<img alt="../../_images/157ae3d1195810c0149ec16ed4561ad2d6af36c00ab3b955630d72b8572fd5b5.png" src="../../_images/157ae3d1195810c0149ec16ed4561ad2d6af36c00ab3b955630d72b8572fd5b5.png" />
-<img alt="../../_images/5cc113fbcfa3dfe5151a4937a5e720d5f66275d7c37ff279eba65ba7fe54b7d9.png" src="../../_images/5cc113fbcfa3dfe5151a4937a5e720d5f66275d7c37ff279eba65ba7fe54b7d9.png" />
-<img alt="../../_images/a91144f17767c16e24842ed807aaccd8467d922aec3dc6f0c9dfcb78b119d098.png" src="../../_images/a91144f17767c16e24842ed807aaccd8467d922aec3dc6f0c9dfcb78b119d098.png" />
-</div>
 </div>
 <p>Now the magic of MCMC is that you just have to do that for a long time, and the samples that are generated in this way come from the posterior distribution of your model. There is a rigorous mathematical proof that guarantees this, which we won’t go into detail here.</p>
 <p>To get a sense of what this produces, lets draw a lot of samples and plot them.</p>
@@ -946,9 +927,6 @@ p(x | \alpha=0, \beta=1) = \frac{1}{\pi(1+x^2)},
 <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
-<img alt="../../_images/bc46f1d4082c3435d9fbdc452f874b3f6a40fc691b16d899921437570b34dbee.png" src="../../_images/bc46f1d4082c3435d9fbdc452f874b3f6a40fc691b16d899921437570b34dbee.png" />
 </div>
 </div>
 <p>The plot in the left panel is usually called the trace. To get an approximation of the posterior (the reason why we’re doing all this), we simply take the histogram of this trace. That histogram is shown in the right panel which then represents our <strong>belief</strong> in the probability density for different <code class="docutils literal notranslate"><span class="pre">positions</span></code>. For comparison we also show (green line) the properly normalized posterior pdf, for which we had a known analytical form in this case.</p>
