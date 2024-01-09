@@ -51,7 +51,7 @@ so each row is $y_i = b + mx_i$, as desired.
 :::{note} **Reader:** convince yourself that $N=3$ and higher is correct (e.g., by writing out the $N=3$ case).
 :::
 
-:::{admonition} Why don't we just solve the matrix equation $Y = A \thetavec \quad \Lra \quad \thetavec \overset{?}{=}A^{-1}Y$?
+:::{admonition} Why don't we just solve the matrix equation $Y = A \thetavec \ \Lra \ \thetavec \overset{?}{=}A^{-1}Y$ ?
 :class: dropdown
 Because the equation is overconstrained for $N>2$ (ok for $N=2$). What goes wrong?
 :::
