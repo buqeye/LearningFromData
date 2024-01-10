@@ -2,7 +2,10 @@
 
 This is a rapid introduction to the basics of Python and the use of Jupyter notebooks.
 
-Good online cheatsheets:
+Good online cheat-sheets:
+* [Python Crash Course](https://ehmatthes.github.io/pcc_3e/cheat_sheets/)
+* [datacamp cheat-sheets](https://www.datacamp.com/cheat-sheet)
+* [Python debugging flowchart](https://imgur.com/gallery/3fwBFTn)
 
 
 
