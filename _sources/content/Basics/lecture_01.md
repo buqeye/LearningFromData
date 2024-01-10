@@ -121,7 +121,7 @@ $$
 * For a Bayesian, $A$ and $B$ could stand for almost anything.
 * Examples: 
     * $p(\text{``below zero temperature''} | \text{``it is January in Ohio''} )$
-    * $p(x | \mu, \sigma) = \frac{1}{2\pi\sigma^2} e^{-(x-\mu)^2/\sigma^2}\quad$ \[Gaussian or normal distribution\]
+    * $p(x | \mu, \sigma) = \frac{1}{\sqrt{2\pi\sigma^2}} e^{-(x-\mu)^2/2\sigma^2}\quad$ \[Gaussian or normal distribution\]
 :::{note}
    $p(A | B) \neq p(A,B)\quad$ [conditional probability $\neq$ joint probability]
 :::
