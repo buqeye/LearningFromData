@@ -173,7 +173,7 @@ But
 $$
 \begin{align}
  \int_0^1 dp_h \, p(p_h|R,N) &= 1 \quad \Longrightarrow \quad 
-         \mathcal{N}\frac{\Gamma(1+N-R)\Gamma(1+R)}{\Gamma(2+N)} = 1
+         \mathcal{N}\frac{\Gamma(1+N-R)\Gamma(1+R)}{\Gamma(1+N)} = 1
 \end{align}
 $$ (eq:coinflip_posterior_norm)
 
@@ -187,7 +187,7 @@ and $\Gamma(x) = (x-1)!$ for integers.
 :::
 
 $$
-  \Longrightarrow\quad \mathcal{N} = \frac{\Gamma(2+N)}{\Gamma(1+N-R)\Gamma(1+R)}
+  \Longrightarrow\quad \mathcal{N} = \frac{\Gamma(1+N)}{\Gamma(1+N-R)\Gamma(1+R)}
 $$ (eq:beta_normalization)
 
 and so evaluating the posterior for $p_h$ for new values of $R$ and $N$ is direct: substitute {eq}`eq:beta_normalization` into {eq}`eq:coinflip_posterior`.
