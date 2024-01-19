@@ -95,7 +95,7 @@ Because these are not square, invertible matrices, so those operations don't hol
 * Let's make a plausibility argument for the $\thetavechat$ result.
 We need square, invertible matrices before we can do the inversion that fails for $Y = A\thetavec$.
     * Start with $Y = A\thetavec$, which has $A$ as an $(N\times 2)$ matrix. 
-    * We need to change what multiplies $\thetavec$ into a square matrix.
+    * We need to change what multiplies $\thetavec$ into a $2\times 2)$ square matrix.
     * We do this by multiplying both sides by $A^\intercal \Sigmavec^{-1}$, which is $(2\times N)$:
 
     $$
