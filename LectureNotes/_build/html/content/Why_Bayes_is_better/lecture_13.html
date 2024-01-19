@@ -610,7 +610,7 @@ document.write(`
 <p>Before going on, make sure you can see how the uncorrelated case is a special case of this expression and how the generalization plays out.</p>
 </li>
 <li><p>Check the matrix dimensions on the right side: <span class="math notranslate nohighlight">\((1\times N)\cdot (N\times N)\cdot (N\times 1) \rightarrow 1 \times 1\)</span>, which works because <span class="math notranslate nohighlight">\(\chi^2\)</span> is a scalar. (If it is confusing how these combine, first write out the matrix products with sums over indices for all matrices. Adjacent indices must run over the same integer values.)</p></li>
-<li><p>We have twice used here that <span class="math notranslate nohighlight">\(Y - A\thetavec \sim (N\times 1)\cdot (2\times 1) \rightarrow (N\times 1)\)</span>. In the first instance the transpose converts <span class="math notranslate nohighlight">\((N\times 1)\)</span> to <span class="math notranslate nohighlight">\((1\times N)\)</span>.</p></li>
+<li><p>We have twice used here that <span class="math notranslate nohighlight">\(Y - A\thetavec \sim (N\times 2)\cdot (2\times 1) \rightarrow (N\times 1)\)</span>. In the first instance the transpose converts <span class="math notranslate nohighlight">\((N\times 1)\)</span> to <span class="math notranslate nohighlight">\((1\times N)\)</span>.</p></li>
 </ul>
 <p><strong>Claim:</strong> the maximum likelihood estimate (MLE) for <span class="math notranslate nohighlight">\(\thetavec\)</span> is</p>
 <div class="math notranslate nohighlight">
