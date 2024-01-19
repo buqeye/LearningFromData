@@ -78,7 +78,7 @@ It is in the exponent by itself, so it must be dimensionless.
     Before going on, make sure you can see how the uncorrelated case is a special case of this expression and how the generalization plays out.
 
 * Check the matrix dimensions on the right side: $(1\times N)\cdot (N\times N)\cdot (N\times 1) \rightarrow 1 \times 1$, which works because $\chi^2$ is a scalar. (If it is confusing how these combine, first write out the matrix products with sums over indices for all matrices. Adjacent indices must run over the same integer values.)
-* We have twice used here that $Y - A\thetavec \sim (N\times 1)\cdot (2\times 1) \rightarrow (N\times 1)$. In the first instance the transpose converts $(N\times 1)$ to $(1\times N)$.
+* We have twice used here that $Y - A\thetavec \sim (N\times 2)\cdot (2\times 1) \rightarrow (N\times 1)$. In the first instance the transpose converts $(N\times 1)$ to $(1\times N)$.
 
 **Claim:** the maximum likelihood estimate (MLE) for $\thetavec$ is
 
