@@ -217,9 +217,9 @@ p(x)&=
 \int_{-\infty}^\infty dx p(x)
 \left[1 +\frac{ i \omega x}{\sqrt{n}} + \frac{(i \omega)^2 x^2}{2 n} + \ldots\right]\\
 &=1  + \frac{i \omega}{\sqrt{n}} \langle x \rangle  - \frac{\omega^2}{2
-n^2} \langle x^2 \rangle + \langle x^3 \rangle
+n} \langle x^2 \rangle + \langle x^3 \rangle
 \frac{\omega^3}{n^{3/2}}\\
-&=1 - \frac{\omega^2 \sigma^2}{2 n^2} +
+&=1 - \frac{\omega^2 \sigma^2}{2 n} +
 \mathcal{O}\left(\frac{\omega^3}{n^{3/2}}\right)
 \end{align}
 $$
@@ -230,7 +230,7 @@ $n$ limit:
 $$
 \begin{align}
 p(X)&=\frac{1}{2 \pi} \int_{-\infty}^\infty d \omega e^{i \omega X}
-\left[1 - \frac{\omega^2 \sigma^2}{2 n^2} + \mathcal{O} \left(\frac{\omega^3}{n^{3/2}}\right)\right]^n\\
+\left[1 - \frac{\omega^2 \sigma^2}{2 n} + \mathcal{O} \left(\frac{\omega^3}{n^{3/2}}\right)\right]^n\\
 &\stackrel{n\rightarrow \infty}{\longrightarrow} \frac{1}{2 \pi} \int
 d\omega e^{i \omega X} e^{- \omega^2 \sigma^2/2}=\frac{1}{\sqrt{2
 \pi}} e^{-X^2/(2 \sigma^2)}.
