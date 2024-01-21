@@ -785,9 +785,6 @@ If <span class="math notranslate nohighlight">\(\rho=0\)</span>, <span class="ma
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<img alt="../../_images/dac6aff23f9e393226eef489e983f96ad41056f8dccc2e66a6419954e84b1046.png" src="../../_images/dac6aff23f9e393226eef489e983f96ad41056f8dccc2e66a6419954e84b1046.png" />
-</div>
 </div>
 <p>Repeat as before, but now we’ll plot many samples from two kinds of Gaussians: one with strongly correlated dimensions and one with weak correlations</p>
 <div class="cell docutils container">
@@ -813,9 +810,6 @@ If <span class="math notranslate nohighlight">\(\rho=0\)</span>, <span class="ma
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<img alt="../../_images/cb121446d76c545ac47fc8cde564964c6b99d84cde10a0848bd6e1948ed4de00.png" src="../../_images/cb121446d76c545ac47fc8cde564964c6b99d84cde10a0848bd6e1948ed4de00.png" />
-</div>
 </div>
 <p>But let’s plot them as before dimension-wise…</p>
 <blockquote>
@@ -839,9 +833,6 @@ If <span class="math notranslate nohighlight">\(\rho=0\)</span>, <span class="ma
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<img alt="../../_images/1bb29bc9f4400a591c5ae1ce5def38c09d2453dbb6d518be9b29f0c7cb1ea8fd.png" src="../../_images/1bb29bc9f4400a591c5ae1ce5def38c09d2453dbb6d518be9b29f0c7cb1ea8fd.png" />
-</div>
 </div>
 <ul class="simple">
 <li><p>The strongly correlated Gaussian gives more “horizontal” lines in the dimension-wise plot.</p></li>
@@ -855,7 +846,7 @@ If <span class="math notranslate nohighlight">\(\rho=0\)</span>, <span class="ma
 <span class="n">D</span> <span class="o">=</span> <span class="n">mu</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 
 <span class="c1"># Generate random covariance matrix</span>
-<span class="n">x_pts</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">sp</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="n">D</span><span class="p">))[:,</span><span class="kc">None</span><span class="p">]</span>  
+<span class="n">x_pts</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="n">D</span><span class="p">))[:,</span><span class="kc">None</span><span class="p">]</span>  
 <span class="n">tmp2</span> <span class="o">=</span> <span class="n">x_pts</span><span class="o">**</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
 <span class="n">sigma</span> <span class="o">=</span> <span class="mi">5</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">tmp2</span><span class="p">,</span> <span class="n">tmp2</span><span class="o">.</span><span class="n">T</span><span class="p">)</span> <span class="o">+</span> <span class="mf">0.005</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="n">D</span><span class="p">)</span>
 <span class="k">with</span> <span class="n">np</span><span class="o">.</span><span class="n">printoptions</span><span class="p">(</span><span class="n">precision</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">suppress</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
@@ -876,40 +867,11 @@ If <span class="math notranslate nohighlight">\(\rho=0\)</span>, <span class="ma
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Covariance matrix:
-[[ 5.07  5.09  5.09  5.16  5.24  5.24  5.57  5.63]
- [ 5.09  5.11  5.11  5.21  5.3   5.31  5.73  5.81]
- [ 5.09  5.11  5.12  5.21  5.31  5.31  5.75  5.82]
- [ 5.16  5.21  5.21  5.4   5.59  5.6   6.54  6.72]
- [ 5.24  5.3   5.31  5.59  5.9   5.91  7.55  7.89]
- [ 5.24  5.31  5.31  5.6   5.91  5.93  7.6   7.95]
- [ 5.57  5.73  5.75  6.54  7.55  7.6  15.68 17.85]
- [ 5.63  5.81  5.82  6.72  7.89  7.95 17.85 20.6 ]]
-Eigenvalues should be all larger than zero:
-[5.69823354e+01 1.15746612e+01 2.30151690e-01 8.75735746e-03
- 5.02169431e-03 5.00000000e-03 5.00000000e-03 5.00000000e-03]
-</pre></div>
-</div>
-<img alt="../../_images/d0a054faf8bb073fe75edba949438d96de50ae9a01e04b2990b4fc85ed0dc0ac.png" src="../../_images/d0a054faf8bb073fe75edba949438d96de50ae9a01e04b2990b4fc85ed0dc0ac.png" />
-</div>
 </div>
 <p>So each sample has 8 values, which we associate with the 8 x points:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;x points: &#39;</span><span class="p">,</span> <span class="n">x_pts</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>x points:  [[0.11704133]
- [0.14664013]
- [0.1489718 ]
- [0.26970668]
- [0.38987859]
- [0.39548656]
- [0.87412383]
- [0.95021217]]
 </pre></div>
 </div>
 </div>
@@ -922,7 +884,7 @@ Eigenvalues should be all larger than zero:
 <span class="n">mu</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">D</span><span class="p">,</span><span class="mi">1</span><span class="p">))[:,</span><span class="mi">0</span><span class="p">]</span>
 
 <span class="c1"># Generate random covariance matrix</span>
-<span class="n">x_pts</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">sp</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="n">D</span><span class="p">))[:,</span><span class="kc">None</span><span class="p">]</span>
+<span class="n">x_pts</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="n">D</span><span class="p">))[:,</span><span class="kc">None</span><span class="p">]</span>
 <span class="n">tmp2</span> <span class="o">=</span> <span class="n">x_pts</span><span class="o">**</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
 <span class="n">sigma</span> <span class="o">=</span> <span class="mi">5</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">tmp2</span><span class="p">,</span><span class="n">tmp2</span><span class="o">.</span><span class="n">T</span><span class="p">)</span><span class="o">+</span> <span class="mf">0.0005</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="n">D</span><span class="p">)</span>
 
@@ -934,9 +896,6 @@ Eigenvalues should be all larger than zero:
 <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">N</span><span class="si">}</span><span class="s1"> samples of a </span><span class="si">{</span><span class="n">D</span><span class="si">}</span><span class="s1"> dimensional Gaussian&#39;</span><span class="p">);</span>
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
-<img alt="../../_images/0a75ca772986e9e852b229f06442713e44b0ce8282e67f9c0bd5a32126a4caee.png" src="../../_images/0a75ca772986e9e852b229f06442713e44b0ce8282e67f9c0bd5a32126a4caee.png" />
 </div>
 </div>
 <p>We see that each sample now starts looking like a “smooth” curve (notice that the random variables are highly correlated). Therefore, we now have a clear intuition as to why a GP can be seen as an <em>infinite dimensional multivariate Gaussian</em> which is used as a <em>prior over functions</em>, since one sample from a GP is a function.</p>
@@ -1021,9 +980,6 @@ dictate those features (figure from J. Melendez):</p>
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<img alt="../../_images/16cdcee4ac07aa3e45b25f10281c13e9fe79284df94b5c80acb375a61e62aac7.png" src="../../_images/16cdcee4ac07aa3e45b25f10281c13e9fe79284df94b5c80acb375a61e62aac7.png" />
-</div>
 </div>
 </section>
 </section>
@@ -1052,9 +1008,6 @@ dictate those features (figure from J. Melendez):</p>
 <span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">hw</span><span class="p">,</span> <span class="n">E</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">10</span><span class="p">);</span>
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
-<img alt="../../_images/23bbc54ca5961f51bf4a325b4f6c0299ae83bb8713581e1cfd8d23df699f8728.png" src="../../_images/23bbc54ca5961f51bf4a325b4f6c0299ae83bb8713581e1cfd8d23df699f8728.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1097,39 +1050,6 @@ dictate those features (figure from J. Melendez):</p>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Validation result: Ratio true/predict in [</span><span class="si">{</span><span class="n">ratio_min</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">:</span><span class="s1">8.6f</span><span class="si">}</span><span class="s1">, </span><span class="si">{</span><span class="n">ratio_max</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">:</span><span class="s1">8.6f</span><span class="si">}</span><span class="s1">]&#39;</span><span class="p">)</span> 
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_html"><style type="text/css">
-.pd{
-    font-family: "Courier New", Courier, monospace !important;
-    width: 100%;
-    padding: 3px;
-}
-</style>
-
-<p class=pd>
-<b>Model</b>: GP regression<br>
-<b>Objective</b>: 5.580147499327765<br>
-<b>Number of Parameters</b>: 3<br>
-<b>Number of Optimization Parameters</b>: 3<br>
-<b>Updates</b>: True<br>
-</p>
-<style type="text/css">
-.tg  {font-family:"Courier New", Courier, monospace !important;padding:2px 3px;word-break:normal;border-collapse:collapse;border-spacing:0;border-color:#DCDCDC;margin:0px auto;width:100%;}
-.tg td{font-family:"Courier New", Courier, monospace !important;font-weight:bold;color:#444;background-color:#F7FDFA;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:#DCDCDC;}
-.tg th{font-family:"Courier New", Courier, monospace !important;font-weight:normal;color:#fff;background-color:#26ADE4;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:#DCDCDC;}
-.tg .tg-left{font-family:"Courier New", Courier, monospace !important;font-weight:normal;text-align:left;}
-.tg .tg-center{font-family:"Courier New", Courier, monospace !important;font-weight:normal;text-align:center;}
-.tg .tg-right{font-family:"Courier New", Courier, monospace !important;font-weight:normal;text-align:right;}
-</style>
-<table class="tg"><tr><th><b>  GP_regression.         </b></th><th><b>                 value</b></th><th><b>constraints</b></th><th><b>priors</b></th></tr>
-<tr><td class=tg-left>  rbf.variance           </td><td class=tg-right>    2.7334831243366655</td><td class=tg-center>    +ve    </td><td class=tg-center>      </td></tr>
-<tr><td class=tg-left>  rbf.lengthscale        </td><td class=tg-right>    15.493754387168465</td><td class=tg-center>    +ve    </td><td class=tg-center>      </td></tr>
-<tr><td class=tg-left>  Gaussian_noise.variance</td><td class=tg-right>3.9116924072201616e-10</td><td class=tg-center>    +ve    </td><td class=tg-center>      </td></tr>
-</table></div><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Validation result: Ratio true/predict in [0.998527, 1.004752]
-</pre></div>
-</div>
-<img alt="../../_images/28ef0151c58c8003b69cd76c6b9946366e97248753b9f0132bf2e3c9496a19dc.png" src="../../_images/28ef0151c58c8003b69cd76c6b9946366e97248753b9f0132bf2e3c9496a19dc.png" />
 </div>
 </div>
 </section>

@@ -692,6 +692,13 @@ document.write(`
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>maximum =  220.07240353631101
+minimum =  -1968.719698305782
+</pre></div>
+</div>
+<img alt="../../_images/fc6e11a759a254e828169ddf49ccfd013248b7fbc444a027cb48c64e8e4e8637.png" src="../../_images/fc6e11a759a254e828169ddf49ccfd013248b7fbc444a027cb48c64e8e4e8637.png" />
+</div>
 </div>
 <p>  8. Now you’ll repeat the same graphs, but this time generate the distribution of points starting with a uniform distribution in angle between <span class="math notranslate nohighlight">\(-\pi/2\)</span> and <span class="math notranslate nohighlight">\(\pi/2\)</span>. <em>In particular, at the <code class="docutils literal notranslate"><span class="pre">###</span></code>, write the formula for <code class="docutils literal notranslate"><span class="pre">dist_pts</span></code> in terms of <code class="docutils literal notranslate"><span class="pre">theta_dist</span></code> and <code class="docutils literal notranslate"><span class="pre">x0_true</span></code>, <code class="docutils literal notranslate"><span class="pre">y0_true</span></code>.</em>
 <br></p>
@@ -708,7 +715,7 @@ document.write(`
 <span class="c1"># Uniform distribution in theta: uniform(a,b) in [a, a+b]</span>
 <span class="n">theta_dist</span> <span class="o">=</span> <span class="n">uniform</span><span class="p">(</span><span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">/</span><span class="mf">2.</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">)</span>
 
-<span class="c1">#dist_pts_alt = ### Fill in formula here for x_k points</span>
+<span class="n">dist_pts_alt</span> <span class="o">=</span> <span class="n">x0_true</span> <span class="o">+</span> <span class="n">y0_true</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">tan</span><span class="p">(</span><span class="n">theta_dist</span><span class="o">.</span><span class="n">rvs</span><span class="p">(</span><span class="n">num_pts</span><span class="p">))</span> <span class="c1">### Fill in formula here for x_k points</span>
 
         
 <span class="c1"># Make some plots!</span>
@@ -734,6 +741,13 @@ document.write(`
 <span class="n">fig</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>maximum =  204.97482893433087
+minimum =  -403.49713161694064
+</pre></div>
+</div>
+<img alt="../../_images/e1ed4a766dbdb109414398956dce99695a4bc9feeb51284f0eae7dce2a8b017b.png" src="../../_images/e1ed4a766dbdb109414398956dce99695a4bc9feeb51284f0eae7dce2a8b017b.png" />
 </div>
 </div>
 <p>Before moving on, let’s do some more plotting of histograms with different numbers of samples to build some intuition.  We define a plotting function first so it is easy to plot several histograms all at once. Run it several times to see the nature of the fluctuations.</p>
@@ -794,6 +808,9 @@ document.write(`
 <span class="n">fig</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/3856fcae79e7eecee2513753f1a1e6ae47b29d057ba2044fc379beb6ea70c456.png" src="../../_images/3856fcae79e7eecee2513753f1a1e6ae47b29d057ba2044fc379beb6ea70c456.png" />
 </div>
 </div>
 <section id="define-and-plot-the-posterior-for-x-0">
@@ -904,6 +921,9 @@ document.write(`
 <span class="n">fig</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/cc30607d8d7af1c25a238fefe8c37d3c3f4612ae1da38014a87e35510d748ff7.png" src="../../_images/cc30607d8d7af1c25a238fefe8c37d3c3f4612ae1da38014a87e35510d748ff7.png" />
 </div>
 </div>
 <p><em>Run the cell above several times for each <span class="math notranslate nohighlight">\(\Nmax\)</span> and record the results in the table:</em></p>
