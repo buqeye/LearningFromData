@@ -302,6 +302,7 @@ Following our study in [](/notebooks/Basics/Bayesian_updating_coinflip_interacti
 * We found that this can be expressed as a beta function, which we can calculate in Python using
 $p(p_h|D) = p(D|p_h)p(p_h)$ $\longrightarrow$ `scipy.stats.beta.pdf(p_h,1+R,1+N-R)`. For $N=20$, $R=14$, this is shown on the left below.
 * Now we can answer many questions, such as: what is the probability that $p_h$ is between $0.49$ and $0.51$? The answer comes from integrating our pdf over this interval (i.e., the area under the curve).
+* Note that in the Bayesian analysis, the data is given while the probability of heads is a random value.
 
 ```{image} /_images/beta_distribution_14heads_in_20tosses.png
 :alt: bootstrapping
@@ -316,6 +317,7 @@ $p(p_h|D) = p(D|p_h)p(p_h)$ $\longrightarrow$ `scipy.stats.beta.pdf(p_h,1+R,1+N-
 * We decide on the significance $p_{\rm crit} = 0.05$.
 * We need to find the probability of getting data *at least as extreme* as $D = \{R \text{ heads}, N \text{ tosses}\}$. For our example, that means adding up the binomial probabilities for $R = 14, 15, \ldots, 20$, which is 0.058. (This is called a "one-tailed test". If we wanted to consider deviations favoring tails as well, we would would add as well the probabilities for $R = 0, 1, \ldots, 6$, so $0.115$ in total.) 
 * Comparing to $p_{\rm crit} = 0.05$, we find the p-value is greater than $p_{\rm crit}$, so the null hypothesis is not rejected at the 95\% level. (Note that we say "not rejected" as opposed to "accepted".) If we had gotten 15 heads instead we would have rejected the null hypothesis (*check this!*).
+* Note that in this frequentist analysis, the *data* is random while $p_h$ is fixed (although unknown). 
 
 
 
