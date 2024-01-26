@@ -522,6 +522,7 @@ document.write(`
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#p-values-when-all-you-can-do-is-falsify">p-values: when all you can do is falsify</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#contrast-bayesian-and-significance-analyses-for-coin-flipping">Contrast Bayesian and significance analyses for coin flipping</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bayesian-degree-of-belief-intervals-and-frequentist-confidence-intervals">Bayesian degree of belief intervals and frequentist confidence intervals</a></li>
 </ul>
             </nav>
@@ -776,7 +777,7 @@ Higgs boson (and for many other particle physics experiments) it is
 probability?</p></li>
 <li><p>One minus the resulting probability is called the <span class="math notranslate nohighlight">\(p\)</span>-value. We will
 denote it <span class="math notranslate nohighlight">\(p_{\rm crit}\)</span>. There is nothing
-God-given about it. It is a standard (like “beyond a resaonable
+God-given about it. It is a standard (like “beyond a reasonable
 doubt”) that has been established in a research community for
 determining that something is (likely) going on.</p></li>
 <li><p>You then take data and compute <span class="math notranslate nohighlight">\(p(D|{\rm null~hypothesis})\)</span>. If
@@ -794,6 +795,27 @@ a <span class="math notranslate nohighlight">\(p\)</span>-value. If  <span class
 to reject the null hypothesis that it’s a fair coin (<span class="math notranslate nohighlight">\(H=0.5\)</span>) at
 that <span class="math notranslate nohighlight">\(p\)</span>-value.</p>
 </div>
+</section>
+<section id="contrast-bayesian-and-significance-analyses-for-coin-flipping">
+<h2>Contrast Bayesian and significance analyses for coin flipping<a class="headerlink" href="#contrast-bayesian-and-significance-analyses-for-coin-flipping" title="Permalink to this heading">#</a></h2>
+<p>Suppose we do a coin flipping experiment where we toss a coin 20 times and it comes up heads 14 times. Let’s compare how we might analyze this with Bayesian methods to how we might do a significance analysis with p-values.</p>
+<p><strong>Bayesian analysis.</strong>
+Following our study in <a class="reference internal" href="../../notebooks/Basics/Bayesian_updating_coinflip_interactive.html"><span class="doc std std-doc">Interactive Bayesian updating: coin flipping example</span></a>, let’s calculate the probability of heads, which we call <span class="math notranslate nohighlight">\(p_h\)</span>, given data <span class="math notranslate nohighlight">\(D = \{R \text{ heads}, N \text{ tosses}\}\)</span>.</p>
+<ul class="simple">
+<li><p>Let’s assume a uniform prior (encoded as a beta function with <span class="math notranslate nohighlight">\(\alpha=1\)</span>, <span class="math notranslate nohighlight">\(\beta=1\)</span>).</p></li>
+<li><p>We found that this can be expressed as a beta function, which we can calculate in Python using
+<span class="math notranslate nohighlight">\(p(p_h|D) = p(D|p_h)p(p_h)\)</span> <span class="math notranslate nohighlight">\(\longrightarrow\)</span> <code class="docutils literal notranslate"><span class="pre">scipy.stats.beta.pdf(p_h,1+R,1+N-R)</span></code>. For <span class="math notranslate nohighlight">\(N=20\)</span>, <span class="math notranslate nohighlight">\(R=14\)</span>, this is shown on the left below.</p></li>
+<li><p>Now we can answer many questions, such as: what is the probability that <span class="math notranslate nohighlight">\(p_h\)</span> is between <span class="math notranslate nohighlight">\(0.49\)</span> and <span class="math notranslate nohighlight">\(0.51\)</span>? The answer comes from integrating our pdf over this interval (i.e., the area under the curve).</p></li>
+</ul>
+<a class="bg-primary reference internal image-reference" href="../../_images/beta_distribution_14heads_in_20tosses.png"><img alt="bootstrapping" class="bg-primary align-center" src="../../_images/beta_distribution_14heads_in_20tosses.png" style="width: 700px;" /></a>
+<p><strong>Significance test.</strong> Here we will try to answer the question: Is the coin fair? We’ll follow the discussion in Wikipedia under <a class="reference external" href="https://en.wikipedia.org/wiki/P-value">p-value</a> titled “Testing the fairness of a coin”.</p>
+<ul class="simple">
+<li><p>We interpret “fair” as meaning <span class="math notranslate nohighlight">\(p_h = 0.5\)</span>. Our null hypothesis is that the coin is fair and <span class="math notranslate nohighlight">\(p_h = 0.5\)</span>.</p></li>
+<li><p>We plot the probabilities for getting <span class="math notranslate nohighlight">\(R\)</span> heads in <span class="math notranslate nohighlight">\(N=20\)</span> tosses using the binomial probability mass distribution on the right above.</p></li>
+<li><p>We decide on the significance <span class="math notranslate nohighlight">\(p_{\rm crit} = 0.05\)</span>.</p></li>
+<li><p>We need to find the probability of getting data <em>at least as extreme</em> as <span class="math notranslate nohighlight">\(D = \{R \text{ heads}, N \text{ tosses}\}\)</span>. For our example, that means adding up the binomial probabilities for <span class="math notranslate nohighlight">\(R = 14, 15, \ldots, 20\)</span>, which is 0.058. (This is called a “one-tailed test”. If we wanted to consider deviations favoring tails as well, we would would add as well the probabilities for <span class="math notranslate nohighlight">\(R = 0, 1, \ldots, 6\)</span>, so <span class="math notranslate nohighlight">\(0.115\)</span> in total.)</p></li>
+<li><p>Comparing to <span class="math notranslate nohighlight">\(p_{\rm crit} = 0.05\)</span>, we find the p-value is greater than <span class="math notranslate nohighlight">\(p_{\rm crit}\)</span>, so the null hypothesis is not rejected at the 95% level. (Note that we say “not rejected” as opposed to “accepted”.) If we had gotten 15 heads instead we would have rejected the null hypothesis (<em>check this!</em>).</p></li>
+</ul>
 </section>
 <section id="bayesian-degree-of-belief-intervals-and-frequentist-confidence-intervals">
 <h2>Bayesian degree of belief intervals and frequentist confidence intervals<a class="headerlink" href="#bayesian-degree-of-belief-intervals-and-frequentist-confidence-intervals" title="Permalink to this heading">#</a></h2>
@@ -923,6 +945,7 @@ interval. [E.g., lower a horizontal line over the distribution until the desired
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#p-values-when-all-you-can-do-is-falsify">p-values: when all you can do is falsify</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#contrast-bayesian-and-significance-analyses-for-coin-flipping">Contrast Bayesian and significance analyses for coin flipping</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bayesian-degree-of-belief-intervals-and-frequentist-confidence-intervals">Bayesian degree of belief intervals and frequentist confidence intervals</a></li>
 </ul>
   </nav></div>
