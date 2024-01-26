@@ -253,7 +253,6 @@ it matter where we look?
 * Can you identify a case where the CLT will fail?
 
 
-
 ## p-values: when all you can do is falsify
 
 * A common way for a frequentist to discuss a theory/model, or put a
@@ -271,7 +270,7 @@ bound on a parameter value, is to quote a p-value.
 
 * One minus the resulting probability is called the $p$-value. We will
   denote it $p_{\rm crit}$. There is nothing
-  God-given about it. It is a standard (like "beyond a resaonable
+  God-given about it. It is a standard (like "beyond a reasonable
   doubt") that has been established in a research community for
   determining that something is (likely) going on. 
 
@@ -290,6 +289,37 @@ bound on a parameter value, is to quote a p-value.
   to reject the null hypothesis that it's a fair coin ($H=0.5$) at
   that $p$-value.
 :::
+
+
+
+## Contrast Bayesian and significance analyses for coin flipping
+
+Suppose we do a coin flipping experiment where we toss a coin 20 times and it comes up heads 14 times. Let's compare how we might analyze this with Bayesian methods to how we might do a significance analysis with p-values.
+
+**Bayesian analysis.** 
+Following our study in [](/notebooks/Basics/Bayesian_updating_coinflip_interactive.ipynb), let's calculate the probability of heads, which we call $p_h$, given data $D = \{R \text{ heads}, N \text{ tosses}\}$. 
+* Let's assume a uniform prior (encoded as a beta function with $\alpha=1$, $\beta=1$).
+* We found that this can be expressed as a beta function, which we can calculate in Python using
+$p(p_h|D) = p(D|p_h)p(p_h)$ $\longrightarrow$ `scipy.stats.beta.pdf(p_h,1+R,1+N-R)`. For $N=20$, $R=14$, this is shown on the left below.
+* Now we can answer many questions, such as: what is the probability that $p_h$ is between $0.49$ and $0.51$? The answer comes from integrating our pdf over this interval (i.e., the area under the curve).
+
+```{image} /_images/beta_distribution_14heads_in_20tosses.png
+:alt: bootstrapping
+:class: bg-primary
+:width: 700px
+:align: center
+```
+
+**Significance test.** Here we will try to answer the question: Is the coin fair? We'll follow the discussion in Wikipedia under [p-value](https://en.wikipedia.org/wiki/P-value) titled "Testing the fairness of a coin". 
+* We interpret "fair" as meaning $p_h = 0.5$. Our null hypothesis is that the coin is fair and $p_h = 0.5$.
+* We plot the probabilities for getting $R$ heads in $N=20$ tosses using the binomial probability mass distribution on the right above.
+* We decide on the significance $p_{\rm crit} = 0.05$.
+* We need to find the probability of getting data *at least as extreme* as $D = \{R \text{ heads}, N \text{ tosses}\}$. For our example, that means adding up the binomial probabilities for $R = 14, 15, \ldots, 20$, which is 0.058. (This is called a "one-tailed test". If we wanted to consider deviations favoring tails as well, we would would add as well the probabilities for $R = 0, 1, \ldots, 6$, so $0.115$ in total.) 
+* Comparing to $p_{\rm crit} = 0.05$, we find the p-value is greater than $p_{\rm crit}$, so the null hypothesis is not rejected at the 95\% level. (Note that we say "not rejected" as opposed to "accepted".) If we had gotten 15 heads instead we would have rejected the null hypothesis (*check this!*).
+
+
+
+
 
 ## Bayesian degree of belief intervals and frequentist confidence intervals
 
