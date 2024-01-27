@@ -583,22 +583,25 @@ Yes!</p>
 </ul>
 <div class="admonition-what-does-it-mean-that-the-ellipses-are-slanted admonition">
 <p class="admonition-title">What does it mean that the ellipses are slanted?</p>
-<p> </p>
+<div class="dropdown admonition">
+<p class="admonition-title">Answer</p>
+<p>It means that the slope and intercept are <em>correlated</em>. Intuitively, if we want to maintain a good fit when we change the slope, we will need to change the intercept as well. They are not independent!</p>
+</div>
 </div>
 <ul class="simple">
-<li><p>On the second set of data:</p>
+<li><p>Observations about the second set of data:</p>
 <ul>
 <li><p>True answers are intercept <span class="math notranslate nohighlight">\(b = 25.0\)</span>, slope <span class="math notranslate nohighlight">\(m=0.5\)</span>.</p></li>
-<li><p>Flat prior gives <span class="math notranslate nohighlight">\(b = -50 \pm 75\)</span>, <span class="math notranslate nohighlight">\(m = 1.5 \pm 1, so barely at the \)</span>1\sigma$ level.</p></li>
-<li><p>Symmetric prior gives <span class="math notranslate nohighlight">\(b = 25 \pm 50\)</span>, slope = 0.5 \pm 0.75, so much better.</p></li>
-<li><p>Distributions are wide (only three points!).</p></li>
+<li><p>Flat prior gives <span class="math notranslate nohighlight">\(b = -50 \pm 75\)</span>, <span class="math notranslate nohighlight">\(m = 1.5 \pm 1\)</span>, so barely at the <span class="math notranslate nohighlight">\(1\sigma\)</span> level.</p></li>
+<li><p>Symmetric prior gives <span class="math notranslate nohighlight">\(b = 25 \pm 50\)</span>, <span class="math notranslate nohighlight">\(m = 0.5 \pm 0.75\)</span>, so much better.</p></li>
+<li><p>Distributions are wide (not surprising since only three points!).</p></li>
 </ul>
 </li>
 </ul>
 </section>
 <section id="likelihoods-or-posteriors-with-two-variables-with-quadratic-approximation">
 <h2>Likelihoods (or posteriors) with two variables with quadratic approximation<a class="headerlink" href="#likelihoods-or-posteriors-with-two-variables-with-quadratic-approximation" title="Permalink to this heading">#</a></h2>
-<a class="bg-primary reference internal image-reference" href="../../_images/posterior_ellipse_cartoon.png"><img alt="posterior ellipse" class="bg-primary align-left" src="../../_images/posterior_ellipse_cartoon.png" style="width: 250px;" /></a>
+<a class="bg-primary reference internal image-reference" href="../../_images/posterior_ellipse_cartoon.png"><img alt="posterior ellipse" class="bg-primary align-left" src="../../_images/posterior_ellipse_cartoon.png" style="width: 300px;" /></a>
 <p>Find <span class="math notranslate nohighlight">\(X_0\)</span>, <span class="math notranslate nohighlight">\(Y_0\)</span> (best estimate) by differentiating</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}\begin{align}

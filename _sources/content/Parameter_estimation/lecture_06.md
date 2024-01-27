@@ -38,22 +38,25 @@ Yes!
     * Maximum is set to 1 for plotting
     * Exponentiate: posterior = exp(log(posterior))
 
-:::{Admonition} What does it mean that the ellipses are slanted?
-&nbsp;
+::::{admonition} What does it mean that the ellipses are slanted?
+:::{admonition} Answer
+:class: dropdown
+It means that the slope and intercept are *correlated*. Intuitively, if we want to maintain a good fit when we change the slope, we will need to change the intercept as well. They are not independent!
 :::
+::::
 
-* On the second set of data: 
+* Observations about the second set of data: 
     * True answers are intercept $b = 25.0$, slope $m=0.5$.
-    * Flat prior gives $b = -50 \pm 75$, $m = 1.5 \pm 1, so barely at the $1\sigma$ level.
-    * Symmetric prior gives $b = 25 \pm 50$, slope = 0.5 \pm 0.75, so much better.
-    * Distributions are wide (only three points!).
+    * Flat prior gives $b = -50 \pm 75$, $m = 1.5 \pm 1$, so barely at the $1\sigma$ level.
+    * Symmetric prior gives $b = 25 \pm 50$, $m = 0.5 \pm 0.75$, so much better.
+    * Distributions are wide (not surprising since only three points!).
 
 ## Likelihoods (or posteriors) with two variables with quadratic approximation
 
 ```{image} /_images/posterior_ellipse_cartoon.png
 :alt: posterior ellipse
 :class: bg-primary
-:width: 250px
+:width: 300px
 :align: left
 ```
 Find $X_0$, $Y_0$ (best estimate) by differentiating
