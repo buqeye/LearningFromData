@@ -271,7 +271,7 @@ bound on a parameter value, is to quote a p-value.
 * One minus the resulting probability is called the $p$-value. We will
   denote it $p_{\rm crit}$. There is nothing
   God-given about it. It is a standard (like "beyond a reasonable
-  doubt") that has been established in a research community for
+  doubt") that has been agreed upon in a research community for
   determining that something is (likely) going on. 
 
 * You then take data and compute $p(D|{\rm null~hypothesis})$. If
@@ -315,10 +315,13 @@ $p(p_h|D) = p(D|p_h)p(p_h)$ $\longrightarrow$ `scipy.stats.beta.pdf(p_h,1+R,1+N-
 * We interpret "fair" as meaning $p_h = 0.5$. Our null hypothesis is that the coin is fair and $p_h = 0.5$.
 * We plot the probabilities for getting $R$ heads in $N=20$ tosses using the binomial probability mass distribution on the right above.
 * We decide on the significance $p_{\rm crit} = 0.05$.
-* We need to find the probability of getting data *at least as extreme* as $D = \{R \text{ heads}, N \text{ tosses}\}$. For our example, that means adding up the binomial probabilities for $R = 14, 15, \ldots, 20$, which is 0.058. (This is called a "one-tailed test". If we wanted to consider deviations favoring tails as well, we would would add as well the probabilities for $R = 0, 1, \ldots, 6$, so $0.115$ in total.) 
-* Comparing to $p_{\rm crit} = 0.05$, we find the p-value is greater than $p_{\rm crit}$, so the null hypothesis is not rejected at the 95\% level. (Note that we say "not rejected" as opposed to "accepted".) If we had gotten 15 heads instead we would have rejected the null hypothesis (*check this!*).
+* We need to find the probability of getting data *at least as extreme* as $D = \{R \text{ heads}, N \text{ tosses}\}$. For our example, that means adding up the binomial probabilities for $R = 14, 15, \ldots, 20$, which is 0.058. (This is called a "one-tailed test". If we wanted to consider deviations favoring tails as well, we would would add as well the probabilities for $R = 0, 1, \ldots, 6$, so $0.115$ in total. This would be a "two-tailed test".) 
+* Comparing to $p_{\rm crit} = 0.05$, we find the p-value is greater than $p_{\rm crit}$, so the null hypothesis is not rejected at the 95\% level. (Note that we say "not rejected" as opposed to "accepted".) If we had gotten 15 heads instead we would have rejected the null hypothesis.
 * Note that in this frequentist analysis, the *data* is random while $p_h$ is fixed (although unknown). 
 
+:::{admonition} Exercise
+  Verify that if we had gotten 15 heads in $N=20$ tosses that we would have rejected the null hypothesis.
+:::
 
 
 
