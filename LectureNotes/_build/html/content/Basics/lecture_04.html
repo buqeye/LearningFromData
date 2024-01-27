@@ -778,7 +778,7 @@ probability?</p></li>
 <li><p>One minus the resulting probability is called the <span class="math notranslate nohighlight">\(p\)</span>-value. We will
 denote it <span class="math notranslate nohighlight">\(p_{\rm crit}\)</span>. There is nothing
 God-given about it. It is a standard (like “beyond a reasonable
-doubt”) that has been established in a research community for
+doubt”) that has been agreed upon in a research community for
 determining that something is (likely) going on.</p></li>
 <li><p>You then take data and compute <span class="math notranslate nohighlight">\(p(D|{\rm null~hypothesis})\)</span>. If
 <span class="math notranslate nohighlight">\(p(D|{\rm null~ hypothesis}) &lt; p_{\rm crit}\)</span> then you conclude that the “the null
@@ -814,10 +814,14 @@ Following our study in <a class="reference internal" href="../../notebooks/Basic
 <li><p>We interpret “fair” as meaning <span class="math notranslate nohighlight">\(p_h = 0.5\)</span>. Our null hypothesis is that the coin is fair and <span class="math notranslate nohighlight">\(p_h = 0.5\)</span>.</p></li>
 <li><p>We plot the probabilities for getting <span class="math notranslate nohighlight">\(R\)</span> heads in <span class="math notranslate nohighlight">\(N=20\)</span> tosses using the binomial probability mass distribution on the right above.</p></li>
 <li><p>We decide on the significance <span class="math notranslate nohighlight">\(p_{\rm crit} = 0.05\)</span>.</p></li>
-<li><p>We need to find the probability of getting data <em>at least as extreme</em> as <span class="math notranslate nohighlight">\(D = \{R \text{ heads}, N \text{ tosses}\}\)</span>. For our example, that means adding up the binomial probabilities for <span class="math notranslate nohighlight">\(R = 14, 15, \ldots, 20\)</span>, which is 0.058. (This is called a “one-tailed test”. If we wanted to consider deviations favoring tails as well, we would would add as well the probabilities for <span class="math notranslate nohighlight">\(R = 0, 1, \ldots, 6\)</span>, so <span class="math notranslate nohighlight">\(0.115\)</span> in total.)</p></li>
-<li><p>Comparing to <span class="math notranslate nohighlight">\(p_{\rm crit} = 0.05\)</span>, we find the p-value is greater than <span class="math notranslate nohighlight">\(p_{\rm crit}\)</span>, so the null hypothesis is not rejected at the 95% level. (Note that we say “not rejected” as opposed to “accepted”.) If we had gotten 15 heads instead we would have rejected the null hypothesis (<em>check this!</em>).</p></li>
+<li><p>We need to find the probability of getting data <em>at least as extreme</em> as <span class="math notranslate nohighlight">\(D = \{R \text{ heads}, N \text{ tosses}\}\)</span>. For our example, that means adding up the binomial probabilities for <span class="math notranslate nohighlight">\(R = 14, 15, \ldots, 20\)</span>, which is 0.058. (This is called a “one-tailed test”. If we wanted to consider deviations favoring tails as well, we would would add as well the probabilities for <span class="math notranslate nohighlight">\(R = 0, 1, \ldots, 6\)</span>, so <span class="math notranslate nohighlight">\(0.115\)</span> in total. This would be a “two-tailed test”.)</p></li>
+<li><p>Comparing to <span class="math notranslate nohighlight">\(p_{\rm crit} = 0.05\)</span>, we find the p-value is greater than <span class="math notranslate nohighlight">\(p_{\rm crit}\)</span>, so the null hypothesis is not rejected at the 95% level. (Note that we say “not rejected” as opposed to “accepted”.) If we had gotten 15 heads instead we would have rejected the null hypothesis.</p></li>
 <li><p>Note that in this frequentist analysis, the <em>data</em> is random while <span class="math notranslate nohighlight">\(p_h\)</span> is fixed (although unknown).</p></li>
 </ul>
+<div class="admonition-exercise admonition">
+<p class="admonition-title">Exercise</p>
+<p>Verify that if we had gotten 15 heads in <span class="math notranslate nohighlight">\(N=20\)</span> tosses that we would have rejected the null hypothesis.</p>
+</div>
 </section>
 <section id="bayesian-degree-of-belief-intervals-and-frequentist-confidence-intervals">
 <h2>Bayesian degree of belief intervals and frequentist confidence intervals<a class="headerlink" href="#bayesian-degree-of-belief-intervals-and-frequentist-confidence-intervals" title="Permalink to this heading">#</a></h2>
