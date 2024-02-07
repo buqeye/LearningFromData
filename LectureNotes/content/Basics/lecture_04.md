@@ -285,9 +285,9 @@ bound on a parameter value, is to quote a p-value.
 :::{admonition} Exercise
   Look at
   [](/notebooks/Basics/Bayesian_updating_coinflip_interactive.ipynb). Pick
-  a $p$-value. If  $H=0.4$, work out how many coin tosses it would take
-  to reject the null hypothesis that it's a fair coin ($H=0.5$) at
-  that $p$-value.
+  a $p_{\rm crit}$-value. If  $p_h=0.4$, work out how many coin tosses it would take
+  to reject the null hypothesis that it's a fair coin ($p_h=0.5$) at
+  this significance level. 
 :::
 
 
@@ -315,6 +315,7 @@ $p(p_h|D) = p(D|p_h)p(p_h)$ $\longrightarrow$ `scipy.stats.beta.pdf(p_h,1+R,1+N-
 * We interpret "fair" as meaning $p_h = 0.5$. Our null hypothesis is that the coin is fair and $p_h = 0.5$.
 * We plot the probabilities for getting $R$ heads in $N=20$ tosses using the binomial probability mass distribution on the right above.
 * We decide on the significance $p_{\rm crit} = 0.05$.
+* (Important conceptual question:) $p_{\rm crit}$ and $p_h$ are both probabilities. Turn to your neighbor and explain to them what they are the probabilities of and how they are different. 
 * We need to find the probability of getting data *at least as extreme* as $D = \{R \text{ heads}, N \text{ tosses}\}$. For our example, that means adding up the binomial probabilities for $R = 14, 15, \ldots, 20$, which is 0.058. (This is called a "one-tailed test". If we wanted to consider deviations favoring tails as well, we would would add as well the probabilities for $R = 0, 1, \ldots, 6$, so $0.115$ in total. This would be a "two-tailed test".) 
 * Comparing to $p_{\rm crit} = 0.05$, we find the p-value is greater than $p_{\rm crit}$, so the null hypothesis is not rejected at the 95\% level. (Note that we say "not rejected" as opposed to "accepted".) If we had gotten 15 heads instead we would have rejected the null hypothesis.
 * Note that in this frequentist analysis, the *data* is random while $p_h$ is fixed (although unknown). 
