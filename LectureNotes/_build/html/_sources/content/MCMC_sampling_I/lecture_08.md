@@ -143,8 +143,9 @@ The red line is the posterior we are sampling, $p(X|D,I)$ (we're using $X$ inste
 This doesn't mean the distribution is static as we continue to sample; walkers will continue to roam around and we'll accumulate more green boxes at different $X$ values.
 But if our Metropolis-Hastings algorithm is correctly implemented, the histogram shape should be *stationary* at the correct posterior, i.e., it should not change with time except for fluctuations. 
 
-Suppose there are $N_A$ green boxes at $X_A$ and $N_B$ green boxes at $X_B$.
-With the next Monte Carlo step, each of the boxes at $X_A$ has a chance to go $X_B$ while each of the boxes at $X_B$ has a chance to go to $X_A$. For a steady-state situation, we want the number of moves in each direction to be the same. (This means that the *rates* are equal.)
+After equilibrium we look at the chain and note there are $N_A$ green boxes at $X_A$ and $N_B$ green boxes at $X_B$.
+Let's consider each of the $X_A$ boxes in turn in the chain.
+Each of the boxes at $X_A$ had a chance with the next Monte Carlo step to go to $X_B$. Similarly,  each of the boxes at $X_B$ had a chance to go to $X_A$. For a steady-state situation, we need the number of actual moves in each direction to be the same. (This means that the *rates* are equal.)
 
 :::{admonition} What if the only moves accepted were those that went uphill (i.e., to higher probability density)? What would happen to $N_A$ and $N_B$ over time? Is this stationary?
 :class: dropdown

@@ -697,7 +697,8 @@ This necessitates <em>importance sampling</em>, which reweights the integrand to
 <li><p>Initialize <span class="math notranslate nohighlight">\(\thetavec_i\)</span>, set <span class="math notranslate nohighlight">\(i=0\)</span>.</p></li>
 <li><p>Repeat<br />
 {<br />
-Obtain new candidate <span class="math notranslate nohighlight">\(\phivec\)</span> from <span class="math notranslate nohighlight">\(q(\phivec|\theta_i)\)</span>.<br />
+Obtain new candidate <span class="math notranslate nohighlight">\(\phivec\)</span> from <span class="math notranslate nohighlight">\(q(\phivec|\theta_i)\)</span>
+Calculate <span class="math notranslate nohighlight">\(r\)</span>
 Sample <span class="math notranslate nohighlight">\(U \sim \text{uniform}(0,1)\)</span>
 If <span class="math notranslate nohighlight">\(U \leq r\)</span> set <span class="math notranslate nohighlight">\(\thetavec_{i+1} = \phivec\)</span>, else set
 <span class="math notranslate nohighlight">\(\thetavec_{i+1} = \thetavec_i\)</span>.<br />
