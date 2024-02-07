@@ -603,7 +603,7 @@ document.write(`
 </section>
 <section id="b-amplitude-of-a-signal-in-the-presence-of-background">
 <h2>B. Amplitude of a signal in the presence of background<a class="headerlink" href="#b-amplitude-of-a-signal-in-the-presence-of-background" title="Permalink to this heading">#</a></h2>
-<ol class="arabic simple">
+<ol class="arabic">
 <li><p>Step through the notebook and make sure you understand the problem and its analysis. You may find the discussion in Section 3.1 of <em>Sivia and Skilling, Data Analysis: A Bayesian Tutorial</em> useful (see Carmen modules). You don’t need to hand in anything for this part but please list here any questions you have.
 <br><br><br><br></p></li>
 <li><p>Do the “Follow-ups”:</p>
@@ -611,12 +611,12 @@ document.write(`
 <li><p><em>Try both smaller and larger values of D and note the transition in the form of the pdf.</em></p></li>
 <li><p>At <span class="math notranslate nohighlight">\(D=12.5\)</span> the pdf is already looking like a Gaussian (or what most of us imagine a Gaussian to look like).  <em>Prove that in the limit <span class="math notranslate nohighlight">\(D \rightarrow \infty\)</span> that</em></p></li>
 </ul>
-</li>
-</ol>
 <div class="math notranslate nohighlight">
 \[
- p(N \mid D) \stackrel{D\rightarrow\infty}{\longrightarrow} \frac{1}{\sqrt{2\pi D}}e^{-(N-D)^2/(2D)}
-\]</div>
+     p(N \mid D) \stackrel{D\rightarrow\infty}{\longrightarrow} \frac{1}{\sqrt{2\pi D}}e^{-(N-D)^2/(2D)}
+    \]</div>
+</li>
+</ol>
 <p>You’ll want to use Stirling’s formula:  <span class="math notranslate nohighlight">\(x! \rightarrow \sqrt{2\pi x}e^{-x} x^x\)</span> as <span class="math notranslate nohighlight">\(x\rightarrow\infty\)</span>.
 [Hint: let <span class="math notranslate nohighlight">\(x = N = D(1+\delta)\)</span> where <span class="math notranslate nohighlight">\(D\gg 1\)</span> and <span class="math notranslate nohighlight">\(\delta \ll 1\)</span>.  And use <span class="math notranslate nohighlight">\((1+\delta)^a = e^{a\ln (1+\delta)}\)</span>.]
 <br><br><br><br></p>
@@ -624,7 +624,7 @@ document.write(`
 <li><p><em>Show that this limit works in practice and visualize how close it is by adding the Gaussian pdf to the plot.</em> (See <a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.norm.html">scipy.stats.norm</a> or define a function yourself.)  <strong>Add code below to make a figure here with the limiting Poisson histogram and the limiting Gaussian pdf.</strong>
 <br><br><br><br></p></li>
 </ul>
-<ol class="arabic simple">
+<ol class="arabic simple" start="3">
 <li><p>Based on your observations in running the different cases (and any additional ones you add), how should you optimally design an experiment to detect the amplitude of the signal given limited resources?  For example: How many counts are needed? How should you bin the data? What <span class="math notranslate nohighlight">\((x_k)_{\rm max}\)</span> should you use?
 <br><br><br><br></p></li>
 </ol>

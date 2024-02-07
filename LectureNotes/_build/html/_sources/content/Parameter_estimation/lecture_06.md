@@ -3,10 +3,9 @@
 
 ## Correlated posteriors
 
-* The pdf we worked out for $p(\mu,\sigma|D,I)$ a couple of lectures
-  ago is characterized by elliptical contours of equal probability
+* The pdf for $p(\mu,\sigma|D,I)$ is characterized by elliptical contours of equal probability
   density whose major axes are aligned with the $\mu$ and $\sigma$
-  axes. (You can also look at the version obtained by sampling in a
+  axes. (You can look at the version obtained by sampling in a
   section appended at the end of this lecture.) 
     * This is a signal of *independent* random variables.
     * Let's look at a case where this is *not* true and then look analytically at what we should expect with correlations.
