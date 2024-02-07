@@ -153,7 +153,8 @@ The acceptance probability is the minimum of $1,r$.
 1. Initialize $\thetavec_i$, set $i=0$.
 1. Repeat  
    \{  
-   Obtain new candidate $\phivec$ from $q(\phivec|\theta_i)$.  
+   Obtain new candidate $\phivec$ from $q(\phivec|\theta_i)$ 
+   Calculate $r$ 
    Sample $U \sim \text{uniform}(0,1)$
    If $U \leq r$ set $\thetavec_{i+1} = \phivec$, else set
    $\thetavec_{i+1} = \thetavec_i$.  
