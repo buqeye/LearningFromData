@@ -95,6 +95,30 @@ This necessitates *importance sampling*, which reweights the integrand to more a
 * $\thetavec_{i+1}$ follows from $\thetavec_i$ by a transition probability ("kernel") $\Lra$ $p(\thetavec_{i+1}|\thetavec_i)$.
 * The transition probability is assumed to be "time independent", so same $p(\thetavec_{i+1}|\thetavec_i)$ no matter when you do it  $\Lra$ *Markov chain* and the method is called Markov Chain Monte Carlo or MCMC.
 * Once we have a representative set of $N$ vectors $\{\thetavec_i\}$, then any expectation value of a function $f$ of $\thetavec$, which is the integral of $f(\thetavec) p(\thetavec|D,I)$ over $\thetavec$, is given simply by the average $\langle f\rangle = \frac{1}{N}\sum_i f(\thetavec_i)$.
+* We can think of the sampled distribution as a set of delta functions, whose normalization is trivial:
+
+$$ 
+  p(\thetavec|D,I) \rightarrow \frac{1}{N}\sum_{i=1}^{N}\delta(\thetavec-\thetavec_i)
+$$
+
+:::{admonition} Check that with the delta functions we get the rule for $\langle f\rangle$.
+:class: dropdown
+$$ 
+  \int\!d\thetavec\, p(\thetavec|D,I) \rightarrow 
+  \frac{1}{N}\sum_{i=1}^{N} \int\!d\thetavec\, \delta(\thetavec-\thetavec_i)
+  =\frac{1}{N}\sum_{i=1}^{N} 1 = 1 ,
+$$
+
+$$
+ \langle f\rangle = \int\!d\thetavec\, f(\thetavec) p(\thetavec|D,I) \rightarrow 
+  \frac{1}{N}\sum_{i=1}^{N} \int\!d\thetavec\, f(\thetavec)\delta(\thetavec-\thetavec_i)
+  =\frac{1}{N}\sum_{i=1}^{N} f(\thetavec_i) .
+$$
+
+
+
+:::
+
 
 ## Basic structure of MCMC algorithm
 
