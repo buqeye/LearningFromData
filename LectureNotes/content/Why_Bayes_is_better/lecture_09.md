@@ -191,8 +191,8 @@ Can you directly interpret the first integral? It is an average of the probabili
 :::{admonition} What is the numerical result? Compare to the naive frequentist result.
 :class: dropdown
 
-$$ \Lra\ p(B|D,I) = \frac{int_0^1 d\alpha\, (1-\alpha)^6 \alpha^5}
-          {int_0^1 d\alpha\, (1-\alpha)^3 \alpha^5}
+$$ \Lra\ p(B|D,I) = \frac{\int_0^1 d\alpha\, (1-\alpha)^6 \alpha^5}
+          {\int_0^1 d\alpha\, (1-\alpha)^3 \alpha^5}
           \approx 0.091
 $$
 

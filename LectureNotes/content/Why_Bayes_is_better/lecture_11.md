@@ -34,7 +34,7 @@ An alternative derivation uses marginalization and the fact that $y = f(x)$ mean
 $$\begin{align}
   p(y^* | I) &= \int p(y^* | x,I) p(x|I) \, dx \\
      &= \int \delta\bigl(y^* - f(x)\bigr) p(x|I) \, dx \\
-     & = \int \left| \frac{1}{df/dx}\right|_{x^*} p(x|I)\, dx \\
+     & = \int \left| \frac{1}{df/dx}\right|_{x^*} \delta(x - x^*) p(x|I)\, dx \\
      & = \frac{1}{\left|df/dx\right|_{x^*}} p(x^* | I),
 \end{align}$$
 
