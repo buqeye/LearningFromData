@@ -812,8 +812,8 @@ Bayesian odds against Bob winning:   10 to 1
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Number of suitable games: 11244  (out of 100000 simulated ones)
-Number of these games Bob won: 1032
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Number of suitable games: 11061  (out of 100000 simulated ones)
+Number of these games Bob won: 1023
 Monte Carlo Probability of Bob winning: 0.092
 MC Odds against Bob winning: 10 to 1
 </pre></div>
@@ -828,6 +828,28 @@ MC Odds against Bob winning: 10 to 1
 <p>We should emphasize that <strong>this does not imply frequentism itself is incorrect</strong>. The incorrect result above is more a matter of the approach being “naive” than it being “frequentist”. There certainly exist frequentist methods for handling this sort of nuisance parameter – for example, it is theoretically possible to apply a transformation and conditioning of the data to isolate the dependence on <span class="math notranslate nohighlight">\(\alpha\)</span> – but it’s hard to find any approach to this particular problem that does not somehow take advantage of Bayesian-like marginalization over <span class="math notranslate nohighlight">\(\alpha\)</span>.</p>
 <p>Another potential point of contention is that the question itself is posed in a way that is perhaps unfair to the classical, frequentist approach. A frequentist might instead hope to give the answer in terms of null tests or confidence intervals: that is, they might devise a procedure to construct limits which would provably bound the correct answer in <span class="math notranslate nohighlight">\(100\times(1 - \alpha)\)</span> percent of similar trials, for some value of <span class="math notranslate nohighlight">\(\alpha\)</span>, say 0.05. This might be classically accurate, but it doesn’t quite answer the question at hand.</p>
 <p>In contrast, Bayesianism provides a better approach for this sort of problem: by simple algebraic manipulation of a few well-known axioms of probability within a Bayesian framework, we can straightforwardly arrive at the correct answer without need for other special expertise.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">comb</span>
+<span class="n">alphas</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mf">.01</span><span class="p">)</span>
+<span class="n">alphahat</span> <span class="o">=</span> <span class="mi">5</span><span class="o">/</span><span class="mi">8</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">alphas</span><span class="p">,</span> <span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">alphas</span><span class="p">)</span><span class="o">**</span><span class="mi">3</span><span class="p">,</span> <span class="s1">&#39;-r&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;Bob wins given $\alpha$&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">alphas</span><span class="p">,</span> <span class="n">comb</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span> <span class="o">*</span> <span class="n">alphas</span><span class="o">**</span><span class="mi">5</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">alphas</span><span class="p">)</span><span class="o">**</span><span class="mi">3</span><span class="p">,</span> <span class="s1">&#39;-k&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;posterior of $\alpha$&#39;</span><span class="p">)</span>
+<span class="c1">#ax.plot(alphas, comb(8, 5) * alphas**5 * (1-alphas)**6, &#39;-b&#39;, label=r&#39;product&#39;)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">alphahat</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">axhline</span><span class="p">((</span><span class="mi">1</span><span class="o">-</span><span class="n">alphahat</span><span class="p">)</span><span class="o">**</span><span class="mi">3</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$\alpha$&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">();</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/731e337bc066e84707397b837611edb51e58e97fd63d56350ded9158450ebfff.png" src="../../_images/731e337bc066e84707397b837611edb51e58e97fd63d56350ded9158450ebfff.png" />
+</div>
+</div>
 </section>
 </section>
 </section>
@@ -841,16 +863,16 @@ MC Odds against Bob winning: 10 to 1
         },
         codeMirrorConfig: {
             theme: "abcdef",
-            mode: "python"
+            mode: "conda-env-8820-env-py"
         },
         kernelOptions: {
-            name: "python3",
+            name: "conda-env-8820-env-py",
             path: "./notebooks/Why_Bayes_is_better"
         },
         predefinedOutput: true
     }
     </script>
-    <script>kernelName = 'python3'</script>
+    <script>kernelName = 'conda-env-8820-env-py'</script>
 
                 </article>
               
