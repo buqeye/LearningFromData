@@ -671,6 +671,9 @@ document.write(`
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<img alt="../../_images/7169d2892ed9f58caf2e0ddb372230a88af06ecf5d53a86eafcda42b2a8f30ab.png" src="../../_images/7169d2892ed9f58caf2e0ddb372230a88af06ecf5d53a86eafcda42b2a8f30ab.png" />
+</div>
 </div>
 </section>
 <section id="the-model">
@@ -764,6 +767,11 @@ p(D\mid\theta, I) = \prod_{i=1}^N p(y_i\mid x_i,\theta, I)
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>emcee sampling (version: ) 3.1.4
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -795,12 +803,30 @@ p(D\mid\theta, I) = \prod_{i=1}^N p(y_i\mid x_i,\theta, I)
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Performing 1000 warmup iterations.
+MH sampler performing 2000 samples.
+CPU times: user 601 ms, sys: 2.4 ms, total: 604 ms
+Wall time: 607 ms
+done
+Mean acceptance fraction: 0.114
+</pre></div>
+</div>
+<img alt="../../_images/935f5f1408720cbb8a7fe90c01ac410dfcd18848678d3b63060cf6b8c642e2ce.png" src="../../_images/935f5f1408720cbb8a7fe90c01ac410dfcd18848678d3b63060cf6b8c642e2ce.png" />
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">samples</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">samples_unflattened</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">lnposts</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(20000, 2)
+(10, 2000, 2)
+(20000,)
 </pre></div>
 </div>
 </div>
@@ -823,6 +849,9 @@ p(D\mid\theta, I) = \prod_{i=1}^N p(y_i\mid x_i,\theta, I)
 <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/963b84a1092b90334f39d48f4cd5b3c38b2ac65d681aaaf8b13a42aff58a5be7.png" src="../../_images/963b84a1092b90334f39d48f4cd5b3c38b2ac65d681aaaf8b13a42aff58a5be7.png" />
 </div>
 </div>
 </section>
@@ -847,6 +876,12 @@ SE({\bar{\theta}}) = \frac{\text{Posterior Standard Deviation}}{\sqrt{N}}
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Standard Error of the Mean for theta_0: 5.1e-04
+Standard Error of the Mean for theta_1: 8.6e-05
+</pre></div>
+</div>
+</div>
 </div>
 <p>This is saying that very little of our posterior variation in <span class="math notranslate nohighlight">\(\theta\)</span> is due to sampling error (that is good).  We can visualize this by examining the moving average of our chain as we move through the iterations:</p>
 <div class="cell docutils container">
@@ -868,6 +903,9 @@ SE({\bar{\theta}}) = \frac{\text{Posterior Standard Deviation}}{\sqrt{N}}
 <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">();</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/e9a40f6b33dafb63d5d6b0d524b4e84a1f213f68cbf2a5a2c737fcebeaeb8591.png" src="../../_images/e9a40f6b33dafb63d5d6b0d524b4e84a1f213f68cbf2a5a2c737fcebeaeb8591.png" />
 </div>
 </div>
 <p>This is a good sign that our chain is stable, since both the individual samples of <span class="math notranslate nohighlight">\(\theta\)</span> in our chain and the mean of the samples dance around a stable value of <span class="math notranslate nohighlight">\(\theta\)</span>.  The calculation above makes this more concrete.  There are time series versions of this calculation that accounts for the fact that the chain is not iid.</p>
@@ -909,6 +947,9 @@ SE({\bar{\theta}}) = \frac{\text{Posterior Standard Deviation}}{\sqrt{N}}
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<img alt="../../_images/10ed200083c0add1e0798788e523c81524e7fa58f3e117c107c63f9a9950136e.png" src="../../_images/10ed200083c0add1e0798788e523c81524e7fa58f3e117c107c63f9a9950136e.png" />
+</div>
 </div>
 </section>
 <section id="acceptance-rate-for-the-mh-algorithm">
@@ -918,6 +959,11 @@ SE({\bar{\theta}}) = \frac{\text{Posterior Standard Deviation}}{\sqrt{N}}
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Acceptance Rate is: </span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">sampler</span><span class="o">.</span><span class="n">acceptance_fraction</span><span class="p">)</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Acceptance Rate is: 0.114
 </pre></div>
 </div>
 </div>
@@ -1009,6 +1055,18 @@ Gelman and Rubin show that when <span class="math notranslate nohighlight">\(\ha
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Chain 0 performing 1000 warmup iterations.
+MH sampler 0 performing 2000 samples.
+done
+Mean acceptance fraction: 0.109
+Chain 1 performing 1000 warmup iterations.
+MH sampler 1 performing 2000 samples.
+done
+Mean acceptance fraction: 0.116
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1031,6 +1089,9 @@ Gelman and Rubin show that when <span class="math notranslate nohighlight">\(\ha
 <span class="n">fig</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/c4629873ebe44ff18617c2e53615a0bc3f856c2f7a0a78b5ea8c381c26f6b2d9.png" src="../../_images/c4629873ebe44ff18617c2e53615a0bc3f856c2f7a0a78b5ea8c381c26f6b2d9.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1071,6 +1132,17 @@ Gelman and Rubin show that when <span class="math notranslate nohighlight">\(\ha
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Gelman-Rubin Diagnostic for different chain lengths: &quot;</span><span class="p">)</span>
 <span class="k">for</span> <span class="n">Nchain</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">50</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">200</span><span class="p">,</span> <span class="mi">500</span><span class="p">,</span> <span class="mi">1000</span><span class="p">,</span> <span class="mi">2000</span><span class="p">]:</span>
     <span class="n">Gelman_Rubin_diagnostic_calc</span><span class="p">(</span><span class="n">chains</span><span class="p">,</span> <span class="n">Nchain</span><span class="p">,</span> <span class="n">param</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Gelman-Rubin Diagnostic for different chain lengths: 
+Nchain =   50  Rhat = 1.174
+Nchain =  100  Rhat = 1.683
+Nchain =  200  Rhat = 1.857
+Nchain =  500  Rhat = 1.625
+Nchain = 1000  Rhat = 1.285
+Nchain = 2000  Rhat = 1.143
 </pre></div>
 </div>
 </div>
