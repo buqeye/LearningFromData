@@ -9,7 +9,7 @@
 * We'll use the notation and some of the discussion from Hogg, Bovy, Lang, [arXiv:1008.4686](https://arxiv.org/abs/1008.4686), "Data analysis recipes: Fitting a model to data".
 
 * This paper has 41 extended reference notes, which are worth looking at. Provocative statements about fitting straight lines include:
-    > "Let us break with tradition and observe that in almost all cases in which scientists fit a straight line to their data, they are doing something siultaneously *wrong* and *unnecessary.
+    > "Let us break with tradition and observe that in almost all cases in which scientists fit a straight line to their data, they are doing something simultaneously *wrong* and *unnecessary.
     "
     * Wrong because it's very rare that a set of two-dimensional measurements are truly drawn from a narrow, linear relationship
     * Probably not linear in detail
