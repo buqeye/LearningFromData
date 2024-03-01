@@ -70,7 +70,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="author" title="About these documents" href="../../about.html" />
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="6.6. PyMC3 Introduction" href="../../notebooks/MCMC_sampling_II/PyMC3_intro_updated.html" />
+    <link rel="next" title="6.6. PyMC Introduction" href="../../notebooks/MCMC_sampling_II/PyMC_intro_updated.html" />
     <link rel="prev" title="6.4. Solving orbital equations with different algorithms" href="../../notebooks/MCMC_sampling_II/Orbital_eqs_with_different_algorithms.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -244,8 +244,8 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="../../notebooks/MCMC_sampling_II/Liouville_theorem_visualization.html">6.3. Liouville Theorem Visualization</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../notebooks/MCMC_sampling_II/Orbital_eqs_with_different_algorithms.html">6.4. Solving orbital equations with different algorithms</a></li>
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">6.5. Lecture 18</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../notebooks/MCMC_sampling_II/PyMC3_intro_updated.html">6.6. PyMC3 Introduction</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../notebooks/MCMC_sampling_II/PyMC3_docs_getting_started_updated.html">6.7. Getting started with PyMC3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../notebooks/MCMC_sampling_II/PyMC_intro_updated.html">6.6. PyMC Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../notebooks/MCMC_sampling_II/getting_started_with_pymc.html">6.7. Introductory Overview of PyMC</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../notebooks/Parameter_estimation/parameter_estimation_Gaussian_noise_compare_samplers.html">6.8. Comparing samplers for a simple problem</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../notebooks/mini-projects/zeus_multimodal.html">6.9. zeus: Sampling from multimodal distributions</a></li>
 </ul>
@@ -534,7 +534,7 @@ document.write(`
 </section>
 <section id="overview-of-intro-to-pymc3-notebook">
 <h2>Overview of Intro to PyMC3 notebook<a class="headerlink" href="#overview-of-intro-to-pymc3-notebook" title="Permalink to this heading">#</a></h2>
-<p><a class="reference internal" href="../../notebooks/MCMC_sampling_II/PyMC3_intro_updated.html"><span class="doc std std-doc">PyMC3 Introduction</span></a> starts with sampling to find the posterior for <span class="math notranslate nohighlight">\(\mu\)</span>, the mean of a distribution, given data that is generated according to a normal distribution with mean zero.</p>
+<p><span class="xref myst"></span> starts with sampling to find the posterior for <span class="math notranslate nohighlight">\(\mu\)</span>, the mean of a distribution, given data that is generated according to a normal distribution with mean zero.</p>
 <ul class="simple">
 <li><p>Try changing the true <span class="math notranslate nohighlight">\(\mu\)</span>, sampling sigma as well.</p></li>
 <li><p>The standard deviation is initially fixed at 1.</p></li>
@@ -553,7 +553,7 @@ document.write(`
 </section>
 <section id="looking-at-pymc3-getting-started-notebook">
 <h2>Looking at PyMC3 getting started notebook<a class="headerlink" href="#looking-at-pymc3-getting-started-notebook" title="Permalink to this heading">#</a></h2>
-<p><a class="reference internal" href="../../notebooks/MCMC_sampling_II/PyMC3_docs_getting_started_updated.html"><span class="doc std std-doc">Getting started with PyMC3</span></a> starts with a brief overview and a list of features of PyMC3. Note the comment about Theano being used to calculate gradients needed for HMC. The technique of <a class="reference external" href="https://en.wikipedia.org/wiki/Automatic_differentiation">“automatic differentiation”</a> ensures machine precision results for these derivatives.</p>
+<p><span class="xref myst"></span> starts with a brief overview and a list of features of PyMC3. Note the comment about Theano being used to calculate gradients needed for HMC. The technique of <a class="reference external" href="https://en.wikipedia.org/wiki/Automatic_differentiation">“automatic differentiation”</a> ensures machine precision results for these derivatives.</p>
 <p>Consider the “Motivating Example” on linear regression model that predicts the outcome <span class="math notranslate nohighlight">\(Y \sim \mathcal{N}(\mu,\sigma^2)\)</span> from a “linear model”, meaning the expected result is a linear combination of the two input variables <span class="math notranslate nohighlight">\(X_1\)</span> and <span class="math notranslate nohighlight">\(X_2\)</span>, <span class="math notranslate nohighlight">\(\mu = \alpha + \beta_1 X_1 + \beta_2 X_2\)</span>.</p>
 <ul>
 <li><p>This is what we have written elsewhere as</p>
@@ -681,11 +681,11 @@ document.write(`
       </div>
     </a>
     <a class="right-next"
-       href="../../notebooks/MCMC_sampling_II/PyMC3_intro_updated.html"
+       href="../../notebooks/MCMC_sampling_II/PyMC_intro_updated.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">6.6. </span>PyMC3 Introduction</p>
+        <p class="prev-next-title"><span class="section-number">6.6. </span>PyMC Introduction</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>

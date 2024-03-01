@@ -244,8 +244,8 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="../MCMC_sampling_II/Liouville_theorem_visualization.html">6.3. Liouville Theorem Visualization</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../MCMC_sampling_II/Orbital_eqs_with_different_algorithms.html">6.4. Solving orbital equations with different algorithms</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../content/MCMC_sampling_II/lecture_18.html">6.5. Lecture 18</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../MCMC_sampling_II/PyMC3_intro_updated.html">6.6. PyMC3 Introduction</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../MCMC_sampling_II/PyMC3_docs_getting_started_updated.html">6.7. Getting started with PyMC3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../MCMC_sampling_II/PyMC_intro_updated.html">6.6. PyMC Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../MCMC_sampling_II/getting_started_with_pymc.html">6.7. Introductory Overview of PyMC</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../Parameter_estimation/parameter_estimation_Gaussian_noise_compare_samplers.html">6.8. Comparing samplers for a simple problem</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../mini-projects/zeus_multimodal.html">6.9. zeus: Sampling from multimodal distributions</a></li>
 </ul>
@@ -650,7 +650,7 @@ document.write(`
 <p>Thus, we’re fitting a straight line to data (“<span class="math notranslate nohighlight">\(M\)</span>” here stands for “Model”),</p>
 <div class="math notranslate nohighlight">
 \[
-y_M(x) = \theta_1 x + \theta_0
+y_M(x; \theta) = \theta_0 + \theta_1 x 
 \]</div>
 <p>where our parameter vector will be</p>
 <div class="math notranslate nohighlight">
@@ -667,7 +667,7 @@ y_i \sim \mathcal{N}(y_M(x_i;\theta), \sigma_0^2)
 <p>or, in other words,</p>
 <div class="math notranslate nohighlight">
 \[
-p(x_i,y_i\mid\theta) = \frac{1}{\sqrt{2\pi\sigma_0^2}} \exp\left(\frac{-\left[y_i - y_M(x_i;\theta)\right]^2}{2\sigma_0^2}\right)
+p(y_i\mid x_i,\theta) = \frac{1}{\sqrt{2\pi\sigma_0^2}} \exp\left(\frac{-\left[y_i - y_M(x_i;\theta)\right]^2}{2\sigma_0^2}\right)
 \]</div>
 <p>The (known) variance of the measurement errors, <span class="math notranslate nohighlight">\(\sigma_0\)</span>, is indicated by the error bars.</p>
 <p>Assuming all the points are independent, we can find the full likelihood by multiplying the individual likelihoods together:</p>
@@ -676,12 +676,12 @@ p(x_i,y_i\mid\theta) = \frac{1}{\sqrt{2\pi\sigma_0^2}} \exp\left(\frac{-\left[y_
 p(D\mid\theta, I) = \prod_{i=1}^N p(y_i\mid x_i,\theta, I)
 \]</div>
 <p>For convenience (and also for numerical accuracy) this is often expressed in terms of the log-likelihood:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-0dc42db0-2ef4-48f7-a291-ca1604e309af">
-<span class="eqno">(4.11)<a class="headerlink" href="#equation-0dc42db0-2ef4-48f7-a291-ca1604e309af" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-791230a0-9e27-44e7-842d-51405320a01b">
+<span class="eqno">(4.11)<a class="headerlink" href="#equation-791230a0-9e27-44e7-842d-51405320a01b" title="Permalink to this equation">#</a></span>\[\begin{align}
 \log p(D\mid\theta, I) &amp;= -\frac{1}{2}\sum_{i=1}^N\left(\log(2\pi\sigma_0^2) + \frac{\left[ y_i - y_M(x_i;\theta)\right]^2}{\sigma_0^2}\right) \\
 &amp;= \text{constant} - \sum_{i=1}^N \frac{\left[ y_i - y_M(x_i;\theta)\right]^2}{2 \sigma_0^2}
 \end{align}\]</div>
-<p>We often define the <em>residuals</em></p>
+<p>We often define the <em>residuals</em> (the notation <span class="math notranslate nohighlight">\(z_i\)</span> is also common)</p>
 <div class="math notranslate nohighlight">
 \[
 R_i = \left[ y_i - y_M(x_i;\theta) \right]/\sigma_0,
@@ -830,15 +830,15 @@ R_i = \left[ y_i - y_M(x_i;\theta) \right]/\sigma_0,
 p(D_i|\theta, \sigma_0, I) = \int_0^\infty p(D_i|\theta,\sigma,I) \, p(\sigma|\sigma_0) \, d\sigma,
 \]</div>
 <p>Note that <span class="math notranslate nohighlight">\(\sigma_0\)</span> doesn’t appear in the first pdf in the integrand and <span class="math notranslate nohighlight">\(\theta\)</span> doesn’t appear in the second pdf.
-The prior a variant of Jeffrey’s prior for a scale parameter (which would be <span class="math notranslate nohighlight">\(1/\log(\sigma_1/\sigma_0) \times (1/\sigma)\)</span> for <span class="math notranslate nohighlight">\(\sigma_0 \leq \sigma &lt; \sigma_1\)</span> and zero otherwise),</p>
+The prior is a variation of Jeffrey’s prior for a scale parameter (which would be <span class="math notranslate nohighlight">\(1/\log(\sigma_1/\sigma_0) \times (1/\sigma)\)</span> for <span class="math notranslate nohighlight">\(\sigma_0 \leq \sigma &lt; \sigma_1\)</span> and zero otherwise),</p>
 <div class="math notranslate nohighlight">
 \[
 p(\sigma|\sigma_0,I) = \frac{\sigma_0}{\sigma^2},
 \]</div>
 <p>for <span class="math notranslate nohighlight">\(\sigma \geq \sigma_0\)</span> and zero otherwise. (This enables us to do the integral up to infinity.) Conservative here means that we treat all data points with suspicion (i.e., we do not single out any points).</p>
 <p>The likelihood for a single data point <span class="math notranslate nohighlight">\(D_i\)</span>, given by <span class="math notranslate nohighlight">\((x_i,y_i,\sigma_i=\sigma_0)\)</span>, is then</p>
-<div class="amsmath math notranslate nohighlight" id="equation-4f2892d8-5d46-4a8a-ab28-e604f16152eb">
-<span class="eqno">(4.12)<a class="headerlink" href="#equation-4f2892d8-5d46-4a8a-ab28-e604f16152eb" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-f92a804c-b8d0-4796-acd2-0974c1eb3135">
+<span class="eqno">(4.12)<a class="headerlink" href="#equation-f92a804c-b8d0-4796-acd2-0974c1eb3135" title="Permalink to this equation">#</a></span>\[\begin{align}
 p(D_i | \theta, \sigma_0, I) &amp;= 
   \int_{\sigma_0}^{\infty} \frac{1}{\sqrt{2\pi}\sigma}
     e^{-\sigma_0^2 R_i^2/2\sigma^2}\, \frac{\sigma_0}{\sigma^2}\, d\sigma
@@ -1040,30 +1040,30 @@ b) the datum is bad and the error should be larger by a (large) factor <span cla
 Log posterior: Std Gaussian
 ... EMCEE sampler performing 1000 warnup iterations.
 ... EMCEE sampler performing 10000 samples.
-CPU times: user 3.65 s, sys: 4.83 ms, total: 3.65 s
-Wall time: 3.68 s
+CPU times: user 3.61 s, sys: 8.61 ms, total: 3.62 s
+Wall time: 3.65 s
 done
 </pre></div>
 </div>
-<img alt="../../_images/b6336ee632d9d19602c0f6a7de92c027e56631570d923151ef73a37895d08bf4.png" src="../../_images/b6336ee632d9d19602c0f6a7de92c027e56631570d923151ef73a37895d08bf4.png" />
+<img alt="../../_images/c5a205b39d0db7d4a3f560dda60d154d4813df09e14468bc28b4c2f65a44c9c3.png" src="../../_images/c5a205b39d0db7d4a3f560dda60d154d4813df09e14468bc28b4c2f65a44c9c3.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Log posterior: Conservative
 ... EMCEE sampler performing 1000 warnup iterations.
 ... EMCEE sampler performing 10000 samples.
-CPU times: user 4.17 s, sys: 5.78 ms, total: 4.18 s
-Wall time: 4.21 s
+CPU times: user 4.15 s, sys: 7.45 ms, total: 4.16 s
+Wall time: 4.19 s
 done
 </pre></div>
 </div>
-<img alt="../../_images/ec8b0c9d31be62a193305ca7a0c7bc321d7ab248c7a677f7a6d9b1551331c083.png" src="../../_images/ec8b0c9d31be62a193305ca7a0c7bc321d7ab248c7a677f7a6d9b1551331c083.png" />
+<img alt="../../_images/b979a43f02c2249c0b7992a1f112a69d3eb32c509039a3b50e9d1b35909ecebb.png" src="../../_images/b979a43f02c2249c0b7992a1f112a69d3eb32c509039a3b50e9d1b35909ecebb.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Log posterior: Cauchy
 ... EMCEE sampler performing 1000 warnup iterations.
 ... EMCEE sampler performing 10000 samples.
-CPU times: user 4.01 s, sys: 4.38 ms, total: 4.02 s
-Wall time: 4.05 s
+CPU times: user 3.96 s, sys: 9.05 ms, total: 3.97 s
+Wall time: 4 s
 done
 </pre></div>
 </div>
-<img alt="../../_images/fa8b9def60efab6568ef674b7783ce39d973ee01def2fc3a747505f32d19c12f.png" src="../../_images/fa8b9def60efab6568ef674b7783ce39d973ee01def2fc3a747505f32d19c12f.png" />
+<img alt="../../_images/67317748abb2fc793e7d04e9a0bad24679632250c2ea6fcf03071c262058a1df.png" src="../../_images/67317748abb2fc793e7d04e9a0bad24679632250c2ea6fcf03071c262058a1df.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1089,12 +1089,12 @@ done
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Summary:             Mean offset  68% CR     Mean slope     68% CR
-        Std Gaussian    41.16   -1.20,+1.24     0.253    -0.027,+0.027
-        Conservative    31.73   -2.23,+2.23     0.448    -0.049,+0.050
-              Cauchy    31.66   -2.06,+2.05     0.451    -0.042,+0.043
+        Std Gaussian    41.18   -1.23,+1.20     0.254    -0.028,+0.028
+        Conservative    31.76   -2.24,+2.25     0.447    -0.049,+0.050
+              Cauchy    31.62   -2.04,+2.02     0.450    -0.042,+0.042
 </pre></div>
 </div>
-<img alt="../../_images/f1fef11243780acac683f02b9a6580d0f8367ab00299b00e52b8fcc54da569e6.png" src="../../_images/f1fef11243780acac683f02b9a6580d0f8367ab00299b00e52b8fcc54da569e6.png" />
+<img alt="../../_images/b270214e440b400eaf9e2d45526ef9fa29d77ac726c5037aa096fdf975904441.png" src="../../_images/b270214e440b400eaf9e2d45526ef9fa29d77ac726c5037aa096fdf975904441.png" />
 </div>
 </div>
 </section>
@@ -1163,9 +1163,9 @@ p(\{y_i\}~|~\{x_i\}, \{e_i\},~\theta,\{g_i\},\sigma_B) = &amp; \frac{g_i}{\sqrt{
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/1s/3wbqg65x5k79l5ww8fg25yvh0000gn/T/ipykernel_60556/2088896239.py:16: RuntimeWarning: divide by zero encountered in log
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/1s/3wbqg65x5k79l5ww8fg25yvh0000gn/T/ipykernel_10698/2088896239.py:16: RuntimeWarning: divide by zero encountered in log
   logL2 = np.log(1 - g) - 0.5 * np.log(2 * np.pi * sigma_B**2) \
-/var/folders/1s/3wbqg65x5k79l5ww8fg25yvh0000gn/T/ipykernel_60556/2088896239.py:15: RuntimeWarning: divide by zero encountered in log
+/var/folders/1s/3wbqg65x5k79l5ww8fg25yvh0000gn/T/ipykernel_10698/2088896239.py:15: RuntimeWarning: divide by zero encountered in log
   logL1 = np.log(g) - 0.5 * np.log(2 * np.pi * e**2) - 0.5 * (dy / e)**2
 </pre></div>
 </div>
