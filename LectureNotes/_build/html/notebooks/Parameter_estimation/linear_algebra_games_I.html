@@ -1148,8 +1148,8 @@ M^{-1} R^\top X^\top X R M^{-1}= 1.
 <p>“Principal Components Analysis” (PCA) basically means to find and rank all the eigenvalues and eigenvectors of a covariance matrix. This is useful because high-dimensional data (with <span class="math notranslate nohighlight">\(p\)</span> features) may have nearly all their variation in a small number of dimensions <span class="math notranslate nohighlight">\(k&lt;p\)</span>, i.e. in the subspace spanned by the eigenvectors of the covariance matrix that have the <span class="math notranslate nohighlight">\(k\)</span> largest eigenvalues. If we project the original data into this subspace, we can have a dimension reduction (from <span class="math notranslate nohighlight">\(p\)</span> to <span class="math notranslate nohighlight">\(k\)</span>) with hopefully little loss of information.</p>
 <p>Numerically, PCA is typically done using SVD on the data matrix rather than eigendecomposition on the covariance matrix. Numerically, the condition number for working with the covariance matrix directly is the square of the condition number using SVD, so SVD minimizes errors.”</p>
 <p>For zero-centered vectors,</p>
-<div class="amsmath math notranslate nohighlight" id="equation-4f76f40c-b734-4320-ab27-e7bfc2a18205">
-<span class="eqno">(2.3)<a class="headerlink" href="#equation-4f76f40c-b734-4320-ab27-e7bfc2a18205" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-31b50ce2-4412-4aaf-8bcd-0f871e2faade">
+<span class="eqno">(2.3)<a class="headerlink" href="#equation-31b50ce2-4412-4aaf-8bcd-0f871e2faade" title="Permalink to this equation">#</a></span>\[\begin{align}
 \text{Cov}(X, Y) &amp;= \frac{\sum_{i=1}^n(X_i - \bar{X})(Y_i - \bar{Y})}{n-1} \\
   &amp;= \frac{\sum_{i=1}^nX_iY_i}{n-1} \\
   &amp;= \frac{XY^T}{n-1}
@@ -1233,8 +1233,8 @@ M^{-1} R^\top X^\top X R M^{-1}= 1.
 <h3>Using SVD for PCA<a class="headerlink" href="#using-svd-for-pca" title="Permalink to this heading">#</a></h3>
 <p>SVD is a decomposition of the data matrix <span class="math notranslate nohighlight">\(X = U S V^T\)</span> where <span class="math notranslate nohighlight">\(U\)</span> and <span class="math notranslate nohighlight">\(V\)</span> are orthogonal matrices and <span class="math notranslate nohighlight">\(S\)</span> is a diagonal matrix.</p>
 <p>Recall that the transpose of an orthogonal matrix is also its inverse, so if we multiply on the right by <span class="math notranslate nohighlight">\(X^T\)</span>, we get the following simplification</p>
-<div class="amsmath math notranslate nohighlight" id="equation-5fb6fd94-1f51-4f1a-ba5c-d834fff90f67">
-<span class="eqno">(2.4)<a class="headerlink" href="#equation-5fb6fd94-1f51-4f1a-ba5c-d834fff90f67" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-7c5b6fc6-ad1a-42d4-89a7-a068262b23cf">
+<span class="eqno">(2.4)<a class="headerlink" href="#equation-7c5b6fc6-ad1a-42d4-89a7-a068262b23cf" title="Permalink to this equation">#</a></span>\[\begin{align}
 X &amp;= U S V^T \\
 X X^T &amp;= U S V^T (U S V^T)^T \\
  &amp;= U S V^T V S U^T \\
