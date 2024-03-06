@@ -23,10 +23,9 @@ dependencies:
 - scikit-learn
 - scikit-image
 - pydoe
-- pymc
-- arviz
 - pip
 - pip:
   - gpy
   - gpyopt  
   - pymultinest
+  - pymc

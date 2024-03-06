@@ -24,10 +24,11 @@ dependencies:
 - jupyter-book
 - sphinx
 - ghp-import
-- pymc
 - arviz
 - pip
 - pip:
   - gpy
   - gpyopt  
   - pymultinest
+  - pymc
+
