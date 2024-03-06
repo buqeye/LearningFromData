@@ -148,7 +148,7 @@ $$
 
     $$
          \frac{p(A|D,I)}{p(B|D,I)} \approx
-         \frac{p(D|A,I)}{p(D|\lambda_0,B,I)} \times
+         \frac{p(D|\mu_0,A,I)}{p(D|\lambda_0,B,I)} \times
       \frac{\delta\mu}{\delta\lambda}
     $$
 
