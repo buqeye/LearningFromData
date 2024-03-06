@@ -11,7 +11,7 @@
     \end{align}$$
 
     where we have canceled the denominators in the ratio.
-    If model $A$ depends of the parameters $\thetavec$, then
+    If model $A$ depends on the parameters $\thetavec$, then
 
     $$
       p(D|A,I) = \int p(D,\thetavec|A,I)d\thetavec
@@ -20,7 +20,7 @@
 
     where the second integral has an integration over all parameters of the usual likelihood times the prior for those particular parameters.
 
-* Model $A$ will have greater evidence than model $B$ when the peak of the likelihood increases more than the ratio for the after-data to pre-data vollume of the parameter. The latter is the Occam factor.
+* Model $A$ will have greater evidence than model $B$ when the peak of the likelihood increases more than the ratio for the after-data to pre-data volume of the parameter. The latter is the Occam factor.
     * For nested models, when going to a more inclusive model, the question is whether the improvement in likelihood out-weighs the penalty from shrinkage of the parameter phase space.
 
 
