@@ -1,13 +1,12 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="" >
+<html lang="en" data-content_root="../../" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>1.5. Interactive Bayesian updating: coin flipping example &#8212; Learning from data</title>
   
@@ -19,54 +18,50 @@
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
-<link href="../../_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
-<link href="../../_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link href="../../_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
 
   
-  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+  <link href="../../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
-    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/myadmonitions.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+    <link rel="stylesheet" type="text/css" href="../../_static/myadmonitions.css?v=f87e7f18" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
-<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
-  <script src="../../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="../../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
 
-    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
-    <script src="../../_static/jquery.js"></script>
-    <script src="../../_static/underscore.js"></script>
-    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../../_static/doctools.js"></script>
-    <script src="../../_static/clipboard.min.js"></script>
-    <script src="../../_static/copybutton.js"></script>
-    <script src="../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=888ff710"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../../_static/togglebutton.js"></script>
+    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../../_static/design-tabs.js"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
-    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script src="../../_static/design-tabs.js?v=36754332"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>window.MathJax = {"tex": {"macros": {"N": ["\\mathbb{N}"], "Z": ["\\mathbb{Z}"], "floor": ["\\lfloor#1\\rfloor", 1], "bmat": ["\\left[\\begin{array}"], "emat": ["\\end{array}\\right]"], "alphavec": ["\\boldsymbol{\\alpha}"], "muvec": ["\\boldsymbol{\\mu}"], "phivec": ["\\boldsymbol{\\phi}"], "sigmavec": ["\\boldsymbol{\\sigma}"], "Sigmavec": ["\\boldsymbol{\\Sigma}"], "thetavec": ["\\boldsymbol{\\theta}"], "thetavechat": ["\\widehat\\thetavec"], "avec": ["\\boldsymbol{a}"], "Bvec": ["\\boldsymbol{B}"], "fvec": ["\\boldsymbol{f}"], "mvec": ["\\boldsymbol{m}"], "qvec": ["\\boldsymbol{q}"], "rvec": ["\\boldsymbol{r}"], "uvec": ["\\boldsymbol{u}"], "wvec": ["\\boldsymbol{w}"], "xvec": ["\\boldsymbol{x}"], "yvec": ["\\boldsymbol{y}"], "Lra": ["\\Longrightarrow"], "abar": ["\\overline a"], "Xbar": ["\\overline X"], "alphahat": ["\\widehat\\alpha"], "Hhat": ["\\hat H"], "yth": ["y_{\\text{th}}"], "yexp": ["y_{\\text{exp}}"], "ym": ["y_{\\text{m}}"], "gs": ["{0}"]}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'notebooks/Basics/Bayesian_updating_coinflip_interactive';</script>
-    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
+    <link rel="icon" href="../../_static/favicon.ico"/>
     <link rel="author" title="About these documents" href="../../about.html" />
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
@@ -81,10 +76,9 @@ const thebe_selector_output = ".output, .cell_output"
 
   
   
-  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
   
   <div id="pst-scroll-pixel-helper"></div>
-
   
   <button type="button" class="btn rounded-pill" id="pst-back-to-top">
     <i class="fa-solid fa-arrow-up"></i>
@@ -125,11 +119,14 @@ const thebe_selector_output = ".output, .cell_output"
 </form></div>
   </div>
   
-    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
-    </nav>
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+    </header>
   
+
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
+      
+      
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -163,7 +160,18 @@ const thebe_selector_output = ".output, .cell_output"
   
   
 </a></div>
-        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
@@ -268,15 +276,14 @@ const thebe_selector_output = ".output, .cell_output"
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../content/Machine_learning/machine_learning.html">9. Machine learning: Bayesian methods</a><input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-9"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../content/Machine_learning/lecture_22.html">9.1. Lecture 22</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../Machine_learning/Bayesian_optimization.html">9.2. Bayesian Optimization</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../content/Machine_learning/lecture_23.html">9.3. Lecture 23</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../Machine_learning/Neural_networks_explained.html">9.4. What Are Neural Networks?</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../Machine_learning/Forssen_tif285_NeuralNet.html">9.5. Neural networks</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../Machine_learning/Forssen_tif285_demo-NeuralNet.html">9.6. Neural network classifier demonstration</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../Machine_learning/Bayesian_neural_networks_tif285.html">9.7. Bayesian neural networks</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../content/Machine_learning/lecture_24.html">9.8. Lecture 24</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../Machine_learning/demo-Bayesian_neural_networks_tif285.html">9.9. Variational Inference: Bayesian Neural Networks</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../Machine_learning/Convolutional_neural_network_explained.html">9.10. What is a convolutional neural network?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../content/Machine_learning/lecture_23.html">9.2. Lecture 23</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Machine_learning/Neural_networks_explained.html">9.3. What Are Neural Networks?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Machine_learning/Forssen_tif285_NeuralNet.html">9.4. Neural networks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Machine_learning/Forssen_tif285_demo-NeuralNet.html">9.5. Neural network classifier demonstration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Machine_learning/Bayesian_neural_networks_tif285.html">9.6. Bayesian neural networks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../content/Machine_learning/lecture_24.html">9.7. Lecture 24</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Machine_learning/demo-Bayesian_neural_networks_tif285.html">9.8. Variational Inference: Bayesian Neural Networks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Machine_learning/Convolutional_neural_network_explained.html">9.9. What is a convolutional neural network?</a></li>
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../content/SVD/svd.html">10. PCA, SVD, and all that</a><input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-10"><i class="fa-solid fa-chevron-down"></i></label><ul>
@@ -560,9 +567,9 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-name-python-python-jupyter-set-up-a"><a name="Python">Python/Jupyter set up</a></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#python-jupyter-set-up"><a name="Python">Python/Jupyter set up</a></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#determining-the-bias-of-a-coin">Determining the bias of a coin</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-name-updating-bayesian-updating-for-the-coin-a"><a name="Updating">Bayesian updating for the coin</a></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bayesian-updating-for-the-coin"><a name="Updating">Bayesian updating for the coin</a></a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#main-code-for-coin-flipping-ui">Main code for coin-flipping UI</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#user-interface-for-coin-flipping">User-interface for coin-flipping</a></li>
 </ul>
@@ -579,13 +586,13 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article" role="main">
+                <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="interactive-bayesian-updating-coin-flipping-example">
-<h1><span class="section-number">1.5. </span>Interactive Bayesian updating: coin flipping example<a class="headerlink" href="#interactive-bayesian-updating-coin-flipping-example" title="Permalink to this heading">#</a></h1>
+<h1><span class="section-number">1.5. </span>Interactive Bayesian updating: coin flipping example<a class="headerlink" href="#interactive-bayesian-updating-coin-flipping-example" title="Link to this heading">#</a></h1>
 <p><strong>Note on 23-Dec-2023: the rendering of LaTeX in widget labels is not working in ipywidgets 8.1.1 (but it looks like a bug fix is in the works).</strong></p>
-<section id="a-name-python-python-jupyter-set-up-a">
-<h2><a name="Python">Python/Jupyter set up</a><a class="headerlink" href="#a-name-python-python-jupyter-set-up-a" title="Permalink to this heading">#</a></h2>
+<section id="python-jupyter-set-up">
+<h2><a name="Python">Python/Jupyter set up</a><a class="headerlink" href="#python-jupyter-set-up" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> inline   
@@ -617,7 +624,7 @@ document.write(`
 </div>
 </section>
 <section id="determining-the-bias-of-a-coin">
-<h2>Determining the bias of a coin<a class="headerlink" href="#determining-the-bias-of-a-coin" title="Permalink to this heading">#</a></h2>
+<h2>Determining the bias of a coin<a class="headerlink" href="#determining-the-bias-of-a-coin" title="Link to this heading">#</a></h2>
 <p><span class="math notranslate nohighlight">\(\newcommand{\pr}{\textrm{p}}\)</span>
 Suppose we observe a succession of coin flips and record the number of heads and tails. Is the coin fair? The frequentist approach to this problem is to set up a null hypothesis, i.e., the hypothesis that the coin is fair, and then determine the probability that the observed data is generated given that that hypothesis holds. If the probability is a low number <span class="math notranslate nohighlight">\(p\)</span> then the null hypothesis can be rejected at a confidence of <span class="math notranslate nohighlight">\(1 - p\)</span>.</p>
 <p>Here we instead adopt a Bayesian approach. We will treat this as a <em>parameter estimation</em> problem, with the parameter we want to estimate being the probability that any one coin flip generates a head. We label this <span class="math notranslate nohighlight">\(p_h\)</span>. (Note that Sivia labels it <span class="math notranslate nohighlight">\(H\)</span>.) Whereas the frequentist wants to compute</p>
@@ -629,8 +636,8 @@ Suppose we observe a succession of coin flips and record the number of heads and
 <p>Best estimates for <span class="math notranslate nohighlight">\(p_h\)</span>, intervals that encompass the true value with a certain probability can then all be computed from this probability density function.</p>
 <p>But this only makes sense if each value of <span class="math notranslate nohighlight">\(p_h\)</span> is associated with a degree of belief in its trueness. Presumably we would all start with some prior belief regarding how likely different values of <span class="math notranslate nohighlight">\(p_h\)</span> are. In the Bayesian framework this is encoded via the prior pdf for <span class="math notranslate nohighlight">\(p_h\)</span>, i.e., <span class="math notranslate nohighlight">\({\rm p}(p_h|I)\)</span>. <span class="math notranslate nohighlight">\(I\)</span> could be information regarding the character of the coin flipper, it could be based on a previous experiment (we managed to get hold of the coin and flip it a few times beforehand!), or it could be an “ignorance prior”, the formulation of which we will come back to later in the course.</p>
 <p>One of the key points of this exercise though, is that with each flip of the coin we acquire more information on its fairness or otherwise—on the value of <span class="math notranslate nohighlight">\(p_h\)</span>. The logical thing to do is to update the state of our belief, our pdf for <span class="math notranslate nohighlight">\({\rm p}(p_h|\mbox{\# tosses, \# heads},I)\)</span> each time the number of coin tosses is incremented by 1.</p>
-<section id="a-name-updating-bayesian-updating-for-the-coin-a">
-<h3><a name="Updating">Bayesian updating for the coin</a><a class="headerlink" href="#a-name-updating-bayesian-updating-for-the-coin-a" title="Permalink to this heading">#</a></h3>
+<section id="bayesian-updating-for-the-coin">
+<h3><a name="Updating">Bayesian updating for the coin</a><a class="headerlink" href="#bayesian-updating-for-the-coin" title="Link to this heading">#</a></h3>
 <p><span class="math notranslate nohighlight">\(  \newcommand{\thetavec}{\boldsymbol{\theta}} \newcommand{\pr}{\textrm{p}}\)</span>
 To do this we recall Bayes’ theorem with <span class="math notranslate nohighlight">\(\thetavec\)</span> the vector of parameters we seek and <span class="math notranslate nohighlight">\(I\)</span> the information we had before this round of data collection started.</p>
 <div class="math notranslate nohighlight">
@@ -643,7 +650,7 @@ To do this we recall Bayes’ theorem with <span class="math notranslate nohighl
 <p>If we view the prior as the information we have about <span class="math notranslate nohighlight">\(\thetavec\)</span> before additional data <span class="math notranslate nohighlight">\(D\)</span> is acquired, and we summarize that as a probability density function, then Bayes’ theorem tells us how to <em>update</em> that information after observing some data: this is the posterior pdf.</p>
 <p>Here we will give some examples of how this plays out when tossing coins. Note that when we do this we are using the fungibility of mathematical symbols to let <span class="math notranslate nohighlight">\(I\)</span> stand for different things at different stages of the coin tossing experiment. If we are going to “update” after every coin toss then <span class="math notranslate nohighlight">\(D\)</span> is just the result of the <span class="math notranslate nohighlight">\(N\)</span>th oin toss and <span class="math notranslate nohighlight">\(I\)</span> is what we know about the coin after <span class="math notranslate nohighlight">\(N-1\)</span> coin tosses.</p>
 <section id="main-code-for-coin-flipping-ui">
-<h4>Main code for coin-flipping UI<a class="headerlink" href="#main-code-for-coin-flipping-ui" title="Permalink to this heading">#</a></h4>
+<h4>Main code for coin-flipping UI<a class="headerlink" href="#main-code-for-coin-flipping-ui" title="Link to this heading">#</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Initial values (can be changed by widgets)</span>
@@ -958,7 +965,7 @@ To do this we recall Bayes’ theorem with <span class="math notranslate nohighl
 </div>
 </section>
 <section id="user-interface-for-coin-flipping">
-<h4>User-interface for coin-flipping<a class="headerlink" href="#user-interface-for-coin-flipping" title="Permalink to this heading">#</a></h4>
+<h4>User-interface for coin-flipping<a class="headerlink" href="#user-interface-for-coin-flipping" title="Link to this heading">#</a></h4>
 <p>Take a look at the information under the <code class="docutils literal notranslate"><span class="pre">Help</span></code> tab to find out about what the controls do, what the priors are, etc.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -977,7 +984,7 @@ To do this we recall Bayes’ theorem with <span class="math notranslate nohighl
 </section>
 </section>
 <section id="degree-of-belief-intervals">
-<h2>Degree of belief intervals<a class="headerlink" href="#degree-of-belief-intervals" title="Permalink to this heading">#</a></h2>
+<h2>Degree of belief intervals<a class="headerlink" href="#degree-of-belief-intervals" title="Link to this heading">#</a></h2>
 <p>Now we are going to compute some Bayesian confidence intervals, aka DoB intervals, aka credibility intervals…
 You should go through this section once using the numbers provided, and then come back and run it again (or copy-paste the relevant lines) for other results from the widget. You can also employ priors other than those provided if you wish, but that takes a bit more work.</p>
 <p>First we paste code from the “Playing with pdfs” notebook:</p>
@@ -1192,15 +1199,16 @@ You should go through this section once using the numbers provided, and then com
               
                 <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
 
+
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
     <i class="fa-solid fa-list"></i> Contents
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-name-python-python-jupyter-set-up-a"><a name="Python">Python/Jupyter set up</a></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#python-jupyter-set-up"><a name="Python">Python/Jupyter set up</a></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#determining-the-bias-of-a-coin">Determining the bias of a coin</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-name-updating-bayesian-updating-for-the-coin-a"><a name="Updating">Bayesian updating for the coin</a></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bayesian-updating-for-the-coin"><a name="Updating">Bayesian updating for the coin</a></a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#main-code-for-coin-flipping-ui">Main code for coin-flipping UI</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#user-interface-for-coin-flipping">User-interface for coin-flipping</a></li>
 </ul>
@@ -1256,8 +1264,8 @@ By Dick Furnstahl and Daniel Phillips
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../../_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
-<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
+  <script src="../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
 
   <footer class="bd-footer">
   </footer>

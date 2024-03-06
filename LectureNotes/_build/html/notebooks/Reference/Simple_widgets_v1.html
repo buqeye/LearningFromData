@@ -1,13 +1,12 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="" >
+<html lang="en" data-content_root="../../" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>Making a simple widget-based UI with ipywidgets.interactive_output &#8212; Learning from data</title>
   
@@ -19,52 +18,48 @@
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
-<link href="../../_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
-<link href="../../_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link href="../../_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
 
   
-  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+  <link href="../../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
-    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/myadmonitions.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+    <link rel="stylesheet" type="text/css" href="../../_static/myadmonitions.css?v=f87e7f18" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
-<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
-  <script src="../../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="../../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
 
-    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
-    <script src="../../_static/jquery.js"></script>
-    <script src="../../_static/underscore.js"></script>
-    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../../_static/doctools.js"></script>
-    <script src="../../_static/clipboard.min.js"></script>
-    <script src="../../_static/copybutton.js"></script>
-    <script src="../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=888ff710"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../../_static/togglebutton.js"></script>
+    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../../_static/design-tabs.js"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
-    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script src="../../_static/design-tabs.js?v=36754332"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'notebooks/Reference/Simple_widgets_v1';</script>
-    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
+    <link rel="icon" href="../../_static/favicon.ico"/>
     <link rel="author" title="About these documents" href="../../about.html" />
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
@@ -79,10 +74,9 @@ const thebe_selector_output = ".output, .cell_output"
 
   
   
-  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
   
   <div id="pst-scroll-pixel-helper"></div>
-
   
   <button type="button" class="btn rounded-pill" id="pst-back-to-top">
     <i class="fa-solid fa-arrow-up"></i>
@@ -123,11 +117,14 @@ const thebe_selector_output = ".output, .cell_output"
 </form></div>
   </div>
   
-    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
-    </nav>
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+    </header>
   
+
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
+      
+      
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -161,7 +158,18 @@ const thebe_selector_output = ".output, .cell_output"
   
   
 </a></div>
-        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
@@ -266,15 +274,14 @@ const thebe_selector_output = ".output, .cell_output"
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../content/Machine_learning/machine_learning.html">9. Machine learning: Bayesian methods</a><input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-9"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../content/Machine_learning/lecture_22.html">9.1. Lecture 22</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../Machine_learning/Bayesian_optimization.html">9.2. Bayesian Optimization</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../content/Machine_learning/lecture_23.html">9.3. Lecture 23</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../Machine_learning/Neural_networks_explained.html">9.4. What Are Neural Networks?</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../Machine_learning/Forssen_tif285_NeuralNet.html">9.5. Neural networks</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../Machine_learning/Forssen_tif285_demo-NeuralNet.html">9.6. Neural network classifier demonstration</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../Machine_learning/Bayesian_neural_networks_tif285.html">9.7. Bayesian neural networks</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../content/Machine_learning/lecture_24.html">9.8. Lecture 24</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../Machine_learning/demo-Bayesian_neural_networks_tif285.html">9.9. Variational Inference: Bayesian Neural Networks</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../Machine_learning/Convolutional_neural_network_explained.html">9.10. What is a convolutional neural network?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../content/Machine_learning/lecture_23.html">9.2. Lecture 23</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Machine_learning/Neural_networks_explained.html">9.3. What Are Neural Networks?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Machine_learning/Forssen_tif285_NeuralNet.html">9.4. Neural networks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Machine_learning/Forssen_tif285_demo-NeuralNet.html">9.5. Neural network classifier demonstration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Machine_learning/Bayesian_neural_networks_tif285.html">9.6. Bayesian neural networks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../content/Machine_learning/lecture_24.html">9.7. Lecture 24</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Machine_learning/demo-Bayesian_neural_networks_tif285.html">9.8. Variational Inference: Bayesian Neural Networks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Machine_learning/Convolutional_neural_network_explained.html">9.9. What is a convolutional neural network?</a></li>
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../content/SVD/svd.html">10. PCA, SVD, and all that</a><input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-10"><i class="fa-solid fa-chevron-down"></i></label><ul>
@@ -597,10 +604,10 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article" role="main">
+                <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="making-a-simple-widget-based-ui-with-ipywidgets-interactive-output">
-<h1>Making a simple widget-based UI with ipywidgets.interactive_output<a class="headerlink" href="#making-a-simple-widget-based-ui-with-ipywidgets-interactive-output" title="Permalink to this heading">#</a></h1>
+<h1>Making a simple widget-based UI with ipywidgets.interactive_output<a class="headerlink" href="#making-a-simple-widget-based-ui-with-ipywidgets-interactive-output" title="Link to this heading">#</a></h1>
 <p><strong>Note on 23-Dec-2023: the rendering of LaTeX in widget labels is not working in ipywidgets 8.1.1 (but it looks like a bug fix is in the works).</strong></p>
 <p>This is a guide-by-example to making simple user interfaces (UIs) for Jupyter notebook using the widgets provided by ipywidgets. In particular we use <code class="docutils literal notranslate"><span class="pre">ipywidgets.interactive_output</span></code>.  There are both simpler and more elaborate ways to use ipywidgets; this is a happy medium.</p>
 <p>Google “ipywidgets interact” for links to more information about widget types and other options for widgets.</p>
@@ -614,9 +621,9 @@ document.write(`
 </div>
 </div>
 <section id="first-pass-only-minimal-controls">
-<h2>First pass: only minimal controls<a class="headerlink" href="#first-pass-only-minimal-controls" title="Permalink to this heading">#</a></h2>
+<h2>First pass: only minimal controls<a class="headerlink" href="#first-pass-only-minimal-controls" title="Link to this heading">#</a></h2>
 <section id="import-ipywidgets-and-ipython-display">
-<h3>1. Import ipywidgets and Ipython.display<a class="headerlink" href="#import-ipywidgets-and-ipython-display" title="Permalink to this heading">#</a></h3>
+<h3>1. Import ipywidgets and Ipython.display<a class="headerlink" href="#import-ipywidgets-and-ipython-display" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># For convenience, we&#39;ll import explicitly the widgets we might use </span>
@@ -631,7 +638,7 @@ document.write(`
 </div>
 </section>
 <section id="create-a-function-with-all-inputs-to-generate-the-output-figure-s">
-<h3>2. Create a function with all inputs to generate the output figure(s).<a class="headerlink" href="#create-a-function-with-all-inputs-to-generate-the-output-figure-s" title="Permalink to this heading">#</a></h3>
+<h3>2. Create a function with all inputs to generate the output figure(s).<a class="headerlink" href="#create-a-function-with-all-inputs-to-generate-the-output-figure-s" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># This is a proxy for whatever calculations we need to do for the figure. </span>
@@ -664,7 +671,7 @@ document.write(`
 </div>
 </section>
 <section id="make-a-widget-for-each-value-you-want-to-control">
-<h3>3. Make a widget for each value you want to control.<a class="headerlink" href="#make-a-widget-for-each-value-you-want-to-control" title="Permalink to this heading">#</a></h3>
+<h3>3. Make a widget for each value you want to control.<a class="headerlink" href="#make-a-widget-for-each-value-you-want-to-control" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># We append _w to widget objects by convention.</span>
@@ -676,11 +683,11 @@ document.write(`
 </div>
 </section>
 <section id="make-any-explicit-callback-functions-and-add-observe-methods">
-<h3>4.  Make any explicit callback functions and add .observe methods.<a class="headerlink" href="#make-any-explicit-callback-functions-and-add-observe-methods" title="Permalink to this heading">#</a></h3>
+<h3>4.  Make any explicit callback functions and add .observe methods.<a class="headerlink" href="#make-any-explicit-callback-functions-and-add-observe-methods" title="Link to this heading">#</a></h3>
 <p>We won’t need this on the first pass.</p>
 </section>
 <section id="set-up-the-interactive-output-function">
-<h3>5. Set up the interactive_output function.<a class="headerlink" href="#set-up-the-interactive-output-function" title="Permalink to this heading">#</a></h3>
+<h3>5. Set up the interactive_output function.<a class="headerlink" href="#set-up-the-interactive-output-function" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_out</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">interactive_output</span><span class="p">(</span><span class="n">update_plot</span><span class="p">,</span>
@@ -694,7 +701,7 @@ document.write(`
 </div>
 </section>
 <section id="make-the-layout-of-the-widgets">
-<h3>6. Make the layout of the widgets.<a class="headerlink" href="#make-the-layout-of-the-widgets" title="Permalink to this heading">#</a></h3>
+<h3>6. Make the layout of the widgets.<a class="headerlink" href="#make-the-layout-of-the-widgets" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">UI_box</span> <span class="o">=</span> <span class="n">VBox</span><span class="p">([</span><span class="n">omega_w</span><span class="p">,</span> <span class="n">plot_out</span><span class="p">])</span>
@@ -704,7 +711,7 @@ document.write(`
 </div>
 </section>
 <section id="release-the-kraken">
-<h3>7. Release the Kraken!<a class="headerlink" href="#release-the-kraken" title="Permalink to this heading">#</a></h3>
+<h3>7. Release the Kraken!<a class="headerlink" href="#release-the-kraken" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">display</span><span class="p">(</span><span class="n">UI_box</span><span class="p">)</span>   
@@ -718,9 +725,9 @@ document.write(`
 </section>
 </section>
 <section id="second-pass-more-elaborate-controls-and-options">
-<h2>Second pass: More elaborate controls and options<a class="headerlink" href="#second-pass-more-elaborate-controls-and-options" title="Permalink to this heading">#</a></h2>
+<h2>Second pass: More elaborate controls and options<a class="headerlink" href="#second-pass-more-elaborate-controls-and-options" title="Link to this heading">#</a></h2>
 <section id="id1">
-<h3>1. Import ipywidgets and Ipython.display<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h3>
+<h3>1. Import ipywidgets and Ipython.display<a class="headerlink" href="#id1" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Import explicitly the widgets we might use (add more as needed!) </span>
@@ -735,7 +742,7 @@ document.write(`
 </div>
 </section>
 <section id="create-a-function-with-all-inputs-that-makes-the-output-figure-s">
-<h3>2. Create a function with all inputs that makes the output figure(s).<a class="headerlink" href="#create-a-function-with-all-inputs-that-makes-the-output-figure-s" title="Permalink to this heading">#</a></h3>
+<h3>2. Create a function with all inputs that makes the output figure(s).<a class="headerlink" href="#create-a-function-with-all-inputs-that-makes-the-output-figure-s" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># This is a proxy for whatever calculations we need to do for the figure. </span>
@@ -769,7 +776,7 @@ document.write(`
 </div>
 </section>
 <section id="id2">
-<h3>3. Make a widget for each value you want to control.<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h3>
+<h3>3. Make a widget for each value you want to control.<a class="headerlink" href="#id2" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">slider_border</span> <span class="o">=</span> <span class="n">Layout</span><span class="p">(</span><span class="n">border</span><span class="o">=</span><span class="s1">&#39;solid 1.0px&#39;</span><span class="p">)</span>
@@ -808,7 +815,7 @@ document.write(`
 </div>
 </section>
 <section id="id3">
-<h3>4.  Make any explicit callback functions and add .observe methods.<a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h3>
+<h3>4.  Make any explicit callback functions and add .observe methods.<a class="headerlink" href="#id3" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Make sure that t_max is at least t_min + 1</span>
@@ -823,7 +830,7 @@ document.write(`
 </div>
 </section>
 <section id="id4">
-<h3>5. Set up the interactive_output function.<a class="headerlink" href="#id4" title="Permalink to this heading">#</a></h3>
+<h3>5. Set up the interactive_output function.<a class="headerlink" href="#id4" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_out</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">interactive_output</span><span class="p">(</span><span class="n">update_plot</span><span class="p">,</span>
@@ -842,7 +849,7 @@ document.write(`
 </div>
 </section>
 <section id="id5">
-<h3>6. Make the layout of the widgets.<a class="headerlink" href="#id5" title="Permalink to this heading">#</a></h3>
+<h3>6. Make the layout of the widgets.<a class="headerlink" href="#id5" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">hbox_1</span> <span class="o">=</span> <span class="n">HBox</span><span class="p">([</span><span class="n">t_min_w</span><span class="p">,</span> <span class="n">t_max_w</span><span class="p">,</span> <span class="n">num_t_w</span><span class="p">])</span>
@@ -854,7 +861,7 @@ document.write(`
 </div>
 </section>
 <section id="id6">
-<h3>7. Release the Kraken!<a class="headerlink" href="#id6" title="Permalink to this heading">#</a></h3>
+<h3>7. Release the Kraken!<a class="headerlink" href="#id6" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">display</span><span class="p">(</span><span class="n">UI_box</span><span class="p">)</span>   
@@ -867,9 +874,9 @@ document.write(`
 </section>
 </section>
 <section id="third-pass-a-more-elaborate-user-interface-with-tabs">
-<h2>Third pass:  a more elaborate user interface with tabs<a class="headerlink" href="#third-pass-a-more-elaborate-user-interface-with-tabs" title="Permalink to this heading">#</a></h2>
+<h2>Third pass:  a more elaborate user interface with tabs<a class="headerlink" href="#third-pass-a-more-elaborate-user-interface-with-tabs" title="Link to this heading">#</a></h2>
 <section id="id7">
-<h3>1. Import ipywidgets and Ipython.display<a class="headerlink" href="#id7" title="Permalink to this heading">#</a></h3>
+<h3>1. Import ipywidgets and Ipython.display<a class="headerlink" href="#id7" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Import explicitly the widgets we might use (add more as needed!) </span>
@@ -884,7 +891,7 @@ document.write(`
 </div>
 </section>
 <section id="id8">
-<h3>2. Create a function with all inputs that makes the output figure(s).<a class="headerlink" href="#id8" title="Permalink to this heading">#</a></h3>
+<h3>2. Create a function with all inputs that makes the output figure(s).<a class="headerlink" href="#id8" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># This is a proxy for whatever calculations we need to do for the figure. </span>
@@ -922,7 +929,7 @@ document.write(`
 </div>
 </section>
 <section id="id9">
-<h3>3. Make a widget for each value you want to control.<a class="headerlink" href="#id9" title="Permalink to this heading">#</a></h3>
+<h3>3. Make a widget for each value you want to control.<a class="headerlink" href="#id9" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">slider_border</span> <span class="o">=</span> <span class="n">Layout</span><span class="p">(</span><span class="n">border</span><span class="o">=</span><span class="s1">&#39;solid 1.0px&#39;</span><span class="p">)</span>
@@ -1021,7 +1028,7 @@ document.write(`
 </div>
 </section>
 <section id="id10">
-<h3>4.  Make any explicit callback functions and add .observe methods.<a class="headerlink" href="#id10" title="Permalink to this heading">#</a></h3>
+<h3>4.  Make any explicit callback functions and add .observe methods.<a class="headerlink" href="#id10" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Make sure that t_max is at least t_min + 1</span>
@@ -1036,7 +1043,7 @@ document.write(`
 </div>
 </section>
 <section id="id11">
-<h3>5. Set up the interactive_output function.<a class="headerlink" href="#id11" title="Permalink to this heading">#</a></h3>
+<h3>5. Set up the interactive_output function.<a class="headerlink" href="#id11" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_out</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">interactive_output</span><span class="p">(</span><span class="n">update_plot</span><span class="p">,</span>
@@ -1056,7 +1063,7 @@ document.write(`
 </div>
 </section>
 <section id="id12">
-<h3>6. Make the layout of the widgets.<a class="headerlink" href="#id12" title="Permalink to this heading">#</a></h3>
+<h3>6. Make the layout of the widgets.<a class="headerlink" href="#id12" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Organize the help as Tabs (which will itself be under the Help Tab)</span>
@@ -1100,7 +1107,7 @@ document.write(`
 </div>
 </section>
 <section id="id13">
-<h3>7. Release the Kraken!<a class="headerlink" href="#id13" title="Permalink to this heading">#</a></h3>
+<h3>7. Release the Kraken!<a class="headerlink" href="#id13" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">display</span><span class="p">(</span><span class="n">UI_box</span><span class="p">)</span>   
@@ -1170,6 +1177,7 @@ document.write(`
             
               
                 <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
 
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
@@ -1255,8 +1263,8 @@ By Dick Furnstahl and Daniel Phillips
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../../_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
-<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
+  <script src="../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
 
   <footer class="bd-footer">
   </footer>

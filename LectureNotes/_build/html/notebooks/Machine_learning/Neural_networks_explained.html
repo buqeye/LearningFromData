@@ -1,15 +1,14 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="" >
+<html lang="en" data-content_root="../../" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>9.4. What Are Neural Networks? &#8212; Learning from data</title>
+    <title>9.3. What Are Neural Networks? &#8212; Learning from data</title>
   
   
   
@@ -19,59 +18,55 @@
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
-<link href="../../_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
-<link href="../../_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link href="../../_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
 
   
-  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+  <link href="../../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
-    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/myadmonitions.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+    <link rel="stylesheet" type="text/css" href="../../_static/myadmonitions.css?v=f87e7f18" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
-<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
-  <script src="../../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="../../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
 
-    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
-    <script src="../../_static/jquery.js"></script>
-    <script src="../../_static/underscore.js"></script>
-    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../../_static/doctools.js"></script>
-    <script src="../../_static/clipboard.min.js"></script>
-    <script src="../../_static/copybutton.js"></script>
-    <script src="../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=888ff710"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../../_static/togglebutton.js"></script>
+    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../../_static/design-tabs.js"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
-    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script src="../../_static/design-tabs.js?v=36754332"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>window.MathJax = {"tex": {"macros": {"N": ["\\mathbb{N}"], "Z": ["\\mathbb{Z}"], "floor": ["\\lfloor#1\\rfloor", 1], "bmat": ["\\left[\\begin{array}"], "emat": ["\\end{array}\\right]"], "alphavec": ["\\boldsymbol{\\alpha}"], "muvec": ["\\boldsymbol{\\mu}"], "phivec": ["\\boldsymbol{\\phi}"], "sigmavec": ["\\boldsymbol{\\sigma}"], "Sigmavec": ["\\boldsymbol{\\Sigma}"], "thetavec": ["\\boldsymbol{\\theta}"], "thetavechat": ["\\widehat\\thetavec"], "avec": ["\\boldsymbol{a}"], "Bvec": ["\\boldsymbol{B}"], "fvec": ["\\boldsymbol{f}"], "mvec": ["\\boldsymbol{m}"], "qvec": ["\\boldsymbol{q}"], "rvec": ["\\boldsymbol{r}"], "uvec": ["\\boldsymbol{u}"], "wvec": ["\\boldsymbol{w}"], "xvec": ["\\boldsymbol{x}"], "yvec": ["\\boldsymbol{y}"], "Lra": ["\\Longrightarrow"], "abar": ["\\overline a"], "Xbar": ["\\overline X"], "alphahat": ["\\widehat\\alpha"], "Hhat": ["\\hat H"], "yth": ["y_{\\text{th}}"], "yexp": ["y_{\\text{exp}}"], "ym": ["y_{\\text{m}}"], "gs": ["{0}"]}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'notebooks/Machine_learning/Neural_networks_explained';</script>
-    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
+    <link rel="icon" href="../../_static/favicon.ico"/>
     <link rel="author" title="About these documents" href="../../about.html" />
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="9.5. Neural networks" href="Forssen_tif285_NeuralNet.html" />
-    <link rel="prev" title="9.3. Lecture 23" href="../../content/Machine_learning/lecture_23.html" />
+    <link rel="next" title="9.4. Neural networks" href="Forssen_tif285_NeuralNet.html" />
+    <link rel="prev" title="9.2. Lecture 23" href="../../content/Machine_learning/lecture_23.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -81,10 +76,9 @@ const thebe_selector_output = ".output, .cell_output"
 
   
   
-  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
   
   <div id="pst-scroll-pixel-helper"></div>
-
   
   <button type="button" class="btn rounded-pill" id="pst-back-to-top">
     <i class="fa-solid fa-arrow-up"></i>
@@ -125,11 +119,14 @@ const thebe_selector_output = ".output, .cell_output"
 </form></div>
   </div>
   
-    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
-    </nav>
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+    </header>
   
+
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
+      
+      
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -163,7 +160,18 @@ const thebe_selector_output = ".output, .cell_output"
   
   
 </a></div>
-        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
@@ -268,15 +276,14 @@ const thebe_selector_output = ".output, .cell_output"
 </li>
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="../../content/Machine_learning/machine_learning.html">9. Machine learning: Bayesian methods</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-9"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../../content/Machine_learning/lecture_22.html">9.1. Lecture 22</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Bayesian_optimization.html">9.2. Bayesian Optimization</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../content/Machine_learning/lecture_23.html">9.3. Lecture 23</a></li>
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">9.4. What Are Neural Networks?</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Forssen_tif285_NeuralNet.html">9.5. Neural networks</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Forssen_tif285_demo-NeuralNet.html">9.6. Neural network classifier demonstration</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Bayesian_neural_networks_tif285.html">9.7. Bayesian neural networks</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../content/Machine_learning/lecture_24.html">9.8. Lecture 24</a></li>
-<li class="toctree-l2"><a class="reference internal" href="demo-Bayesian_neural_networks_tif285.html">9.9. Variational Inference: Bayesian Neural Networks</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Convolutional_neural_network_explained.html">9.10. What is a convolutional neural network?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../content/Machine_learning/lecture_23.html">9.2. Lecture 23</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">9.3. What Are Neural Networks?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Forssen_tif285_NeuralNet.html">9.4. Neural networks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Forssen_tif285_demo-NeuralNet.html">9.5. Neural network classifier demonstration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Bayesian_neural_networks_tif285.html">9.6. Bayesian neural networks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../content/Machine_learning/lecture_24.html">9.7. Lecture 24</a></li>
+<li class="toctree-l2"><a class="reference internal" href="demo-Bayesian_neural_networks_tif285.html">9.8. Variational Inference: Bayesian Neural Networks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Convolutional_neural_network_explained.html">9.9. What is a convolutional neural network?</a></li>
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../content/SVD/svd.html">10. PCA, SVD, and all that</a><input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-10"><i class="fa-solid fa-chevron-down"></i></label><ul>
@@ -579,10 +586,10 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article" role="main">
+                <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="what-are-neural-networks">
-<h1><span class="section-number">9.4. </span>What Are Neural Networks?<a class="headerlink" href="#what-are-neural-networks" title="Permalink to this heading">#</a></h1>
+<h1><span class="section-number">9.3. </span>What Are Neural Networks?<a class="headerlink" href="#what-are-neural-networks" title="Link to this heading">#</a></h1>
 <p><strong>Notes by Alberto Garcia (2021)</strong></p>
 <p>A neural network (NN) is a machine learning technique <strong>that follows a set of rules with the purpose of recognizing patterns. Once the neural network learns these patterns, it can be used to make predictions</strong>. The idea of a neural network came from studying how a brain interprets and predicts outcomes. This led to the idea of writing an algorithm that mimics the brain, which is how neural networks were developed.</p>
 <p>The neural networks used in machine learning are called artificial neural networks, as opposed to real neural networks contained in the brain. They are made up of three different components: <strong>an input layer, hidden layer(s), and an output layer</strong>.</p>
@@ -597,12 +604,12 @@ document.write(`
 <li><p><a class="reference external" href="https://towardsdatascience.com/how-to-build-your-own-neural-network-from-scratch-in-python-68998a08e4f6">https://towardsdatascience.com/how-to-build-your-own-neural-network-from-scratch-in-python-68998a08e4f6</a></p></li>
 </ol>
 <section id="different-types-of-neural-networks">
-<h2>Different types of neural networks<a class="headerlink" href="#different-types-of-neural-networks" title="Permalink to this heading">#</a></h2>
+<h2>Different types of neural networks<a class="headerlink" href="#different-types-of-neural-networks" title="Link to this heading">#</a></h2>
 <p>There are many different types of neural networks currently being used by data scientists around the world, but the most common are: perceptron, feed forward, recurrent, and convolutional.</p>
 <p>The perceptron is composed of an input and output layer. The only pattern this type of neural network is able to learn is linear patterns. The feed-forward neural network, also known as a multi-layer perceptron, is composed of an input layer, hidden layers, and output layer. It is not limited to learning linear patterns, but data only moves in one direction.</p>
 </section>
 <section id="how-do-neural-networks-actually-work">
-<h2>How do neural networks actually work?<a class="headerlink" href="#how-do-neural-networks-actually-work" title="Permalink to this heading">#</a></h2>
+<h2>How do neural networks actually work?<a class="headerlink" href="#how-do-neural-networks-actually-work" title="Link to this heading">#</a></h2>
 <p>The key of neural networks is that the layers transform the inputs using a series of mathematical operations in order to learn how to map the inputs to the outputs while producing good predictions.</p>
 <p>Say we have a set of data composed of <span class="math notranslate nohighlight">\(x\)</span>’s and <span class="math notranslate nohighlight">\(y\)</span>’s. This data would be split into what are known as training and testing data sets, with both sets containing <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span> values. The training set is used to train the neural network. This is what gets inputted into the model and gets weights assigned to. The testing set is used to test the newly trained neural network. Once the model gets trained using the training set, it will be used to predict the <span class="math notranslate nohighlight">\(y\)</span> values from the testing set by using the corresponding <span class="math notranslate nohighlight">\(x\)</span> testing set values. An error that tells you how well your neural network did is then calculated. You can also add a bias to the neural network. This is an extra input, usually denoted as <span class="math notranslate nohighlight">\(b\)</span> or <span class="math notranslate nohighlight">\(w_0\)</span>, with no weights associated to it. The bias is there to ensure that even when there is a <span class="math notranslate nohighlight">\(0\)</span> input, that neuron will still activate.</p>
 <a class="reference internal image-reference" href="../../_images/perceptron_node.png"><img alt="../../_images/perceptron_node.png" class="align-center" src="../../_images/perceptron_node.png" style="width: 600px;" /></a>
@@ -622,7 +629,7 @@ Y = f \bigg(W \cdot X  + b \bigg)
 <p>Care must be taken when calculating the gradients. If the derivative is too small, the network will become increasingly difficult to train. This is seen for deep neural networks when choosing an inappropriate activation function, like the sigmoid, since a large change in the input of the sigmoid function will cause a small change in the output.</p>
 </section>
 <section id="how-is-the-error-calculated">
-<h2>How is the error calculated?<a class="headerlink" href="#how-is-the-error-calculated" title="Permalink to this heading">#</a></h2>
+<h2>How is the error calculated?<a class="headerlink" href="#how-is-the-error-calculated" title="Link to this heading">#</a></h2>
 <p>When building a model, we always seek to minimize the error as much as possible. This error is calculated by what’s known as a loss function. The loss function can be written many different ways, but the most common is mean-square-error defined as</p>
 <div class="math notranslate nohighlight">
 \[
@@ -642,16 +649,16 @@ L = \sum^{N}_{i=1} \sum^{N}_{j=1} W_{i,j} R_i R_j
 \]</div>
 </section>
 <section id="purpose-of-an-activation-function">
-<h2>Purpose of an activation function<a class="headerlink" href="#purpose-of-an-activation-function" title="Permalink to this heading">#</a></h2>
+<h2>Purpose of an activation function<a class="headerlink" href="#purpose-of-an-activation-function" title="Link to this heading">#</a></h2>
 <p>The purpose of an activation function is to introduce non-linearity to the neural network. Even if the initial data is uniform and scaled, they can easily blow up once they start getting multiplied by weights and summed up. The activation function forces these values back into a manageable range by rescaling them. It’s important to note that activation functions only reside in neurons from hidden and output layers, not input layers.</p>
 <p>Examples of popular activation functions are the hyperbolic tangent, <span class="math notranslate nohighlight">\(\tanh(z)\)</span>, which rescales the data between <span class="math notranslate nohighlight">\([-1,1]\)</span>, and the sigmoid, <span class="math notranslate nohighlight">\(f(z) = \frac{1}{1 + e^{-z}}\)</span>, which rescales the data as a continuous range of values between <span class="math notranslate nohighlight">\([0,1]\)</span>.</p>
 </section>
 <section id="what-is-an-optimization-algorithm">
-<h2>What is an optimization algorithm?<a class="headerlink" href="#what-is-an-optimization-algorithm" title="Permalink to this heading">#</a></h2>
+<h2>What is an optimization algorithm?<a class="headerlink" href="#what-is-an-optimization-algorithm" title="Link to this heading">#</a></h2>
 <p>An optimization algorithm is an algorithm used to minimize the error (loss) as discussed previously. They involve a variable known as the learning rate. This variable ensures that the weights are not changing too fast by scaling the gradients. The most popular is gradient descent, which we already mentioned. Another one more commonly used is known as adaptive moment estimation (ADAM). This works by adding fractions of the previous gradients to the current ones.</p>
 </section>
 <section id="a-physics-example-phase-shifts">
-<h2>A physics example: phase shifts<a class="headerlink" href="#a-physics-example-phase-shifts" title="Permalink to this heading">#</a></h2>
+<h2>A physics example: phase shifts<a class="headerlink" href="#a-physics-example-phase-shifts" title="Link to this heading">#</a></h2>
 <p>Let’s assume we have a dataset that contains scattering energies and their corresponding wave number <span class="math notranslate nohighlight">\(k\)</span>, phase shifts <span class="math notranslate nohighlight">\(\delta\)</span>, and scattering amplitudes <span class="math notranslate nohighlight">\(\tau\)</span>.</p>
 <table class="table">
 <thead>
@@ -685,7 +692,7 @@ L = \sum^{N}_{i=1} \sum^{N}_{j=1} W_{i,j} R_i R_j
 </tbody>
 </table>
 <section id="one-input-one-output">
-<h3>One input, one output<a class="headerlink" href="#one-input-one-output" title="Permalink to this heading">#</a></h3>
+<h3>One input, one output<a class="headerlink" href="#one-input-one-output" title="Link to this heading">#</a></h3>
 <p>Let’s first assume we are trying to predict <span class="math notranslate nohighlight">\(\delta\)</span> with only the energies <span class="math notranslate nohighlight">\(E\)</span>. We can
 write these values as vectors:</p>
 <div class="math notranslate nohighlight">
@@ -738,7 +745,7 @@ $<span class="math notranslate nohighlight">\(
 <p>If we are content with the accuracy of the model, we can pass in any value of the scattering energy we want to predict and have it output its corresponding phase shift.</p>
 </section>
 <section id="multiple-inputs-outputs-hidden-layers">
-<h3>Multiple inputs/outputs/hidden layers<a class="headerlink" href="#multiple-inputs-outputs-hidden-layers" title="Permalink to this heading">#</a></h3>
+<h3>Multiple inputs/outputs/hidden layers<a class="headerlink" href="#multiple-inputs-outputs-hidden-layers" title="Link to this heading">#</a></h3>
 <p>This can be extended to multiple inputs and outputs. For instance, if we want to train with inputs <span class="math notranslate nohighlight">\(E\)</span> and <span class="math notranslate nohighlight">\(k_0\)</span> and outputs <span class="math notranslate nohighlight">\(\delta\)</span> and <span class="math notranslate nohighlight">\(\tau\)</span>, the process is the same as before only slightly more complicated. Instead of having an <span class="math notranslate nohighlight">\(N \times 1\)</span> vector for the inputs and weights, we will have a <span class="math notranslate nohighlight">\(N \times 2\)</span> matrix. In addition, our outputs will also be a <span class="math notranslate nohighlight">\(N \times 2\)</span> matrix.</p>
 <p>In the case of multiple hidden layers, the process is the same as for the case with one input and one output, only the neurons of the hidden layers will all be connected and they will all have synapses with their own weights and their own (can be different) activation function.</p>
 </section>
@@ -781,7 +788,7 @@ $<span class="math notranslate nohighlight">\(
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><span class="section-number">9.3. </span>Lecture 23</p>
+        <p class="prev-next-title"><span class="section-number">9.2. </span>Lecture 23</p>
       </div>
     </a>
     <a class="right-next"
@@ -789,7 +796,7 @@ $<span class="math notranslate nohighlight">\(
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">9.5. </span>Neural networks</p>
+        <p class="prev-next-title"><span class="section-number">9.4. </span>Neural networks</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -801,6 +808,7 @@ $<span class="math notranslate nohighlight">\(
             
               
                 <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
 
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
@@ -866,8 +874,8 @@ By Dick Furnstahl and Daniel Phillips
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../../_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
-<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
+  <script src="../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
 
   <footer class="bd-footer">
   </footer>
