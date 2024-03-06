@@ -1,13 +1,12 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="" >
+<html lang="en" data-content_root="../../" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>4.1. Lecture 9 &#8212; Learning from data</title>
   
@@ -19,54 +18,50 @@
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
-<link href="../../_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
-<link href="../../_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link href="../../_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
 
   
-  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+  <link href="../../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
-    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/myadmonitions.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+    <link rel="stylesheet" type="text/css" href="../../_static/myadmonitions.css?v=f87e7f18" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
-<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
-  <script src="../../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="../../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
 
-    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
-    <script src="../../_static/jquery.js"></script>
-    <script src="../../_static/underscore.js"></script>
-    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../../_static/doctools.js"></script>
-    <script src="../../_static/clipboard.min.js"></script>
-    <script src="../../_static/copybutton.js"></script>
-    <script src="../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=888ff710"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../../_static/togglebutton.js"></script>
+    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../../_static/design-tabs.js"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
-    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script src="../../_static/design-tabs.js?v=36754332"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>window.MathJax = {"tex": {"macros": {"N": ["\\mathbb{N}"], "Z": ["\\mathbb{Z}"], "floor": ["\\lfloor#1\\rfloor", 1], "bmat": ["\\left[\\begin{array}"], "emat": ["\\end{array}\\right]"], "alphavec": ["\\boldsymbol{\\alpha}"], "muvec": ["\\boldsymbol{\\mu}"], "phivec": ["\\boldsymbol{\\phi}"], "sigmavec": ["\\boldsymbol{\\sigma}"], "Sigmavec": ["\\boldsymbol{\\Sigma}"], "thetavec": ["\\boldsymbol{\\theta}"], "thetavechat": ["\\widehat\\thetavec"], "avec": ["\\boldsymbol{a}"], "Bvec": ["\\boldsymbol{B}"], "fvec": ["\\boldsymbol{f}"], "mvec": ["\\boldsymbol{m}"], "qvec": ["\\boldsymbol{q}"], "rvec": ["\\boldsymbol{r}"], "uvec": ["\\boldsymbol{u}"], "wvec": ["\\boldsymbol{w}"], "xvec": ["\\boldsymbol{x}"], "yvec": ["\\boldsymbol{y}"], "Lra": ["\\Longrightarrow"], "abar": ["\\overline a"], "Xbar": ["\\overline X"], "alphahat": ["\\widehat\\alpha"], "Hhat": ["\\hat H"], "yth": ["y_{\\text{th}}"], "yexp": ["y_{\\text{exp}}"], "ym": ["y_{\\text{m}}"], "gs": ["{0}"]}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'content/Why_Bayes_is_better/lecture_09';</script>
-    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
+    <link rel="icon" href="../../_static/favicon.ico"/>
     <link rel="author" title="About these documents" href="../../about.html" />
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
@@ -81,10 +76,9 @@ const thebe_selector_output = ".output, .cell_output"
 
   
   
-  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
   
   <div id="pst-scroll-pixel-helper"></div>
-
   
   <button type="button" class="btn rounded-pill" id="pst-back-to-top">
     <i class="fa-solid fa-arrow-up"></i>
@@ -125,11 +119,14 @@ const thebe_selector_output = ".output, .cell_output"
 </form></div>
   </div>
   
-    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
-    </nav>
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+    </header>
   
+
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
+      
+      
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -163,7 +160,18 @@ const thebe_selector_output = ".output, .cell_output"
   
   
 </a></div>
-        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
@@ -268,15 +276,14 @@ const thebe_selector_output = ".output, .cell_output"
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../Machine_learning/machine_learning.html">9. Machine learning: Bayesian methods</a><input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-9"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../Machine_learning/lecture_22.html">9.1. Lecture 22</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../notebooks/Machine_learning/Bayesian_optimization.html">9.2. Bayesian Optimization</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../Machine_learning/lecture_23.html">9.3. Lecture 23</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../notebooks/Machine_learning/Neural_networks_explained.html">9.4. What Are Neural Networks?</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../notebooks/Machine_learning/Forssen_tif285_NeuralNet.html">9.5. Neural networks</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../notebooks/Machine_learning/Forssen_tif285_demo-NeuralNet.html">9.6. Neural network classifier demonstration</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../notebooks/Machine_learning/Bayesian_neural_networks_tif285.html">9.7. Bayesian neural networks</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../Machine_learning/lecture_24.html">9.8. Lecture 24</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../notebooks/Machine_learning/demo-Bayesian_neural_networks_tif285.html">9.9. Variational Inference: Bayesian Neural Networks</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../notebooks/Machine_learning/Convolutional_neural_network_explained.html">9.10. What is a convolutional neural network?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Machine_learning/lecture_23.html">9.2. Lecture 23</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../notebooks/Machine_learning/Neural_networks_explained.html">9.3. What Are Neural Networks?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../notebooks/Machine_learning/Forssen_tif285_NeuralNet.html">9.4. Neural networks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../notebooks/Machine_learning/Forssen_tif285_demo-NeuralNet.html">9.5. Neural network classifier demonstration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../notebooks/Machine_learning/Bayesian_neural_networks_tif285.html">9.6. Bayesian neural networks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Machine_learning/lecture_24.html">9.7. Lecture 24</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../notebooks/Machine_learning/demo-Bayesian_neural_networks_tif285.html">9.8. Variational Inference: Bayesian Neural Networks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../notebooks/Machine_learning/Convolutional_neural_network_explained.html">9.9. What is a convolutional neural network?</a></li>
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../SVD/svd.html">10. PCA, SVD, and all that</a><input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-10"><i class="fa-solid fa-chevron-down"></i></label><ul>
@@ -531,25 +538,25 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article" role="main">
+                <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="lecture-9">
-<h1><span class="section-number">4.1. </span>Lecture 9<a class="headerlink" href="#lecture-9" title="Permalink to this heading">#</a></h1>
+<h1><span class="section-number">4.1. </span>Lecture 9<a class="headerlink" href="#lecture-9" title="Link to this heading">#</a></h1>
 <section id="why-bayes-is-better-i">
-<h2>Why Bayes is Better I<a class="headerlink" href="#why-bayes-is-better-i" title="Permalink to this heading">#</a></h2>
+<h2>Why Bayes is Better I<a class="headerlink" href="#why-bayes-is-better-i" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p>These examples were developed by Christian Forssén for the <a class="reference external" href="https://nucleartalent.github.io/Bayes2019">2019 TALENT course at York, UK</a>.</p></li>
 <li><p>Notebooks we’ll use:</p>
 <ul>
-<li><p><a class="reference internal" href="../../notebooks/Why_Bayes_is_better/bayes_billiard.html"><span class="doc std std-doc">A Bayesian Billiard game</span></a></p></li>
-<li><p><a class="reference internal" href="../../notebooks/Why_Bayes_is_better/parameter_estimation_fitting_straight_line_II.html"><span class="doc std std-doc">Parameter estimation example: fitting a straight line II</span></a></p></li>
-<li><p><a class="reference internal" href="../../notebooks/Why_Bayes_is_better/error_propagation_to_functions_of_uncertain_parameters.html"><span class="doc std std-doc">Error propagation: Example 3.6.2 in Sivia</span></a></p></li>
+<li><p><a class="reference internal" href="../../notebooks/Why_Bayes_is_better/bayes_billiard.html"><span class="std std-doc">A Bayesian Billiard game</span></a></p></li>
+<li><p><a class="reference internal" href="../../notebooks/Why_Bayes_is_better/parameter_estimation_fitting_straight_line_II.html"><span class="std std-doc">Parameter estimation example: fitting a straight line II</span></a></p></li>
+<li><p><a class="reference internal" href="../../notebooks/Why_Bayes_is_better/error_propagation_to_functions_of_uncertain_parameters.html"><span class="std std-doc">Error propagation: Example 3.6.2 in Sivia</span></a></p></li>
 </ul>
 </li>
 </ul>
 </section>
 <section id="quotes-from-one-pioneering-and-one-renaissance-bayesian-authority">
-<h2>Quotes from one pioneering and one renaissance Bayesian authority<a class="headerlink" href="#quotes-from-one-pioneering-and-one-renaissance-bayesian-authority" title="Permalink to this heading">#</a></h2>
+<h2>Quotes from one pioneering and one renaissance Bayesian authority<a class="headerlink" href="#quotes-from-one-pioneering-and-one-renaissance-bayesian-authority" title="Link to this heading">#</a></h2>
 <blockquote>
 <div><p><em>“Probability theory is nothing but common sense reduced to calculation.”</em>
 (Laplace)</p>
@@ -560,7 +567,7 @@ document.write(`
 </div></blockquote>
 </section>
 <section id="summary-advantages-of-the-bayesian-approach">
-<h2>Summary: Advantages of the Bayesian approach<a class="headerlink" href="#summary-advantages-of-the-bayesian-approach" title="Permalink to this heading">#</a></h2>
+<h2>Summary: Advantages of the Bayesian approach<a class="headerlink" href="#summary-advantages-of-the-bayesian-approach" title="Link to this heading">#</a></h2>
 <p>     1. Provides an elegantly simple and rational approach for answering, in an optimal way, any scientific question for a given state of information. This contrasts to the recipe or cookbook approach of conventional statistical analysis. The procedure is well-defined:</p>
 <ul class="simple">
 <li><p>Clearly state your question and prior information.</p></li>
@@ -577,7 +584,7 @@ document.write(`
 <p>     5. Calculates probability of hypothesis directly: <span class="math notranslate nohighlight">\(p(H_i|D, I)\)</span>.</p>
 <p>     6. Provides a more powerful way of assessing competing theories at the forefront of science by automatically quantifying Occam’s razor.</p>
 <section id="occams-razor">
-<h3>Occam’s razor<a class="headerlink" href="#occams-razor" title="Permalink to this heading">#</a></h3>
+<h3>Occam’s razor<a class="headerlink" href="#occams-razor" title="Link to this heading">#</a></h3>
 <p>Occam’s razor is a principle attributed to the medieval philosopher
 William of Occam (or Ockham). The principle states that one should not
 make more assumptions than the minimum needed: “plurality should not
@@ -594,10 +601,10 @@ Bayesian evidence in detail in a couple of weeks.</p>
 </section>
 </section>
 <section id="nuisance-parameters-i">
-<h2>Nuisance parameters (I)<a class="headerlink" href="#nuisance-parameters-i" title="Permalink to this heading">#</a></h2>
+<h2>Nuisance parameters (I)<a class="headerlink" href="#nuisance-parameters-i" title="Link to this heading">#</a></h2>
 <p>Nuisance parameters are parameters we introduce to characterize a situation but which we don’t care about or know in detail. We could also call them “auxiliary variables”. The Bayesian way to deal with them is to marginalize, i.e., to integrate over them.</p>
 <p>The procedure is illustrated in the notebook
-<a class="reference internal" href="../../notebooks/Why_Bayes_is_better/bayes_billiard.html"><span class="doc std std-doc">“A Bayesian Billiard game”</span></a>
+<a class="reference internal" href="../../notebooks/Why_Bayes_is_better/bayes_billiard.html"><span class="std std-doc">“A Bayesian Billiard game”</span></a>
 and is quite generic, so it is worth looking at in detail. <em>The discussion here is not as complete as the notebook. Be sure to run through the notebook as well.</em></p>
 <p>Bayesian billiard schematic:</p>
 <a class="bg-primary reference internal image-reference" href="../../_images/bayesian_billiard_schematic.png"><img alt="Bayesian billiard schematic" class="bg-primary align-center" src="../../_images/bayesian_billiard_schematic.png" style="width: 600px;" /></a>
@@ -613,7 +620,7 @@ and is quite generic, so it is worth looking at in detail. <em>The discussion he
 </ul>
 <p>[Note: this is obviously not a physics problem but you can map it onto many possible experimental or theoretical physics situations. E.g., <span class="math notranslate nohighlight">\(\alpha\)</span> could be a normalization in an experiment (not between 0 and 1, but <span class="math notranslate nohighlight">\(\alpha_{\text{min}}\)</span> and <span class="math notranslate nohighlight">\(\alpha_{\text{max}}\)</span>) or a model parameter in a theory that we don’t know (we’ll see examples later!). In both cases we are not interested (usually) in the value of <span class="math notranslate nohighlight">\(\alpha\)</span>; we want to eliminate it.]</p>
 <section id="naive-frequentist-approach">
-<h3>Naive frequentist approach<a class="headerlink" href="#naive-frequentist-approach" title="Permalink to this heading">#</a></h3>
+<h3>Naive frequentist approach<a class="headerlink" href="#naive-frequentist-approach" title="Link to this heading">#</a></h3>
 <p>Here we start by thinking about the best estimate for <span class="math notranslate nohighlight">\(\alpha\)</span>, call it <span class="math notranslate nohighlight">\(\alphahat\)</span>.
 If <span class="math notranslate nohighlight">\(B\)</span> is the statement “Bob wins,” then what is <span class="math notranslate nohighlight">\(p(B)\)</span>?</p>
 <ul class="simple">
@@ -643,7 +650,7 @@ If <span class="math notranslate nohighlight">\(B\)</span> is the statement “B
 <p>This estimate yields <span class="math notranslate nohighlight">\(p(B) \approx 0.053\)</span> or about 18 to 1 odds.</p>
 </section>
 <section id="bayesian-approach">
-<h3>Bayesian approach<a class="headerlink" href="#bayesian-approach" title="Permalink to this heading">#</a></h3>
+<h3>Bayesian approach<a class="headerlink" href="#bayesian-approach" title="Link to this heading">#</a></h3>
 <p>You should try to fill in the details here!</p>
 <div class="dropdown admonition">
 <p class="admonition-title">What pdf is the goal here?</p>
@@ -721,12 +728,12 @@ and how the winner of each roll is determined.</p>
 </div>
 <p>So the predicted results are very different!</p>
 <div class="dropdown admonition">
-<p class="admonition-title">Why were the estimates so different? </p>
+<p class="admonition-title">Why were the estimates so different?</p>
 <p>The frequentist evaluated the probability of Bob winning, <span class="math notranslate nohighlight">\(p(B|\alpha,D,I)\)</span> at the peak value of the weighting probability (maximum likelihood estimate), while the Bayesian <em>integrated</em> over that pdf. Because the pdf is very broad and asymmetric, these gave quite different answers.</p>
 </div>
 <div class="dropdown admonition">
 <p class="admonition-title">How do we check who is correct?</p>
-<p>In many cases we can do a Monte Carlo simulation (at least to validate test cases). See the notebook <a class="reference internal" href="../../notebooks/Why_Bayes_is_better/bayes_billiard.html"><span class="doc std std-doc">A Bayesian Billiard game</span></a> for an implementation of this simulation. The result? Bayes wins!!!</p>
+<p>In many cases we can do a Monte Carlo simulation (at least to validate test cases). See the notebook <a class="reference internal" href="../../notebooks/Why_Bayes_is_better/bayes_billiard.html"><span class="std std-doc">A Bayesian Billiard game</span></a> for an implementation of this simulation. The result? Bayes wins!!!</p>
 </div>
 <p>Discussion points:</p>
 <ul class="simple">
@@ -737,7 +744,7 @@ But it is not easy to see how to proceed to take into account the need to sum ov
 </ul>
 <div class="admonition-python-aside-how-do-we-understand-the-monte-carlo-check admonition">
 <p class="admonition-title">Python aside: How do we understand the Monte Carlo check?</p>
-<p>The <a class="reference internal" href="../../notebooks/Why_Bayes_is_better/bayes_billiard.html"><span class="doc std std-doc">A Bayesian Billiard game</span></a> notebook implements a Monte Carlo simulation of the Bayesian Billiard Game to find out empirically what the odds of Bob winning are.
+<p>The <a class="reference internal" href="../../notebooks/Why_Bayes_is_better/bayes_billiard.html"><span class="std std-doc">A Bayesian Billiard game</span></a> notebook implements a Monte Carlo simulation of the Bayesian Billiard Game to find out empirically what the odds of Bob winning are.
 The Python code to do this may appear quite obscure to you.
 Let’s step through how we think of formulating the task and how it is carried out using Python methods.
 <em>[Note for future upgrades: code it with a Pandas dataframe.]</em></p>
@@ -925,6 +932,7 @@ Let’s step through how we think of formulating the task and how it is carried 
               
                 <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
 
+
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
     <i class="fa-solid fa-list"></i> Contents
@@ -990,8 +998,8 @@ By Dick Furnstahl and Daniel Phillips
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../../_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
-<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
+  <script src="../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
 
   <footer class="bd-footer">
   </footer>

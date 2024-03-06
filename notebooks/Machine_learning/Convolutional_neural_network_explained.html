@@ -1,15 +1,14 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="" >
+<html lang="en" data-content_root="../../" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>9.10. What is a convolutional neural network? &#8212; Learning from data</title>
+    <title>9.9. What is a convolutional neural network? &#8212; Learning from data</title>
   
   
   
@@ -19,59 +18,55 @@
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
-<link href="../../_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
-<link href="../../_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link href="../../_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
 
   
-  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+  <link href="../../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
-    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/myadmonitions.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+    <link rel="stylesheet" type="text/css" href="../../_static/myadmonitions.css?v=f87e7f18" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
-<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
-  <script src="../../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="../../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
 
-    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
-    <script src="../../_static/jquery.js"></script>
-    <script src="../../_static/underscore.js"></script>
-    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../../_static/doctools.js"></script>
-    <script src="../../_static/clipboard.min.js"></script>
-    <script src="../../_static/copybutton.js"></script>
-    <script src="../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=888ff710"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../../_static/togglebutton.js"></script>
+    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../../_static/design-tabs.js"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
-    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script src="../../_static/design-tabs.js?v=36754332"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>window.MathJax = {"tex": {"macros": {"N": ["\\mathbb{N}"], "Z": ["\\mathbb{Z}"], "floor": ["\\lfloor#1\\rfloor", 1], "bmat": ["\\left[\\begin{array}"], "emat": ["\\end{array}\\right]"], "alphavec": ["\\boldsymbol{\\alpha}"], "muvec": ["\\boldsymbol{\\mu}"], "phivec": ["\\boldsymbol{\\phi}"], "sigmavec": ["\\boldsymbol{\\sigma}"], "Sigmavec": ["\\boldsymbol{\\Sigma}"], "thetavec": ["\\boldsymbol{\\theta}"], "thetavechat": ["\\widehat\\thetavec"], "avec": ["\\boldsymbol{a}"], "Bvec": ["\\boldsymbol{B}"], "fvec": ["\\boldsymbol{f}"], "mvec": ["\\boldsymbol{m}"], "qvec": ["\\boldsymbol{q}"], "rvec": ["\\boldsymbol{r}"], "uvec": ["\\boldsymbol{u}"], "wvec": ["\\boldsymbol{w}"], "xvec": ["\\boldsymbol{x}"], "yvec": ["\\boldsymbol{y}"], "Lra": ["\\Longrightarrow"], "abar": ["\\overline a"], "Xbar": ["\\overline X"], "alphahat": ["\\widehat\\alpha"], "Hhat": ["\\hat H"], "yth": ["y_{\\text{th}}"], "yexp": ["y_{\\text{exp}}"], "ym": ["y_{\\text{m}}"], "gs": ["{0}"]}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'notebooks/Machine_learning/Convolutional_neural_network_explained';</script>
-    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
+    <link rel="icon" href="../../_static/favicon.ico"/>
     <link rel="author" title="About these documents" href="../../about.html" />
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="10. PCA, SVD, and all that" href="../../content/SVD/svd.html" />
-    <link rel="prev" title="9.9. Variational Inference: Bayesian Neural Networks" href="demo-Bayesian_neural_networks_tif285.html" />
+    <link rel="prev" title="9.8. Variational Inference: Bayesian Neural Networks" href="demo-Bayesian_neural_networks_tif285.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -81,10 +76,9 @@ const thebe_selector_output = ".output, .cell_output"
 
   
   
-  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
   
   <div id="pst-scroll-pixel-helper"></div>
-
   
   <button type="button" class="btn rounded-pill" id="pst-back-to-top">
     <i class="fa-solid fa-arrow-up"></i>
@@ -125,11 +119,14 @@ const thebe_selector_output = ".output, .cell_output"
 </form></div>
   </div>
   
-    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
-    </nav>
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+    </header>
   
+
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
+      
+      
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -163,7 +160,18 @@ const thebe_selector_output = ".output, .cell_output"
   
   
 </a></div>
-        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
@@ -268,15 +276,14 @@ const thebe_selector_output = ".output, .cell_output"
 </li>
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="../../content/Machine_learning/machine_learning.html">9. Machine learning: Bayesian methods</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-9"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../../content/Machine_learning/lecture_22.html">9.1. Lecture 22</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Bayesian_optimization.html">9.2. Bayesian Optimization</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../content/Machine_learning/lecture_23.html">9.3. Lecture 23</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Neural_networks_explained.html">9.4. What Are Neural Networks?</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Forssen_tif285_NeuralNet.html">9.5. Neural networks</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Forssen_tif285_demo-NeuralNet.html">9.6. Neural network classifier demonstration</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Bayesian_neural_networks_tif285.html">9.7. Bayesian neural networks</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../content/Machine_learning/lecture_24.html">9.8. Lecture 24</a></li>
-<li class="toctree-l2"><a class="reference internal" href="demo-Bayesian_neural_networks_tif285.html">9.9. Variational Inference: Bayesian Neural Networks</a></li>
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">9.10. What is a convolutional neural network?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../content/Machine_learning/lecture_23.html">9.2. Lecture 23</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Neural_networks_explained.html">9.3. What Are Neural Networks?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Forssen_tif285_NeuralNet.html">9.4. Neural networks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Forssen_tif285_demo-NeuralNet.html">9.5. Neural network classifier demonstration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Bayesian_neural_networks_tif285.html">9.6. Bayesian neural networks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../content/Machine_learning/lecture_24.html">9.7. Lecture 24</a></li>
+<li class="toctree-l2"><a class="reference internal" href="demo-Bayesian_neural_networks_tif285.html">9.8. Variational Inference: Bayesian Neural Networks</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">9.9. What is a convolutional neural network?</a></li>
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../content/SVD/svd.html">10. PCA, SVD, and all that</a><input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-10"><i class="fa-solid fa-chevron-down"></i></label><ul>
@@ -585,10 +592,10 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article" role="main">
+                <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="what-is-a-convolutional-neural-network">
-<h1><span class="section-number">9.10. </span>What is a convolutional neural network?<a class="headerlink" href="#what-is-a-convolutional-neural-network" title="Permalink to this heading">#</a></h1>
+<h1><span class="section-number">9.9. </span>What is a convolutional neural network?<a class="headerlink" href="#what-is-a-convolutional-neural-network" title="Link to this heading">#</a></h1>
 <p><strong>Notes by Alberto Garcia (2021)</strong></p>
 <p>A convolutional neural network (CNN) is a machine learning algorithm that is useful for classifying images. It takes in an image as an input, assigns importance (through weights) to various features of the image such as objects, and learns how to differentiate between the images.</p>
 <a class="reference internal image-reference" href="../../_images/CNN_example.jpg"><img alt="../../_images/CNN_example.jpg" src="../../_images/CNN_example.jpg" style="width: 600px;" /></a>
@@ -604,7 +611,7 @@ document.write(`
 </li>
 </ul>
 <section id="why-are-traditional-neural-networks-not-enough">
-<h2>Why are traditional neural networks not enough?<a class="headerlink" href="#why-are-traditional-neural-networks-not-enough" title="Permalink to this heading">#</a></h2>
+<h2>Why are traditional neural networks not enough?<a class="headerlink" href="#why-are-traditional-neural-networks-not-enough" title="Link to this heading">#</a></h2>
 <p>Although neural networks (NNs) are a great tool for making predictions, there are a few reasons why it is not wise to use NNs when dealing with images:</p>
 <ul class="simple">
 <li><p>Multi-layer perceptrons use one perceptron per input. For images, one input would correspond to one pixel. If the image is 224x224, that is ~50,000 inputs. If the image is in color, that is x3 pixels, so 224x224x3 ~150,000. This means we’ll have ~150,000 weights per neuron that need to be trained…can lead to overfitting and slow training process.</p></li>
@@ -612,7 +619,7 @@ document.write(`
 </ul>
 </section>
 <section id="why-use-convolutional-neural-networks">
-<h2>Why use convolutional neural networks?<a class="headerlink" href="#why-use-convolutional-neural-networks" title="Permalink to this heading">#</a></h2>
+<h2>Why use convolutional neural networks?<a class="headerlink" href="#why-use-convolutional-neural-networks" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p>The influence of neighboring pixels is analyzed by something called a filter. This serves in reducing the dimensions of the weights by picking the important overall feature in sections of the image.</p></li>
 <li><p>The pooling layer also serves as a way to reduce the dimensions.</p></li>
@@ -620,9 +627,9 @@ document.write(`
 </ul>
 </section>
 <section id="different-layers-of-a-cnn">
-<h2>Different layers of a CNN<a class="headerlink" href="#different-layers-of-a-cnn" title="Permalink to this heading">#</a></h2>
+<h2>Different layers of a CNN<a class="headerlink" href="#different-layers-of-a-cnn" title="Link to this heading">#</a></h2>
 <section id="convolutional-layer">
-<h3>Convolutional layer:<a class="headerlink" href="#convolutional-layer" title="Permalink to this heading">#</a></h3>
+<h3>Convolutional layer:<a class="headerlink" href="#convolutional-layer" title="Link to this heading">#</a></h3>
 <p>This layer is used to extract features from the input image by use of a filter <strong>whose elements are weights that undergo a training process</strong>. These filters are typically 3x3 or 5x5 matrices that get convoluted with the image pixels. Even number filters are avoided since we want our feature maps to end up with a center cell. If it doesn’t there can be problems moving to the next layer. <strong>We will discuss greyscale images</strong>.</p>
 <ul class="simple">
 <li><p>The size of the filters are much smaller than the size of the input image. The process of obtaining feature maps involves taking the scalar (dot) product between the image and the filter. By applying the same filter to an image, it allows the filter to discover features anywhere in that image (the translation invariance that was mentioned above). We can conclude that the filter allows us to see if a feature is present as opposed to where it is in the image.</p></li>
@@ -683,7 +690,7 @@ h_{\mbox{out}} = f \big( \vec{X}_{\mbox{train}} \cdot \vec{W} + b_0 w_0 \big).
 </ul>
 </section>
 <section id="how-do-we-choose-parameters-for-the-convolutional-layer">
-<h3>How do we choose parameters for the convolutional layer?<a class="headerlink" href="#how-do-we-choose-parameters-for-the-convolutional-layer" title="Permalink to this heading">#</a></h3>
+<h3>How do we choose parameters for the convolutional layer?<a class="headerlink" href="#how-do-we-choose-parameters-for-the-convolutional-layer" title="Link to this heading">#</a></h3>
 <p>Examples:<br>
 <strong>network.add(layers.Conv2D(32,(3,3), activation=‘relu’, input_shape=(64,64,3)))</strong> <br>
 <strong>network.add(layers.Conv2D(64, (5,5), activation=‘relu’))</strong> <br></p>
@@ -735,7 +742,7 @@ h_{\mbox{out}} = f \big( \vec{X}_{\mbox{train}} \cdot \vec{W} + b_0 w_0 \big).
 </ul>
 </section>
 <section id="activation-function">
-<h3>Activation function<a class="headerlink" href="#activation-function" title="Permalink to this heading">#</a></h3>
+<h3>Activation function<a class="headerlink" href="#activation-function" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>Once we have a stack of feature maps, each value of the map is passed through a function known as the activation function. It is important to choose a non-linear activation function since the data one is passing into the network is usually non-linear. This will allow for the CNN to generalize better.</p></li>
 <li><p>A function is chosen in order to set boundaries on the values passed through. This forces the values into a certain range and reduces the chances of the weights blowing up. The most used activation function in CNN (according to multiple articles) is the ReLU (rectified linear unit). The main reason for their usage is that they are cheap computationally and they throw out negative numbers. You’ll either get a <span class="math notranslate nohighlight">\(0\)</span> or <span class="math notranslate nohighlight">\(1\)</span> when computing the gradients, which make the training portion a lot faster compared to using sigmoid or tanh.</p></li>
@@ -758,7 +765,7 @@ x, \quad \mbox{for} \quad x \ge 0
 </ul>
 </section>
 <section id="pooling-layer">
-<h3>Pooling layer<a class="headerlink" href="#pooling-layer" title="Permalink to this heading">#</a></h3>
+<h3>Pooling layer<a class="headerlink" href="#pooling-layer" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>The function of the pooling layer is to reduce the size of the feature maps in order to reduce the amount of parameters needed, thus decreasing the computational time. These layers will operate on each feature map independently. Values from the feature maps are selected and are used as inputs for the subsequent layers. There are different ways to select these values. The common way of doing it is max pooling. This grabs the largest value using a pre-determined size. In addition, you can pick a stride. This tells the filter how to move across the feature map. For example, let’s consider a pooling layer with size 2x2 and stride 2</p></li>
 </ul>
@@ -782,13 +789,13 @@ x, \quad \mbox{for} \quad x \ge 0
 \end{split}\]</div>
 </section>
 <section id="how-do-we-choose-the-size-of-the-pooling-layer">
-<h3>How do we choose the size of the pooling layer?<a class="headerlink" href="#how-do-we-choose-the-size-of-the-pooling-layer" title="Permalink to this heading">#</a></h3>
+<h3>How do we choose the size of the pooling layer?<a class="headerlink" href="#how-do-we-choose-the-size-of-the-pooling-layer" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>The size of the pooling layer is usually chosen to be 2x2 or 3x3. The reason is because the point of the pooling layer is to reduce the size of the feature maps. As we increase our pooling size, we decrease the resolution. That’s why it is best to stick with 2x2 or 3x3 pooling size to not lose too many details.</p></li>
 </ul>
 </section>
 <section id="different-types-of-pooling">
-<h3>Different types of pooling<a class="headerlink" href="#different-types-of-pooling" title="Permalink to this heading">#</a></h3>
+<h3>Different types of pooling<a class="headerlink" href="#different-types-of-pooling" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>There are three popular ways of pooling: max, min, and average. Max pooling takes the maximum value in the matrix sub-block and throws away the rest. Min pooling takes the minimum value and throws away the rest. Average pooling averages all the values and takes that as the element. Which is better to use?</p>
 <ol class="arabic simple">
@@ -818,13 +825,13 @@ x, \quad \mbox{for} \quad x \ge 0
 </ul>
 </section>
 <section id="multiple-color-channels">
-<h3>Multiple color channels<a class="headerlink" href="#multiple-color-channels" title="Permalink to this heading">#</a></h3>
+<h3>Multiple color channels<a class="headerlink" href="#multiple-color-channels" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>So far we have only discussed a greyscale picture. All pictures are three-dimenional inputs since they have pixels along the image and a color. For the case of greyscale the dimensions would be (for example) 32x32x1. This means it is effectively two-dimensional. When we have an image that is in color, the filter is three-dimensional, i.e. 32x32x3. So the CNN operate over some volume. This means that the filter will also be three-dimensional, as well as the rest of the pooling layer.</p></li>
 </ul>
 </section>
 <section id="flattening-layer">
-<h3>Flattening layer<a class="headerlink" href="#flattening-layer" title="Permalink to this heading">#</a></h3>
+<h3>Flattening layer<a class="headerlink" href="#flattening-layer" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>The flatten layer prepares a vector to be passed into the fully connected layer by transforming a two-dimensional matrix into a vector that is then fed into the dense layers. For example,</p></li>
 </ul>
@@ -851,13 +858,13 @@ x, \quad \mbox{for} \quad x \ge 0
 </ul>
 </section>
 <section id="dense-layer">
-<h3>Dense layer<a class="headerlink" href="#dense-layer" title="Permalink to this heading">#</a></h3>
+<h3>Dense layer<a class="headerlink" href="#dense-layer" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>A dense layer is another phrase for a fully connected layer. This layer is a fully connected neural network. Each neuron in the network receives an input from all the neurons present in the previous layer (hence why they are called dense). A dense layer provides features from all the combinations of features from the previous layer.</p></li>
 </ul>
 </section>
 <section id="output-layer">
-<h3>Output layer<a class="headerlink" href="#output-layer" title="Permalink to this heading">#</a></h3>
+<h3>Output layer<a class="headerlink" href="#output-layer" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>This layer outputs the prediction. The function used in classification problems is usually the Softmax function. Softmax makes output sum to one so we obtain probabilities.</p></li>
 </ul>
@@ -868,7 +875,7 @@ x, \quad \mbox{for} \quad x \ge 0
 </section>
 </section>
 <section id="categorical-crossentropy-loss">
-<h2>Categorical crossentropy loss<a class="headerlink" href="#categorical-crossentropy-loss" title="Permalink to this heading">#</a></h2>
+<h2>Categorical crossentropy loss<a class="headerlink" href="#categorical-crossentropy-loss" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p>Defined as</p></li>
 </ul>
@@ -958,7 +965,7 @@ x, \quad \mbox{for} \quad x \ge 0
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><span class="section-number">9.9. </span>Variational Inference: Bayesian Neural Networks</p>
+        <p class="prev-next-title"><span class="section-number">9.8. </span>Variational Inference: Bayesian Neural Networks</p>
       </div>
     </a>
     <a class="right-next"
@@ -978,6 +985,7 @@ x, \quad \mbox{for} \quad x \ge 0
             
               
                 <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
 
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
@@ -1049,8 +1057,8 @@ By Dick Furnstahl and Daniel Phillips
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../../_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
-<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
+  <script src="../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
 
   <footer class="bd-footer">
   </footer>

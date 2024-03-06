@@ -1,13 +1,12 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="" >
+<html lang="en" data-content_root="../../" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>1.4. Lecture 2 &#8212; Learning from data</title>
   
@@ -19,54 +18,50 @@
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
-<link href="../../_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
-<link href="../../_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link href="../../_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
 
   
-  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+  <link href="../../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
-    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/myadmonitions.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+    <link rel="stylesheet" type="text/css" href="../../_static/myadmonitions.css?v=f87e7f18" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
-<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
-  <script src="../../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="../../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
 
-    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
-    <script src="../../_static/jquery.js"></script>
-    <script src="../../_static/underscore.js"></script>
-    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../../_static/doctools.js"></script>
-    <script src="../../_static/clipboard.min.js"></script>
-    <script src="../../_static/copybutton.js"></script>
-    <script src="../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=888ff710"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../../_static/togglebutton.js"></script>
+    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../../_static/design-tabs.js"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
-    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script src="../../_static/design-tabs.js?v=36754332"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>window.MathJax = {"tex": {"macros": {"N": ["\\mathbb{N}"], "Z": ["\\mathbb{Z}"], "floor": ["\\lfloor#1\\rfloor", 1], "bmat": ["\\left[\\begin{array}"], "emat": ["\\end{array}\\right]"], "alphavec": ["\\boldsymbol{\\alpha}"], "muvec": ["\\boldsymbol{\\mu}"], "phivec": ["\\boldsymbol{\\phi}"], "sigmavec": ["\\boldsymbol{\\sigma}"], "Sigmavec": ["\\boldsymbol{\\Sigma}"], "thetavec": ["\\boldsymbol{\\theta}"], "thetavechat": ["\\widehat\\thetavec"], "avec": ["\\boldsymbol{a}"], "Bvec": ["\\boldsymbol{B}"], "fvec": ["\\boldsymbol{f}"], "mvec": ["\\boldsymbol{m}"], "qvec": ["\\boldsymbol{q}"], "rvec": ["\\boldsymbol{r}"], "uvec": ["\\boldsymbol{u}"], "wvec": ["\\boldsymbol{w}"], "xvec": ["\\boldsymbol{x}"], "yvec": ["\\boldsymbol{y}"], "Lra": ["\\Longrightarrow"], "abar": ["\\overline a"], "Xbar": ["\\overline X"], "alphahat": ["\\widehat\\alpha"], "Hhat": ["\\hat H"], "yth": ["y_{\\text{th}}"], "yexp": ["y_{\\text{exp}}"], "ym": ["y_{\\text{m}}"], "gs": ["{0}"]}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'content/Basics/lecture_02';</script>
-    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
+    <link rel="icon" href="../../_static/favicon.ico"/>
     <link rel="author" title="About these documents" href="../../about.html" />
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
@@ -81,10 +76,9 @@ const thebe_selector_output = ".output, .cell_output"
 
   
   
-  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
   
   <div id="pst-scroll-pixel-helper"></div>
-
   
   <button type="button" class="btn rounded-pill" id="pst-back-to-top">
     <i class="fa-solid fa-arrow-up"></i>
@@ -125,11 +119,14 @@ const thebe_selector_output = ".output, .cell_output"
 </form></div>
   </div>
   
-    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
-    </nav>
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+    </header>
   
+
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
+      
+      
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -163,7 +160,18 @@ const thebe_selector_output = ".output, .cell_output"
   
   
 </a></div>
-        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
@@ -268,15 +276,14 @@ const thebe_selector_output = ".output, .cell_output"
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../Machine_learning/machine_learning.html">9. Machine learning: Bayesian methods</a><input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-9"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../Machine_learning/lecture_22.html">9.1. Lecture 22</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../notebooks/Machine_learning/Bayesian_optimization.html">9.2. Bayesian Optimization</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../Machine_learning/lecture_23.html">9.3. Lecture 23</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../notebooks/Machine_learning/Neural_networks_explained.html">9.4. What Are Neural Networks?</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../notebooks/Machine_learning/Forssen_tif285_NeuralNet.html">9.5. Neural networks</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../notebooks/Machine_learning/Forssen_tif285_demo-NeuralNet.html">9.6. Neural network classifier demonstration</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../notebooks/Machine_learning/Bayesian_neural_networks_tif285.html">9.7. Bayesian neural networks</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../Machine_learning/lecture_24.html">9.8. Lecture 24</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../notebooks/Machine_learning/demo-Bayesian_neural_networks_tif285.html">9.9. Variational Inference: Bayesian Neural Networks</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../notebooks/Machine_learning/Convolutional_neural_network_explained.html">9.10. What is a convolutional neural network?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Machine_learning/lecture_23.html">9.2. Lecture 23</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../notebooks/Machine_learning/Neural_networks_explained.html">9.3. What Are Neural Networks?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../notebooks/Machine_learning/Forssen_tif285_NeuralNet.html">9.4. Neural networks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../notebooks/Machine_learning/Forssen_tif285_demo-NeuralNet.html">9.5. Neural network classifier demonstration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../notebooks/Machine_learning/Bayesian_neural_networks_tif285.html">9.6. Bayesian neural networks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Machine_learning/lecture_24.html">9.7. Lecture 24</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../notebooks/Machine_learning/demo-Bayesian_neural_networks_tif285.html">9.8. Variational Inference: Bayesian Neural Networks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../notebooks/Machine_learning/Convolutional_neural_network_explained.html">9.9. What is a convolutional neural network?</a></li>
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../SVD/svd.html">10. PCA, SVD, and all that</a><input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-10"><i class="fa-solid fa-chevron-down"></i></label><ul>
@@ -528,21 +535,21 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article" role="main">
+                <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="lecture-2">
-<h1><span class="section-number">1.4. </span>Lecture 2<a class="headerlink" href="#lecture-2" title="Permalink to this heading">#</a></h1>
+<h1><span class="section-number">1.4. </span>Lecture 2<a class="headerlink" href="#lecture-2" title="Link to this heading">#</a></h1>
 <section id="follow-ups-to-lecture-1-notebooks">
-<h2>Follow-ups to Lecture 1 notebooks<a class="headerlink" href="#follow-ups-to-lecture-1-notebooks" title="Permalink to this heading">#</a></h2>
+<h2>Follow-ups to Lecture 1 notebooks<a class="headerlink" href="#follow-ups-to-lecture-1-notebooks" title="Link to this heading">#</a></h2>
 <ul>
-<li><p>Notes on filling in the table in <a class="reference internal" href="../../notebooks/Basics/simple_sum_product_rule.html"><span class="doc std std-doc">Checking the sum and product rules, and their consequences</span></a> using Python:</p>
+<li><p>Notes on filling in the table in <a class="reference internal" href="../../notebooks/Basics/simple_sum_product_rule.html"><span class="std std-doc">Checking the sum and product rules, and their consequences</span></a> using Python:</p>
 <ul class="simple">
 <li><p>fstring: <code class="docutils literal notranslate"><span class="pre">print(f'ratio</span> <span class="pre">=</span> <span class="pre">{ratio:.3f}')</span></code> or <code class="docutils literal notranslate"><span class="pre">np.around(number,digits)</span></code></p></li>
 <li><p>How do you use numpy arrays?</p></li>
 <li><p>experts: write function to work with either ints or floats or numpy arrays</p></li>
 </ul>
 </li>
-<li><p>Further takeaways from <a class="reference internal" href="../../notebooks/Basics/Exploring_pdfs.html"><span class="doc std std-doc">Exploring PDFs</span></a> to discuss in class</p>
+<li><p>Further takeaways from <a class="reference internal" href="../../notebooks/Basics/Exploring_pdfs.html"><span class="std std-doc">Exploring PDFs</span></a> to discuss in class</p>
 <ul>
 <li><p>Bayesian confidence intervals: how are they defined?</p></li>
 <li><p>various “point estimates” (mean, mode, median); which is “best” to use?</p></li>
@@ -563,7 +570,7 @@ document.write(`
 </ul>
 </section>
 <section id="bayesian-updating-via-bayes-theorem">
-<h2>Bayesian updating via Bayes’ theorem<a class="headerlink" href="#bayesian-updating-via-bayes-theorem" title="Permalink to this heading">#</a></h2>
+<h2>Bayesian updating via Bayes’ theorem<a class="headerlink" href="#bayesian-updating-via-bayes-theorem" title="Link to this heading">#</a></h2>
 <p>Consider Bayes’ theorem for the case where we seek the pdf of  parameters <span class="math notranslate nohighlight">\(\thetavec\)</span> contingent on some data.</p>
 <div class="math notranslate nohighlight">
 \[
@@ -583,8 +590,8 @@ document.write(`
 <p>Sometimes particular notation is used for the prior and likelihood. The prior is written with <span class="math notranslate nohighlight">\(\pi\)</span>: <span class="math notranslate nohighlight">\(p(\thetavec,I) \rightarrow \pi(\thetavec,I)\)</span> and the likelihood with <span class="math notranslate nohighlight">\(\mathcal{L}\)</span>: <span class="math notranslate nohighlight">\(p(\text{data}|\thetavec,I) \rightarrow \mathcal{L}(\text{data}|\thetavec,I)\)</span>.</p>
 </div>
 <section id="coin-tossing-example-to-illustrate-updating">
-<h3>Coin tossing example to illustrate updating<a class="headerlink" href="#coin-tossing-example-to-illustrate-updating" title="Permalink to this heading">#</a></h3>
-<p>The notebook is <a class="reference internal" href="../../notebooks/Basics/Bayesian_updating_coinflip_interactive.html"><span class="doc std std-doc">Bayesian_updating_coinflip_interactive.ipynb</span></a>.</p>
+<h3>Coin tossing example to illustrate updating<a class="headerlink" href="#coin-tossing-example-to-illustrate-updating" title="Link to this heading">#</a></h3>
+<p>The notebook is <a class="reference internal" href="../../notebooks/Basics/Bayesian_updating_coinflip_interactive.html"><span class="std std-doc">Bayesian_updating_coinflip_interactive.ipynb</span></a>.</p>
 <p><strong>Storyline:</strong>
 We are observing successive flips of a coin (or any binary process). There is a definite true probability of getting heads <span class="math notranslate nohighlight">\((p_h)_{\text{true}}\)</span>, but we don’t know what the values is, other than it is between 0 and 1.</p>
 <ul class="simple">
@@ -621,7 +628,7 @@ We are observing successive flips of a coin (or any binary process). There is a 
 <p class="admonition-title">Class exercises</p>
 <p>Tell your neighbor how to interpret each of the priors</p>
 <div class="dropdown admonition">
-<p class="admonition-title">Possible answers </p>
+<p class="admonition-title">Possible answers</p>
 <ul class="simple">
 <li><p>uniform prior: any probability is equally likely. Is this <em>uninformative</em>? (More later!)</p></li>
 <li><p>centered prior (informative): we have reason to believe the coin is more-or-less fair.</p></li>
@@ -679,12 +686,12 @@ We are observing successive flips of a coin (or any binary process). There is a 
 </div>
 <p>The likelihood for a more general <span class="math notranslate nohighlight">\(p_h\)</span> is the binomial distribution:</p>
 <div class="math notranslate nohighlight" id="equation-eq-binomial-likelihood">
-<span class="eqno">(1.6)<a class="headerlink" href="#equation-eq-binomial-likelihood" title="Permalink to this equation">#</a></span>\[
+<span class="eqno">(1.6)<a class="headerlink" href="#equation-eq-binomial-likelihood" title="Link to this equation">#</a></span>\[
    p(R|N,p_h) = {N \choose R} (p_h)^R (1 - p_h)^{N-R}
 \]</div>
 <p>But we want to know about <span class="math notranslate nohighlight">\(p_h\)</span>, so we actually want the pdf the other way around: <span class="math notranslate nohighlight">\(p(p_h|R,N)\)</span>. Bayes says</p>
 <div class="math notranslate nohighlight" id="equation-eq-binomial-bayes">
-<span class="eqno">(1.7)<a class="headerlink" href="#equation-eq-binomial-bayes" title="Permalink to this equation">#</a></span>\[
+<span class="eqno">(1.7)<a class="headerlink" href="#equation-eq-binomial-bayes" title="Link to this equation">#</a></span>\[
   p(p_h | R,N) \propto p(R|N,p_h) \cdot p(p_h)
 \]</div>
 <ul class="simple">
@@ -704,16 +711,16 @@ We are observing successive flips of a coin (or any binary process). There is a 
 </ul>
 </section>
 <section id="case-i-uniform-flat-prior">
-<h3>Case I: uniform (flat) prior<a class="headerlink" href="#case-i-uniform-flat-prior" title="Permalink to this heading">#</a></h3>
+<h3>Case I: uniform (flat) prior<a class="headerlink" href="#case-i-uniform-flat-prior" title="Link to this heading">#</a></h3>
 <p>Start with <a class="reference internal" href="#equation-eq-binomial-bayes">(1.7)</a> but with the normalization <span class="math notranslate nohighlight">\(\mathcal{N}\)</span> included (so now an equality):</p>
 <div class="math notranslate nohighlight" id="equation-eq-coinflip-posterior">
-<span class="eqno">(1.8)<a class="headerlink" href="#equation-eq-coinflip-posterior" title="Permalink to this equation">#</a></span>\[
+<span class="eqno">(1.8)<a class="headerlink" href="#equation-eq-coinflip-posterior" title="Link to this equation">#</a></span>\[
  \Longrightarrow\quad p(p_h| R, N, I) = \mathcal{N} p(R|N,p_h) p(p_h)
 \]</div>
 <p>where we will suppress the “<span class="math notranslate nohighlight">\(I\)</span>” going forward.
 But</p>
 <div class="math notranslate nohighlight" id="equation-eq-coinflip-posterior-norm">
-<span class="eqno">(1.9)<a class="headerlink" href="#equation-eq-coinflip-posterior-norm" title="Permalink to this equation">#</a></span>\[
+<span class="eqno">(1.9)<a class="headerlink" href="#equation-eq-coinflip-posterior-norm" title="Link to this equation">#</a></span>\[
 \begin{align}
  \int_0^1 dp_h \, p(p_h|R,N) &amp;= 1 \quad \Longrightarrow \quad 
          \mathcal{N}\frac{\Gamma(1+N-R)\Gamma(1+R)}{\Gamma(1+N)} = 1
@@ -722,31 +729,31 @@ But</p>
 <div class="admonition-recall-beta-function admonition">
 <p class="admonition-title">Recall Beta function</p>
 <div class="math notranslate nohighlight" id="equation-eq-beta-function">
-<span class="eqno">(1.10)<a class="headerlink" href="#equation-eq-beta-function" title="Permalink to this equation">#</a></span>\[
+<span class="eqno">(1.10)<a class="headerlink" href="#equation-eq-beta-function" title="Link to this equation">#</a></span>\[
   B(x,y) = \int_0^1 t^{x-1} (1-t)^{y-1} \, dt = \frac{\Gamma(x)\Gamma(y)}{\Gamma(x+y)}
   \ \  \mbox{for } \text{Re}(x,y) &gt; 0
 \]</div>
 <p>and <span class="math notranslate nohighlight">\(\Gamma(x) = (x-1)!\)</span> for integers.</p>
 </div>
 <div class="math notranslate nohighlight" id="equation-eq-beta-normalization">
-<span class="eqno">(1.11)<a class="headerlink" href="#equation-eq-beta-normalization" title="Permalink to this equation">#</a></span>\[
+<span class="eqno">(1.11)<a class="headerlink" href="#equation-eq-beta-normalization" title="Link to this equation">#</a></span>\[
   \Longrightarrow\quad \mathcal{N} = \frac{\Gamma(1+N)}{\Gamma(1+N-R)\Gamma(1+R)}
 \]</div>
 <p>and so evaluating the posterior for <span class="math notranslate nohighlight">\(p_h\)</span> for new values of <span class="math notranslate nohighlight">\(R\)</span> and <span class="math notranslate nohighlight">\(N\)</span> is direct: substitute <a class="reference internal" href="#equation-eq-beta-normalization">(1.11)</a> into <a class="reference internal" href="#equation-eq-coinflip-posterior">(1.8)</a>.
 If we want the unnormalized result with a uniform prior (meaning we ignore the normalization constant <span class="math notranslate nohighlight">\(\mathcal{N}\)</span> that simply gives an overall scaling of the distribution), then we just use the likelihood <a class="reference internal" href="#equation-eq-binomial-likelihood">(1.6)</a> since <span class="math notranslate nohighlight">\(p(p_h) = 1\)</span> for this case.</p>
 </section>
 <section id="case-ii-conjugate-prior">
-<h3>Case II: conjugate prior<a class="headerlink" href="#case-ii-conjugate-prior" title="Permalink to this heading">#</a></h3>
+<h3>Case II: conjugate prior<a class="headerlink" href="#case-ii-conjugate-prior" title="Link to this heading">#</a></h3>
 <p>Choosing a conjugate prior (if possible) means that the posterior will have the same form as the prior. Here if we pick a beta distribution as prior, it is conjugate with the coin-flipping likelihood. From the <a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.beta.html">scipy.stats.beta documentation</a> the beta distribution (function of <span class="math notranslate nohighlight">\(x\)</span> with parameters <span class="math notranslate nohighlight">\(a\)</span> and <span class="math notranslate nohighlight">\(b\)</span>):</p>
 <div class="math notranslate nohighlight" id="equation-eq-scipy-beta-distribution">
-<span class="eqno">(1.12)<a class="headerlink" href="#equation-eq-scipy-beta-distribution" title="Permalink to this equation">#</a></span>\[
+<span class="eqno">(1.12)<a class="headerlink" href="#equation-eq-scipy-beta-distribution" title="Link to this equation">#</a></span>\[
   f(x, a, b) = \frac{\Gamma(a+b) x^{a-1} (1-x)^{b-1}}{\Gamma(a)\Gamma(b)}
 \]</div>
 <p>where <span class="math notranslate nohighlight">\(0 \leq x \leq 1\)</span> and <span class="math notranslate nohighlight">\(a&gt;0\)</span>, <span class="math notranslate nohighlight">\(b&gt;0\)</span>.
 So <span class="math notranslate nohighlight">\(p(x|a,b) = f(x,a,b)\)</span> and our likelihood is a beta distribution <span class="math notranslate nohighlight">\(p(R,N|p_h) = f(p_h,1+R,1+N-R)\)</span> to agree with <a class="reference internal" href="#equation-eq-binomial-likelihood">(1.6)</a>.</p>
 <p>If the prior is <span class="math notranslate nohighlight">\(p(p_h|I) = f(p_h,\alpha,\beta)\)</span> with <span class="math notranslate nohighlight">\(\alpha\)</span> and <span class="math notranslate nohighlight">\(\beta\)</span> to reproduce our prior expectations (or knowledge), then by Bayes’ theorem the <em>normalized</em> posterior is</p>
 <div class="math notranslate nohighlight" id="equation-eq-coinflip-updated">
-<span class="eqno">(1.13)<a class="headerlink" href="#equation-eq-coinflip-updated" title="Permalink to this equation">#</a></span>\[\begin{split}
+<span class="eqno">(1.13)<a class="headerlink" href="#equation-eq-coinflip-updated" title="Link to this equation">#</a></span>\[\begin{split}
 \begin{align}
   p(p_h | R,N) &amp;\propto p(R |N p_h) p(p_h) \\
   &amp; \propto f(p_h,1+R,1+N-R) \times f(p_h,\alpha,\beta) \\
@@ -755,7 +762,7 @@ So <span class="math notranslate nohighlight">\(p(x|a,b) = f(x,a,b)\)</span> and
 \end{split}\]</div>
 <p>so we <em>update the prior</em> simply by changing the arguments of the beta distribution: <span class="math notranslate nohighlight">\(\alpha \rightarrow \alpha + R\)</span>, <span class="math notranslate nohighlight">\(\beta \rightarrow \beta + N-R\)</span> because the (normalized) product of two beta distributions is another beta distribution. Really easy!</p>
 <div class="admonition-check-this-against-the-code admonition">
-<p class="admonition-title">Check this against the code! </p>
+<p class="admonition-title">Check this against the code!</p>
 <p>Look in the code where the posterior is calculated and see how the beta distribution is used. Verify that <a class="reference internal" href="#equation-eq-coinflip-updated">(1.13)</a> is evaluated. Try changing the values of <span class="math notranslate nohighlight">\(\alpha\)</span> and <span class="math notranslate nohighlight">\(\beta\)</span> used in defining the prior to see the shapes.</p>
 </div>
 <div class="admonition-the-first-updates-explicitly admonition">
@@ -776,7 +783,7 @@ So <span class="math notranslate nohighlight">\(p(x|a,b) = f(x,a,b)\)</span> and
 </div>
 </section>
 <section id="first-look-at-the-radioactive-lighthouse-problem">
-<h3>First look at the radioactive lighthouse problem<a class="headerlink" href="#first-look-at-the-radioactive-lighthouse-problem" title="Permalink to this heading">#</a></h3>
+<h3>First look at the radioactive lighthouse problem<a class="headerlink" href="#first-look-at-the-radioactive-lighthouse-problem" title="Link to this heading">#</a></h3>
 <p>This is from radioactive_lighthouse_exercise.ipynb.</p>
 <p>A radioactive source emits gamma rays randomly in time but uniformly in angle. The source is at <span class="math notranslate nohighlight">\((x_0, y_0)\)</span>.</p>
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/radioactive_lighthouse_problem_figure.png"><img alt="radioactive lighthouse figure" class="bg-primary mb-1" src="../../_images/radioactive_lighthouse_problem_figure.png" style="width: 300px;" /></a>
@@ -845,6 +852,7 @@ So <span class="math notranslate nohighlight">\(p(x|a,b) = f(x,a,b)\)</span> and
               
                 <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
 
+
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
     <i class="fa-solid fa-list"></i> Contents
@@ -907,8 +915,8 @@ By Dick Furnstahl and Daniel Phillips
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../../_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
-<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
+  <script src="../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
 
   <footer class="bd-footer">
   </footer>

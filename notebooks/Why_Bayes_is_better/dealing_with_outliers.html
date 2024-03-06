@@ -1,13 +1,12 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="" >
+<html lang="en" data-content_root="../../" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>4.10. Dealing with outliers &#8212; Learning from data</title>
   
@@ -19,54 +18,50 @@
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
-<link href="../../_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
-<link href="../../_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link href="../../_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
 
   
-  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+  <link href="../../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
-    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/myadmonitions.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+    <link rel="stylesheet" type="text/css" href="../../_static/myadmonitions.css?v=f87e7f18" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
-<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
-  <script src="../../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="../../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
 
-    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
-    <script src="../../_static/jquery.js"></script>
-    <script src="../../_static/underscore.js"></script>
-    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../../_static/doctools.js"></script>
-    <script src="../../_static/clipboard.min.js"></script>
-    <script src="../../_static/copybutton.js"></script>
-    <script src="../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=888ff710"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../../_static/togglebutton.js"></script>
+    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../../_static/design-tabs.js"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
-    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script src="../../_static/design-tabs.js?v=36754332"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>window.MathJax = {"tex": {"macros": {"N": ["\\mathbb{N}"], "Z": ["\\mathbb{Z}"], "floor": ["\\lfloor#1\\rfloor", 1], "bmat": ["\\left[\\begin{array}"], "emat": ["\\end{array}\\right]"], "alphavec": ["\\boldsymbol{\\alpha}"], "muvec": ["\\boldsymbol{\\mu}"], "phivec": ["\\boldsymbol{\\phi}"], "sigmavec": ["\\boldsymbol{\\sigma}"], "Sigmavec": ["\\boldsymbol{\\Sigma}"], "thetavec": ["\\boldsymbol{\\theta}"], "thetavechat": ["\\widehat\\thetavec"], "avec": ["\\boldsymbol{a}"], "Bvec": ["\\boldsymbol{B}"], "fvec": ["\\boldsymbol{f}"], "mvec": ["\\boldsymbol{m}"], "qvec": ["\\boldsymbol{q}"], "rvec": ["\\boldsymbol{r}"], "uvec": ["\\boldsymbol{u}"], "wvec": ["\\boldsymbol{w}"], "xvec": ["\\boldsymbol{x}"], "yvec": ["\\boldsymbol{y}"], "Lra": ["\\Longrightarrow"], "abar": ["\\overline a"], "Xbar": ["\\overline X"], "alphahat": ["\\widehat\\alpha"], "Hhat": ["\\hat H"], "yth": ["y_{\\text{th}}"], "yexp": ["y_{\\text{exp}}"], "ym": ["y_{\\text{m}}"], "gs": ["{0}"]}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'notebooks/Why_Bayes_is_better/dealing_with_outliers';</script>
-    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
+    <link rel="icon" href="../../_static/favicon.ico"/>
     <link rel="author" title="About these documents" href="../../about.html" />
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
@@ -81,10 +76,9 @@ const thebe_selector_output = ".output, .cell_output"
 
   
   
-  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
   
   <div id="pst-scroll-pixel-helper"></div>
-
   
   <button type="button" class="btn rounded-pill" id="pst-back-to-top">
     <i class="fa-solid fa-arrow-up"></i>
@@ -125,11 +119,14 @@ const thebe_selector_output = ".output, .cell_output"
 </form></div>
   </div>
   
-    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
-    </nav>
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+    </header>
   
+
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
+      
+      
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -163,7 +160,18 @@ const thebe_selector_output = ".output, .cell_output"
   
   
 </a></div>
-        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
@@ -268,15 +276,14 @@ const thebe_selector_output = ".output, .cell_output"
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../content/Machine_learning/machine_learning.html">9. Machine learning: Bayesian methods</a><input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-9"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../content/Machine_learning/lecture_22.html">9.1. Lecture 22</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../Machine_learning/Bayesian_optimization.html">9.2. Bayesian Optimization</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../content/Machine_learning/lecture_23.html">9.3. Lecture 23</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../Machine_learning/Neural_networks_explained.html">9.4. What Are Neural Networks?</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../Machine_learning/Forssen_tif285_NeuralNet.html">9.5. Neural networks</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../Machine_learning/Forssen_tif285_demo-NeuralNet.html">9.6. Neural network classifier demonstration</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../Machine_learning/Bayesian_neural_networks_tif285.html">9.7. Bayesian neural networks</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../content/Machine_learning/lecture_24.html">9.8. Lecture 24</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../Machine_learning/demo-Bayesian_neural_networks_tif285.html">9.9. Variational Inference: Bayesian Neural Networks</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../Machine_learning/Convolutional_neural_network_explained.html">9.10. What is a convolutional neural network?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../content/Machine_learning/lecture_23.html">9.2. Lecture 23</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Machine_learning/Neural_networks_explained.html">9.3. What Are Neural Networks?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Machine_learning/Forssen_tif285_NeuralNet.html">9.4. Neural networks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Machine_learning/Forssen_tif285_demo-NeuralNet.html">9.5. Neural network classifier demonstration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Machine_learning/Bayesian_neural_networks_tif285.html">9.6. Bayesian neural networks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../content/Machine_learning/lecture_24.html">9.7. Lecture 24</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Machine_learning/demo-Bayesian_neural_networks_tif285.html">9.8. Variational Inference: Bayesian Neural Networks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Machine_learning/Convolutional_neural_network_explained.html">9.9. What is a convolutional neural network?</a></li>
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../content/SVD/svd.html">10. PCA, SVD, and all that</a><input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-10"><i class="fa-solid fa-chevron-down"></i></label><ul>
@@ -587,17 +594,17 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article" role="main">
+                <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="dealing-with-outliers">
-<h1><span class="section-number">4.10. </span>Dealing with outliers<a class="headerlink" href="#dealing-with-outliers" title="Permalink to this heading">#</a></h1>
+<h1><span class="section-number">4.10. </span>Dealing with outliers<a class="headerlink" href="#dealing-with-outliers" title="Link to this heading">#</a></h1>
 <p>Adapted from Christian Forssen, TALENT Course 11, June 2019, with revisions by Dick Furnstahl.</p>
 <section id="example-good-data-bad-data">
-<h2>Example: good data / bad data<a class="headerlink" href="#example-good-data-bad-data" title="Permalink to this heading">#</a></h2>
+<h2>Example: good data / bad data<a class="headerlink" href="#example-good-data-bad-data" title="Link to this heading">#</a></h2>
 <p><strong>Linear regression with data outliers</strong></p>
 <p>Adapted from the blog post <a class="reference external" href="http://jakevdp.github.io/blog/2014/06/06/frequentism-and-bayesianism-2-when-results-differ/">Frequentism and Bayesianism II: When Results Differ</a></p>
 <section id="import-python-modules">
-<h3>Import Python modules<a class="headerlink" href="#import-python-modules" title="Permalink to this heading">#</a></h3>
+<h3>Import Python modules<a class="headerlink" href="#import-python-modules" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> inline
@@ -645,8 +652,8 @@ document.write(`
 </section>
 </section>
 <section id="the-model">
-<h2>The Model<a class="headerlink" href="#the-model" title="Permalink to this heading">#</a></h2>
-<p>We follow the procedure outlined in <a class="reference internal" href="../Parameter_estimation/parameter_estimation_fitting_straight_line_I.html"><span class="doc std std-doc">parameter_estimation_fitting_straight_line_I.ipynb</span></a>.</p>
+<h2>The Model<a class="headerlink" href="#the-model" title="Link to this heading">#</a></h2>
+<p>We follow the procedure outlined in <a class="reference internal" href="../Parameter_estimation/parameter_estimation_fitting_straight_line_I.html"><span class="std std-doc">parameter_estimation_fitting_straight_line_I.ipynb</span></a>.</p>
 <p>Thus, we’re fitting a straight line to data (“<span class="math notranslate nohighlight">\(M\)</span>” here stands for “Model”),</p>
 <div class="math notranslate nohighlight">
 \[
@@ -676,8 +683,8 @@ p(y_i\mid x_i,\theta) = \frac{1}{\sqrt{2\pi\sigma_0^2}} \exp\left(\frac{-\left[y
 p(D\mid\theta, I) = \prod_{i=1}^N p(y_i\mid x_i,\theta, I)
 \]</div>
 <p>For convenience (and also for numerical accuracy) this is often expressed in terms of the log-likelihood:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-39e8de00-9865-46ba-a0d4-2505c3af571b">
-<span class="eqno">(4.11)<a class="headerlink" href="#equation-39e8de00-9865-46ba-a0d4-2505c3af571b" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-414a34ec-853f-411d-bdbd-4f21b7876ccd">
+<span class="eqno">(4.11)<a class="headerlink" href="#equation-414a34ec-853f-411d-bdbd-4f21b7876ccd" title="Permalink to this equation">#</a></span>\[\begin{align}
 \log p(D\mid\theta, I) &amp;= -\frac{1}{2}\sum_{i=1}^N\left(\log(2\pi\sigma_0^2) + \frac{\left[ y_i - y_M(x_i;\theta)\right]^2}{\sigma_0^2}\right) \\
 &amp;= \text{constant} - \sum_{i=1}^N \frac{\left[ y_i - y_M(x_i;\theta)\right]^2}{2 \sigma_0^2}
 \end{align}\]</div>
@@ -714,7 +721,7 @@ R_i = \left[ y_i - y_M(x_i;\theta) \right]/\sigma_0,
 </div>
 <p>The summation term that appears in this log-likelihood is often known as the <em>loss function</em>.  This particular loss function is known as a <em>squared loss</em> or <em>chi-squared</em>; but as you can see it can be derived from the Gaussian log likelihood.</p>
 <section id="standard-likelihood-approach">
-<h3>Standard Likelihood Approach<a class="headerlink" href="#standard-likelihood-approach" title="Permalink to this heading">#</a></h3>
+<h3>Standard Likelihood Approach<a class="headerlink" href="#standard-likelihood-approach" title="Link to this heading">#</a></h3>
 <p>We can maximize the likelihood (or, equivalently, minimize the loss) to find <span class="math notranslate nohighlight">\(\theta\)</span> within a frequentist paradigm. For a flat prior in <span class="math notranslate nohighlight">\(\theta\)</span>, the maximum of the Bayesian posterior will yield the same result. (Note that there are good arguments based on the principle of maximum entropy that a flat prior is not the best choice here; we’ll ignore that detail for now, as it’s a small effect for this problem. More later!)</p>
 <p>For simplicity, we’ll use scipy’s <code class="docutils literal notranslate"><span class="pre">optimize</span></code> package to minimize the loss (in the case of squared loss, this computation can be done more efficiently using matrix methods, but we’ll use numerical minimization for simplicity here).</p>
 <div class="cell docutils container">
@@ -756,7 +763,7 @@ R_i = \left[ y_i - y_M(x_i;\theta) \right]/\sigma_0,
 <p>Clearly the squared loss is overly sensitive to outliers, and this is causing issues with our fit. One way to address this within the frequentist paradigm is to simply adjust the loss function to be more robust.</p>
 </section>
 <section id="frequentist-correction-for-outliers-huber-loss">
-<h3>Frequentist Correction for Outliers: Huber Loss<a class="headerlink" href="#frequentist-correction-for-outliers-huber-loss" title="Permalink to this heading">#</a></h3>
+<h3>Frequentist Correction for Outliers: Huber Loss<a class="headerlink" href="#frequentist-correction-for-outliers-huber-loss" title="Link to this heading">#</a></h3>
 <p>The variety of possible loss functions is quite literally infinite, but one relatively well-motivated option is the <a class="reference external" href="http://en.wikipedia.org/wiki/Huber_loss_function">Huber loss</a>. The Huber loss defines a critical value at which the loss curve transitions from quadratic to linear. Let’s create a plot which compares the Huber loss to the standard squared loss for several critical values <span class="math notranslate nohighlight">\(c\)</span>:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -814,7 +821,7 @@ R_i = \left[ y_i - y_M(x_i;\theta) \right]/\sigma_0,
 </section>
 </section>
 <section id="bayesian-approaches-to-erratic-data">
-<h2>Bayesian approaches to erratic data<a class="headerlink" href="#bayesian-approaches-to-erratic-data" title="Permalink to this heading">#</a></h2>
+<h2>Bayesian approaches to erratic data<a class="headerlink" href="#bayesian-approaches-to-erratic-data" title="Link to this heading">#</a></h2>
 <ol class="arabic simple">
 <li><p>A conservative model (treat all data points as equally possible outliers).</p></li>
 <li><p>Good-and-bad data model.</p></li>
@@ -823,7 +830,7 @@ R_i = \left[ y_i - y_M(x_i;\theta) \right]/\sigma_0,
 </ol>
 </section>
 <section id="bayesian-approach-to-outliers-1-a-conservative-formulation">
-<h2>Bayesian Approach to Outliers #1: A conservative formulation<a class="headerlink" href="#bayesian-approach-to-outliers-1-a-conservative-formulation" title="Permalink to this heading">#</a></h2>
+<h2>Bayesian Approach to Outliers #1: A conservative formulation<a class="headerlink" href="#bayesian-approach-to-outliers-1-a-conservative-formulation" title="Link to this heading">#</a></h2>
 <p>Assuming that the specified error bars, <span class="math notranslate nohighlight">\(\sigma_0\)</span>, can be viewed as a recommended lower bound, we can construct a more conservative posterior through a marginal likelihood (that is, we introduce <span class="math notranslate nohighlight">\(\sigma\)</span> as a supplementary parameter for what might be the true error, then integrate over it):</p>
 <div class="math notranslate nohighlight">
 \[
@@ -837,8 +844,8 @@ p(\sigma|\sigma_0,I) = \frac{\sigma_0}{\sigma^2},
 \]</div>
 <p>for <span class="math notranslate nohighlight">\(\sigma \geq \sigma_0\)</span> and zero otherwise. (This enables us to do the integral up to infinity.) Conservative here means that we treat all data points with suspicion (i.e., we do not single out any points).</p>
 <p>The likelihood for a single data point <span class="math notranslate nohighlight">\(D_i\)</span>, given by <span class="math notranslate nohighlight">\((x_i,y_i,\sigma_i=\sigma_0)\)</span>, is then</p>
-<div class="amsmath math notranslate nohighlight" id="equation-2e73a7cf-9bd4-4bba-92ee-b61819b955fa">
-<span class="eqno">(4.12)<a class="headerlink" href="#equation-2e73a7cf-9bd4-4bba-92ee-b61819b955fa" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-d19b2c89-d666-43eb-89cb-79f49f9fe136">
+<span class="eqno">(4.12)<a class="headerlink" href="#equation-d19b2c89-d666-43eb-89cb-79f49f9fe136" title="Permalink to this equation">#</a></span>\[\begin{align}
 p(D_i | \theta, \sigma_0, I) &amp;= 
   \int_{\sigma_0}^{\infty} \frac{1}{\sqrt{2\pi}\sigma}
     e^{-\sigma_0^2 R_i^2/2\sigma^2}\, \frac{\sigma_0}{\sigma^2}\, d\sigma
@@ -922,7 +929,7 @@ p(D_i | \theta, \sigma_0, I) &amp;=
 <p>Now we can sample using this conservative posterior and compare to the others.</p>
 </section>
 <section id="bayesian-approach-to-outliers-2-good-and-bad-data">
-<h2>Bayesian Approach to Outliers #2: Good-and-bad data<a class="headerlink" href="#bayesian-approach-to-outliers-2-good-and-bad-data" title="Permalink to this heading">#</a></h2>
+<h2>Bayesian Approach to Outliers #2: Good-and-bad data<a class="headerlink" href="#bayesian-approach-to-outliers-2-good-and-bad-data" title="Link to this heading">#</a></h2>
 <p>See Sivia, Ch. 8.3.2</p>
 <p>In this approach, we are less pessimistic about the data.  In particular, we allow for two possibilities: <br>
 a) the datum and its error are reliable; <br>
@@ -941,7 +948,7 @@ b) the datum is bad and the error should be larger by a (large) factor <span cla
 <p>We won’t code this approach here but leave it to an exercise.  We will generalize the idea to the extreme in approach #4 below.</p>
 </section>
 <section id="bayesian-approach-to-outliers-3-the-cauchy-formulation">
-<h2>Bayesian Approach to Outliers #3: The Cauchy formulation<a class="headerlink" href="#bayesian-approach-to-outliers-3-the-cauchy-formulation" title="Permalink to this heading">#</a></h2>
+<h2>Bayesian Approach to Outliers #3: The Cauchy formulation<a class="headerlink" href="#bayesian-approach-to-outliers-3-the-cauchy-formulation" title="Link to this heading">#</a></h2>
 <p>In this approach, we assume <span class="math notranslate nohighlight">\(\sigma \approx \sigma_0\)</span> but allow it to be either narrower or wider:</p>
 <div class="math notranslate nohighlight">
 \[
@@ -975,7 +982,7 @@ b) the datum is bad and the error should be larger by a (large) factor <span cla
 </div>
 </section>
 <section id="sampling">
-<h2>Sampling<a class="headerlink" href="#sampling" title="Permalink to this heading">#</a></h2>
+<h2>Sampling<a class="headerlink" href="#sampling" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;emcee sampling (version: )&#39;</span><span class="p">,</span> <span class="n">emcee</span><span class="o">.</span><span class="n">__version__</span><span class="p">)</span>
@@ -1099,7 +1106,7 @@ done
 </div>
 </section>
 <section id="bayesian-approach-to-outliers-4-many-nuisance-parameters">
-<h2>Bayesian Approach to Outliers #4: Many nuisance parameters<a class="headerlink" href="#bayesian-approach-to-outliers-4-many-nuisance-parameters" title="Permalink to this heading">#</a></h2>
+<h2>Bayesian Approach to Outliers #4: Many nuisance parameters<a class="headerlink" href="#bayesian-approach-to-outliers-4-many-nuisance-parameters" title="Link to this heading">#</a></h2>
 <p>The Bayesian approach to accounting for outliers generally involves <em>modifying the model</em> so that the outliers are accounted for. For this data, it is abundantly clear that a simple straight line is not a good fit to our data. So let’s propose a more complicated model that has the flexibility to account for outliers. One option is to choose a mixture between a signal and a background:</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
@@ -1250,7 +1257,7 @@ g2 mean: 0.34
 </div>
 <p>The result, shown by the dark line, matches our intuition! Furthermore, the points automatically identified as outliers are the ones we would identify by hand.  For comparison, the gray lines show the two previous approaches: the simple maximum likelihood and the frequentist approach based on Huber loss.</p>
 <section id="discussion">
-<h3>Discussion<a class="headerlink" href="#discussion" title="Permalink to this heading">#</a></h3>
+<h3>Discussion<a class="headerlink" href="#discussion" title="Link to this heading">#</a></h3>
 <p>Here we’ve dived into linear regression in the presence of outliers. A typical Gaussian maximum likelihood approach fails to account for the outliers, but we were able to correct this in the frequentist paradigm by modifying the loss function, and in the Bayesian paradigm by adopting a mixture model with a large number of nuisance parameters.</p>
 <p>Both approaches have their advantages and disadvantages: the frequentist approach here is relatively straightforward and computationally efficient, but is based on the use of a loss function which is not particularly well-motivated. The Bayesian approach is well-founded and produces very nice results, but it is much more intensive in both coding time and computational time. It also requires a specification of a prior that must be motivated. The advantage is that this prior choice can be tested and compared to alternatives. While you will often see this choice described in the literature (mostly older literature now) as “subjective”, in fact it is a more objective approach because of the ability to evaluate it!</p>
 </section>
@@ -1313,6 +1320,7 @@ g2 mean: 0.34
             
               
                 <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
 
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
@@ -1386,8 +1394,8 @@ By Dick Furnstahl and Daniel Phillips
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../../_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
-<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
+  <script src="../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
 
   <footer class="bd-footer">
   </footer>

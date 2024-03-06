@@ -1,13 +1,12 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="" >
+<html lang="en" data-content_root="../../" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>6.6. PyMC Introduction &#8212; Learning from data</title>
   
@@ -19,54 +18,50 @@
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
-<link href="../../_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
-<link href="../../_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link href="../../_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
 
   
-  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+  <link href="../../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
-    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/myadmonitions.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+    <link rel="stylesheet" type="text/css" href="../../_static/myadmonitions.css?v=f87e7f18" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
-<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
-  <script src="../../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="../../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
 
-    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
-    <script src="../../_static/jquery.js"></script>
-    <script src="../../_static/underscore.js"></script>
-    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../../_static/doctools.js"></script>
-    <script src="../../_static/clipboard.min.js"></script>
-    <script src="../../_static/copybutton.js"></script>
-    <script src="../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=888ff710"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../../_static/togglebutton.js"></script>
+    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../../_static/design-tabs.js"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
-    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script src="../../_static/design-tabs.js?v=36754332"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>window.MathJax = {"tex": {"macros": {"N": ["\\mathbb{N}"], "Z": ["\\mathbb{Z}"], "floor": ["\\lfloor#1\\rfloor", 1], "bmat": ["\\left[\\begin{array}"], "emat": ["\\end{array}\\right]"], "alphavec": ["\\boldsymbol{\\alpha}"], "muvec": ["\\boldsymbol{\\mu}"], "phivec": ["\\boldsymbol{\\phi}"], "sigmavec": ["\\boldsymbol{\\sigma}"], "Sigmavec": ["\\boldsymbol{\\Sigma}"], "thetavec": ["\\boldsymbol{\\theta}"], "thetavechat": ["\\widehat\\thetavec"], "avec": ["\\boldsymbol{a}"], "Bvec": ["\\boldsymbol{B}"], "fvec": ["\\boldsymbol{f}"], "mvec": ["\\boldsymbol{m}"], "qvec": ["\\boldsymbol{q}"], "rvec": ["\\boldsymbol{r}"], "uvec": ["\\boldsymbol{u}"], "wvec": ["\\boldsymbol{w}"], "xvec": ["\\boldsymbol{x}"], "yvec": ["\\boldsymbol{y}"], "Lra": ["\\Longrightarrow"], "abar": ["\\overline a"], "Xbar": ["\\overline X"], "alphahat": ["\\widehat\\alpha"], "Hhat": ["\\hat H"], "yth": ["y_{\\text{th}}"], "yexp": ["y_{\\text{exp}}"], "ym": ["y_{\\text{m}}"], "gs": ["{0}"]}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'notebooks/MCMC_sampling_II/PyMC_intro_updated';</script>
-    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
+    <link rel="icon" href="../../_static/favicon.ico"/>
     <link rel="author" title="About these documents" href="../../about.html" />
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
@@ -81,10 +76,9 @@ const thebe_selector_output = ".output, .cell_output"
 
   
   
-  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
   
   <div id="pst-scroll-pixel-helper"></div>
-
   
   <button type="button" class="btn rounded-pill" id="pst-back-to-top">
     <i class="fa-solid fa-arrow-up"></i>
@@ -125,11 +119,14 @@ const thebe_selector_output = ".output, .cell_output"
 </form></div>
   </div>
   
-    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
-    </nav>
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+    </header>
   
+
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
+      
+      
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -163,7 +160,18 @@ const thebe_selector_output = ".output, .cell_output"
   
   
 </a></div>
-        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
@@ -268,15 +276,14 @@ const thebe_selector_output = ".output, .cell_output"
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../content/Machine_learning/machine_learning.html">9. Machine learning: Bayesian methods</a><input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-9"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../content/Machine_learning/lecture_22.html">9.1. Lecture 22</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../Machine_learning/Bayesian_optimization.html">9.2. Bayesian Optimization</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../content/Machine_learning/lecture_23.html">9.3. Lecture 23</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../Machine_learning/Neural_networks_explained.html">9.4. What Are Neural Networks?</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../Machine_learning/Forssen_tif285_NeuralNet.html">9.5. Neural networks</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../Machine_learning/Forssen_tif285_demo-NeuralNet.html">9.6. Neural network classifier demonstration</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../Machine_learning/Bayesian_neural_networks_tif285.html">9.7. Bayesian neural networks</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../content/Machine_learning/lecture_24.html">9.8. Lecture 24</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../Machine_learning/demo-Bayesian_neural_networks_tif285.html">9.9. Variational Inference: Bayesian Neural Networks</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../Machine_learning/Convolutional_neural_network_explained.html">9.10. What is a convolutional neural network?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../content/Machine_learning/lecture_23.html">9.2. Lecture 23</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Machine_learning/Neural_networks_explained.html">9.3. What Are Neural Networks?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Machine_learning/Forssen_tif285_NeuralNet.html">9.4. Neural networks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Machine_learning/Forssen_tif285_demo-NeuralNet.html">9.5. Neural network classifier demonstration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Machine_learning/Bayesian_neural_networks_tif285.html">9.6. Bayesian neural networks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../content/Machine_learning/lecture_24.html">9.7. Lecture 24</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Machine_learning/demo-Bayesian_neural_networks_tif285.html">9.8. Variational Inference: Bayesian Neural Networks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Machine_learning/Convolutional_neural_network_explained.html">9.9. What is a convolutional neural network?</a></li>
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../content/SVD/svd.html">10. PCA, SVD, and all that</a><input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-10"><i class="fa-solid fa-chevron-down"></i></label><ul>
@@ -586,17 +593,17 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article" role="main">
+                <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="pymc-introduction">
-<h1><span class="section-number">6.6. </span>PyMC Introduction<a class="headerlink" href="#pymc-introduction" title="Permalink to this heading">#</a></h1>
+<h1><span class="section-number">6.6. </span>PyMC Introduction<a class="headerlink" href="#pymc-introduction" title="Link to this heading">#</a></h1>
 <p>Last revised 25-Oct-2021 by Dick Furnstahl (<a class="reference external" href="mailto:furnstahl&#46;1&#37;&#52;&#48;osu&#46;edu">furnstahl<span>&#46;</span>1<span>&#64;</span>osu<span>&#46;</span>edu</a>);</p>
 <p>Further revisions Dec-2023 by Daniel Phillips for PyMC3-&gt;PyMC</p>
 <p>A good starting point for notebooks with PyMC examples is the official documentation site: <a class="reference external" href="https://docs.pymc.io/">https://docs.pymc.io/</a>.  We’ve adapted some examples from that site here and in other notebooks.</p>
 <p><strong>Aside.</strong> Here is a good quote from Rob Hicks on HMC and No U-Turn:</p>
 <p>“The idea: rather than blindly stumbling around the posterior, use the posterior gradient to skate around the gradient contour. As you skate closer to a drop-off (gradient is steep and probability is lower), potential energy decreases and kinetic energy increases (since energy is always conserved). When this happens the skater is turned back uphill and pushed from the precipice and skates on along a posterior likelihood contour. The No U-Turn sampler keeps skating until the skater tries to turn back towards the original point.”</p>
 <section id="imports">
-<h2>Imports<a class="headerlink" href="#imports" title="Permalink to this heading">#</a></h2>
+<h2>Imports<a class="headerlink" href="#imports" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -620,7 +627,7 @@ document.write(`
 </div>
 </section>
 <section id="basic-setup-of-a-model">
-<h2>Basic setup of a model<a class="headerlink" href="#basic-setup-of-a-model" title="Permalink to this heading">#</a></h2>
+<h2>Basic setup of a model<a class="headerlink" href="#basic-setup-of-a-model" title="Link to this heading">#</a></h2>
 <p>First we need to create a <em>model</em>, which will be an instance of the Model class.  The model has references to all random variables (RVs) and computes the model log posterior (logp) and its gradients.  We typically instantiate it using a with context.  For example:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -634,7 +641,7 @@ document.write(`
 <p>So <code class="docutils literal notranslate"><span class="pre">my_model</span></code> is an instance of the PyMC Model class, and we have set up a prior for <code class="docutils literal notranslate"><span class="pre">mu</span></code> in the form of a standard normal distribution (i.e., mean = 0 and standard deviation = 1).  The last line sets up the likelihood, also distributed as a normal with observed data taken as 100 random draws from a standard normal distribution.  The standard deviation sigma for the mu posterior is given.  The goal will be to sample the posterior for mu.</p>
 </section>
 <section id="sampling">
-<h2>Sampling<a class="headerlink" href="#sampling" title="Permalink to this heading">#</a></h2>
+<h2>Sampling<a class="headerlink" href="#sampling" title="Link to this heading">#</a></h2>
 <p>The main entry point to MCMC sampling algorithms is via the <code class="docutils literal notranslate"><span class="pre">pm.sample()</span></code> function. By default, this function tries to auto-assign the right sampler(s) and auto-initialize if you don’t pass anything.</p>
 <p>As you can see, on a continuous model, <code class="docutils literal notranslate"><span class="pre">PyMC</span></code> assigns the NUTS sampler, which is very efficient even for complex models. <code class="docutils literal notranslate"><span class="pre">PyMC</span></code> also runs variational inference (i.e. <code class="docutils literal notranslate"><span class="pre">ADVI</span></code>) to find good starting parameters for the sampler. Here we draw 1000 samples from the posterior and allow the sampler to adjust its parameters in an additional 500 iterations. These 500 samples are discarded by default:</p>
 <div class="cell docutils container">
@@ -695,7 +702,7 @@ NUTS: [avg]
 </div>
 </div>
 <section id="available-samplers">
-<h3>Available samplers<a class="headerlink" href="#available-samplers" title="Permalink to this heading">#</a></h3>
+<h3>Available samplers<a class="headerlink" href="#available-samplers" title="Link to this heading">#</a></h3>
 <p><code class="docutils literal notranslate"><span class="pre">PyMC</span></code> offers a variety of samplers, found in pm.step_methods:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -775,7 +782,7 @@ The rhat statistic is larger than 1.01 for some parameters. This indicates probl
 </div>
 </section>
 <section id="analyze-sampling-results">
-<h3>Analyze sampling results<a class="headerlink" href="#analyze-sampling-results" title="Permalink to this heading">#</a></h3>
+<h3>Analyze sampling results<a class="headerlink" href="#analyze-sampling-results" title="Link to this heading">#</a></h3>
 <p>The most common used plot to analyze sampling results is the so-called trace-plot, now invoked with a arViz <code class="docutils literal notranslate"><span class="pre">plot_trace</span></code> command:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -840,7 +847,7 @@ CompoundStep
 </div>
 </section>
 <section id="diagnostics">
-<h3>Diagnostics<a class="headerlink" href="#diagnostics" title="Permalink to this heading">#</a></h3>
+<h3>Diagnostics<a class="headerlink" href="#diagnostics" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="n">pm</span><span class="o">.</span><span class="n">Model</span><span class="p">()</span> <span class="k">as</span> <span class="n">model</span><span class="p">:</span>
@@ -986,7 +993,7 @@ CompoundStep
 </section>
 </section>
 <section id="examples-from-rob-hicks">
-<h2>Examples from Rob Hicks<a class="headerlink" href="#examples-from-rob-hicks" title="Permalink to this heading">#</a></h2>
+<h2>Examples from Rob Hicks<a class="headerlink" href="#examples-from-rob-hicks" title="Link to this heading">#</a></h2>
 <p>See <a class="reference external" href="https://rlhick.people.wm.edu/stories/bayesian_7.html">https://rlhick.people.wm.edu/stories/bayesian_7.html</a>.  We also have a notebook from his Bayesian 8 “story”.</p>
 <p>We start with a very simple one parameter model and then move to slightly more complicated settings:</p>
 <div class="cell docutils container">
@@ -1011,10 +1018,10 @@ CompoundStep
 </div>
 <p>Run the previous cell a few times to see the fluctuations.  Crank up the number of samples to <code class="docutils literal notranslate"><span class="pre">10**6</span></code> to see a smoother histogram.</p>
 <section id="pymc3-implementation">
-<h3>PyMC3 implementation<a class="headerlink" href="#pymc3-implementation" title="Permalink to this heading">#</a></h3>
+<h3>PyMC3 implementation<a class="headerlink" href="#pymc3-implementation" title="Link to this heading">#</a></h3>
 <p>We instantiate a Model with a descriptions of priors and the likelihood. Here, <code class="docutils literal notranslate"><span class="pre">mu</span></code> is defined to be a random variable (we want to sample this variable by generating a Markov chain) and we provide a prior distribution with associated hyper-parameters for it. The likelihood function is chosen to be Normal, with one parameter to be estimated (mu), and we use known <span class="math notranslate nohighlight">\(\sigma\)</span> (denoted as <code class="docutils literal notranslate"><span class="pre">sigma</span></code>). Our “dependent variable” is given by <code class="docutils literal notranslate"><span class="pre">observed=data</span></code>, where <code class="docutils literal notranslate"><span class="pre">data</span></code> is generated above and shown in the histogram. So we our implementing Bayes theorem in the form:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-4897a451-138f-4a73-9b60-45f9a43fe7a5">
-<span class="eqno">(6.2)<a class="headerlink" href="#equation-4897a451-138f-4a73-9b60-45f9a43fe7a5" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-94a8499f-4846-496d-9251-107cc6ac67c2">
+<span class="eqno">(6.2)<a class="headerlink" href="#equation-94a8499f-4846-496d-9251-107cc6ac67c2" title="Permalink to this equation">#</a></span>\[\begin{align}
    \newcommand{\Pr}{\textrm{pr}} 
    \newcommand{\data}{\textbf{data}}
    \Pr(\mu | \sigma, \data) \propto \Pr(\data | \mu, \sigma) \times \Pr(\mu |\mu^0_\mu, \sigma^0_\mu)
@@ -3174,7 +3181,7 @@ Coordinates:
 <p>Now for diagnostics.</p>
 </section>
 <section id="autocorrelation-plots">
-<h3>Autocorrelation plots<a class="headerlink" href="#autocorrelation-plots" title="Permalink to this heading">#</a></h3>
+<h3>Autocorrelation plots<a class="headerlink" href="#autocorrelation-plots" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="n">basic_model</span><span class="p">:</span>
@@ -3189,7 +3196,7 @@ Coordinates:
 <p>What do we see here?  An autocorrelation time around 10 or so.</p>
 </section>
 <section id="acceptance-rate">
-<h3>Acceptance rate<a class="headerlink" href="#acceptance-rate" title="Permalink to this heading">#</a></h3>
+<h3>Acceptance rate<a class="headerlink" href="#acceptance-rate" title="Link to this heading">#</a></h3>
 <p>First we have to flatten the samples to make it easier to compute the acceptance rate. But we can only flatten after we have converted to a  regular array from a “Dataarray”.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -3241,7 +3248,7 @@ Acceptance Rate:  0.33975
 </div>
 </section>
 <section id="inferencedata-object">
-<h3>InferenceData object<a class="headerlink" href="#inferencedata-object" title="Permalink to this heading">#</a></h3>
+<h3>InferenceData object<a class="headerlink" href="#inferencedata-object" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># parameters for the prior on mu</span>
@@ -3744,7 +3751,7 @@ Attributes:
 </div>
 </section>
 <section id="gelman-rubin-diagnostic-quoted-verbatim-from-the-hicks-notebook">
-<h3>Gelman Rubin Diagnostic (quoted verbatim from the Hicks notebook)<a class="headerlink" href="#gelman-rubin-diagnostic-quoted-verbatim-from-the-hicks-notebook" title="Permalink to this heading">#</a></h3>
+<h3>Gelman Rubin Diagnostic (quoted verbatim from the Hicks notebook)<a class="headerlink" href="#gelman-rubin-diagnostic-quoted-verbatim-from-the-hicks-notebook" title="Link to this heading">#</a></h3>
 <p>If our MH MCMC Chain reaches a stationary distribution, and we repeat the excercise multiple times, then we can examine if the posterior for each chain converges to the same place in the distribution of the parameter space.</p>
 <p>Steps:</p>
 <ol class="arabic simple">
@@ -3830,7 +3837,7 @@ Metropolis: [Mean of Data]
 <p>So most people examine univariate diagnostics for each variable, examine autocorrelation plots, acceptance rates and try to argue chain convergence based on that- unless they are using Gibbs or other specialized samplers.”</p>
 </section>
 <section id="in-class-exercise">
-<h3>In-class exercise<a class="headerlink" href="#in-class-exercise" title="Permalink to this heading">#</a></h3>
+<h3>In-class exercise<a class="headerlink" href="#in-class-exercise" title="Link to this heading">#</a></h3>
 <p>Let’s try to modify the code below to estimate sigma as well as the mean (first three cells are original code, copied from above):</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -4186,6 +4193,7 @@ CompoundStep
               
                 <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
 
+
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
     <i class="fa-solid fa-list"></i> Contents
@@ -4257,8 +4265,8 @@ By Dick Furnstahl and Daniel Phillips
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../../_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
-<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
+  <script src="../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
 
   <footer class="bd-footer">
   </footer>

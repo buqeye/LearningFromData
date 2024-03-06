@@ -1,13 +1,12 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="" >
+<html lang="en" data-content_root="../../" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>4.4. Parameter estimation example: fitting a straight line II &#8212; Learning from data</title>
   
@@ -19,54 +18,50 @@
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
-<link href="../../_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
-<link href="../../_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link href="../../_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
 
   
-  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+  <link href="../../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
-    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/myadmonitions.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+    <link rel="stylesheet" type="text/css" href="../../_static/myadmonitions.css?v=f87e7f18" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
-<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
-  <script src="../../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="../../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
 
-    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
-    <script src="../../_static/jquery.js"></script>
-    <script src="../../_static/underscore.js"></script>
-    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../../_static/doctools.js"></script>
-    <script src="../../_static/clipboard.min.js"></script>
-    <script src="../../_static/copybutton.js"></script>
-    <script src="../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=888ff710"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../../_static/togglebutton.js"></script>
+    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../../_static/design-tabs.js"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
-    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script src="../../_static/design-tabs.js?v=36754332"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>window.MathJax = {"tex": {"macros": {"N": ["\\mathbb{N}"], "Z": ["\\mathbb{Z}"], "floor": ["\\lfloor#1\\rfloor", 1], "bmat": ["\\left[\\begin{array}"], "emat": ["\\end{array}\\right]"], "alphavec": ["\\boldsymbol{\\alpha}"], "muvec": ["\\boldsymbol{\\mu}"], "phivec": ["\\boldsymbol{\\phi}"], "sigmavec": ["\\boldsymbol{\\sigma}"], "Sigmavec": ["\\boldsymbol{\\Sigma}"], "thetavec": ["\\boldsymbol{\\theta}"], "thetavechat": ["\\widehat\\thetavec"], "avec": ["\\boldsymbol{a}"], "Bvec": ["\\boldsymbol{B}"], "fvec": ["\\boldsymbol{f}"], "mvec": ["\\boldsymbol{m}"], "qvec": ["\\boldsymbol{q}"], "rvec": ["\\boldsymbol{r}"], "uvec": ["\\boldsymbol{u}"], "wvec": ["\\boldsymbol{w}"], "xvec": ["\\boldsymbol{x}"], "yvec": ["\\boldsymbol{y}"], "Lra": ["\\Longrightarrow"], "abar": ["\\overline a"], "Xbar": ["\\overline X"], "alphahat": ["\\widehat\\alpha"], "Hhat": ["\\hat H"], "yth": ["y_{\\text{th}}"], "yexp": ["y_{\\text{exp}}"], "ym": ["y_{\\text{m}}"], "gs": ["{0}"]}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'notebooks/Why_Bayes_is_better/parameter_estimation_fitting_straight_line_II';</script>
-    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
+    <link rel="icon" href="../../_static/favicon.ico"/>
     <link rel="author" title="About these documents" href="../../about.html" />
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
@@ -81,10 +76,9 @@ const thebe_selector_output = ".output, .cell_output"
 
   
   
-  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
   
   <div id="pst-scroll-pixel-helper"></div>
-
   
   <button type="button" class="btn rounded-pill" id="pst-back-to-top">
     <i class="fa-solid fa-arrow-up"></i>
@@ -125,11 +119,14 @@ const thebe_selector_output = ".output, .cell_output"
 </form></div>
   </div>
   
-    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
-    </nav>
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+    </header>
   
+
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
+      
+      
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -163,7 +160,18 @@ const thebe_selector_output = ".output, .cell_output"
   
   
 </a></div>
-        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
@@ -268,15 +276,14 @@ const thebe_selector_output = ".output, .cell_output"
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../content/Machine_learning/machine_learning.html">9. Machine learning: Bayesian methods</a><input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-9"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../content/Machine_learning/lecture_22.html">9.1. Lecture 22</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../Machine_learning/Bayesian_optimization.html">9.2. Bayesian Optimization</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../content/Machine_learning/lecture_23.html">9.3. Lecture 23</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../Machine_learning/Neural_networks_explained.html">9.4. What Are Neural Networks?</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../Machine_learning/Forssen_tif285_NeuralNet.html">9.5. Neural networks</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../Machine_learning/Forssen_tif285_demo-NeuralNet.html">9.6. Neural network classifier demonstration</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../Machine_learning/Bayesian_neural_networks_tif285.html">9.7. Bayesian neural networks</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../content/Machine_learning/lecture_24.html">9.8. Lecture 24</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../Machine_learning/demo-Bayesian_neural_networks_tif285.html">9.9. Variational Inference: Bayesian Neural Networks</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../Machine_learning/Convolutional_neural_network_explained.html">9.10. What is a convolutional neural network?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../content/Machine_learning/lecture_23.html">9.2. Lecture 23</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Machine_learning/Neural_networks_explained.html">9.3. What Are Neural Networks?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Machine_learning/Forssen_tif285_NeuralNet.html">9.4. Neural networks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Machine_learning/Forssen_tif285_demo-NeuralNet.html">9.5. Neural network classifier demonstration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Machine_learning/Bayesian_neural_networks_tif285.html">9.6. Bayesian neural networks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../content/Machine_learning/lecture_24.html">9.7. Lecture 24</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Machine_learning/demo-Bayesian_neural_networks_tif285.html">9.8. Variational Inference: Bayesian Neural Networks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Machine_learning/Convolutional_neural_network_explained.html">9.9. What is a convolutional neural network?</a></li>
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../content/SVD/svd.html">10. PCA, SVD, and all that</a><input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-10"><i class="fa-solid fa-chevron-down"></i></label><ul>
@@ -588,12 +595,12 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article" role="main">
+                <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="parameter-estimation-example-fitting-a-straight-line-ii">
-<h1><span class="section-number">4.4. </span>Parameter estimation example: fitting a straight line II<a class="headerlink" href="#parameter-estimation-example-fitting-a-straight-line-ii" title="Permalink to this heading">#</a></h1>
+<h1><span class="section-number">4.4. </span>Parameter estimation example: fitting a straight line II<a class="headerlink" href="#parameter-estimation-example-fitting-a-straight-line-ii" title="Link to this heading">#</a></h1>
 <section id="bayesian-handling-of-nuisance-parameters">
-<h2>Bayesian handling of nuisance parameters<a class="headerlink" href="#bayesian-handling-of-nuisance-parameters" title="Permalink to this heading">#</a></h2>
+<h2>Bayesian handling of nuisance parameters<a class="headerlink" href="#bayesian-handling-of-nuisance-parameters" title="Link to this heading">#</a></h2>
 <p><span class="math notranslate nohighlight">\(% Some LaTeX definitions we'll use.
 \newcommand{\pr}{\textrm{p}}
 \)</span></p>
@@ -609,7 +616,7 @@ document.write(`
 </div>
 </section>
 <section id="the-data-and-the-question">
-<h2>The Data and the question<a class="headerlink" href="#the-data-and-the-question" title="Permalink to this heading">#</a></h2>
+<h2>The Data and the question<a class="headerlink" href="#the-data-and-the-question" title="Link to this heading">#</a></h2>
 <p>Let’s start by defining some data that we will fit with a straight line.  The following data is measured velocities and distances for a set of galaxies. We will assume that there is a constant standard deviation of <span class="math notranslate nohighlight">\(\sigma = 200\)</span> km/sec on the <span class="math notranslate nohighlight">\(y\)</span> values and no error on <span class="math notranslate nohighlight">\(x\)</span>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -644,7 +651,7 @@ document.write(`
 <blockquote>
 <div><p>What value would you infer for the Hubble constant given this data?</p>
 </div></blockquote>
-<p>We will make the prior assumption that the data can be fitted with a straight line (see also the <a class="reference internal" href="../Parameter_estimation/parameter_estimation_fitting_straight_line_I.html"><span class="doc std std-doc">parameter_estimation_fitting_straight_line_I.ipynb</span></a> notebook). But we note that we are actually not interested in the offset of the straight line, but just its slope.</p>
+<p>We will make the prior assumption that the data can be fitted with a straight line (see also the <a class="reference internal" href="../Parameter_estimation/parameter_estimation_fitting_straight_line_I.html"><span class="std std-doc">parameter_estimation_fitting_straight_line_I.ipynb</span></a> notebook). But we note that we are actually not interested in the offset of the straight line, but just its slope.</p>
 <p>We will try three different approaches:</p>
 <ul class="simple">
 <li><p>Maximum likelihood estimate</p></li>
@@ -654,8 +661,8 @@ document.write(`
 <p>As a final part of this notebook, we will also explore how the posterior belief from this analysis can feed into a second data analysis.</p>
 </section>
 <section id="the-model">
-<h2>The Model<a class="headerlink" href="#the-model" title="Permalink to this heading">#</a></h2>
-<p>We follow the procedure outlined in <a class="reference internal" href="../Parameter_estimation/parameter_estimation_fitting_straight_line_I.html"><span class="doc std std-doc">parameter_estimation_fitting_straight_line_I.ipynb</span></a>.</p>
+<h2>The Model<a class="headerlink" href="#the-model" title="Link to this heading">#</a></h2>
+<p>We follow the procedure outlined in <a class="reference internal" href="../Parameter_estimation/parameter_estimation_fitting_straight_line_I.html"><span class="std std-doc">parameter_estimation_fitting_straight_line_I.ipynb</span></a>.</p>
 <p>Thus, we’re fitting a straight line to data,</p>
 <div class="math notranslate nohighlight">
 \[
@@ -691,7 +698,7 @@ y_i \sim \mathcal{N}(y_M(x_i;\theta), \sigma)
 \]</div>
 </section>
 <section id="step-1-maximum-likelihood-estimate">
-<h2>Step 1: Maximum likelihood estimate<a class="headerlink" href="#step-1-maximum-likelihood-estimate" title="Permalink to this heading">#</a></h2>
+<h2>Step 1: Maximum likelihood estimate<a class="headerlink" href="#step-1-maximum-likelihood-estimate" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Log likelihood</span>
@@ -742,7 +749,7 @@ y_i \sim \mathcal{N}(y_M(x_i;\theta), \sigma)
 </div>
 </section>
 <section id="step-2-single-parameter-model">
-<h2>Step 2: Single-parameter model<a class="headerlink" href="#step-2-single-parameter-model" title="Permalink to this heading">#</a></h2>
+<h2>Step 2: Single-parameter model<a class="headerlink" href="#step-2-single-parameter-model" title="Link to this heading">#</a></h2>
 <p>As we are not interested in the offset parameter, we might be tempted to fix its value to the most-likely estimate and then infer our knowledge about the slope from a single-parameter model. You have probably realized by now that this is not the Bayesian way of doing the analysis, but since this is a rather common way of handling nuisance parameters, we will still try it.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -828,7 +835,7 @@ y_i \sim \mathcal{N}(y_M(x_i;\theta), \sigma)
 </div>
 </section>
 <section id="step-3-full-bayesian-approach">
-<h2>Step 3: Full Bayesian approach<a class="headerlink" href="#step-3-full-bayesian-approach" title="Permalink to this heading">#</a></h2>
+<h2>Step 3: Full Bayesian approach<a class="headerlink" href="#step-3-full-bayesian-approach" title="Link to this heading">#</a></h2>
 <p>You might not be surprised to learn that we underestimate the uncertainty of the slope since we are making the assumption that we know the value of the offset (by fixing it to a specific estimate).</p>
 <p>We will now repeat the data analysis, but with the full model and with marginalization on the posterior.</p>
 <p>Let’s use the (log) symmetric prior, which is the scale-invariant one.</p>
@@ -985,7 +992,7 @@ done
 </div>
 </div>
 <section id="marginalization">
-<h3>Marginalization<a class="headerlink" href="#marginalization" title="Permalink to this heading">#</a></h3>
+<h3>Marginalization<a class="headerlink" href="#marginalization" title="Link to this heading">#</a></h3>
 <p>Next we will perform the marginalization over the offset parameter using the samples from the posterior pdf.</p>
 <p>Furthermore, the extraction of a 68% credible region (not to be confused with the frequentist <em>confidence interval</em>) is made simple since the posterior is well described by a single mode.</p>
 <div class="cell docutils container">
@@ -1089,7 +1096,7 @@ done
 <p>More on this later.</p>
 </section>
 <section id="summary">
-<h3>Summary<a class="headerlink" href="#summary" title="Permalink to this heading">#</a></h3>
+<h3>Summary<a class="headerlink" href="#summary" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">{0:&gt;25s}</span><span class="s1">: </span><span class="si">{1:&gt;3.1f}</span><span class="s1"> +/- </span><span class="si">{2:&gt;3.1f}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s1">&#39;Max Likelihood (1-sigma)&#39;</span><span class="p">,</span> <span class="n">theta_MLE</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="n">err_theta_MLE</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span>
@@ -1108,7 +1115,7 @@ done
 </div>
 </section>
 <section id="breakout-questions">
-<h3>Breakout questions<a class="headerlink" href="#breakout-questions" title="Permalink to this heading">#</a></h3>
+<h3>Breakout questions<a class="headerlink" href="#breakout-questions" title="Link to this heading">#</a></h3>
 <p>In the Bayesian analysis we had to specify our prior assumption on the value for the offset.</p>
 <ul class="simple">
 <li><p><em>Is this a feature or a deficiency of the Bayesian approach? Discuss!</em></p></li>
@@ -1122,10 +1129,10 @@ done
 </section>
 </section>
 <section id="step-4-error-propagation">
-<h2>Step 4: Error propagation<a class="headerlink" href="#step-4-error-propagation" title="Permalink to this heading">#</a></h2>
+<h2>Step 4: Error propagation<a class="headerlink" href="#step-4-error-propagation" title="Link to this heading">#</a></h2>
 <p>The Bayesian approach offers a straight-forward approach for dealing with (known) systematic uncertainties; namely by marginalization.</p>
 <section id="systematic-error-example">
-<h3>Systematic error example<a class="headerlink" href="#systematic-error-example" title="Permalink to this heading">#</a></h3>
+<h3>Systematic error example<a class="headerlink" href="#systematic-error-example" title="Link to this heading">#</a></h3>
 <p>The Hubble constant acts as a galactic ruler as it is used to measure astronomical distances according to <span class="math notranslate nohighlight">\(v = H_0 x\)</span>. An error in this ruler will therefore correspond to a systematic uncertainty in such measurements.</p>
 <p>Suppose that a particular galaxy has a measured recessional velocity <span class="math notranslate nohighlight">\(v_\mathrm{measured} = (100 \pm 5) \times 10^3\)</span> km/sec. Also assume that the Hubble constant <span class="math notranslate nohighlight">\(H_0\)</span> is known from the analysis performed above in Step 3. Determine the posterior pdf for the distance to the galaxy assuming:</p>
 <ol class="arabic simple">
@@ -1149,9 +1156,9 @@ done
 <p>In the following, we also assume that the error in the measurement in <span class="math notranslate nohighlight">\(v\)</span> is uncorrelated with the uncertainty in <span class="math notranslate nohighlight">\(H_0\)</span>.</p>
 <p>Through application of Bayes’ rule we can readily evaluate the posterior pdf <span class="math notranslate nohighlight">\(p(x|D,I)\)</span> for the distance <span class="math notranslate nohighlight">\(x\)</span> to the galaxy.</p>
 <section id="case-1-fixed-h-0">
-<h4>Case 1: Fixed <span class="math notranslate nohighlight">\(H_0\)</span><a class="headerlink" href="#case-1-fixed-h-0" title="Permalink to this heading">#</a></h4>
-<div class="amsmath math notranslate nohighlight" id="equation-abb5df3b-b510-4469-b3f1-376973d38167">
-<span class="eqno">(4.1)<a class="headerlink" href="#equation-abb5df3b-b510-4469-b3f1-376973d38167" title="Permalink to this equation">#</a></span>\[\begin{align}
+<h4>Case 1: Fixed <span class="math notranslate nohighlight">\(H_0\)</span><a class="headerlink" href="#case-1-fixed-h-0" title="Link to this heading">#</a></h4>
+<div class="amsmath math notranslate nohighlight" id="equation-03afd02b-b0bf-4a3c-9b39-d66e37995cca">
+<span class="eqno">(4.1)<a class="headerlink" href="#equation-03afd02b-b0bf-4a3c-9b39-d66e37995cca" title="Permalink to this equation">#</a></span>\[\begin{align}
 p(x | D,I) &amp; \propto p(D | x, I) p(x|I) \\
 &amp; = \frac{1}{\sqrt{2\pi}\sigma_v} \exp \left( - \frac{(v_\mathrm{measured} - v_\mathrm{theory})^2}{2\sigma_v^2} \right) p(x|I)\\
 &amp;= \left\{ \begin{array}{ll} \frac{1}{\sqrt{2\pi}\sigma_v} \exp \left( - \frac{(v_\mathrm{measured} - H_0 x)^2}{2\sigma_v^2} \right) &amp; \text{with }x \in [x_\mathrm{min},x_\mathrm{max}] \\
@@ -1171,7 +1178,7 @@ p(x | D,I) &amp; \propto p(D | x, I) p(x|I) \\
 </div>
 </section>
 <section id="case-2-using-the-inferred-pdf-for-h-0">
-<h4>Case 2: Using the inferred pdf for <span class="math notranslate nohighlight">\(H_0\)</span><a class="headerlink" href="#case-2-using-the-inferred-pdf-for-h-0" title="Permalink to this heading">#</a></h4>
+<h4>Case 2: Using the inferred pdf for <span class="math notranslate nohighlight">\(H_0\)</span><a class="headerlink" href="#case-2-using-the-inferred-pdf-for-h-0" title="Link to this heading">#</a></h4>
 <p>Here we use marginalization to obtain the desired posterior pdf <span class="math notranslate nohighlight">\(p(x|D,I)\)</span> from the joint distribution of <span class="math notranslate nohighlight">\(p(x,H_0|D,I)\)</span></p>
 <div class="math notranslate nohighlight">
 \[
@@ -1293,6 +1300,7 @@ p(x |D,I) = \int dH_0 p(H_0|I) p(D|x,H_0,I) \approx \frac{1}{N} \sum_{i=1}^N p(D
               
                 <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
 
+
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
     <i class="fa-solid fa-list"></i> Contents
@@ -1366,8 +1374,8 @@ By Dick Furnstahl and Daniel Phillips
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../../_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
-<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
+  <script src="../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
 
   <footer class="bd-footer">
   </footer>

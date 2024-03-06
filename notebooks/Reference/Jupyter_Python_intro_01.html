@@ -1,13 +1,12 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="" >
+<html lang="en" data-content_root="../../" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>Python and Jupyter notebooks: part 01 &#8212; Learning from data</title>
   
@@ -19,54 +18,50 @@
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
-<link href="../../_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
-<link href="../../_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link href="../../_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
 
   
-  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+  <link href="../../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
-    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/myadmonitions.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+    <link rel="stylesheet" type="text/css" href="../../_static/myadmonitions.css?v=f87e7f18" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
-<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
-  <script src="../../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="../../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
 
-    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
-    <script src="../../_static/jquery.js"></script>
-    <script src="../../_static/underscore.js"></script>
-    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../../_static/doctools.js"></script>
-    <script src="../../_static/clipboard.min.js"></script>
-    <script src="../../_static/copybutton.js"></script>
-    <script src="../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=888ff710"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../../_static/togglebutton.js"></script>
+    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../../_static/design-tabs.js"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
-    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script src="../../_static/design-tabs.js?v=36754332"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>window.MathJax = {"tex": {"macros": {"N": ["\\mathbb{N}"], "Z": ["\\mathbb{Z}"], "floor": ["\\lfloor#1\\rfloor", 1], "bmat": ["\\left[\\begin{array}"], "emat": ["\\end{array}\\right]"], "alphavec": ["\\boldsymbol{\\alpha}"], "muvec": ["\\boldsymbol{\\mu}"], "phivec": ["\\boldsymbol{\\phi}"], "sigmavec": ["\\boldsymbol{\\sigma}"], "Sigmavec": ["\\boldsymbol{\\Sigma}"], "thetavec": ["\\boldsymbol{\\theta}"], "thetavechat": ["\\widehat\\thetavec"], "avec": ["\\boldsymbol{a}"], "Bvec": ["\\boldsymbol{B}"], "fvec": ["\\boldsymbol{f}"], "mvec": ["\\boldsymbol{m}"], "qvec": ["\\boldsymbol{q}"], "rvec": ["\\boldsymbol{r}"], "uvec": ["\\boldsymbol{u}"], "wvec": ["\\boldsymbol{w}"], "xvec": ["\\boldsymbol{x}"], "yvec": ["\\boldsymbol{y}"], "Lra": ["\\Longrightarrow"], "abar": ["\\overline a"], "Xbar": ["\\overline X"], "alphahat": ["\\widehat\\alpha"], "Hhat": ["\\hat H"], "yth": ["y_{\\text{th}}"], "yexp": ["y_{\\text{exp}}"], "ym": ["y_{\\text{m}}"], "gs": ["{0}"]}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'notebooks/Reference/Jupyter_Python_intro_01';</script>
-    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
+    <link rel="icon" href="../../_static/favicon.ico"/>
     <link rel="author" title="About these documents" href="../../about.html" />
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
@@ -81,10 +76,9 @@ const thebe_selector_output = ".output, .cell_output"
 
   
   
-  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
   
   <div id="pst-scroll-pixel-helper"></div>
-
   
   <button type="button" class="btn rounded-pill" id="pst-back-to-top">
     <i class="fa-solid fa-arrow-up"></i>
@@ -125,11 +119,14 @@ const thebe_selector_output = ".output, .cell_output"
 </form></div>
   </div>
   
-    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
-    </nav>
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+    </header>
   
+
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
+      
+      
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -163,7 +160,18 @@ const thebe_selector_output = ".output, .cell_output"
   
   
 </a></div>
-        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
@@ -268,15 +276,14 @@ const thebe_selector_output = ".output, .cell_output"
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../content/Machine_learning/machine_learning.html">9. Machine learning: Bayesian methods</a><input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-9"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../content/Machine_learning/lecture_22.html">9.1. Lecture 22</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../Machine_learning/Bayesian_optimization.html">9.2. Bayesian Optimization</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../content/Machine_learning/lecture_23.html">9.3. Lecture 23</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../Machine_learning/Neural_networks_explained.html">9.4. What Are Neural Networks?</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../Machine_learning/Forssen_tif285_NeuralNet.html">9.5. Neural networks</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../Machine_learning/Forssen_tif285_demo-NeuralNet.html">9.6. Neural network classifier demonstration</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../Machine_learning/Bayesian_neural_networks_tif285.html">9.7. Bayesian neural networks</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../content/Machine_learning/lecture_24.html">9.8. Lecture 24</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../Machine_learning/demo-Bayesian_neural_networks_tif285.html">9.9. Variational Inference: Bayesian Neural Networks</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../Machine_learning/Convolutional_neural_network_explained.html">9.10. What is a convolutional neural network?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../content/Machine_learning/lecture_23.html">9.2. Lecture 23</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Machine_learning/Neural_networks_explained.html">9.3. What Are Neural Networks?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Machine_learning/Forssen_tif285_NeuralNet.html">9.4. Neural networks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Machine_learning/Forssen_tif285_demo-NeuralNet.html">9.5. Neural network classifier demonstration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Machine_learning/Bayesian_neural_networks_tif285.html">9.6. Bayesian neural networks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../content/Machine_learning/lecture_24.html">9.7. Lecture 24</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Machine_learning/demo-Bayesian_neural_networks_tif285.html">9.8. Variational Inference: Bayesian Neural Networks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Machine_learning/Convolutional_neural_network_explained.html">9.9. What is a convolutional neural network?</a></li>
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../content/SVD/svd.html">10. PCA, SVD, and all that</a><input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-10"><i class="fa-solid fa-chevron-down"></i></label><ul>
@@ -588,10 +595,10 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article" role="main">
+                <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="python-and-jupyter-notebooks-part-01">
-<h1>Python and Jupyter notebooks: part 01<a class="headerlink" href="#python-and-jupyter-notebooks-part-01" title="Permalink to this heading">#</a></h1>
+<h1>Python and Jupyter notebooks: part 01<a class="headerlink" href="#python-and-jupyter-notebooks-part-01" title="Link to this heading">#</a></h1>
 <p>Last revised: 23-Dec-2023 by Dick Furnstahl [furnstahl.1&#64;osu.edu] for use with Jupyter 7 release.</p>
 <p><strong>You can find valuable documentation under the Jupyter notebook Help menu. “Documentation” will take you to a comprehensive help page for Jupyter notebooks (and point you to JupyterLab). Use “Markdown Reference” to look up markdown syntax (or to take a tutorial).</strong></p>
 <p>This is a whirlwind tour of just the minimum we need to know about Python and Jupyter notebooks to get started doing statistics problems.  We’ll add more features and details as we proceed.</p>
@@ -610,7 +617,7 @@ document.write(`
 <p>The menus enable you to rename your notebook file (always ending in <code class="docutils literal notranslate"><span class="pre">.ipynb</span></code>) or <code class="docutils literal notranslate"><span class="pre">Save</span> <span class="pre">Notebook</span></code> to save the changes to your notebook. The icons on the right side of a cell enables you to move the cell up or down (arrows), add new cells above or below, or delete the cell (trash).   You will often use the <code class="docutils literal notranslate"><span class="pre">Kernel</span></code> menu to <code class="docutils literal notranslate"><span class="pre">Restart</span></code> the notebook (and possibly clear output).</p>
 <p>As you get more proficient working with notebooks, you will probably start using the shortcut keys from the command mode of cells. A cell that is marked in blue implies that you are in command mode. You can start editing the cell by hitting <code class="docutils literal notranslate"><span class="pre">Enter</span></code> (or by clicking inside it). You can exit from edit mode into command mode by hitting <code class="docutils literal notranslate"><span class="pre">Esc</span></code>. A list of shortcut keys can be seen when opening the command palette by clicking on the keyboard button.</p>
 <section id="ok-time-to-try-out-python-expressions-and-numpy">
-<h2>Ok, time to try out Python expressions and numpy<a class="headerlink" href="#ok-time-to-try-out-python-expressions-and-numpy" title="Permalink to this heading">#</a></h2>
+<h2>Ok, time to try out Python expressions and numpy<a class="headerlink" href="#ok-time-to-try-out-python-expressions-and-numpy" title="Link to this heading">#</a></h2>
 <p>We can use the Jupyter notebook as a super calculator much like Mathematica and Matlab.  <strong>Try some basic operations, modifying and evaluating the following cells, noting that exponentiation is with</strong> <code class="docutils literal notranslate"><span class="pre">**</span></code> <strong>and not</strong> <code class="docutils literal notranslate"><span class="pre">^</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -718,7 +725,7 @@ document.write(`
 </div>
 <p>Now functions and constants like <code class="docutils literal notranslate"><span class="pre">np.sqrt</span></code> and <code class="docutils literal notranslate"><span class="pre">np.pi</span></code> will work.  Go back and fix the square root and sine.</p>
 <section id="debugging-aside">
-<h3>Debugging aside …<a class="headerlink" href="#debugging-aside" title="Permalink to this heading">#</a></h3>
+<h3>Debugging aside …<a class="headerlink" href="#debugging-aside" title="Link to this heading">#</a></h3>
 <p>Suppose you try to import and it fails (<strong>go ahead and evaluate the cell</strong>):</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -731,7 +738,7 @@ document.write(`
 <p>If you have the correct spelling, check whether you have installed the relevant package.  If you installed Python with Anaconda (which we will assume you did – if not, do it!), then use <code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">list</span></code>, e.g., <code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">list</span> <span class="pre">numpy</span></code> in a Terminal window (on a Mac or Linux box) or in an Anaconda Prompt window (on a Windows PC). Note: this will also tell you the version number of <code class="docutils literal notranslate"><span class="pre">numpy</span></code>.</p>
 </section>
 <section id="numpy-arrays">
-<h3>numpy arrays<a class="headerlink" href="#numpy-arrays" title="Permalink to this heading">#</a></h3>
+<h3>numpy arrays<a class="headerlink" href="#numpy-arrays" title="Link to this heading">#</a></h3>
 <p>We will often use numpy arrays so we’ll start with those.  They are <em>like</em> lists delimited by square brackets, i.e., <code class="docutils literal notranslate"><span class="pre">[]</span></code>s, and we will construct them with <code class="docutils literal notranslate"><span class="pre">np.arange(min,</span> <span class="pre">max,</span> <span class="pre">step)</span></code> to get an array from <code class="docutils literal notranslate"><span class="pre">min</span></code> to <code class="docutils literal notranslate"><span class="pre">max</span></code> in steps of <code class="docutils literal notranslate"><span class="pre">step</span></code>. Examples:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -765,11 +772,11 @@ document.write(`
 </section>
 </section>
 <section id="getting-help">
-<h2>Getting help<a class="headerlink" href="#getting-help" title="Permalink to this heading">#</a></h2>
+<h2>Getting help<a class="headerlink" href="#getting-help" title="Link to this heading">#</a></h2>
 <p>You will often need help identifying the appropriate Python (or numpy or scipy or …) command or you will need an example of how to do something or you may get an error message you can’t figure out.  In all of these cases, Google (or equivalent) is your friend. Always include “python” in the search string (or “numpy” or “matplotlib” or …) to avoid getting results for a different language. You will usually get an online manual as one of the first responses if you ask about a function; these usually have examples if you scroll down to the bottom. Otherwise, answers from <em>Stack Overflow</em> queries are your best bet to find a useful answer.</p>
 </section>
 <section id="functions">
-<h2>Functions<a class="headerlink" href="#functions" title="Permalink to this heading">#</a></h2>
+<h2>Functions<a class="headerlink" href="#functions" title="Link to this heading">#</a></h2>
 <p>There are many Python language features that we will use eventually, but in the short term what we need first are functions.  Here we first see the role of <em>indentation</em> in Python in place of {}s or ()s in other languages.  We’ll always indent four spaces (never tabs!).  We know a function definition is complete when the indentation stops.</p>
 <p>To find out about a Python function or one you define, put your cursor on the function name and hit shift+Tab+Tab. <strong>Go back and try it on <code class="docutils literal notranslate"><span class="pre">np.arange</span></code>.</strong></p>
 <div class="cell docutils container">
@@ -819,7 +826,7 @@ document.write(`
 </div>
 </div>
 <section id="id1">
-<h3>Debugging aside …<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h3>
+<h3>Debugging aside …<a class="headerlink" href="#id1" title="Link to this heading">#</a></h3>
 <p>There are two bugs in the following function.  <strong>Note the line where an error is first reported and fix the bugs sequentially (so you see the different error messages). You can turn on line numbers with “Show Line Numbers” under the View menu.</strong></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -834,7 +841,7 @@ document.write(`
 </section>
 </section>
 <section id="plotting-with-matplotlib">
-<h2>Plotting with Matplotlib<a class="headerlink" href="#plotting-with-matplotlib" title="Permalink to this heading">#</a></h2>
+<h2>Plotting with Matplotlib<a class="headerlink" href="#plotting-with-matplotlib" title="Link to this heading">#</a></h2>
 <p>Matplotlib is the plotting library we’ll use, at least at first.  We’ll follow convention and abbreviate the module we need as <code class="docutils literal notranslate"><span class="pre">plt</span></code>.  The <code class="docutils literal notranslate"><span class="pre">%matplotlib</span> <span class="pre">inline</span></code> line tells the Jupyter notebook to make inline plots (we’ll see other possibilities later).</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -907,7 +914,7 @@ document.write(`
 </div>
 </div>
 <section id="saving-a-figure">
-<h3>Saving a figure<a class="headerlink" href="#saving-a-figure" title="Permalink to this heading">#</a></h3>
+<h3>Saving a figure<a class="headerlink" href="#saving-a-figure" title="Link to this heading">#</a></h3>
 <p>Saving a figure to disk is as simple as calling <a class="reference external" href="http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.savefig"><code class="docutils literal notranslate"><span class="pre">savefig</span></code></a> with the name of the file (or a file object). The available image formats depend on the graphics backend you use.</p>
 <p>Let us save the figure (named ‘fig’) from the previous cell (look at the files produced in your browser; if you are using Binder, use <code class="docutils literal notranslate"><span class="pre">Open...</span></code> under the Jupyter notebook <code class="docutils literal notranslate"><span class="pre">File</span></code> menu)</p>
 <div class="cell docutils container">
@@ -922,7 +929,7 @@ document.write(`
 </section>
 </section>
 <section id="widgets">
-<h2>Widgets!<a class="headerlink" href="#widgets" title="Permalink to this heading">#</a></h2>
+<h2>Widgets!<a class="headerlink" href="#widgets" title="Link to this heading">#</a></h2>
 <p>A widget is an object such as a slider or a check box or a pulldown menu.  We can use them to make it easy to explore different parameter values in a problem we’re solving, which is invaluable for building intuition.  They act on the argument of a function.  We’ll look at a simple case here but plan to explore this much more as we proceed.</p>
 <p>The set of widgets we’ll use here (there are others!) is from <code class="docutils literal notranslate"><span class="pre">ipywidgets</span></code>; we’ll conventionally import the module as <code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">ipywidgets</span> <span class="pre">as</span> <span class="pre">widgets</span></code> and we’ll also often use <code class="docutils literal notranslate"><span class="pre">display</span></code> from <code class="docutils literal notranslate"><span class="pre">Ipython.display</span></code>.</p>
 <div class="cell docutils container">
@@ -999,7 +1006,7 @@ document.write(`
 </div>
 </section>
 <section id="numpy-linear-algebra">
-<h2>Numpy linear algebra<a class="headerlink" href="#numpy-linear-algebra" title="Permalink to this heading">#</a></h2>
+<h2>Numpy linear algebra<a class="headerlink" href="#numpy-linear-algebra" title="Link to this heading">#</a></h2>
 <p>Having used numpy arrrays to describe vectors, we are now ready to try out matrices. We can define a <span class="math notranslate nohighlight">\(3 \times 3 \)</span> real matrix <strong>A</strong> as</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1127,7 +1134,7 @@ document.write(`
 </div>
 </div>
 <section id="further-examples-with-numpy">
-<h3>Further examples with numpy<a class="headerlink" href="#further-examples-with-numpy" title="Permalink to this heading">#</a></h3>
+<h3>Further examples with numpy<a class="headerlink" href="#further-examples-with-numpy" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>The <a class="reference external" href="https://www.numpy.org/devdocs/user/quickstart.html">NumPy quickstart</a> is a good resource.</p></li>
 <li><p>The <a class="reference external" href="https://www.datacamp.com/community/tutorials/python-numpy-tutorial">Datacamp NumPy tutorial</a> covers much of the material in this notebook with more detail and also other topics.</p></li>
@@ -1193,6 +1200,7 @@ document.write(`
             
               
                 <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
 
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
@@ -1267,8 +1275,8 @@ By Dick Furnstahl and Daniel Phillips
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../../_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
-<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
+  <script src="../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
 
   <footer class="bd-footer">
   </footer>

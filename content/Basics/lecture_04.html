@@ -1,13 +1,12 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="" >
+<html lang="en" data-content_root="../../" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>1.10. Lecture 4: A couple of frequentist connections &#8212; Learning from data</title>
   
@@ -19,54 +18,50 @@
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
-<link href="../../_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
-<link href="../../_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link href="../../_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
 
   
-  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+  <link href="../../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
-    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/myadmonitions.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+    <link rel="stylesheet" type="text/css" href="../../_static/myadmonitions.css?v=f87e7f18" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
-<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
-  <script src="../../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="../../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
 
-    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
-    <script src="../../_static/jquery.js"></script>
-    <script src="../../_static/underscore.js"></script>
-    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../../_static/doctools.js"></script>
-    <script src="../../_static/clipboard.min.js"></script>
-    <script src="../../_static/copybutton.js"></script>
-    <script src="../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=888ff710"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../../_static/togglebutton.js"></script>
+    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../../_static/design-tabs.js"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
-    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script src="../../_static/design-tabs.js?v=36754332"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>window.MathJax = {"tex": {"macros": {"N": ["\\mathbb{N}"], "Z": ["\\mathbb{Z}"], "floor": ["\\lfloor#1\\rfloor", 1], "bmat": ["\\left[\\begin{array}"], "emat": ["\\end{array}\\right]"], "alphavec": ["\\boldsymbol{\\alpha}"], "muvec": ["\\boldsymbol{\\mu}"], "phivec": ["\\boldsymbol{\\phi}"], "sigmavec": ["\\boldsymbol{\\sigma}"], "Sigmavec": ["\\boldsymbol{\\Sigma}"], "thetavec": ["\\boldsymbol{\\theta}"], "thetavechat": ["\\widehat\\thetavec"], "avec": ["\\boldsymbol{a}"], "Bvec": ["\\boldsymbol{B}"], "fvec": ["\\boldsymbol{f}"], "mvec": ["\\boldsymbol{m}"], "qvec": ["\\boldsymbol{q}"], "rvec": ["\\boldsymbol{r}"], "uvec": ["\\boldsymbol{u}"], "wvec": ["\\boldsymbol{w}"], "xvec": ["\\boldsymbol{x}"], "yvec": ["\\boldsymbol{y}"], "Lra": ["\\Longrightarrow"], "abar": ["\\overline a"], "Xbar": ["\\overline X"], "alphahat": ["\\widehat\\alpha"], "Hhat": ["\\hat H"], "yth": ["y_{\\text{th}}"], "yexp": ["y_{\\text{exp}}"], "ym": ["y_{\\text{m}}"], "gs": ["{0}"]}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'content/Basics/lecture_04';</script>
-    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
+    <link rel="icon" href="../../_static/favicon.ico"/>
     <link rel="author" title="About these documents" href="../../about.html" />
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
@@ -81,10 +76,9 @@ const thebe_selector_output = ".output, .cell_output"
 
   
   
-  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
   
   <div id="pst-scroll-pixel-helper"></div>
-
   
   <button type="button" class="btn rounded-pill" id="pst-back-to-top">
     <i class="fa-solid fa-arrow-up"></i>
@@ -125,11 +119,14 @@ const thebe_selector_output = ".output, .cell_output"
 </form></div>
   </div>
   
-    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
-    </nav>
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+    </header>
   
+
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
+      
+      
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -163,7 +160,18 @@ const thebe_selector_output = ".output, .cell_output"
   
   
 </a></div>
-        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
@@ -268,15 +276,14 @@ const thebe_selector_output = ".output, .cell_output"
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../Machine_learning/machine_learning.html">9. Machine learning: Bayesian methods</a><input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-9"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../Machine_learning/lecture_22.html">9.1. Lecture 22</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../notebooks/Machine_learning/Bayesian_optimization.html">9.2. Bayesian Optimization</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../Machine_learning/lecture_23.html">9.3. Lecture 23</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../notebooks/Machine_learning/Neural_networks_explained.html">9.4. What Are Neural Networks?</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../notebooks/Machine_learning/Forssen_tif285_NeuralNet.html">9.5. Neural networks</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../notebooks/Machine_learning/Forssen_tif285_demo-NeuralNet.html">9.6. Neural network classifier demonstration</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../notebooks/Machine_learning/Bayesian_neural_networks_tif285.html">9.7. Bayesian neural networks</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../Machine_learning/lecture_24.html">9.8. Lecture 24</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../notebooks/Machine_learning/demo-Bayesian_neural_networks_tif285.html">9.9. Variational Inference: Bayesian Neural Networks</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../notebooks/Machine_learning/Convolutional_neural_network_explained.html">9.10. What is a convolutional neural network?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Machine_learning/lecture_23.html">9.2. Lecture 23</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../notebooks/Machine_learning/Neural_networks_explained.html">9.3. What Are Neural Networks?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../notebooks/Machine_learning/Forssen_tif285_NeuralNet.html">9.4. Neural networks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../notebooks/Machine_learning/Forssen_tif285_demo-NeuralNet.html">9.5. Neural network classifier demonstration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../notebooks/Machine_learning/Bayesian_neural_networks_tif285.html">9.6. Bayesian neural networks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Machine_learning/lecture_24.html">9.7. Lecture 24</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../notebooks/Machine_learning/demo-Bayesian_neural_networks_tif285.html">9.8. Variational Inference: Bayesian Neural Networks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../notebooks/Machine_learning/Convolutional_neural_network_explained.html">9.9. What is a convolutional neural network?</a></li>
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../SVD/svd.html">10. PCA, SVD, and all that</a><input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-10"><i class="fa-solid fa-chevron-down"></i></label><ul>
@@ -533,12 +540,12 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article" role="main">
+                <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="lecture-4-a-couple-of-frequentist-connections">
-<h1><span class="section-number">1.10. </span>Lecture 4: A couple of frequentist connections<a class="headerlink" href="#lecture-4-a-couple-of-frequentist-connections" title="Permalink to this heading">#</a></h1>
+<h1><span class="section-number">1.10. </span>Lecture 4: A couple of frequentist connections<a class="headerlink" href="#lecture-4-a-couple-of-frequentist-connections" title="Link to this heading">#</a></h1>
 <section id="the-near-ubiquity-of-gaussians">
-<h2>The near ubiquity of Gaussians<a class="headerlink" href="#the-near-ubiquity-of-gaussians" title="Permalink to this heading">#</a></h2>
+<h2>The near ubiquity of Gaussians<a class="headerlink" href="#the-near-ubiquity-of-gaussians" title="Link to this heading">#</a></h2>
 <p>In the last lecture we considered a Gaussian distribution and
 estimated its mean and variance. We are going to see a lot of Gaussian
 distributions in this course. And indeed some people implicitly always
@@ -549,7 +556,7 @@ in which that choice might be a poor one.</p>
 <p>It turns out there are several reasons why one might choose a Gaussian
 to describe a probability distribution. Here are two:</p>
 <section id="the-gaussian-is-to-statistics-what-the-harmonic-oscillator-is-to-mechanics">
-<h3>The Gaussian is to statistics what the harmonic oscillator is to mechanics<a class="headerlink" href="#the-gaussian-is-to-statistics-what-the-harmonic-oscillator-is-to-mechanics" title="Permalink to this heading">#</a></h3>
+<h3>The Gaussian is to statistics what the harmonic oscillator is to mechanics<a class="headerlink" href="#the-gaussian-is-to-statistics-what-the-harmonic-oscillator-is-to-mechanics" title="Link to this heading">#</a></h3>
 <p>Suppose we have a probability distribution <span class="math notranslate nohighlight">\(p(x | D,I)\)</span> that is
 unimodal (has only one hump), then one way to form a “best estimate’’
 for the variable <span class="math notranslate nohighlight">\(x\)</span> is to compute the maximum of the
@@ -623,7 +630,7 @@ minus infinity.</p>
 </div>
 </section>
 <section id="the-central-limit-theorem">
-<h3>The Central Limit Theorem<a class="headerlink" href="#the-central-limit-theorem" title="Permalink to this heading">#</a></h3>
+<h3>The Central Limit Theorem<a class="headerlink" href="#the-central-limit-theorem" title="Link to this heading">#</a></h3>
 <p>Another reason a Gaussian pdf emerges in many calculations is because
 the Central Limit Theorem (CLT) states that the sum of random variables drawn
 from all (or almost all) probability
@@ -634,14 +641,14 @@ pdf of finite variance <span class="math notranslate nohighlight">\(\sigma^2\)</
 be Gaussian distributed about the expectation value of the sum, with
 variance <span class="math notranslate nohighlight">\(n \sigma^2\)</span>.</p>
 <section id="consequences">
-<h4>Consequences:<a class="headerlink" href="#consequences" title="Permalink to this heading">#</a></h4>
+<h4>Consequences:<a class="headerlink" href="#consequences" title="Link to this heading">#</a></h4>
 <ul class="simple">
 <li><p>The mean of a large number of values becomes normally distributed
 <em>regardless</em> of the probability distribution the values are drawn
 from.</p></li>
 <li><p>The binomial, Poisson, chi-squared, and Student’s t- distributions all approach
 Gaussian distributions in the limit of a large number
-of degrees of freedom (e.q., for large <span class="math notranslate nohighlight">\(n\)</span> for binomial). This consequence is probably not immediately obvious to you from the statement of the CLT! (See the <a class="reference internal" href="../../notebooks/Basics/visualization_of_CLT.html"><span class="doc std std-doc">Visualization of the Central Limit Theorem</span></a> notebook for an explanation of the Poisson distribution.)</p></li>
+of degrees of freedom (e.q., for large <span class="math notranslate nohighlight">\(n\)</span> for binomial). This consequence is probably not immediately obvious to you from the statement of the CLT! (See the <a class="reference internal" href="../../notebooks/Basics/visualization_of_CLT.html"><span class="std std-doc">Visualization of the Central Limit Theorem</span></a> notebook for an explanation of the Poisson distribution.)</p></li>
 </ul>
 <div class="admonition-question admonition">
 <p class="admonition-title">Question</p>
@@ -657,7 +664,7 @@ of degrees of freedom (e.q., for large <span class="math notranslate nohighlight
 </div>
 </section>
 <section id="proof-of-the-clt-in-a-special-case">
-<h4>Proof of the CLT in a special case:<a class="headerlink" href="#proof-of-the-clt-in-a-special-case" title="Permalink to this heading">#</a></h4>
+<h4>Proof of the CLT in a special case:<a class="headerlink" href="#proof-of-the-clt-in-a-special-case" title="Link to this heading">#</a></h4>
 <p>Start with <em>independent</em> random variables <span class="math notranslate nohighlight">\(x_1,\cdots,x_n\)</span> drawn from a distribution with mean <span class="math notranslate nohighlight">\(\langle x \rangle = 0\)</span> and variance <span class="math notranslate nohighlight">\(\langle x^2\rangle = \sigma^2\)</span>, where</p>
 <div class="math notranslate nohighlight">
 \[
@@ -750,8 +757,8 @@ d\omega e^{i \omega X} e^{- \omega^2 \sigma^2/2}=\frac{1}{\sqrt{2
 \end{split}\]</div>
 </section>
 <section id="notebook">
-<h4>Notebook:<a class="headerlink" href="#notebook" title="Permalink to this heading">#</a></h4>
-<p>Look at <a class="reference internal" href="../../notebooks/Basics/visualization_of_CLT.html"><span class="doc std std-doc">Visualization of the Central Limit Theorem</span></a>.</p>
+<h4>Notebook:<a class="headerlink" href="#notebook" title="Link to this heading">#</a></h4>
+<p>Look at <a class="reference internal" href="../../notebooks/Basics/visualization_of_CLT.html"><span class="std std-doc">Visualization of the Central Limit Theorem</span></a>.</p>
 <p>Things to think about:</p>
 <ul class="simple">
 <li><p>What does ``large’’ number of degrees of freedom actually mean? Does
@@ -763,7 +770,7 @@ it matter where we look?</p></li>
 </section>
 </section>
 <section id="p-values-when-all-you-can-do-is-falsify">
-<h2>p-values: when all you can do is falsify<a class="headerlink" href="#p-values-when-all-you-can-do-is-falsify" title="Permalink to this heading">#</a></h2>
+<h2>p-values: when all you can do is falsify<a class="headerlink" href="#p-values-when-all-you-can-do-is-falsify" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p>A common way for a frequentist to discuss a theory/model, or put a
 bound on a parameter value, is to quote a p-value.</p></li>
@@ -790,17 +797,17 @@ was observed”.</p></li>
 <div class="admonition-exercise admonition">
 <p class="admonition-title">Exercise</p>
 <p>Look at
-<a class="reference internal" href="../../notebooks/Basics/Bayesian_updating_coinflip_interactive.html"><span class="doc std std-doc">Interactive Bayesian updating: coin flipping example</span></a>. Pick
+<a class="reference internal" href="../../notebooks/Basics/Bayesian_updating_coinflip_interactive.html"><span class="std std-doc">Interactive Bayesian updating: coin flipping example</span></a>. Pick
 a <span class="math notranslate nohighlight">\(p_{\rm crit}\)</span>-value. If  <span class="math notranslate nohighlight">\(p_h=0.4\)</span>, work out how many coin tosses it would take
 to reject the null hypothesis that it’s a fair coin (<span class="math notranslate nohighlight">\(p_h=0.5\)</span>) at
 this significance level.</p>
 </div>
 </section>
 <section id="contrast-bayesian-and-significance-analyses-for-coin-flipping">
-<h2>Contrast Bayesian and significance analyses for coin flipping<a class="headerlink" href="#contrast-bayesian-and-significance-analyses-for-coin-flipping" title="Permalink to this heading">#</a></h2>
+<h2>Contrast Bayesian and significance analyses for coin flipping<a class="headerlink" href="#contrast-bayesian-and-significance-analyses-for-coin-flipping" title="Link to this heading">#</a></h2>
 <p>Suppose we do a coin flipping experiment where we toss a coin 20 times and it comes up heads 14 times. Let’s compare how we might analyze this with Bayesian methods to how we might do a significance analysis with p-values.</p>
 <p><strong>Bayesian analysis.</strong>
-Following our study in <a class="reference internal" href="../../notebooks/Basics/Bayesian_updating_coinflip_interactive.html"><span class="doc std std-doc">Interactive Bayesian updating: coin flipping example</span></a>, let’s calculate the probability of heads, which we call <span class="math notranslate nohighlight">\(p_h\)</span>, given data <span class="math notranslate nohighlight">\(D = \{R \text{ heads}, N \text{ tosses}\}\)</span>.</p>
+Following our study in <a class="reference internal" href="../../notebooks/Basics/Bayesian_updating_coinflip_interactive.html"><span class="std std-doc">Interactive Bayesian updating: coin flipping example</span></a>, let’s calculate the probability of heads, which we call <span class="math notranslate nohighlight">\(p_h\)</span>, given data <span class="math notranslate nohighlight">\(D = \{R \text{ heads}, N \text{ tosses}\}\)</span>.</p>
 <ul class="simple">
 <li><p>Let’s assume a uniform prior (encoded as a beta function with <span class="math notranslate nohighlight">\(\alpha=1\)</span>, <span class="math notranslate nohighlight">\(\beta=1\)</span>).</p></li>
 <li><p>We found that this can be expressed as a beta function, which we can calculate in Python using
@@ -825,7 +832,7 @@ Following our study in <a class="reference internal" href="../../notebooks/Basic
 </div>
 </section>
 <section id="bayesian-degree-of-belief-intervals-and-frequentist-confidence-intervals">
-<h2>Bayesian degree of belief intervals and frequentist confidence intervals<a class="headerlink" href="#bayesian-degree-of-belief-intervals-and-frequentist-confidence-intervals" title="Permalink to this heading">#</a></h2>
+<h2>Bayesian degree of belief intervals and frequentist confidence intervals<a class="headerlink" href="#bayesian-degree-of-belief-intervals-and-frequentist-confidence-intervals" title="Link to this heading">#</a></h2>
 <p>In class on Wednesday we also talked about the difference between the
 68% degree of belief interval for the most likely value (in that case
 the bias weighting of the coin) and a frequentist <span class="math notranslate nohighlight">\(1 \sigma\)</span> confidence
@@ -935,6 +942,7 @@ interval. [E.g., lower a horizontal line over the distribution until the desired
               
                 <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
 
+
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
     <i class="fa-solid fa-list"></i> Contents
@@ -1002,8 +1010,8 @@ By Dick Furnstahl and Daniel Phillips
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../../_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
-<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
+  <script src="../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
 
   <footer class="bd-footer">
   </footer>

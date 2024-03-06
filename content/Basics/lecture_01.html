@@ -1,13 +1,12 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="" >
+<html lang="en" data-content_root="../../" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>1.1. Lecture 1 &#8212; Learning from data</title>
   
@@ -19,54 +18,50 @@
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
-<link href="../../_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
-<link href="../../_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link href="../../_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
 
   
-  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+  <link href="../../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
-    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/myadmonitions.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+    <link rel="stylesheet" type="text/css" href="../../_static/myadmonitions.css?v=f87e7f18" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
-<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
-  <script src="../../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="../../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
 
-    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
-    <script src="../../_static/jquery.js"></script>
-    <script src="../../_static/underscore.js"></script>
-    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../../_static/doctools.js"></script>
-    <script src="../../_static/clipboard.min.js"></script>
-    <script src="../../_static/copybutton.js"></script>
-    <script src="../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=888ff710"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../../_static/togglebutton.js"></script>
+    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../../_static/design-tabs.js"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
-    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script src="../../_static/design-tabs.js?v=36754332"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>window.MathJax = {"tex": {"macros": {"N": ["\\mathbb{N}"], "Z": ["\\mathbb{Z}"], "floor": ["\\lfloor#1\\rfloor", 1], "bmat": ["\\left[\\begin{array}"], "emat": ["\\end{array}\\right]"], "alphavec": ["\\boldsymbol{\\alpha}"], "muvec": ["\\boldsymbol{\\mu}"], "phivec": ["\\boldsymbol{\\phi}"], "sigmavec": ["\\boldsymbol{\\sigma}"], "Sigmavec": ["\\boldsymbol{\\Sigma}"], "thetavec": ["\\boldsymbol{\\theta}"], "thetavechat": ["\\widehat\\thetavec"], "avec": ["\\boldsymbol{a}"], "Bvec": ["\\boldsymbol{B}"], "fvec": ["\\boldsymbol{f}"], "mvec": ["\\boldsymbol{m}"], "qvec": ["\\boldsymbol{q}"], "rvec": ["\\boldsymbol{r}"], "uvec": ["\\boldsymbol{u}"], "wvec": ["\\boldsymbol{w}"], "xvec": ["\\boldsymbol{x}"], "yvec": ["\\boldsymbol{y}"], "Lra": ["\\Longrightarrow"], "abar": ["\\overline a"], "Xbar": ["\\overline X"], "alphahat": ["\\widehat\\alpha"], "Hhat": ["\\hat H"], "yth": ["y_{\\text{th}}"], "yexp": ["y_{\\text{exp}}"], "ym": ["y_{\\text{m}}"], "gs": ["{0}"]}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'content/Basics/lecture_01';</script>
-    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
+    <link rel="icon" href="../../_static/favicon.ico"/>
     <link rel="author" title="About these documents" href="../../about.html" />
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
@@ -81,10 +76,9 @@ const thebe_selector_output = ".output, .cell_output"
 
   
   
-  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
   
   <div id="pst-scroll-pixel-helper"></div>
-
   
   <button type="button" class="btn rounded-pill" id="pst-back-to-top">
     <i class="fa-solid fa-arrow-up"></i>
@@ -125,11 +119,14 @@ const thebe_selector_output = ".output, .cell_output"
 </form></div>
   </div>
   
-    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
-    </nav>
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+    </header>
   
+
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
+      
+      
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -163,7 +160,18 @@ const thebe_selector_output = ".output, .cell_output"
   
   
 </a></div>
-        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
@@ -268,15 +276,14 @@ const thebe_selector_output = ".output, .cell_output"
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../Machine_learning/machine_learning.html">9. Machine learning: Bayesian methods</a><input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-9"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../Machine_learning/lecture_22.html">9.1. Lecture 22</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../notebooks/Machine_learning/Bayesian_optimization.html">9.2. Bayesian Optimization</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../Machine_learning/lecture_23.html">9.3. Lecture 23</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../notebooks/Machine_learning/Neural_networks_explained.html">9.4. What Are Neural Networks?</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../notebooks/Machine_learning/Forssen_tif285_NeuralNet.html">9.5. Neural networks</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../notebooks/Machine_learning/Forssen_tif285_demo-NeuralNet.html">9.6. Neural network classifier demonstration</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../notebooks/Machine_learning/Bayesian_neural_networks_tif285.html">9.7. Bayesian neural networks</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../Machine_learning/lecture_24.html">9.8. Lecture 24</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../notebooks/Machine_learning/demo-Bayesian_neural_networks_tif285.html">9.9. Variational Inference: Bayesian Neural Networks</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../notebooks/Machine_learning/Convolutional_neural_network_explained.html">9.10. What is a convolutional neural network?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Machine_learning/lecture_23.html">9.2. Lecture 23</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../notebooks/Machine_learning/Neural_networks_explained.html">9.3. What Are Neural Networks?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../notebooks/Machine_learning/Forssen_tif285_NeuralNet.html">9.4. Neural networks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../notebooks/Machine_learning/Forssen_tif285_demo-NeuralNet.html">9.5. Neural network classifier demonstration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../notebooks/Machine_learning/Bayesian_neural_networks_tif285.html">9.6. Bayesian neural networks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Machine_learning/lecture_24.html">9.7. Lecture 24</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../notebooks/Machine_learning/demo-Bayesian_neural_networks_tif285.html">9.8. Variational Inference: Bayesian Neural Networks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../notebooks/Machine_learning/Convolutional_neural_network_explained.html">9.9. What is a convolutional neural network?</a></li>
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../SVD/svd.html">10. PCA, SVD, and all that</a><input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-10"><i class="fa-solid fa-chevron-down"></i></label><ul>
@@ -531,12 +538,12 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article" role="main">
+                <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="lecture-1">
-<h1><span class="section-number">1.1. </span>Lecture 1<a class="headerlink" href="#lecture-1" title="Permalink to this heading">#</a></h1>
+<h1><span class="section-number">1.1. </span>Lecture 1<a class="headerlink" href="#lecture-1" title="Link to this heading">#</a></h1>
 <section id="inference-pass-1">
-<h2>Inference: Pass 1<a class="headerlink" href="#inference-pass-1" title="Permalink to this heading">#</a></h2>
+<h2>Inference: Pass 1<a class="headerlink" href="#inference-pass-1" title="Link to this heading">#</a></h2>
 <p>How do we increase or update our knowledge? We use <em>inference</em>. The dictionary definition of inference is “the act or process of reaching a conclusion about something from known facts or evidence.”
 We can divide inference into two classes, deductive and inductive.</p>
 <ul class="simple">
@@ -581,7 +588,7 @@ Probability <em>density</em> at <span class="math notranslate nohighlight">\(x\)
 \]</div>
 <p>Alternative notation for pdfs in literature: <span class="math notranslate nohighlight">\(p(\vec x) = p(\mathbf{x}) = P(\vec x) = \text{pr}(\vec x) = \text{prob}(\vec x) = \ldots\)</span></p>
 <section id="vocabulary-and-definitions">
-<h3>Vocabulary and definitions:<a class="headerlink" href="#vocabulary-and-definitions" title="Permalink to this heading">#</a></h3>
+<h3>Vocabulary and definitions:<a class="headerlink" href="#vocabulary-and-definitions" title="Link to this heading">#</a></h3>
 <ul>
 <li><p><span class="math notranslate nohighlight">\(p(x_1, x_2)\)</span> is the <em>joint</em> probability density of <span class="math notranslate nohighlight">\(x_1\)</span> and <span class="math notranslate nohighlight">\(x_2\)</span>. In quantum mechanics the probability density <span class="math notranslate nohighlight">\(|\Psi(x_1, x_2)|^2\)</span> to find particle 1 at <span class="math notranslate nohighlight">\(x_1\)</span> and particle 2 at <span class="math notranslate nohighlight">\(x_2\)</span> is a joint probability density.</p>
 <div class="admonition-question admonition">
@@ -616,11 +623,11 @@ Probability <em>density</em> at <span class="math notranslate nohighlight">\(x\)
 </section>
 </section>
 <section id="visualizing-pdfs">
-<h2>Visualizing pdfs<a class="headerlink" href="#visualizing-pdfs" title="Permalink to this heading">#</a></h2>
-<p>Go through the Jupyter notebook <a class="reference internal" href="../../notebooks/Basics/Exploring_pdfs.html"><span class="doc std std-doc">Exploring PDFs</span></a> (<em>after</em> you read the following information).</p>
+<h2>Visualizing pdfs<a class="headerlink" href="#visualizing-pdfs" title="Link to this heading">#</a></h2>
+<p>Go through the Jupyter notebook <a class="reference internal" href="../../notebooks/Basics/Exploring_pdfs.html"><span class="std std-doc">Exploring PDFs</span></a> (<em>after</em> you read the following information).</p>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
-<p>When you follow the <a class="reference internal" href="../../notebooks/Basics/Exploring_pdfs.html"><span class="doc std std-doc">Exploring PDFs</span></a> link, you can run the notebook on a Binder cloud server using the leftmost icon at the top-middle-right, or you can download the notebook to run locally using the rightmost icon at the top-middle-right. Ultimately you should clone the github repository by following the github icon <a class="reference internal" href="../../_images/GitHub-Mark-32px.png"><img alt="github download icon" src="../../_images/GitHub-Mark-32px.png" style="width: 20px;" /></a> to be able to run locally and update with a simple <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">pull</span></code> command.</p>
+<p>When you follow the <a class="reference internal" href="../../notebooks/Basics/Exploring_pdfs.html"><span class="std std-doc">Exploring PDFs</span></a> link, you can run the notebook on a Binder cloud server using the leftmost icon at the top-middle-right, or you can download the notebook to run locally using the rightmost icon at the top-middle-right. Ultimately you should clone the github repository by following the github icon <a class="reference internal" href="../../_images/GitHub-Mark-32px.png"><img alt="github download icon" src="../../_images/GitHub-Mark-32px.png" style="width: 20px;" /></a> to be able to run locally and update with a simple <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">pull</span></code> command.</p>
 <p>When running on Binder, be patient; it may take a while to generate the page if the environment needs to be created from scratch (in general it is cached, so it will be much faster if others have been recently using notebooks from the repository).</p>
 </div>
 <p>Points of interest:</p>
@@ -657,9 +664,9 @@ Probability <em>density</em> at <span class="math notranslate nohighlight">\(x\)
 <p>Many follow-ups are possible, but let’s first put some other Bayesian notation on the table.</p>
 </section>
 <section id="manipulating-pdfs-bayesian-rules-of-probability-as-principles-of-logic">
-<h2>Manipulating pdfs: Bayesian rules of probability as principles of logic<a class="headerlink" href="#manipulating-pdfs-bayesian-rules-of-probability-as-principles-of-logic" title="Permalink to this heading">#</a></h2>
+<h2>Manipulating pdfs: Bayesian rules of probability as principles of logic<a class="headerlink" href="#manipulating-pdfs-bayesian-rules-of-probability-as-principles-of-logic" title="Link to this heading">#</a></h2>
 <ul class="simple">
-<li><p>You will show these rules are consistent with standard probabilities based on frequencies in <a class="reference internal" href="../../notebooks/Basics/simple_sum_product_rule.html"><span class="doc std std-doc">simple_sum_product_rule.ipynb</span></a>.</p></li>
+<li><p>You will show these rules are consistent with standard probabilities based on frequencies in <a class="reference internal" href="../../notebooks/Basics/simple_sum_product_rule.html"><span class="std std-doc">simple_sum_product_rule.ipynb</span></a>.</p></li>
 <li><p>Notation:</p></li>
 </ul>
 <div class="math notranslate nohighlight">
@@ -683,10 +690,10 @@ Probability <em>density</em> at <span class="math notranslate nohighlight">\(x\)
 </div>
 <p>In the following examples, <span class="math notranslate nohighlight">\(p(x|I)\)</span> is the probability or pdf of <span class="math notranslate nohighlight">\(x\)</span> being true given information <span class="math notranslate nohighlight">\(I\)</span> (which could be almost anything).</p>
 <section id="sum-rule">
-<h3><strong>Sum rule:</strong><a class="headerlink" href="#sum-rule" title="Permalink to this heading">#</a></h3>
+<h3><strong>Sum rule:</strong><a class="headerlink" href="#sum-rule" title="Link to this heading">#</a></h3>
 <p>If the set <span class="math notranslate nohighlight">\(\{x_i\}\)</span> is <em>exhaustive</em> and <em>exclusive</em></p>
-<div class="amsmath math notranslate nohighlight" id="equation-d34c0427-cc21-4174-8795-1076b3be256e">
-<span class="eqno">(1.1)<a class="headerlink" href="#equation-d34c0427-cc21-4174-8795-1076b3be256e" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-d5929700-31dc-4367-9111-297b5608786a">
+<span class="eqno">(1.1)<a class="headerlink" href="#equation-d5929700-31dc-4367-9111-297b5608786a" title="Permalink to this equation">#</a></span>\[\begin{align}
   &amp; \sum_i p(x_i | I ) = 1 \qquad \Longrightarrow \qquad &amp; \int dx\, p(x|I) = 1 \\
   &amp; \text{(discrete like spins)}       &amp; \text{(continuous)}
 \end{align}\]</div>
@@ -694,8 +701,8 @@ Probability <em>density</em> at <span class="math notranslate nohighlight">\(x\)
 <li><p>i.e., the sum of probabilities is equal to one.</p></li>
 <li><p>exhaustive, exclusive <span class="math notranslate nohighlight">\(\Longrightarrow\)</span> cf. complete, orthonormal (includes all possible values and there is no overlap between members of the set).</p></li>
 <li><p>the sum rule <em>implies</em> marginalization</p>
-<div class="amsmath math notranslate nohighlight" id="equation-bc54412d-e7b8-43a2-a385-3223e7e38eef">
-<span class="eqno">(1.2)<a class="headerlink" href="#equation-bc54412d-e7b8-43a2-a385-3223e7e38eef" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-e9906f6c-b448-4915-b003-0e374a88edd6">
+<span class="eqno">(1.2)<a class="headerlink" href="#equation-e9906f6c-b448-4915-b003-0e374a88edd6" title="Permalink to this equation">#</a></span>\[\begin{align}
       p(x|I) = \sum_j p(x, y_j | I) \qquad\Longrightarrow\qquad p(x|I) = \int dy\, p(x,y | I)
     \end{align}\]</div>
 <ul class="simple">
@@ -713,23 +720,23 @@ Probability <em>density</em> at <span class="math notranslate nohighlight">\(x\)
 </div>
 </section>
 <section id="product-rule">
-<h3><strong>Product rule:</strong><a class="headerlink" href="#product-rule" title="Permalink to this heading">#</a></h3>
+<h3><strong>Product rule:</strong><a class="headerlink" href="#product-rule" title="Link to this heading">#</a></h3>
 <p>Expanding a joint probability of <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span></p>
 <div class="math notranslate nohighlight" id="equation-eq-joint-prob">
-<span class="eqno">(1.3)<a class="headerlink" href="#equation-eq-joint-prob" title="Permalink to this equation">#</a></span>\[  
+<span class="eqno">(1.3)<a class="headerlink" href="#equation-eq-joint-prob" title="Link to this equation">#</a></span>\[  
    p(x,y | I) = p(x | y, I) p(y,I) = p(y| x,I) p(x,I)
 \]</div>
 <ul>
 <li><p>Note the symmetry between the first and second equalities.</p></li>
 <li><p>If <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span> are <em>mutually independent</em>, then <span class="math notranslate nohighlight">\(p(x | y,I) = p(x | I)\)</span> and</p>
-<div class="amsmath math notranslate nohighlight" id="equation-93a59d22-4dc6-41dc-a605-f655efe16bf4">
-<span class="eqno">(1.4)<a class="headerlink" href="#equation-93a59d22-4dc6-41dc-a605-f655efe16bf4" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-715646d9-7edb-4223-a25d-3fa8dfaaa5e9">
+<span class="eqno">(1.4)<a class="headerlink" href="#equation-715646d9-7edb-4223-a25d-3fa8dfaaa5e9" title="Permalink to this equation">#</a></span>\[\begin{equation}
          p(x,y | I) = p(x|I) \times p(y | I)
     \end{equation}\]</div>
 </li>
 <li><p>Rearranging the 2nd equality in <a class="reference internal" href="#equation-eq-joint-prob">(1.3)</a> yields <strong>Bayes’ Rule</strong> (or Theorem):</p>
-<div class="amsmath math notranslate nohighlight" id="equation-a11d25aa-c0a2-428e-ac45-a64d854677e6">
-<span class="eqno">(1.5)<a class="headerlink" href="#equation-a11d25aa-c0a2-428e-ac45-a64d854677e6" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-84507b35-3204-4f86-b605-6784cba61f8d">
+<span class="eqno">(1.5)<a class="headerlink" href="#equation-84507b35-3204-4f86-b605-6784cba61f8d" title="Permalink to this equation">#</a></span>\[\begin{equation}
          p(x | y,I) = \frac{p(y|x,I) p(x|I)}{p(y | I)}
     \end{equation}\]</div>
 <ul class="simple">
@@ -741,7 +748,7 @@ Probability <em>density</em> at <span class="math notranslate nohighlight">\(x\)
 <p>A proof that the Sum and Product rules follow in any consistent implementation of probabilistic reasoning is given by Cox <span id="id2">[<a class="reference internal" href="../zbibliography.html#id2" title="Richard Threlkeld Cox. The Algebra of Probable Inference. Johns Hopkins University Press, 1961.">Cox61</a>]</span>.</p>
 </section>
 <section id="your-task-complete-simple-sum-product-rule-ipynb">
-<h3>Your task: complete <a class="reference internal" href="../../notebooks/Basics/simple_sum_product_rule.html"><span class="doc std std-doc">simple_sum_product_rule.ipynb</span></a><a class="headerlink" href="#your-task-complete-simple-sum-product-rule-ipynb" title="Permalink to this heading">#</a></h3>
+<h3>Your task: complete <a class="reference internal" href="../../notebooks/Basics/simple_sum_product_rule.html"><span class="std std-doc">simple_sum_product_rule.ipynb</span></a><a class="headerlink" href="#your-task-complete-simple-sum-product-rule-ipynb" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>Fill in the table based on knowledge/intuition of probabilities as frequencies (these are <em>estimates</em> of population probabilities). Do this in markdown.</p></li>
 <li><p>Apply the sum and product rules as directed.</p></li>
@@ -809,6 +816,7 @@ Probability <em>density</em> at <span class="math notranslate nohighlight">\(x\)
               
                 <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
 
+
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
     <i class="fa-solid fa-list"></i> Contents
@@ -874,8 +882,8 @@ By Dick Furnstahl and Daniel Phillips
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../../_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
-<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
+  <script src="../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
 
   <footer class="bd-footer">
   </footer>

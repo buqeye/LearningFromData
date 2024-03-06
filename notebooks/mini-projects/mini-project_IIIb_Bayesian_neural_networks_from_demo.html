@@ -1,13 +1,12 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="" >
+<html lang="en" data-content_root="../../" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>Mini-project IIIb: Bayesian Neural Networks &#8212; Learning from data</title>
   
@@ -19,52 +18,48 @@
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
-<link href="../../_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
-<link href="../../_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link href="../../_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
 
   
-  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+  <link href="../../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
-    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/myadmonitions.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+    <link rel="stylesheet" type="text/css" href="../../_static/myadmonitions.css?v=f87e7f18" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
-<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
-  <script src="../../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="../../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
 
-    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
-    <script src="../../_static/jquery.js"></script>
-    <script src="../../_static/underscore.js"></script>
-    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../../_static/doctools.js"></script>
-    <script src="../../_static/clipboard.min.js"></script>
-    <script src="../../_static/copybutton.js"></script>
-    <script src="../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=888ff710"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../../_static/togglebutton.js"></script>
+    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../../_static/design-tabs.js"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
-    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script src="../../_static/design-tabs.js?v=36754332"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'notebooks/mini-projects/mini-project_IIIb_Bayesian_neural_networks_from_demo';</script>
-    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
+    <link rel="icon" href="../../_static/favicon.ico"/>
     <link rel="author" title="About these documents" href="../../about.html" />
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
@@ -79,10 +74,9 @@ const thebe_selector_output = ".output, .cell_output"
 
   
   
-  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
   
   <div id="pst-scroll-pixel-helper"></div>
-
   
   <button type="button" class="btn rounded-pill" id="pst-back-to-top">
     <i class="fa-solid fa-arrow-up"></i>
@@ -123,11 +117,14 @@ const thebe_selector_output = ".output, .cell_output"
 </form></div>
   </div>
   
-    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
-    </nav>
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+    </header>
   
+
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
+      
+      
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -161,7 +158,18 @@ const thebe_selector_output = ".output, .cell_output"
   
   
 </a></div>
-        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
@@ -266,15 +274,14 @@ const thebe_selector_output = ".output, .cell_output"
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../content/Machine_learning/machine_learning.html">9. Machine learning: Bayesian methods</a><input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-9"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../content/Machine_learning/lecture_22.html">9.1. Lecture 22</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../Machine_learning/Bayesian_optimization.html">9.2. Bayesian Optimization</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../content/Machine_learning/lecture_23.html">9.3. Lecture 23</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../Machine_learning/Neural_networks_explained.html">9.4. What Are Neural Networks?</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../Machine_learning/Forssen_tif285_NeuralNet.html">9.5. Neural networks</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../Machine_learning/Forssen_tif285_demo-NeuralNet.html">9.6. Neural network classifier demonstration</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../Machine_learning/Bayesian_neural_networks_tif285.html">9.7. Bayesian neural networks</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../content/Machine_learning/lecture_24.html">9.8. Lecture 24</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../Machine_learning/demo-Bayesian_neural_networks_tif285.html">9.9. Variational Inference: Bayesian Neural Networks</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../Machine_learning/Convolutional_neural_network_explained.html">9.10. What is a convolutional neural network?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../content/Machine_learning/lecture_23.html">9.2. Lecture 23</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Machine_learning/Neural_networks_explained.html">9.3. What Are Neural Networks?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Machine_learning/Forssen_tif285_NeuralNet.html">9.4. Neural networks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Machine_learning/Forssen_tif285_demo-NeuralNet.html">9.5. Neural network classifier demonstration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Machine_learning/Bayesian_neural_networks_tif285.html">9.6. Bayesian neural networks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../content/Machine_learning/lecture_24.html">9.7. Lecture 24</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Machine_learning/demo-Bayesian_neural_networks_tif285.html">9.8. Variational Inference: Bayesian Neural Networks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Machine_learning/Convolutional_neural_network_explained.html">9.9. What is a convolutional neural network?</a></li>
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../content/SVD/svd.html">10. PCA, SVD, and all that</a><input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-10"><i class="fa-solid fa-chevron-down"></i></label><ul>
@@ -587,14 +594,14 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article" role="main">
+                <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="mini-project-iiib-bayesian-neural-networks">
-<h1>Mini-project IIIb: Bayesian Neural Networks<a class="headerlink" href="#mini-project-iiib-bayesian-neural-networks" title="Permalink to this heading">#</a></h1>
+<h1>Mini-project IIIb: Bayesian Neural Networks<a class="headerlink" href="#mini-project-iiib-bayesian-neural-networks" title="Link to this heading">#</a></h1>
 <p><strong>Answer questions and do tasks written in boldface.</strong></p>
 <p>Based on the <a class="reference external" href="https://furnstahl.github.io/Physics-8820/notebooks/Machine_learning/demo-Bayesian_neural_networks_tif285.html">demo-Bayesian_neural_networks_tif285.ipynb</a> notebook by Christian Forssén, which in turn was based on:</p>
 <section id="variational-inference-bayesian-neural-networks">
-<h2>Variational Inference: Bayesian Neural Networks<a class="headerlink" href="#variational-inference-bayesian-neural-networks" title="Permalink to this heading">#</a></h2>
+<h2>Variational Inference: Bayesian Neural Networks<a class="headerlink" href="#variational-inference-bayesian-neural-networks" title="Link to this heading">#</a></h2>
 <p>© 2016-2018 by Thomas Wiecki, updated by Maxim Kochurov.</p>
 <p>Original blog post: <a class="reference external" href="https://twiecki.github.io/blog/2016/06/01/bayesian-deep-learning/">https://twiecki.github.io/blog/2016/06/01/bayesian-deep-learning/</a>
 and updated version: <a class="reference external" href="https://docs.pymc.io/notebooks/bayesian_neural_network_advi.html">https://docs.pymc.io/notebooks/bayesian_neural_network_advi.html</a>.</p>
@@ -607,7 +614,7 @@ and updated version: <a class="reference external" href="https://docs.pymc.io/no
 <p>This should work with conda environments using the original environment.yml conda file on Macs and Linux machines or using the environment_windows.yml conda file on Windows 10.</p>
 </section>
 <section id="generating-data">
-<h2>Generating data<a class="headerlink" href="#generating-data" title="Permalink to this heading">#</a></h2>
+<h2>Generating data<a class="headerlink" href="#generating-data" title="Link to this heading">#</a></h2>
 <p>First, lets generate some toy data – a simple binary classification problem that’s not linearly separable. Here we use <code class="docutils literal notranslate"><span class="pre">make_moons</span></code> from scikit-learn to generate the full set of data (see <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.datasets.make_moons.html">https://scikit-learn.org/stable/modules/generated/sklearn.datasets.make_moons.html</a>) and <code class="docutils literal notranslate"><span class="pre">train_test_split</span></code> to divide it into training and test sets (see <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.train_test_split.html">https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.train_test_split.html</a>).</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -684,7 +691,7 @@ and updated version: <a class="reference external" href="https://docs.pymc.io/no
 </div>
 </section>
 <section id="model-specification">
-<h2>Model specification<a class="headerlink" href="#model-specification" title="Permalink to this heading">#</a></h2>
+<h2>Model specification<a class="headerlink" href="#model-specification" title="Link to this heading">#</a></h2>
 <p>A neural network is quite simple. The basic unit is a <a class="reference external" href="https://en.wikipedia.org/wiki/Perceptron">perceptron</a>, which is nothing more than <a class="reference external" href="http://pymc-devs.github.io/pymc3/notebooks/posterior_predictive.html#Prediction">logistic regression</a>. We use many of these in parallel and then stack them up to get hidden layers. Here we start with 2 hidden layers with 5 neurons each which is sufficient for such a simple problem.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -741,7 +748,7 @@ and updated version: <a class="reference external" href="https://docs.pymc.io/no
 <p>The <code class="docutils literal notranslate"><span class="pre">Normal</span></code> priors help regularize the weights. Usually we would add a constant <code class="docutils literal notranslate"><span class="pre">b</span></code> to the inputs (come back to do this later).</p>
 </section>
 <section id="variational-inference-scaling-model-complexity">
-<h2>Variational Inference: Scaling model complexity<a class="headerlink" href="#variational-inference-scaling-model-complexity" title="Permalink to this heading">#</a></h2>
+<h2>Variational Inference: Scaling model complexity<a class="headerlink" href="#variational-inference-scaling-model-complexity" title="Link to this heading">#</a></h2>
 <p>To find a posterior for the weights, we will use <a class="reference external" href="https://arxiv.org/abs/1603.00788">ADVI</a> variational inference algorithm in PyMC3. This is much faster than an MCMC sampler and will scale better.</p>
 <p><strong>Note</strong>, however, that this is a mean-field approximation so we <strong>ignore correlations</strong> in the posterior.</p>
 <div class="cell docutils container">
@@ -887,7 +894,7 @@ Wall time: 15.1 s
 </div>
 </section>
 <section id="lets-look-at-what-the-classifier-has-learned">
-<h2>Let’s look at what the classifier has learned<a class="headerlink" href="#lets-look-at-what-the-classifier-has-learned" title="Permalink to this heading">#</a></h2>
+<h2>Let’s look at what the classifier has learned<a class="headerlink" href="#lets-look-at-what-the-classifier-has-learned" title="Link to this heading">#</a></h2>
 <p>For this, we evaluate the class probability predictions on a grid over the whole input space.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -906,7 +913,7 @@ Wall time: 15.1 s
 </div>
 </div>
 <section id="probability-surface">
-<h3>Probability surface<a class="headerlink" href="#probability-surface" title="Permalink to this heading">#</a></h3>
+<h3>Probability surface<a class="headerlink" href="#probability-surface" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cmap</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">diverging_palette</span><span class="p">(</span><span class="mi">250</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">85</span><span class="p">,</span> <span class="n">l</span><span class="o">=</span><span class="mi">25</span><span class="p">,</span> <span class="n">as_cmap</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
@@ -927,7 +934,7 @@ Wall time: 15.1 s
 <p><strong>What is being plotted in this graph?  How does it compare to what you would get from a non-Bayesian neural network?</strong></p>
 </section>
 <section id="uncertainty-in-predicted-value">
-<h3>Uncertainty in predicted value<a class="headerlink" href="#uncertainty-in-predicted-value" title="Permalink to this heading">#</a></h3>
+<h3>Uncertainty in predicted value<a class="headerlink" href="#uncertainty-in-predicted-value" title="Link to this heading">#</a></h3>
 <p><strong>What is being plotted below?  Why is this different from a non-Bayesian neural network?</strong></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -949,16 +956,16 @@ Wall time: 15.1 s
 </section>
 </section>
 <section id="to-do">
-<h2>To do<a class="headerlink" href="#to-do" title="Permalink to this heading">#</a></h2>
+<h2>To do<a class="headerlink" href="#to-do" title="Link to this heading">#</a></h2>
 <p><strong>For each of the parameter choices listed below, do the following:</strong></p>
 <p><strong>a. Predict from the training and test data plots how well the Bayesian neural network should do (e.g., compared to the other parameter choices).</strong></p>
 <p><strong>b. Record the Average Loss.  Does the optimization appear to be converged?</strong></p>
 <p><strong>c. Record the accuracy.  Is the value consistent with your expectations from a.?</strong></p>
 <p><strong>d. What does the “uncertainty in predicted value” figure tell you about where the uncertainty in picking a label (red or blue) is greatest for this case?  Consider both regions where there is a lot of training data and where there is no training data.  Why does this make sense given your expectations from a.?</strong></p>
 <section id="parameter-choices">
-<h3>Parameter choices<a class="headerlink" href="#parameter-choices" title="Permalink to this heading">#</a></h3>
+<h3>Parameter choices<a class="headerlink" href="#parameter-choices" title="Link to this heading">#</a></h3>
 <section id="n-samples-1000-noise-0-2-test-size-0-5-iterations-n-30000">
-<h4>1. <code class="docutils literal notranslate"><span class="pre">n_samples</span> <span class="pre">=</span> <span class="pre">1000</span></code>, <code class="docutils literal notranslate"><span class="pre">noise</span> <span class="pre">=</span> <span class="pre">0.2</span></code>, <code class="docutils literal notranslate"><span class="pre">test_size</span> <span class="pre">=</span> <span class="pre">0.5</span></code>, iterations <code class="docutils literal notranslate"><span class="pre">n</span> <span class="pre">=</span> <span class="pre">30000</span></code><a class="headerlink" href="#n-samples-1000-noise-0-2-test-size-0-5-iterations-n-30000" title="Permalink to this heading">#</a></h4>
+<h4>1. <code class="docutils literal notranslate"><span class="pre">n_samples</span> <span class="pre">=</span> <span class="pre">1000</span></code>, <code class="docutils literal notranslate"><span class="pre">noise</span> <span class="pre">=</span> <span class="pre">0.2</span></code>, <code class="docutils literal notranslate"><span class="pre">test_size</span> <span class="pre">=</span> <span class="pre">0.5</span></code>, iterations <code class="docutils literal notranslate"><span class="pre">n</span> <span class="pre">=</span> <span class="pre">30000</span></code><a class="headerlink" href="#n-samples-1000-noise-0-2-test-size-0-5-iterations-n-30000" title="Link to this heading">#</a></h4>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>a.
 
 b.
@@ -970,7 +977,7 @@ d.
 </div>
 </section>
 <section id="n-samples-1000-noise-0-2-test-size-0-5-iterations-n-60000">
-<h4>2. <code class="docutils literal notranslate"><span class="pre">n_samples</span> <span class="pre">=</span> <span class="pre">1000</span></code>, <code class="docutils literal notranslate"><span class="pre">noise</span> <span class="pre">=</span> <span class="pre">0.2</span></code>, <code class="docutils literal notranslate"><span class="pre">test_size</span> <span class="pre">=</span> <span class="pre">0.5</span></code>, iterations <code class="docutils literal notranslate"><span class="pre">n</span> <span class="pre">=</span> <span class="pre">60000</span></code><a class="headerlink" href="#n-samples-1000-noise-0-2-test-size-0-5-iterations-n-60000" title="Permalink to this heading">#</a></h4>
+<h4>2. <code class="docutils literal notranslate"><span class="pre">n_samples</span> <span class="pre">=</span> <span class="pre">1000</span></code>, <code class="docutils literal notranslate"><span class="pre">noise</span> <span class="pre">=</span> <span class="pre">0.2</span></code>, <code class="docutils literal notranslate"><span class="pre">test_size</span> <span class="pre">=</span> <span class="pre">0.5</span></code>, iterations <code class="docutils literal notranslate"><span class="pre">n</span> <span class="pre">=</span> <span class="pre">60000</span></code><a class="headerlink" href="#n-samples-1000-noise-0-2-test-size-0-5-iterations-n-60000" title="Link to this heading">#</a></h4>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>a.
 
 b.
@@ -982,7 +989,7 @@ d.
 </div>
 </section>
 <section id="n-samples-1000-noise-0-05-test-size-0-5-iterations-n-60000">
-<h4>3. <code class="docutils literal notranslate"><span class="pre">n_samples</span> <span class="pre">=</span> <span class="pre">1000</span></code>, <code class="docutils literal notranslate"><span class="pre">noise</span> <span class="pre">=</span> <span class="pre">0.05</span></code>, <code class="docutils literal notranslate"><span class="pre">test_size</span> <span class="pre">=</span> <span class="pre">0.5</span></code>, iterations <code class="docutils literal notranslate"><span class="pre">n</span> <span class="pre">=</span> <span class="pre">60000</span></code><a class="headerlink" href="#n-samples-1000-noise-0-05-test-size-0-5-iterations-n-60000" title="Permalink to this heading">#</a></h4>
+<h4>3. <code class="docutils literal notranslate"><span class="pre">n_samples</span> <span class="pre">=</span> <span class="pre">1000</span></code>, <code class="docutils literal notranslate"><span class="pre">noise</span> <span class="pre">=</span> <span class="pre">0.05</span></code>, <code class="docutils literal notranslate"><span class="pre">test_size</span> <span class="pre">=</span> <span class="pre">0.5</span></code>, iterations <code class="docutils literal notranslate"><span class="pre">n</span> <span class="pre">=</span> <span class="pre">60000</span></code><a class="headerlink" href="#n-samples-1000-noise-0-05-test-size-0-5-iterations-n-60000" title="Link to this heading">#</a></h4>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>a.
 
 b.
@@ -994,7 +1001,7 @@ d.
 </div>
 </section>
 <section id="n-samples-1000-noise-0-5-test-size-0-5-iterations-n-60000">
-<h4>4. <code class="docutils literal notranslate"><span class="pre">n_samples</span> <span class="pre">=</span> <span class="pre">1000</span></code>, <code class="docutils literal notranslate"><span class="pre">noise</span> <span class="pre">=</span> <span class="pre">0.5</span></code>, <code class="docutils literal notranslate"><span class="pre">test_size</span> <span class="pre">=</span> <span class="pre">0.5</span></code>, iterations <code class="docutils literal notranslate"><span class="pre">n</span> <span class="pre">=</span> <span class="pre">60000</span></code><a class="headerlink" href="#n-samples-1000-noise-0-5-test-size-0-5-iterations-n-60000" title="Permalink to this heading">#</a></h4>
+<h4>4. <code class="docutils literal notranslate"><span class="pre">n_samples</span> <span class="pre">=</span> <span class="pre">1000</span></code>, <code class="docutils literal notranslate"><span class="pre">noise</span> <span class="pre">=</span> <span class="pre">0.5</span></code>, <code class="docutils literal notranslate"><span class="pre">test_size</span> <span class="pre">=</span> <span class="pre">0.5</span></code>, iterations <code class="docutils literal notranslate"><span class="pre">n</span> <span class="pre">=</span> <span class="pre">60000</span></code><a class="headerlink" href="#n-samples-1000-noise-0-5-test-size-0-5-iterations-n-60000" title="Link to this heading">#</a></h4>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>a.
 
 b.
@@ -1006,7 +1013,7 @@ d.
 </div>
 </section>
 <section id="n-samples-100-noise-0-2-test-size-0-5-iterations-n-60000">
-<h4>5. <code class="docutils literal notranslate"><span class="pre">n_samples</span> <span class="pre">=</span> <span class="pre">100</span></code>, <code class="docutils literal notranslate"><span class="pre">noise</span> <span class="pre">=</span> <span class="pre">0.2</span></code>, <code class="docutils literal notranslate"><span class="pre">test_size</span> <span class="pre">=</span> <span class="pre">0.5</span></code>, iterations <code class="docutils literal notranslate"><span class="pre">n</span> <span class="pre">=</span> <span class="pre">60000</span></code><a class="headerlink" href="#n-samples-100-noise-0-2-test-size-0-5-iterations-n-60000" title="Permalink to this heading">#</a></h4>
+<h4>5. <code class="docutils literal notranslate"><span class="pre">n_samples</span> <span class="pre">=</span> <span class="pre">100</span></code>, <code class="docutils literal notranslate"><span class="pre">noise</span> <span class="pre">=</span> <span class="pre">0.2</span></code>, <code class="docutils literal notranslate"><span class="pre">test_size</span> <span class="pre">=</span> <span class="pre">0.5</span></code>, iterations <code class="docutils literal notranslate"><span class="pre">n</span> <span class="pre">=</span> <span class="pre">60000</span></code><a class="headerlink" href="#n-samples-100-noise-0-2-test-size-0-5-iterations-n-60000" title="Link to this heading">#</a></h4>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>a.
 
 b.
@@ -1094,6 +1101,7 @@ d.
               
                 <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
 
+
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
     <i class="fa-solid fa-list"></i> Contents
@@ -1168,8 +1176,8 @@ By Dick Furnstahl and Daniel Phillips
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../../_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
-<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
+  <script src="../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
 
   <footer class="bd-footer">
   </footer>

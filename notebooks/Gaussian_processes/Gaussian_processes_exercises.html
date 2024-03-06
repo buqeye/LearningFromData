@@ -1,13 +1,12 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="" >
+<html lang="en" data-content_root="../../" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>7.4. Exercise: Gaussian Process models with GPy &#8212; Learning from data</title>
   
@@ -19,54 +18,50 @@
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
-<link href="../../_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
-<link href="../../_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link href="../../_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
 
   
-  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+  <link href="../../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
-    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/myadmonitions.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+    <link rel="stylesheet" type="text/css" href="../../_static/myadmonitions.css?v=f87e7f18" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
-<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
-  <script src="../../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="../../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
 
-    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
-    <script src="../../_static/jquery.js"></script>
-    <script src="../../_static/underscore.js"></script>
-    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../../_static/doctools.js"></script>
-    <script src="../../_static/clipboard.min.js"></script>
-    <script src="../../_static/copybutton.js"></script>
-    <script src="../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=888ff710"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../../_static/togglebutton.js"></script>
+    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../../_static/design-tabs.js"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
-    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script src="../../_static/design-tabs.js?v=36754332"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>window.MathJax = {"tex": {"macros": {"N": ["\\mathbb{N}"], "Z": ["\\mathbb{Z}"], "floor": ["\\lfloor#1\\rfloor", 1], "bmat": ["\\left[\\begin{array}"], "emat": ["\\end{array}\\right]"], "alphavec": ["\\boldsymbol{\\alpha}"], "muvec": ["\\boldsymbol{\\mu}"], "phivec": ["\\boldsymbol{\\phi}"], "sigmavec": ["\\boldsymbol{\\sigma}"], "Sigmavec": ["\\boldsymbol{\\Sigma}"], "thetavec": ["\\boldsymbol{\\theta}"], "thetavechat": ["\\widehat\\thetavec"], "avec": ["\\boldsymbol{a}"], "Bvec": ["\\boldsymbol{B}"], "fvec": ["\\boldsymbol{f}"], "mvec": ["\\boldsymbol{m}"], "qvec": ["\\boldsymbol{q}"], "rvec": ["\\boldsymbol{r}"], "uvec": ["\\boldsymbol{u}"], "wvec": ["\\boldsymbol{w}"], "xvec": ["\\boldsymbol{x}"], "yvec": ["\\boldsymbol{y}"], "Lra": ["\\Longrightarrow"], "abar": ["\\overline a"], "Xbar": ["\\overline X"], "alphahat": ["\\widehat\\alpha"], "Hhat": ["\\hat H"], "yth": ["y_{\\text{th}}"], "yexp": ["y_{\\text{exp}}"], "ym": ["y_{\\text{m}}"], "gs": ["{0}"]}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'notebooks/Gaussian_processes/Gaussian_processes_exercises';</script>
-    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
+    <link rel="icon" href="../../_static/favicon.ico"/>
     <link rel="author" title="About these documents" href="../../about.html" />
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
@@ -81,10 +76,9 @@ const thebe_selector_output = ".output, .cell_output"
 
   
   
-  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
   
   <div id="pst-scroll-pixel-helper"></div>
-
   
   <button type="button" class="btn rounded-pill" id="pst-back-to-top">
     <i class="fa-solid fa-arrow-up"></i>
@@ -125,11 +119,14 @@ const thebe_selector_output = ".output, .cell_output"
 </form></div>
   </div>
   
-    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
-    </nav>
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+    </header>
   
+
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
+      
+      
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -163,7 +160,18 @@ const thebe_selector_output = ".output, .cell_output"
   
   
 </a></div>
-        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
@@ -268,15 +276,14 @@ const thebe_selector_output = ".output, .cell_output"
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../content/Machine_learning/machine_learning.html">9. Machine learning: Bayesian methods</a><input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-9"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../content/Machine_learning/lecture_22.html">9.1. Lecture 22</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../Machine_learning/Bayesian_optimization.html">9.2. Bayesian Optimization</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../content/Machine_learning/lecture_23.html">9.3. Lecture 23</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../Machine_learning/Neural_networks_explained.html">9.4. What Are Neural Networks?</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../Machine_learning/Forssen_tif285_NeuralNet.html">9.5. Neural networks</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../Machine_learning/Forssen_tif285_demo-NeuralNet.html">9.6. Neural network classifier demonstration</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../Machine_learning/Bayesian_neural_networks_tif285.html">9.7. Bayesian neural networks</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../content/Machine_learning/lecture_24.html">9.8. Lecture 24</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../Machine_learning/demo-Bayesian_neural_networks_tif285.html">9.9. Variational Inference: Bayesian Neural Networks</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../Machine_learning/Convolutional_neural_network_explained.html">9.10. What is a convolutional neural network?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../content/Machine_learning/lecture_23.html">9.2. Lecture 23</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Machine_learning/Neural_networks_explained.html">9.3. What Are Neural Networks?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Machine_learning/Forssen_tif285_NeuralNet.html">9.4. Neural networks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Machine_learning/Forssen_tif285_demo-NeuralNet.html">9.5. Neural network classifier demonstration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Machine_learning/Bayesian_neural_networks_tif285.html">9.6. Bayesian neural networks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../content/Machine_learning/lecture_24.html">9.7. Lecture 24</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Machine_learning/demo-Bayesian_neural_networks_tif285.html">9.8. Variational Inference: Bayesian Neural Networks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Machine_learning/Convolutional_neural_network_explained.html">9.9. What is a convolutional neural network?</a></li>
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../content/SVD/svd.html">10. PCA, SVD, and all that</a><input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-10"><i class="fa-solid fa-chevron-down"></i></label><ul>
@@ -598,10 +605,10 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article" role="main">
+                <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="exercise-gaussian-process-models-with-gpy">
-<h1><span class="section-number">7.4. </span>Exercise: Gaussian Process models with GPy<a class="headerlink" href="#exercise-gaussian-process-models-with-gpy" title="Permalink to this heading">#</a></h1>
+<h1><span class="section-number">7.4. </span>Exercise: Gaussian Process models with GPy<a class="headerlink" href="#exercise-gaussian-process-models-with-gpy" title="Link to this heading">#</a></h1>
 <p>Adapted from Christian Forssen, TALENT Course 11, June, 2019, which was
 adapted from the Gaussian Process Summer School (written by Nicolas Durrande, Neil Lawrence and James Hensman).</p>
 <p>Additions by Dick Furnstahl in November, 2019.</p>
@@ -609,7 +616,7 @@ adapted from the Gaussian Process Summer School (written by Nicolas Durrande, Ne
 <p>We will use the well known <a class="reference external" href="https://sheffieldml.github.io/GPy/">GPy package</a> by the Sheffield ML group.</p>
 <p>The current draft of the online documentation of GPy is available from <a class="reference external" href="http://gpy.readthedocs.org/en/latest/">this page</a>.</p>
 <section id="import-modules">
-<h2>Import modules<a class="headerlink" href="#import-modules" title="Permalink to this heading">#</a></h2>
+<h2>Import modules<a class="headerlink" href="#import-modules" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> inline
@@ -624,7 +631,7 @@ adapted from the Gaussian Process Summer School (written by Nicolas Durrande, Ne
 </div>
 </section>
 <section id="getting-started-the-covariance-function">
-<h2>1 Getting started: The Covariance Function<a class="headerlink" href="#getting-started-the-covariance-function" title="Permalink to this heading">#</a></h2>
+<h2>1 Getting started: The Covariance Function<a class="headerlink" href="#getting-started-the-covariance-function" title="Link to this heading">#</a></h2>
 <p>Let’s start with defining an exponentiated quadratic covariance function (also known as squared exponential or rbf or Gaussian) in one dimension:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -655,7 +662,7 @@ adapted from the Gaussian Process Summer School (written by Nicolas Durrande, Ne
 </div>
 </section>
 <section id="setting-covariance-function-parameters">
-<h2>Setting Covariance Function Parameters<a class="headerlink" href="#setting-covariance-function-parameters" title="Permalink to this heading">#</a></h2>
+<h2>Setting Covariance Function Parameters<a class="headerlink" href="#setting-covariance-function-parameters" title="Link to this heading">#</a></h2>
 <p>The value of the covariance function parameters can be accessed and modified using <code class="docutils literal notranslate"><span class="pre">k['.*var']</span></code> where the string in bracket is a regular expression matching the parameter name as it appears in <code class="docutils literal notranslate"><span class="pre">print(k)</span></code>. Let’s use this to get an insight into the effect of the parameters on the shape of the covariance function.</p>
 <p>We’ll now use it to set the lengthscale of the covariance to different values, and then plot the resulting covariance using the <code class="docutils literal notranslate"><span class="pre">k.plot()</span></code> method.</p>
 <div class="cell docutils container">
@@ -673,7 +680,7 @@ adapted from the Gaussian Process Summer School (written by Nicolas Durrande, Ne
 </div>
 </div>
 <section id="exercise-1">
-<h3>Exercise 1<a class="headerlink" href="#exercise-1" title="Permalink to this heading">#</a></h3>
+<h3>Exercise 1<a class="headerlink" href="#exercise-1" title="Link to this heading">#</a></h3>
 <p>a) What is the effect of the lengthscale parameter on the covariance function?</p>
 <p>b) First predict how the graphs will change if you replace <code class="docutils literal notranslate"><span class="pre">k.lengthscale</span></code> by <code class="docutils literal notranslate"><span class="pre">k.variance</span></code>, i.e., predict the effect of the variance parameter on the covariance function.  Then make the change and check.</p>
 <div class="cell docutils container">
@@ -687,7 +694,7 @@ adapted from the Gaussian Process Summer School (written by Nicolas Durrande, Ne
 </section>
 </section>
 <section id="covariance-functions-in-gpy">
-<h2>Covariance Functions in GPy<a class="headerlink" href="#covariance-functions-in-gpy" title="Permalink to this heading">#</a></h2>
+<h2>Covariance Functions in GPy<a class="headerlink" href="#covariance-functions-in-gpy" title="Link to this heading">#</a></h2>
 <p>Many covariance functions are already implemented in GPy. Instead of rbf, try constructing and plotting the following  covariance functions: <code class="docutils literal notranslate"><span class="pre">exponential</span></code>, <code class="docutils literal notranslate"><span class="pre">Matern32</span></code>, <code class="docutils literal notranslate"><span class="pre">Matern52</span></code>, <code class="docutils literal notranslate"><span class="pre">Brownian</span></code>, <code class="docutils literal notranslate"><span class="pre">linear</span></code>, <code class="docutils literal notranslate"><span class="pre">bias</span></code>,
 <code class="docutils literal notranslate"><span class="pre">rbfcos</span></code>, <code class="docutils literal notranslate"><span class="pre">periodic_Matern32</span></code>, etc. Some of these covariance functions, such as <code class="docutils literal notranslate"><span class="pre">rbfcos</span></code>, are not
 parametrized by a variance and a lengthscale. Furthermore, not all kernels are stationary (i.e., they can’t all be written as <span class="math notranslate nohighlight">\(k ( x, y) = f ( x − y)\)</span>, see for example the Brownian
@@ -710,7 +717,7 @@ covariance function). For plotting  so it may be interesting to change the value
 </div>
 </section>
 <section id="computing-the-covariance-function-given-the-input-data-mathbf-x">
-<h2>Computing the Covariance Function given the Input Data, <span class="math notranslate nohighlight">\(\mathbf{X}\)</span><a class="headerlink" href="#computing-the-covariance-function-given-the-input-data-mathbf-x" title="Permalink to this heading">#</a></h2>
+<h2>Computing the Covariance Function given the Input Data, <span class="math notranslate nohighlight">\(\mathbf{X}\)</span><a class="headerlink" href="#computing-the-covariance-function-given-the-input-data-mathbf-x" title="Link to this heading">#</a></h2>
 <p>Let <span class="math notranslate nohighlight">\(\mathbf{X}\)</span> be a <span class="math notranslate nohighlight">\(n\)</span> × <span class="math notranslate nohighlight">\(d\)</span> numpy array. Given a kernel <span class="math notranslate nohighlight">\(k\)</span>, the covariance matrix associated to
 <span class="math notranslate nohighlight">\(\mathbf{X}\)</span> is obtained with <code class="docutils literal notranslate"><span class="pre">C</span> <span class="pre">=</span> <span class="pre">k.K(X,X)</span></code>. The positive semi-definiteness of <span class="math notranslate nohighlight">\(k\)</span> ensures that <code class="docutils literal notranslate"><span class="pre">C</span></code>
 is a positive semi-definite (psd) matrix regardless of the initial points <span class="math notranslate nohighlight">\(\mathbf{X}\)</span>. This can be
@@ -732,14 +739,14 @@ error means the eigenvalues are all positive):</p>
 </div>
 </div>
 <section id="follow-up-task">
-<h3>Follow-up task<a class="headerlink" href="#follow-up-task" title="Permalink to this heading">#</a></h3>
+<h3>Follow-up task<a class="headerlink" href="#follow-up-task" title="Link to this heading">#</a></h3>
 <p><em>Check this property for some other kernel and for a different set of points</em></p>
 </section>
 </section>
 <section id="combining-covariance-functions">
-<h2>Combining Covariance Functions<a class="headerlink" href="#combining-covariance-functions" title="Permalink to this heading">#</a></h2>
+<h2>Combining Covariance Functions<a class="headerlink" href="#combining-covariance-functions" title="Link to this heading">#</a></h2>
 <section id="exercise-2">
-<h3>Exercise 2<a class="headerlink" href="#exercise-2" title="Permalink to this heading">#</a></h3>
+<h3>Exercise 2<a class="headerlink" href="#exercise-2" title="Link to this heading">#</a></h3>
 <p>a) A matrix, <span class="math notranslate nohighlight">\(\mathbf{K}\)</span>, is positive semi-definite if the matrix inner product, <span class="math notranslate nohighlight">\(\mathbf{x}^\top \mathbf{K}\mathbf{x}\)</span> is greater than or equal to zero regardless of the values in <span class="math notranslate nohighlight">\(\mathbf{x}\)</span>. Given this it should be easy to see that the sum of two positive semi-definite matrices is also positive semi-definite. In the context of Gaussian processes, this is the sum of two covariance functions. What does this mean from a modelling perspective?</p>
 <p><em>Hint</em>: there are actually two related interpretations for this. Think about the properties of a Gaussian distribution, and in what situation the sum of Gaussian variances arises.</p>
 <p>b) What about the element-wise product of two covariance functions? In other words if we define</p>
@@ -750,7 +757,7 @@ k(\mathbf{x}, \mathbf{x}^\prime) = k_1(\mathbf{x}, \mathbf{x}^\prime) \, k_2(\ma
 <p>then is <span class="math notranslate nohighlight">\(k(\mathbf{x}, \mathbf{x}^\prime)\)</span> a valid covariance function?</p>
 </section>
 <section id="combining-covariance-functions-in-gpy">
-<h3>Combining Covariance Functions in GPy<a class="headerlink" href="#combining-covariance-functions-in-gpy" title="Permalink to this heading">#</a></h3>
+<h3>Combining Covariance Functions in GPy<a class="headerlink" href="#combining-covariance-functions-in-gpy" title="Link to this heading">#</a></h3>
 <p>In GPy you can easily combine covariance functions you have created using the sum and product operators, <code class="docutils literal notranslate"><span class="pre">+</span></code> and <code class="docutils literal notranslate"><span class="pre">*</span></code>. So, for example, if we wish to combine an exponentiated quadratic covariance with a Matern 5/2 then we can write</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -778,7 +785,7 @@ k(\mathbf{x}, \mathbf{x}^\prime) = k_1(\mathbf{x}, \mathbf{x}^\prime) \, k_2(\ma
 </section>
 </section>
 <section id="sampling-from-a-gaussian-process">
-<h2>2 Sampling from a Gaussian Process<a class="headerlink" href="#sampling-from-a-gaussian-process" title="Permalink to this heading">#</a></h2>
+<h2>2 Sampling from a Gaussian Process<a class="headerlink" href="#sampling-from-a-gaussian-process" title="Link to this heading">#</a></h2>
 <p>The Gaussian process provides a prior over an infinite dimensional function. It is defined by a covariance <em>function</em> and a mean <em>function</em>. When we compute the covariance matrix using <code class="docutils literal notranslate"><span class="pre">kern.K(X,</span> <span class="pre">X)</span></code> we are computing a covariance <em>matrix</em> between the values of the function that correspond to the input locations in the matrix <code class="docutils literal notranslate"><span class="pre">X</span></code>. If we want to have a look at the type of functions that arise from a particular Gaussian process we can never generate all values of the function, because there are infinite values. However, we can generate samples from a Gaussian <em>distribution</em> based on a covariance matrix associated with a particular matrix of input locations <code class="docutils literal notranslate"><span class="pre">X</span></code>. If these locations are chosen appropriately then they give us a good idea of the underlying function. For example, for a one dimensional function, if we choose <code class="docutils literal notranslate"><span class="pre">X</span></code> to be uniformly spaced across part of the real line, and the spacing is small enough, we’ll get an idea of the underlying function. We will now use this trick to draw sample paths from a Gaussian process.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -819,7 +826,7 @@ by <br>
 <code class="docutils literal notranslate"><span class="pre">mu</span> <span class="pre">=</span> <span class="pre">np.linspace(-1.,</span> <span class="pre">1.,</span> <span class="pre">len(X))</span></code> <br>
 and then do it.</em></p>
 <section id="exercise-3">
-<h3>Exercise 3<a class="headerlink" href="#exercise-3" title="Permalink to this heading">#</a></h3>
+<h3>Exercise 3<a class="headerlink" href="#exercise-3" title="Link to this heading">#</a></h3>
 <p><em>Modify the code below so that it plots the sampled paths from the nine different covariance structures that are generated.</em></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -851,7 +858,7 @@ and then do it.</em></p>
 </section>
 </section>
 <section id="a-gaussian-process-regression-model">
-<h2>3 A Gaussian Process Regression Model<a class="headerlink" href="#a-gaussian-process-regression-model" title="Permalink to this heading">#</a></h2>
+<h2>3 A Gaussian Process Regression Model<a class="headerlink" href="#a-gaussian-process-regression-model" title="Link to this heading">#</a></h2>
 <p>We will now combine the Gaussian process prior with some data to form a GP regression model with GPy. We will generate data from the function <span class="math notranslate nohighlight">\(f ( x ) = − \cos(\pi x ) + \sin(4\pi x )\)</span> over <span class="math notranslate nohighlight">\([0, 1]\)</span>, adding some noise to give <span class="math notranslate nohighlight">\(y(x) = f(x) + \epsilon\)</span>, with the noise being Gaussian distributed, <span class="math notranslate nohighlight">\(\epsilon \sim \mathcal{N}(0, 0.01)\)</span>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -939,7 +946,7 @@ with variance 1. We can see the posterior mean prediction and visualize the marg
 </div>
 </div>
 <section id="exercise-4">
-<h3>Exercise 4<a class="headerlink" href="#exercise-4" title="Permalink to this heading">#</a></h3>
+<h3>Exercise 4<a class="headerlink" href="#exercise-4" title="Link to this heading">#</a></h3>
 <p>a) What do you think about this first fit? Does the prior given by the GP seem to be
 adapted?</p>
 <p>b) The parameters of the models can be modified using a regular expression matching the parameters names (for example <code class="docutils literal notranslate"><span class="pre">m['Gaussian_noise.variance']</span> <span class="pre">=</span> <span class="pre">0.001</span></code> ). Change the values of the parameters to obtain a better fit.</p>
@@ -975,7 +982,7 @@ matrix <code class="docutils literal notranslate"><span class="pre">mu</span></c
 </div>
 </section>
 <section id="covariance-function-parameter-estimation">
-<h3>Covariance Function Parameter Estimation<a class="headerlink" href="#covariance-function-parameter-estimation" title="Permalink to this heading">#</a></h3>
+<h3>Covariance Function Parameter Estimation<a class="headerlink" href="#covariance-function-parameter-estimation" title="Link to this heading">#</a></h3>
 <p>The kernel parameter values can be estimated by maximizing the <em>likelihood</em> of the observations. Since we don’t want one of the variances to become negative during the optimization, we can constrain all parameters to be positive before running the optimisation.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1001,7 +1008,7 @@ matrix <code class="docutils literal notranslate"><span class="pre">mu</span></c
 </section>
 </section>
 <section id="a-running-example">
-<h2>4 A Running Example<a class="headerlink" href="#a-running-example" title="Permalink to this heading">#</a></h2>
+<h2>4 A Running Example<a class="headerlink" href="#a-running-example" title="Link to this heading">#</a></h2>
 <p>Now we’ll consider a small example with real world data, data giving the pace of all marathons run at the olympics. To load the data use</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1025,7 +1032,7 @@ matrix <code class="docutils literal notranslate"><span class="pre">mu</span></c
 </div>
 </div>
 <section id="exercise-5">
-<h3>Exercise 5<a class="headerlink" href="#exercise-5" title="Permalink to this heading">#</a></h3>
+<h3>Exercise 5<a class="headerlink" href="#exercise-5" title="Link to this heading">#</a></h3>
 <p>a) Build a Gaussian process model for the olympic data set using a combination of an exponentiated quadratic and a bias covariance function. Fit the covariance function parameters and the noise to the data. Plot the fit and error bars from 1870 to 2030. Do you think the predictions are reasonable? If not why not?</p>
 <p>Compute also the log likelihood for the optimum.</p>
 <p><em>Hint:</em> use <code class="docutils literal notranslate"><span class="pre">model.log_likelihood()</span></code> for computing the log likelihood.</p>
@@ -1135,6 +1142,7 @@ matrix <code class="docutils literal notranslate"><span class="pre">mu</span></c
               
                 <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
 
+
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
     <i class="fa-solid fa-list"></i> Contents
@@ -1218,8 +1226,8 @@ By Dick Furnstahl and Daniel Phillips
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../../_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
-<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
+  <script src="../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
 
   <footer class="bd-footer">
   </footer>
