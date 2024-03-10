@@ -576,7 +576,7 @@ document.write(`
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#examples-from-rob-hicks">Examples from Rob Hicks</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pymc3-implementation">PyMC3 implementation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pymc-implementation">PyMC implementation</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#autocorrelation-plots">Autocorrelation plots</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#acceptance-rate">Acceptance rate</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#inferencedata-object">InferenceData object</a></li>
@@ -614,7 +614,7 @@ document.write(`
 
 <span class="kn">import</span> <span class="nn">pymc</span> <span class="k">as</span> <span class="nn">pm</span>
 
-<span class="c1"># Recommended: document what PyMC3 version we are using</span>
+<span class="c1"># Recommended: document what PyMC version we are using</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Running on PyMC v</span><span class="si">{</span><span class="n">pm</span><span class="o">.</span><span class="n">__version__</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -1017,11 +1017,11 @@ CompoundStep
 </div>
 </div>
 <p>Run the previous cell a few times to see the fluctuations.  Crank up the number of samples to <code class="docutils literal notranslate"><span class="pre">10**6</span></code> to see a smoother histogram.</p>
-<section id="pymc3-implementation">
-<h3>PyMC3 implementation<a class="headerlink" href="#pymc3-implementation" title="Link to this heading">#</a></h3>
+<section id="pymc-implementation">
+<h3>PyMC implementation<a class="headerlink" href="#pymc-implementation" title="Link to this heading">#</a></h3>
 <p>We instantiate a Model with a descriptions of priors and the likelihood. Here, <code class="docutils literal notranslate"><span class="pre">mu</span></code> is defined to be a random variable (we want to sample this variable by generating a Markov chain) and we provide a prior distribution with associated hyper-parameters for it. The likelihood function is chosen to be Normal, with one parameter to be estimated (mu), and we use known <span class="math notranslate nohighlight">\(\sigma\)</span> (denoted as <code class="docutils literal notranslate"><span class="pre">sigma</span></code>). Our “dependent variable” is given by <code class="docutils literal notranslate"><span class="pre">observed=data</span></code>, where <code class="docutils literal notranslate"><span class="pre">data</span></code> is generated above and shown in the histogram. So we our implementing Bayes theorem in the form:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-94a8499f-4846-496d-9251-107cc6ac67c2">
-<span class="eqno">(6.2)<a class="headerlink" href="#equation-94a8499f-4846-496d-9251-107cc6ac67c2" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-6d981521-9068-4380-8a3f-982170407959">
+<span class="eqno">()<a class="headerlink" href="#equation-6d981521-9068-4380-8a3f-982170407959" title="Permalink to this equation">#</a></span>\[\begin{align}
    \newcommand{\Pr}{\textrm{pr}} 
    \newcommand{\data}{\textbf{data}}
    \Pr(\mu | \sigma, \data) \propto \Pr(\data | \mu, \sigma) \times \Pr(\mu |\mu^0_\mu, \sigma^0_\mu)
@@ -1047,7 +1047,7 @@ CompoundStep
 </div>
 </div>
 </div>
-<p>Next we define how the Markov chain will be constructed. The example we are following set <code class="docutils literal notranslate"><span class="pre">startvals</span></code> to be the MAP and used a Metropolis step method.  There always seems to be a complaint with the latest pyMC3 about using find_MAP to start the sampler.</p>
+<p>Next we define how the Markov chain will be constructed. The example we are following set <code class="docutils literal notranslate"><span class="pre">startvals</span></code> to be the MAP and used a Metropolis step method.  There always seems to be a complaint with the latest pyMC about using find_MAP to start the sampler.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">chain_length</span> <span class="o">=</span> <span class="mi">10000</span>
@@ -4209,7 +4209,7 @@ CompoundStep
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#examples-from-rob-hicks">Examples from Rob Hicks</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pymc3-implementation">PyMC3 implementation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pymc-implementation">PyMC implementation</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#autocorrelation-plots">Autocorrelation plots</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#acceptance-rate">Acceptance rate</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#inferencedata-object">InferenceData object</a></li>
