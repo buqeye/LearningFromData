@@ -139,7 +139,7 @@ We want to use parameter estimation and model selection (via parallel tempering)
 * We've seen some different strategies for sampling difficult posteriors, such as an affine-invariant sampling approach (emcee) and a thermodynamic approach (parallel tempering).
 
 * One of the most widespread techniques in contemporary samplers is Hamiltonian Monte Carlo, or HMC.
-    * We'll look at some visualizations as motivation, then consider some examples using PyMC3.
+    * We'll look at some visualizations as motivation, then consider some examples using PyMC.
 
 * We return to the excellent set of interactive demos by Chi Feng at [https://chi-feng.github.io/mcmc-demo/](https://chi-feng.github.io/mcmc-demo/) and their adaptation by Richard McElreath at [http://elevanth.org/blog/2017/11/28/build-a-better-markov-chain/](http://elevanth.org/blog/2017/11/28/build-a-better-markov-chain/). These are also linked on the 8820 Carmen visualization page.
 

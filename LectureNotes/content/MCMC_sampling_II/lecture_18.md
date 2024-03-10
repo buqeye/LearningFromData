@@ -4,9 +4,9 @@
 
 In most cases, you will turn in a Jupyter notebook relevant to your research interests (which doesn't has to be your thesis research area!) using Bayesian tools. As already stressed in class, the project does not have to be completed if it will continue as part of your thesis work.
 
-## Overview of Intro to PyMC3 notebook
+## Overview of Intro to PyMC notebook
 
-[](/notebooks/MCMC_sampling_II/PyMC3_intro_updated.ipynb) starts with sampling to find the posterior for $\mu$, the mean of a distribution, given data that is generated according to a normal distribution with mean zero.
+[](/notebooks/MCMC_sampling_II/PyMC_intro_updated.ipynb) starts with sampling to find the posterior for $\mu$, the mean of a distribution, given data that is generated according to a normal distribution with mean zero.
 * Try changing the true $\mu$, sampling sigma as well.
 * The standard deviation is initially fixed at 1.
 
@@ -21,9 +21,9 @@ $$
 * $p(D|\mu,\sigma)$ is the likelihood, which is specified last. Here it is $\sim \mathcal{N}(\mu,\sigma^2)$.
 * $\mu_\mu^0$ and $\sigma_\mu^0$ are hyperparameters specifying the priors for $\mu$ and $\sigma$. The statements for these priors appear first.
 
-## Looking at PyMC3 getting started notebook
+## Looking at PyMC getting started notebook
 
-[](/notebooks/MCMC_sampling_II/PyMC3_docs_getting_started_updated.ipynb) starts with a brief overview and a list of features of PyMC3. Note the comment about Theano being used to calculate gradients needed for HMC. The technique of ["automatic differentiation"](https://en.wikipedia.org/wiki/Automatic_differentiation) ensures machine precision results for these derivatives.
+[](/notebooks/MCMC_sampling_II/PyMC_docs_getting_started_updated.ipynb) starts with a brief overview and a list of features of PyMC. Note the comment about Theano being used to calculate gradients needed for HMC. The technique of ["automatic differentiation"](https://en.wikipedia.org/wiki/Automatic_differentiation) ensures machine precision results for these derivatives.
 
 Consider the "Motivating Example" on linear regression model that predicts the outcome $Y \sim \mathcal{N}(\mu,\sigma^2)$ from a "linear model", meaning the expected result is a linear combination of the two input variables $X_1$ and $X_2$, $\mu = \alpha + \beta_1 X_1 + \beta_2 X_2$. 
 * This is what we have written elsewhere as 
@@ -44,12 +44,12 @@ Consider the "Motivating Example" on linear regression model that predicts the o
           \sigma \sim |\mathcal{N}(0,1)|,
         \end{align}$$
 
-        Investigate the options for `Normal`, such as `shape` in the documentation for [Probability Distributions in PyMC3](https://docs.pymc.io/en/stable/Probability_Distributions.html).
+        Investigate the options for `Normal`, such as `shape` in the documentation for [Probability Distributions in PyMC](https://docs.pymc.io/en/stable/Probability_Distributions.html).
 
     * Then the encoding of $\mu = \alpha + \beta_1 X_1 + \beta_2 X_2$.
 
     * Finally the statement of the likelihood (always comes last) $Y \sim \mathcal{N}(\mu,\sigma^2)$. Note the use of `observed=Y`.
-    * Read through all the background!. This and the other examples can serve as prototypes for your use of PyMC3.
+    * Read through all the background!. This and the other examples can serve as prototypes for your use of PyMC.
 
 
 Your task: run through the notebook!
@@ -102,7 +102,7 @@ Slice sampling in action for a one-dimensional distribution is shown in {numref}
 
 The "ensemble" aspect of `zeus` is that there are multiple walkers, as in the ensemble sampler `emcee`. 
 * Figure {numref}`zeus_fig_2` illustrates how the ensemble of walkers is used to do what is called a "differential move". There are several choices for moves, including a global one that is effective for multi-modal distributions.
-* The basic call for `zeus` compared to `emcee` and `PyMC3` is illustrated in [](/notebooks/Parameter_estimation/parameter_estimation_Gaussian_noise_compare_samplers.ipynb).
+* The basic call for `zeus` compared to `emcee` and `PyMC` is illustrated in [](/notebooks/Parameter_estimation/parameter_estimation_Gaussian_noise_compare_samplers.ipynb).
 * An example from the `zeus` documentation of sampling from a multimodal distribution is given in [](/notebooks/mini-projects/zeus_multimodal.ipynb).
 * The text case for parallel tempering in a very simple multi-modal example is compared to `zeus` in [](/notebooks/mini-projects/MCMC-parallel-tempering_ptemcee_vs_zeus.ipynb) 
 
