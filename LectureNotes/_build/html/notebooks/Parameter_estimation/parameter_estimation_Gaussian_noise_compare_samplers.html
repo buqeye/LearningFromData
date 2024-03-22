@@ -577,7 +577,7 @@ document.write(`
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#first-sample-with-emcee">First sample with <code class="docutils literal notranslate"><span class="pre">emcee</span></code></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#now-sample-with-zeus">Now sample with <code class="docutils literal notranslate"><span class="pre">zeus</span></code></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#now-sample-with-pymc3">Now sample with PyMC3</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#now-sample-with-pymc">Now sample with PyMC</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#discussion">Discussion</a></li>
 </ul>
             </nav>
@@ -593,7 +593,7 @@ document.write(`
   <section class="tex2jax_ignore mathjax_ignore" id="comparing-samplers-for-a-simple-problem">
 <h1><span class="section-number">6.8. </span>Comparing samplers for a simple problem<a class="headerlink" href="#comparing-samplers-for-a-simple-problem" title="Link to this heading">#</a></h1>
 <p>We’ll use the previous notebook on “Parameter estimation example: Gaussian noise and averages”.</p>
-<p>We used the affine-invariant sampler standalone <code class="docutils literal notranslate"><span class="pre">emcee</span></code> before. Here we’ll compare to using another standalone sampler, <code class="docutils literal notranslate"><span class="pre">zeus</span></code>, and the probabilistic programming language <code class="docutils literal notranslate"><span class="pre">PyMC3</span></code>.</p>
+<p>We used the affine-invariant sampler standalone <code class="docutils literal notranslate"><span class="pre">emcee</span></code> before. Here we’ll compare to using another standalone sampler, <code class="docutils literal notranslate"><span class="pre">zeus</span></code>, and the probabilistic programming language <code class="docutils literal notranslate"><span class="pre">PyMC</span></code>.</p>
 <section id="original-background">
 <h2>Original background<a class="headerlink" href="#original-background" title="Link to this heading">#</a></h2>
 <p>Adapted from Sivia: <em>Data Analysis: A Bayesian Tutorial</em></p>
@@ -608,20 +608,12 @@ document.write(`
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 <span class="o">%</span><span class="k">matplotlib</span> inline
 
-<span class="c1"># Not really needed, but nicer plots</span>
-<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
-<span class="n">sns</span><span class="o">.</span><span class="n">set</span><span class="p">()</span>      
-<span class="n">sns</span><span class="o">.</span><span class="n">set_context</span><span class="p">(</span><span class="s2">&quot;talk&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Modules needed for example: emcee is for MCMCsampling, corner for plotting</span>
 <span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">stats</span>
-<span class="kn">import</span> <span class="nn">emcee</span>
-<span class="kn">import</span> <span class="nn">corner</span>
+
+<span class="c1"># Not really needed, but nicer plots</span>
+<span class="c1"># import seaborn as sns</span>
+<span class="c1"># sns.set()      </span>
+<span class="c1"># sns.set_context(&quot;talk&quot;)</span>
 </pre></div>
 </div>
 </div>
@@ -698,8 +690,8 @@ is often used as a theoretical model to describe the noise associated with exper
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/1ac01463f2ea220f451d76df0c0eedeae127bbfa70343fbb55a155de4a73f4d2.png" src="../../_images/1ac01463f2ea220f451d76df0c0eedeae127bbfa70343fbb55a155de4a73f4d2.png" />
-<img alt="../../_images/f2a2a7aab4f1da4848b04ce60cd6d2815fd39fc147a0ef45bf369b9598e97405.png" src="../../_images/f2a2a7aab4f1da4848b04ce60cd6d2815fd39fc147a0ef45bf369b9598e97405.png" />
+<img alt="../../_images/9ffd658429be2f40754eeae74b29d0460e0903ad221f7f536a835a5abaa92f45.png" src="../../_images/9ffd658429be2f40754eeae74b29d0460e0903ad221f7f536a835a5abaa92f45.png" />
+<img alt="../../_images/ffd5006013485ad2a6aa59145e87ba4a08a7cdf8226eca80e7410b9d50c7f636.png" src="../../_images/ffd5006013485ad2a6aa59145e87ba4a08a7cdf8226eca80e7410b9d50c7f636.png" />
 </div>
 </div>
 <p><code class="docutils literal notranslate"><span class="pre">Matplotlib</span></code> alternative: one figure with two subplots using an array of axes.</p>
@@ -721,7 +713,7 @@ is often used as a theoretical model to describe the noise associated with exper
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/b13428b097f86c10d239a439a2a1c02b3f90b9f58143a51493a093ff79f823d6.png" src="../../_images/b13428b097f86c10d239a439a2a1c02b3f90b9f58143a51493a093ff79f823d6.png" />
+<img alt="../../_images/3ba1264fb2d9efb9d334aa42093da8d090edfecc3a4af9dc2561e55deb6b7c87.png" src="../../_images/3ba1264fb2d9efb9d334aa42093da8d090edfecc3a4af9dc2561e55deb6b7c87.png" />
 </div>
 </div>
 <p><em>What can you conclude about the tails?</em></p>
@@ -869,6 +861,15 @@ is often used as a theoretical model to describe the noise associated with exper
 <h2>First sample with <code class="docutils literal notranslate"><span class="pre">emcee</span></code><a class="headerlink" href="#first-sample-with-emcee" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Modules needed for example: emcee is for MCMCsampling, corner for plotting</span>
+<span class="kn">import</span> <span class="nn">emcee</span>
+<span class="kn">import</span> <span class="nn">corner</span>  <span class="c1"># can be used with any sampler</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ndim</span> <span class="o">=</span> <span class="mi">2</span>  <span class="c1"># number of parameters in the model</span>
 <span class="n">nwalkers</span> <span class="o">=</span> <span class="mi">50</span>  <span class="c1"># number of MCMC walkers</span>
 <span class="n">nburn</span> <span class="o">=</span> <span class="mi">1000</span>  <span class="c1"># &quot;burn-in&quot; period to let chains stabilize</span>
@@ -934,7 +935,7 @@ Mean acceptance fraction: 0.719 (in total 50000 steps)
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/4db3cc5e205c36e273e875c6ce2921912b77d173cd9fe2ed04561078ad428bad.png" src="../../_images/4db3cc5e205c36e273e875c6ce2921912b77d173cd9fe2ed04561078ad428bad.png" />
+<img alt="../../_images/f0a8a2848839e026f08c8063f36190f72d1f21b067628604b658f8d4c63f1c5b.png" src="../../_images/f0a8a2848839e026f08c8063f36190f72d1f21b067628604b658f8d4c63f1c5b.png" />
 </div>
 </div>
 <p>The lower left panel in the corner plot shows the joint probability distribution for the two model parameters. The two plots on the diagonal show marginalized distributions (with one parameter integrated out) for the two model parameters. The blue lines indicate the <em>true</em> values of the model parameters, while the title and the dashed lines indicate the most probable value as well as a 68% confidence interval. We will be discussing these representative measures of a posterior distribution during the course.</p>
@@ -982,9 +983,9 @@ Mean acceptance fraction: 0.719 (in total 50000 steps)
 </div>
 <div class="cell_output docutils container">
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Initialising ensemble of 50 walkers...
-Sampling progress : 100%|█████████| 1000/1000 [00:12&lt;00:00, 81.87it/s]
+Sampling progress : 100%|███████████████████| 1000/1000 [00:12&lt;00:00, 78.43it/s]
 Initialising ensemble of 50 walkers...
-Sampling progress : 100%|████████| 1000/1000 [00:09&lt;00:00, 104.43it/s]
+Sampling progress : 100%|██████████████████| 1000/1000 [00:05&lt;00:00, 194.39it/s]
 </pre></div>
 </div>
 </div>
@@ -1016,7 +1017,7 @@ Sampling progress : 100%|████████| 1000/1000 [00:09&lt;00:00, 10
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/f4c091627e9dc2e6c955d275c344368fb3d15b87c975b8a8f0de3201b75bcfaa.png" src="../../_images/f4c091627e9dc2e6c955d275c344368fb3d15b87c975b8a8f0de3201b75bcfaa.png" />
+<img alt="../../_images/db89567c23a447e0a12f6d9f35d593ebb05f69c16525876807a0a5bf14f5a302.png" src="../../_images/db89567c23a447e0a12f6d9f35d593ebb05f69c16525876807a0a5bf14f5a302.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1033,7 +1034,7 @@ Sampling progress : 100%|████████| 1000/1000 [00:09&lt;00:00, 10
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/c8d44558fcf7a1184ecbb91fcbec59676fa37fdfab357692d5d9e2d9beec2f71.png" src="../../_images/c8d44558fcf7a1184ecbb91fcbec59676fa37fdfab357692d5d9e2d9beec2f71.png" />
+<img alt="../../_images/9291f57c9f72e58c3697729d95c07a97541c6190ab7b20c92884716c573e63a2.png" src="../../_images/9291f57c9f72e58c3697729d95c07a97541c6190ab7b20c92884716c573e63a2.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1066,7 +1067,7 @@ Sampling progress : 100%|████████| 1000/1000 [00:09&lt;00:00, 10
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/86c6419616d780071f9e4de2eebe2814b42067b0c9b28cf3f7fc8ed2c4f73e63.png" src="../../_images/86c6419616d780071f9e4de2eebe2814b42067b0c9b28cf3f7fc8ed2c4f73e63.png" />
+<img alt="../../_images/d9c62be85af59566a0d76cf4926c8d53542fbecaa14b1e8603f9ef8e96883d8f.png" src="../../_images/d9c62be85af59566a0d76cf4926c8d53542fbecaa14b1e8603f9ef8e96883d8f.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1077,13 +1078,13 @@ Sampling progress : 100%|████████| 1000/1000 [00:09&lt;00:00, 10
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/furnstah/opt/anaconda3/envs/8820-book-env-2/lib/python3.9/site-packages/seaborn/distributions.py:1182: UserWarning: The following kwargs were not used by contour: &#39;linewidth&#39;
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/furnstah/Dropbox/Anaconda/anaconda3/envs/8820-env/lib/python3.10/site-packages/seaborn/distributions.py:1176: UserWarning: The following kwargs were not used by contour: &#39;linewidth&#39;
   cset = contour_func(
-/Users/furnstah/opt/anaconda3/envs/8820-book-env-2/lib/python3.9/site-packages/seaborn/distributions.py:1182: UserWarning: The following kwargs were not used by contour: &#39;linewidth&#39;
+/Users/furnstah/Dropbox/Anaconda/anaconda3/envs/8820-env/lib/python3.10/site-packages/seaborn/distributions.py:1176: UserWarning: The following kwargs were not used by contour: &#39;linewidth&#39;
   cset = contour_func(
 </pre></div>
 </div>
-<img alt="../../_images/d2b493494d986d2000b70cc5aefa2d05215ad081796a50ae6fb9b8dd958c6413.png" src="../../_images/d2b493494d986d2000b70cc5aefa2d05215ad081796a50ae6fb9b8dd958c6413.png" />
+<img alt="../../_images/8d58729e934dfe2f8380a156248f450a0fa148e028e9b3c40ce9b89af104cd78.png" src="../../_images/8d58729e934dfe2f8380a156248f450a0fa148e028e9b3c40ce9b89af104cd78.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1095,20 +1096,20 @@ Sampling progress : 100%|████████| 1000/1000 [00:09&lt;00:00, 10
 </div>
 </div>
 </section>
-<section id="now-sample-with-pymc3">
-<h2>Now sample with PyMC3<a class="headerlink" href="#now-sample-with-pymc3" title="Link to this heading">#</a></h2>
+<section id="now-sample-with-pymc">
+<h2>Now sample with PyMC<a class="headerlink" href="#now-sample-with-pymc" title="Link to this heading">#</a></h2>
 <p>The setup here is different.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pymc3</span> <span class="k">as</span> <span class="nn">pm</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pymc</span> <span class="k">as</span> <span class="nn">pm</span>
 <span class="kn">import</span> <span class="nn">arviz</span> <span class="k">as</span> <span class="nn">az</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Running on PyMC3 v</span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">pm</span><span class="o">.</span><span class="n">__version__</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Running on PyMC v</span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">pm</span><span class="o">.</span><span class="n">__version__</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Running on PyMC3 v3.11.2
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Running on PyMC v5.10.4
 </pre></div>
 </div>
 </div>
@@ -1139,21 +1140,25 @@ Sampling progress : 100%|████████| 1000/1000 [00:09&lt;00:00, 10
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html">
+<style>
+    /* Turns off some styling */
+    progress {
+        /* gets rid of default border in Firefox and Opera. */
+        border: none;
+        /* Needs to be in here for Safari polyfill so background images work as expected. */
+        background-size: auto;
+    }
+    progress:not([value]), progress:not([value])::-webkit-progress-bar {
+        background: repeating-linear-gradient(45deg, #7e7e7e, #7e7e7e 10px, #5c5c5c 10px, #5c5c5c 20px);
+    }
+    .progress-bar-interrupted, .progress-bar-interrupted::-webkit-progress-bar {
+        background: #F44336;
+    }
+</style>
+</div><div class="output text_html">
     <div>
-        <style>
-            /* Turns off some styling */
-            progress {
-                /* gets rid of default border in Firefox and Opera. */
-                border: none;
-                /* Needs to be in here for Safari polyfill so background images work as expected. */
-                background-size: auto;
-            }
-            .progress-bar-interrupted, .progress-bar-interrupted::-webkit-progress-bar {
-                background: #F44336;
-            }
-        </style>
       <progress value='29' class='' max='29' style='width:300px; height:20px; vertical-align: middle;'></progress>
-      100.00% [29/29 00:00<00:00 logp = -154.5, ||grad|| = 65.04]
+      100.00% [29/29 00:00&lt;00:00 logp = -154.5, ||grad|| = 65.04]
     </div>
     </div><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
 </pre></div>
@@ -1169,7 +1174,7 @@ Sampling progress : 100%|████████| 1000/1000 [00:09&lt;00:00, 10
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="n">Gaussian_model</span><span class="p">:</span>
-    <span class="n">trace_NUTS</span> <span class="o">=</span> <span class="n">pm</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="mi">1000</span><span class="p">,</span> <span class="n">tune</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="n">return_inferencedata</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="n">trace_NUTS</span> <span class="o">=</span> <span class="n">pm</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="mi">1000</span><span class="p">,</span> <span class="n">tune</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="n">return_inferencedata</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
     <span class="n">az</span><span class="o">.</span><span class="n">plot_trace</span><span class="p">(</span><span class="n">trace_NUTS</span><span class="p">);</span>
     <span class="n">display</span><span class="p">(</span><span class="n">az</span><span class="o">.</span><span class="n">summary</span><span class="p">(</span><span class="n">trace_NUTS</span><span class="p">))</span>
 </pre></div>
@@ -1179,27 +1184,31 @@ Sampling progress : 100%|████████| 1000/1000 [00:09&lt;00:00, 10
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Auto-assigning NUTS sampler...
 Initializing NUTS using jitter+adapt_diag...
 Multiprocess sampling (4 chains in 4 jobs)
-NUTS: [sigma, mu]
+NUTS: [mu, sigma]
 </pre></div>
 </div>
 <div class="output text_html">
+<style>
+    /* Turns off some styling */
+    progress {
+        /* gets rid of default border in Firefox and Opera. */
+        border: none;
+        /* Needs to be in here for Safari polyfill so background images work as expected. */
+        background-size: auto;
+    }
+    progress:not([value]), progress:not([value])::-webkit-progress-bar {
+        background: repeating-linear-gradient(45deg, #7e7e7e, #7e7e7e 10px, #5c5c5c 10px, #5c5c5c 20px);
+    }
+    .progress-bar-interrupted, .progress-bar-interrupted::-webkit-progress-bar {
+        background: #F44336;
+    }
+</style>
+</div><div class="output text_html">
     <div>
-        <style>
-            /* Turns off some styling */
-            progress {
-                /* gets rid of default border in Firefox and Opera. */
-                border: none;
-                /* Needs to be in here for Safari polyfill so background images work as expected. */
-                background-size: auto;
-            }
-            .progress-bar-interrupted, .progress-bar-interrupted::-webkit-progress-bar {
-                background: #F44336;
-            }
-        </style>
       <progress value='8000' class='' max='8000' style='width:300px; height:20px; vertical-align: middle;'></progress>
-      100.00% [8000/8000 00:02<00:00 Sampling 4 chains, 0 divergences]
+      100.00% [8000/8000 00:00&lt;00:00 Sampling 4 chains, 0 divergences]
     </div>
-    </div><div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Sampling 4 chains for 1_000 tune and 1_000 draw iterations (4_000 + 4_000 draws total) took 13 seconds.
+    </div><div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Sampling 4 chains for 1_000 tune and 1_000 draw iterations (4_000 + 4_000 draws total) took 20 seconds.
 </pre></div>
 </div>
 <div class="output text_html"><div>
@@ -1234,44 +1243,43 @@ NUTS: [sigma, mu]
   <tbody>
     <tr>
       <th>mu</th>
-      <td>10.076</td>
-      <td>0.101</td>
-      <td>9.897</td>
-      <td>10.270</td>
+      <td>10.080</td>
+      <td>0.098</td>
+      <td>9.891</td>
+      <td>10.262</td>
       <td>0.002</td>
       <td>0.001</td>
-      <td>3187.0</td>
-      <td>2498.0</td>
+      <td>3970.0</td>
+      <td>2471.0</td>
       <td>1.0</td>
     </tr>
     <tr>
       <th>sigma</th>
-      <td>0.983</td>
-      <td>0.073</td>
-      <td>0.853</td>
-      <td>1.117</td>
+      <td>0.984</td>
+      <td>0.069</td>
+      <td>0.862</td>
+      <td>1.116</td>
       <td>0.001</td>
       <td>0.001</td>
-      <td>2737.0</td>
-      <td>2609.0</td>
+      <td>4161.0</td>
+      <td>3015.0</td>
       <td>1.0</td>
     </tr>
   </tbody>
 </table>
-</div></div><img alt="../../_images/52b6fb7c42035fb00dddc41c2125bf095951656334354265eab32f377fb9dd2a.png" src="../../_images/52b6fb7c42035fb00dddc41c2125bf095951656334354265eab32f377fb9dd2a.png" />
+</div></div><img alt="../../_images/309e82e5813aafbcd97bb6041df714d8088f73bace134b484afc9dc44f2b054f.png" src="../../_images/309e82e5813aafbcd97bb6041df714d8088f73bace134b484afc9dc44f2b054f.png" />
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">samples</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">vstack</span><span class="p">([</span><span class="n">trace_NUTS</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;mu&quot;</span><span class="p">,</span> <span class="s2">&quot;sigma&quot;</span><span class="p">]])</span><span class="o">.</span><span class="n">T</span>
-<span class="n">corner</span><span class="o">.</span><span class="n">corner</span><span class="p">(</span><span class="n">samples</span><span class="p">,</span> <span class="n">labels</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;$\mu$&quot;</span><span class="p">,</span> <span class="s2">&quot;$\sigma$&quot;</span><span class="p">],</span> 
-              <span class="n">truths</span><span class="o">=</span><span class="p">[</span><span class="n">mu_true</span><span class="p">,</span> <span class="n">sigma_true</span><span class="p">],</span> <span class="n">quantiles</span><span class="o">=</span><span class="p">[</span><span class="mf">0.16</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.84</span><span class="p">],</span>
-              <span class="n">show_titles</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">title_kwargs</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;fontsize&quot;</span><span class="p">:</span> <span class="mi">16</span><span class="p">});</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pymc_names</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;mu&quot;</span><span class="p">,</span> <span class="s2">&quot;sigma&quot;</span><span class="p">]</span>
+<span class="n">corner</span><span class="o">.</span><span class="n">corner</span><span class="p">(</span><span class="n">trace_NUTS</span><span class="p">,</span> <span class="n">var_names</span><span class="o">=</span><span class="n">pymc_names</span><span class="p">,</span> <span class="n">truths</span><span class="o">=</span><span class="p">[</span><span class="n">mu_true</span><span class="p">,</span> <span class="n">sigma_true</span><span class="p">],</span> <span class="n">quantiles</span><span class="o">=</span><span class="p">[</span><span class="mf">0.16</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.84</span><span class="p">],</span>
+              <span class="n">show_titles</span><span class="o">=</span><span class="kc">True</span><span class="p">);</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/4a7e78f3f6fe1fc611fe3a1148c2ae4dfa398a232ef36d7d6b787009a4cdadd4.png" src="../../_images/4a7e78f3f6fe1fc611fe3a1148c2ae4dfa398a232ef36d7d6b787009a4cdadd4.png" />
+<img alt="../../_images/ad184b7a1cc1fef7ce98fdb7e920d5997d8e8bb97c568abb68e94bebdfc28703.png" src="../../_images/ad184b7a1cc1fef7ce98fdb7e920d5997d8e8bb97c568abb68e94bebdfc28703.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1285,7 +1293,11 @@ NUTS: [sigma, mu]
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/6b9d39b9fda4be30f5e8d6cfee659adfacfb09419ea5c3e48ec71a26849c2a44.png" src="../../_images/6b9d39b9fda4be30f5e8d6cfee659adfacfb09419ea5c3e48ec71a26849c2a44.png" />
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/furnstah/Dropbox/Anaconda/anaconda3/envs/8820-env/lib/python3.10/site-packages/arviz/plots/pairplot.py:232: FutureWarning: The return type of `Dataset.dims` will be changed to return a set of dimension names in future, in order to be more consistent with `DataArray.dims`. To access a mapping from dimension names to lengths, please use `Dataset.sizes`.
+  gridsize = int(dataset.dims[&quot;draw&quot;] ** 0.35)
+</pre></div>
+</div>
+<img alt="../../_images/45fd56f1a40bfbcf07eb7d579bf1f246d817f0348b6825e9f7d71ceef25e4258.png" src="../../_images/45fd56f1a40bfbcf07eb7d579bf1f246d817f0348b6825e9f7d71ceef25e4258.png" />
 </div>
 </div>
 </section>
@@ -1369,7 +1381,7 @@ NUTS: [sigma, mu]
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#first-sample-with-emcee">First sample with <code class="docutils literal notranslate"><span class="pre">emcee</span></code></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#now-sample-with-zeus">Now sample with <code class="docutils literal notranslate"><span class="pre">zeus</span></code></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#now-sample-with-pymc3">Now sample with PyMC3</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#now-sample-with-pymc">Now sample with PyMC</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#discussion">Discussion</a></li>
 </ul>
   </nav></div>
