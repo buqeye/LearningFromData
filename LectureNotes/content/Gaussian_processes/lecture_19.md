@@ -83,6 +83,13 @@ Here are three websites with Gaussian process visualizations and some things to 
     * Add observations.
     * Add a new process.  
 
+4. [*A visual exploration of Gaussian processes*](https://distill.pub/2019/visual-exploration-gaussian-processes/) is a complete run-through of Gaussian processes.
+
+    * Try changing the covariance matrix under *Multivariate Gaussian distributions*.
+    * Try the different kernels under *Gaussian Processes / Kernels*.
+    * Under *Gaussian Processes*, try *Prior distribution* and *Posterior distribution*.
+    * Try *Gaussian Processes / Combining different kernels*.
+
 
 ## Brief introduction to GPs from Melendez et al.
 
