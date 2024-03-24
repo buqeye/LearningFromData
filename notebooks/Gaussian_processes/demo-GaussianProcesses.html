@@ -595,7 +595,7 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="gaussian-processes-demonstration">
 <h1><span class="section-number">7.2. </span>Gaussian processes demonstration<a class="headerlink" href="#gaussian-processes-demonstration" title="Link to this heading">#</a></h1>
-<p>Last revised: 29-Oct-2019 by Dick Furnstahl [furnstahl.1&#64;osu.edu]</p>
+<p>Last revised: 24-Mar-2024 by Dick Furnstahl [furnstahl.1&#64;osu.edu]</p>
 <p>Revised: 07-Oct-2019 by Christian Forssén [christian.forssen&#64;chalmers.se]</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -792,6 +792,9 @@ If <span class="math notranslate nohighlight">\(\rho=0\)</span>, <span class="ma
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<img alt="../../_images/d2635867b9c0233681adfd3baea19c96a4f246166de80b5cd26af0f8e3cbfe68.png" src="../../_images/d2635867b9c0233681adfd3baea19c96a4f246166de80b5cd26af0f8e3cbfe68.png" />
+</div>
 </div>
 <p>Repeat as before, but now we’ll plot many samples from two kinds of Gaussians: one with strongly correlated dimensions and one with weak correlations</p>
 <div class="cell docutils container">
@@ -817,6 +820,9 @@ If <span class="math notranslate nohighlight">\(\rho=0\)</span>, <span class="ma
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<img alt="../../_images/65b1322ba7fb44c21d6eba71e18eeb42bcfdf46cfd6a919571fec7e61867e43e.png" src="../../_images/65b1322ba7fb44c21d6eba71e18eeb42bcfdf46cfd6a919571fec7e61867e43e.png" />
+</div>
 </div>
 <p>But let’s plot them as before dimension-wise…</p>
 <blockquote>
@@ -839,6 +845,9 @@ If <span class="math notranslate nohighlight">\(\rho=0\)</span>, <span class="ma
 <span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">([</span><span class="n">samplesUncor</span><span class="o">.</span><span class="n">min</span><span class="p">()</span><span class="o">-</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">samplesUncor</span><span class="o">.</span><span class="n">max</span><span class="p">()</span><span class="o">+</span><span class="mf">0.3</span><span class="p">]);</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/6e9d6543b62100dc83c4c2717921f97e657d90445fc26a2f9575f5261f845233.png" src="../../_images/6e9d6543b62100dc83c4c2717921f97e657d90445fc26a2f9575f5261f845233.png" />
 </div>
 </div>
 <ul class="simple">
@@ -874,11 +883,40 @@ If <span class="math notranslate nohighlight">\(\rho=0\)</span>, <span class="ma
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Covariance matrix:
+[[ 5.02  5.11  5.12  5.17  5.17  5.22  5.22  5.26]
+ [ 5.11  6.26  6.34  7.07  7.11  7.96  8.01  8.8 ]
+ [ 5.12  6.34  6.44  7.22  7.27  8.21  8.26  9.14]
+ [ 5.17  7.07  7.22  8.65  8.73 10.58 10.68 12.52]
+ [ 5.17  7.11  7.27  8.73  8.82 10.72 10.83 12.73]
+ [ 5.22  7.96  8.21 10.58 10.72 14.05 14.24 17.73]
+ [ 5.22  8.01  8.26 10.68 10.83 14.24 14.45 18.03]
+ [ 5.26  8.8   9.14 12.52 12.73 17.73 18.03 23.46]]
+Eigenvalues should be all larger than zero:
+[7.91569765e+01 7.41188863e+00 5.36857101e-01 1.72090789e-02
+ 5.02633971e-03 5.00000000e-03 5.00000000e-03 5.00000000e-03]
+</pre></div>
+</div>
+<img alt="../../_images/44dac4d49e9e4deb11d765d387bbe46afa77eda5e895c9aedaecf1c099df1864.png" src="../../_images/44dac4d49e9e4deb11d765d387bbe46afa77eda5e895c9aedaecf1c099df1864.png" />
+</div>
 </div>
 <p>So each sample has 8 values, which we associate with the 8 x points:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;x points: &#39;</span><span class="p">,</span> <span class="n">x_pts</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>x points:  [[0.04967298]
+ [0.44820692]
+ [0.47226778]
+ [0.65580659]
+ [0.66492402]
+ [0.84070782]
+ [0.84947221]
+ [0.98395037]]
 </pre></div>
 </div>
 </div>
@@ -904,6 +942,9 @@ If <span class="math notranslate nohighlight">\(\rho=0\)</span>, <span class="ma
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<img alt="../../_images/5e9ce99327be501aa647a653e0cd5e0762c5224117bc319c7390c90de5b425db.png" src="../../_images/5e9ce99327be501aa647a653e0cd5e0762c5224117bc319c7390c90de5b425db.png" />
+</div>
 </div>
 <p>We see that each sample now starts looking like a “smooth” curve (notice that the random variables are highly correlated). Therefore, we now have a clear intuition as to why a GP can be seen as an <em>infinite dimensional multivariate Gaussian</em> which is used as a <em>prior over functions</em>, since one sample from a GP is a function.</p>
 </section>
@@ -924,7 +965,7 @@ k_{lin}(\mathbf{x}_{i},\mathbf{x}_{j}) = \sigma^2 \mathbf{x}_{i}^T \mathbf{x}_{j
 \)</span>$</p>
 <p>Here are some examples with different “kernels” and different parameters that
 dictate those features (figure from J. Melendez):</p>
-<a class="reference internal image-reference" href="../../_images/gp_kernel_realizations.png"><img alt="../../_images/gp_kernel_realizations.png" src="../../_images/gp_kernel_realizations.png" style="width: 600px;" /></a>
+<a class="reference internal image-reference" href="https://raw.githubusercontent.com/buqeye/LearningFromData/main/LectureNotes/_images/gp_kernel_realizations.png"><img alt="https://raw.githubusercontent.com/buqeye/LearningFromData/main/LectureNotes/_images/gp_kernel_realizations.png" src="https://raw.githubusercontent.com/buqeye/LearningFromData/main/LectureNotes/_images/gp_kernel_realizations.png" style="width: 600px;" /></a>
 <section id="the-rbf-kernel-a-k-a-gaussian">
 <h4>The RBF kernel (a.k.a Gaussian)<a class="headerlink" href="#the-rbf-kernel-a-k-a-gaussian" title="Link to this heading">#</a></h4>
 <div class="cell docutils container">
@@ -987,6 +1028,9 @@ dictate those features (figure from J. Melendez):</p>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<img alt="../../_images/41363905b8cff57dc2de8b6222d1ea86f077fe3665ac42bcf82d3c5a62071beb.png" src="../../_images/41363905b8cff57dc2de8b6222d1ea86f077fe3665ac42bcf82d3c5a62071beb.png" />
+</div>
 </div>
 </section>
 </section>
@@ -1015,6 +1059,9 @@ dictate those features (figure from J. Melendez):</p>
 <span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">hw</span><span class="p">,</span> <span class="n">E</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">10</span><span class="p">);</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/71682cbce8379eb2e11d9c3b8564fce7d37944ff0be66ff702d7302ea4985af3.png" src="../../_images/71682cbce8379eb2e11d9c3b8564fce7d37944ff0be66ff702d7302ea4985af3.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1057,6 +1104,39 @@ dictate those features (figure from J. Melendez):</p>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Validation result: Ratio true/predict in [</span><span class="si">{</span><span class="n">ratio_min</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">:</span><span class="s1">8.6f</span><span class="si">}</span><span class="s1">, </span><span class="si">{</span><span class="n">ratio_max</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">:</span><span class="s1">8.6f</span><span class="si">}</span><span class="s1">]&#39;</span><span class="p">)</span> 
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><style type="text/css">
+.pd{
+    font-family: "Courier New", Courier, monospace !important;
+    width: 100%;
+    padding: 3px;
+}
+</style>
+
+<p class=pd>
+<b>Model</b>: GP regression<br>
+<b>Objective</b>: 5.580147499327797<br>
+<b>Number of Parameters</b>: 3<br>
+<b>Number of Optimization Parameters</b>: 3<br>
+<b>Updates</b>: True<br>
+</p>
+<style type="text/css">
+.tg  {font-family:"Courier New", Courier, monospace !important;padding:2px 3px;word-break:normal;border-collapse:collapse;border-spacing:0;border-color:#DCDCDC;margin:0px auto;width:100%;}
+.tg td{font-family:"Courier New", Courier, monospace !important;font-weight:bold;color:#444;background-color:#F7FDFA;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:#DCDCDC;}
+.tg th{font-family:"Courier New", Courier, monospace !important;font-weight:normal;color:#fff;background-color:#26ADE4;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:#DCDCDC;}
+.tg .tg-left{font-family:"Courier New", Courier, monospace !important;font-weight:normal;text-align:left;}
+.tg .tg-center{font-family:"Courier New", Courier, monospace !important;font-weight:normal;text-align:center;}
+.tg .tg-right{font-family:"Courier New", Courier, monospace !important;font-weight:normal;text-align:right;}
+</style>
+<table class="tg"><tr><th><b>  GP_regression.         </b></th><th><b>                value</b></th><th><b>constraints</b></th><th><b>priors</b></th></tr>
+<tr><td class=tg-left>  rbf.variance           </td><td class=tg-right>    2.733483124313244</td><td class=tg-center>    +ve    </td><td class=tg-center>      </td></tr>
+<tr><td class=tg-left>  rbf.lengthscale        </td><td class=tg-right>    15.49375438715152</td><td class=tg-center>    +ve    </td><td class=tg-center>      </td></tr>
+<tr><td class=tg-left>  Gaussian_noise.variance</td><td class=tg-right>3.911692839244402e-10</td><td class=tg-center>    +ve    </td><td class=tg-center>      </td></tr>
+</table></div><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Validation result: Ratio true/predict in [0.998527, 1.004752]
+</pre></div>
+</div>
+<img alt="../../_images/a203d7314b5d98bf247b685002109f47e29a4bde57024cf0f15c034260ed5f39.png" src="../../_images/a203d7314b5d98bf247b685002109f47e29a4bde57024cf0f15c034260ed5f39.png" />
 </div>
 </div>
 </section>
