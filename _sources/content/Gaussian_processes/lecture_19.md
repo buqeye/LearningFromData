@@ -60,7 +60,7 @@ In particular, any finite subset (say at $x_1$, $x_2$, $x_3$) has a multivariate
 
 ## Games with Gaussian process websites
 
-Here are three websites with Gaussian process visualizations and some things to try with each.
+Here are four websites with Gaussian process visualizations and some things to try with each.
 
 1. The  [*Sample Size Calculations for Computer Experiments*](https://harario.shinyapps.io/Sample_Size_Shiny/) app provides a sandbox for playing with Gaussian processes. Read the "About" tab first; it includes definitions of parameters used in the GP "correlation family" (which define the covariance). The "Sample Path Plots" tab has an app that lets you draw samples of functions that depend on user selected parameters (actually "hyperparameters") that specify the details of the correlation family.
 
