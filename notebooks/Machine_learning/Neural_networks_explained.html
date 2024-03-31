@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>9.3. What Are Neural Networks? &#8212; Learning from data</title>
+    <title>9.4. What Are Neural Networks? &#8212; Learning from data</title>
   
   
   
@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=384b581d" />
     <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
     <link rel="stylesheet" type="text/css" href="../../_static/myadmonitions.css?v=f87e7f18" />
@@ -65,8 +65,8 @@
     <link rel="author" title="About these documents" href="../../about.html" />
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="9.4. Neural networks" href="Forssen_tif285_NeuralNet.html" />
-    <link rel="prev" title="9.2. Lecture 23" href="../../content/Machine_learning/lecture_23.html" />
+    <link rel="next" title="9.5. Neural networks" href="Forssen_tif285_NeuralNet.html" />
+    <link rel="prev" title="9.3. Lecture 23" href="../../content/Machine_learning/lecture_23.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -276,14 +276,15 @@
 </li>
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="../../content/Machine_learning/machine_learning.html">9. Machine learning: Bayesian methods</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-9"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../../content/Machine_learning/lecture_22.html">9.1. Lecture 22</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../content/Machine_learning/lecture_23.html">9.2. Lecture 23</a></li>
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">9.3. What Are Neural Networks?</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Forssen_tif285_NeuralNet.html">9.4. Neural networks</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Forssen_tif285_demo-NeuralNet.html">9.5. Neural network classifier demonstration</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Bayesian_neural_networks_tif285.html">9.6. Bayesian neural networks</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../content/Machine_learning/lecture_24.html">9.7. Lecture 24</a></li>
-<li class="toctree-l2"><a class="reference internal" href="demo-Bayesian_neural_networks_tif285.html">9.8. Variational Inference: Bayesian Neural Networks</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Convolutional_neural_network_explained.html">9.9. What is a convolutional neural network?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Bayesian_optimization_test.html">9.2. Bayesian Optimization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../content/Machine_learning/lecture_23.html">9.3. Lecture 23</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">9.4. What Are Neural Networks?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Forssen_tif285_NeuralNet.html">9.5. Neural networks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Forssen_tif285_demo-NeuralNet.html">9.6. Neural network classifier demonstration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Bayesian_neural_networks_tif285.html">9.7. Bayesian neural networks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../content/Machine_learning/lecture_24.html">9.8. Lecture 24</a></li>
+<li class="toctree-l2"><a class="reference internal" href="demo-Bayesian_neural_networks_tif285.html">9.9. Variational Inference: Bayesian Neural Networks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Convolutional_neural_network_explained.html">9.10. What is a convolutional neural network?</a></li>
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../content/SVD/svd.html">10. PCA, SVD, and all that</a><input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-10"><i class="fa-solid fa-chevron-down"></i></label><ul>
@@ -589,7 +590,7 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="what-are-neural-networks">
-<h1><span class="section-number">9.3. </span>What Are Neural Networks?<a class="headerlink" href="#what-are-neural-networks" title="Link to this heading">#</a></h1>
+<h1><span class="section-number">9.4. </span>What Are Neural Networks?<a class="headerlink" href="#what-are-neural-networks" title="Link to this heading">#</a></h1>
 <p><strong>Notes by Alberto Garcia (2021)</strong></p>
 <p>A neural network (NN) is a machine learning technique <strong>that follows a set of rules with the purpose of recognizing patterns. Once the neural network learns these patterns, it can be used to make predictions</strong>. The idea of a neural network came from studying how a brain interprets and predicts outcomes. This led to the idea of writing an algorithm that mimics the brain, which is how neural networks were developed.</p>
 <p>The neural networks used in machine learning are called artificial neural networks, as opposed to real neural networks contained in the brain. They are made up of three different components: <strong>an input layer, hidden layer(s), and an output layer</strong>.</p>
@@ -788,7 +789,7 @@ $<span class="math notranslate nohighlight">\(
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><span class="section-number">9.2. </span>Lecture 23</p>
+        <p class="prev-next-title"><span class="section-number">9.3. </span>Lecture 23</p>
       </div>
     </a>
     <a class="right-next"
@@ -796,7 +797,7 @@ $<span class="math notranslate nohighlight">\(
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">9.4. </span>Neural networks</p>
+        <p class="prev-next-title"><span class="section-number">9.5. </span>Neural networks</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
