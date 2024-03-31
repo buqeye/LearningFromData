@@ -569,7 +569,9 @@ document.write(`
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#optimization-of-expensive-objective-functions">Optimization of expensive objective functions</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Bayesian optimization</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Bayesian optimization</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#acquisition-functions">Acquisition functions</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#expected-improvement">Expected Improvement</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lower-confidence-bound">Lower Confidence Bound</a></li>
 </ul>
 </li>
@@ -648,12 +650,92 @@ f(\theta) = \chi^2(\theta) \equiv \sum_{i=1}^N \frac{\left[ y_i^\mathrm{exp} - y
 <p>This diagram from <a class="reference external" href="https://creativecommons.org/licenses/by-sa/4.0">Wikimedia Commons</a> illustrates the sequential moves in Newton’s method for finding a root, with a sequence of <span class="math notranslate nohighlight">\(x\)</span> values: <span class="math notranslate nohighlight">\(x_0 \rightarrow x_1 \rightarrow x_2 \rightarrow \ldots\)</span> that approach a nearby zero of the function.
 <a class="reference internal" href="https://upload.wikimedia.org/wikipedia/commons/b/bb/Newton%E2%80%93Raphson_method.png"><img alt="Newton method scheme" src="https://upload.wikimedia.org/wikipedia/commons/b/bb/Newton%E2%80%93Raphson_method.png" style="width: 256px;" /></a>
 If applied to the derivative of a function, this yields a sequential approximation to a local minimum or maximum. We seek a different way to construct this sequence.</p>
+<p>There are two main components in the Bayesian optimization algorithm, which will each be contingent on what we call the data <span class="math notranslate nohighlight">\(\mathcal{D}\)</span>, which will be the previously evaluated pairs of <span class="math notranslate nohighlight">\(\theta\)</span> and <span class="math notranslate nohighlight">\(f(\theta)\)</span>.</p>
+<ol class="arabic simple">
+<li><p>A prior probabilistic pdf <span class="math notranslate nohighlight">\(p(f|\mathcal{D})\)</span> for the objective function <span class="math notranslate nohighlight">\(f(\theta)\)</span> given some data <span class="math notranslate nohighlight">\(\mathcal{D}\)</span>. The prior is often a Gaussian process (GP) or a GP emulator. This will be updated with every iteration. The GP acts as a <em>surrogate</em> for the actual objective function, which we can evaluate at any given <span class="math notranslate nohighlight">\(\theta\)</span>, but it is so expensive to do so that we don’t know its structure a priori. The idea is that we will do Bayesian updating each iteration after confronting the surrogate model with actual data <span class="math notranslate nohighlight">\(f(\theta)\)</span>.  So we refine the posterior for <span class="math notranslate nohighlight">\(f\)</span>, which becomes the prior for the next iteration.</p></li>
+<li><p>An acquisition function <span class="math notranslate nohighlight">\(\mathcal{A}(\theta|\mathcal{D})\)</span> given some data <span class="math notranslate nohighlight">\(\mathcal{D}\)</span>. This is a heuristic that balances <em>exploration</em> against <em>exploitation</em> and determines where to evaluate the objective function <span class="math notranslate nohighlight">\(f(\theta)\)</span> next. Explorative means that you evaluate points in a domain of <span class="math notranslate nohighlight">\(\theta\)</span> where the prior pdf for <span class="math notranslate nohighlight">\(f\)</span> has large uncertainty.  This enables the escape from local minima in <span class="math notranslate nohighlight">\(\theta\)</span>.  Exploitive means that you evaluate points in a domain of <span class="math notranslate nohighlight">\(\theta\)</span> where the prior pdf for <span class="math notranslate nohighlight">\(f\)</span> exhibits low mean values. (This zeroes in on a local minimum.)</p></li>
+</ol>
+<p>Pseudo-code for BayesOpt:</p>
+<ol class="arabic simple">
+<li><p>choose initial <span class="math notranslate nohighlight">\(\mathbf{\theta}^{(1)},\mathbf{\theta}^{(2)},\ldots \mathbf{\theta}^{(k)}\)</span>, where <span class="math notranslate nohighlight">\(k \geq 2\)</span></p></li>
+<li><p>evaluate the objective function <span class="math notranslate nohighlight">\(f(\mathbf{\theta})\)</span> to obtain <span class="math notranslate nohighlight">\(y^{(i)}=f(\mathbf{\theta}^{(i)})\)</span> for <span class="math notranslate nohighlight">\(i=1,\ldots,k\)</span></p></li>
+<li><p>initialize a data vector <span class="math notranslate nohighlight">\(\mathcal{D}_k = \left\{(\mathbf{\theta}^{(i)},y^{(i)})\right\}_{i=1}^k\)</span></p></li>
+<li><p>select a statistical model for <span class="math notranslate nohighlight">\(f(\mathbf{\theta})\)</span> (for us some choice of GP kernel)</p></li>
+<li><p><strong>for</strong> {<span class="math notranslate nohighlight">\(n=k+1,k+2,\ldots\)</span>}</p>
+<ol class="arabic simple">
+<li><p>select <span class="math notranslate nohighlight">\(\mathbf{\theta}^{(n)}\)</span> by optimizing (maximizing) the acquisition function</p></li>
+<li><p><span class="math notranslate nohighlight">\(\mathbf{\theta}^{(n)} = \underset{\mathbf{\theta}}{\text{arg max}}\, \mathcal{A}(\mathbf{\theta}|\mathcal{D}_{n-1})\)</span></p></li>
+<li><p>evaluate the objective function to obtain <span class="math notranslate nohighlight">\(y^{(n)}=f(\mathbf{\theta}^{(n)})\)</span></p></li>
+<li><p>augment the data vector <span class="math notranslate nohighlight">\(\mathcal{D}_n = \left\{\mathcal{D}_{n-1} , (\mathbf{\theta}^{(n)},y^{(n)})\right\}\)</span></p></li>
+<li><p>update the statistical model for <span class="math notranslate nohighlight">\(f(\mathbf{\theta})\)</span></p></li>
+</ol>
+</li>
+<li><p><strong>end for</strong></p></li>
+</ol>
+<p>Some remarks:</p>
+<ul class="simple">
+<li><p>Use a space-filling method such as LHS (Latin hypercube sampling) or Sobol (see references) for the initial <span class="math notranslate nohighlight">\(k\)</span> evaluations.</p></li>
+<li><p>Use of a gaussian process, or a Gaussian emulator, for the statistical model of <span class="math notranslate nohighlight">\(f(\theta)\)</span>.</p></li>
+<li><p>The choice of aquisition function is the heart of BayesOpt. There are several possible choices; with different balance between exploration-exploitation.</p>
+<ul>
+<li><p>Expected improvement</p></li>
+<li><p>Lower confidence bound</p></li>
+</ul>
+</li>
+<li><p>The update of the statistical model is an <span class="math notranslate nohighlight">\(\mathcal{O}(n^3)\)</span> cost (if using a GP).</p></li>
+<li><p>At each iteration, <em>all</em> collected data points are used, thus we build on the full history of the optimization procedure.</p></li>
+<li><p>The stopping criterion might be a fixed computational budget that limits the number of function evaluations that can be made.</p></li>
+</ul>
+</section>
+<section id="acquisition-functions">
+<h2>Acquisition functions<a class="headerlink" href="#acquisition-functions" title="Link to this heading">#</a></h2>
+<p>We will consider two different acquisition functions:</p>
+<ul class="simple">
+<li><p>Expected Improvement (EI)</p></li>
+<li><p>Lower Confidence Bound (LCB)</p></li>
+</ul>
+<p>Note that we abbreviate the notation below and write <span class="math notranslate nohighlight">\(\mathcal{A}(\mathbf{\theta}) \equiv \mathcal{A}(\mathbf{\theta}| D)\)</span>.</p>
+<section id="expected-improvement">
+<h3>Expected Improvement<a class="headerlink" href="#expected-improvement" title="Link to this heading">#</a></h3>
+<p>The expected improvement acquisition function is defined by the
+expectation value of the rectifier <span class="math notranslate nohighlight">\({\rm max}(0,f_{\rm min} -
+f(\mathbf{\theta}))\)</span>, i.e. we reward any expected reduction of <span class="math notranslate nohighlight">\(f\)</span> in
+proportion to the reduction <span class="math notranslate nohighlight">\(f_{\rm min} - f(\mathbf{\theta})\)</span>. This can be evaluated analytically</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
+  \begin{split}
+    \mathcal{A}_{\rm EI}({\mathbf{\theta}})=  \langle {\rm max}(0,f_{\rm min} - f(\mathbf{\theta})) \rangle &amp;= \int_{-\infty}^{\infty} {\rm max}(0,f_{\rm min}-f)\mathcal{N}(f(\mathbf{\theta})|\mu(\mathbf{\theta}),\sigma(\mathbf{\theta})^2)\,\, df(\mathbf{\theta}) \\
+           &amp;= \int_{-\infty}^{f_{\rm min}} (f_{\rm min} - f) \frac{1}{\sqrt{2\pi \sigma^2}}\exp\left[{-\frac{(f-\mu)^2}{2\sigma^2}}\right] \,\,df  \\
+            &amp;= (f_{\rm min} - \mu)\Phi\left(\frac{f_{\rm min} - \mu}{\sigma}\right) + \sigma \phi\left(\frac{f_{\rm min} - \mu}{\sigma}\right) \\
+            &amp;= \sigma \left( z \Phi(z) + \phi(z) \right),
+  \end{split}  
+\end{align}
+\end{split}\]</div>
+<p>where</p>
+<div class="math notranslate nohighlight">
+\[
+\mathcal{N}(f(\mathbf{\theta})|\mu(\mathbf{\theta}),\sigma(\mathbf{\theta})^2)
+\]</div>
+<p>indicates the density function of the normal distribution, whereas the standard normal distribution and the cumulative
+distribution function are denoted
+<span class="math notranslate nohighlight">\(\phi\)</span> and <span class="math notranslate nohighlight">\(\Phi\)</span>, respectively, and we dropped the explicit
+dependence on <span class="math notranslate nohighlight">\(\mathbf{\theta}\)</span> in the third step.</p>
+<p>In the last step we
+write the result in the standard normal variable <span class="math notranslate nohighlight">\(z=\frac{f_{\rm
+    min}-\mu}{\sigma}\)</span>. BayesOpt will exploit regions of expected
+improvement when the term <span class="math notranslate nohighlight">\(z \Phi(z)\)</span> dominates, while new, unknown
+regions will be explored when the second term <span class="math notranslate nohighlight">\(\phi(z)\)</span> dominates. For
+the expected improvement acquisition function, the
+exploration-exploitation balance is entirely determined by the set of
+observed data <span class="math notranslate nohighlight">\(\mathcal{D}_n\)</span> and the <span class="math notranslate nohighlight">\(\mathcal{GP}\)</span> kernel.</p>
 <p>Note 1: Density function of the normal distribution:
 <span class="math notranslate nohighlight">\(\mathcal{N}(\theta|\mu,\sigma^2) =
   \frac{1}{\sqrt{2\pi}\sigma}\exp\left(
   -\frac{1}{2\sigma^2}(\theta-\mu)^2\right)\)</span></p>
 <p>Note 2: Density function of the <em>standard</em> normal distribution: <span class="math notranslate nohighlight">\(\phi(z) \equiv \mathcal{N}(z|\mu=0,\sigma^2=1) = \frac{1}{\sqrt{2 \pi}}\exp\left( -\frac{1}{2}z^2\right)\)</span></p>
 <p>Note 3: Cumulative distribution function of the standard normal: <span class="math notranslate nohighlight">\(\Phi(z) = \frac{1}{\sqrt{2\pi}} \int_{-\infty}^{z}\exp\left(-\frac{t^2}{2}\right)\, dt\)</span></p>
+</section>
 <section id="lower-confidence-bound">
 <h3>Lower Confidence Bound<a class="headerlink" href="#lower-confidence-bound" title="Link to this heading">#</a></h3>
 <p>The lower confidence-bound acquisition function introduces an additional
@@ -699,13 +781,13 @@ use <span class="math notranslate nohighlight">\(\beta=2\)</span>, which is a ve
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  message: Optimization terminated successfully.
   success: True
    status: 0
-      fun: -0.9803640091846969
+      fun: -0.9803640091846908
         x: [ 3.737e-01]
-      nit: 3
-      jac: [-1.043e-07]
- hess_inv: [[ 6.268e-03]]
-     nfev: 12
-     njev: 6
+      nit: 5
+      jac: [-7.078e-07]
+ hess_inv: [[ 6.266e-03]]
+     nfev: 14
+     njev: 7
 </pre></div>
 </div>
 </div>
@@ -777,21 +859,21 @@ use <span class="math notranslate nohighlight">\(\beta=2\)</span>, which is a ve
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/72f2a42665df946a0f09ee8e69d0f5312657a4e485a21189df02af590e29e332.png" src="../../_images/72f2a42665df946a0f09ee8e69d0f5312657a4e485a21189df02af590e29e332.png" />
-<img alt="../../_images/26adc2ee35756b3188a1ec1c801efc80969bbda5e1e2728aafe9b0a03fbd8790.png" src="../../_images/26adc2ee35756b3188a1ec1c801efc80969bbda5e1e2728aafe9b0a03fbd8790.png" />
-<img alt="../../_images/25a58fc5c60ea40bb9195045255e4771aca906b684d8ad9e0dca8a36d5891084.png" src="../../_images/25a58fc5c60ea40bb9195045255e4771aca906b684d8ad9e0dca8a36d5891084.png" />
-<img alt="../../_images/ee2cc13daac757e3b0be1aeccf771b365b0c4d5e835692f2955db5d2f913c314.png" src="../../_images/ee2cc13daac757e3b0be1aeccf771b365b0c4d5e835692f2955db5d2f913c314.png" />
-<img alt="../../_images/a36e9b050536f2ad65176c648a1b13975bffcb6db7a1755aae65c985fe8e98f3.png" src="../../_images/a36e9b050536f2ad65176c648a1b13975bffcb6db7a1755aae65c985fe8e98f3.png" />
-<img alt="../../_images/7e4cebc602d51c0730b826fcbf3fcc5f2f294d62b0878b25ea56191b2e2ad858.png" src="../../_images/7e4cebc602d51c0730b826fcbf3fcc5f2f294d62b0878b25ea56191b2e2ad858.png" />
-<img alt="../../_images/f060455213f5b267ebd32b1da001f3bdb1754b7f982a136e2e909708639fbb7d.png" src="../../_images/f060455213f5b267ebd32b1da001f3bdb1754b7f982a136e2e909708639fbb7d.png" />
-<img alt="../../_images/5288dd22868efd6116892e81ad1c36fbf3c482b346280cb10cf853b9641ded6a.png" src="../../_images/5288dd22868efd6116892e81ad1c36fbf3c482b346280cb10cf853b9641ded6a.png" />
-<img alt="../../_images/53b0a4cfe74442d2fe6a51ab248805b259644586bc52f25a1a37cc6ed53a5669.png" src="../../_images/53b0a4cfe74442d2fe6a51ab248805b259644586bc52f25a1a37cc6ed53a5669.png" />
-<img alt="../../_images/bad0e30c6993dc08e484d3bca479c84937eb2573a81eb10eca2f2af59770999a.png" src="../../_images/bad0e30c6993dc08e484d3bca479c84937eb2573a81eb10eca2f2af59770999a.png" />
-<img alt="../../_images/5d1342d48be1f49f67c6692207b1fc095909a1ce8d7a1deef3a55586fbd52a50.png" src="../../_images/5d1342d48be1f49f67c6692207b1fc095909a1ce8d7a1deef3a55586fbd52a50.png" />
-<img alt="../../_images/5ea2340413623f5794883f9f45dc86c6e33d1b2c76f2548e76f1b19f6a42edc2.png" src="../../_images/5ea2340413623f5794883f9f45dc86c6e33d1b2c76f2548e76f1b19f6a42edc2.png" />
-<img alt="../../_images/f9f72e4c3fbc9048a5c43e5c7b17c459d58a0491554e38f6bbdc1b49d9ffe122.png" src="../../_images/f9f72e4c3fbc9048a5c43e5c7b17c459d58a0491554e38f6bbdc1b49d9ffe122.png" />
-<img alt="../../_images/2dbcfd952361b4ae8dda1253009ebceb5a8930617783981bfed400ef5e74adfc.png" src="../../_images/2dbcfd952361b4ae8dda1253009ebceb5a8930617783981bfed400ef5e74adfc.png" />
-<img alt="../../_images/9be5df95d2e1f618d886f3478d5b80777cc024043c07b18840df454ab945c83c.png" src="../../_images/9be5df95d2e1f618d886f3478d5b80777cc024043c07b18840df454ab945c83c.png" />
+<img alt="../../_images/8c992cb15969098f66d59ee91d1121fc1dbe6fb3231df341552c24e7e1778f6b.png" src="../../_images/8c992cb15969098f66d59ee91d1121fc1dbe6fb3231df341552c24e7e1778f6b.png" />
+<img alt="../../_images/2c398c2ac85e50255eef836614d0bd75b207d8eea7bb3f69bf45faade0a47fb4.png" src="../../_images/2c398c2ac85e50255eef836614d0bd75b207d8eea7bb3f69bf45faade0a47fb4.png" />
+<img alt="../../_images/8dd51aa3a34957e4ff8ad50ff3885c001a8da98c9988c5dbed762a3673cee5c4.png" src="../../_images/8dd51aa3a34957e4ff8ad50ff3885c001a8da98c9988c5dbed762a3673cee5c4.png" />
+<img alt="../../_images/bc6d642d37303dc60b1cce939d245b0374f56f3662ed06ade6d3e8784adbbcce.png" src="../../_images/bc6d642d37303dc60b1cce939d245b0374f56f3662ed06ade6d3e8784adbbcce.png" />
+<img alt="../../_images/93e166a1c63f6fdcbf7e376f6b4d9374496c8ad27e8e6117bc898b0db74a77e0.png" src="../../_images/93e166a1c63f6fdcbf7e376f6b4d9374496c8ad27e8e6117bc898b0db74a77e0.png" />
+<img alt="../../_images/689de3feb056cb07e6eec42e98cdfca60f0f92069cd315fe228e6acb48d1b42e.png" src="../../_images/689de3feb056cb07e6eec42e98cdfca60f0f92069cd315fe228e6acb48d1b42e.png" />
+<img alt="../../_images/2f9ffce0c959f7a37a697fb76ce775178df8a7aead61c344767da7b5cab9f545.png" src="../../_images/2f9ffce0c959f7a37a697fb76ce775178df8a7aead61c344767da7b5cab9f545.png" />
+<img alt="../../_images/6a31e954c6095e712d128d62aaef4add80e288dddc4774534563fb230b999047.png" src="../../_images/6a31e954c6095e712d128d62aaef4add80e288dddc4774534563fb230b999047.png" />
+<img alt="../../_images/4f5a19b216e9074b04021b8ed7f1fd2f17d98be96e25f845be0dcf76a3e55828.png" src="../../_images/4f5a19b216e9074b04021b8ed7f1fd2f17d98be96e25f845be0dcf76a3e55828.png" />
+<img alt="../../_images/2946f4c739a0c2960658773ece181745925d60634fb4f5b6a87c21cb109549cd.png" src="../../_images/2946f4c739a0c2960658773ece181745925d60634fb4f5b6a87c21cb109549cd.png" />
+<img alt="../../_images/fce6a6927b038d33fa0635ed7a5def6f3bf5ad08da56ba3956955a6f178ec852.png" src="../../_images/fce6a6927b038d33fa0635ed7a5def6f3bf5ad08da56ba3956955a6f178ec852.png" />
+<img alt="../../_images/ed7e9be5c33b1351c33f1bfad7e917984bad5a111595d6389340d333b741e522.png" src="../../_images/ed7e9be5c33b1351c33f1bfad7e917984bad5a111595d6389340d333b741e522.png" />
+<img alt="../../_images/b7a5b74aa225107bdaa929b5e803d3f55a09b462ba5a244569922feb8bb54fe1.png" src="../../_images/b7a5b74aa225107bdaa929b5e803d3f55a09b462ba5a244569922feb8bb54fe1.png" />
+<img alt="../../_images/35acecc177568d49680fd558b52610652758e0f546ae28a7620bd2709bf8a72d.png" src="../../_images/35acecc177568d49680fd558b52610652758e0f546ae28a7620bd2709bf8a72d.png" />
+<img alt="../../_images/587edd24812ee7eec4efb5eb8c558ac9ba018f6c072dd2eef76c3487531fde64.png" src="../../_images/587edd24812ee7eec4efb5eb8c558ac9ba018f6c072dd2eef76c3487531fde64.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -808,9 +890,9 @@ use <span class="math notranslate nohighlight">\(\beta=2\)</span>, which is a ve
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/44a3b172e206b04a249c2b5057fdc41b8c1e8c5662d352d27786aebda1d19a40.png" src="../../_images/44a3b172e206b04a249c2b5057fdc41b8c1e8c5662d352d27786aebda1d19a40.png" />
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Optimal x value = [0.37378141]
-Minimized function value = -0.98036
+<img alt="../../_images/b3d9d857d70dfa09bf90bbff0a25c12a77c2c6df1ab38c18d26e1def290c8faa.png" src="../../_images/b3d9d857d70dfa09bf90bbff0a25c12a77c2c6df1ab38c18d26e1def290c8faa.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Optimal x value = [0.37329378]
+Minimized function value = -0.98035
 </pre></div>
 </div>
 </div>
@@ -981,7 +1063,9 @@ Minimized function value = -1.23848
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#optimization-of-expensive-objective-functions">Optimization of expensive objective functions</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Bayesian optimization</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Bayesian optimization</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#acquisition-functions">Acquisition functions</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#expected-improvement">Expected Improvement</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lower-confidence-bound">Lower Confidence Bound</a></li>
 </ul>
 </li>

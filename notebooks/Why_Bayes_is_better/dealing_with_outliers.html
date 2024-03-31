@@ -684,8 +684,8 @@ p(y_i\mid x_i,\theta) = \frac{1}{\sqrt{2\pi\sigma_0^2}} \exp\left(\frac{-\left[y
 p(D\mid\theta, I) = \prod_{i=1}^N p(y_i\mid x_i,\theta, I)
 \]</div>
 <p>For convenience (and also for numerical accuracy) this is often expressed in terms of the log-likelihood:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-39301273-f877-445b-a8e4-d48b777c4cc2">
-<span class="eqno">(4.11)<a class="headerlink" href="#equation-39301273-f877-445b-a8e4-d48b777c4cc2" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-32cd823b-4e88-4e3f-aa03-4b4c5de4d841">
+<span class="eqno">(4.11)<a class="headerlink" href="#equation-32cd823b-4e88-4e3f-aa03-4b4c5de4d841" title="Permalink to this equation">#</a></span>\[\begin{align}
 \log p(D\mid\theta, I) &amp;= -\frac{1}{2}\sum_{i=1}^N\left(\log(2\pi\sigma_0^2) + \frac{\left[ y_i - y_M(x_i;\theta)\right]^2}{\sigma_0^2}\right) \\
 &amp;= \text{constant} - \sum_{i=1}^N \frac{\left[ y_i - y_M(x_i;\theta)\right]^2}{2 \sigma_0^2}
 \end{align}\]</div>
@@ -845,8 +845,8 @@ p(\sigma|\sigma_0,I) = \frac{\sigma_0}{\sigma^2},
 \]</div>
 <p>for <span class="math notranslate nohighlight">\(\sigma \geq \sigma_0\)</span> and zero otherwise. (This enables us to do the integral up to infinity.) Conservative here means that we treat all data points with suspicion (i.e., we do not single out any points).</p>
 <p>The likelihood for a single data point <span class="math notranslate nohighlight">\(D_i\)</span>, given by <span class="math notranslate nohighlight">\((x_i,y_i,\sigma_i=\sigma_0)\)</span>, is then</p>
-<div class="amsmath math notranslate nohighlight" id="equation-b9fb89b5-d683-412c-bec6-f3376cf2e550">
-<span class="eqno">(4.12)<a class="headerlink" href="#equation-b9fb89b5-d683-412c-bec6-f3376cf2e550" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-4423c784-556a-4090-a18f-b100887234ed">
+<span class="eqno">(4.12)<a class="headerlink" href="#equation-4423c784-556a-4090-a18f-b100887234ed" title="Permalink to this equation">#</a></span>\[\begin{align}
 p(D_i | \theta, \sigma_0, I) &amp;= 
   \int_{\sigma_0}^{\infty} \frac{1}{\sqrt{2\pi}\sigma}
     e^{-\sigma_0^2 R_i^2/2\sigma^2}\, \frac{\sigma_0}{\sigma^2}\, d\sigma
