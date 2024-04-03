@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>7.3. Learning from data: Gaussian processes &#8212; Learning from data</title>
+    <title>7.6. Gaussian Processes regression: basic introductory example &#8212; Learning from data</title>
   
   
   
@@ -60,13 +60,13 @@
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>window.MathJax = {"tex": {"macros": {"N": ["\\mathbb{N}"], "Z": ["\\mathbb{Z}"], "floor": ["\\lfloor#1\\rfloor", 1], "bmat": ["\\left[\\begin{array}"], "emat": ["\\end{array}\\right]"], "alphavec": ["\\boldsymbol{\\alpha}"], "muvec": ["\\boldsymbol{\\mu}"], "phivec": ["\\boldsymbol{\\phi}"], "sigmavec": ["\\boldsymbol{\\sigma}"], "Sigmavec": ["\\boldsymbol{\\Sigma}"], "thetavec": ["\\boldsymbol{\\theta}"], "thetavechat": ["\\widehat\\thetavec"], "avec": ["\\boldsymbol{a}"], "Bvec": ["\\boldsymbol{B}"], "fvec": ["\\boldsymbol{f}"], "mvec": ["\\boldsymbol{m}"], "qvec": ["\\boldsymbol{q}"], "rvec": ["\\boldsymbol{r}"], "uvec": ["\\boldsymbol{u}"], "wvec": ["\\boldsymbol{w}"], "xvec": ["\\boldsymbol{x}"], "yvec": ["\\boldsymbol{y}"], "Lra": ["\\Longrightarrow"], "abar": ["\\overline a"], "Xbar": ["\\overline X"], "alphahat": ["\\widehat\\alpha"], "Hhat": ["\\hat H"], "yth": ["y_{\\text{th}}"], "yexp": ["y_{\\text{exp}}"], "ym": ["y_{\\text{m}}"], "gs": ["{0}"]}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'notebooks/Gaussian_processes/GaussianProcesses';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'notebooks/Gaussian_processes/plot_gpr_noisy_targets';</script>
     <link rel="icon" href="../../_static/favicon.ico"/>
     <link rel="author" title="About these documents" href="../../about.html" />
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="7.4. Exercise: Gaussian Process models with GPy" href="Gaussian_processes_exercises.html" />
-    <link rel="prev" title="7.2. Gaussian processes demonstration" href="demo-GaussianProcesses.html" />
+    <link rel="next" title="8. Maximum entropy" href="../../content/Maximum_entropy/max_ent.html" />
+    <link rel="prev" title="7.5. Lecture 20" href="../../content/Gaussian_processes/lecture_20.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -261,10 +261,10 @@
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="../../content/Gaussian_processes/gaussian_processes.html">7. Gaussian processes</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../../content/Gaussian_processes/lecture_19.html">7.1. Lecture 19</a></li>
 <li class="toctree-l2"><a class="reference internal" href="demo-GaussianProcesses.html">7.2. Gaussian processes demonstration</a></li>
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">7.3. Learning from data: Gaussian processes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="GaussianProcesses.html">7.3. Learning from data: Gaussian processes</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Gaussian_processes_exercises.html">7.4. Exercise: Gaussian Process models with GPy</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../content/Gaussian_processes/lecture_20.html">7.5. Lecture 20</a></li>
-<li class="toctree-l2"><a class="reference internal" href="plot_gpr_noisy_targets.html">7.6. Gaussian Processes regression: basic introductory example</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">7.6. Gaussian Processes regression: basic introductory example</a></li>
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../content/Maximum_entropy/max_ent.html">8. Assigning probabilities</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul>
@@ -379,7 +379,7 @@
       
       
       
-      <li><a href="https://mybinder.org/v2/gh/buqeye/LearningFromData/main?urlpath=tree/./LectureNotes/notebooks/Gaussian_processes/GaussianProcesses.ipynb" target="_blank"
+      <li><a href="https://mybinder.org/v2/gh/buqeye/LearningFromData/main?urlpath=tree/./LectureNotes/notebooks/Gaussian_processes/plot_gpr_noisy_targets.ipynb" target="_blank"
    class="btn btn-sm dropdown-item"
    title="Launch onBinder"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -445,7 +445,7 @@
       
       
       
-      <li><a href="https://github.com/buqeye/LearningFromData/issues/new?title=Issue%20on%20page%20%2Fnotebooks/Gaussian_processes/GaussianProcesses.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/buqeye/LearningFromData/issues/new?title=Issue%20on%20page%20%2Fnotebooks/Gaussian_processes/plot_gpr_noisy_targets.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -475,7 +475,7 @@
       
       
       
-      <li><a href="../../_sources/notebooks/Gaussian_processes/GaussianProcesses.ipynb" target="_blank"
+      <li><a href="../../_sources/notebooks/Gaussian_processes/plot_gpr_noisy_targets.ipynb" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -559,7 +559,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Learning from data: Gaussian processes</h1>
+    <h1>Gaussian Processes regression: basic introductory example</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -569,24 +569,9 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#inference-using-gaussian-processes">Inference using Gaussian processes</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References:</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#parametric-approach">Parametric approach</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#proof">Proof</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-covariance-matrix-as-the-central-object">The covariance matrix as the central object</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#non-parametric-approach-mean-and-covariance-functions">Non-parametric approach: Mean and covariance functions</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#stationary-kernels">Stationary kernels</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#gp-models-for-regression">GP models for regression</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#elegant-approach-using-linear-algebra-tricks">Elegant approach using linear algebra tricks</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#optimizing-the-gp-model-hyperparameters">Optimizing the GP model hyperparameters</a></li>
-</ul>
-</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dataset-generation">Dataset generation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-with-noise-free-target">Example with noise-free target</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-with-noisy-targets">Example with noisy targets</a></li>
 </ul>
             </nav>
         </div>
@@ -598,322 +583,184 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <!-- dom:TITLE: Learning from data: Gaussian processes -->
-<section class="tex2jax_ignore mathjax_ignore" id="learning-from-data-gaussian-processes">
-<h1><span class="section-number">7.3. </span>Learning from data: Gaussian processes<a class="headerlink" href="#learning-from-data-gaussian-processes" title="Link to this heading">#</a></h1>
-<!-- dom:AUTHOR: Christian Forssén at Department of Physics, Chalmers University of Technology, Sweden -->
-<!-- Author: -->  
-<p><strong>Christian Forssén</strong>, Department of Physics, Chalmers University of Technology, Sweden</p>
-<p>Date: <strong>Oct 21, 2019</strong></p>
-<p>Copyright 2018-2019, Christian Forssén. Released under CC Attribution-NonCommercial 4.0 license</p>
-<section id="inference-using-gaussian-processes">
-<h2>Inference using Gaussian processes<a class="headerlink" href="#inference-using-gaussian-processes" title="Link to this heading">#</a></h2>
-<p>Assume that there is a set of input vectors with independent, predictor, variables</p>
-<div class="math notranslate nohighlight">
-\[
-\boldsymbol{X}_N \equiv \{ \boldsymbol{x}^{(n)}\}_{n=1}^N
-\]</div>
-<p>and a set of target values</p>
-<div class="math notranslate nohighlight">
-\[
-\boldsymbol{t}_N \equiv \{ t^{(n)}\}_{n=1}^N.
-\]</div>
-<ul class="simple">
-<li><p>Note that we will use the symbol <span class="math notranslate nohighlight">\(t\)</span> to denote the target, or response, variables in the context of Gaussian Processes.</p></li>
-<li><p>Furthermore, we will use the subscript <span class="math notranslate nohighlight">\(N\)</span> to denote a vector of <span class="math notranslate nohighlight">\(N\)</span> vectors (or scalars): <span class="math notranslate nohighlight">\(\boldsymbol{X}_N\)</span> (<span class="math notranslate nohighlight">\(\boldsymbol{t}_N\)</span>)</p></li>
-<li><p>While a single instance <span class="math notranslate nohighlight">\(i\)</span> is denoted by a superscript: <span class="math notranslate nohighlight">\(\boldsymbol{x}^{(i)}\)</span> (<span class="math notranslate nohighlight">\(t^{(i)}\)</span>).</p></li>
-</ul>
-<p>We will consider two different <em>inference problems</em>:</p>
+  <section class="tex2jax_ignore mathjax_ignore" id="gaussian-processes-regression-basic-introductory-example">
+<h1><span class="section-number">7.6. </span>Gaussian Processes regression: basic introductory example<a class="headerlink" href="#gaussian-processes-regression-basic-introductory-example" title="Link to this heading">#</a></h1>
+<p>A simple one-dimensional regression example computed in two different ways:</p>
 <ol class="arabic simple">
-<li><p>The prediction of <em>new target</em> <span class="math notranslate nohighlight">\(t^{(N+1)}\)</span> given a new input <span class="math notranslate nohighlight">\(\boldsymbol{x}^{(N+1)}\)</span></p></li>
-<li><p>The inference of a <em>function</em> <span class="math notranslate nohighlight">\(y(\boldsymbol{x})\)</span> from the data.</p></li>
+<li><p>A noise-free case</p></li>
+<li><p>A noisy case with known noise-level per datapoint</p></li>
 </ol>
-<p>The former can be expressed with the pdf</p>
-<div class="math notranslate nohighlight">
-\[
-p\left( t^{(N+1)} | \boldsymbol{t}_N, \boldsymbol{X}_{N}, \boldsymbol{x}^{(N+1)} \right)
-\]</div>
-<p>while the latter can be written using Bayes’ formula (in these notes we will not be including information <span class="math notranslate nohighlight">\(I\)</span> explicitly in the conditional probabilities)</p>
-<div class="math notranslate nohighlight">
-\[
-p\left( y(\boldsymbol{x}) | \boldsymbol{t}_N, \boldsymbol{X}_N \right)
-= \frac{p\left( \boldsymbol{t}_N | y(\boldsymbol{x}), \boldsymbol{X}_N \right) p \left( y(\boldsymbol{x}) \right) }
-{p\left( \boldsymbol{t}_N | \boldsymbol{X}_N \right) }
-\]</div>
-<p>The inference of a function will obviously also allow to make predictions for new targets.
-However, we will need to consider in particular the second term in the numerator, which is the <strong>prior</strong> distribution on functions assumed in the model.</p>
-<ul class="simple">
-<li><p>This prior is implicit in parametric models with priors on the parameters.</p></li>
-<li><p>The idea of Gaussian process modeling is to put a prior directly on the <strong>space of functions</strong> without parameterizing <span class="math notranslate nohighlight">\(y(\boldsymbol{x})\)</span>.</p></li>
-<li><p>A Gaussian process can be thought of as a generalization of a Gaussian distribution over a finite vector space to a <strong>function space of infinite dimension</strong>.</p></li>
-<li><p>Just as a Gaussian distribution is specified by its mean and covariance matrix, a Gaussian process is specified by a <strong>mean and covariance function</strong>.</p></li>
-</ul>
-<p><strong>Gaussian process.</strong></p>
-<p>A Gaussian process is a stochastic process (a collection of random variables indexed by time or space), such that every finite collection of those random variables has a multivariate normal distribution</p>
-<section id="references">
-<h3>References:<a class="headerlink" href="#references" title="Link to this heading">#</a></h3>
-<ol class="arabic simple">
-<li><p><a class="reference external" href="http://www.gaussianprocess.org/gpml">Gaussian Processes for Machine Learning</a>, Carl Edward Rasmussen and Chris Williams, the MIT Press, 2006, <a class="reference external" href="http://www.gaussianprocess.org/gpml/chapters">online version</a>.</p></li>
-<li><p><a class="reference external" href="https://sheffieldml.github.io/GPy/">GPy</a>: a Gaussian Process (GP) framework written in python, from the Sheffield machine learning group.</p></li>
-</ol>
+<p>In both cases, the kernel’s parameters are estimated using the maximum
+likelihood principle.</p>
+<p>The figures illustrate the interpolating property of the Gaussian Process model
+as well as its probabilistic nature in the form of a pointwise 95% confidence
+interval.</p>
+<p>Note that <code class="docutils literal notranslate"><span class="pre">alpha</span></code> is a parameter to control the strength of the Tikhonov
+regularization on the assumed training points’ covariance matrix.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Author: Vincent Dubourg &lt;vincent.dubourg@gmail.com&gt;</span>
+<span class="c1">#         Jake Vanderplas &lt;vanderplas@astro.washington.edu&gt;</span>
+<span class="c1">#         Jan Hendrik Metzen &lt;jhm@informatik.uni-bremen.de&gt;</span>
+<span class="c1">#         Guillaume Lemaitre &lt;g.lemaitre58@gmail.com&gt;</span>
+<span class="c1"># License: BSD 3 clause</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="dataset-generation">
+<h2>Dataset generation<a class="headerlink" href="#dataset-generation" title="Link to this heading">#</a></h2>
+<p>We will start by generating a synthetic dataset. The true generative process
+is defined as <span class="math notranslate nohighlight">\(f(x) = x \sin(x)\)</span>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">start</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">stop</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">num</span><span class="o">=</span><span class="mi">1_000</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">squeeze</span><span class="p">(</span><span class="n">X</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">X</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s2">&quot;$f(x) = x \sin(x)$&quot;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;dotted&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;$x$&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;$f(x)$&quot;</span><span class="p">)</span>
+<span class="n">_</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;True generative process&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We will use this dataset in the next experiment to illustrate how Gaussian
+Process regression is working.</p>
 </section>
+<section id="example-with-noise-free-target">
+<h2>Example with noise-free target<a class="headerlink" href="#example-with-noise-free-target" title="Link to this heading">#</a></h2>
+<p>In this first example, we will use the true generative process without
+adding any noise. For training the Gaussian Process regression, we will only
+select few samples.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">rng</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">RandomState</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">training_indices</span> <span class="o">=</span> <span class="n">rng</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">y</span><span class="o">.</span><span class="n">size</span><span class="p">),</span> <span class="n">size</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span> <span class="n">replace</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span> <span class="o">=</span> <span class="n">X</span><span class="p">[</span><span class="n">training_indices</span><span class="p">],</span> <span class="n">y</span><span class="p">[</span><span class="n">training_indices</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now, we fit a Gaussian process on these few training data samples. We will
+use a radial basis function (RBF) kernel and a constant parameter to fit the
+amplitude.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.gaussian_process</span> <span class="kn">import</span> <span class="n">GaussianProcessRegressor</span>
+<span class="kn">from</span> <span class="nn">sklearn.gaussian_process.kernels</span> <span class="kn">import</span> <span class="n">RBF</span>
+
+<span class="n">kernel</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">*</span> <span class="n">RBF</span><span class="p">(</span><span class="n">length_scale</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">length_scale_bounds</span><span class="o">=</span><span class="p">(</span><span class="mf">1e-2</span><span class="p">,</span> <span class="mf">1e2</span><span class="p">))</span>
+<span class="n">gaussian_process</span> <span class="o">=</span> <span class="n">GaussianProcessRegressor</span><span class="p">(</span><span class="n">kernel</span><span class="o">=</span><span class="n">kernel</span><span class="p">,</span> <span class="n">n_restarts_optimizer</span><span class="o">=</span><span class="mi">9</span><span class="p">)</span>
+<span class="n">gaussian_process</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+<span class="n">gaussian_process</span><span class="o">.</span><span class="n">kernel_</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>After fitting our model, we see that the hyperparameters of the kernel have
+been optimized. Now, we will use our kernel to compute the mean prediction
+of the full dataset and plot the 95% confidence interval.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mean_prediction</span><span class="p">,</span> <span class="n">std_prediction</span> <span class="o">=</span> <span class="n">gaussian_process</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">return_std</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s2">&quot;$f(x) = x \sin(x)$&quot;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;dotted&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Observations&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">mean_prediction</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Mean prediction&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">fill_between</span><span class="p">(</span>
+    <span class="n">X</span><span class="o">.</span><span class="n">ravel</span><span class="p">(),</span>
+    <span class="n">mean_prediction</span> <span class="o">-</span> <span class="mf">1.96</span> <span class="o">*</span> <span class="n">std_prediction</span><span class="p">,</span>
+    <span class="n">mean_prediction</span> <span class="o">+</span> <span class="mf">1.96</span> <span class="o">*</span> <span class="n">std_prediction</span><span class="p">,</span>
+    <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span>
+    <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s2">&quot;95</span><span class="si">% c</span><span class="s2">onfidence interval&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;$x$&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;$f(x)$&quot;</span><span class="p">)</span>
+<span class="n">_</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Gaussian process regression on noise-free dataset&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We see that for a prediction made on a data point close to the one from the
+training set, the 95% confidence has a small amplitude. Whenever a sample
+falls far from training data, our model’s prediction is less accurate and the
+model prediction is less precise (higher uncertainty).</p>
 </section>
-<section id="parametric-approach">
-<h2>Parametric approach<a class="headerlink" href="#parametric-approach" title="Link to this heading">#</a></h2>
-<p>Let us express <span class="math notranslate nohighlight">\(y(\boldsymbol{x})\)</span> in terms of a model function <span class="math notranslate nohighlight">\(y(\boldsymbol{x}; \boldsymbol{\theta})\)</span> that depends on a vector of model parameters <span class="math notranslate nohighlight">\(\boldsymbol{\theta}\)</span>.</p>
-<p>For example, using a set of basis functions <span class="math notranslate nohighlight">\(\left\{ \phi^{(h)} (\boldsymbol{x}) \right\}_{h=1}^H\)</span> with linear weights <span class="math notranslate nohighlight">\(\boldsymbol{\theta}_H\)</span> we have</p>
-<div class="math notranslate nohighlight">
-\[
-y (\boldsymbol{x}, \boldsymbol{\theta}) = \sum_{h=1}^H \theta^{(h)} \phi^{(h)} (\boldsymbol{x})
-\]</div>
-<p><strong>Notice.</strong></p>
-<p>The basis functions can be non-linear such as Gaussians (aka <em>radial basis functions</em>)</p>
-<div class="math notranslate nohighlight">
-\[
-\phi^{(h)} (\boldsymbol{x}) = \exp \left[ -\frac{\left( \boldsymbol{x} - \boldsymbol{c}^{(h)} \right)^2}{2 (\sigma^{(h)})^2} \right].
-\]</div>
-<p>Still, this constitutes a linear model since <span class="math notranslate nohighlight">\(y (\boldsymbol{x}, \boldsymbol{\theta})\)</span> depends linearly on the parameters <span class="math notranslate nohighlight">\(\boldsymbol{\theta}\)</span>.</p>
-<p>The inference of model parameters should be a well-known problem by now. We state it in terms of Bayes theorem</p>
-<div class="math notranslate nohighlight">
-\[
-p \left( \boldsymbol{\theta} | \boldsymbol{t}_N, \boldsymbol{X}_N \right)
-= \frac{ p \left( \boldsymbol{t}_N | \boldsymbol{\theta}, \boldsymbol{X}_N \right) p \left( \boldsymbol{\theta} \right)}{p \left( \boldsymbol{t}_N | \boldsymbol{X}_N \right)}
-\]</div>
-<p>Having solved this inference problem (e.g. by linear regression) a prediction can be made through marginalization</p>
-<div class="math notranslate nohighlight">
-\[
-p\left( t^{(N+1)} | \boldsymbol{t}_N, \boldsymbol{X}_{N}, \boldsymbol{x}^{(N+1)} \right) 
-= \int d^H \boldsymbol{\theta} 
-p\left( t^{(N+1)} | \boldsymbol{\theta}, \boldsymbol{x}^{(N+1)} \right)
-p \left( \boldsymbol{\theta} | \boldsymbol{t}_N, \boldsymbol{X}_N \right).
-\]</div>
-<p>Here it is important to note that the final answer does not make any explicit reference to our parametric representation of the unknown function <span class="math notranslate nohighlight">\(y(\boldsymbol{x})\)</span>.</p>
-<p>Assuming that we have a fixed set of basis functions and Gaussian prior distributions (with zero mean) on the weights <span class="math notranslate nohighlight">\(\boldsymbol{\theta}\)</span> we will show that:</p>
-<ul class="simple">
-<li><p>The joint pdf of the observed data given the model <span class="math notranslate nohighlight">\(p( \boldsymbol{t}_N |  \boldsymbol{X}_N)\)</span>, is a multivariate Gaussian with mean zero and with a covariance matrix that is determined by the basis functions.</p></li>
-<li><p>This implies that the conditional distribution <span class="math notranslate nohighlight">\(p( t^{(N+1)} | \boldsymbol{t}_N, \boldsymbol{X}_{N+1})\)</span>, is also a multivariate Gaussian whose mean depends linearly on <span class="math notranslate nohighlight">\(\boldsymbol{t}_N\)</span>.</p></li>
-</ul>
-<section id="proof">
-<h3>Proof<a class="headerlink" href="#proof" title="Link to this heading">#</a></h3>
-<p><strong>Sum of normally distributed random variables.</strong></p>
-<p>If <span class="math notranslate nohighlight">\(X\)</span> and <span class="math notranslate nohighlight">\(Y\)</span> are independent random variables that are normally distributed (and therefore also jointly so), then their sum is also normally distributed. i.e., <span class="math notranslate nohighlight">\(Z=X+Y\)</span> is normally distributed with its mean being the sum of the two means, and its variance being the sum of the two variances.</p>
-<p>Consider the linear model and define the <span class="math notranslate nohighlight">\(N \times H\)</span> design matrix <span class="math notranslate nohighlight">\(\boldsymbol{R}\)</span> with elements</p>
-<div class="math notranslate nohighlight">
-\[
-R_{nh} \equiv \phi^{(h)} \left( \boldsymbol{x}^{(n)} \right).
-\]</div>
-<p>Then <span class="math notranslate nohighlight">\(\boldsymbol{y}_N = \boldsymbol{R} \boldsymbol{\theta}\)</span> is the vector of model predictions, i.e.</p>
-<div class="math notranslate nohighlight">
-\[
-y^{(n)} = \sum_{h=1}^H R_{nh} \boldsymbol{\theta^{(h)}}.
-\]</div>
-<p>Assume that we have a Gaussian prior for the linear model weights <span class="math notranslate nohighlight">\(\boldsymbol{\theta}\)</span> with zero mean and a diagonal covariance matrix</p>
-<div class="math notranslate nohighlight">
-\[
-p(\boldsymbol{\theta}) = \mathcal{N} \left( \boldsymbol{\theta}; 0, \sigma_\theta^2 \boldsymbol{I} \right).
-\]</div>
-<p>Now, since <span class="math notranslate nohighlight">\(y\)</span> is a linear function of <span class="math notranslate nohighlight">\(\boldsymbol{\theta}\)</span>, it is also Gaussian distributed with mean zero. Its covariance matrix becomes</p>
-<div class="math notranslate nohighlight">
-\[
-\boldsymbol{Q} = \langle \boldsymbol{y} \boldsymbol{y}^T \rangle = \langle \boldsymbol{R} \boldsymbol{\theta} \boldsymbol{\theta}^T \boldsymbol{R}^T \rangle
-= \sigma_\theta^2 \boldsymbol{R} \boldsymbol{R}^T,
-\]</div>
-<p>which implies that</p>
-<div class="math notranslate nohighlight">
-\[
-p(\boldsymbol{y}) = \mathcal{N} \left( \boldsymbol{y}; 0, \sigma_\theta^2 \boldsymbol{R} \boldsymbol{R}^T \right).
-\]</div>
-<p>This will be true for any set of points <span class="math notranslate nohighlight">\(\boldsymbol{X}_N\)</span>; which is the defining property of a <strong>Gaussian process</strong>.</p>
-<ul class="simple">
-<li><p>What about the target values <span class="math notranslate nohighlight">\(\boldsymbol{t}\)</span>?</p></li>
-</ul>
-<p>Well, if <span class="math notranslate nohighlight">\(t^{(n)}\)</span> is assumed to differ by additive Gaussian noise, i.e.,</p>
-<div class="math notranslate nohighlight">
-\[
-t^{(n)} = y^{(n)} + \varepsilon^{(n)},
-\]</div>
-<p>where <span class="math notranslate nohighlight">\(\varepsilon^{(n)} \sim \mathcal{N} \left( 0, \sigma_\nu^2 \right)\)</span>; then <span class="math notranslate nohighlight">\(\boldsymbol{t}\)</span> also has a Gaussian prior distribution</p>
-<div class="math notranslate nohighlight">
-\[
-p(\boldsymbol{t}) = \mathcal{N} \left( \boldsymbol{t}; 0, \boldsymbol{C} \right),
-\]</div>
-<p>where the covariance matrix of this target distribution is given by</p>
-<div class="math notranslate nohighlight">
-\[
-\boldsymbol{C} = \boldsymbol{Q} + \sigma_\nu^2 \boldsymbol{I} = \sigma_\theta^2 \boldsymbol{R} \boldsymbol{R}^T + \sigma_\nu^2 \boldsymbol{I}.
-\]</div>
-</section>
-<section id="the-covariance-matrix-as-the-central-object">
-<h3>The covariance matrix as the central object<a class="headerlink" href="#the-covariance-matrix-as-the-central-object" title="Link to this heading">#</a></h3>
-<p>The covariance matrices are given by</p>
-<div class="math notranslate nohighlight">
-\[
-Q_{nn'} = \sigma_\theta^2 \sum_h \phi^{(h)} \left( \boldsymbol{x}^{(n)} \right) \phi^{(h)} \left( \boldsymbol{x}^{(n')} \right),
-\]</div>
-<p>and</p>
-<div class="math notranslate nohighlight">
-\[
-C_{nn'} = Q_{nn'} + \delta_{nn'} \sigma_\nu^2.
-\]</div>
-<p>This means that the correlation between target values <span class="math notranslate nohighlight">\(t^{(n)}\)</span> and <span class="math notranslate nohighlight">\(t^{(n')}\)</span> is determined by the points <span class="math notranslate nohighlight">\(\boldsymbol{x}^{(n)}\)</span>, <span class="math notranslate nohighlight">\(\boldsymbol{x}^{(n')}\)</span> and the behaviour of the basis functions.</p>
-</section>
-</section>
-<section id="non-parametric-approach-mean-and-covariance-functions">
-<h2>Non-parametric approach: Mean and covariance functions<a class="headerlink" href="#non-parametric-approach-mean-and-covariance-functions" title="Link to this heading">#</a></h2>
-<p>In fact, we don’t really need the basis functions and their parameters anymore. The influence of these appear only in the covariance matrix that describes the distribution of the targets, which is our key object. We can replace the parametric model altogether with a <strong>covariance function</strong> <span class="math notranslate nohighlight">\(C( \boldsymbol{x}, \boldsymbol{x}' )\)</span> which generates the  elements of the covariance matrix</p>
-<div class="math notranslate nohighlight">
-\[
-Q_{nn'} = C \left( \boldsymbol{x}^{(n)}, \boldsymbol{x}^{(n')} \right),
-\]</div>
-<p>for any set of points <span class="math notranslate nohighlight">\(\left\{ \boldsymbol{x}^{(n)} \right\}_{n=1}^N\)</span>.</p>
-<p>Note, however, that <span class="math notranslate nohighlight">\(\boldsymbol{Q}\)</span> must be positive-definite. This constrains the set of valid covariance functions.</p>
-<p>Once we have defined a covariance function, the covariance matrix for the target values will be given by</p>
-<div class="math notranslate nohighlight">
-\[
-C_{nn'} = C \left( \boldsymbol{x}^{(n)}, \boldsymbol{x}^{(n')} \right) + \sigma_\nu^2 \delta_{nn'}.
-\]</div>
-<p>A wide range of different covariance contributions can be <a class="reference external" href="https://en.wikipedia.org/wiki/Gaussian_process#Covariance_functions">constructed</a>. These standard covariance functions are typically parametrized with hyperparameters <span class="math notranslate nohighlight">\(\boldsymbol{\alpha}\)</span> so that</p>
-<div class="math notranslate nohighlight">
-\[
-C_{nn'} = C \left( \boldsymbol{x}^{(n)}, \boldsymbol{x}^{(n')}, \boldsymbol{\alpha} \right) + \delta_{nn'} \Delta \left( \boldsymbol{x}^{(n)};  \boldsymbol{\alpha} \right),
-\]</div>
-<p>where <span class="math notranslate nohighlight">\(\Delta\)</span> is usually included as a flexible noise model.</p>
-<section id="stationary-kernels">
-<h3>Stationary kernels<a class="headerlink" href="#stationary-kernels" title="Link to this heading">#</a></h3>
-<p>The most common types of covariance functions are stationary, or translationally invariant, which implies that</p>
-<div class="math notranslate nohighlight">
-\[
-C \left( \boldsymbol{x}^{(n)}, \boldsymbol{x}^{(n')}, \boldsymbol{\alpha} \right) = D \left( \boldsymbol{x} - \boldsymbol{x}'; \boldsymbol{\alpha} \right),
-\]</div>
-<p>where the function <span class="math notranslate nohighlight">\(D\)</span> is often referred to as a <em>kernel</em>.</p>
-<p>A very standard kernel is the RBF (also known as Exponentiated Quadratic or Gaussian kernel) which is differentiable infinitely many times (hence, very smooth),</p>
-<div class="math notranslate nohighlight">
-\[
-C_\mathrm{RBF}(\mathbf{x},\mathbf{x}'; \boldsymbol{\alpha}) = \alpha_0 + \alpha_1 \exp \left[ -\frac{1}{2} \sum_{i=1}^I \frac{(x_{i} - x_{i}')^2}{r_i^2} \right]
-\]</div>
-<p>where <span class="math notranslate nohighlight">\(I\)</span> denotes the dimensionality of the input space. The hyperparameters are: <span class="math notranslate nohighlight">\(\{ \alpha_0, \alpha_1, \vec{r} \}\)</span>. Sometimes, a single correlation length <span class="math notranslate nohighlight">\(r\)</span> is used.</p>
-</section>
-</section>
-<section id="gp-models-for-regression">
-<h2>GP models for regression<a class="headerlink" href="#gp-models-for-regression" title="Link to this heading">#</a></h2>
-<p>Let us return to the problem of predicting <span class="math notranslate nohighlight">\(t^{(N+1)}\)</span> given <span class="math notranslate nohighlight">\(\boldsymbol{t}_N\)</span>. The independent variables <span class="math notranslate nohighlight">\(\boldsymbol{X}_{N+1}\)</span> are also given, but will be omitted from the conditional pdfs below.</p>
-<p>The joint density is</p>
-<div class="math notranslate nohighlight">
-\[
-p \left( t^{(N+1)}, \boldsymbol{t}_N \right) = p \left( t^{(N+1)} | \boldsymbol{t}_N \right) p \left( \boldsymbol{t}_N \right) 
-\quad \Rightarrow \quad
-p \left( t^{(N+1)} | \boldsymbol{t}_N \right) = \frac{p \left( t^{(N+1)}, \boldsymbol{t}_N \right)}{p \left( \boldsymbol{t}_N \right) }.
-\]</div>
-<p>Since both <span class="math notranslate nohighlight">\(p \left( t^{(N+1)}, \boldsymbol{t}_N \right)\)</span> and <span class="math notranslate nohighlight">\(p \left( \boldsymbol{t}_N \right)\)</span> are Gaussian distributions, then the conditional distribution, obtained by the ratio, must also be a Gaussian. Let us use the notation <span class="math notranslate nohighlight">\(\boldsymbol{C}_{N+1}\)</span> for the <span class="math notranslate nohighlight">\((N+1) \times (N+1)\)</span> covariance matrix for <span class="math notranslate nohighlight">\(\boldsymbol{t}_{N+1} = \left( \boldsymbol{t}_N, t^{(N+1)} \right)\)</span>. This implies that</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}
-p \left( t^{(N+1)} | \boldsymbol{t}_N \right) \propto \exp \left[ -\frac{1}{2} \left( \boldsymbol{t}_N, t^{(N+1)} \right) \boldsymbol{C}_{N+1}^{-1} 
-\begin{pmatrix}
-\boldsymbol{t}_N \\
-t^{(N+1)}
-\end{pmatrix}
-\right]
-\end{split}\]</div>
-<p><strong>Summary.</strong></p>
-<p>The prediction of the (Gaussian) pdf for <span class="math notranslate nohighlight">\(t^{(N+1)}\)</span> requires an inversion of the covariance matrix <span class="math notranslate nohighlight">\(\boldsymbol{C}_{N+1}^{-1}\)</span>.</p>
-<section id="elegant-approach-using-linear-algebra-tricks">
-<h3>Elegant approach using linear algebra tricks<a class="headerlink" href="#elegant-approach-using-linear-algebra-tricks" title="Link to this heading">#</a></h3>
-<p>Let us split the <span class="math notranslate nohighlight">\(\boldsymbol{C}_{N+1}\)</span> covariance matrix into four different blocks</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}
-\boldsymbol{C}_{N+1} =
-\begin{pmatrix}
-\boldsymbol{C}_N &amp; \boldsymbol{k} \\
-\boldsymbol{k}^T &amp; \kappa
-\end{pmatrix},
-\end{split}\]</div>
-<p>where <span class="math notranslate nohighlight">\(\boldsymbol{C}_N\)</span> is the <span class="math notranslate nohighlight">\(N \times N\)</span> covariance matrix (which depends on the positions <span class="math notranslate nohighlight">\(\boldsymbol{X}_N\)</span>), <span class="math notranslate nohighlight">\(\boldsymbol{k}\)</span> is an <span class="math notranslate nohighlight">\(N \times 1\)</span> vector (that describes the covariance of <span class="math notranslate nohighlight">\(\boldsymbol{X}_N\)</span> with <span class="math notranslate nohighlight">\(\boldsymbol{x}^{(N+1)}\)</span>), while <span class="math notranslate nohighlight">\(\kappa\)</span> is the single diagonal element obtained from <span class="math notranslate nohighlight">\(\boldsymbol{x}^{(N+1)}\)</span>.</p>
-<p>We can use the partitioned inverse equations (Barnett, 1979) to rewrite <span class="math notranslate nohighlight">\(\boldsymbol{C}_{N+1}^{-1}\)</span> in terms of <span class="math notranslate nohighlight">\(\boldsymbol{C}_{N}^{-1}\)</span> and <span class="math notranslate nohighlight">\(\boldsymbol{C}_{N}\)</span> as follows</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}
-\boldsymbol{C}_{N+1}^{-1} =
-\begin{pmatrix}
-\boldsymbol{M}_N &amp; \boldsymbol{m} \\
-\boldsymbol{m}^T &amp; \mu
-\end{pmatrix},
-\end{split}\]</div>
-<p>where</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}
-\begin{align*}
-\mu &amp;= \left( \kappa - \boldsymbol{k}^T \boldsymbol{C}_N^{-1} \boldsymbol{k} \right)^{-1} \\
-\boldsymbol{m} &amp;= -\mu \boldsymbol{C}_N^{-1} \boldsymbol{k} \\
-\boldsymbol{M}_N &amp;= \boldsymbol{C}_N^{-1} + \frac{1}{\mu} \boldsymbol{m} \boldsymbol{m}^T.
-\end{align*}
-\end{split}\]</div>
-<p><strong>Question.</strong></p>
-<p>What are the dimensions of the different blocks? Check that the answer.</p>
-<p>This implies that we can make a prediction for the Gaussian pdf of <span class="math notranslate nohighlight">\(t^{(N+1)}\)</span> (meaning that we predict its value with an associated uncertainty) for an <span class="math notranslate nohighlight">\(N^3\)</span> computational cost (the inversion of an <span class="math notranslate nohighlight">\(N \times N\)</span> matrix).</p>
-<p><strong>Summary.</strong></p>
-<p>The prediction for <span class="math notranslate nohighlight">\(t^{(N+1)}\)</span> is a Gaussian</p>
-<div class="math notranslate nohighlight">
-\[
-p \left( t^{(N+1)} | \boldsymbol{t}_N \right) = \frac{1}{Z} \exp
-\left[
--\frac{\left( t^{(N+1)} - \hat{t}^{(N+1)} \right)^2}{2 \sigma_{\hat{t}_{N+1}}^2}
-\right]
-\]</div>
-<p>with</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}
-\begin{align*}
-\mathrm{mean:} &amp; \quad \hat{t}^{(N+1)} = \boldsymbol{k}^T \boldsymbol{C}_N^{-1} \boldsymbol{t}_N \\
-\mathrm{variance:} &amp; \quad \sigma_{\hat{t}_{N+1}}^2 = \kappa - \boldsymbol{k}^T \boldsymbol{C}_N^{-1} \boldsymbol{k}.
-\end{align*}
-\end{split}\]</div>
-<p>In fact, since the prediction only depends on the <span class="math notranslate nohighlight">\(N\)</span> available data we might as well predict several new target values at once. Consider <span class="math notranslate nohighlight">\(\boldsymbol{t}_M = \{ t^{(N+i)} \}_{i=1}^M\)</span> so that</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}
-\boldsymbol{C}_{N+M} =
-\begin{pmatrix}
-\boldsymbol{C}_N &amp; \boldsymbol{k} \\
-\boldsymbol{k}^T &amp; \boldsymbol{\kappa}
-\end{pmatrix},
-\end{split}\]</div>
-<p>where <span class="math notranslate nohighlight">\(\boldsymbol{k}\)</span> is now an <span class="math notranslate nohighlight">\(N \times M\)</span> matrix and <span class="math notranslate nohighlight">\(\boldsymbol{\kappa}\)</span> an <span class="math notranslate nohighlight">\(M \times M\)</span> matrix.</p>
-<p>The prediction becomes a multivariate Gaussian</p>
-<div class="math notranslate nohighlight">
-\[
-p \left( \boldsymbol{t}_{N+M} | \boldsymbol{t}_N \right) = \frac{1}{Z} \exp
-\left[
--\frac{1}{2} \left( \boldsymbol{t}_M - \hat{\boldsymbol{t}}_M \right)^T \boldsymbol{\Sigma}_M^{-1} \left( \boldsymbol{t}_M - \hat{\boldsymbol{t}}_M \right)
-\right],
-\]</div>
-<p>where the <span class="math notranslate nohighlight">\(M \times 1\)</span> mean vector and <span class="math notranslate nohighlight">\(M \times M\)</span> covariance matrix are</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}
-\begin{align*}
-\hat{\boldsymbol{t}}_M &amp;= \boldsymbol{k}^T \boldsymbol{C}_N^{-1} \boldsymbol{t}_N \\
-\boldsymbol{\Sigma}_M &amp;= \boldsymbol{\kappa} - \boldsymbol{k}^T \boldsymbol{C}_N^{-1} \boldsymbol{k}.
-\end{align*}
-\end{split}\]</div>
-</section>
-<section id="optimizing-the-gp-model-hyperparameters">
-<h3>Optimizing the GP model hyperparameters<a class="headerlink" href="#optimizing-the-gp-model-hyperparameters" title="Link to this heading">#</a></h3>
-<p>Predictions can be made once we have</p>
-<ol class="arabic simple">
-<li><p>Chosen an appropriate covariance function.</p></li>
-<li><p>Determined the hyperparameters.</p></li>
-<li><p>Evaluated the relevant blocks in the covariance function and inverted <span class="math notranslate nohighlight">\(\boldsymbol{C}_N\)</span>.</p></li>
-</ol>
-<p>How do we determine the hyperparameters <span class="math notranslate nohighlight">\(\boldsymbol{\alpha}\)</span>? Well, recall that</p>
-<div class="math notranslate nohighlight">
-\[
-p \left( \boldsymbol{t}_N \right) = \frac{1}{Z} \exp \left[ -\frac{1}{2} \boldsymbol{t}_N^T \boldsymbol{C}_{N}^{-1} \boldsymbol{t}_N 
-\right].
-\]</div>
-<p>This pdf is basically a data likelihood.</p>
-<ul class="simple">
-<li><p>The frequentist approach would be to find the set of hyperparameters <span class="math notranslate nohighlight">\(\boldsymbol{\alpha}^*\)</span> that maximizes the data likelihood, i.e. that minimizes <span class="math notranslate nohighlight">\(\boldsymbol{t}_N^T \boldsymbol{C}_{N}^{-1} \boldsymbol{t}_N\)</span>.</p></li>
-<li><p>A Bayesian approach would be to assign a prior to the hyperparameters and seek a posterior pdf <span class="math notranslate nohighlight">\(p(\boldsymbol{\alpha} | \boldsymbol{t}_N)\)</span> instead.</p></li>
-</ul>
-<p>The former approach is absolutely dominating the literature on GP regression. The covariance function hyperparameters are first optimized and then used for regression.</p>
-</section>
+<section id="example-with-noisy-targets">
+<h2>Example with noisy targets<a class="headerlink" href="#example-with-noisy-targets" title="Link to this heading">#</a></h2>
+<p>We can repeat a similar experiment adding an additional noise to the target
+this time. It will allow seeing the effect of the noise on the fitted model.</p>
+<p>We add some random Gaussian noise to the target with an arbitrary
+standard deviation.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">noise_std</span> <span class="o">=</span> <span class="mf">0.75</span>
+<span class="n">y_train_noisy</span> <span class="o">=</span> <span class="n">y_train</span> <span class="o">+</span> <span class="n">rng</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="n">noise_std</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">y_train</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We create a similar Gaussian process model. In addition to the kernel, this
+time, we specify the parameter <code class="docutils literal notranslate"><span class="pre">alpha</span></code> which can be interpreted as the
+variance of a Gaussian noise.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">gaussian_process</span> <span class="o">=</span> <span class="n">GaussianProcessRegressor</span><span class="p">(</span>
+    <span class="n">kernel</span><span class="o">=</span><span class="n">kernel</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="n">noise_std</span><span class="o">**</span><span class="mi">2</span><span class="p">,</span> <span class="n">n_restarts_optimizer</span><span class="o">=</span><span class="mi">9</span>
+<span class="p">)</span>
+<span class="n">gaussian_process</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train_noisy</span><span class="p">)</span>
+<span class="n">mean_prediction</span><span class="p">,</span> <span class="n">std_prediction</span> <span class="o">=</span> <span class="n">gaussian_process</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">return_std</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Let’s plot the mean prediction and the uncertainty region as before.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s2">&quot;$f(x) = x \sin(x)$&quot;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;dotted&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">errorbar</span><span class="p">(</span>
+    <span class="n">X_train</span><span class="p">,</span>
+    <span class="n">y_train_noisy</span><span class="p">,</span>
+    <span class="n">noise_std</span><span class="p">,</span>
+    <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;None&quot;</span><span class="p">,</span>
+    <span class="n">color</span><span class="o">=</span><span class="s2">&quot;tab:blue&quot;</span><span class="p">,</span>
+    <span class="n">marker</span><span class="o">=</span><span class="s2">&quot;.&quot;</span><span class="p">,</span>
+    <span class="n">markersize</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
+    <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Observations&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">mean_prediction</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Mean prediction&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">fill_between</span><span class="p">(</span>
+    <span class="n">X</span><span class="o">.</span><span class="n">ravel</span><span class="p">(),</span>
+    <span class="n">mean_prediction</span> <span class="o">-</span> <span class="mf">1.96</span> <span class="o">*</span> <span class="n">std_prediction</span><span class="p">,</span>
+    <span class="n">mean_prediction</span> <span class="o">+</span> <span class="mf">1.96</span> <span class="o">*</span> <span class="n">std_prediction</span><span class="p">,</span>
+    <span class="n">color</span><span class="o">=</span><span class="s2">&quot;tab:orange&quot;</span><span class="p">,</span>
+    <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span>
+    <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s2">&quot;95</span><span class="si">% c</span><span class="s2">onfidence interval&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;$x$&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;$f(x)$&quot;</span><span class="p">)</span>
+<span class="n">_</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Gaussian process regression on a noisy dataset&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The noise affects the predictions close to the training samples: the
+predictive uncertainty near to the training samples is larger because we
+explicitly model a given level target noise independent of the input
+variable.</p>
 </section>
 </section>
 
@@ -948,20 +795,20 @@ p \left( \boldsymbol{t}_N \right) = \frac{1}{Z} \exp \left[ -\frac{1}{2} \boldsy
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="demo-GaussianProcesses.html"
+       href="../../content/Gaussian_processes/lecture_20.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><span class="section-number">7.2. </span>Gaussian processes demonstration</p>
+        <p class="prev-next-title"><span class="section-number">7.5. </span>Lecture 20</p>
       </div>
     </a>
     <a class="right-next"
-       href="Gaussian_processes_exercises.html"
+       href="../../content/Maximum_entropy/max_ent.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">7.4. </span>Exercise: Gaussian Process models with GPy</p>
+        <p class="prev-next-title"><span class="section-number">8. </span>Maximum entropy</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -981,24 +828,9 @@ p \left( \boldsymbol{t}_N \right) = \frac{1}{Z} \exp \left[ -\frac{1}{2} \boldsy
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#inference-using-gaussian-processes">Inference using Gaussian processes</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References:</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#parametric-approach">Parametric approach</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#proof">Proof</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-covariance-matrix-as-the-central-object">The covariance matrix as the central object</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#non-parametric-approach-mean-and-covariance-functions">Non-parametric approach: Mean and covariance functions</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#stationary-kernels">Stationary kernels</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#gp-models-for-regression">GP models for regression</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#elegant-approach-using-linear-algebra-tricks">Elegant approach using linear algebra tricks</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#optimizing-the-gp-model-hyperparameters">Optimizing the GP model hyperparameters</a></li>
-</ul>
-</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dataset-generation">Dataset generation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-with-noise-free-target">Example with noise-free target</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-with-noisy-targets">Example with noisy targets</a></li>
 </ul>
   </nav></div>
 
