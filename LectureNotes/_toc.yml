@@ -90,6 +90,7 @@ parts:
       - file: content/Gaussian_processes/lecture_20.md
      # - title: "scikit-learn demo notebook for GP regression"
       - file: notebooks/Gaussian_processes/plot_gpr_noisy_targets.ipynb
+      - file: notebooks/Gaussian_processes/plot_gpr_prior_posterior.ipynb
     - title: "Assigning probabilities"
       file: content/Maximum_entropy/max_ent.md
       sections:
