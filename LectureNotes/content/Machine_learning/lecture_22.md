@@ -110,7 +110,7 @@ More recently, machine learning methods have been used to provide more robust in
 
 * ML encompasses a broad array of techniques, many of which do not require a Bayesian approach, or they may even have a philosophy largely counter to the Bayes way of doing things.
     * But there are clearly places where Bayesian methods are useful.
-    * We will tough upon two examples:
+    * We will touch upon two examples:
         1. Bayesian Optimization
         2. Bayesian Neural Networks
     * Given time limitations, these will necessarily only be teasers for a more complete treatment.
@@ -123,7 +123,7 @@ More recently, machine learning methods have been used to provide more robust in
         * Often in ML one doesn't account for uncertainty, and optimize to find predictions. But some applications require an assessment of risk (e.g., medical applications) or a non-black-box idea of how the conclusion was reached (e.g., legal applications).
     3. Distinctive features set up to contrast with black-box ML.
     4. "Learning Machine" approach is *one way* to view ML. 
-        * Note that is works best with "big data", i.e., a log of data, in which case we know that Bayesian priors become less important.
+        * Note that it works best with "big data", i.e., a lot of data, in which case we know that Bayesian priors become less important.
         * Conversely, the relevant of a Bayesian approach is greater when data is limited (or expensive to get). 
     5. Challenge of Specifying Models and Priors
         * Emphasis is on hierarchical models (i.e., those with hyperparameters) and iteractive approaches.
