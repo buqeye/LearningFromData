@@ -285,7 +285,7 @@
 <li class="toctree-l2"><a class="reference internal" href="Forssen_tif285_demo-NeuralNet.html">9.6. Neural network classifier demonstration</a></li>
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">9.7. Bayesian neural networks</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../content/Machine_learning/lecture_24.html">9.8. Lecture 24</a></li>
-<li class="toctree-l2"><a class="reference internal" href="demo-Bayesian_neural_networks_tif285.html">9.9. Variational Inference: Bayesian Neural Networks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bayesian_neural_network_advi.html">9.9. Variational Inference: Bayesian Neural Networks</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Convolutional_neural_network_explained.html">9.10. What is a convolutional neural network?</a></li>
 </ul>
 </li>
@@ -578,7 +578,7 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#evidence-lower-bound">Evidence Lower Bound</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bayesian-neural-networks-in-pymc3">Bayesian neural networks in PyMC3</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bayesian-neural-networks-in-pymc">Bayesian neural networks in PyMC</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bayes-by-backprop">Bayes by Backprop</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#network-training">Network training</a></li>
 </ul>
@@ -598,13 +598,14 @@ document.write(`
 <h1><span class="section-number">9.7. </span>Bayesian neural networks<a class="headerlink" href="#bayesian-neural-networks" title="Link to this heading">#</a></h1>
 <p>By <strong>Christian Forssén</strong>, Department of Physics, Chalmers University of Technology, Sweden [<strong>Oct 25, 2019</strong>] <br>
 Copyright 2018-2019, Christian Forssén. Released under CC Attribution-NonCommercial 4.0 license</p>
+<p>Updated by <strong>Dick Furnstahl</strong>, Department of Physics, Ohio State University, USA [<strong>10-Apr-2024</strong>]</p>
 <p>The introduction part of this lecture is inspired by the chapter <em>“Learning as Inference”</em> in the excellent book <a class="reference external" href="http://www.inference.org.uk/mackay/itila/">Information Theory, Inference, and Learning Algorithms</a> by David MacKay.</p>
 <p>Some python libraries that are relevant for Bayesian Neural Networks (as part of the general trend towards Probabilistic Programming) are:</p>
 <ul class="simple">
-<li><p><a class="reference external" href="https://docs.pymc.io/">PyMC3</a></p></li>
+<li><p><a class="reference external" href="https://www.pymc.io/">PyMC</a></p></li>
+<li><p><a class="reference external" href="https://pytorch.org/">PyTorch</a></p></li>
 <li><p><a class="reference external" href="https://www.tensorflow.org/probability">Tensorflow Probability</a></p></li>
 <li><p><a class="reference external" href="https://keras.io/">Keras</a> (for constructing tensorflow models).</p></li>
-<li><p><a class="reference external" href="http://edwardlib.org/">Edward</a></p></li>
 </ul>
 <section id="basic-neural-network">
 <h2>Basic neural network<a class="headerlink" href="#basic-neural-network" title="Link to this heading">#</a></h2>
@@ -787,17 +788,17 @@ D_\mathrm{KL}(q||p) &amp;= \int d \boldsymbol{w} q(\boldsymbol{w}\lvert \boldsym
 <p>This problem constitutes a new and active area of research in machine learning and it permeates well with the overarching theme of this course which is inference from data. We will end by giving two pointers to further readings on this subject.</p>
 </section>
 </section>
-<section id="bayesian-neural-networks-in-pymc3">
-<h2>Bayesian neural networks in PyMC3<a class="headerlink" href="#bayesian-neural-networks-in-pymc3" title="Link to this heading">#</a></h2>
-<p>In the demonstration notebook of this lecture, it is shown how to use Variational Inference in PyMC3 to fit a simple Bayesian Neural Network. That implementation is based on the <strong>Automatic Differentation Variational Inference</strong> (ADVI) approach, described e.g. in <a class="reference external" href="https://arxiv.org/abs/1506.03431">Automatic Variational Inference in Stan</a>.</p>
-<!-- dom:FIGURE: [fig/ADVI-classifier_ELBO.png, width=500 frac=0.6] The training of the Bayesian binary classifier, that employs ADVI implemented in `pymc3`, corresponds to modifying the variational distribution's hyperparameters in order to maximize the Evidence Lower Bound (ELBO). -->
+<section id="bayesian-neural-networks-in-pymc">
+<h2>Bayesian neural networks in PyMC<a class="headerlink" href="#bayesian-neural-networks-in-pymc" title="Link to this heading">#</a></h2>
+<p>In the demonstration notebook of this lecture, it is shown how to use Variational Inference in PyMC to fit a simple Bayesian Neural Network. That implementation is based on the <strong>Automatic Differentation Variational Inference</strong> (ADVI) approach, described e.g. in <a class="reference external" href="https://arxiv.org/abs/1506.03431">Automatic Variational Inference in Stan</a>.</p>
+<!-- dom:FIGURE: [fig/ADVI-classifier_ELBO.png, width=500 frac=0.6] The training of the Bayesian binary classifier, that employs ADVI implemented in `pymc`, corresponds to modifying the variational distribution's hyperparameters in order to maximize the Evidence Lower Bound (ELBO). -->
 <!-- begin figure -->
-<p>The training of the Bayesian binary classifier, that employs ADVI implemented in <code>pymc3</code>, corresponds to modifying the variational distribution's hyperparameters in order to maximize the Evidence Lower Bound (ELBO).</p>
+<p>The training of the Bayesian binary classifier, that employs ADVI implemented in <code>pymc</code>, corresponds to modifying the variational distribution's hyperparameters in order to maximize the Evidence Lower Bound (ELBO).</p>
 <img src="../../_images/ADVI-classifier_ELBO.png" width=500>
 <!-- end figure -->
-<!-- dom:FIGURE: [fig/ADVI-classifier.png, width=800 frac=0.95] The predictions for a Bayesian binary classifier that has been learning using ADVI implemented in `pymc3`. The mean (left panel) and standard deviation (right panel) of the binary classifier's label predictions are shown. -->
+<!-- dom:FIGURE: [fig/ADVI-classifier.png, width=800 frac=0.95] The predictions for a Bayesian binary classifier that has been learning using ADVI implemented in `pymc`. The mean (left panel) and standard deviation (right panel) of the binary classifier's label predictions are shown. -->
 <!-- begin figure -->
-<p>The predictions for a Bayesian binary classifier that has been learning using ADVI implemented in <code>pymc3</code>. The mean (left panel) and standard deviation (right panel) of the binary classifier's label predictions are shown.</p>
+<p>The predictions for a Bayesian binary classifier that has been learning using ADVI implemented in <code>pymc</code>. The mean (left panel) and standard deviation (right panel) of the binary classifier's label predictions are shown.</p>
 <img src="../../_images/ADVI-classifier.png" width=800>
 <!-- end figure -->
 <p>See also</p>
@@ -904,7 +905,7 @@ D_\mathrm{KL}(q||p) &amp;= \int d \boldsymbol{w} q(\boldsymbol{w}\lvert \boldsym
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#evidence-lower-bound">Evidence Lower Bound</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bayesian-neural-networks-in-pymc3">Bayesian neural networks in PyMC3</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bayesian-neural-networks-in-pymc">Bayesian neural networks in PyMC</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bayes-by-backprop">Bayes by Backprop</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#network-training">Network training</a></li>
 </ul>
