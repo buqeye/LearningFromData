@@ -114,9 +114,10 @@ More recently, machine learning methods have been used to provide more robust in
         1. Bayesian Optimization
         2. Bayesian Neural Networks
     * Given time limitations, these will necessarily only be teasers for a more complete treatment.
+    * We also note the recent developments in applying effective field theory and renormalization group methods to deep learning. In particular, see [*Why is AI hard and physics simple*](https://arxiv.org/abs/2104.00008) by Roberts and [*The Principles of Deep Learning Theory*](https://arxiv.org/abs/2106.10165) by Roberts, Yaida, and Hanin.
 
 * Let's step through the Neal_Bayesian_Methods_for_Machine_Learning_selected_slides. Some comments:
-    1. These came from 2004, which seems out-of-date, but the underlying ML ideas have been around for a long time. Recent successes have stemmed from refinements of old ideas (some of which were thought not to work, but just needed implementation tweaks).
+    1. These came from 2004, which seems out-of-date, but the underlying ML ideas have been around for a long time. Many recent successes have stemmed from refinements of old ideas (some of which were thought not to work, but just needed implementation tweaks).
     2. Bayesian Approach to ML (or anything!).
         * Emphasis that the approach is very general.
         * Some of the uses in step 4) are *often* different in ML.
