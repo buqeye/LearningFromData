@@ -550,7 +550,7 @@ document.write(`
 <li><p>Optional task: implementing BayesOpt algorithm (open the black box!)</p></li>
 <li><p>Bivariate example <strong>for a plus</strong> <span class="math notranslate nohighlight">\(\Lra\)</span> follow details.</p></li>
 </ul>
-<p>Now go back to <a class="reference internal" href="#/notebooks/Machine_learning/Bayesian_optimization"><code class="xref myst docutils literal notranslate"><span class="pre">/notebooks/Machine_learning/Bayesian_optimization</span></code></a> and see where these elements come from.</p>
+<p>Now go back to <a class="reference internal" href="../../notebooks/Machine_learning/Bayesian_optimization_test.html"><span class="doc std std-doc">Bayesian Optimization</span></a> and see where these elements come from.</p>
 <ol class="arabic simple">
 <li><p>Ingredients:</p>
 <ul class="simple">
@@ -559,12 +559,12 @@ document.write(`
 **Find <span class="math notranslate nohighlight">\(\thetavec_\ast\)</span> that minimizes <span class="math notranslate nohighlight">\(\chi^2\)</span>.</p></li>
 <li><p>Statistical model for <span class="math notranslate nohighlight">\(f(\thetavec)\)</span>: <span class="math notranslate nohighlight">\(p(f | \mathcal{D})\)</span> where <span class="math notranslate nohighlight">\(\mathcal{D}\)</span> is the current set of evaluations of <span class="math notranslate nohighlight">\(f\)</span>:
 <span class="math notranslate nohighlight">\(\mathcal{D} = \{\thetavec_i, f(\thetavec_i)\}\)</span>. Start with <span class="math notranslate nohighlight">\(p(f)\)</span> as a Gaussian process GP and <em>update</em> via Bayes theorem (recall the GP procedure) with each additional <span class="math notranslate nohighlight">\((\thetavec_i,f(\thetavec_i))\)</span>.</p></li>
-<li><p>Acquisition function <span class="math notranslate nohighlight">\(\mathcal{A}(\thetavec|\mathcal{D})\)</span>. Take maximum with respect to <span class="math notranslate nohighlight">\(\thetavec\)</span> to determine <span class="math notranslate nohighlight">\(\theta_{i+1}\)</span>, given the current data <span class="math notranslate nohighlight">\(\mathcal{D}\)</span> (the full history). This balances between “exploration” and “exploitation”.</p></li>
+<li><p>Acquisition function <span class="math notranslate nohighlight">\(\mathcal{A}(\thetavec|\mathcal{D})\)</span>. Take maximum with respect to <span class="math notranslate nohighlight">\(\thetavec\)</span> to determine <span class="math notranslate nohighlight">\(\theta_{i+1}\)</span>, given the current data <span class="math notranslate nohighlight">\(\mathcal{D}\)</span> (the full history). This balances between “exploration” (look more widely for possible global minima) and “exploitation” (refine the best currently known minimum).</p></li>
 </ul>
 </li>
 <li><p>Step through the code</p>
 <ul class="simple">
-<li><p>Univariate example: plot function and find minimum from <code class="docutils literal notranslate"><span class="pre">scipy.optimize.minimum</span></code> (note: requires a starting point).</p>
+<li><p>Univariate example: plot function and find minimum from <code class="docutils literal notranslate"><span class="pre">scipy.optimize.minimum</span></code> (note: requires a starting guess).</p>
 <ul>
 <li><p>no noise at first</p></li>
 </ul>

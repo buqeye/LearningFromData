@@ -13,7 +13,7 @@ Here is a summary of what you need to do for Mini-project IIIa:
 * Optional task: implementing BayesOpt algorithm (open the black box!)
 * Bivariate example **for a plus** $\Lra$ follow details. 
 
-Now go back to [](/notebooks/Machine_learning/Bayesian_optimization) and see where these elements come from.
+Now go back to [](/notebooks/Machine_learning/Bayesian_optimization_test) and see where these elements come from.
 
 1. Ingredients:
 
@@ -24,11 +24,11 @@ Now go back to [](/notebooks/Machine_learning/Bayesian_optimization) and see whe
     * Statistical model for $f(\thetavec)$: $p(f | \mathcal{D})$ where $\mathcal{D}$ is the current set of evaluations of $f$:
     $\mathcal{D} = \{\thetavec_i, f(\thetavec_i)\}$. Start with $p(f)$ as a Gaussian process GP and *update* via Bayes theorem (recall the GP procedure) with each additional $(\thetavec_i,f(\thetavec_i))$.
 
-    * Acquisition function $\mathcal{A}(\thetavec|\mathcal{D})$. Take maximum with respect to $\thetavec$ to determine $\theta_{i+1}$, given the current data $\mathcal{D}$ (the full history). This balances between "exploration" and "exploitation".
+    * Acquisition function $\mathcal{A}(\thetavec|\mathcal{D})$. Take maximum with respect to $\thetavec$ to determine $\theta_{i+1}$, given the current data $\mathcal{D}$ (the full history). This balances between "exploration" (look more widely for possible global minima) and "exploitation" (refine the best currently known minimum).
 
 2. Step through the code
 
-    * Univariate example: plot function and find minimum from `scipy.optimize.minimum` (note: requires a starting point).
+    * Univariate example: plot function and find minimum from `scipy.optimize.minimum` (note: requires a starting guess).
         * no noise at first
 
     * Create GPyOpt object with `GPyOpt.methods.BayesianOptimization`.
