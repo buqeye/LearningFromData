@@ -281,12 +281,13 @@
 <li class="toctree-l2"><a class="reference internal" href="../../notebooks/Machine_learning/Bayesian_optimization_test.html">9.2. Bayesian Optimization</a></li>
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">9.3. Lecture 23</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../notebooks/Machine_learning/Neural_networks_explained.html">9.4. What Are Neural Networks?</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../notebooks/Machine_learning/Forssen_tif285_NeuralNet.html">9.5. Neural networks</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../notebooks/Machine_learning/Forssen_tif285_demo-NeuralNet.html">9.6. Neural network classifier demonstration</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../notebooks/Machine_learning/Bayesian_neural_networks_tif285.html">9.7. Bayesian neural networks</a></li>
-<li class="toctree-l2"><a class="reference internal" href="lecture_24.html">9.8. Lecture 24</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../notebooks/Machine_learning/bayesian_neural_network_advi.html">9.9. Variational Inference: Bayesian Neural Networks</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../notebooks/Machine_learning/Convolutional_neural_network_explained.html">9.10. What is a convolutional neural network?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../notebooks/Machine_learning/Neural_Network_for_simple_function_in_PyTorch.html">9.5. Simple neural network for a function in PyTorch</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../notebooks/Machine_learning/Forssen_tif285_NeuralNet.html">9.6. Neural networks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../notebooks/Machine_learning/Forssen_tif285_demo-NeuralNet.html">9.7. Neural network classifier demonstration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../notebooks/Machine_learning/Bayesian_neural_networks_tif285.html">9.8. Bayesian neural networks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lecture_24.html">9.9. Lecture 24</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../notebooks/Machine_learning/bayesian_neural_network_advi.html">9.10. Variational Inference: Bayesian Neural Networks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../notebooks/Machine_learning/Convolutional_neural_network_explained.html">9.11. What is a convolutional neural network?</a></li>
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../SVD/svd.html">10. PCA, SVD, and all that</a><input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-10"><i class="fa-solid fa-chevron-down"></i></label><ul>
@@ -523,7 +524,7 @@ document.write(`
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-through-mini-project-iiia-to-see-what-is-needed">Step through Mini-project IIIa to see what is needed</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bayesian-neutral-networks-bnns-what-is-the-idea">Bayesian neutral networks (BNNs): What is the idea?</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#notebooks-from-christian-forssens-course-at-chalmers">Notebooks from Christian Forssen’s course at Chalmers</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#notebooks-from-christian-forssens-course-at-chalmers-updated-for-2024">Notebooks from Christian Forssen’s course at Chalmers (updated for 2024)</a></li>
 </ul>
             </nav>
         </div>
@@ -582,7 +583,7 @@ document.write(`
 <li><p>Bivariate example</p>
 <ul>
 <li><p>This uses a built-in example.</p></li>
-<li><p>Notice the setup for the BayesianOptimization oject</p>
+<li><p>Notice the setup for the BayesianOptimization object</p>
 <ul>
 <li><p>look at choices for <code class="docutils literal notranslate"><span class="pre">model_type</span></code></p></li>
 <li><p>look at choices for <code class="docutils literal notranslate"><span class="pre">acquisition_type</span></code></p></li>
@@ -602,9 +603,9 @@ document.write(`
 <li><p>Concluding remarks: step through these.</p></li>
 <li><p>Step back to acquisition function</p>
 <ul class="simple">
-<li><p>Expective improvement <span class="math notranslate nohighlight">\(\Lra\)</span> EI. At each <span class="math notranslate nohighlight">\(\thetavec\)</span> point, calculation the expectation value of <span class="math notranslate nohighlight">\(f_{\rm min} - f(\thetavec)\)</span>, where <span class="math notranslate nohighlight">\(f_{\rm min}\)</span> is the lowest result so far.
+<li><p>Expected improvement <span class="math notranslate nohighlight">\(\Lra\)</span> EI. At each <span class="math notranslate nohighlight">\(\thetavec\)</span> point, calculation the expectation value of <span class="math notranslate nohighlight">\(f_{\rm min} - f(\thetavec)\)</span>, where <span class="math notranslate nohighlight">\(f_{\rm min}\)</span> is the lowest result so far.
 This is the improvement; use 0 if not improvement (<span class="math notranslate nohighlight">\(f_{\rm min} - f(\thetavec) &gt; 0\)</span>).</p></li>
-<li><p>Analytic evaluation of expectation value, because at a given <span class="math notranslate nohighlight">\(\theta_\ast\)</span> the distribution pdf for <span class="math notranslate nohighlight">\(f\)</span> is a Gaussian (because it is a GP) specfied by <span class="math notranslate nohighlight">\(\mu(\thetavec_\ast)\)</span> and <span class="math notranslate nohighlight">\(\sigma^2(\thetavec_\ast) = C(\thetavec_\ast,\thetavec_\ast)\)</span>.</p></li>
+<li><p>Analytic evaluation of expectation value, because at a given <span class="math notranslate nohighlight">\(\theta_\ast\)</span> the distribution pdf for <span class="math notranslate nohighlight">\(f\)</span> is a Gaussian (because it is a GP) specified by <span class="math notranslate nohighlight">\(\mu(\thetavec_\ast)\)</span> and <span class="math notranslate nohighlight">\(\sigma^2(\thetavec_\ast) = C(\thetavec_\ast,\thetavec_\ast)\)</span>.</p></li>
 <li><p>Consider the two pieces to the integral with <span class="math notranslate nohighlight">\(z = (f_{\rm min} - \mu)/\sigma\)</span>:</p>
 <ul>
 <li><p><em>explorative</em> if <span class="math notranslate nohighlight">\(\phi(z)\)</span> dominates <span class="math notranslate nohighlight">\(\Lra\)</span> prior has large uncertainty (large <span class="math notranslate nohighlight">\(\sigma\)</span>);</p></li>
@@ -660,10 +661,10 @@ This is the improvement; use 0 if not improvement (<span class="math notranslate
 <li><p>BNN: Prior describes key parameters, utilized as input to the neural net. Output is used to compute likelihood with pdf. Get the posterior distribution by variational inference.</p></li>
 </ul>
 </section>
-<section id="notebooks-from-christian-forssens-course-at-chalmers">
-<h2>Notebooks from Christian Forssen’s course at Chalmers<a class="headerlink" href="#notebooks-from-christian-forssens-course-at-chalmers" title="Link to this heading">#</a></h2>
+<section id="notebooks-from-christian-forssens-course-at-chalmers-updated-for-2024">
+<h2>Notebooks from Christian Forssen’s course at Chalmers (updated for 2024)<a class="headerlink" href="#notebooks-from-christian-forssens-course-at-chalmers-updated-for-2024" title="Link to this heading">#</a></h2>
 <p>A. <a class="reference internal" href="../../notebooks/Machine_learning/Bayesian_neural_networks_tif285.html"><span class="std std-doc">Bayesian neural networks</span></a></p>
-<p>B. <span class="xref myst"></span></p>
+<p>B. <a class="reference internal" href="../../notebooks/Machine_learning/bayesian_neural_network_advi.html"><span class="std std-doc">Variational Inference: Bayesian Neural Networks</span></a></p>
 <p>Some notes from A:</p>
 <ul>
 <li><p>Basic neural network. Bottom line goal is</p>
@@ -760,7 +761,7 @@ Then <span class="math notranslate nohighlight">\(p(D|\wvec) = \prod_i p(y^{(i)}
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-through-mini-project-iiia-to-see-what-is-needed">Step through Mini-project IIIa to see what is needed</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bayesian-neutral-networks-bnns-what-is-the-idea">Bayesian neutral networks (BNNs): What is the idea?</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#notebooks-from-christian-forssens-course-at-chalmers">Notebooks from Christian Forssen’s course at Chalmers</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#notebooks-from-christian-forssens-course-at-chalmers-updated-for-2024">Notebooks from Christian Forssen’s course at Chalmers (updated for 2024)</a></li>
 </ul>
   </nav></div>
 

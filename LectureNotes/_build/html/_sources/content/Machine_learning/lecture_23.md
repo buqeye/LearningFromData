@@ -39,7 +39,7 @@ Now go back to [](/notebooks/Machine_learning/Bayesian_optimization_test) and se
 
     * Bivariate example
         * This uses a built-in example.
-        * Notice the setup for the BayesianOptimization oject
+        * Notice the setup for the BayesianOptimization object
             * look at choices for `model_type`
             * look at choices for `acquisition_type`
         * separate plots for mean, standard deviation (sd), acquisition function, with red dots for evaluation points.
@@ -52,10 +52,10 @@ Now go back to [](/notebooks/Machine_learning/Bayesian_optimization_test) and se
 
 5. Step back to acquisition function
     
-    * Expective improvement $\Lra$ EI. At each $\thetavec$ point, calculation the expectation value of $f_{\rm min} - f(\thetavec)$, where $f_{\rm min}$ is the lowest result so far.
+    * Expected improvement $\Lra$ EI. At each $\thetavec$ point, calculation the expectation value of $f_{\rm min} - f(\thetavec)$, where $f_{\rm min}$ is the lowest result so far.
     This is the improvement; use 0 if not improvement ($f_{\rm min} - f(\thetavec) > 0$).
 
-    * Analytic evaluation of expectation value, because at a given $\theta_\ast$ the distribution pdf for $f$ is a Gaussian (because it is a GP) specfied by $\mu(\thetavec_\ast)$ and $\sigma^2(\thetavec_\ast) = C(\thetavec_\ast,\thetavec_\ast)$.
+    * Analytic evaluation of expectation value, because at a given $\theta_\ast$ the distribution pdf for $f$ is a Gaussian (because it is a GP) specified by $\mu(\thetavec_\ast)$ and $\sigma^2(\thetavec_\ast) = C(\thetavec_\ast,\thetavec_\ast)$.
 
     * Consider the two pieces to the integral with $z = (f_{\rm min} - \mu)/\sigma$:
         * *explorative* if $\phi(z)$ dominates $\Lra$ prior has large uncertainty (large $\sigma$);
@@ -96,11 +96,11 @@ Think of how we might combine Bayesian ideas with neural networks (NNs) or modif
 
 * BNN: Prior describes key parameters, utilized as input to the neural net. Output is used to compute likelihood with pdf. Get the posterior distribution by variational inference.
 
-## Notebooks from Christian Forssen's course at Chalmers
+## Notebooks from Christian Forssen's course at Chalmers (updated for 2024)
 
 A. [](/notebooks/Machine_learning/Bayesian_neural_networks_tif285.ipynb)
 
-B. [](/notebooks/Machine_learning/demo-Bayesian_neural_networks_tif285.ipynb) 
+B. [](/notebooks/Machine_learning/bayesian_neural_network_advi.ipynb) 
 
 Some notes from A:
 * Basic neural network. Bottom line goal is
