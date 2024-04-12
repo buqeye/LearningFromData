@@ -39,7 +39,7 @@ Now go back to [](/notebooks/Machine_learning/Bayesian_optimization_test) and se
 
     * Bivariate example
         * This uses a built-in example.
-        * Notice the setup for the BayesianOptimization oject
+        * Notice the setup for the BayesianOptimization object
             * look at choices for `model_type`
             * look at choices for `acquisition_type`
         * separate plots for mean, standard deviation (sd), acquisition function, with red dots for evaluation points.
@@ -96,11 +96,11 @@ Think of how we might combine Bayesian ideas with neural networks (NNs) or modif
 
 * BNN: Prior describes key parameters, utilized as input to the neural net. Output is used to compute likelihood with pdf. Get the posterior distribution by variational inference.
 
-## Notebooks from Christian Forssen's course at Chalmers
+## Notebooks from Christian Forssen's course at Chalmers (updated for 2024)
 
 A. [](/notebooks/Machine_learning/Bayesian_neural_networks_tif285.ipynb)
 
-B. [](/notebooks/Machine_learning/demo-Bayesian_neural_networks_tif285.ipynb) 
+B. [](/notebooks/Machine_learning/bayesian_neural_network_advi.ipynb) 
 
 Some notes from A:
 * Basic neural network. Bottom line goal is

@@ -106,6 +106,7 @@ parts:
       - file: notebooks/Machine_learning/Bayesian_optimization_test.ipynb
       - file: content/Machine_learning/lecture_23.md
       - file: notebooks/Machine_learning/Neural_networks_explained.ipynb
+      - file: notebooks/Machine_learning/Neural_Network_for_simple_function_in_PyTorch.ipynb
       - file: notebooks/Machine_learning/Forssen_tif285_NeuralNet.ipynb
       - file: notebooks/Machine_learning/Forssen_tif285_demo-NeuralNet.ipynb
       - file: notebooks/Machine_learning/Bayesian_neural_networks_tif285.ipynb
