@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>9.5. Simple neural network for a function in PyTorch &#8212; Learning from data</title>
+    <title>9.5. Feed-forward neural network for a function in PyTorch &#8212; Learning from data</title>
   
   
   
@@ -281,7 +281,7 @@
 <li class="toctree-l2"><a class="reference internal" href="Bayesian_optimization_test.html">9.2. Bayesian Optimization</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../content/Machine_learning/lecture_23.html">9.3. Lecture 23</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Neural_networks_explained.html">9.4. What Are Neural Networks?</a></li>
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">9.5. Simple neural network for a function in PyTorch</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">9.5. Feed-forward neural network for a function in PyTorch</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Forssen_tif285_NeuralNet.html">9.6. Neural networks</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Bayesian_neural_networks_tif285.html">9.7. Bayesian neural networks</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../content/Machine_learning/lecture_24.html">9.8. Lecture 24</a></li>
@@ -561,7 +561,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Simple neural network for a function in PyTorch</h1>
+    <h1>Feed-forward neural network for a function in PyTorch</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -608,10 +608,10 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="simple-neural-network-for-a-function-in-pytorch">
-<h1><span class="section-number">9.5. </span>Simple neural network for a function in PyTorch<a class="headerlink" href="#simple-neural-network-for-a-function-in-pytorch" title="Link to this heading">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="feed-forward-neural-network-for-a-function-in-pytorch">
+<h1><span class="section-number">9.5. </span>Feed-forward neural network for a function in PyTorch<a class="headerlink" href="#feed-forward-neural-network-for-a-function-in-pytorch" title="Link to this heading">#</a></h1>
 <p>See the <a class="reference external" href="https://pytorch.org/">PyTorch website</a> for tutorials and other documentation.
-In this notebook we’ll rely on ChatGPT 4 to generate code for a PyTorch neural network for a function of a single variable.
+In this notebook we’ll rely on ChatGPT 4 to generate code for a PyTorch neural network for a function of a single variable (this particular network is a “multilayer perceptron”).
 Other than the questions to ChatGPT, all code and documentation was provided by ChatGPT. (Slight tweaks were made to change the format of the output from training and to increase the range of the trained function to test extrapolation.)</p>
 <section id="installation-of-pytorch">
 <h2>Installation of PyTorch<a class="headerlink" href="#installation-of-pytorch" title="Link to this heading">#</a></h2>
