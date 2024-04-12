@@ -58,6 +58,8 @@
     <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"tex": {"macros": {"N": ["\\mathbb{N}"], "Z": ["\\mathbb{Z}"], "floor": ["\\lfloor#1\\rfloor", 1], "bmat": ["\\left[\\begin{array}"], "emat": ["\\end{array}\\right]"], "alphavec": ["\\boldsymbol{\\alpha}"], "muvec": ["\\boldsymbol{\\mu}"], "phivec": ["\\boldsymbol{\\phi}"], "sigmavec": ["\\boldsymbol{\\sigma}"], "Sigmavec": ["\\boldsymbol{\\Sigma}"], "thetavec": ["\\boldsymbol{\\theta}"], "thetavechat": ["\\widehat\\thetavec"], "avec": ["\\boldsymbol{a}"], "Bvec": ["\\boldsymbol{B}"], "fvec": ["\\boldsymbol{f}"], "mvec": ["\\boldsymbol{m}"], "qvec": ["\\boldsymbol{q}"], "rvec": ["\\boldsymbol{r}"], "uvec": ["\\boldsymbol{u}"], "wvec": ["\\boldsymbol{w}"], "xvec": ["\\boldsymbol{x}"], "yvec": ["\\boldsymbol{y}"], "Lra": ["\\Longrightarrow"], "abar": ["\\overline a"], "Xbar": ["\\overline X"], "alphahat": ["\\widehat\\alpha"], "Hhat": ["\\hat H"], "yth": ["y_{\\text{th}}"], "yexp": ["y_{\\text{exp}}"], "ym": ["y_{\\text{m}}"], "gs": ["{0}"]}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'notebooks/Machine_learning/Neural_Network_for_simple_function_in_PyTorch';</script>
     <link rel="icon" href="../../_static/favicon.ico"/>
     <link rel="author" title="About these documents" href="../../about.html" />
@@ -281,9 +283,9 @@
 <li class="toctree-l2"><a class="reference internal" href="Neural_networks_explained.html">9.4. What Are Neural Networks?</a></li>
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">9.5. Simple neural network for a function in PyTorch</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Forssen_tif285_NeuralNet.html">9.6. Neural networks</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Forssen_tif285_demo-NeuralNet.html">9.7. Neural network classifier demonstration</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Bayesian_neural_networks_tif285.html">9.8. Bayesian neural networks</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../content/Machine_learning/lecture_24.html">9.9. Lecture 24</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Bayesian_neural_networks_tif285.html">9.7. Bayesian neural networks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../content/Machine_learning/lecture_24.html">9.8. Lecture 24</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Forssen_tif285_demo-NeuralNet.html">9.9. Neural network classifier demonstration</a></li>
 <li class="toctree-l2"><a class="reference internal" href="bayesian_neural_network_advi.html">9.10. Variational Inference: Bayesian Neural Networks</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Convolutional_neural_network_explained.html">9.11. What is a convolutional neural network?</a></li>
 </ul>
@@ -575,7 +577,23 @@ document.write(`
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#telling-chatgpt-4-to-make-a-network-for-a-function-of-one-variable">Telling ChatGPT 4 to make a network for a function of one variable</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#now-ask-chatgpt-to-use-this-code-to-learn-a-specified-function-in-a-specified-region">Now ask ChatGPT to use this code to learn a specified function in a specified region</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#more-information-from-chatgpt">More information from ChatGPT</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#information-from-chatgpt-about-backpropagation">Information from ChatGPT about backpropagation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#information-from-chatgpt-about-tensor-operations">Information from ChatGPT about tensor operations</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#basic-mathematical-operations">Basic Mathematical Operations</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#complex-expressions">Complex Expressions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-of-a-complex-expression">Example of a Complex Expression</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#gradient-computations">Gradient Computations</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#utilizing-gpu-acceleration">Utilizing GPU Acceleration</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Information from ChatGPT about tensor operations</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#common-initialization-methods">Common Initialization Methods</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pytorch-default-initialization">PyTorch Default Initialization</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#customizing-initialization-in-pytorch">Customizing Initialization in PyTorch</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#information-from-chatgpt-about-the-default-initialization">Information from ChatGPT about the default initialization</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#information-from-chatgpt-about-how-to-switch-to-normal-distributions-to-intialize">Information from ChatGPT about how to switch to normal distributions to intialize</a></li>
 </ul>
             </nav>
         </div>
@@ -607,11 +625,13 @@ Besides the questions to ChatGPT, all code and documentation was provided by Cha
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>tensor([[0.1244, 0.4890, 0.4055],
-        [0.6843, 0.5441, 0.6581],
-        [0.7918, 0.0862, 0.6636],
-        [0.6087, 0.9290, 0.5669],
-        [0.6013, 0.3681, 0.0836]])
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Intel MKL WARNING: Support of Intel(R) Streaming SIMD Extensions 4.2 (Intel(R) SSE4.2) enabled only processors has been deprecated. Intel oneAPI Math Kernel Library 2025.0 will require Intel(R) Advanced Vector Extensions (Intel(R) AVX) instructions.
+Intel MKL WARNING: Support of Intel(R) Streaming SIMD Extensions 4.2 (Intel(R) SSE4.2) enabled only processors has been deprecated. Intel oneAPI Math Kernel Library 2025.0 will require Intel(R) Advanced Vector Extensions (Intel(R) AVX) instructions.
+tensor([[0.5615, 0.2720, 0.9393],
+        [0.0190, 0.8747, 0.4342],
+        [0.1262, 0.5377, 0.7791],
+        [0.1908, 0.5040, 0.2022],
+        [0.9125, 0.6241, 0.1369]])
 </pre></div>
 </div>
 </div>
@@ -766,29 +786,29 @@ Besides the questions to ChatGPT, all code and documentation was provided by Cha
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch [100/2000], Loss: 3.7249e-03
-Epoch [200/2000], Loss: 3.1713e-03
-Epoch [300/2000], Loss: 1.9605e-03
-Epoch [400/2000], Loss: 4.3974e-04
-Epoch [500/2000], Loss: 3.3119e-04
-Epoch [600/2000], Loss: 2.3859e-04
-Epoch [700/2000], Loss: 1.5577e-04
-Epoch [800/2000], Loss: 8.8906e-05
-Epoch [900/2000], Loss: 4.5247e-05
-Epoch [1000/2000], Loss: 2.3916e-05
-Epoch [1100/2000], Loss: 1.5100e-05
-Epoch [1200/2000], Loss: 1.0658e-05
-Epoch [1300/2000], Loss: 7.7128e-06
-Epoch [1400/2000], Loss: 5.6269e-06
-Epoch [1500/2000], Loss: 4.1907e-06
-Epoch [1600/2000], Loss: 3.2489e-06
-Epoch [1700/2000], Loss: 2.6639e-06
-Epoch [1800/2000], Loss: 2.3192e-06
-Epoch [1900/2000], Loss: 2.1242e-06
-Epoch [2000/2000], Loss: 2.0152e-06
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch [100/2000], Loss: 3.2858e-04
+Epoch [200/2000], Loss: 2.7336e-04
+Epoch [300/2000], Loss: 1.8517e-04
+Epoch [400/2000], Loss: 6.7945e-05
+Epoch [500/2000], Loss: 1.2013e-05
+Epoch [600/2000], Loss: 8.5314e-06
+Epoch [700/2000], Loss: 8.2068e-06
+Epoch [800/2000], Loss: 7.8656e-06
+Epoch [900/2000], Loss: 7.4902e-06
+Epoch [1000/2000], Loss: 7.0791e-06
+Epoch [1100/2000], Loss: 6.6314e-06
+Epoch [1200/2000], Loss: 6.1459e-06
+Epoch [1300/2000], Loss: 5.6234e-06
+Epoch [1400/2000], Loss: 5.0656e-06
+Epoch [1500/2000], Loss: 4.9311e-06
+Epoch [1600/2000], Loss: 4.2052e-06
+Epoch [1700/2000], Loss: 3.6394e-06
+Epoch [1800/2000], Loss: 3.8547e-06
+Epoch [1900/2000], Loss: 3.0755e-06
+Epoch [2000/2000], Loss: 2.5704e-06
 </pre></div>
 </div>
-<img alt="../../_images/adf61b1be2f0c9c76dbe88cc595f043ab68f6a50f6f3ae55fc1033aa0411f7f0.png" src="../../_images/adf61b1be2f0c9c76dbe88cc595f043ab68f6a50f6f3ae55fc1033aa0411f7f0.png" />
+<img alt="../../_images/7cb265dfa71fbfc30f3504eac5be2a4a23a3aa6d094c87ccdcac77b456d7fff3.png" src="../../_images/7cb265dfa71fbfc30f3504eac5be2a4a23a3aa6d094c87ccdcac77b456d7fff3.png" />
 </div>
 </div>
 <p><strong>Explanation:</strong></p>
@@ -869,29 +889,29 @@ Epoch [2000/2000], Loss: 2.0152e-06
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch [100/2000], Loss: 6.2734e-03
-Epoch [200/2000], Loss: 2.4208e-03
-Epoch [300/2000], Loss: 8.8777e-04
-Epoch [400/2000], Loss: 1.9188e-04
-Epoch [500/2000], Loss: 7.6298e-05
-Epoch [600/2000], Loss: 7.0848e-05
-Epoch [700/2000], Loss: 7.0763e-05
-Epoch [800/2000], Loss: 7.0753e-05
-Epoch [900/2000], Loss: 7.0743e-05
-Epoch [1000/2000], Loss: 7.0732e-05
-Epoch [1100/2000], Loss: 7.0721e-05
-Epoch [1200/2000], Loss: 7.0709e-05
-Epoch [1300/2000], Loss: 7.0697e-05
-Epoch [1400/2000], Loss: 7.0684e-05
-Epoch [1500/2000], Loss: 7.0671e-05
-Epoch [1600/2000], Loss: 7.0658e-05
-Epoch [1700/2000], Loss: 7.0643e-05
-Epoch [1800/2000], Loss: 7.0629e-05
-Epoch [1900/2000], Loss: 7.0614e-05
-Epoch [2000/2000], Loss: 7.0600e-05
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch [100/2000], Loss: 6.1790e-03
+Epoch [200/2000], Loss: 3.4570e-03
+Epoch [300/2000], Loss: 1.1190e-03
+Epoch [400/2000], Loss: 1.2028e-04
+Epoch [500/2000], Loss: 3.3466e-05
+Epoch [600/2000], Loss: 2.3432e-05
+Epoch [700/2000], Loss: 1.8515e-05
+Epoch [800/2000], Loss: 1.5891e-05
+Epoch [900/2000], Loss: 1.4590e-05
+Epoch [1000/2000], Loss: 1.4417e-05
+Epoch [1100/2000], Loss: 1.3306e-05
+Epoch [1200/2000], Loss: 1.3677e-05
+Epoch [1300/2000], Loss: 8.0134e-05
+Epoch [1400/2000], Loss: 1.8765e-05
+Epoch [1500/2000], Loss: 1.1920e-05
+Epoch [1600/2000], Loss: 1.5252e-05
+Epoch [1700/2000], Loss: 1.1425e-05
+Epoch [1800/2000], Loss: 8.4948e-06
+Epoch [1900/2000], Loss: 6.3999e-06
+Epoch [2000/2000], Loss: 1.1099e-05
 </pre></div>
 </div>
-<img alt="../../_images/94bed3a37121f8775dcd0ebaeab48bf511f8741a510cbe6d03673c6547872aa8.png" src="../../_images/94bed3a37121f8775dcd0ebaeab48bf511f8741a510cbe6d03673c6547872aa8.png" />
+<img alt="../../_images/fea6542b7c9601c3b59aa37b71271570576cdf221c3325fde2c4fe392cb1ed9f.png" src="../../_images/fea6542b7c9601c3b59aa37b71271570576cdf221c3325fde2c4fe392cb1ed9f.png" />
 </div>
 </div>
 <p><strong>Changes and Considerations:</strong></p>
@@ -903,8 +923,8 @@ ReLU provides linear responses for positive values and zero for negative values,
 <p>This updated code uses ReLU, and you might observe different results in how the model learns and generalizes the function <code class="docutils literal notranslate"><span class="pre">f(x)</span> <span class="pre">=</span> <span class="pre">sin(x)**2</span></code>.
 Experimenting with different activation functions can provide insights into their impact on model performance and behavior.</p>
 </section>
-<section id="more-information-from-chatgpt">
-<h2>More information from ChatGPT<a class="headerlink" href="#more-information-from-chatgpt" title="Link to this heading">#</a></h2>
+<section id="information-from-chatgpt-about-backpropagation">
+<h2>Information from ChatGPT about backpropagation<a class="headerlink" href="#information-from-chatgpt-about-backpropagation" title="Link to this heading">#</a></h2>
 <p><strong>To ChatGPT:</strong> <em>What algorithm is being used for backpropagation?</em></p>
 <p>In the provided code, the algorithm being used for backpropagation is not explicitly specified because it’s inherently handled by PyTorch’s automatic differentiation engine, which is built into the <code class="docutils literal notranslate"><span class="pre">backward()</span></code> function. However, the optimization algorithm that leverages this backpropagation to update the weights is Adam (Adaptive Moment Estimation).</p>
 <p>Here’s a breakdown of the key components:</p>
@@ -930,6 +950,354 @@ Experimenting with different activation functions can provide insights into thei
 <li><p><strong>Hyperparameters:</strong> It has few hyperparameters that require tuning (like the learning rate, the exponential decay rates for the moment estimates).</p></li>
 </ul>
 <p>In essence, while the backpropagation algorithm is the method used to compute the gradients, Adam is the algorithm that uses these gradients to update the weights iteratively in order to minimize the loss function.</p>
+</section>
+<section id="information-from-chatgpt-about-tensor-operations">
+<h2>Information from ChatGPT about tensor operations<a class="headerlink" href="#information-from-chatgpt-about-tensor-operations" title="Link to this heading">#</a></h2>
+<p><strong>To ChatGPT:</strong> <em>How do you write mathematical expressions using pytensor?</em></p>
+<p>In PyTorch, writing mathematical expressions involves using a combination of PyTorch’s tensor operations, which are very similar to those found in NumPy but are optimized for automatic differentiation and can run on GPUs. Here’s how you can utilize PyTorch to handle various mathematical expressions:</p>
+<section id="basic-mathematical-operations">
+<h3>Basic Mathematical Operations<a class="headerlink" href="#basic-mathematical-operations" title="Link to this heading">#</a></h3>
+<p>Here are some basic operations:</p>
+<ol class="arabic simple">
+<li><p><strong>Addition</strong></p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">torch</span>
+<span class="n">a</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">([</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">])</span>
+<span class="n">c</span> <span class="o">=</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span>  <span class="c1"># Element-wise addition</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>tensor([5, 7, 9])
+</pre></div>
+</div>
+</div>
+</div>
+<ol class="arabic simple" start="2">
+<li><p><strong>Subtraction</strong></p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">d</span> <span class="o">=</span> <span class="n">b</span> <span class="o">-</span> <span class="n">a</span>  <span class="c1"># Element-wise subtraction</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">d</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>tensor([3, 3, 3])
+</pre></div>
+</div>
+</div>
+</div>
+<ol class="arabic simple" start="3">
+<li><p><strong>Multiplication</strong> (element-wise)</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">e</span> <span class="o">=</span> <span class="n">a</span> <span class="o">*</span> <span class="n">b</span>  <span class="c1"># Element-wise multiplication</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>tensor([ 4, 10, 18])
+</pre></div>
+</div>
+</div>
+</div>
+<ol class="arabic simple" start="4">
+<li><p><strong>Division</strong></p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">f</span> <span class="o">=</span> <span class="n">b</span> <span class="o">/</span> <span class="n">a</span>  <span class="c1"># Element-wise division</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>tensor([4.0000, 2.5000, 2.0000])
+</pre></div>
+</div>
+</div>
+</div>
+<ol class="arabic simple" start="5">
+<li><p><strong>Matrix multiplication</strong></p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]])</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">([[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">],</span> <span class="p">[</span><span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">]])</span>
+<span class="n">z</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>  <span class="c1"># Matrix multiplication</span>
+<span class="c1"># or using the &quot;@&quot; operator</span>
+<span class="n">z</span> <span class="o">=</span> <span class="n">x</span> <span class="o">@</span> <span class="n">y</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">z</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>tensor([[19, 22],
+        [43, 50]])
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="complex-expressions">
+<h3>Complex Expressions<a class="headerlink" href="#complex-expressions" title="Link to this heading">#</a></h3>
+<p>For more complex mathematical expressions, such as those involving powers, roots, logarithms, trigonometric functions,
+and other operations, PyTorch provides a wide range of functions:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">torch</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+
+<span class="c1"># Power</span>
+<span class="n">x_squared</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">pow</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>  <span class="c1"># or x ** 2</span>
+
+<span class="c1"># Square root</span>
+<span class="n">x_sqrt</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+
+<span class="c1"># Exponential</span>
+<span class="n">x_exp</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+
+<span class="c1"># Logarithm</span>
+<span class="n">x_log</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+
+<span class="c1"># Trigonometric functions</span>
+<span class="n">x_sin</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="n">x_cos</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+
+<span class="c1"># Hyperbolic functions</span>
+<span class="n">x_sinh</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">sinh</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="n">x_cosh</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">cosh</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="example-of-a-complex-expression">
+<h3>Example of a Complex Expression<a class="headerlink" href="#example-of-a-complex-expression" title="Link to this heading">#</a></h3>
+<p>If you want to compute something more complex, like the following expression:</p>
+<div class="math notranslate nohighlight">
+\[f(x) = \sin(x^2) + \log(x) \cdot \cos(x)\]</div>
+<p>Here’s how you would implement it in PyTorch:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">torch</span>
+
+<span class="c1"># Assuming x is a tensor of positive numbers</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">([</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">,</span> <span class="mf">3.0</span><span class="p">],</span> <span class="n">requires_grad</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># Compute the function</span>
+<span class="n">f</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">x</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span> <span class="o">+</span> <span class="n">torch</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">*</span> <span class="n">torch</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>tensor([ 0.8415, -1.0453, -0.6755], grad_fn=&lt;AddBackward0&gt;)
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="gradient-computations">
+<h3>Gradient Computations<a class="headerlink" href="#gradient-computations" title="Link to this heading">#</a></h3>
+<p>A key feature of PyTorch is its ability to automatically compute derivatives, which is crucial for machine learning algorithms like backpropagation. Here’s how you can compute the gradient of <span class="math notranslate nohighlight">\(f\)</span> with respect to <span class="math notranslate nohighlight">\(x\)</span>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">f</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">.</span><span class="n">backward</span><span class="p">()</span>  <span class="c1"># Compute the gradients (derivative of sum of f wrt x)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">grad</span><span class="p">)</span>       <span class="c1"># Access the gradients</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>tensor([ 1.6209, -3.4529, -5.9518])
+</pre></div>
+</div>
+</div>
+</div>
+<p>This example assumes that f is not a scalar, so we use f.sum() to create a scalar context for backward(), which computes the total derivative.</p>
+</section>
+<section id="utilizing-gpu-acceleration">
+<h3>Utilizing GPU Acceleration<a class="headerlink" href="#utilizing-gpu-acceleration" title="Link to this heading">#</a></h3>
+<p>To leverage GPU acceleration, you would typically move your tensors and models to the GPU:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">torch</span><span class="o">.</span><span class="n">cuda</span><span class="o">.</span><span class="n">is_available</span><span class="p">():</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="s1">&#39;cuda&#39;</span><span class="p">)</span>
+    <span class="c1"># Perform your operations on x here</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>This approach to writing mathematical expressions in PyTorch enables both flexibility and powerful integration with deep learning models, allowing for both simple and advanced computations, all while being able to backpropagate errors through complex computational graphs efficiently.</p>
+</section>
+</section>
+<section id="id1">
+<h2>Information from ChatGPT about tensor operations<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
+<p><strong>To ChatGPT:</strong> <em>How are these neural networks initialized?</em></p>
+<p>Neural networks in frameworks like PyTorch and TensorFlow are initialized using specific strategies for setting the initial weights and biases of the network before training begins. Proper initialization is crucial because it can significantly affect the convergence and performance of the network during training.</p>
+<section id="common-initialization-methods">
+<h3>Common Initialization Methods<a class="headerlink" href="#common-initialization-methods" title="Link to this heading">#</a></h3>
+<p>Here are some of the most common methods used for initializing neural networks:</p>
+<ol class="arabic simple">
+<li><p><strong>Zero Initialization:</strong></p>
+<ul class="simple">
+<li><p>Weights and biases are set to zero.</p></li>
+<li><p>Generally not recommended except for biases because it can lead to problems where neurons in the same layer learn the same features during training (symmetry breaking issue).</p></li>
+</ul>
+</li>
+<li><p><strong>Random Initialization:</strong></p>
+<ul class="simple">
+<li><p>Weights are set to small random values, often drawn from a normal or uniform distribution.</p></li>
+<li><p>Helps in breaking symmetry so that each neuron can learn different things.</p></li>
+<li><p>Too small values can lead to the vanishing gradients problem, and too large values can lead to exploding gradients.</p></li>
+</ul>
+</li>
+<li><p><strong>Uniform and Normal Distribution:</strong></p>
+<ul class="simple">
+<li><p><strong>Uniform Distribution:</strong> Weights are initialized uniformly at random within a specified range (e.g., <span class="math notranslate nohighlight">\([-y, y]\)</span> where <span class="math notranslate nohighlight">\(y\)</span> is a small value).</p></li>
+<li><p><strong>Normal Distribution:</strong> Weights are initialized according to a Gaussian distribution, usually with a mean of 0 and a small standard deviation.</p></li>
+</ul>
+</li>
+<li><p><strong>Xavier/Glorot Initialization:</strong></p>
+<ul class="simple">
+<li><p>Designed specifically for keeping the scale of gradients roughly the same in all layers.</p></li>
+<li><p>For a layer with <span class="math notranslate nohighlight">\(n_{\rm in}\)</span> inputs and <span class="math notranslate nohighlight">\(n_{\rm out}\)</span> outputs, weights are initialized from a distribution with zero mean and a variance of <span class="math notranslate nohighlight">\(2 / (n_{\rm in} + n_{\rm out})\)</span>.</p></li>
+<li><p>Works well with sigmoid and tanh activation functions.</p></li>
+</ul>
+</li>
+<li><p><strong>He Initialization:</strong></p>
+<ul class="simple">
+<li><p>Similar to Xavier initialization but designed for layers with ReLU activation functions.</p></li>
+<li><p>Weights are initialized from a normal distribution with a mean of 0 and a variance of 2 / n_in or a uniform distribution scaled by sqrt(6 / n_in), where n_in is the number of input units.</p></li>
+<li><p>Helps prevent issues related to the non-linear nature of ReLU activations at initialization.</p></li>
+</ul>
+</li>
+</ol>
+</section>
+<section id="pytorch-default-initialization">
+<h3>PyTorch Default Initialization<a class="headerlink" href="#pytorch-default-initialization" title="Link to this heading">#</a></h3>
+<p>In PyTorch, different types of layers are initialized differently by default:</p>
+<ul class="simple">
+<li><p><strong>Linear layers</strong> (<code class="docutils literal notranslate"><span class="pre">nn.Linear</span></code>): By default, the weights and biases are initialized from a uniform distribution <span class="math notranslate nohighlight">\(U(-\sqrt{k},\sqrt{k})\)</span>
+where <span class="math notranslate nohighlight">\(k = 1/(\textrm{number of input features})\)</span>.</p></li>
+<li><p><strong>Convolutional layers</strong> (<code class="docutils literal notranslate"><span class="pre">nn.Conv2d</span></code>): These use Kaiming uniform initialization by default, which is a form of He initialization suitable for layers followed by ReLU activations.</p></li>
+</ul>
+</section>
+<section id="customizing-initialization-in-pytorch">
+<h3>Customizing Initialization in PyTorch<a class="headerlink" href="#customizing-initialization-in-pytorch" title="Link to this heading">#</a></h3>
+<p>You can also customize how layers are initialized in PyTorch. Here’s a simple example where we set the weights of a linear layer with He initialization and set biases to zero:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">torch</span>
+<span class="kn">import</span> <span class="nn">torch.nn</span> <span class="k">as</span> <span class="nn">nn</span>
+<span class="kn">import</span> <span class="nn">torch.nn.init</span> <span class="k">as</span> <span class="nn">init</span>
+
+<span class="k">class</span> <span class="nc">MyModel</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">MyModel</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">linear</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+
+        <span class="c1"># Custom weights initialization</span>
+        <span class="n">init</span><span class="o">.</span><span class="n">kaiming_normal_</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">linear</span><span class="o">.</span><span class="n">weight</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;fan_out&#39;</span><span class="p">,</span> <span class="n">nonlinearity</span><span class="o">=</span><span class="s1">&#39;relu&#39;</span><span class="p">)</span>
+        <span class="n">init</span><span class="o">.</span><span class="n">constant_</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">linear</span><span class="o">.</span><span class="n">bias</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>  <span class="c1"># setting biases to zero</span>
+
+<span class="n">model</span> <span class="o">=</span> <span class="n">MyModel</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">model</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>MyModel(
+  (linear): Linear(in_features=10, out_features=5, bias=True)
+)
+</pre></div>
+</div>
+</div>
+</div>
+<p>This flexibility allows you to experiment with different initialization methods to find what works best for your specific application or to adapt to different activation functions used in the network.</p>
+</section>
+</section>
+<section id="information-from-chatgpt-about-the-default-initialization">
+<h2>Information from ChatGPT about the default initialization<a class="headerlink" href="#information-from-chatgpt-about-the-default-initialization" title="Link to this heading">#</a></h2>
+<p><strong>To ChatGPT:</strong> <em>Which initialization method was used in the latest code you provided above?</em></p>
+<p>In the example of the <code class="docutils literal notranslate"><span class="pre">OneVariableNet</span></code> class I provided earlier, the network uses PyTorch’s default initialization methods for the layers defined within it. For <code class="docutils literal notranslate"><span class="pre">nn.Linear</span></code> layers in PyTorch, the default initialization is done with a uniform distribution over a range derived from the number of input and output units of the layer. Specifically:</p>
+<ol class="arabic simple">
+<li><p><strong>Weights:</strong> Initialized from a uniform distribution <span class="math notranslate nohighlight">\(U(-\sqrt{k},\sqrt{k})\)</span>
+where <span class="math notranslate nohighlight">\(k = 1/(\textrm{number of input features})\)</span>.</p></li>
+<li><p><strong>Biases:</strong> Also typically initialized from the same uniform distribution, unless otherwise specified or customized.</p></li>
+</ol>
+<p>This is a good default choice for many situations, especially when just starting out with a new neural network model, because it provides a reasonable compromise between too large and too small initial weights, helping to ensure that gradients are neither too small (causing vanishing gradients) nor too large (causing exploding gradients) at the start of training.</p>
+</section>
+<section id="information-from-chatgpt-about-how-to-switch-to-normal-distributions-to-intialize">
+<h2>Information from ChatGPT about how to switch to normal distributions to intialize<a class="headerlink" href="#information-from-chatgpt-about-how-to-switch-to-normal-distributions-to-intialize" title="Link to this heading">#</a></h2>
+<p><strong>To ChatGPT:</strong> <em>Give the <code class="docutils literal notranslate"><span class="pre">OneVariableNet</span></code> class initialized with a normal distribution.</em></p>
+<p>To customize the <code class="docutils literal notranslate"><span class="pre">OneVariableNet</span></code> class such that all the weights (and optionally biases) of the layers are initialized from a normal distribution, you can use PyTorch’s <code class="docutils literal notranslate"><span class="pre">torch.nn.init</span></code> functions. In this case, we will use <code class="docutils literal notranslate"><span class="pre">normal_</span></code> to initialize the weights and biases.</p>
+<p>Here’s how you can modify the <code class="docutils literal notranslate"><span class="pre">OneVariableNet</span></code> class to initialize its parameters with a normal distribution, specifying a mean and a standard deviation:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">torch</span>
+<span class="kn">import</span> <span class="nn">torch.nn</span> <span class="k">as</span> <span class="nn">nn</span>
+<span class="kn">import</span> <span class="nn">torch.nn.init</span> <span class="k">as</span> <span class="nn">init</span>
+
+<span class="k">class</span> <span class="nc">OneVariableNet</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">OneVariableNet</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">hidden1</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">hidden2</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">hidden3</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">output</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">activation</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">ReLU</span><span class="p">()</span>  <span class="c1"># or any other activation</span>
+
+        <span class="c1"># Initialize weights and biases with a normal distribution</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">init_weights</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">init_weights</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="c1"># Initialize weights with a normal distribution</span>
+        <span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">modules</span><span class="p">():</span>
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">):</span>
+                <span class="n">init</span><span class="o">.</span><span class="n">normal_</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">weight</span><span class="p">,</span> <span class="n">mean</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">std</span><span class="o">=</span><span class="mf">0.1</span><span class="p">)</span>
+                <span class="n">init</span><span class="o">.</span><span class="n">constant_</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">bias</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>  <span class="c1"># Initialize biases to zero or use normal distribution as well</span>
+
+    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">activation</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">hidden1</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">activation</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">hidden2</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">activation</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">hidden3</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">output</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">x</span>
+
+<span class="c1"># Create an instance of the network</span>
+<span class="n">net</span> <span class="o">=</span> <span class="n">OneVariableNet</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">net</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>OneVariableNet(
+  (hidden1): Linear(in_features=1, out_features=10, bias=True)
+  (hidden2): Linear(in_features=10, out_features=10, bias=True)
+  (hidden3): Linear(in_features=10, out_features=10, bias=True)
+  (output): Linear(in_features=10, out_features=1, bias=True)
+  (activation): ReLU()
+)
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Explanation:</strong></p>
+<ol class="arabic simple">
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">init_weights</span></code> Method:</strong> This method iterates through all modules (layers) in the network. If the module is an instance of <code class="docutils literal notranslate"><span class="pre">nn.Linear</span></code> (a linear layer), it initializes the weights using a normal distribution with specified mean and standard deviation (mean=0.0, std=0.1 in this example). Biases are set to zero using <code class="docutils literal notranslate"><span class="pre">init.constant_</span></code>. You can also choose to initialize biases from a normal distribution if desired.</p></li>
+<li><p><strong>Initialization in Constructor:</strong> The <code class="docutils literal notranslate"><span class="pre">init_weights</span></code> method is called within the constructor (<code class="docutils literal notranslate"><span class="pre">__init__</span></code>) of the class, ensuring that all weights and biases are initialized properly when an instance of <code class="docutils literal notranslate"><span class="pre">OneVariableNet</span></code> is created.</p></li>
+</ol>
+<p>This approach lets you control the initialization process in depth, adapting it as needed for different network architectures or experiments. Adjusting the mean and standard deviation of the normal distribution can help in fine-tuning the initialization process according to specific needs of your training dynamics.</p>
 </section>
 </section>
 
@@ -1003,7 +1371,23 @@ Experimenting with different activation functions can provide insights into thei
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#telling-chatgpt-4-to-make-a-network-for-a-function-of-one-variable">Telling ChatGPT 4 to make a network for a function of one variable</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#now-ask-chatgpt-to-use-this-code-to-learn-a-specified-function-in-a-specified-region">Now ask ChatGPT to use this code to learn a specified function in a specified region</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#more-information-from-chatgpt">More information from ChatGPT</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#information-from-chatgpt-about-backpropagation">Information from ChatGPT about backpropagation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#information-from-chatgpt-about-tensor-operations">Information from ChatGPT about tensor operations</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#basic-mathematical-operations">Basic Mathematical Operations</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#complex-expressions">Complex Expressions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-of-a-complex-expression">Example of a Complex Expression</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#gradient-computations">Gradient Computations</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#utilizing-gpu-acceleration">Utilizing GPU Acceleration</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Information from ChatGPT about tensor operations</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#common-initialization-methods">Common Initialization Methods</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pytorch-default-initialization">PyTorch Default Initialization</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#customizing-initialization-in-pytorch">Customizing Initialization in PyTorch</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#information-from-chatgpt-about-the-default-initialization">Information from ChatGPT about the default initialization</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#information-from-chatgpt-about-how-to-switch-to-normal-distributions-to-intialize">Information from ChatGPT about how to switch to normal distributions to intialize</a></li>
 </ul>
   </nav></div>
 
