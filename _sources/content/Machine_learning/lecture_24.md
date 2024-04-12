@@ -48,7 +48,7 @@ These are some brief comments on the notebook [](/notebooks/Machine_learning/For
 ## Stepping through a Bayesian neural network notebook
 
 We return to [](/notebooks/Machine_learning/Bayesian_neural_networks_tif285.ipynb).
-Note that Mini-project-IIIb involves playing with and interpreting [](/notebooks/Machine_learning/demo-Bayesian_neural_networks_tif285.ipynb).
+Note that Mini-project-IIIb involves playing with and interpreting [](/notebooks/Machine_learning/bayesian_neural_network_advi.ipynb).
 
 Basic neural network:
 * Each neuron has input $\xvec = \{x_i\}, i=1,\ldots I$, that is, a vector of $I$ numbers, which has an output $y$, which depends *nonlinearly* on the activation $a$:

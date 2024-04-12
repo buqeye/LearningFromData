@@ -1,0 +1,1061 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>9.5. Simple neural network for a function in PyTorch &#8212; Learning from data</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+    <link rel="stylesheet" type="text/css" href="../../_static/myadmonitions.css?v=f87e7f18" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="../../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
+
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=888ff710"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js?v=36754332"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'notebooks/Machine_learning/Neural_Network_for_simple_function_in_PyTorch';</script>
+    <link rel="icon" href="../../_static/favicon.ico"/>
+    <link rel="author" title="About these documents" href="../../about.html" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="9.6. Neural networks" href="Forssen_tif285_NeuralNet.html" />
+    <link rel="prev" title="9.4. What Are Neural Networks?" href="Neural_networks_explained.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="../../about.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/buqeye_logo_web.png" class="logo__image only-light" alt="Learning from data - Home"/>
+    <script>document.write(`<img src="../../_static/buqeye_logo_web.png" class="logo__image only-dark" alt="Learning from data - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../about.html">
+                    About this Jupyter Book
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Course overview</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../content/Course/overview.html">Objectives</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Topics</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../content/Basics/basics.html">1. Basics of Bayesian statistics</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../content/Basics/lecture_01.html">1.1. Lecture 1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Basics/Exploring_pdfs.html">1.2. Exploring PDFs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Basics/simple_sum_product_rule.html">1.3. Checking the sum and product rules, and their consequences</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../content/Basics/lecture_02.html">1.4. Lecture 2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Basics/Bayesian_updating_coinflip_interactive.html">1.5. Interactive Bayesian updating: coin flipping example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Basics/medical_example_by_Bayes.html">1.6. Standard medical example by applying Bayesian rules of probability</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../content/Basics/lecture_03.html">1.7. Lecture 3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Basics/parameter_estimation_Gaussian_noise.html">1.8. Parameter estimation example: Gaussian noise and averages I</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Basics/radioactive_lighthouse_exercise.html">1.9. Radioactive lighthouse problem</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../content/Basics/lecture_04.html">1.10. Lecture 4: A couple of frequentist connections</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Basics/visualization_of_CLT.html">1.11. Visualization of the Central Limit Theorem</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../content/Parameter_estimation/param_est.html">2. Bayesian parameter estimation</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../content/Parameter_estimation/lecture_05.html">2.1. Lecture 5: Parameter estimation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Parameter_estimation/parameter_estimation_fitting_straight_line_I.html">2.2. Parameter estimation example: fitting a straight line</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../content/Parameter_estimation/lecture_06.html">2.3. Lecture 6</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Parameter_estimation/amplitude_in_presence_of_background.html">2.4. Amplitude of a signal in the presence of background</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Parameter_estimation/demo-ModelValidation.html">2.5. Linear Regression and Model Validation demonstration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../assignments/Assignment_parameter_estimation_followups.html">2.6. Assignment: Follow-ups to Parameter Estimation notebooks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Parameter_estimation/exercise_LinearRegression.html">2.7. Linear Regression exercise</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Parameter_estimation/linear_algebra_games_I.html">2.8. Linear algebra games including SVD for PCA</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../assignments/fluctuation_trend_with_number_of_points_and_data_errors.html">2.9. Follow-up: fluctuation trends with # of points and data errors</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../content/MCMC_sampling_I/MCMC_sampling_I.html">3. MCMC sampling I</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../content/MCMC_sampling_I/lecture_07.html">3.1. Lecture 7</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../MCMC_sampling_I/Metropolis_Poisson_example.html">3.2. Metropolis-Hasting MCMC sampling of a Poisson distribution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../content/MCMC_sampling_I/lecture_08.html">3.3. Lecture 8</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../MCMC_sampling_I/parameter_estimation_Gaussian_noise-2.html">3.4. Parameter estimation example: Gaussian noise and averages II</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../MCMC_sampling_I/MCMC-random-walk-and-sampling.html">3.5. Exercise: Random walk</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../MCMC_sampling_I/MCMC-diagnostics.html">3.6. Overview: MCMC Diagnostics</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../assignments/Assignment_extending_radioactive_lighthouse.html">3.8. Assignment: 2D radioactive lighthouse location using MCMC</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../content/Why_Bayes_is_better/bayes_is_better.html">4. Why Bayes is better</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../content/Why_Bayes_is_better/lecture_09.html">4.1. Lecture 9</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Why_Bayes_is_better/bayes_billiard.html">4.2. A Bayesian Billiard game</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../content/Why_Bayes_is_better/lecture_10.html">4.3. Lecture 10</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Why_Bayes_is_better/parameter_estimation_fitting_straight_line_II.html">4.4. Parameter estimation example: fitting a straight line II</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../content/Why_Bayes_is_better/lecture_11.html">4.5. Lecture 11</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Why_Bayes_is_better/error_propagation_to_functions_of_uncertain_parameters.html">4.6. Error propagation: Example 3.6.2 in Sivia</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Basics/correlation_intuition.html">4.7. Building intuition about correlations (and a bit of Python linear algebra)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../content/Why_Bayes_is_better/lecture_12.html">4.8. Lecture 12</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../content/Why_Bayes_is_better/lecture_13.html">4.9. Lecture 13</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Why_Bayes_is_better/dealing_with_outliers.html">4.10. Dealing with outliers</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../content/Model_selection/model_selection.html">5. Model selection</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../content/Model_selection/lecture_14.html">5.1. Lecture 14</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../content/Model_selection/lecture_15.html">5.2. Lecture 15</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Model_selection/Evidence_for_model_EFT_coefficients.html">5.3. Evidence calculation for EFT expansions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../content/Model_selection/lecture_16.html">5.4. Lecture 16</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../mini-projects/MCMC-parallel-tempering_ptemcee.html">5.5. Example: Parallel tempering for multimodal distributions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../mini-projects/MCMC-parallel-tempering_ptemcee_vs_zeus.html">5.6. Example: Parallel tempering for multimodal distributions vs. zeus</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../content/MCMC_sampling_II/MCMC_sampling_II.html">6. MCMC sampling II</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../content/MCMC_sampling_II/lecture_17.html">6.1. Lecture 17</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../MCMC_sampling_II/chi_squared_tests.html">6.2. Quick check of the distribution of normal variables squared</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../MCMC_sampling_II/Liouville_theorem_visualization.html">6.3. Liouville Theorem Visualization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../MCMC_sampling_II/Orbital_eqs_with_different_algorithms.html">6.4. Solving orbital equations with different algorithms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../content/MCMC_sampling_II/lecture_18.html">6.5. Lecture 18</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../MCMC_sampling_II/PyMC_intro_updated.html">6.6. PyMC Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../MCMC_sampling_II/getting_started_with_pymc.html">6.7. Introductory Overview of PyMC</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Parameter_estimation/parameter_estimation_Gaussian_noise_compare_samplers.html">6.8. Comparing samplers for a simple problem</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../mini-projects/zeus_multimodal.html">6.9. zeus: Sampling from multimodal distributions</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../content/Gaussian_processes/gaussian_processes.html">7. Gaussian processes</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../content/Gaussian_processes/lecture_19.html">7.1. Lecture 19</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Gaussian_processes/demo-GaussianProcesses.html">7.2. Gaussian processes demonstration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Gaussian_processes/GaussianProcesses.html">7.3. Learning from data: Gaussian processes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Gaussian_processes/Gaussian_processes_exercises.html">7.4. Exercise: Gaussian Process models with GPy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../content/Gaussian_processes/lecture_20.html">7.5. Lecture 20</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Gaussian_processes/plot_gpr_noisy_targets.html">7.6. Gaussian Processes regression: basic introductory example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Gaussian_processes/plot_gpr_prior_posterior.html">7.7. Illustration of prior and posterior Gaussian process for different kernels</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../content/Maximum_entropy/max_ent.html">8. Assigning probabilities</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../content/Maximum_entropy/lecture_21.html">8.1. Lecture 21</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Maximum_entropy/MaxEnt.html">8.2. Ignorance pdfs: Indifference and translation groups</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Maximum_entropy/Pdfs_from_MaxEnt.html">8.3. MaxEnt for deriving some probability distributions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Maximum_entropy/MaxEnt_Function_Reconstruction.html">8.4. Maximum Entropy for reconstructing a function from its moments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Maximum_entropy/demo-MaxEnt.html">8.5. Making figures for Ignorance PDF notebook</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../../content/Machine_learning/machine_learning.html">9. Machine learning: Bayesian methods</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-9"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../content/Machine_learning/lecture_22.html">9.1. Lecture 22</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Bayesian_optimization_test.html">9.2. Bayesian Optimization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../content/Machine_learning/lecture_23.html">9.3. Lecture 23</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Neural_networks_explained.html">9.4. What Are Neural Networks?</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">9.5. Simple neural network for a function in PyTorch</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Forssen_tif285_NeuralNet.html">9.6. Neural networks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Forssen_tif285_demo-NeuralNet.html">9.7. Neural network classifier demonstration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Bayesian_neural_networks_tif285.html">9.8. Bayesian neural networks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../content/Machine_learning/lecture_24.html">9.9. Lecture 24</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bayesian_neural_network_advi.html">9.10. Variational Inference: Bayesian Neural Networks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Convolutional_neural_network_explained.html">9.11. What is a convolutional neural network?</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../content/SVD/svd.html">10. PCA, SVD, and all that</a><input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-10"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../content/SVD/lecture_25.html">10.1. Lecture 25</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../SVD/linear_algebra_games_including_SVD.html">10.2. Linear algebra games including SVD for PCA</a></li>
+</ul>
+</li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Mini-projects</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../mini-projects/mini-project_I_toy_model_of_EFT.html">Mini-project I: Parameter estimation for a toy model of an EFT</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mini-projects/model-selection_mini-project-IIa.html">Mini-project IIa: Model selection basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mini-projects/model-selection_mini-project-IIb_How_many_lines_ptemcee.html">Mini-project IIb: How many lines?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mini-projects/mini-project_IIIa_bayesian_optimization.html">Mini-project IIIa: Bayesian optimization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mini-projects/mini-project_IIIb_Bayesian_neural_networks_from_demo.html">Mini-project IIIb: Bayesian Neural Networks</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Reference material</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../content/zbibliography.html">Bibliography</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../content/Reference/installing_anaconda.html">Using Anaconda</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../content/Reference/using_github.html">Using GitHub</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../content/Reference/python_jupyter.html">Python and Jupyter notebooks</a><input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-11"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Reference/Jupyter_Python_intro_01.html">Python and Jupyter notebooks: part 01</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Reference/Jupyter_Python_intro_02.html">Python and Jupyter notebooks: part 02</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Reference/Simple_widgets_v1.html">Simple widgets</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../content/jb_tests.html">Examples: Jupyter jb-book</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../content/Related/related_topics.html">Related topics</a><input class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-12"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Development/Student_t_distribution_from_Gaussians.html">Student t from Gaussians</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../content/Related/qbism.html">QBism</a></li>
+</ul>
+</li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Notebook keys</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Basics/simple_sum_product_rule_KEY.html">Checking the sum and product rules, and their consequences <span style="color: red">Key</span></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Basics/medical_example_by_Bayes_KEY.html">Standard medical example by applying Bayesian rules of probability <span style="color: red">Key</span></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Basics/radioactive_lighthouse_exercise_key.html">Radioactive lighthouse problem  <span style="color: red">Key</span></a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://mybinder.org/v2/gh/buqeye/LearningFromData/main?urlpath=tree/./LectureNotes/notebooks/Machine_learning/Neural_Network_for_simple_function_in_PyTorch.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onBinder"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img src="../../_static/images/logo_binder.svg">
+  </span>
+<span class="btn__text-container">Binder</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="initThebeSBT()"
+  class="btn btn-sm btn-launch-thebe dropdown-item"
+  title="Launch Thebe"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-play"></i>
+  </span>
+<span class="btn__text-container">Live Code</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/buqeye/LearningFromData" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/buqeye/LearningFromData/issues/new?title=Issue%20on%20page%20%2Fnotebooks/Machine_learning/Neural_Network_for_simple_function_in_PyTorch.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/notebooks/Machine_learning/Neural_Network_for_simple_function_in_PyTorch.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Simple neural network for a function in PyTorch</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#installation-of-pytorch">Installation of PyTorch</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#verification-of-pytorch-installation-suggested-in-pytorch-website">Verification of PyTorch installation (suggested in PyTorch website)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#telling-chatgpt-4-to-make-a-network-for-a-function-of-one-variable">Telling ChatGPT 4 to make a network for a function of one variable</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#now-ask-chatgpt-to-use-this-code-to-learn-a-specified-function-in-a-specified-region">Now ask ChatGPT to use this code to learn a specified function in a specified region</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#more-information-from-chatgpt">More information from ChatGPT</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="simple-neural-network-for-a-function-in-pytorch">
+<h1><span class="section-number">9.5. </span>Simple neural network for a function in PyTorch<a class="headerlink" href="#simple-neural-network-for-a-function-in-pytorch" title="Link to this heading">#</a></h1>
+<p>See the <a class="reference external" href="https://pytorch.org/">PyTorch website</a> for tutorials and other documentation.
+In this notebook we’ll rely on ChatGPT 4 to generate code for a PyTorch neural network for a function of a single variable.
+Besides the questions to ChatGPT, all code and documentation was provided by ChatGPT.</p>
+<section id="installation-of-pytorch">
+<h2>Installation of PyTorch<a class="headerlink" href="#installation-of-pytorch" title="Link to this heading">#</a></h2>
+<p>To install PyTorch via Anaconda, use the following conda command:</p>
+<p><code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">install</span> <span class="pre">pytorch</span> <span class="pre">torchvision</span> <span class="pre">-c</span> <span class="pre">pytorch</span></code></p>
+<section id="verification-of-pytorch-installation-suggested-in-pytorch-website">
+<h3>Verification of PyTorch installation (suggested in PyTorch website)<a class="headerlink" href="#verification-of-pytorch-installation-suggested-in-pytorch-website" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">torch</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>tensor([[0.1244, 0.4890, 0.4055],
+        [0.6843, 0.5441, 0.6581],
+        [0.7918, 0.0862, 0.6636],
+        [0.6087, 0.9290, 0.5669],
+        [0.6013, 0.3681, 0.0836]])
+</pre></div>
+</div>
+</div>
+</div>
+<p>Result should be similar to (but not the same; these are random numbers!):</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>tensor([[0.3380, 0.3845, 0.3217],
+        [0.8337, 0.9050, 0.2650],
+        [0.2979, 0.7141, 0.9069],
+        [0.1449, 0.1132, 0.1375],
+        [0.4675, 0.3947, 0.1426]])
+</pre></div>
+</div>
+</section>
+</section>
+<section id="telling-chatgpt-4-to-make-a-network-for-a-function-of-one-variable">
+<h2>Telling ChatGPT 4 to make a network for a function of one variable<a class="headerlink" href="#telling-chatgpt-4-to-make-a-network-for-a-function-of-one-variable" title="Link to this heading">#</a></h2>
+<p><strong>To ChatGPT:</strong> <em>Write a neural network in PyTorch to learn a function of one variable. It should have three hidden layers, each with a width of 10 neutrons.</em></p>
+<p>To create a neural network in PyTorch with the specifications you described, we’ll first need to import the necessary modules from PyTorch, particularly torch and torch.nn. The network will consist of three hidden layers, each with 10 neurons, and since it’s for learning a function of one variable, the input and output layers will each have one neuron.</p>
+<p>Here’s how you can define such a network using PyTorch:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">torch</span>
+<span class="kn">import</span> <span class="nn">torch.nn</span> <span class="k">as</span> <span class="nn">nn</span>
+
+<span class="c1"># Define the neural network class inheriting from nn.Module</span>
+<span class="k">class</span> <span class="nc">OneVariableNet</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">OneVariableNet</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="c1"># Define the first hidden layer (input layer to first hidden layer)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">hidden1</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>  <span class="c1"># 1 input, 10 outputs</span>
+        <span class="c1"># Define the second hidden layer</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">hidden2</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span> <span class="c1"># 10 inputs, 10 outputs</span>
+        <span class="c1"># Define the third hidden layer</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">hidden3</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span> <span class="c1"># 10 inputs, 10 outputs</span>
+        <span class="c1"># Define the output layer</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">output</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>   <span class="c1"># 10 inputs, 1 output</span>
+
+        <span class="c1"># Define activation function, you can use others like ReLU or LeakyReLU</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">activation</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Tanh</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+        <span class="c1"># Forward pass through each layer</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">activation</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">hidden1</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">activation</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">hidden2</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">activation</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">hidden3</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">output</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">x</span>
+
+<span class="c1"># Create an instance of the network</span>
+<span class="n">net</span> <span class="o">=</span> <span class="n">OneVariableNet</span><span class="p">()</span>
+
+<span class="c1"># Print the network structure</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">net</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>OneVariableNet(
+  (hidden1): Linear(in_features=1, out_features=10, bias=True)
+  (hidden2): Linear(in_features=10, out_features=10, bias=True)
+  (hidden3): Linear(in_features=10, out_features=10, bias=True)
+  (output): Linear(in_features=10, out_features=1, bias=True)
+  (activation): Tanh()
+)
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Explanation:</strong></p>
+<ol class="arabic simple">
+<li><p><strong>Network Structure:</strong> This network begins with an input layer that accepts a single feature (since it’s a function of one variable). It then passes through three hidden layers, each with 10 neurons, and finally outputs a single value, which is typical for regression tasks.</p></li>
+<li><p><strong>Activation Function:</strong> I used the Tanh activation function for the hidden layers, which helps introduce non-linearity to the model, allowing it to learn more complex patterns. You can substitute this with other functions like ReLU if preferred, which might offer benefits in terms of training speed and avoiding vanishing gradients in some cases.</p></li>
+<li><p><strong>Output Layer:</strong> The final output layer does not use an activation function since we’re presumably predicting a continuous variable (regression task). If you’re working on a classification task, you might need a suitable activation function like sigmoid or softmax for binary or multi-class classification, respectively.</p></li>
+<li><p><strong>Initialization and Usage:</strong> After defining the network, you can create an instance and use it for training or inference as needed. Training this network would involve defining a loss function and an optimizer, then running a training loop to fit the model to your data.</p></li>
+</ol>
+<p>This setup should work well for basic experiments and learning purposes. If you want to train this model on actual data, you’ll need to set up a training loop with loss computation and optimization steps.</p>
+</section>
+<section id="now-ask-chatgpt-to-use-this-code-to-learn-a-specified-function-in-a-specified-region">
+<h2>Now ask ChatGPT to use this code to learn a specified function in a specified region<a class="headerlink" href="#now-ask-chatgpt-to-use-this-code-to-learn-a-specified-function-in-a-specified-region" title="Link to this heading">#</a></h2>
+<p><strong>To ChatGPT:</strong> <em>Write code to use this code to learn the function <code class="docutils literal notranslate"><span class="pre">f(x)</span> <span class="pre">=</span> <span class="pre">sin(x)**2</span></code> from x = 0 to x = 2, with 20 randomly spaced training points. Then test it with 50 equally spaced testing points.</em></p>
+<p>To accomplish the task of training a neural network on the function <code class="docutils literal notranslate"><span class="pre">f(x)</span> <span class="pre">=</span> <span class="pre">sin(x)**2</span></code> and testing it on new data points, we’ll follow these steps:</p>
+<ol class="arabic simple">
+<li><p>Data Preparation: Generate training data and testing data as specified.</p></li>
+<li><p>Network Training: Implement the training loop using a suitable optimizer and loss function.</p></li>
+<li><p>Testing: Evaluate the network on the testing data and possibly visualize the results.</p></li>
+</ol>
+<p>First, we’ll need to define our dataset. We’ll generate 20 random training points in the range [0, 2] and 50 equally spaced testing points in the same range.</p>
+<p>Here’s the complete code to do this, including both training and testing phases:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">torch</span>
+<span class="kn">import</span> <span class="nn">torch.nn</span> <span class="k">as</span> <span class="nn">nn</span>
+<span class="kn">import</span> <span class="nn">torch.optim</span> <span class="k">as</span> <span class="nn">optim</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="k">class</span> <span class="nc">OneVariableNet</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">OneVariableNet</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">hidden1</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">hidden2</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">hidden3</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">output</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">activation</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Tanh</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">activation</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">hidden1</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">activation</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">hidden2</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">activation</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">hidden3</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">output</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">x</span>
+
+<span class="c1"># Create an instance of the network</span>
+<span class="n">net</span> <span class="o">=</span> <span class="n">OneVariableNet</span><span class="p">()</span>
+
+<span class="c1"># Loss function and optimizer</span>
+<span class="n">criterion</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">MSELoss</span><span class="p">()</span>
+<span class="n">optimizer</span> <span class="o">=</span> <span class="n">optim</span><span class="o">.</span><span class="n">Adam</span><span class="p">(</span><span class="n">net</span><span class="o">.</span><span class="n">parameters</span><span class="p">(),</span> <span class="n">lr</span><span class="o">=</span><span class="mf">0.01</span><span class="p">)</span>
+
+<span class="c1"># Generate training data</span>
+<span class="n">x_train</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">torch</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>  <span class="c1"># Randomly spaced points</span>
+<span class="n">y_train</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">x_train</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span>  <span class="c1"># f(x) = sin(x)^2</span>
+
+<span class="c1"># Training loop</span>
+<span class="n">epochs</span> <span class="o">=</span> <span class="mi">2000</span>
+<span class="k">for</span> <span class="n">epoch</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">epochs</span><span class="p">):</span>
+    <span class="n">optimizer</span><span class="o">.</span><span class="n">zero_grad</span><span class="p">()</span>
+    <span class="n">outputs</span> <span class="o">=</span> <span class="n">net</span><span class="p">(</span><span class="n">x_train</span><span class="p">)</span>
+    <span class="n">loss</span> <span class="o">=</span> <span class="n">criterion</span><span class="p">(</span><span class="n">outputs</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+    <span class="n">loss</span><span class="o">.</span><span class="n">backward</span><span class="p">()</span>
+    <span class="n">optimizer</span><span class="o">.</span><span class="n">step</span><span class="p">()</span>
+    
+    <span class="k">if</span> <span class="p">(</span><span class="n">epoch</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">%</span> <span class="mi">100</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Epoch [</span><span class="si">{</span><span class="n">epoch</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="si">}</span><span class="s1">/</span><span class="si">{</span><span class="n">epochs</span><span class="si">}</span><span class="s1">], Loss: </span><span class="si">{</span><span class="n">loss</span><span class="o">.</span><span class="n">item</span><span class="p">()</span><span class="si">:</span><span class="s1">.4e</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+
+<span class="c1"># Generate testing data</span>
+<span class="n">x_test</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span><span class="o">.</span><span class="n">unsqueeze</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>  <span class="c1"># Equally spaced points</span>
+<span class="n">y_test</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">x_test</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span>  <span class="c1"># f(x) = sin(x)^2</span>
+<span class="k">with</span> <span class="n">torch</span><span class="o">.</span><span class="n">no_grad</span><span class="p">():</span>
+    <span class="n">predictions</span> <span class="o">=</span> <span class="n">net</span><span class="p">(</span><span class="n">x_test</span><span class="p">)</span>
+
+<span class="c1"># Plot the results</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x_test</span><span class="o">.</span><span class="n">numpy</span><span class="p">(),</span> <span class="n">y_test</span><span class="o">.</span><span class="n">numpy</span><span class="p">(),</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;True function&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x_train</span><span class="o">.</span><span class="n">numpy</span><span class="p">(),</span> <span class="n">y_train</span><span class="o">.</span><span class="n">numpy</span><span class="p">(),</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Training data&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;g&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x_test</span><span class="o">.</span><span class="n">numpy</span><span class="p">(),</span> <span class="n">predictions</span><span class="o">.</span><span class="n">numpy</span><span class="p">(),</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Predictions&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Neural Network Approximation of f(x) = sin(x)^2&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;f(x)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch [100/2000], Loss: 3.7249e-03
+Epoch [200/2000], Loss: 3.1713e-03
+Epoch [300/2000], Loss: 1.9605e-03
+Epoch [400/2000], Loss: 4.3974e-04
+Epoch [500/2000], Loss: 3.3119e-04
+Epoch [600/2000], Loss: 2.3859e-04
+Epoch [700/2000], Loss: 1.5577e-04
+Epoch [800/2000], Loss: 8.8906e-05
+Epoch [900/2000], Loss: 4.5247e-05
+Epoch [1000/2000], Loss: 2.3916e-05
+Epoch [1100/2000], Loss: 1.5100e-05
+Epoch [1200/2000], Loss: 1.0658e-05
+Epoch [1300/2000], Loss: 7.7128e-06
+Epoch [1400/2000], Loss: 5.6269e-06
+Epoch [1500/2000], Loss: 4.1907e-06
+Epoch [1600/2000], Loss: 3.2489e-06
+Epoch [1700/2000], Loss: 2.6639e-06
+Epoch [1800/2000], Loss: 2.3192e-06
+Epoch [1900/2000], Loss: 2.1242e-06
+Epoch [2000/2000], Loss: 2.0152e-06
+</pre></div>
+</div>
+<img alt="../../_images/adf61b1be2f0c9c76dbe88cc595f043ab68f6a50f6f3ae55fc1033aa0411f7f0.png" src="../../_images/adf61b1be2f0c9c76dbe88cc595f043ab68f6a50f6f3ae55fc1033aa0411f7f0.png" />
+</div>
+</div>
+<p><strong>Explanation:</strong></p>
+<ul class="simple">
+<li><p><strong>Network Setup:</strong> The neural network is set up as defined previously.</p></li>
+<li><p><strong>Data Generation:</strong> Random training data is generated within the specified range and the function values are computed as <code class="docutils literal notranslate"><span class="pre">sin(x)**2</span></code></p></li>
+<li><p><strong>Training Process:</strong> The network is trained using the Adam optimizer and mean squared error (MSE) loss function over 2000 epochs. Adjustments can be made to the learning rate or number of epochs based on how the loss progresses.</p></li>
+<li><p><strong>Testing and Visualization:</strong> The network’s predictions are generated for the testing dataset and plotted against the true function values. The training data is also plotted to show how well the network learned to approximate the function within the training range.</p></li>
+</ul>
+<p>This code should provide a clear demonstration of how well the neural network can learn and generalize the function <code class="docutils literal notranslate"><span class="pre">f(x)</span> <span class="pre">=</span> <span class="pre">sin(x)**2</span></code>.</p>
+<p><strong>To ChatGPT:</strong> <em>What is the same code with a ReLu activation function?</em></p>
+<p>To modify the previously described neural network so that it uses the ReLU (Rectified Linear Unit) activation function instead of the Tanh activation function, you simply need to replace the Tanh activation instances with ReLU in the network definition. ReLU is often preferred in deep networks due to its simplicity and effectiveness at avoiding vanishing gradient issues.</p>
+<p>Here’s how you can update the code to use ReLU:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">torch</span>
+<span class="kn">import</span> <span class="nn">torch.nn</span> <span class="k">as</span> <span class="nn">nn</span>
+<span class="kn">import</span> <span class="nn">torch.optim</span> <span class="k">as</span> <span class="nn">optim</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="k">class</span> <span class="nc">OneVariableNet</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">OneVariableNet</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">hidden1</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">hidden2</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">hidden3</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">output</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">activation</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">ReLU</span><span class="p">()</span>  <span class="c1"># Changed from nn.Tanh() to nn.ReLU()</span>
+
+    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">activation</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">hidden1</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">activation</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">hidden2</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">activation</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">hidden3</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">output</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">x</span>
+
+<span class="c1"># Create an instance of the network</span>
+<span class="n">net</span> <span class="o">=</span> <span class="n">OneVariableNet</span><span class="p">()</span>
+
+<span class="c1"># Loss function and optimizer</span>
+<span class="n">criterion</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">MSELoss</span><span class="p">()</span>
+<span class="n">optimizer</span> <span class="o">=</span> <span class="n">optim</span><span class="o">.</span><span class="n">Adam</span><span class="p">(</span><span class="n">net</span><span class="o">.</span><span class="n">parameters</span><span class="p">(),</span> <span class="n">lr</span><span class="o">=</span><span class="mf">0.01</span><span class="p">)</span>
+
+<span class="c1"># Generate training data</span>
+<span class="n">x_train</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">torch</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>  <span class="c1"># Randomly spaced points</span>
+<span class="n">y_train</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">x_train</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span>  <span class="c1"># f(x) = sin(x)^2</span>
+
+<span class="c1"># Training loop</span>
+<span class="n">epochs</span> <span class="o">=</span> <span class="mi">2000</span>
+<span class="k">for</span> <span class="n">epoch</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">epochs</span><span class="p">):</span>
+    <span class="n">optimizer</span><span class="o">.</span><span class="n">zero_grad</span><span class="p">()</span>
+    <span class="n">outputs</span> <span class="o">=</span> <span class="n">net</span><span class="p">(</span><span class="n">x_train</span><span class="p">)</span>
+    <span class="n">loss</span> <span class="o">=</span> <span class="n">criterion</span><span class="p">(</span><span class="n">outputs</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+    <span class="n">loss</span><span class="o">.</span><span class="n">backward</span><span class="p">()</span>
+    <span class="n">optimizer</span><span class="o">.</span><span class="n">step</span><span class="p">()</span>
+    
+    <span class="k">if</span> <span class="p">(</span><span class="n">epoch</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">%</span> <span class="mi">100</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Epoch [</span><span class="si">{</span><span class="n">epoch</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="si">}</span><span class="s1">/</span><span class="si">{</span><span class="n">epochs</span><span class="si">}</span><span class="s1">], Loss: </span><span class="si">{</span><span class="n">loss</span><span class="o">.</span><span class="n">item</span><span class="p">()</span><span class="si">:</span><span class="s1">.4e</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+
+<span class="c1"># Generate testing data</span>
+<span class="n">x_test</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span><span class="o">.</span><span class="n">unsqueeze</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>  <span class="c1"># Equally spaced points</span>
+<span class="c1">#x_test = torch.linspace(0, 2, 50).unsqueeze(1)  # Equally spaced points</span>
+<span class="n">y_test</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">x_test</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span>  <span class="c1"># f(x) = sin(x)^2</span>
+<span class="k">with</span> <span class="n">torch</span><span class="o">.</span><span class="n">no_grad</span><span class="p">():</span>
+    <span class="n">predictions</span> <span class="o">=</span> <span class="n">net</span><span class="p">(</span><span class="n">x_test</span><span class="p">)</span>
+
+<span class="c1"># Plot the results</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x_test</span><span class="o">.</span><span class="n">numpy</span><span class="p">(),</span> <span class="n">y_test</span><span class="o">.</span><span class="n">numpy</span><span class="p">(),</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;True function&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x_train</span><span class="o">.</span><span class="n">numpy</span><span class="p">(),</span> <span class="n">y_train</span><span class="o">.</span><span class="n">numpy</span><span class="p">(),</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Training data&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;g&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x_test</span><span class="o">.</span><span class="n">numpy</span><span class="p">(),</span> <span class="n">predictions</span><span class="o">.</span><span class="n">numpy</span><span class="p">(),</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Predictions&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Neural Network Approximation of f(x) = sin(x)^2 with ReLU Activation&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;f(x)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch [100/2000], Loss: 6.2734e-03
+Epoch [200/2000], Loss: 2.4208e-03
+Epoch [300/2000], Loss: 8.8777e-04
+Epoch [400/2000], Loss: 1.9188e-04
+Epoch [500/2000], Loss: 7.6298e-05
+Epoch [600/2000], Loss: 7.0848e-05
+Epoch [700/2000], Loss: 7.0763e-05
+Epoch [800/2000], Loss: 7.0753e-05
+Epoch [900/2000], Loss: 7.0743e-05
+Epoch [1000/2000], Loss: 7.0732e-05
+Epoch [1100/2000], Loss: 7.0721e-05
+Epoch [1200/2000], Loss: 7.0709e-05
+Epoch [1300/2000], Loss: 7.0697e-05
+Epoch [1400/2000], Loss: 7.0684e-05
+Epoch [1500/2000], Loss: 7.0671e-05
+Epoch [1600/2000], Loss: 7.0658e-05
+Epoch [1700/2000], Loss: 7.0643e-05
+Epoch [1800/2000], Loss: 7.0629e-05
+Epoch [1900/2000], Loss: 7.0614e-05
+Epoch [2000/2000], Loss: 7.0600e-05
+</pre></div>
+</div>
+<img alt="../../_images/94bed3a37121f8775dcd0ebaeab48bf511f8741a510cbe6d03673c6547872aa8.png" src="../../_images/94bed3a37121f8775dcd0ebaeab48bf511f8741a510cbe6d03673c6547872aa8.png" />
+</div>
+</div>
+<p><strong>Changes and Considerations:</strong></p>
+<ul class="simple">
+<li><p><strong>Activation Function:</strong> We replaced <code class="docutils literal notranslate"><span class="pre">nn.Tanh()</span></code> with <code class="docutils literal notranslate"><span class="pre">nn.ReLU()</span></code>. ReLU activation function might result in different learning characteristics, particularly in how the network fits non-linear functions like <code class="docutils literal notranslate"><span class="pre">sin(x)**2</span></code>.
+ReLU provides linear responses for positive values and zero for negative values, which might affect how well it models the curve compared to Tanh.</p></li>
+<li><p>Learning Characteristics: Networks with ReLU activation might learn faster in some cases due to simpler gradient computations. However, in cases where the function involves negative inputs or outputs that need modeling around zero, Tanh might capture dynamics better because of its symmetric behavior around zero.</p></li>
+</ul>
+<p>This updated code uses ReLU, and you might observe different results in how the model learns and generalizes the function <code class="docutils literal notranslate"><span class="pre">f(x)</span> <span class="pre">=</span> <span class="pre">sin(x)**2</span></code>.
+Experimenting with different activation functions can provide insights into their impact on model performance and behavior.</p>
+</section>
+<section id="more-information-from-chatgpt">
+<h2>More information from ChatGPT<a class="headerlink" href="#more-information-from-chatgpt" title="Link to this heading">#</a></h2>
+<p><strong>To ChatGPT:</strong> <em>What algorithm is being used for backpropagation?</em></p>
+<p>In the provided code, the algorithm being used for backpropagation is not explicitly specified because it’s inherently handled by PyTorch’s automatic differentiation engine, which is built into the <code class="docutils literal notranslate"><span class="pre">backward()</span></code> function. However, the optimization algorithm that leverages this backpropagation to update the weights is Adam (Adaptive Moment Estimation).</p>
+<p>Here’s a breakdown of the key components:</p>
+<p><strong>Automatic Differentiation</strong></p>
+<ul class="simple">
+<li><p><strong>Automatic Differentiation:</strong> PyTorch uses a mechanism known as automatic differentiation to compute gradients. This is performed by the <code class="docutils literal notranslate"><span class="pre">backward()</span></code> method on the final loss tensor. This method calculates the gradients of the loss with respect to all tensors that have <code class="docutils literal notranslate"><span class="pre">requires_grad=True</span></code>. These tensors typically represent the weights and biases of the model.</p></li>
+<li><p><strong>Backpropagation:</strong> Under the hood, when you call <code class="docutils literal notranslate"><span class="pre">loss.backward()</span></code>, PyTorch computes the gradient of the loss with respect to all parameters (weights) in the network by tracing back from the loss through the computational graph. Each operation in the graph has a predefined way of calculating gradients in a backward pass, effectively implementing the chain rule. This process is a practical implementation of the backpropagation algorithm.</p></li>
+</ul>
+<p><strong>Optimization Algorithm</strong></p>
+<ul class="simple">
+<li><p><strong>Adam Optimizer:</strong> The optimizer used here, <code class="docutils literal notranslate"><span class="pre">optim.Adam</span></code>, is an algorithm for first-order gradient-based optimization of stochastic objective functions, based on adaptive estimates of lower-order moments. Adam combines the advantages of two other extensions of stochastic gradient descent, specifically:</p>
+<ul>
+<li><p>Adaptive Gradient Algorithm (AdaGrad) that maintains a per-parameter learning rate that improves performance on problems with sparse gradients (like natural language and computer vision problems).</p></li>
+<li><p>Root Mean Square Propagation (RMSProp) that also maintains per-parameter learning rates that are adapted based on the average of recent magnitudes of the gradients for the weight (this means it works well on online and non-stationary problems).</p></li>
+</ul>
+</li>
+</ul>
+<p><strong>Why Adam?</strong></p>
+<ul class="simple">
+<li><p><strong>Efficiency:</strong> Adam is computationally efficient and has little memory requirement.</p></li>
+<li><p><strong>Adaptive Learning Rate:</strong> It handles sparse gradients on noisy problems very well.</p></li>
+<li><p><strong>Suitability for Problems:</strong> Adam is generally well suited for problems that are large in terms of data and/or parameters.</p></li>
+<li><p><strong>Hyperparameters:</strong> It has few hyperparameters that require tuning (like the learning rate, the exponential decay rates for the moment estimates).</p></li>
+</ul>
+<p>In essence, while the backpropagation algorithm is the method used to compute the gradients, Adam is the algorithm that uses these gradients to update the weights iteratively in order to minimize the loss function.</p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "buqeye/LearningFromData",
+            ref: "main",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "conda-env-8820-env-py"
+        },
+        kernelOptions: {
+            name: "conda-env-8820-env-py",
+            path: "./notebooks/Machine_learning"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'conda-env-8820-env-py'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="Neural_networks_explained.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><span class="section-number">9.4. </span>What Are Neural Networks?</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="Forssen_tif285_NeuralNet.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">9.6. </span>Neural networks</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#installation-of-pytorch">Installation of PyTorch</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#verification-of-pytorch-installation-suggested-in-pytorch-website">Verification of PyTorch installation (suggested in PyTorch website)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#telling-chatgpt-4-to-make-a-network-for-a-function-of-one-variable">Telling ChatGPT 4 to make a network for a function of one variable</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#now-ask-chatgpt-to-use-this-code-to-learn-a-specified-function-in-a-specified-region">Now ask ChatGPT to use this code to learn a specified function in a specified region</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#more-information-from-chatgpt">More information from ChatGPT</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Dick Furnstahl and Daniel Phillips
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2024.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
