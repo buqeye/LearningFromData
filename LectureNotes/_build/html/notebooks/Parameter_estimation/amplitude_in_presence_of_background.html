@@ -266,6 +266,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../../content/Gaussian_processes/lecture_20.html">7.5. Lecture 20</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../Gaussian_processes/plot_gpr_noisy_targets.html">7.6. Gaussian Processes regression: basic introductory example</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../Gaussian_processes/plot_gpr_prior_posterior.html">7.7. Illustration of prior and posterior Gaussian process for different kernels</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../content/Gaussian_processes/extra_RBM_emulators.html">7.8. Extra: Reduced Basis Method Emulators</a></li>
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../content/Maximum_entropy/max_ent.html">8. Assigning probabilities</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul>
@@ -691,8 +692,8 @@ p(k \mid \mu) = \frac{\mu^k e^{-\mu}}{k!} \quad \mbox{for }k\geq 0 \;.
 p(N \mid D) = \frac{D^N e^{-D}}{N!} \quad \mbox{for }N\geq 0 \;.
 \]</div>
 <p>where <span class="math notranslate nohighlight">\(N\)</span> is an integer.  The results for the normalization, mean, and variance are:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-d947771e-8a0d-482e-9fcf-040efd4a5826">
-<span class="eqno">()<a class="headerlink" href="#equation-d947771e-8a0d-482e-9fcf-040efd4a5826" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-8702ce1d-791b-44e1-9ee2-aff6018037e1">
+<span class="eqno">(2.2)<a class="headerlink" href="#equation-8702ce1d-791b-44e1-9ee2-aff6018037e1" title="Permalink to this equation">#</a></span>\[\begin{align}
  \langle 1 \rangle &amp;= \sum_0^\infty p(N \mid D) = 1 \\
   \langle N \rangle &amp;= \sum_0^\infty N p(N \mid D) = D \\
   \langle N^2 \rangle - \langle N \rangle^2 &amp;= \sum_0^\infty N^2 p(N \mid D) - D^2 = D 

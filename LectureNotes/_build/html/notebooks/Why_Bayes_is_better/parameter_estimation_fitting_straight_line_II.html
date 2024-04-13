@@ -266,6 +266,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../../content/Gaussian_processes/lecture_20.html">7.5. Lecture 20</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../Gaussian_processes/plot_gpr_noisy_targets.html">7.6. Gaussian Processes regression: basic introductory example</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../Gaussian_processes/plot_gpr_prior_posterior.html">7.7. Illustration of prior and posterior Gaussian process for different kernels</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../content/Gaussian_processes/extra_RBM_emulators.html">7.8. Extra: Reduced Basis Method Emulators</a></li>
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../content/Maximum_entropy/max_ent.html">8. Assigning probabilities</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul>
@@ -1161,8 +1162,8 @@ done
 <p>Through application of Bayes’ rule we can readily evaluate the posterior pdf <span class="math notranslate nohighlight">\(p(x|D,I)\)</span> for the distance <span class="math notranslate nohighlight">\(x\)</span> to the galaxy.</p>
 <section id="case-1-fixed-h-0">
 <h4>Case 1: Fixed <span class="math notranslate nohighlight">\(H_0\)</span><a class="headerlink" href="#case-1-fixed-h-0" title="Link to this heading">#</a></h4>
-<div class="amsmath math notranslate nohighlight" id="equation-04f2057a-6dcd-4513-9359-917425632225">
-<span class="eqno">()<a class="headerlink" href="#equation-04f2057a-6dcd-4513-9359-917425632225" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-28aad205-f384-4c1a-8358-f25cc42870cb">
+<span class="eqno">(4.1)<a class="headerlink" href="#equation-28aad205-f384-4c1a-8358-f25cc42870cb" title="Permalink to this equation">#</a></span>\[\begin{align}
 p(x | D,I) &amp; \propto p(D | x, I) p(x|I) \\
 &amp; = \frac{1}{\sqrt{2\pi}\sigma_v} \exp \left( - \frac{(v_\mathrm{measured} - v_\mathrm{theory})^2}{2\sigma_v^2} \right) p(x|I)\\
 &amp;= \left\{ \begin{array}{ll} \frac{1}{\sqrt{2\pi}\sigma_v} \exp \left( - \frac{(v_\mathrm{measured} - H_0 x)^2}{2\sigma_v^2} \right) &amp; \text{with }x \in [x_\mathrm{min},x_\mathrm{max}] \\
