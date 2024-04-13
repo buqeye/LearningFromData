@@ -569,6 +569,7 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#installing-tensorflow-2024">Installing tensorflow (2024)</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#developing-a-code-for-doing-neural-networks-with-back-propagation">Developing a code for doing neural networks with back propagation</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction-to-tensorflow">Introduction to tensorflow</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#explore-the-data">Explore the data</a></li>
@@ -592,6 +593,11 @@ document.write(`
   <section class="tex2jax_ignore mathjax_ignore" id="neural-network-classifier-demonstration">
 <h1><span class="section-number">9.9. </span>Neural network classifier demonstration<a class="headerlink" href="#neural-network-classifier-demonstration" title="Link to this heading">#</a></h1>
 <p>Last revised: 15-Oct-2019 by Christian Forssén [christian.forssen&#64;chalmers.se]</p>
+<p>Updated for 2024 by Dick Furnstahl [furnstahl.1&#64;osu.edu]</p>
+<section id="installing-tensorflow-2024">
+<h2>Installing tensorflow (2024)<a class="headerlink" href="#installing-tensorflow-2024" title="Link to this heading">#</a></h2>
+<p>When installing with conda and the usual Learning from Data environment, require version 2.12 of tensorflow to avoid kernel failures:</p>
+<p><code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">install</span> <span class="pre">tensorflow=2.12</span></code></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> inline
@@ -608,6 +614,7 @@ document.write(`
 </div>
 </div>
 </div>
+</section>
 <section id="developing-a-code-for-doing-neural-networks-with-back-propagation">
 <h2>Developing a code for doing neural networks with back propagation<a class="headerlink" href="#developing-a-code-for-doing-neural-networks-with-back-propagation" title="Link to this heading">#</a></h2>
 <p>One can identify a set of key steps when using neural networks to solve supervised learning problems:</p>
@@ -639,7 +646,11 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2.7.0
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2024-04-13 07:37:49.488248: I tensorflow/core/platform/cpu_feature_guard.cc:182] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+To enable the following instructions: SSE4.1 SSE4.2, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2.12.0
 </pre></div>
 </div>
 </div>
@@ -650,13 +661,6 @@ document.write(`
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mnist</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">datasets</span><span class="o">.</span><span class="n">mnist</span>
 
 <span class="p">(</span><span class="n">x_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">),</span> <span class="p">(</span><span class="n">x_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span> <span class="o">=</span> <span class="n">mnist</span><span class="o">.</span><span class="n">load_data</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Downloading data from https://storage.googleapis.com/tensorflow/tf-keras-datasets/mnist.npz
-11493376/11490434 [==============================] - 2s 0us/step
-11501568/11490434 [==============================] - 2s 0us/step
 </pre></div>
 </div>
 </div>
@@ -701,7 +705,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/d3a1185a390f09125b2be9c33b0ea92cf1257b2aaa60626809c065ef02515453.png" src="../../_images/d3a1185a390f09125b2be9c33b0ea92cf1257b2aaa60626809c065ef02515453.png" />
+<img alt="../../_images/1e5f2d68105b6da3bd9173a7c0d7b0d9819b6ae762275628bc2789083a9c6e93.png" src="../../_images/1e5f2d68105b6da3bd9173a7c0d7b0d9819b6ae762275628bc2789083a9c6e93.png" />
 </div>
 </div>
 <p>Scale these values to a range of 0 to 1 before feeding them to the neural network model. To do so, divide the values by 255. It’s important that the training set and the testing set be preprocessed in the same way:</p>
@@ -727,7 +731,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/34b93e735fbe205f14701c2d7453d6194265675d4d20f20d2ae3f7b406c818a7.png" src="../../_images/34b93e735fbe205f14701c2d7453d6194265675d4d20f20d2ae3f7b406c818a7.png" />
+<img alt="../../_images/b5e1073a941d94f21f4653f5afcccf90b7083324f747cf77c9a47a34a7643f06.png" src="../../_images/b5e1073a941d94f21f4653f5afcccf90b7083324f747cf77c9a47a34a7643f06.png" />
 </div>
 </div>
 </section>
@@ -776,20 +780,19 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Train on 60000 samples
-Epoch 1/5
-60000/60000 [==============================] - 5s 81us/sample - loss: 0.2908 - accuracy: 0.9158
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 1/5
+1875/1875 [==============================] - 2s 1ms/step - loss: 0.2982 - accuracy: 0.9144
 Epoch 2/5
-60000/60000 [==============================] - 4s 67us/sample - loss: 0.1435 - accuracy: 0.9584
+1875/1875 [==============================] - 2s 1ms/step - loss: 0.1417 - accuracy: 0.9581
 Epoch 3/5
-60000/60000 [==============================] - 4s 70us/sample - loss: 0.1077 - accuracy: 0.9678
+1875/1875 [==============================] - 2s 1ms/step - loss: 0.1054 - accuracy: 0.9684
 Epoch 4/5
-60000/60000 [==============================] - 4s 70us/sample - loss: 0.0871 - accuracy: 0.9731s - loss: 0.0876 - accu
+1875/1875 [==============================] - 2s 1ms/step - loss: 0.0857 - accuracy: 0.9735
 Epoch 5/5
-60000/60000 [==============================] - 4s 70us/sample - loss: 0.0731 - accuracy: 0.9770
+1875/1875 [==============================] - 2s 1ms/step - loss: 0.0729 - accuracy: 0.9768
 </pre></div>
 </div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;tensorflow.python.keras.callbacks.History at 0x14a79a0f0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;keras.callbacks.History at 0x7fb4a4a28b20&gt;
 </pre></div>
 </div>
 </div>
@@ -807,9 +810,9 @@ Epoch 5/5
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>10000/1 - 0s - loss: 0.0386 - accuracy: 0.9807
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>313/313 - 0s - loss: 0.0791 - accuracy: 0.9754 - 262ms/epoch - 839us/step
 
-Test accuracy: 0.9807
+Test accuracy: 0.9753999710083008
 </pre></div>
 </div>
 </div>
@@ -828,9 +831,12 @@ Test accuracy: 0.9807
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([3.3185064e-08, 7.0753789e-09, 1.5241905e-06, 2.6125135e-05,
-       2.3849409e-10, 2.8495455e-08, 2.2678712e-13, 9.9997008e-01,
-       1.9005751e-07, 2.0423677e-06], dtype=float32)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>313/313 [==============================] - 0s 523us/step
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([4.6148642e-08, 3.7551571e-09, 3.1227316e-06, 3.4340896e-04,
+       2.7218429e-12, 1.3988679e-07, 2.3399628e-15, 9.9965215e-01,
+       6.9960469e-09, 1.0755911e-06], dtype=float32)
 </pre></div>
 </div>
 </div>
@@ -843,7 +849,7 @@ Test accuracy: 0.9807
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.0
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.99999994
 </pre></div>
 </div>
 </div>
@@ -929,7 +935,7 @@ Test accuracy: 0.9807
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/9b2e67f398da8518a314ac882277416ec046fe5ffb65c2a1a3f330ea565b8953.png" src="../../_images/9b2e67f398da8518a314ac882277416ec046fe5ffb65c2a1a3f330ea565b8953.png" />
+<img alt="../../_images/b3d4950c3a8f21cdb0a23f87c499aeb82ac8bc4353d3b6edf1a8af06368d336c.png" src="../../_images/b3d4950c3a8f21cdb0a23f87c499aeb82ac8bc4353d3b6edf1a8af06368d336c.png" />
 </div>
 </div>
 </section>
@@ -945,16 +951,16 @@ Test accuracy: 0.9807
         },
         codeMirrorConfig: {
             theme: "abcdef",
-            mode: "python"
+            mode: "conda-env-8820-env-py"
         },
         kernelOptions: {
-            name: "python3",
+            name: "conda-env-8820-env-py",
             path: "./notebooks/Machine_learning"
         },
         predefinedOutput: true
     }
     </script>
-    <script>kernelName = 'python3'</script>
+    <script>kernelName = 'conda-env-8820-env-py'</script>
 
                 </article>
               
@@ -1000,6 +1006,7 @@ Test accuracy: 0.9807
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#installing-tensorflow-2024">Installing tensorflow (2024)</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#developing-a-code-for-doing-neural-networks-with-back-propagation">Developing a code for doing neural networks with back propagation</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction-to-tensorflow">Introduction to tensorflow</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#explore-the-data">Explore the data</a></li>
