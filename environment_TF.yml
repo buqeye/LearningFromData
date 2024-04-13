@@ -1,0 +1,14 @@
+name: 8820-tf-env
+channels:
+- conda-forge
+dependencies:
+- python <3.11
+- nb_conda_kernels
+- numpy
+- scipy
+- matplotlib
+- pandas
+- seaborn
+- jupyter
+- notebook >=7.0
+- tensorflow=2.12
