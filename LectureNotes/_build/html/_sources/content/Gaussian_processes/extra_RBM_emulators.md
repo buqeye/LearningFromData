@@ -141,15 +141,117 @@ Table of Nuclides showing progress in ab initio calculations (2024 version).
 :gutter: 1
 
 :::{grid-item}
-```{figure} /_images/
+```{figure} /_images/AHO_example_1.png
 :width: 100%
-:name: 
+:name: AHO_example_1
+```
+:::
+::::
+
+
+::::{grid}
+:gutter: 1
+
+:::{grid-item}
+```{figure} /_images/AHO_example_2.png
+:width: 100%
+:name: AHO_example_2
+```
+:::
+::::
+
+::::{grid}
+:gutter: 1
+
+:::{grid-item}
+```{figure} /_images/AHO_example_3.png
+:width: 100%
+:name: AHO_example_3
+```
+:::
+::::
+
+::::{grid}
+:gutter: 1
+
+:::{grid-item}
+```{figure} /_images/AHO_example_4.png
+:width: 100%
+:name: AHO_example_4
+```
+:::
+::::
+
+::::{grid}
+:gutter: 1
+
+:::{grid-item}
+```{figure} /_images/AHO_example_5.png
+:width: 100%
+:name: AHO_example_5
+```
+:::
+::::
+
+::::{grid}
+:gutter: 1
+
+:::{grid-item}
+```{figure} /_images/AHO_example_6.png
+:width: 100%
+:name: AHO_example_6
 ```
 :::
 ::::
 
 
 
+::::{grid}
+:gutter: 1
+
+:::{grid-item}
+```{figure} /_images/RBM_workflow_1.png
+:width: 100%
+:name: RBM_workflow_1
+```
+:::
+::::
+
+
+::::{grid}
+:gutter: 1
+
+:::{grid-item}
+```{figure} /_images/RBM_workflow_2.png
+:width: 100%
+:name: RBM_workflow_2
+```
+:::
+::::
+
+
+::::{grid}
+:gutter: 1
+
+:::{grid-item}
+```{figure} /_images/schematic_RBM.png
+:width: 100%
+:name: schematic_RBM
+```
+:::
+::::
+
+
+::::{grid}
+:gutter: 1
+
+:::{grid-item}
+```{figure} /_images/observables_RBM.png
+:width: 100%
+:name: observables_RBM
+```
+:::
+::::
 
 
 ## Extensions
