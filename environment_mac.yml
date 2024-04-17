@@ -1,0 +1,32 @@
+name: 8820-mac-env
+channels:
+- pytorch
+- conda-forge
+dependencies:
+- python <3.11
+- nb_conda_kernels
+- numpy
+- scipy
+- matplotlib
+- pandas
+- seaborn
+- jupyter
+- notebook >=7.0
+- ipywidgets
+- nbdime
+- emcee
+- ptemcee
+- numdifftools
+- zeus-mcmc
+- corner
+- scikit-learn
+- scikit-image
+- pydoe
+- pytorch
+- torchvision
+- tensorflow=2.12
+- pip
+- pip:
+  - gpy
+  - gpyopt  
+  - pymc
