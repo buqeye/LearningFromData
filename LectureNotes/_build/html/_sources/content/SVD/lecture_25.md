@@ -105,7 +105,7 @@ Recall that
     * Note the Python syntax for matrix multiplication with `@`, transpose with `T`.
     * Step through the Python example for image compression.
     You are identifying the most important eigenvalues for the image.
-    * If we keep 1 in 100 of the singulare values, then the numbers to be stored are significantly reduced.
+    * If we keep 1 in 100 of the singular values, then the numbers to be stored are significantly reduced.
     * Note the spectrum of eigenvalues.
 
 * Covariance, PCA, and SVD
