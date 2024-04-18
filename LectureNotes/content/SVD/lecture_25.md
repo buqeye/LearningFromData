@@ -98,7 +98,7 @@ Recall that
 
 * Solving matrix equations with *ill-conditioned matrices*, which means that the smallest singular value is zero or close to zero. (If zero, then the matrix is *singular*.)
     * The *condition number* of a matrix is the ratio of the largest to the smallest singular value.
-    * If solving $Ax = h$ $\Lra$ $x = A^{-1}b$, then an error in $h$ is magnified by the condition number to give the error in $x$.
+    * If solving $Ax = h$ $\Lra$ $x = A^{-1}h$, then an error in $h$ is magnified by the condition number to give the error in $x$.
     * So finite precision in $b$ leads to nonsense for $x$ if the the condition number is larger than the inverse of the machine or calculational precision. If the condition number $\kappa(A) = 10^k$, then up to $k$ digits of accuracy is lost (roughly).
 
 * Data reduction application: identify the *important* basis elements $\Lra$ e.g., what linear combinations of parameters are most important.
