@@ -643,9 +643,9 @@ Recall that</p>
 <section id="applications-of-svd">
 <h2>Applications of SVD<a class="headerlink" href="#applications-of-svd" title="Link to this heading">#</a></h2>
 <ul class="simple">
-<li><p>Solving matrix equations with <em>ill-conditioned matrices</em>, which means that the smallest eigenvalue is zero or close to zero. (If zero, then the matrix is <em>singular</em>.)</p>
+<li><p>Solving matrix equations with <em>ill-conditioned matrices</em>, which means that the smallest singular value is zero or close to zero. (If zero, then the matrix is <em>singular</em>.)</p>
 <ul>
-<li><p>The <em>condition number</em> of a matrix is the ratio of the largest to the smallest eigenvalue.</p></li>
+<li><p>The <em>condition number</em> of a matrix is the ratio of the largest to the smallest singular value.</p></li>
 <li><p>If solving <span class="math notranslate nohighlight">\(Ax = h\)</span> <span class="math notranslate nohighlight">\(\Lra\)</span> <span class="math notranslate nohighlight">\(x = A^{-1}b\)</span>, then an error in <span class="math notranslate nohighlight">\(h\)</span> is magnified by the condition number to give the error in <span class="math notranslate nohighlight">\(x\)</span>.</p></li>
 <li><p>So finite precision in <span class="math notranslate nohighlight">\(b\)</span> leads to nonsense for <span class="math notranslate nohighlight">\(x\)</span> if the the condition number is larger than the inverse of the machine or calculational precision. If the condition number <span class="math notranslate nohighlight">\(\kappa(A) = 10^k\)</span>, then up to <span class="math notranslate nohighlight">\(k\)</span> digits of accuracy is lost (roughly).</p></li>
 </ul>
@@ -656,14 +656,14 @@ Recall that</p>
 <li><p>Step through the Python example for image compression.
 You are identifying the most important eigenvalues for the image.</p></li>
 <li><p>If we keep 1 in 100 of the singular values, then the numbers to be stored are significantly reduced.</p></li>
-<li><p>Note the spectrum of eigenvalues.</p></li>
+<li><p>Note the spectrum of singular values.</p></li>
 </ul>
 </li>
 <li><p>Covariance, PCA, and SVD</p>
 <ul>
-<li><p>Consider the covariance matrix and find its eigenvalues and eigenvectors. ``Center’’ the data first (subtract the mean so that you deal with data having mean zero).</p></li>
+<li><p>Consider the covariance matrix and find its eigenvalues and eigenvectors. Since the covariance matrix is symmetric and positive, its eigenvalues are the same as the singular values. ``Center’’ the data first (subtract the mean so that you deal with data having mean zero).</p></li>
 <li><p>PCA means to rank these. This is typically done <em>via</em> SVD (which is better numerically).</p></li>
-<li><p>Then one uses fewer singular values (which are the eigenvalues if it is a square matrix) <span class="math notranslate nohighlight">\(\Lra\)</span> we have reduced the number of parameters in a model (for example).</p></li>
+<li><p>Then one uses fewer singular values (which are the eigenvalues if it is a symmetric, square positive matrix) <span class="math notranslate nohighlight">\(\Lra\)</span> we have reduced the number of parameters in a model (for example).</p></li>
 </ul>
 </li>
 </ul>
