@@ -646,7 +646,7 @@ Recall that</p>
 <li><p>Solving matrix equations with <em>ill-conditioned matrices</em>, which means that the smallest singular value is zero or close to zero. (If zero, then the matrix is <em>singular</em>.)</p>
 <ul>
 <li><p>The <em>condition number</em> of a matrix is the ratio of the largest to the smallest singular value.</p></li>
-<li><p>If solving <span class="math notranslate nohighlight">\(Ax = h\)</span> <span class="math notranslate nohighlight">\(\Lra\)</span> <span class="math notranslate nohighlight">\(x = A^{-1}b\)</span>, then an error in <span class="math notranslate nohighlight">\(h\)</span> is magnified by the condition number to give the error in <span class="math notranslate nohighlight">\(x\)</span>.</p></li>
+<li><p>If solving <span class="math notranslate nohighlight">\(Ax = h\)</span> <span class="math notranslate nohighlight">\(\Lra\)</span> <span class="math notranslate nohighlight">\(x = A^{-1}h\)</span>, then an error in <span class="math notranslate nohighlight">\(h\)</span> is magnified by the condition number to give the error in <span class="math notranslate nohighlight">\(x\)</span>.</p></li>
 <li><p>So finite precision in <span class="math notranslate nohighlight">\(b\)</span> leads to nonsense for <span class="math notranslate nohighlight">\(x\)</span> if the the condition number is larger than the inverse of the machine or calculational precision. If the condition number <span class="math notranslate nohighlight">\(\kappa(A) = 10^k\)</span>, then up to <span class="math notranslate nohighlight">\(k\)</span> digits of accuracy is lost (roughly).</p></li>
 </ul>
 </li>
