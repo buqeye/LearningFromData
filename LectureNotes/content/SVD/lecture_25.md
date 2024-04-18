@@ -83,7 +83,7 @@ Recall that
     * Reduced form is $ A = U S V^\intercal$, with $S$ *diagonal*. 
     * $A$ is an $m\times n$ matrix, while $U$ is $m \times n$, $S$ is $n\times n$, and $V$ is $n\times n$.
 
-    * Elements of $S$, names $S_{kk'} \equiv S_k \delta_{kk'}$  are *singular values*. For a square matrix $A$, they would be the eigenvalues.
+    * Elements of $S$, names $S_{kk'} \equiv S_k \delta_{kk'}$  are *singular values*. For a square symmetric matrix $A$, they would be the absolute values of the eigenvalues.
 
     * Key feature:
 
