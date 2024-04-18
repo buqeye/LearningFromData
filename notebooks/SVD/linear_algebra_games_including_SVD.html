@@ -729,6 +729,12 @@ A = U S V^\top
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Intel MKL WARNING: Support of Intel(R) Streaming SIMD Extensions 4.2 (Intel(R) SSE4.2) enabled only processors has been deprecated. Intel oneAPI Math Kernel Library 2025.0 will require Intel(R) Advanced Vector Extensions (Intel(R) AVX) instructions.
+Intel MKL WARNING: Support of Intel(R) Streaming SIMD Extensions 4.2 (Intel(R) SSE4.2) enabled only processors has been deprecated. Intel oneAPI Math Kernel Library 2025.0 will require Intel(R) Advanced Vector Extensions (Intel(R) AVX) instructions.
+</pre></div>
+</div>
+</div>
 </div>
 <p><em>Generate random matrices and verify the properties for SVD given above.  Check what happens when <span class="math notranslate nohighlight">\(m &gt; n\)</span>.</em></p>
 <div class="cell docutils container">
@@ -742,20 +748,20 @@ A = U S V^\top
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A =  [[0.53267947 0.75628621 0.44660131 0.3580089 ]
- [0.79482758 0.0420511  0.7730054  0.21469864]
- [0.72760602 0.14011891 0.75748408 0.54509336]
- [0.40584312 0.66023725 0.33969828 0.68630011]
- [0.5982156  0.64941471 0.83423936 0.5904656 ]
- [0.86804888 0.80116097 0.80593857 0.99507935]
- [0.9351548  0.13072385 0.7056087  0.33659319]
- [0.1168775  0.06971451 0.41533244 0.81426543]
- [0.10772294 0.38715423 0.44090847 0.11611268]]
-Ap =  [[ 2.12288119 -0.24987    -0.15700124]
- [-0.27864798  0.87891588  1.57475499]
- [-1.69290028  0.72281302 -0.81318676]
- [-0.76832368  0.63704346 -1.1365249 ]
- [ 1.53193839 -0.83206739 -1.08332759]]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A =  [[0.80904382 0.77139984 0.96133713 0.67749677]
+ [0.99108003 0.34466768 0.41124574 0.55896378]
+ [0.41244647 0.25949812 0.87524218 0.02787135]
+ [0.13511443 0.5850914  0.80938384 0.5778171 ]
+ [0.25003691 0.96855921 0.7983848  0.89331844]
+ [0.77043225 0.34508809 0.38308254 0.22496718]
+ [0.67199892 0.19922137 0.75941672 0.2298342 ]
+ [0.32455315 0.54296869 0.84543558 0.9241202 ]
+ [0.20101613 0.07262708 0.34573525 0.74294229]]
+Ap =  [[ 0.61436122  0.61178761 -0.29339735]
+ [-0.21353356 -0.75283767  0.98770788]
+ [-2.16683665 -1.04376538 -0.98674417]
+ [ 1.19711104 -0.52985973 -1.55220195]
+ [ 0.8801208   1.19991411 -1.22847544]]
 </pre></div>
 </div>
 </div>
@@ -790,10 +796,11 @@ Ap =  [[ 2.12288119 -0.24987    -0.15700124]
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[ 1.00000000e+00  4.41187541e-16 -7.31651324e-17 -6.41578704e-17]
- [ 4.41187541e-16  1.00000000e+00  4.42533334e-18  4.27698890e-17]
- [-7.31651324e-17  4.42533334e-18  1.00000000e+00 -1.58119762e-16]
- [-6.41578704e-17  4.27698890e-17 -1.58119762e-16  1.00000000e+00]]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[ 1.00000000e+00 -5.55111512e-16  0.00000000e+00  4.16333634e-17]
+ [-5.55111512e-16  1.00000000e+00  1.66533454e-16 -1.66533454e-16]
+ [ 0.00000000e+00  1.66533454e-16  1.00000000e+00 -3.74700271e-16]
+ [ 4.16333634e-17 -1.66533454e-16 -3.74700271e-16  1.00000000e+00]]
+Intel MKL WARNING: Support of Intel(R) Streaming SIMD Extensions 4.2 (Intel(R) SSE4.2) enabled only processors has been deprecated. Intel oneAPI Math Kernel Library 2025.0 will require Intel(R) Advanced Vector Extensions (Intel(R) AVX) instructions.
 </pre></div>
 </div>
 </div>
@@ -806,10 +813,13 @@ Ap =  [[ 2.12288119 -0.24987    -0.15700124]
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[ 1.,  0., -0., -0.],
-       [ 0.,  1.,  0.,  0.],
-       [-0.,  0.,  1., -0.],
-       [-0.,  0., -0.,  1.]])
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Intel MKL WARNING: Support of Intel(R) Streaming SIMD Extensions 4.2 (Intel(R) SSE4.2) enabled only processors has been deprecated. Intel oneAPI Math Kernel Library 2025.0 will require Intel(R) Advanced Vector Extensions (Intel(R) AVX) instructions.
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[ 1.e+00, -1.e-15,  0.e+00,  0.e+00],
+       [-1.e-15,  1.e+00,  0.e+00, -0.e+00],
+       [ 0.e+00,  0.e+00,  1.e+00, -0.e+00],
+       [ 0.e+00, -0.e+00, -0.e+00,  1.e+00]])
 </pre></div>
 </div>
 </div>
@@ -822,24 +832,25 @@ Ap =  [[ 2.12288119 -0.24987    -0.15700124]
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[ 0.3979728  -0.03212425 -0.08618843  0.22982163  0.16504051  0.22405916
-   0.04727935 -0.29227101  0.11494997]
- [-0.03212425  0.41331517  0.26153753 -0.18238598  0.12366922 -0.02606351
-   0.3353231  -0.06141384  0.08718153]
- [-0.08618843  0.26153753  0.26467859 -0.03695024  0.09009837  0.10233233
-   0.23797568  0.20514188 -0.0110881 ]
- [ 0.22982163 -0.18238598 -0.03695024  0.36093188  0.03422604  0.34913481
-  -0.01247546  0.08065003 -0.11612713]
- [ 0.16504051  0.12366922  0.09009837  0.03422604  0.37605062  0.10309099
-  -0.03838374  0.09052124  0.40313745]
- [ 0.22405916 -0.02606351  0.10233233  0.34913481  0.10309099  0.41602084
-   0.13334371  0.14401492 -0.10271355]
- [ 0.04727935  0.3353231   0.23797568 -0.01247546 -0.03838374  0.13334371
-   0.44866075 -0.13750675 -0.19426099]
- [-0.29227101 -0.06141384  0.20514188  0.08065003  0.09052124  0.14401492
-  -0.13750675  0.753634    0.00675799]
- [ 0.11494997  0.08718153 -0.0110881  -0.11612713  0.40313745 -0.10271355
-  -0.19426099  0.00675799  0.56873534]]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[ 0.29353811  0.19679929  0.1190396   0.12003965  0.25572484  0.22162672
+   0.1093223   0.06803899 -0.09470647]
+ [ 0.19679929  0.55382289 -0.15959205 -0.16841795 -0.02351687  0.3429292
+   0.11099251  0.02416521  0.1532388 ]
+ [ 0.1190396  -0.15959205  0.57915708  0.18029948 -0.1222567   0.00575673
+   0.3743265   0.03271853 -0.12415933]
+ [ 0.12003965 -0.16841795  0.18029948  0.27003713  0.26737248 -0.09118694
+   0.04174143  0.19934803  0.02345141]
+ [ 0.25572484 -0.02351687 -0.1222567   0.26737248  0.62088951  0.04533365
+  -0.20667698  0.16021123 -0.11209187]
+ [ 0.22162672  0.3429292   0.00575673 -0.09118694  0.04533365  0.31850027
+   0.09811157 -0.10189357 -0.14116476]
+ [ 0.1093223   0.11099251  0.3743265   0.04174143 -0.20667698  0.09811157
+   0.36713112  0.07694878  0.08916341]
+ [ 0.06803899  0.02416521  0.03271853  0.19934803  0.16021123 -0.10189357
+   0.07694878  0.3579125   0.37658557]
+ [-0.09470647  0.1532388  -0.12415933  0.02345141 -0.11209187 -0.14116476
+   0.08916341  0.37658557  0.63901139]]
+Intel MKL WARNING: Support of Intel(R) Streaming SIMD Extensions 4.2 (Intel(R) SSE4.2) enabled only processors has been deprecated. Intel oneAPI Math Kernel Library 2025.0 will require Intel(R) Advanced Vector Extensions (Intel(R) AVX) instructions.
 </pre></div>
 </div>
 </div>
@@ -862,7 +873,7 @@ Ap =  [[ 2.12288119 -0.24987    -0.15700124]
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">skimage</span> <span class="kn">import</span> <span class="n">io</span>
 
-<span class="n">img</span> <span class="o">=</span> <span class="n">io</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="s1">&#39;../../_images/elephant.jpg&#39;</span><span class="p">,</span> <span class="n">as_gray</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">img</span> <span class="o">=</span> <span class="n">io</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="s1">&#39;https://raw.githubusercontent.com/buqeye/LearningFromData/main/LectureNotes/_images/elephant.jpg&#39;</span><span class="p">,</span> <span class="n">as_gray</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">);</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;shape of img: &#39;</span><span class="p">,</span> <span class="n">img</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
 </pre></div>
@@ -872,7 +883,7 @@ Ap =  [[ 2.12288119 -0.24987    -0.15700124]
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>shape of img:  (1066, 1600)
 </pre></div>
 </div>
-<img alt="../../_images/1e90b26f6cef4a61fccf182a7083c862f56aa3b284b436d19687a60b3d85acb8.png" src="../../_images/1e90b26f6cef4a61fccf182a7083c862f56aa3b284b436d19687a60b3d85acb8.png" />
+<img alt="../../_images/dca3c3c8ee593956fb43855ef5fdd4e2f09fec95810d073ac419bad9d3646dc5.png" src="../../_images/dca3c3c8ee593956fb43855ef5fdd4e2f09fec95810d073ac419bad9d3646dc5.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -884,13 +895,66 @@ Ap =  [[ 2.12288119 -0.24987    -0.15700124]
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/b1468db6d83d4b1bc9400807a3ba5f344d8d5585cc20cc194794e0943151bb5e.png" src="../../_images/b1468db6d83d4b1bc9400807a3ba5f344d8d5585cc20cc194794e0943151bb5e.png" />
+<img alt="../../_images/fdfc5de8081bd3af677bb4d7f5197b4a8a8906a1033292f6f48c7e452e4c795d.png" src="../../_images/fdfc5de8081bd3af677bb4d7f5197b4a8a8906a1033292f6f48c7e452e4c795d.png" />
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Do the svg</span>
 <span class="n">U</span><span class="p">,</span> <span class="n">S</span><span class="p">,</span> <span class="n">Vt</span> <span class="o">=</span> <span class="n">la</span><span class="o">.</span><span class="n">svd</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">full_matrices</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Intel MKL WARNING: Support of Intel(R) Streaming SIMD Extensions 4.2 (Intel(R) SSE4.2) enabled only processors has been deprecated. Intel oneAPI Math Kernel Library 2025.0 will require Intel(R) Advanced Vector Extensions (Intel(R) AVX) instructions.
+Intel MKL WARNING: Support of Intel(R) Streaming SIMD Extensions 4.2 (Intel(R) SSE4.2) enabled only processors has been deprecated. Intel oneAPI Math Kernel Library 2025.0 will require Intel(R) Advanced Vector Extensions (Intel(R) AVX) instructions.
+Intel MKL WARNING: Support of Intel(R) Streaming SIMD Extensions 4.2 (Intel(R) SSE4.2) enabled only processors has been deprecated. Intel oneAPI Math Kernel Library 2025.0 will require Intel(R) Advanced Vector Extensions (Intel(R) AVX) instructions.
+Intel MKL WARNING: Support of Intel(R) Streaming SIMD Extensions 4.2 (Intel(R) SSE4.2) enabled only processors has been deprecated. Intel oneAPI Math Kernel Library 2025.0 will require Intel(R) Advanced Vector Extensions (Intel(R) AVX) instructions.
+Intel MKL WARNING: Support of Intel(R) Streaming SIMD Extensions 4.2 (Intel(R) SSE4.2) enabled only processors has been deprecated. Intel oneAPI Math Kernel Library 2025.0 will require Intel(R) Advanced Vector Extensions (Intel(R) AVX) instructions.
+Intel MKL WARNING: Support of Intel(R) Streaming SIMD Extensions 4.2 (Intel(R) SSE4.2) enabled only processors has been deprecated. Intel oneAPI Math Kernel Library 2025.0 will require Intel(R) Advanced Vector Extensions (Intel(R) AVX) instructions.
+Intel MKL WARNING: Support of Intel(R) Streaming SIMD Extensions 4.2 (Intel(R) SSE4.2) enabled only processors has been deprecated. Intel oneAPI Math Kernel Library 2025.0 will require Intel(R) Advanced Vector Extensions (Intel(R) AVX) instructions.
+Intel MKL WARNING: Support of Intel(R) Streaming SIMD Extensions 4.2 (Intel(R) SSE4.2) enabled only processors has been deprecated. Intel oneAPI Math Kernel Library 2025.0 will require Intel(R) Advanced Vector Extensions (Intel(R) AVX) instructions.
+Intel MKL WARNING: Support of Intel(R) Streaming SIMD Extensions 4.2 (Intel(R) SSE4.2) enabled only processors has been deprecated. Intel oneAPI Math Kernel Library 2025.0 will require Intel(R) Advanced Vector Extensions (Intel(R) AVX) instructions.
+Intel MKL WARNING: Support of Intel(R) Streaming SIMD Extensions 4.2 (Intel(R) SSE4.2) enabled only processors has been deprecated. Intel oneAPI Math Kernel Library 2025.0 will require Intel(R) Advanced Vector Extensions (Intel(R) AVX) instructions.
+Intel MKL WARNING: Support of Intel(R) Streaming SIMD Extensions 4.2 (Intel(R) SSE4.2) enabled only processors has been deprecated. Intel oneAPI Math Kernel Library 2025.0 will require Intel(R) Advanced Vector Extensions (Intel(R) AVX) instructions.
+Intel MKL WARNING: Support of Intel(R) Streaming SIMD Extensions 4.2 (Intel(R) SSE4.2) enabled only processors has been deprecated. Intel oneAPI Math Kernel Library 2025.0 will require Intel(R) Advanced Vector Extensions (Intel(R) AVX) instructions.
+Intel MKL WARNING: Support of Intel(R) Streaming SIMD Extensions 4.2 (Intel(R) SSE4.2) enabled only processors has been deprecated. Intel oneAPI Math Kernel Library 2025.0 will require Intel(R) Advanced Vector Extensions (Intel(R) AVX) instructions.
+Intel MKL WARNING: Support of Intel(R) Streaming SIMD Extensions 4.2 (Intel(R) SSE4.2) enabled only processors has been deprecated. Intel oneAPI Math Kernel Library 2025.0 will require Intel(R) Advanced Vector Extensions (Intel(R) AVX) instructions.
+Intel MKL WARNING: Support of Intel(R) Streaming SIMD Extensions 4.2 (Intel(R) SSE4.2) enabled only processors has been deprecated. Intel oneAPI Math Kernel Library 2025.0 will require Intel(R) Advanced Vector Extensions (Intel(R) AVX) instructions.
+Intel MKL WARNING: Support of Intel(R) Streaming SIMD Extensions 4.2 (Intel(R) SSE4.2) enabled only processors has been deprecated. Intel oneAPI Math Kernel Library 2025.0 will require Intel(R) Advanced Vector Extensions (Intel(R) AVX) instructions.
+Intel MKL WARNING: Support of Intel(R) Streaming SIMD Extensions 4.2 (Intel(R) SSE4.2) enabled only processors has been deprecated. Intel oneAPI Math Kernel Library 2025.0 will require Intel(R) Advanced Vector Extensions (Intel(R) AVX) instructions.
+Intel MKL WARNING: Support of Intel(R) Streaming SIMD Extensions 4.2 (Intel(R) SSE4.2) enabled only processors has been deprecated. Intel oneAPI Math Kernel Library 2025.0 will require Intel(R) Advanced Vector Extensions (Intel(R) AVX) instructions.
+Intel MKL WARNING: Support of Intel(R) Streaming SIMD Extensions 4.2 (Intel(R) SSE4.2) enabled only processors has been deprecated. Intel oneAPI Math Kernel Library 2025.0 will require Intel(R) Advanced Vector Extensions (Intel(R) AVX) instructions.
+Intel MKL WARNING: Support of Intel(R) Streaming SIMD Extensions 4.2 (Intel(R) SSE4.2) enabled only processors has been deprecated. Intel oneAPI Math Kernel Library 2025.0 will require Intel(R) Advanced Vector Extensions (Intel(R) AVX) instructions.
+Intel MKL WARNING: Support of Intel(R) Streaming SIMD Extensions 4.2 (Intel(R) SSE4.2) enabled only processors has been deprecated. Intel oneAPI Math Kernel Library 2025.0 will require Intel(R) Advanced Vector Extensions (Intel(R) AVX) instructions.
+Intel MKL WARNING: Support of Intel(R) Streaming SIMD Extensions 4.2 (Intel(R) SSE4.2) enabled only processors has been deprecated. Intel oneAPI Math Kernel Library 2025.0 will require Intel(R) Advanced Vector Extensions (Intel(R) AVX) instructions.
+Intel MKL WARNING: Support of Intel(R) Streaming SIMD Extensions 4.2 (Intel(R) SSE4.2) enabled only processors has been deprecated. Intel oneAPI Math Kernel Library 2025.0 will require Intel(R) Advanced Vector Extensions (Intel(R) AVX) instructions.
+Intel MKL WARNING: Support of Intel(R) Streaming SIMD Extensions 4.2 (Intel(R) SSE4.2) enabled only processors has been deprecated. Intel oneAPI Math Kernel Library 2025.0 will require Intel(R) Advanced Vector Extensions (Intel(R) AVX) instructions.
+Intel MKL WARNING: Support of Intel(R) Streaming SIMD Extensions 4.2 (Intel(R) SSE4.2) enabled only processors has been deprecated. Intel oneAPI Math Kernel Library 2025.0 will require Intel(R) Advanced Vector Extensions (Intel(R) AVX) instructions.
+Intel MKL WARNING: Support of Intel(R) Streaming SIMD Extensions 4.2 (Intel(R) SSE4.2) enabled only processors has been deprecated. Intel oneAPI Math Kernel Library 2025.0 will require Intel(R) Advanced Vector Extensions (Intel(R) AVX) instructions.
+Intel MKL WARNING: Support of Intel(R) Streaming SIMD Extensions 4.2 (Intel(R) SSE4.2) enabled only processors has been deprecated. Intel oneAPI Math Kernel Library 2025.0 will require Intel(R) Advanced Vector Extensions (Intel(R) AVX) instructions.
+Intel MKL WARNING: Support of Intel(R) Streaming SIMD Extensions 4.2 (Intel(R) SSE4.2) enabled only processors has been deprecated. Intel oneAPI Math Kernel Library 2025.0 will require Intel(R) Advanced Vector Extensions (Intel(R) AVX) instructions.
+Intel MKL WARNING: Support of Intel(R) Streaming SIMD Extensions 4.2 (Intel(R) SSE4.2) enabled only processors has been deprecated. Intel oneAPI Math Kernel Library 2025.0 will require Intel(R) Advanced Vector Extensions (Intel(R) AVX) instructions.
+Intel MKL WARNING: Support of Intel(R) Streaming SIMD Extensions 4.2 (Intel(R) SSE4.2) enabled only processors has been deprecated. Intel oneAPI Math Kernel Library 2025.0 will require Intel(R) Advanced Vector Extensions (Intel(R) AVX) instructions.
+Intel MKL WARNING: Support of Intel(R) Streaming SIMD Extensions 4.2 (Intel(R) SSE4.2) enabled only processors has been deprecated. Intel oneAPI Math Kernel Library 2025.0 will require Intel(R) Advanced Vector Extensions (Intel(R) AVX) instructions.
+Intel MKL WARNING: Support of Intel(R) Streaming SIMD Extensions 4.2 (Intel(R) SSE4.2) enabled only processors has been deprecated. Intel oneAPI Math Kernel Library 2025.0 will require Intel(R) Advanced Vector Extensions (Intel(R) AVX) instructions.
+Intel MKL WARNING: Support of Intel(R) Streaming SIMD Extensions 4.2 (Intel(R) SSE4.2) enabled only processors has been deprecated. Intel oneAPI Math Kernel Library 2025.0 will require Intel(R) Advanced Vector Extensions (Intel(R) AVX) instructions.
+Intel MKL WARNING: Support of Intel(R) Streaming SIMD Extensions 4.2 (Intel(R) SSE4.2) enabled only processors has been deprecated. Intel oneAPI Math Kernel Library 2025.0 will require Intel(R) Advanced Vector Extensions (Intel(R) AVX) instructions.
+Intel MKL WARNING: Support of Intel(R) Streaming SIMD Extensions 4.2 (Intel(R) SSE4.2) enabled only processors has been deprecated. Intel oneAPI Math Kernel Library 2025.0 will require Intel(R) Advanced Vector Extensions (Intel(R) AVX) instructions.
+Intel MKL WARNING: Support of Intel(R) Streaming SIMD Extensions 4.2 (Intel(R) SSE4.2) enabled only processors has been deprecated. Intel oneAPI Math Kernel Library 2025.0 will require Intel(R) Advanced Vector Extensions (Intel(R) AVX) instructions.
+Intel MKL WARNING: Support of Intel(R) Streaming SIMD Extensions 4.2 (Intel(R) SSE4.2) enabled only processors has been deprecated. Intel oneAPI Math Kernel Library 2025.0 will require Intel(R) Advanced Vector Extensions (Intel(R) AVX) instructions.
+Intel MKL WARNING: Support of Intel(R) Streaming SIMD Extensions 4.2 (Intel(R) SSE4.2) enabled only processors has been deprecated. Intel oneAPI Math Kernel Library 2025.0 will require Intel(R) Advanced Vector Extensions (Intel(R) AVX) instructions.
+Intel MKL WARNING: Support of Intel(R) Streaming SIMD Extensions 4.2 (Intel(R) SSE4.2) enabled only processors has been deprecated. Intel oneAPI Math Kernel Library 2025.0 will require Intel(R) Advanced Vector Extensions (Intel(R) AVX) instructions.
+Intel MKL WARNING: Support of Intel(R) Streaming SIMD Extensions 4.2 (Intel(R) SSE4.2) enabled only processors has been deprecated. Intel oneAPI Math Kernel Library 2025.0 will require Intel(R) Advanced Vector Extensions (Intel(R) AVX) instructions.
+Intel MKL WARNING: Support of Intel(R) Streaming SIMD Extensions 4.2 (Intel(R) SSE4.2) enabled only processors has been deprecated. Intel oneAPI Math Kernel Library 2025.0 will require Intel(R) Advanced Vector Extensions (Intel(R) AVX) instructions.
+Intel MKL WARNING: Support of Intel(R) Streaming SIMD Extensions 4.2 (Intel(R) SSE4.2) enabled only processors has been deprecated. Intel oneAPI Math Kernel Library 2025.0 will require Intel(R) Advanced Vector Extensions (Intel(R) AVX) instructions.
+Intel MKL WARNING: Support of Intel(R) Streaming SIMD Extensions 4.2 (Intel(R) SSE4.2) enabled only processors has been deprecated. Intel oneAPI Math Kernel Library 2025.0 will require Intel(R) Advanced Vector Extensions (Intel(R) AVX) instructions.
+Intel MKL WARNING: Support of Intel(R) Streaming SIMD Extensions 4.2 (Intel(R) SSE4.2) enabled only processors has been deprecated. Intel oneAPI Math Kernel Library 2025.0 will require Intel(R) Advanced Vector Extensions (Intel(R) AVX) instructions.
+Intel MKL WARNING: Support of Intel(R) Streaming SIMD Extensions 4.2 (Intel(R) SSE4.2) enabled only processors has been deprecated. Intel oneAPI Math Kernel Library 2025.0 will require Intel(R) Advanced Vector Extensions (Intel(R) AVX) instructions.
+Intel MKL WARNING: Support of Intel(R) Streaming SIMD Extensions 4.2 (Intel(R) SSE4.2) enabled only processors has been deprecated. Intel oneAPI Math Kernel Library 2025.0 will require Intel(R) Advanced Vector Extensions (Intel(R) AVX) instructions.
+Intel MKL WARNING: Support of Intel(R) Streaming SIMD Extensions 4.2 (Intel(R) SSE4.2) enabled only processors has been deprecated. Intel oneAPI Math Kernel Library 2025.0 will require Intel(R) Advanced Vector Extensions (Intel(R) AVX) instructions.
+Intel MKL WARNING: Support of Intel(R) Streaming SIMD Extensions 4.2 (Intel(R) SSE4.2) enabled only processors has been deprecated. Intel oneAPI Math Kernel Library 2025.0 will require Intel(R) Advanced Vector Extensions (Intel(R) AVX) instructions.
+Intel MKL WARNING: Support of Intel(R) Streaming SIMD Extensions 4.2 (Intel(R) SSE4.2) enabled only processors has been deprecated. Intel oneAPI Math Kernel Library 2025.0 will require Intel(R) Advanced Vector Extensions (Intel(R) AVX) instructions.
 </pre></div>
 </div>
 </div>
@@ -922,7 +986,7 @@ Ap =  [[ 2.12288119 -0.24987    -0.15700124]
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(1066, 1600)
 </pre></div>
 </div>
-<img alt="../../_images/b1468db6d83d4b1bc9400807a3ba5f344d8d5585cc20cc194794e0943151bb5e.png" src="../../_images/b1468db6d83d4b1bc9400807a3ba5f344d8d5585cc20cc194794e0943151bb5e.png" />
+<img alt="../../_images/fdfc5de8081bd3af677bb4d7f5197b4a8a8906a1033292f6f48c7e452e4c795d.png" src="../../_images/fdfc5de8081bd3af677bb4d7f5197b4a8a8906a1033292f6f48c7e452e4c795d.png" />
 </div>
 </div>
 <p>Here’s how we can efficiently reduce the size of the matrices.  Our SVD should be sorted, so we are keeping only the largest singular values up to a point.</p>
@@ -976,7 +1040,7 @@ The last result is the index we are looking for.
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/44aca33b82aac0cfcc101fbf2e6e44efd17a631f5f220ed62ecebcadcf0958b9.png" src="../../_images/44aca33b82aac0cfcc101fbf2e6e44efd17a631f5f220ed62ecebcadcf0958b9.png" />
+<img alt="../../_images/fe2edb8e3850c537adfe679669757e24f56a3b899045bcf5c37234a41f3b9e89.png" src="../../_images/fe2edb8e3850c537adfe679669757e24f56a3b899045bcf5c37234a41f3b9e89.png" />
 </div>
 </div>
 <p>Now keep only the most significant eigenvalues (those up to k).</p>
@@ -1001,7 +1065,7 @@ The last result is the index we are looking for.
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/bdfe06260e12e54ccf4d0908245ce3a3e53cd9afc22e877ffcef759139cbcf9d.png" src="../../_images/bdfe06260e12e54ccf4d0908245ce3a3e53cd9afc22e877ffcef759139cbcf9d.png" />
+<img alt="../../_images/8c6910d1b3efb0fce185eaf42364a315efd808a9d0ad230fd4f83bd78f42928f.png" src="../../_images/8c6910d1b3efb0fce185eaf42364a315efd808a9d0ad230fd4f83bd78f42928f.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1020,7 +1084,7 @@ The last result is the index we are looking for.
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/36bca8c2ead005c721bdd2f121fdeaa33bd762963788c0d74a8318ac763d7555.png" src="../../_images/36bca8c2ead005c721bdd2f121fdeaa33bd762963788c0d74a8318ac763d7555.png" />
+<img alt="../../_images/cb57f183a8e314e9e5d8929f28dd3cab981dacac89014e1d16026420a858ef00.png" src="../../_images/cb57f183a8e314e9e5d8929f28dd3cab981dacac89014e1d16026420a858ef00.png" />
 </div>
 </div>
 <p>Let’s try another interesting picture …</p>
@@ -1037,8 +1101,8 @@ The last result is the index we are looking for.
     <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;U shape: </span><span class="si">{</span><span class="n">U_shape</span><span class="si">}</span><span class="s1">, S shape: </span><span class="si">{</span><span class="n">S_shape</span><span class="si">}</span><span class="s1">, V shape: </span><span class="si">{</span><span class="n">V_shape</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
 
 
-<span class="n">img_orig</span> <span class="o">=</span> <span class="n">io</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="s1">&#39;../../_images/Dick_in_tailcoat.jpg&#39;</span><span class="p">)</span>
-<span class="n">img</span> <span class="o">=</span> <span class="n">io</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="s1">&#39;../../_images/Dick_in_tailcoat.jpg&#39;</span><span class="p">,</span> <span class="n">as_gray</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">img_orig</span> <span class="o">=</span> <span class="n">io</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="s1">&#39;https://raw.githubusercontent.com/buqeye/LearningFromData/main/LectureNotes/_images/Dick_in_tailcoat.jpg&#39;</span><span class="p">)</span>
+<span class="n">img</span> <span class="o">=</span> <span class="n">io</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="s1">&#39;https://raw.githubusercontent.com/buqeye/LearningFromData/main/LectureNotes/_images/Dick_in_tailcoat.jpg&#39;</span><span class="p">,</span> <span class="n">as_gray</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
 <span class="n">U</span><span class="p">,</span> <span class="n">S</span><span class="p">,</span> <span class="n">V</span> <span class="o">=</span> <span class="n">la</span><span class="o">.</span><span class="n">svd</span><span class="p">(</span><span class="n">img</span><span class="p">)</span>
 <span class="n">svd_shapes</span><span class="p">(</span><span class="n">U</span><span class="p">,</span> <span class="n">S</span><span class="p">,</span> <span class="n">V</span><span class="p">)</span>
@@ -1067,13 +1131,74 @@ The last result is the index we are looking for.
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>U shape: (3088, 2320), S shape: (2320,), V shape: (2320, 2320)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Intel MKL WARNING: Support of Intel(R) Streaming SIMD Extensions 4.2 (Intel(R) SSE4.2) enabled only processors has been deprecated. Intel oneAPI Math Kernel Library 2025.0 will require Intel(R) Advanced Vector Extensions (Intel(R) AVX) instructions.
+U shape: (2320, 2320), S shape: (2320,), V shape: (3088, 2320)
+Intel MKL WARNING: Support of Intel(R) Streaming SIMD Extensions 4.2 (Intel(R) SSE4.2) enabled only processors has been deprecated. Intel oneAPI Math Kernel Library 2025.0 will require Intel(R) Advanced Vector Extensions (Intel(R) AVX) instructions.
+Intel MKL WARNING: Support of Intel(R) Streaming SIMD Extensions 4.2 (Intel(R) SSE4.2) enabled only processors has been deprecated. Intel oneAPI Math Kernel Library 2025.0 will require Intel(R) Advanced Vector Extensions (Intel(R) AVX) instructions.
+Intel MKL WARNING: Support of Intel(R) Streaming SIMD Extensions 4.2 (Intel(R) SSE4.2) enabled only processors has been deprecated. Intel oneAPI Math Kernel Library 2025.0 will require Intel(R) Advanced Vector Extensions (Intel(R) AVX) instructions.
+Intel MKL WARNING: Support of Intel(R) Streaming SIMD Extensions 4.2 (Intel(R) SSE4.2) enabled only processors has been deprecated. Intel oneAPI Math Kernel Library 2025.0 will require Intel(R) Advanced Vector Extensions (Intel(R) AVX) instructions.
 k995 = 24
-img995 shape = (3088, 2320)
-U shape: (3088, 24), S shape: (24,), V shape: (2320, 24)
+Intel MKL WARNING: Support of Intel(R) Streaming SIMD Extensions 4.2 (Intel(R) SSE4.2) enabled only processors has been deprecated. Intel oneAPI Math Kernel Library 2025.0 will require Intel(R) Advanced Vector Extensions (Intel(R) AVX) instructions.
+Intel MKL WARNING: Support of Intel(R) Streaming SIMD Extensions 4.2 (Intel(R) SSE4.2) enabled only processors has been deprecated. Intel oneAPI Math Kernel Library 2025.0 will require Intel(R) Advanced Vector Extensions (Intel(R) AVX) instructions.
+Intel MKL WARNING: Support of Intel(R) Streaming SIMD Extensions 4.2 (Intel(R) SSE4.2) enabled only processors has been deprecated. Intel oneAPI Math Kernel Library 2025.0 will require Intel(R) Advanced Vector Extensions (Intel(R) AVX) instructions.
+Intel MKL WARNING: Support of Intel(R) Streaming SIMD Extensions 4.2 (Intel(R) SSE4.2) enabled only processors has been deprecated. Intel oneAPI Math Kernel Library 2025.0 will require Intel(R) Advanced Vector Extensions (Intel(R) AVX) instructions.
+Intel MKL WARNING: Support of Intel(R) Streaming SIMD Extensions 4.2 (Intel(R) SSE4.2) enabled only processors has been deprecated. Intel oneAPI Math Kernel Library 2025.0 will require Intel(R) Advanced Vector Extensions (Intel(R) AVX) instructions.
+Intel MKL WARNING: Support of Intel(R) Streaming SIMD Extensions 4.2 (Intel(R) SSE4.2) enabled only processors has been deprecated. Intel oneAPI Math Kernel Library 2025.0 will require Intel(R) Advanced Vector Extensions (Intel(R) AVX) instructions.
+Intel MKL WARNING: Support of Intel(R) Streaming SIMD Extensions 4.2 (Intel(R) SSE4.2) enabled only processors has been deprecated. Intel oneAPI Math Kernel Library 2025.0 will require Intel(R) Advanced Vector Extensions (Intel(R) AVX) instructions.
+Intel MKL WARNING: Support of Intel(R) Streaming SIMD Extensions 4.2 (Intel(R) SSE4.2) enabled only processors has been deprecated. Intel oneAPI Math Kernel Library 2025.0 will require Intel(R) Advanced Vector Extensions (Intel(R) AVX) instructions.
+Intel MKL WARNING: Support of Intel(R) Streaming SIMD Extensions 4.2 (Intel(R) SSE4.2) enabled only processors has been deprecated. Intel oneAPI Math Kernel Library 2025.0 will require Intel(R) Advanced Vector Extensions (Intel(R) AVX) instructions.
+Intel MKL WARNING: Support of Intel(R) Streaming SIMD Extensions 4.2 (Intel(R) SSE4.2) enabled only processors has been deprecated. Intel oneAPI Math Kernel Library 2025.0 will require Intel(R) Advanced Vector Extensions (Intel(R) AVX) instructions.
+Intel MKL WARNING: Support of Intel(R) Streaming SIMD Extensions 4.2 (Intel(R) SSE4.2) enabled only processors has been deprecated. Intel oneAPI Math Kernel Library 2025.0 will require Intel(R) Advanced Vector Extensions (Intel(R) AVX) instructions.
+Intel MKL WARNING: Support of Intel(R) Streaming SIMD Extensions 4.2 (Intel(R) SSE4.2) enabled only processors has been deprecated. Intel oneAPI Math Kernel Library 2025.0 will require Intel(R) Advanced Vector Extensions (Intel(R) AVX) instructions.
+Intel MKL WARNING: Support of Intel(R) Streaming SIMD Extensions 4.2 (Intel(R) SSE4.2) enabled only processors has been deprecated. Intel oneAPI Math Kernel Library 2025.0 will require Intel(R) Advanced Vector Extensions (Intel(R) AVX) instructions.
+Intel MKL WARNING: Support of Intel(R) Streaming SIMD Extensions 4.2 (Intel(R) SSE4.2) enabled only processors has been deprecated. Intel oneAPI Math Kernel Library 2025.0 will require Intel(R) Advanced Vector Extensions (Intel(R) AVX) instructions.
+Intel MKL WARNING: Support of Intel(R) Streaming SIMD Extensions 4.2 (Intel(R) SSE4.2) enabled only processors has been deprecated. Intel oneAPI Math Kernel Library 2025.0 will require Intel(R) Advanced Vector Extensions (Intel(R) AVX) instructions.
+Intel MKL WARNING: Support of Intel(R) Streaming SIMD Extensions 4.2 (Intel(R) SSE4.2) enabled only processors has been deprecated. Intel oneAPI Math Kernel Library 2025.0 will require Intel(R) Advanced Vector Extensions (Intel(R) AVX) instructions.
+Intel MKL WARNING: Support of Intel(R) Streaming SIMD Extensions 4.2 (Intel(R) SSE4.2) enabled only processors has been deprecated. Intel oneAPI Math Kernel Library 2025.0 will require Intel(R) Advanced Vector Extensions (Intel(R) AVX) instructions.
+Intel MKL WARNING: Support of Intel(R) Streaming SIMD Extensions 4.2 (Intel(R) SSE4.2) enabled only processors has been deprecated. Intel oneAPI Math Kernel Library 2025.0 will require Intel(R) Advanced Vector Extensions (Intel(R) AVX) instructions.
+Intel MKL WARNING: Support of Intel(R) Streaming SIMD Extensions 4.2 (Intel(R) SSE4.2) enabled only processors has been deprecated. Intel oneAPI Math Kernel Library 2025.0 will require Intel(R) Advanced Vector Extensions (Intel(R) AVX) instructions.
+Intel MKL WARNING: Support of Intel(R) Streaming SIMD Extensions 4.2 (Intel(R) SSE4.2) enabled only processors has been deprecated. Intel oneAPI Math Kernel Library 2025.0 will require Intel(R) Advanced Vector Extensions (Intel(R) AVX) instructions.
+Intel MKL WARNING: Support of Intel(R) Streaming SIMD Extensions 4.2 (Intel(R) SSE4.2) enabled only processors has been deprecated. Intel oneAPI Math Kernel Library 2025.0 will require Intel(R) Advanced Vector Extensions (Intel(R) AVX) instructions.
+Intel MKL WARNING: Support of Intel(R) Streaming SIMD Extensions 4.2 (Intel(R) SSE4.2) enabled only processors has been deprecated. Intel oneAPI Math Kernel Library 2025.0 will require Intel(R) Advanced Vector Extensions (Intel(R) AVX) instructions.
+Intel MKL WARNING: Support of Intel(R) Streaming SIMD Extensions 4.2 (Intel(R) SSE4.2) enabled only processors has been deprecated. Intel oneAPI Math Kernel Library 2025.0 will require Intel(R) Advanced Vector Extensions (Intel(R) AVX) instructions.
+Intel MKL WARNING: Support of Intel(R) Streaming SIMD Extensions 4.2 (Intel(R) SSE4.2) enabled only processors has been deprecated. Intel oneAPI Math Kernel Library 2025.0 will require Intel(R) Advanced Vector Extensions (Intel(R) AVX) instructions.
+Intel MKL WARNING: Support of Intel(R) Streaming SIMD Extensions 4.2 (Intel(R) SSE4.2) enabled only processors has been deprecated. Intel oneAPI Math Kernel Library 2025.0 will require Intel(R) Advanced Vector Extensions (Intel(R) AVX) instructions.
+Intel MKL WARNING: Support of Intel(R) Streaming SIMD Extensions 4.2 (Intel(R) SSE4.2) enabled only processors has been deprecated. Intel oneAPI Math Kernel Library 2025.0 will require Intel(R) Advanced Vector Extensions (Intel(R) AVX) instructions.
+Intel MKL WARNING: Support of Intel(R) Streaming SIMD Extensions 4.2 (Intel(R) SSE4.2) enabled only processors has been deprecated. Intel oneAPI Math Kernel Library 2025.0 will require Intel(R) Advanced Vector Extensions (Intel(R) AVX) instructions.
+Intel MKL WARNING: Support of Intel(R) Streaming SIMD Extensions 4.2 (Intel(R) SSE4.2) enabled only processors has been deprecated. Intel oneAPI Math Kernel Library 2025.0 will require Intel(R) Advanced Vector Extensions (Intel(R) AVX) instructions.
+Intel MKL WARNING: Support of Intel(R) Streaming SIMD Extensions 4.2 (Intel(R) SSE4.2) enabled only processors has been deprecated. Intel oneAPI Math Kernel Library 2025.0 will require Intel(R) Advanced Vector Extensions (Intel(R) AVX) instructions.
+Intel MKL WARNING: Support of Intel(R) Streaming SIMD Extensions 4.2 (Intel(R) SSE4.2) enabled only processors has been deprecated. Intel oneAPI Math Kernel Library 2025.0 will require Intel(R) Advanced Vector Extensions (Intel(R) AVX) instructions.
+Intel MKL WARNING: Support of Intel(R) Streaming SIMD Extensions 4.2 (Intel(R) SSE4.2) enabled only processors has been deprecated. Intel oneAPI Math Kernel Library 2025.0 will require Intel(R) Advanced Vector Extensions (Intel(R) AVX) instructions.
+Intel MKL WARNING: Support of Intel(R) Streaming SIMD Extensions 4.2 (Intel(R) SSE4.2) enabled only processors has been deprecated. Intel oneAPI Math Kernel Library 2025.0 will require Intel(R) Advanced Vector Extensions (Intel(R) AVX) instructions.
+Intel MKL WARNING: Support of Intel(R) Streaming SIMD Extensions 4.2 (Intel(R) SSE4.2) enabled only processors has been deprecated. Intel oneAPI Math Kernel Library 2025.0 will require Intel(R) Advanced Vector Extensions (Intel(R) AVX) instructions.
+Intel MKL WARNING: Support of Intel(R) Streaming SIMD Extensions 4.2 (Intel(R) SSE4.2) enabled only processors has been deprecated. Intel oneAPI Math Kernel Library 2025.0 will require Intel(R) Advanced Vector Extensions (Intel(R) AVX) instructions.
+Intel MKL WARNING: Support of Intel(R) Streaming SIMD Extensions 4.2 (Intel(R) SSE4.2) enabled only processors has been deprecated. Intel oneAPI Math Kernel Library 2025.0 will require Intel(R) Advanced Vector Extensions (Intel(R) AVX) instructions.
+Intel MKL WARNING: Support of Intel(R) Streaming SIMD Extensions 4.2 (Intel(R) SSE4.2) enabled only processors has been deprecated. Intel oneAPI Math Kernel Library 2025.0 will require Intel(R) Advanced Vector Extensions (Intel(R) AVX) instructions.
+Intel MKL WARNING: Support of Intel(R) Streaming SIMD Extensions 4.2 (Intel(R) SSE4.2) enabled only processors has been deprecated. Intel oneAPI Math Kernel Library 2025.0 will require Intel(R) Advanced Vector Extensions (Intel(R) AVX) instructions.
+Intel MKL WARNING: Support of Intel(R) Streaming SIMD Extensions 4.2 (Intel(R) SSE4.2) enabled only processors has been deprecated. Intel oneAPI Math Kernel Library 2025.0 will require Intel(R) Advanced Vector Extensions (Intel(R) AVX) instructions.
+Intel MKL WARNING: Support of Intel(R) Streaming SIMD Extensions 4.2 (Intel(R) SSE4.2) enabled only processors has been deprecated. Intel oneAPI Math Kernel Library 2025.0 will require Intel(R) Advanced Vector Extensions (Intel(R) AVX) instructions.
+Intel MKL WARNING: Support of Intel(R) Streaming SIMD Extensions 4.2 (Intel(R) SSE4.2) enabled only processors has been deprecated. Intel oneAPI Math Kernel Library 2025.0 will require Intel(R) Advanced Vector Extensions (Intel(R) AVX) instructions.
+Intel MKL WARNING: Support of Intel(R) Streaming SIMD Extensions 4.2 (Intel(R) SSE4.2) enabled only processors has been deprecated. Intel oneAPI Math Kernel Library 2025.0 will require Intel(R) Advanced Vector Extensions (Intel(R) AVX) instructions.
+Intel MKL WARNING: Support of Intel(R) Streaming SIMD Extensions 4.2 (Intel(R) SSE4.2) enabled only processors has been deprecated. Intel oneAPI Math Kernel Library 2025.0 will require Intel(R) Advanced Vector Extensions (Intel(R) AVX) instructions.
+Intel MKL WARNING: Support of Intel(R) Streaming SIMD Extensions 4.2 (Intel(R) SSE4.2) enabled only processors has been deprecated. Intel oneAPI Math Kernel Library 2025.0 will require Intel(R) Advanced Vector Extensions (Intel(R) AVX) instructions.
+Intel MKL WARNING: Support of Intel(R) Streaming SIMD Extensions 4.2 (Intel(R) SSE4.2) enabled only processors has been deprecated. Intel oneAPI Math Kernel Library 2025.0 will require Intel(R) Advanced Vector Extensions (Intel(R) AVX) instructions.
+Intel MKL WARNING: Support of Intel(R) Streaming SIMD Extensions 4.2 (Intel(R) SSE4.2) enabled only processors has been deprecated. Intel oneAPI Math Kernel Library 2025.0 will require Intel(R) Advanced Vector Extensions (Intel(R) AVX) instructions.
+Intel MKL WARNING: Support of Intel(R) Streaming SIMD Extensions 4.2 (Intel(R) SSE4.2) enabled only processors has been deprecated. Intel oneAPI Math Kernel Library 2025.0 will require Intel(R) Advanced Vector Extensions (Intel(R) AVX) instructions.
+Intel MKL WARNING: Support of Intel(R) Streaming SIMD Extensions 4.2 (Intel(R) SSE4.2) enabled only processors has been deprecated. Intel oneAPI Math Kernel Library 2025.0 will require Intel(R) Advanced Vector Extensions (Intel(R) AVX) instructions.
+Intel MKL WARNING: Support of Intel(R) Streaming SIMD Extensions 4.2 (Intel(R) SSE4.2) enabled only processors has been deprecated. Intel oneAPI Math Kernel Library 2025.0 will require Intel(R) Advanced Vector Extensions (Intel(R) AVX) instructions.
+Intel MKL WARNING: Support of Intel(R) Streaming SIMD Extensions 4.2 (Intel(R) SSE4.2) enabled only processors has been deprecated. Intel oneAPI Math Kernel Library 2025.0 will require Intel(R) Advanced Vector Extensions (Intel(R) AVX) instructions.
+Intel MKL WARNING: Support of Intel(R) Streaming SIMD Extensions 4.2 (Intel(R) SSE4.2) enabled only processors has been deprecated. Intel oneAPI Math Kernel Library 2025.0 will require Intel(R) Advanced Vector Extensions (Intel(R) AVX) instructions.
+Intel MKL WARNING: Support of Intel(R) Streaming SIMD Extensions 4.2 (Intel(R) SSE4.2) enabled only processors has been deprecated. Intel oneAPI Math Kernel Library 2025.0 will require Intel(R) Advanced Vector Extensions (Intel(R) AVX) instructions.
+Intel MKL WARNING: Support of Intel(R) Streaming SIMD Extensions 4.2 (Intel(R) SSE4.2) enabled only processors has been deprecated. Intel oneAPI Math Kernel Library 2025.0 will require Intel(R) Advanced Vector Extensions (Intel(R) AVX) instructions.
+Intel MKL WARNING: Support of Intel(R) Streaming SIMD Extensions 4.2 (Intel(R) SSE4.2) enabled only processors has been deprecated. Intel oneAPI Math Kernel Library 2025.0 will require Intel(R) Advanced Vector Extensions (Intel(R) AVX) instructions.
+Intel MKL WARNING: Support of Intel(R) Streaming SIMD Extensions 4.2 (Intel(R) SSE4.2) enabled only processors has been deprecated. Intel oneAPI Math Kernel Library 2025.0 will require Intel(R) Advanced Vector Extensions (Intel(R) AVX) instructions.
+Intel MKL WARNING: Support of Intel(R) Streaming SIMD Extensions 4.2 (Intel(R) SSE4.2) enabled only processors has been deprecated. Intel oneAPI Math Kernel Library 2025.0 will require Intel(R) Advanced Vector Extensions (Intel(R) AVX) instructions.
+Intel MKL WARNING: Support of Intel(R) Streaming SIMD Extensions 4.2 (Intel(R) SSE4.2) enabled only processors has been deprecated. Intel oneAPI Math Kernel Library 2025.0 will require Intel(R) Advanced Vector Extensions (Intel(R) AVX) instructions.
+img995 shape = (2320, 3088)
+U shape: (2320, 24), S shape: (24,), V shape: (3088, 24)
 </pre></div>
 </div>
-<img alt="../../_images/6d60bc09106f42386e4ba8f613d6e57eb52111399d8f79b03b60ad41991d2253.png" src="../../_images/6d60bc09106f42386e4ba8f613d6e57eb52111399d8f79b03b60ad41991d2253.png" />
+<img alt="../../_images/570af7652bd9ed7ca472cf8a7a9e40e3c64181604450720241cc352bbe48ecc4.png" src="../../_images/570af7652bd9ed7ca472cf8a7a9e40e3c64181604450720241cc352bbe48ecc4.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1090,7 +1215,7 @@ U shape: (3088, 24), S shape: (24,), V shape: (2320, 24)
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/cba07b18f75a44b55c3dc6e3b28e74a316a8077318ad7916c9bc52fd4ee166fb.png" src="../../_images/cba07b18f75a44b55c3dc6e3b28e74a316a8077318ad7916c9bc52fd4ee166fb.png" />
+<img alt="../../_images/3175c1fdc536e5711c2fde6517aed657ab8e0143744972b3b4790e049dea9aaf.png" src="../../_images/3175c1fdc536e5711c2fde6517aed657ab8e0143744972b3b4790e049dea9aaf.png" />
 </div>
 </div>
 </section>
@@ -1150,8 +1275,8 @@ U shape: (3088, 24), S shape: (24,), V shape: (2320, 24)
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[0.055, 0.01 ],
-       [0.01 , 0.105]])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[0.058, 0.011],
+       [0.011, 0.127]])
 </pre></div>
 </div>
 </div>
@@ -1163,8 +1288,11 @@ U shape: (3088, 24), S shape: (24,), V shape: (2320, 24)
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[0.055, 0.01 ],
-       [0.01 , 0.105]])
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Intel MKL WARNING: Support of Intel(R) Streaming SIMD Extensions 4.2 (Intel(R) SSE4.2) enabled only processors has been deprecated. Intel oneAPI Math Kernel Library 2025.0 will require Intel(R) Advanced Vector Extensions (Intel(R) AVX) instructions.
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[0.058, 0.011],
+       [0.011, 0.127]])
 </pre></div>
 </div>
 </div>
@@ -1178,9 +1306,12 @@ U shape: (3088, 24), S shape: (24,), V shape: (2320, 24)
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[0.055, 0.01 , 0.016],
-       [0.01 , 0.105, 0.047],
-       [0.016, 0.047, 0.057]])
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Intel MKL WARNING: Support of Intel(R) Streaming SIMD Extensions 4.2 (Intel(R) SSE4.2) enabled only processors has been deprecated. Intel oneAPI Math Kernel Library 2025.0 will require Intel(R) Advanced Vector Extensions (Intel(R) AVX) instructions.
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[0.058, 0.011, 0.021],
+       [0.011, 0.127, 0.072],
+       [0.021, 0.072, 0.13 ]])
 </pre></div>
 </div>
 </div>
@@ -1199,13 +1330,18 @@ U shape: (3088, 24), S shape: (24,), V shape: (2320, 24)
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/52aeca63a06171ebfea5ea2cf5fbbd3fb4513412b63bf5d7fc231f128e745be8.png" src="../../_images/52aeca63a06171ebfea5ea2cf5fbbd3fb4513412b63bf5d7fc231f128e745be8.png" />
+<img alt="../../_images/0e4583a0a8854aed9a4d4e850adf1e047c85ca0ed4efeb24adbe31bccaa5c98a.png" src="../../_images/0e4583a0a8854aed9a4d4e850adf1e047c85ca0ed4efeb24adbe31bccaa5c98a.png" />
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Find the covariance matrix of the matrix of points x</span>
 <span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cov</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Intel MKL WARNING: Support of Intel(R) Streaming SIMD Extensions 4.2 (Intel(R) SSE4.2) enabled only processors has been deprecated. Intel oneAPI Math Kernel Library 2025.0 will require Intel(R) Advanced Vector Extensions (Intel(R) AVX) instructions.
 </pre></div>
 </div>
 </div>
@@ -1241,7 +1377,7 @@ U shape: (3088, 24), S shape: (24,), V shape: (2320, 24)
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/67ba981b326b71be39561ee34318299854f971d4f0807e2311419b7eafb66f71.png" src="../../_images/67ba981b326b71be39561ee34318299854f971d4f0807e2311419b7eafb66f71.png" />
+<img alt="../../_images/941d7e917ba8f97d7cd8108af1a791af52acd5f0e6b89c24d33312d53205e025.png" src="../../_images/941d7e917ba8f97d7cd8108af1a791af52acd5f0e6b89c24d33312d53205e025.png" />
 </div>
 </div>
 </section>
@@ -1250,8 +1386,8 @@ U shape: (3088, 24), S shape: (24,), V shape: (2320, 24)
 <p>“Principal Components Analysis” (PCA) basically means to find and rank all the eigenvalues and eigenvectors of a covariance matrix. This is useful because high-dimensional data (with <span class="math notranslate nohighlight">\(p\)</span> features) may have nearly all their variation in a small number of dimensions <span class="math notranslate nohighlight">\(k&lt;p\)</span>, i.e. in the subspace spanned by the eigenvectors of the covariance matrix that have the <span class="math notranslate nohighlight">\(k\)</span> largest eigenvalues. If we project the original data into this subspace, we can have a dimension reduction (from <span class="math notranslate nohighlight">\(p\)</span> to <span class="math notranslate nohighlight">\(k\)</span>) with hopefully little loss of information.</p>
 <p>Numerically, PCA is typically done using SVD on the data matrix rather than eigendecomposition on the covariance matrix. Numerically, the condition number for working with the covariance matrix directly is the square of the condition number using SVD, so SVD minimizes errors.”</p>
 <p>For zero-centered vectors,</p>
-<div class="amsmath math notranslate nohighlight" id="equation-07543de6-025c-4f19-8c1e-be3fd9baedbf">
-<span class="eqno">(10.1)<a class="headerlink" href="#equation-07543de6-025c-4f19-8c1e-be3fd9baedbf" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-a53d2db0-2e0b-4d5d-96d9-462e884991fd">
+<span class="eqno">()<a class="headerlink" href="#equation-a53d2db0-2e0b-4d5d-96d9-462e884991fd" title="Permalink to this equation">#</a></span>\[\begin{align}
 \text{Cov}(X, Y) &amp;= \frac{\sum_{i=1}^n(X_i - \bar{X})(Y_i - \bar{Y})}{n-1} \\
   &amp;= \frac{\sum_{i=1}^nX_iY_i}{n-1} \\
   &amp;= \frac{XY^T}{n-1}
@@ -1267,11 +1403,11 @@ U shape: (3088, 24), S shape: (24,), V shape: (2320, 24)
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[0.881, 0.604, 0.923, 0.649],
-       [0.753, 0.212, 0.596, 0.735],
-       [0.249, 0.551, 0.931, 0.069],
-       [0.848, 0.141, 0.978, 0.228],
-       [0.641, 0.265, 0.459, 0.731]])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[0.884, 0.379, 0.853, 0.039],
+       [0.922, 0.865, 0.043, 0.926],
+       [0.741, 0.228, 0.109, 0.4  ],
+       [0.66 , 0.296, 0.86 , 0.056],
+       [0.769, 0.563, 0.316, 0.198]])
 </pre></div>
 </div>
 </div>
@@ -1284,7 +1420,7 @@ U shape: (3088, 24), S shape: (24,), V shape: (2320, 24)
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[-2.776e-17 -2.776e-17 -2.776e-17  5.551e-17 -2.776e-17]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[ 8.327e-17  8.327e-17  0.000e+00 -2.776e-17 -5.551e-17]
 </pre></div>
 </div>
 </div>
@@ -1296,7 +1432,7 @@ U shape: (3088, 24), S shape: (24,), V shape: (2320, 24)
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([-0., -0., -0.,  0., -0.])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([ 0.,  0.,  0., -0., -0.])
 </pre></div>
 </div>
 </div>
@@ -1308,11 +1444,11 @@ U shape: (3088, 24), S shape: (24,), V shape: (2320, 24)
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[ 0.117, -0.16 ,  0.159, -0.116],
-       [ 0.179, -0.362,  0.022,  0.161],
-       [-0.201,  0.101,  0.481, -0.381],
-       [ 0.299, -0.408,  0.43 , -0.321],
-       [ 0.117, -0.259, -0.065,  0.207]])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[ 0.345, -0.16 ,  0.315, -0.5  ],
+       [ 0.233,  0.176, -0.646,  0.237],
+       [ 0.371, -0.141, -0.26 ,  0.03 ],
+       [ 0.192, -0.172,  0.392, -0.412],
+       [ 0.307,  0.102, -0.145, -0.264]])
 </pre></div>
 </div>
 </div>
@@ -1325,11 +1461,14 @@ U shape: (3088, 24), S shape: (24,), V shape: (2320, 24)
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[ 0.026,  0.021,  0.027,  0.069,  0.007],
-       [ 0.021,  0.063, -0.041,  0.053,  0.049],
-       [ 0.027, -0.041,  0.142,  0.076, -0.053],
-       [ 0.069,  0.053,  0.076,  0.181,  0.016],
-       [ 0.007,  0.049, -0.053,  0.016,  0.043]])
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Intel MKL WARNING: Support of Intel(R) Streaming SIMD Extensions 4.2 (Intel(R) SSE4.2) enabled only processors has been deprecated. Intel oneAPI Math Kernel Library 2025.0 will require Intel(R) Advanced Vector Extensions (Intel(R) AVX) instructions.
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[ 0.164, -0.09 ,  0.018,  0.141,  0.059],
+       [-0.09 ,  0.186,  0.079, -0.112,  0.04 ],
+       [ 0.018,  0.079,  0.075, -0.006,  0.043],
+       [ 0.141, -0.112, -0.006,  0.13 ,  0.031],
+       [ 0.059,  0.04 ,  0.043,  0.031,  0.065]])
 </pre></div>
 </div>
 </div>
@@ -1341,11 +1480,14 @@ U shape: (3088, 24), S shape: (24,), V shape: (2320, 24)
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[ 0.026,  0.021,  0.027,  0.069,  0.007],
-       [ 0.021,  0.063, -0.041,  0.053,  0.049],
-       [ 0.027, -0.041,  0.142,  0.076, -0.053],
-       [ 0.069,  0.053,  0.076,  0.181,  0.016],
-       [ 0.007,  0.049, -0.053,  0.016,  0.043]])
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Intel MKL WARNING: Support of Intel(R) Streaming SIMD Extensions 4.2 (Intel(R) SSE4.2) enabled only processors has been deprecated. Intel oneAPI Math Kernel Library 2025.0 will require Intel(R) Advanced Vector Extensions (Intel(R) AVX) instructions.
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[ 0.164, -0.09 ,  0.018,  0.141,  0.059],
+       [-0.09 ,  0.186,  0.079, -0.112,  0.04 ],
+       [ 0.018,  0.079,  0.075, -0.006,  0.043],
+       [ 0.141, -0.112, -0.006,  0.13 ,  0.031],
+       [ 0.059,  0.04 ,  0.043,  0.031,  0.065]])
 </pre></div>
 </div>
 </div>
@@ -1354,6 +1496,11 @@ U shape: (3088, 24), S shape: (24,), V shape: (2320, 24)
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Find the eigenvalue and eigenvectors</span>
 <span class="n">e1</span><span class="p">,</span> <span class="n">v1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">eig</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">x</span><span class="o">.</span><span class="n">T</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Intel MKL WARNING: Support of Intel(R) Streaming SIMD Extensions 4.2 (Intel(R) SSE4.2) enabled only processors has been deprecated. Intel oneAPI Math Kernel Library 2025.0 will require Intel(R) Advanced Vector Extensions (Intel(R) AVX) instructions.
 </pre></div>
 </div>
 </div>
@@ -1375,7 +1522,7 @@ U shape: (3088, 24), S shape: (24,), V shape: (2320, 24)
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/69e8765e166085f7617577f9acf95b61bffaa69cfcf70ead77c954dbe344e3f2.png" src="../../_images/69e8765e166085f7617577f9acf95b61bffaa69cfcf70ead77c954dbe344e3f2.png" />
+<img alt="../../_images/09bdcc6d70f1b216b49a192345116d563dc080c9bc406a0ae589a45b2ef7c1ee.png" src="../../_images/09bdcc6d70f1b216b49a192345116d563dc080c9bc406a0ae589a45b2ef7c1ee.png" />
 </div>
 </div>
 </section>
@@ -1384,8 +1531,8 @@ U shape: (3088, 24), S shape: (24,), V shape: (2320, 24)
 <h3>Using SVD for PCA<a class="headerlink" href="#using-svd-for-pca" title="Link to this heading">#</a></h3>
 <p>SVD is a decomposition of the data matrix <span class="math notranslate nohighlight">\(X = U S V^T\)</span> where <span class="math notranslate nohighlight">\(U\)</span> and <span class="math notranslate nohighlight">\(V\)</span> are orthogonal matrices and <span class="math notranslate nohighlight">\(S\)</span> is a diagonal matrix.</p>
 <p>Recall that the transpose of an orthogonal matrix is also its inverse, so if we multiply on the right by <span class="math notranslate nohighlight">\(X^T\)</span>, we get the following simplification</p>
-<div class="amsmath math notranslate nohighlight" id="equation-8ce3ef75-a448-4822-a816-6b5eedb31fc0">
-<span class="eqno">(10.2)<a class="headerlink" href="#equation-8ce3ef75-a448-4822-a816-6b5eedb31fc0" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-46d00f84-f09a-46b6-b69a-7772591888ab">
+<span class="eqno">()<a class="headerlink" href="#equation-46d00f84-f09a-46b6-b69a-7772591888ab" title="Permalink to this equation">#</a></span>\[\begin{align}
 X &amp;= U S V^T \\
 X X^T &amp;= U S V^T (U S V^T)^T \\
  &amp;= U S V^T V S U^T \\
@@ -1395,6 +1542,13 @@ X X^T &amp;= U S V^T (U S V^T)^T \\
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">u</span><span class="p">,</span> <span class="n">s</span><span class="p">,</span> <span class="n">v</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">svd</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Intel MKL WARNING: Support of Intel(R) Streaming SIMD Extensions 4.2 (Intel(R) SSE4.2) enabled only processors has been deprecated. Intel oneAPI Math Kernel Library 2025.0 will require Intel(R) Advanced Vector Extensions (Intel(R) AVX) instructions.
+Intel MKL WARNING: Support of Intel(R) Streaming SIMD Extensions 4.2 (Intel(R) SSE4.2) enabled only processors has been deprecated. Intel oneAPI Math Kernel Library 2025.0 will require Intel(R) Advanced Vector Extensions (Intel(R) AVX) instructions.
+Intel MKL WARNING: Support of Intel(R) Streaming SIMD Extensions 4.2 (Intel(R) SSE4.2) enabled only processors has been deprecated. Intel oneAPI Math Kernel Library 2025.0 will require Intel(R) Advanced Vector Extensions (Intel(R) AVX) instructions.
 </pre></div>
 </div>
 </div>
@@ -1415,7 +1569,7 @@ X X^T &amp;= U S V^T (U S V^T)^T \\
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/9fbe46eab83f0f9d18465e42b1235d81594d78050e3906f72193a30fece00aca.png" src="../../_images/9fbe46eab83f0f9d18465e42b1235d81594d78050e3906f72193a30fece00aca.png" />
+<img alt="../../_images/8a137ded8a26322675dcf85830a050d15a66f025d0a007760090120de3cff1f8.png" src="../../_images/8a137ded8a26322675dcf85830a050d15a66f025d0a007760090120de3cff1f8.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1425,8 +1579,8 @@ X X^T &amp;= U S V^T (U S V^T)^T \\
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[ 0.932, -0.362],
-       [ 0.362,  0.932]])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[ 0.927, -0.374],
+       [ 0.374,  0.927]])
 </pre></div>
 </div>
 </div>
@@ -1438,8 +1592,8 @@ X X^T &amp;= U S V^T (U S V^T)^T \\
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[-0.932, -0.362],
-       [-0.362,  0.932]])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[-0.927, -0.374],
+       [-0.374,  0.927]])
 </pre></div>
 </div>
 </div>
@@ -1451,7 +1605,7 @@ X X^T &amp;= U S V^T (U S V^T)^T \\
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([0.679, 0.132])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([0.632, 0.125])
 </pre></div>
 </div>
 </div>
@@ -1463,7 +1617,7 @@ X X^T &amp;= U S V^T (U S V^T)^T \\
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([0.679, 0.132])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([0.632, 0.125])
 </pre></div>
 </div>
 </div>
@@ -1542,16 +1696,16 @@ f(x) = ax^2 + bx^3 + c\sin{x}
         },
         codeMirrorConfig: {
             theme: "abcdef",
-            mode: "python"
+            mode: "conda-env-8820-book-env-py"
         },
         kernelOptions: {
-            name: "python3",
+            name: "conda-env-8820-book-env-py",
             path: "./notebooks/SVD"
         },
         predefinedOutput: true
     }
     </script>
-    <script>kernelName = 'python3'</script>
+    <script>kernelName = 'conda-env-8820-book-env-py'</script>
 
                 </article>
               
