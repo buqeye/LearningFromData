@@ -597,7 +597,7 @@ document.write(`
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#information-from-chatgpt-about-the-default-initialization">Information from ChatGPT about the default initialization</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#information-from-chatgpt-about-how-to-switch-to-normal-distributions-to-intialize">Information from ChatGPT about how to switch to normal distributions to intialize</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#information-from-chatgpt-about-how-to-switch-to-normal-distributions-to-initialize">Information from ChatGPT about how to switch to normal distributions to initialize</a></li>
 </ul>
             </nav>
         </div>
@@ -1295,8 +1295,8 @@ where <span class="math notranslate nohighlight">\(k = 1/(\textrm{number of inpu
 </ol>
 <p>This is a good default choice for many situations, especially when just starting out with a new neural network model, because it provides a reasonable compromise between too large and too small initial weights, helping to ensure that gradients are neither too small (causing vanishing gradients) nor too large (causing exploding gradients) at the start of training.</p>
 </section>
-<section id="information-from-chatgpt-about-how-to-switch-to-normal-distributions-to-intialize">
-<h2>Information from ChatGPT about how to switch to normal distributions to intialize<a class="headerlink" href="#information-from-chatgpt-about-how-to-switch-to-normal-distributions-to-intialize" title="Link to this heading">#</a></h2>
+<section id="information-from-chatgpt-about-how-to-switch-to-normal-distributions-to-initialize">
+<h2>Information from ChatGPT about how to switch to normal distributions to initialize<a class="headerlink" href="#information-from-chatgpt-about-how-to-switch-to-normal-distributions-to-initialize" title="Link to this heading">#</a></h2>
 <p><strong>To ChatGPT:</strong> <em>Give the <code class="docutils literal notranslate"><span class="pre">OneVariableNet</span></code> class initialized with a normal distribution.</em></p>
 <p>To customize the <code class="docutils literal notranslate"><span class="pre">OneVariableNet</span></code> class such that all the weights (and optionally biases) of the layers are initialized from a normal distribution, you can use PyTorch’s <code class="docutils literal notranslate"><span class="pre">torch.nn.init</span></code> functions. In this case, we will use <code class="docutils literal notranslate"><span class="pre">normal_</span></code> to initialize the weights and biases.</p>
 <p>Here’s how you can modify the <code class="docutils literal notranslate"><span class="pre">OneVariableNet</span></code> class to initialize its parameters with a normal distribution, specifying a mean and a standard deviation:</p>
@@ -1448,7 +1448,7 @@ where <span class="math notranslate nohighlight">\(k = 1/(\textrm{number of inpu
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#information-from-chatgpt-about-the-default-initialization">Information from ChatGPT about the default initialization</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#information-from-chatgpt-about-how-to-switch-to-normal-distributions-to-intialize">Information from ChatGPT about how to switch to normal distributions to intialize</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#information-from-chatgpt-about-how-to-switch-to-normal-distributions-to-initialize">Information from ChatGPT about how to switch to normal distributions to initialize</a></li>
 </ul>
   </nav></div>
 
