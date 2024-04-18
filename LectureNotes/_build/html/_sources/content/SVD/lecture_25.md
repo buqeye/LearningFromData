@@ -96,8 +96,8 @@ Recall that
 
 ## Applications of SVD
 
-* Solving matrix equations with *ill-conditioned matrices*, which means that the smallest eigenvalue is zero or close to zero. (If zero, then the matrix is *singular*.)
-    * The *condition number* of a matrix is the ratio of the largest to the smallest eigenvalue.
+* Solving matrix equations with *ill-conditioned matrices*, which means that the smallest singular value is zero or close to zero. (If zero, then the matrix is *singular*.)
+    * The *condition number* of a matrix is the ratio of the largest to the smallest singular value.
     * If solving $Ax = h$ $\Lra$ $x = A^{-1}b$, then an error in $h$ is magnified by the condition number to give the error in $x$.
     * So finite precision in $b$ leads to nonsense for $x$ if the the condition number is larger than the inverse of the machine or calculational precision. If the condition number $\kappa(A) = 10^k$, then up to $k$ digits of accuracy is lost (roughly).
 
@@ -106,11 +106,11 @@ Recall that
     * Step through the Python example for image compression.
     You are identifying the most important eigenvalues for the image.
     * If we keep 1 in 100 of the singular values, then the numbers to be stored are significantly reduced.
-    * Note the spectrum of eigenvalues.
+    * Note the spectrum of singular values.
 
 * Covariance, PCA, and SVD
-    * Consider the covariance matrix and find its eigenvalues and eigenvectors. ``Center'' the data first (subtract the mean so that you deal with data having mean zero).
+    * Consider the covariance matrix and find its eigenvalues and eigenvectors. Since the covariance matrix is symmetric and positive, its eigenvalues are the same as the singular values. ``Center'' the data first (subtract the mean so that you deal with data having mean zero).
     * PCA means to rank these. This is typically done *via* SVD (which is better numerically).
-    * Then one uses fewer singular values (which are the eigenvalues if it is a square matrix) $\Lra$ we have reduced the number of parameters in a model (for example).
+    * Then one uses fewer singular values (which are the eigenvalues if it is a symmetric, square positive matrix) $\Lra$ we have reduced the number of parameters in a model (for example).
 
 
