@@ -22,7 +22,7 @@ The course is project-based, and students will be exposed to some fundamental re
 
 ## Objectives
 
-In recent years there has been an explosion of interest in the use of Bayesian methods in many sub-fields of physics. In nuclear physics (my specialty), these methods are being used to quantify the uncertainties in theoretical work on topics ranging from the inter-nucleon forces to high-energy heavy-ion collisions, develop more reliable extrapolants of nuclear-energy-density functionals towards the limits of nuclear existence, predict the impact that future NICER observations may have on the equation of state of neutron matter, and determine whether or not nucleon resonances are present in experimental data.
+In recent years there has been an explosion of interest in the use of Bayesian methods in many sub-fields of physics. In nuclear physics (our specialty), these methods are being used to quantify the uncertainties in theoretical work on topics ranging from the inter-nucleon forces to high-energy heavy-ion collisions, develop more reliable extrapolants of nuclear-energy-density functionals towards the limits of nuclear existence, predict the impact that future NICER observations may have on the equation of state of neutron matter, and determine whether or not nucleon resonances are present in experimental data.
 
 Meanwhile machine learning is gaining increased currency as a method for identifying interesting signals in both experiments and simulations. 
 
