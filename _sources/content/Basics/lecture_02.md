@@ -23,7 +23,7 @@
     
     * what are projected posteriors (relate these to marginalization over one of the variables)?
 
-## Bayesian updating via Bayes' theorem <div id="Bayesian-updating">test</div>
+## Bayesian updating via Bayes' theorem 
 
 Consider Bayes' theorem for the case where we seek the pdf of  parameters $\thetavec$ contingent on some data.
 
