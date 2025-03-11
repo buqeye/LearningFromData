@@ -1,3 +1,5 @@
+console.log("shared_macros.js loaded!");
+
 MathJax.Hub.Config({
   TeX: {
     Macros: {
