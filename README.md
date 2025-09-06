@@ -1,3 +1,5 @@
+New Jupyter Book on "Learning from data for physicists" available at [https://nucleartalent.github.io/LFD_for_Physicists/LearningFromData-content/Intro/About.html](https://nucleartalent.github.io/LFD_for_Physicists/LearningFromData-content/Intro/About.html).
+
 # "Learning from data: Bayesian methods and (some) machine learning"
 ## Courses: OSU Physics 8820 and OU PHYS 6601
 
